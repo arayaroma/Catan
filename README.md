@@ -2,6 +2,10 @@
 [Catan](https://en.wikipedia.org/wiki/Catan), previously known as The Settlers of Catan or simply Settlers,
 is a multiplayer board game designed by Klaus Teuber. It's the game to make in the course: "Estructuras de Datos" using the **Data Structures** followed in class.
 
+## Library
+
+[The CImg Library](http://cimg.eu/index.html) is a small and open-source C++ library for image processing.
+
 ## Requirements
 
 - ### C/C++ Compiler & Debugger
@@ -14,7 +18,7 @@ is a multiplayer board game designed by Klaus Teuber. It's the game to make in t
   - C/C++ Makefile Project
   - Code Runner
 
-## Installation
+# Installation
 
 ## Windows 
 #### Installing the software
