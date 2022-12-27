@@ -23,10 +23,22 @@ gcc --version
 ## To install gcc
 
 ### Windows
-Visit [MinGW Distro](https://nuwen.net/mingw.html) and download the MinGW compiler for c++.
+Visit [MSYS2](https://www.msys2.org/) and download the .exe installer file
+
+#### In the terminal, after installation do:
+```bash
+pacman -S mingw-w64-ucrt-x86_64-gcc
+```
+##### _Select the option y to proceed the installation._
+---
+
+#### To check the version
+```
+gcc --version
+```
+
 #### Setting up the Path
-1. Copy the bin folder path from MinGW file saved in C Drive
-2. Edit Path in Enviromental Variables and add the new Path that you just copy.
+
 
 ### Arch Linux
 ```bash
