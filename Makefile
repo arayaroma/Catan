@@ -10,7 +10,7 @@ LDFLAGS = src/main.cpp -lgdi32
 # Makefile settings - Can be customized.
 APPNAME = main 
 EXT = .cpp
-SRCDIR = C:\Users\DanyG\Desktop\repos\Prueba-CImg
+SRCDIR = C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan
 OBJDIR = obj
 
 ############## Do not change anything from here downwards! #############
