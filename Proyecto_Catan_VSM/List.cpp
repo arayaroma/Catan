@@ -1,18 +1,23 @@
 #include "List.h"
+template<typename T>
+List<T>::List(){}
 
-void List::add(LandNode* newLand) { // Inserta al final de la lista
+template<typename T>
+void List<T>::add(T& newLand) { // Inserta al final de la lista
+    aux = new Node<T>(newLand);
     if (isEmpty()) {
-        head = newLand;
-        end = newLand;
+        head = aux;
+        end = aux;
     }
     else {
-        end->setNext(newLand);
-        newLand->setPrevious(end);
-        end = newLand;
+        end->setNext(aux);
+        aux->setPrevious(end);
+        end = aux;
     }
 }
 
-bool List::deleteNode(LandNode* Node) {
+template<typename T>
+bool List<T>::deleteNode(T& Node) {
     if (!isEmpty()) {
         // buscar el nodo
         aux = head;
@@ -36,11 +41,14 @@ bool List::deleteNode(LandNode* Node) {
     }
     return false;
 }
-void List::print() {
-    LandNode* aux = head;
+template<typename T>
+void List<T>::print() {
+     aux = head;
     while (aux != NULL) {
         aux->getInfo()->toString();
         aux = aux->getNext();
     }
 }
-bool List::isEmpty() { return (head == NULL); }
+
+template<typename T>
+bool List<T>::isEmpty() { return (head == NULL); }

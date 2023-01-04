@@ -1,6 +1,5 @@
 #pragma once
 #include "Land.h"
-#include "LandNode.h"
 #include "List.h"
 #include "Stack.h"
 #include <iostream>
@@ -8,8 +7,8 @@
 class Program {
 private:
 	int turn;
-	List* lands = new List();
-	Stack* cards = new Stack();
+	List<Land> lands{};
+	Stack<Card> cards;
 public:
 	Program();
 	void play();
