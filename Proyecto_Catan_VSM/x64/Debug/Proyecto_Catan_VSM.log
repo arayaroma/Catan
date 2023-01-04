@@ -1,13 +1,6 @@
-﻿  Card.cpp
-  CardNode.cpp
-  Figure.cpp
-  Label.cpp
-  Land.cpp
-  LandNode.cpp
-  List.cpp
-  Player.cpp
+﻿  GameActions.cpp
+  LoadResourses.cpp
   Program.cpp
   Proyecto_Catan_VSM.cpp
-  Stack.cpp
-  Generating Code...
-  Proyecto_Catan_VSM.vcxproj -> C:\Users\DanyG\Desktop\repos\Catan\x64\Debug\Proyecto_Catan_VSM.exe
+  Generando código...
+  Proyecto_Catan_VSM.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Proyecto_Catan_VSM.exe
