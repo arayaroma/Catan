@@ -14,7 +14,6 @@ const int transparent = 0;
 const float opacity = 1;
 
 // Global Scope
-
 const char* const image_path = "images/catan_1280x720.jpg";
 const char* catan_window_title = "Catan - Title Screen";
 unsigned int catan_title_display_width = 1280, catan_title_display_height = 720;
