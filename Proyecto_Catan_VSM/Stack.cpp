@@ -1,19 +1,23 @@
 #include "Stack.h"
 #include <cstddef>
-void Stack::push(CardNode* n) {//inserta el nodo al inicio de la lista
+
+template<typename T>
+void Stack<T>::push(T& newData) {//inserta el nodo al inicio de la lista
+	aux = new Node<T>(newData);
 	if (isEmpty()) {
-		head = n;
-		end = n;
+		head = aux;
+		end = aux;
 	}
 	else {
-		n->setNext(head);
-		head->setPrevious(n);
-		head = n;
+		aux->setNext(head);
+		head->setPrevious(aux);
+		head = aux;
 	}
 }
 
-Card* Stack::pop() {//extrae el nodo del inicio. LIFO: Last In, First Out (Ultimo en entrar, primero en salir)
-	CardNode* aux = head;
+template<typename T>
+T& Stack<T>::pop() {//extrae el nodo del inicio. LIFO: Last In, First Out (Ultimo en entrar, primero en salir)
+	 aux = head;
 	if (!isEmpty()) {
 		head = head->getNext();
 		if (head != NULL)
@@ -25,16 +29,21 @@ Card* Stack::pop() {//extrae el nodo del inicio. LIFO: Last In, First Out (Ultim
 	return aux->getInfo();
 }
 
-Card* Stack::top() {
+template<typename T>
+T& Stack<T>::top() {
 	if (!isEmpty())
 		return head->getInfo();
 	return NULL;
 }
-void Stack::print() {
-	CardNode* aux = head;
+
+template<typename T>
+void Stack<T>::print() {
+	aux = head;
 	while (aux != NULL) {
 		aux->getInfo()->toString();
 		aux = aux->getNext();
 	}
 }
-bool Stack::isEmpty() { return (head == NULL); }
+
+template<typename T>
+bool Stack<T>::isEmpty() { return (head == NULL); }

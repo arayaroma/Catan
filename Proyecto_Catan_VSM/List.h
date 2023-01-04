@@ -1,14 +1,16 @@
 #pragma once
-#include "LandNode.h"
+#include "Node.h"
 #include <string>
+template<typename T>
 class List  {
 private:
-	LandNode* aux;
-	LandNode* head;
-	LandNode* end;
+	Node<T>* aux;
+	Node<T>* head;
+	Node<T>* end;
 public:
-	void add(LandNode* newLandNode);
-	bool deleteNode(LandNode* LandNode);
+	List();
+	void add(T& newLandNode);
+	bool deleteNode(T& LandNode);
 	bool isEmpty();
 	void print();
 };

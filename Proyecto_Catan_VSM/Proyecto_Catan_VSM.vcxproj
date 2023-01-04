@@ -127,6 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\GameActions.cpp" />
+    <ClCompile Include="..\..\LoadResourses.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardNode.cpp" />
     <ClCompile Include="Figure.cpp" />
@@ -141,6 +143,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\EJEMPLO CIMG\EjemploCIMG\EjemploCIMG\CImg.h" />
+    <ClInclude Include="..\..\GameActions.h" />
+    <ClInclude Include="..\..\LoadResourses.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="CardNode.h" />
     <ClInclude Include="Figure.h" />
