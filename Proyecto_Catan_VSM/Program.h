@@ -9,8 +9,7 @@ class Program {
 private:
 	int turn;
 	LinkedList lands;
-	//Stack<Card> cards;
-
+	Stack cards;
 public:
 	Program();
 	void play();

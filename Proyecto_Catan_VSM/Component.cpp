@@ -11,6 +11,8 @@ string Component::getTypeClass() {
 	return typeClass;
 }
 
-void Component::to_string() {
-	std::cout << this->typeClass << " " << this->url << " ";
-}
+string Component::getType() { return type; }
+string Component::getUrl() { return url; }
+
+void Component::setType(string typeLand) { type = typeLand; }
+void Component::setUrl(string urlLand) { url = urlLand; }

@@ -5,21 +5,14 @@ Program::Program() {
 	this->turn = 0;
 	lands = LinkedList();	
 }
-
 void Program::assemblyLand() {
-	//Land* forest = Land("Bosque", "12345");
-	Land* aux = new Land("Forest", "12345");
-	Land* aux2 = new Land("Dessert", "12345");
-	lands.add(aux);
-	lands.add(aux2);
+	for (int i = 0; i < 4; i++) {
+		lands.add(new Land("Bosque", "images/bosque.png"));
+		lands.add(new Land("Pastos", "images/pastos.png"));
+		if (i < 3) {
+			lands.add(new Land("Sembrados", "images/Sembrados.png"));
+			lands.add(new Land("Cerros", "images/Cerros.png"));
+			lands.add(new Land("Montañas", "images/Montañas.png"));}}
+	lands.add(new Land("Desierto", "images/Desierto.png"));
 	lands.to_string();
-
-	//Land* forest = new Land("Bosque", "12345");
-	//lands.add(forest);
-	//lands.print();
-
-	/*Card* card = new Card("Material","123","Wood");
-	Node* aux2 = new Node(card);
-	cards->push(aux2);
-	cards->print();*/
 }

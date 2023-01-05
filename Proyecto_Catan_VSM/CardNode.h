@@ -1,17 +1,17 @@
 #pragma once
 #include <iostream>
 #include "Card.h"
-
+#include "Component.h"
 class CardNode{
 private:
-	Card data;
+	Component* data;
 	CardNode* next;
 public:
 	CardNode();
-	CardNode(Card);
+	CardNode(Component*);
 
-	void set_data(Card);
-	Card get_data();
+	void set_data(Component*);
+	Component* get_data();
 
 	void set_next(CardNode*);
 	CardNode* get_next();

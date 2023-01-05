@@ -1,7 +1,7 @@
 #include "Stack.h"
 #include <cstddef>
 
-void Stack::push(Card card) {//inserta el nodo al inicio de la lista
+void Stack::push(Component* card) {//inserta el nodo al inicio de la lista
 	aux = new CardNode(card);
 	if (isEmpty()) {
 		head = aux;
@@ -11,7 +11,7 @@ void Stack::push(Card card) {//inserta el nodo al inicio de la lista
 	head = aux;
 }
 
-Card Stack::pop() {//extrae el nodo del inicio. LIFO: Last In, First Out (Ultimo en entrar, primero en salir)
+Component* Stack::pop() {//extrae el nodo del inicio. LIFO: Last In, First Out (Ultimo en entrar, primero en salir)
 	aux = head;
 	if (!isEmpty()) {
 		head = head->get_next();
@@ -20,7 +20,7 @@ Card Stack::pop() {//extrae el nodo del inicio. LIFO: Last In, First Out (Ultimo
 	return aux->get_data();
 }
 
-Card Stack::top() {
+Component* Stack::top() {
 	if (!isEmpty())
 		return head->get_data();
 	return head->get_data();

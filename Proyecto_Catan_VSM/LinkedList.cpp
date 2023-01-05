@@ -4,12 +4,11 @@ LinkedList::LinkedList() {
 	this->head = NULL;
 }
 
-void LinkedList::add(Land* value) {
+void LinkedList::add(Component* value) {
 	Node* node = new Node();
 	node->data = value;
 	node->next = head;
 	head = node;
-	std::cout << "Se agrego!" << std::endl;
 }
 
 void LinkedList::delete_node(Node* node_before) {
@@ -21,7 +20,7 @@ void LinkedList::delete_node(Node* node_before) {
 void LinkedList::to_string() {
 	Node* temp = head;
 	while (temp != NULL) {
-		temp->data->toString();
+		temp->get_data()->to_string();
 		temp = temp->next;
 	}
 }

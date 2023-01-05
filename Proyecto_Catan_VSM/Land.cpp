@@ -6,12 +6,6 @@ Land::Land(string typeLand, string urlLand) {
 	this->url = urlLand;
 }
 
-string Land::getType() { return type; }
-string Land::getUrl() { return url; }
-
-void Land::setType(string typeLand) { type = typeLand; }
-void Land::setUrl(string urlLand) { url = urlLand; }
-
-void Land::toString() {
+void Land::to_string() {
 	cout << type << "   " << url << " " << endl;
 }

@@ -5,14 +5,14 @@
 
 class Stack{
 private:
-	Card data;
+	Component* data;
 	CardNode* aux;
 	CardNode* head;
 	CardNode* end;
 public:
-	void push(Card);
-	Card pop();
-	Card top();
+	void push(Component*);
+	Component* pop();
+	Component* top();
 	bool isEmpty();
 	void print();
 };
