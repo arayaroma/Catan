@@ -1,20 +1,23 @@
 #pragma once
+#include <iostream>
+#include <string>
+#include "Land.h"
 
-template<typename T> class Node
-{
+class Node {
 private:
 	
-	T info;
-	Node* next;
-	Node* previous;
+	Land data;
+
 public:
-	Node<T>();
-	Node<T>(T&);
-	void setNext(T&  nextNode);
-	T getNext();
-	void setPrevious(T&  previousNode);
-	T getPrevious();
-	void setInfo(T& info);
-	T getInfo();
+	Node* next;
+
+	Node();
+	Node(Land);
+
+	Node* get_next();
+	void set_next(Node*);
+
+	Land get_data();
+	void set_data(Land);
 };
 

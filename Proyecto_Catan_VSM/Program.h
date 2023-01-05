@@ -1,14 +1,16 @@
 #pragma once
-#include "Land.h"
-#include "List.h"
-#include "Stack.h"
 #include <iostream>
 #include <string>
+#include "LinkedList.h"
+#include "Stack.h"
+#include "Land.h"
+
 class Program {
 private:
 	int turn;
-	List<Land> lands{};
-	Stack<Card> cards;
+	LinkedList lands;
+	//Stack<Card> cards;
+
 public:
 	Program();
 	void play();

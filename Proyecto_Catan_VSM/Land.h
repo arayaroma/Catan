@@ -1,5 +1,8 @@
 #pragma once
+
+#include "iostream" 
 #include <string>
+
 class Land {
 private:
 	std::string type;

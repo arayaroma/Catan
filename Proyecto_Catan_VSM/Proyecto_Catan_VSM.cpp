@@ -29,6 +29,9 @@ Label* about = new Label("Acerca de", 490, 450, 128);
 
 int main() {
 
+	Program program = Program();
+	program.assemblyLand();
+
 	image.draw_text(catan->get_x_position(), catan->get_y_position()
 		, catan->mod_get_text(), BLACK,
 		transparent, opacity, catan->get_font_size());

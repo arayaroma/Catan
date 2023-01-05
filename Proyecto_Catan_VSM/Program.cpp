@@ -1,10 +1,19 @@
 #include "Program.h"
-Program::Program() {}
 using namespace std;
+
+Program::Program() {
+	this->turn = 0;
+	lands = LinkedList();	
+}
+
 void Program::assemblyLand() {
-	Land land("Bosque", "12345");
-	lands.add(land);
-	lands.print();
+	Land forest = Land("Bosque", "12345");
+	lands.add(forest);
+	lands.to_string();
+
+	//Land* forest = new Land("Bosque", "12345");
+	//lands.add(forest);
+	//lands.print();
 
 	/*Card* card = new Card("Material","123","Wood");
 	Node* aux2 = new Node(card);

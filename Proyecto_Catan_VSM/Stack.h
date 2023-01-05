@@ -1,17 +1,18 @@
 #pragma once
-#include "Node.h"
+#include <iostream>
+#include "CardNode.h"
 #include "Card.h"
-template<typename T>
-class Stack
-{
+
+class Stack{
 private:
-	Node<T>* aux;
-	Node<T>* head;
-	Node<T>* end;
+	Card data;
+	CardNode* aux;
+	CardNode* head;
+	CardNode* end;
 public:
-	void push(T& newData);
-	T& pop();
-	T& top();
+	void push(Card);
+	Card pop();
+	Card top();
 	bool isEmpty();
 	void print();
 };

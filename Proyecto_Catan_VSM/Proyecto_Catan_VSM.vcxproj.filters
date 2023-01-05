@@ -2,32 +2,28 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="Card.cpp" />
-    <ClCompile Include="CardNode.cpp" />
     <ClCompile Include="Figure.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Land.cpp" />
-    <ClCompile Include="LandNode.cpp" />
-    <ClCompile Include="List.cpp" />
+    <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="Proyecto_Catan_VSM.cpp" />
     <ClCompile Include="Stack.cpp" />
-    <ClCompile Include="..\..\GameActions.cpp" />
-    <ClCompile Include="..\..\LoadResourses.cpp" />
+    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="CardNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\EJEMPLO CIMG\EjemploCIMG\EjemploCIMG\CImg.h" />
     <ClInclude Include="Card.h" />
-    <ClInclude Include="CardNode.h" />
     <ClInclude Include="Figure.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="Land.h" />
-    <ClInclude Include="LandNode.h" />
-    <ClInclude Include="List.h" />
+    <ClInclude Include="LinkedList.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="Stack.h" />
-    <ClInclude Include="..\..\GameActions.h" />
-    <ClInclude Include="..\..\LoadResourses.h" />
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="CardNode.h" />
   </ItemGroup>
 </Project>
