@@ -1,2 +1,15 @@
-﻿  LinkedList.cpp
-  Proyecto_Catan_VSM.vcxproj -> C:\Users\DanyG\Desktop\repos\Catan\x64\Debug\Proyecto_Catan_VSM.exe
+﻿  Card.cpp
+  CardNode.cpp
+  Component.cpp
+  Figure.cpp
+  Label.cpp
+  Land.cpp
+  LinkedList.cpp
+  Node.cpp
+  Player.cpp
+  Program.cpp
+  Proyecto_Catan_VSM.cpp
+  Stack.cpp
+  Generando código...
+  LINK : no se encontró C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Proyecto_Catan_VSM.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
+  Proyecto_Catan_VSM.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Proyecto_Catan_VSM.exe
