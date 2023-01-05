@@ -6,7 +6,6 @@ Card::Card(string typeCard, string urlCard, string nameCard) {
 	url = urlCard;
 	name = nameCard;
 }
-Card::Card() {}
 string Card::getType() { return type; }
 string Card::getUrl() { return url; }
 string Card::getName() { return name; }

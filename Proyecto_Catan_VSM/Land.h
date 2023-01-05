@@ -2,8 +2,8 @@
 
 #include "iostream" 
 #include <string>
-
-class Land {
+#include "Component.h"
+class Land : public Component{
 private:
 	std::string type;
 	std::string url;
@@ -11,8 +11,9 @@ private:
 	std::string name;*/
 
 public:
-	Land();
+	Land() { setTypeClass(LAND); this->type = ""; this->url = ""; }
 	Land(std::string typeLand, std::string urlLand);
+	Land(Component* land) {}
 	std::string getType();
 	std::string getUrl();
 	void setType(std::string typeLand);

@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardNode.cpp" />
+    <ClCompile Include="Component.cpp" />
     <ClCompile Include="Figure.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Land.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="..\..\..\EJEMPLO CIMG\EjemploCIMG\EjemploCIMG\CImg.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="CardNode.h" />
+    <ClInclude Include="Component.h" />
     <ClInclude Include="Figure.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="Land.h" />

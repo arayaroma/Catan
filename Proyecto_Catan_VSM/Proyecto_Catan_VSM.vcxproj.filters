@@ -12,6 +12,7 @@
     <ClCompile Include="Stack.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="CardNode.cpp" />
+    <ClCompile Include="Component.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\EJEMPLO CIMG\EjemploCIMG\EjemploCIMG\CImg.h" />
@@ -25,5 +26,6 @@
     <ClInclude Include="Stack.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="CardNode.h" />
+    <ClInclude Include="Component.h" />
   </ItemGroup>
 </Project>

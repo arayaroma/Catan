@@ -1,13 +1,13 @@
 #pragma once
 #include <string>
-class Card
+#include "Component.h"
+class Card : public Component
 {
 private:
 	std::string type;
-	std::string url;
 	std::string name;
 public:
-	Card();
+	Card() { setTypeClass(CARD); }
 	Card(std::string typeCard, std::string urlCard, std::string nameCard);
 	std::string getType();
 	std::string getUrl();

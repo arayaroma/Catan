@@ -1,12 +1,13 @@
 #pragma once
 #include <string>
-class Figure {
+#include "Component.h"
+class Figure : public Component {
 private:
 	std::string type;
 	std::string url;
 
 public:
-	Figure() {};
+	Figure() { setTypeClass(FIGURE); }
 	Figure(std::string typeCard, std::string urlCard);
 	std::string getType();
 	std::string getUrl();

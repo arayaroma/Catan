@@ -7,8 +7,9 @@ Program::Program() {
 }
 
 void Program::assemblyLand() {
-	Land forest = Land("Bosque", "12345");
-	lands.add(forest);
+	//Land* forest = Land("Bosque", "12345");
+	Node* aux = new Node(new Land("Bosque", "12345"));
+	lands.add(aux);
 	lands.to_string();
 
 	//Land* forest = new Land("Bosque", "12345");

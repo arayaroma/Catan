@@ -1,10 +1,5 @@
 #include "Land.h"
 using namespace std;
-
-Land::Land() {
-	type = "";
-	url = "";
-}
 Land::Land(string typeLand, string urlLand) {
 	type = typeLand;
 	url = urlLand;
