@@ -1,16 +1,20 @@
 #pragma once
+#include <iostream>
 #include <string>
+
 #define LAND "Land"
 #define FIGURE "Figure"
 #define CARD "Card"
-class Component
-{
+
+class Component {
 protected:
+public:
 		std::string url;
 		std::string typeClass;
-public:
+	Component();
 	void setTypeClass(std::string t);
 	std::string getTypeClass();
-	Component();
+
+	void to_string();
 };
 

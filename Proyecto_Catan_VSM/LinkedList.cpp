@@ -4,9 +4,11 @@ LinkedList::LinkedList() {
 	this->head = NULL;
 }
 
-void LinkedList::add(Node* data) {
-	data->set_next(head);
-	head = data;
+void LinkedList::add(Land* value) {
+	Node* node = new Node();
+	node->data = value;
+	node->next = head;
+	head = node;
 	std::cout << "Se agrego!" << std::endl;
 }
 
@@ -17,13 +19,9 @@ void LinkedList::delete_node(Node* node_before) {
 }
 
 void LinkedList::to_string() {
-	Node* temp = this->head;
-	while (temp->next != NULL) {
-		if (temp->get_data()->getTypeClass() == "Land") {
-			std::cout << "DENtro" << std::endl;
-			Land* land = new Land(temp->get_data());
-			land->toString();
-		}
+	Node* temp = head;
+	while (temp != NULL) {
+		temp->data->toString();
 		temp = temp->next;
 	}
 }

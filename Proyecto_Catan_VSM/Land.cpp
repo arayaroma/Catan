@@ -1,8 +1,9 @@
 #include "Land.h"
 using namespace std;
+
 Land::Land(string typeLand, string urlLand) {
-	type = typeLand;
-	url = urlLand;
+	this->type = typeLand;
+	this->url = urlLand;
 }
 
 string Land::getType() { return type; }

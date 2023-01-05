@@ -5,17 +5,17 @@
 #include "Component.h"
 class Node {
 private:
-	Component* data;
 public:
+	Land* data;
 	Node* next;
 
 	Node();
-	Node(Component*);
+	Node(Land*);
 
 	Node* get_next();
 	void set_next(Node*);
 
-	Component* get_data();
-	void set_data(Component*);
+	Land* get_data();
+	void set_data(Land*);
 };
 
