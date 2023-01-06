@@ -1,2 +1,16 @@
-﻿  Program.cpp
-  Proyecto_Catan_VSM.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Proyecto_Catan_VSM.exe
+﻿  Card.cpp
+  CardNode.cpp
+  City.cpp
+  Component.cpp
+  Figure.cpp
+  Label.cpp
+  Land.cpp
+  LinkedList.cpp
+  Node.cpp
+  Player.cpp
+  Program.cpp
+  Proyecto_Catan_VSM.cpp
+  Stack.cpp
+  Town.cpp
+  Generating Code...
+  Proyecto_Catan_VSM.vcxproj -> C:\Users\DanyG\Desktop\repos\Catan\x64\Debug\Proyecto_Catan_VSM.exe

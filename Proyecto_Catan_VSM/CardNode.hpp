@@ -1,11 +1,13 @@
 #pragma once
 #include <iostream>
-#include "Card.h"
-#include "Component.h"
+#include "Card.hpp"
+#include "Component.hpp"
+
 class CardNode{
 private:
 	Component* data;
 	CardNode* next;
+
 public:
 	CardNode();
 	CardNode(Component*);

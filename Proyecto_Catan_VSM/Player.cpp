@@ -1,11 +1,13 @@
-#include "Player.h"
+#include "Player.hpp"
 using namespace std;
 
-Player::Player(string namePlayer, int scorePlayer) {
-	name = namePlayer;
-	score = scorePlayer;
+Player::Player(string name, int score) {
+  this->name = name;
+  this->score = score;
 }
+
+void Player::setName(string name) { this->name = name; }
 string Player::getName() { return name; }
-void Player::setName(string namePlayer) { name = namePlayer; }
-int Player::getScore() { return score; }
-void Player::setScore(int scorePLayer) { score = scorePLayer; }
+
+void Player::setScore(int score) { this->score = score; }
+int Player::getScore() { return this->score; }

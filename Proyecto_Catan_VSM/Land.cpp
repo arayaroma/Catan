@@ -1,11 +1,7 @@
-#include "Land.h"
+#include "Land.hpp"
 using namespace std;
 
 Land::Land(string typeLand, string urlLand) {
-	this->type = typeLand;
-	this->url = urlLand;
-}
-
-void Land::to_string() {
-	cout << type << "   " << url << " " << endl;
+  this->type = typeLand;
+  this->url = urlLand;
 }

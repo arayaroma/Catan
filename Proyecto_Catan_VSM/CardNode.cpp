@@ -1,4 +1,4 @@
-#include "CardNode.h"
+#include "CardNode.hpp"
 
 CardNode::CardNode() { this->next = NULL; }
 

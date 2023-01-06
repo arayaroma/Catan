@@ -1,10 +1,7 @@
-#include "Figure.h"
+#include "Figure.hpp"
 using namespace std;
 
-Figure::Figure(string typeCard, string urlCard) {
-	type = typeCard;
-	url = urlCard;
-}
-void Figure::to_string() {
-	cout << type << "   " << url << " " << endl;
+Figure::Figure(string type, string url) {
+  this->type = type;
+  this->url = url;
 }

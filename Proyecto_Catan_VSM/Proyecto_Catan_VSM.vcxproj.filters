@@ -13,19 +13,23 @@
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="CardNode.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="Town.cpp" />
+    <ClCompile Include="City.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\EJEMPLO CIMG\EjemploCIMG\EjemploCIMG\CImg.h" />
-    <ClInclude Include="Card.h" />
-    <ClInclude Include="Figure.h" />
-    <ClInclude Include="Label.h" />
-    <ClInclude Include="Land.h" />
-    <ClInclude Include="LinkedList.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Program.h" />
-    <ClInclude Include="Stack.h" />
-    <ClInclude Include="Node.h" />
-    <ClInclude Include="CardNode.h" />
-    <ClInclude Include="Component.h" />
+    <ClInclude Include="Card.hpp" />
+    <ClInclude Include="Figure.hpp" />
+    <ClInclude Include="Label.hpp" />
+    <ClInclude Include="Land.hpp" />
+    <ClInclude Include="LinkedList.hpp" />
+    <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Program.hpp" />
+    <ClInclude Include="Stack.hpp" />
+    <ClInclude Include="Node.hpp" />
+    <ClInclude Include="CardNode.hpp" />
+    <ClInclude Include="Component.hpp" />
+    <ClInclude Include="Town.hpp" />
+    <ClInclude Include="City.hpp" />
   </ItemGroup>
 </Project>
