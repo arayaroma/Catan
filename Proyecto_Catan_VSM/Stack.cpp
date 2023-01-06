@@ -1,36 +1,51 @@
 #include "Stack.hpp"
 
+Stack::Stack() {
+
+    this->aux = NULL; 
+    this->data = NULL; 
+    this->end = NULL; 
+    this->head = NULL; 
+}
 void Stack::push(Component *card) { // inserta el nodo al inicio de la lista
-  aux = new CardNode(card);
+ Node* aux1 = new Node(card);
   if (isEmpty()) {
-    head = aux;
-    end = aux;
+    head = aux1;
+    end = aux1;
+    std::cout << "Agregado";
   }
-  aux->set_next(head);
-  head = aux;
+  else {
+
+      aux1->set_next(head);
+      head = aux1;
+  }
+
 }
 
 Component *Stack::pop() { // extrae el nodo del inicio. LIFO: Last In, First Out
                           // (Ultimo en entrar, primero en salir)
-  aux = head;
+ Node* aux1 = head;
   if (!isEmpty()) {
     head = head->get_next();
-    aux->set_next(NULL);
+    aux1->set_next(NULL);
   }
-  return aux->get_data();
+  return aux1->get_data();
 }
 
 Component *Stack::top() {
   if (!isEmpty())
     return head->get_data();
-  return head->get_data();
+  return NULL;
 }
 
 void Stack::print() {
-  aux = head;
-  while (aux != NULL) {
-    // aux->get_data()->toString();
-    aux = aux->get_next();
+  
+  Node* aux1 = head;
+  
+  while (aux1 != NULL) {
+      aux1->get_data()->to_string();
+      aux1 = aux1->get_next();
+   
   }
 }
 

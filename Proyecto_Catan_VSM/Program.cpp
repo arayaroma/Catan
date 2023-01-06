@@ -6,6 +6,23 @@ Program::Program() {
 }
 
 void Program::assemblyLand() {
+
+  cards = Stack();
+  cards.push(new Land("card", "url"));
+  cards.print(); 
+
+  for (int i = 0; i < 4; i++) {
+    lands.add(new Land("Grass", "Images/tiles/Grass.png"));
+    lands.add(new Land("Forest", "Images/tiles/Forest.png"));
+    if (i < 3) {
+      lands.add(new Land("Brick", "Images/tiles/Brick.png"));
+      lands.add(new Land("Mountain", "Images/tiles/Mountain.png"));
+      lands.add(new Land("Field", "Images/tiles/Field.png"));
+    }
+  }
+  lands.add(new Land("Dessert", "Images/tiles/Dessert.png"));
+  lands.to_string();
+
 		for (int i = 0; i < 4; i++) {
 			lands.add(new Land("Grass", "Images/tiles/Grass.png"));
 			lands.add(new Land("Forest", "Images/tiles/Forest.png"));
@@ -54,4 +71,5 @@ void Program::makeDevelopCard() {
 		}
 	lands.add(new Land("Dessert", "Images/tiles/Dessert.png"));
 	lands.to_string();*/
+
 }
