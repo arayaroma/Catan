@@ -1,13 +1,19 @@
 #pragma once
+#include "CImg.h"
 #include <iostream>
 #include <string>
+#include "Card.hpp"
+using namespace cimg_library;
+
 #include "LinkedList.hpp"
 #include "Stack.hpp"
 #include "Component.hpp"
 #include "Land.hpp"
 #include "Card.hpp"
+
 class Program {
 private:
+	Stack cards; 
 	int turn;
 	std::string urlKnight = "images/knight_cards/knight_";
 	std::string urlEnd = "_card.png";
