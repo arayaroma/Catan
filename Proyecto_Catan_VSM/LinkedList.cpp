@@ -18,7 +18,7 @@ void LinkedList::delete_node(Node *node_before) {
 void LinkedList::to_string() {
   Node *temp = head;
   while (temp != NULL) {
-    temp->get_data()->to_string();
+    temp->get_data()->toString();
     temp = temp->next;
   }
 }

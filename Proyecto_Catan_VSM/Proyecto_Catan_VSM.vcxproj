@@ -130,35 +130,45 @@
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardNode.cpp" />
     <ClCompile Include="City.cpp" />
+    <ClCompile Include="Clay.cpp" />
     <ClCompile Include="Component.cpp" />
-    <ClCompile Include="Figure.cpp" />
+    <ClCompile Include="HexaManage.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Land.cpp" />
     <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="Mineral.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="Proyecto_Catan_VSM.cpp" />
     <ClCompile Include="Stack.cpp" />
     <ClCompile Include="Town.cpp" />
+    <ClCompile Include="Wheat.cpp" />
     <ClCompile Include="Window.cpp" />
+    <ClCompile Include="Wood.cpp" />
+    <ClCompile Include="Wool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\EJEMPLO CIMG\EjemploCIMG\EjemploCIMG\CImg.h" />
     <ClInclude Include="Card.hpp" />
     <ClInclude Include="CardNode.hpp" />
     <ClInclude Include="City.hpp" />
+    <ClInclude Include="Clay.hpp" />
     <ClInclude Include="Component.hpp" />
-    <ClInclude Include="Figure.hpp" />
+    <ClInclude Include="HexaManage.hpp" />
     <ClInclude Include="Label.hpp" />
     <ClInclude Include="Land.hpp" />
     <ClInclude Include="LinkedList.hpp" />
+    <ClInclude Include="Mineral.hpp" />
     <ClInclude Include="Node.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Program.hpp" />
     <ClInclude Include="Stack.hpp" />
     <ClInclude Include="Town.hpp" />
+    <ClInclude Include="Wheat.hpp" />
     <ClInclude Include="Window.hpp" />
+    <ClInclude Include="Wood.hpp" />
+    <ClInclude Include="Wool.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

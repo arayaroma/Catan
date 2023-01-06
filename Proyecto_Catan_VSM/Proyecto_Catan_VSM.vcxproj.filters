@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="Card.cpp" />
-    <ClCompile Include="Figure.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Land.cpp" />
     <ClCompile Include="LinkedList.cpp" />
@@ -16,11 +15,16 @@
     <ClCompile Include="Town.cpp" />
     <ClCompile Include="City.cpp" />
     <ClCompile Include="Window.cpp" />
+    <ClCompile Include="HexaManage.cpp" />
+    <ClCompile Include="Clay.cpp" />
+    <ClCompile Include="Wood.cpp" />
+    <ClCompile Include="Mineral.cpp" />
+    <ClCompile Include="Wheat.cpp" />
+    <ClCompile Include="Wool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\EJEMPLO CIMG\EjemploCIMG\EjemploCIMG\CImg.h" />
     <ClInclude Include="Card.hpp" />
-    <ClInclude Include="Figure.hpp" />
     <ClInclude Include="Label.hpp" />
     <ClInclude Include="Land.hpp" />
     <ClInclude Include="LinkedList.hpp" />
@@ -33,5 +37,11 @@
     <ClInclude Include="Town.hpp" />
     <ClInclude Include="City.hpp" />
     <ClInclude Include="Window.hpp" />
+    <ClInclude Include="HexaManage.hpp" />
+    <ClInclude Include="Clay.hpp" />
+    <ClInclude Include="Wood.hpp" />
+    <ClInclude Include="Mineral.hpp" />
+    <ClInclude Include="Wheat.hpp" />
+    <ClInclude Include="Wool.hpp" />
   </ItemGroup>
 </Project>

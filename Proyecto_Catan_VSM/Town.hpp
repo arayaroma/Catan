@@ -1,5 +1,5 @@
 #pragma once
-#include "Card.hpp"
+#include "Component.hpp"
 #include <iostream>
 
 /*
@@ -25,8 +25,12 @@
     Every town worth 1 point.
 */
 
-class Town : public Card {
+class Town : public Component {
 
 public:
-  void getClassName() override { std::cout << "Town" << std::endl; }
+  void toString() override {}
+
+  void getClassName() override {
+    std::cout << typeid(this).name() << std::endl;
+  }
 };

@@ -43,7 +43,7 @@ void Stack::print() {
   Node* aux1 = head;
   
   while (aux1 != NULL) {
-      aux1->get_data()->to_string();
+      aux1->get_data()->toString();
       aux1 = aux1->get_next();
    
   }

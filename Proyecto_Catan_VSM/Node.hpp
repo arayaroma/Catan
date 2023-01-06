@@ -1,8 +1,6 @@
 #pragma once
 #include "Component.hpp"
 #include "Land.hpp"
-#include <iostream>
-#include <string>
 
 class Node {
 private:

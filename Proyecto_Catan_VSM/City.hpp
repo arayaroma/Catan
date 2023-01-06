@@ -1,6 +1,5 @@
 #pragma once
-#include "Card.hpp"
-#include <iostream>
+#include "Component.hpp"
 
 /*
     16X Cities
@@ -22,7 +21,11 @@
     Every city worths 2 points.
 */
 
-class City : public Card {
+class City : public Component {
 public:
-  void getClassName() override { std::cout << "City" << std::endl; }
+  void toString() override {}
+
+  void getClassName() override {
+    std::cout << typeid(this).name() << std::endl;
+  }
 };

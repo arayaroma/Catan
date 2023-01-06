@@ -1,9 +1,6 @@
 #pragma once
 #include "Component.hpp"
-#include "Land.hpp"
 #include "Node.hpp"
-#include <iostream>
-#include <string>
 
 class LinkedList {
 private:

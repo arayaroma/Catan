@@ -25,5 +25,6 @@ public:
   void setUrl(std::string);
   std::string getUrl();
 
-  virtual void to_string() = 0;
+  virtual void toString() = 0;
+  virtual void getClassName() = 0;
 };

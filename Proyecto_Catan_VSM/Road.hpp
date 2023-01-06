@@ -1,6 +1,5 @@
 #pragma once
-#include "Card.hpp"
-#include <iostream>
+#include "Component.hpp"
 
 /*
     60X Roads
@@ -22,7 +21,11 @@
     get inmediatly that card, therefore 2 points.
 */
 
-class Road : public Card {
+class Road : public Component {
 public:
-  void getClassName() override { std::cout << "Road" << std::endl; }
+  void toString() override {}
+
+  void getClassName() override {
+    std::cout << typeid(this).name() << std::endl;
+  }
 };
