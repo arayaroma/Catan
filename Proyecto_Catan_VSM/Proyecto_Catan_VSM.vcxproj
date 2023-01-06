@@ -141,6 +141,7 @@
     <ClCompile Include="Proyecto_Catan_VSM.cpp" />
     <ClCompile Include="Stack.cpp" />
     <ClCompile Include="Town.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\EJEMPLO CIMG\EjemploCIMG\EjemploCIMG\CImg.h" />
@@ -157,6 +158,7 @@
     <ClInclude Include="Program.hpp" />
     <ClInclude Include="Stack.hpp" />
     <ClInclude Include="Town.hpp" />
+    <ClInclude Include="Window.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

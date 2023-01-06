@@ -1,6 +1,7 @@
 #include "CImg.h"
 #include "Label.hpp"
 #include "Program.hpp"
+#include "Window.hpp"
 #include <iostream>
 #include <string>
 
@@ -14,8 +15,10 @@ CImg<unsigned char> hexa(direcction);
 int main() {
   Program program;
   program.assemblyLand();
-  program.printTitleScreenLabels();
-  program.showDisplay();
+
+  Window window;
+  window.printTitleScreenLabels();
+  window.showDisplay();
 
   // MOVER TODO EN UNA CLASE -> METODO
   // SE HACE ILEGIBLE EL MAIN

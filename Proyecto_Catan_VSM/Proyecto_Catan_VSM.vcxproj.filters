@@ -15,6 +15,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Town.cpp" />
     <ClCompile Include="City.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\EJEMPLO CIMG\EjemploCIMG\EjemploCIMG\CImg.h" />
@@ -31,5 +32,6 @@
     <ClInclude Include="Component.hpp" />
     <ClInclude Include="Town.hpp" />
     <ClInclude Include="City.hpp" />
+    <ClInclude Include="Window.hpp" />
   </ItemGroup>
 </Project>
