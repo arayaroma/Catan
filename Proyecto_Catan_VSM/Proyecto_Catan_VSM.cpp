@@ -23,7 +23,7 @@ int main() {
   // MOVER TODO EN UNA CLASE -> METODO
   // SE HACE ILEGIBLE EL MAIN
 
-  /*
+ /*
    int Qry1 = 325;
 int Qry2 = 350;
 int Qry3 = 375;

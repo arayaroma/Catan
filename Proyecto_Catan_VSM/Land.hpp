@@ -8,20 +8,28 @@ class Land : public Component {
 private:
   std::string type;
   std::string url;
-  /*std::string owner;
-  std::string name;*/
+  double posx;
+  double posy;
 
 public:
   Land() {
     setTypeClass(LAND);
     this->type = "";
     this->url = "";
+    this->posx = 0;
+    this->posy = 0;
   }
 
-  Land(std::string, std::string);
+  Land(std::string, std::string, double x, double y);
   Land(Component *) {}
 
+  void setPosx(double x);
+  double getPosx();
+
+  void setPosy(double y);
+  double getPosy();
+
   void to_string() {
-    std::cout << this->type << "   " << this->url << " " << std::endl;
+    std::cout << this->type << " " << this->url << " "<< posx<<" "<<posy<< std::endl;
   }
 };
