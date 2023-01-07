@@ -10,7 +10,7 @@ private:
   double posy;
 
 public:
-    Land();
+  Land();
 
   Land(std::string, std::string, double x, double y);
   Land(Component *) {}
@@ -27,7 +27,9 @@ public:
     std::cout << typeid(this).name() << std::endl;
   }
   void printHexagon(int x, int y) override {
-      Window window;
-      window.printHexagon(this->url,x,y);
+    Window window;
+    window.printHexagon(this->url, x, y);
   }
+
+  void printImage() override {}
 };

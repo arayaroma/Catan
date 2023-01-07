@@ -11,41 +11,6 @@
   Node.cpp
   Player.cpp
   Program.cpp
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(16,23): error C2259: "Land": no se puede crear una instancia de una clase abstract
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(5,7): message : vea la declaración de 'Land'
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(16,23): message : debido a los siguientes miembros:
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(16,23): message : 'void Component::printImage(void)': es abstracto
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(34,16): message : vea la declaración de 'Component::printImage'
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(17,23): error C2259: "Land": no se puede crear una instancia de una clase abstract
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(5,7): message : vea la declaración de 'Land'
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(17,23): message : debido a los siguientes miembros:
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(17,23): message : 'void Component::printImage(void)': es abstracto
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(34,16): message : vea la declaración de 'Component::printImage'
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(19,25): error C2259: "Land": no se puede crear una instancia de una clase abstract
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(5,7): message : vea la declaración de 'Land'
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(19,25): message : debido a los siguientes miembros:
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(19,25): message : 'void Component::printImage(void)': es abstracto
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(34,16): message : vea la declaración de 'Component::printImage'
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(20,25): error C2259: "Land": no se puede crear una instancia de una clase abstract
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(5,7): message : vea la declaración de 'Land'
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(20,25): message : debido a los siguientes miembros:
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(20,25): message : 'void Component::printImage(void)': es abstracto
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(34,16): message : vea la declaración de 'Component::printImage'
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(21,25): error C2259: "Land": no se puede crear una instancia de una clase abstract
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(5,7): message : vea la declaración de 'Land'
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(21,25): message : debido a los siguientes miembros:
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(21,25): message : 'void Component::printImage(void)': es abstracto
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(34,16): message : vea la declaración de 'Component::printImage'
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(24,21): error C2259: "Land": no se puede crear una instancia de una clase abstract
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(5,7): message : vea la declaración de 'Land'
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(24,21): message : debido a los siguientes miembros:
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(24,21): message : 'void Component::printImage(void)': es abstracto
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(34,16): message : vea la declaración de 'Component::printImage'
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(25,21): error C2259: "Land": no se puede crear una instancia de una clase abstract
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(5,7): message : vea la declaración de 'Land'
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(25,21): message : debido a los siguientes miembros:
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(25,21): message : 'void Component::printImage(void)': es abstracto
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(34,16): message : vea la declaración de 'Component::printImage'
   Proyecto_Catan_VSM.cpp
   Stack.cpp
   Town.cpp
@@ -53,4 +18,5 @@ C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Compo
   Window.cpp
   Wood.cpp
   Wool.cpp
-  Generando código...
+  Generating Code...
+  Proyecto_Catan_VSM.vcxproj -> C:\Users\DanyG\Desktop\repos\Catan\x64\Debug\Proyecto_Catan_VSM.exe

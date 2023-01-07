@@ -18,8 +18,6 @@ public:
 public:
   Component();
 
-  virtual void printHexagon(int x, int y)=0;
-
   void setTypeClass(std::string);
   std::string getTypeClass();
 
@@ -29,6 +27,7 @@ public:
   void setUrl(std::string);
   std::string getUrl();
 
+  virtual void printHexagon(int x, int y)=0;
   virtual void toString() = 0;
   virtual void getClassName() = 0;
   virtual void printImage() = 0;
