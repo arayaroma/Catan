@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "Window.hpp"
 
 #define LAND "Land"
 #define FIGURE "Figure"
@@ -14,9 +15,8 @@ protected:
 public:
   std::string typeClass;
 
+public:
   Component();
-
-  virtual void printImage()=0;
 
   void setTypeClass(std::string);
   std::string getTypeClass();
@@ -29,4 +29,5 @@ public:
 
   virtual void toString() = 0;
   virtual void getClassName() = 0;
+  virtual void printImage() = 0;
 };

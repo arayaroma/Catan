@@ -8,10 +8,6 @@
 using namespace cimg_library;
 using namespace std;
 
-// hexaImage prueba
-const char *const direcction = "images/tiles/Brick.png";
-CImg<unsigned char> hexa(direcction);
-
 int main() {
   Program program;
   program.assemblyLand();
@@ -20,10 +16,6 @@ int main() {
   window.loadImages();
   window.printTitleScreenLabels();
   window.showDisplay();
-
-
-
-
 
   return 0;
 }

@@ -28,4 +28,6 @@ public:
   void getClassName() override {
     std::cout << typeid(this).name() << std::endl;
   }
+
+  void printImage() override {}
 };

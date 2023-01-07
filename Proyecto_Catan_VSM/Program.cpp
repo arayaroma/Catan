@@ -25,7 +25,6 @@ void Program::assemblyLand() {
   lands.to_string();
 
   lands.printImage();
-
 }
 
 void Program::loadStacks() {}
