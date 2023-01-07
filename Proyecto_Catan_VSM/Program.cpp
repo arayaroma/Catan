@@ -22,8 +22,8 @@ void Program::assemblyLand() {
     }
   }
   lands.add(new Land("Dessert", "Images/tiles/Dessert.png", 0, 0));
+  lands.add(new Land("Brick", "Images/tiles/Brick.png", 0, 0));
   lands.to_string();
-
   lands.printImage();
 
 }
@@ -52,9 +52,9 @@ void Program::makeDevelopCard() {
           string fullUrlProgress = urlProgress + num_str1 + urlEnd;
           string fullUrlVictoryPoint = urlVictoryPoint + num_str1 + urlEnd;
           knightCards->push(new Card("Develop", "Knight", fullUrlKnight));
-          victoryPointCard->push(new Card("Develop", "VictoryPoint",
-  fullUrlVictoryPoint)); if (i < 2) { progressCard->push(new Card("Develop",
-  "Progress", fullUrlProgress));
+          victoryPointCard->push(new Card("Develop", "VictoryPoint",fullUrlVictoryPoint)); 
+          if (i < 2) { 
+          progressCard->push(new Card("Develop","Progress", fullUrlProgress));
           }
           num++;
   }*/

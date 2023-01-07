@@ -17,7 +17,6 @@ int main() {
   program.assemblyLand();
 
   Window window;
-  window.loadImages();
   window.printTitleScreenLabels();
   window.showDisplay();
 

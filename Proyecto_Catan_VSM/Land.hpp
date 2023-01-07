@@ -33,8 +33,8 @@ public:
   void getClassName() override {
     std::cout << typeid(this).name() << std::endl;
   }
-  void printImage() {
+  void printImage(int x, int y) override {
       Window w;
-      w.Image(this->url);
+      w.printHexagon(this->url,x,y);
   }
 };

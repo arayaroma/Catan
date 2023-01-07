@@ -27,6 +27,6 @@ private:
 public:
 	void printTitleScreenLabels();
 	void showDisplay();
-     void loadImages();
-	 void Image(std::string);
+	void showGameDisplay();
+	 void printHexagon(std::string, int x, int y);
 };

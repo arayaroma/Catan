@@ -16,11 +16,30 @@ void LinkedList::delete_node(Node *node_before) {
 }
 
 void LinkedList::printImage() {
+    int x = 345;//primera,segunda,tercera
+    int x1 = 345;//ultima y penultima columna de hexagonos
     Node* temp = head;
-    while (temp != NULL) {
-        temp->get_data()->printImage();
-        temp = temp->next;
-    }
+            x1 += 180;
+            for (int q = 100; q <= 200; q += 50) {
+                temp->get_data()->printImage(x, q); 
+                temp = temp->next;
+                temp->get_data()->printImage(x1, q);
+                temp = temp->next;
+            }
+            x += 45;
+            x1 = 480;
+            for (int w = 75; w <= 225; w += 50) {
+                temp->get_data()->printImage(x, w);
+                temp = temp->next;
+                temp->get_data()->printImage(x1, w);
+                temp = temp->next;
+            }
+            x += 45;
+            for (int d = 50; d <= 250; d += 50) {
+                temp->get_data()->printImage(x, d);
+               temp = temp->next;
+            }
+    
 }
 
 void LinkedList::to_string() {
