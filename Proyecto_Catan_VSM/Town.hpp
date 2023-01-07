@@ -22,15 +22,21 @@
     bordering, 1 resource_card, whenever the dice indicates.
 
     IV.
-    Every town worth 1 point.
+    Every town worth 1 point.!
 */
 
 class Town : public Component {
+public:
+  const int worthPoint = 1;
 
 public:
+  Component *getResource();
+
   void toString() override {}
 
   void getClassName() override {
     std::cout << typeid(this).name() << std::endl;
   }
+
+  void printImage() override {}
 };

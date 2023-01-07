@@ -2,7 +2,6 @@
 #include "Component.hpp"
 #include "Window.hpp"
 
-
 class Land : public Component {
 private:
   std::string type;
@@ -33,8 +32,14 @@ public:
   void getClassName() override {
     std::cout << typeid(this).name() << std::endl;
   }
+<<<<<<< HEAD
   void printImage(int x, int y) override {
       Window w;
       w.printHexagon(this->url,x,y);
+=======
+  void printImage() override {
+    Window window;
+    window.Image(this->url);
+>>>>>>> 2cedb8d6aca886621312c34b9843c1109b9bdc86
   }
 };

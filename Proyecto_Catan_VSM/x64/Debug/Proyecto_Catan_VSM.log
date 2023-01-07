@@ -1,4 +1,230 @@
-﻿  LinkedList.cpp
+﻿  Card.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(21,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(22,42): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(24,1): error C2059: error de sintaxis: '=='
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(26,33): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Card.hpp(10,12): error C3861: 'setTypeClass': no se encontró el identificador
+  CardNode.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(21,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(22,42): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(24,1): error C2059: error de sintaxis: '=='
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(26,33): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Card.hpp(10,12): error C3861: 'setTypeClass': no se encontró el identificador
+  City.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(21,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(22,42): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(24,1): error C2059: error de sintaxis: '=='
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(26,33): error C2238: símbolos (token) inesperados delante de ';'
+  Clay.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(21,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(22,42): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(24,1): error C2059: error de sintaxis: '=='
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(26,33): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Clay.hpp(25,12): error C2039: "Image": no es un miembro de "Window"
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.hpp(24,7): message : vea la declaración de 'Window'
+  Component.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(21,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(22,42): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(24,1): error C2059: error de sintaxis: '=='
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(26,33): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.cpp(6,17): error C2039: "setTypeClass": no es un miembro de "Component"
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(10,7): message : vea la declaración de 'Component'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.cpp(6,45): error C2355: 'this': solo se puede hacer referencia a this en funciones miembro no estáticas o inicializadores de miembro de datos no estáticos
+  Land.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(21,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(22,42): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(24,1): error C2059: error de sintaxis: '=='
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(26,33): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(35,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(36,42): error C2334: símbolos (token) inesperados delante de '{'; se pasará por alto el cuerpo de función aparente
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.cpp(3,7): error C4596: '{ctor}': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.cpp(3,7): error C2535: 'Land::Land(std::string,std::string,double,double)': función miembro ya definida o declarada
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(21,3): message : vea la declaración de 'Land::Land'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.cpp(10,12): error C4596: 'setPosy': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.cpp(10,12): error C2535: 'void Land::setPosy(double)': función miembro ya definida o declarada
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(27,8): message : vea la declaración de 'Land::setPosy'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.cpp(11,14): error C4596: 'getPosy': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.cpp(11,14): error C2535: 'double Land::getPosy(void)': función miembro ya definida o declarada
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(28,10): message : vea la declaración de 'Land::getPosy'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.cpp(13,12): error C4596: 'setPosx': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.cpp(13,12): error C2535: 'void Land::setPosx(double)': función miembro ya definida o declarada
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(24,8): message : vea la declaración de 'Land::setPosx'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.cpp(14,14): error C4596: 'getPosx': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.cpp(14,14): error C2535: 'double Land::getPosx(void)': función miembro ya definida o declarada
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(25,10): message : vea la declaración de 'Land::getPosx'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(5): fatal  error C1075: "{": no se encontró ningún token coincidente
+  LinkedList.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(21,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(22,42): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(24,1): error C2059: error de sintaxis: '=='
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(26,33): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(35,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(36,42): error C2334: símbolos (token) inesperados delante de '{'; se pasará por alto el cuerpo de función aparente
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\LinkedList.cpp(3,13): error C3254: 'Land': la clase contiene la invalidación explícita '{ctor}', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\LinkedList.cpp(3,13): error C2838: '{ctor}': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\LinkedList.cpp(3,13): error C2535: 'Land::Land(void)': función miembro ya definida o declarada
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(13,3): message : vea la declaración de 'Land::Land'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\LinkedList.cpp(5,18): error C3254: 'Land': la clase contiene la invalidación explícita 'add', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\LinkedList.cpp(5,18): error C2838: 'add': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\LinkedList.cpp(12,18): error C3254: 'Land': la clase contiene la invalidación explícita 'delete_node', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\LinkedList.cpp(12,18): error C2838: 'delete_node': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\LinkedList.cpp(18,18): error C3254: 'Land': la clase contiene la invalidación explícita 'printImage', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\LinkedList.cpp(18,18): error C2838: 'printImage': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\LinkedList.cpp(45,18): error C3254: 'Land': la clase contiene la invalidación explícita 'to_string', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\LinkedList.cpp(45,18): error C2838: 'to_string': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(5): fatal  error C1075: "{": no se encontró ningún token coincidente
+  Mineral.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(21,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(22,42): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(24,1): error C2059: error de sintaxis: '=='
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(26,33): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Mineral.hpp(28,12): error C2039: "Image": no es un miembro de "Window"
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.hpp(24,7): message : vea la declaración de 'Window'
+  Node.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(21,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(22,42): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(24,1): error C2059: error de sintaxis: '=='
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(26,33): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(35,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(36,42): error C2334: símbolos (token) inesperados delante de '{'; se pasará por alto el cuerpo de función aparente
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Node.cpp(3,7): error C3254: 'Land': la clase contiene la invalidación explícita '{ctor}', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Node.cpp(3,7): error C2838: '{ctor}': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Node.cpp(3,7): error C2535: 'Land::Land(void)': función miembro ya definida o declarada
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(13,3): message : vea la declaración de 'Land::Land'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Node.cpp(8,7): error C3254: 'Land': la clase contiene la invalidación explícita '{ctor}', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Node.cpp(8,7): error C2838: '{ctor}': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Node.cpp(8,7): error C2535: 'Land::Land(Component *)': función miembro ya definida o declarada
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(22,3): message : vea la declaración de 'Land::Land'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Node.cpp(13,12): error C3254: 'Land': la clase contiene la invalidación explícita 'set_data', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Node.cpp(13,12): error C2838: 'set_data': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Node.cpp(14,18): error C3254: 'Land': la clase contiene la invalidación explícita 'get_data', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Node.cpp(14,18): error C2838: 'get_data': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Node.cpp(16,12): error C3254: 'Land': la clase contiene la invalidación explícita 'set_next', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Node.cpp(16,12): error C2838: 'set_next': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Node.cpp(17,13): error C3254: 'Land': la clase contiene la invalidación explícita 'get_next', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Node.cpp(17,13): error C2838: 'get_next': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(5): fatal  error C1075: "{": no se encontró ningún token coincidente
+  Program.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(21,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(22,42): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(24,1): error C2059: error de sintaxis: '=='
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(26,33): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Card.hpp(10,12): error C3861: 'setTypeClass': no se encontró el identificador
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(35,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(36,42): error C2334: símbolos (token) inesperados delante de '{'; se pasará por alto el cuerpo de función aparente
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.hpp(11,7): error C2059: error de sintaxis: 'using namespace'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.hpp(11,29): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.hpp(13,20): error C2071: 'Land::urlKnight': clase de almacenamiento no válida
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.hpp(14,20): error C2071: 'Land::urlEnd': clase de almacenamiento no válida
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.hpp(15,20): error C2071: 'Land::urlProgress': clase de almacenamiento no válida
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.hpp(16,20): error C2071: 'Land::urlVictoryPoint': clase de almacenamiento no válida
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(3,13): error C2086: 'std::string Land::urlKnight': nueva definición
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(4,13): error C2086: 'std::string Land::urlEnd': nueva definición
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(5,13): error C2086: 'std::string Land::urlProgress': nueva definición
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(6,13): error C2086: 'std::string Land::urlVictoryPoint': nueva definición
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(8,10): error C3254: 'Land': la clase contiene la invalidación explícita '{ctor}', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(8,10): error C2838: '{ctor}': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(8,10): error C2535: 'Land::Land(void)': función miembro ya definida o declarada
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(13,3): message : vea la declaración de 'Land::Land'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(13,15): error C3254: 'Land': la clase contiene la invalidación explícita 'assemblyLand', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(13,15): error C2838: 'assemblyLand': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(30,15): error C3254: 'Land': la clase contiene la invalidación explícita 'loadStacks', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(30,15): error C2838: 'loadStacks': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(32,15): error C3254: 'Land': la clase contiene la invalidación explícita 'makeMaterialCard', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(32,15): error C2838: 'makeMaterialCard': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(46,15): error C3254: 'Land': la clase contiene la invalidación explícita 'makeDevelopCard', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.cpp(46,15): error C2838: 'makeDevelopCard': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(5): fatal  error C1075: "{": no se encontró ningún token coincidente
+  Proyecto_Catan_VSM.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(21,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(22,42): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(24,1): error C2059: error de sintaxis: '=='
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(26,33): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Card.hpp(10,12): error C3861: 'setTypeClass': no se encontró el identificador
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(35,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(36,42): error C2334: símbolos (token) inesperados delante de '{'; se pasará por alto el cuerpo de función aparente
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.hpp(11,7): error C2059: error de sintaxis: 'using namespace'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.hpp(11,29): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.hpp(13,20): error C2071: 'Land::urlKnight': clase de almacenamiento no válida
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.hpp(14,20): error C2071: 'Land::urlEnd': clase de almacenamiento no válida
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.hpp(15,20): error C2071: 'Land::urlProgress': clase de almacenamiento no válida
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Program.hpp(16,20): error C2071: 'Land::urlVictoryPoint': clase de almacenamiento no válida
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Proyecto_Catan_VSM.cpp(8,7): error C2059: error de sintaxis: 'using namespace'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Proyecto_Catan_VSM.cpp(8,29): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Proyecto_Catan_VSM.cpp(9,7): error C2059: error de sintaxis: 'using namespace'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Proyecto_Catan_VSM.cpp(9,20): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(5): fatal  error C1075: "{": no se encontró ningún token coincidente
+  Stack.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(21,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(22,42): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(24,1): error C2059: error de sintaxis: '=='
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(26,33): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Card.hpp(10,12): error C3861: 'setTypeClass': no se encontró el identificador
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(35,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(36,42): error C2334: símbolos (token) inesperados delante de '{'; se pasará por alto el cuerpo de función aparente
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Stack.cpp(3,8): error C3254: 'Land': la clase contiene la invalidación explícita '{ctor}', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Stack.cpp(3,8): error C2838: '{ctor}': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Stack.cpp(3,8): error C2535: 'Land::Land(void)': función miembro ya definida o declarada
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(13,3): message : vea la declaración de 'Land::Land'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Stack.cpp(10,13): error C3254: 'Land': la clase contiene la invalidación explícita 'push', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Stack.cpp(10,13): error C2838: 'push': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Stack.cpp(25,19): error C3254: 'Land': la clase contiene la invalidación explícita 'pop', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Stack.cpp(25,19): error C2838: 'pop': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Stack.cpp(35,19): error C3254: 'Land': la clase contiene la invalidación explícita 'top', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Stack.cpp(35,19): error C2838: 'top': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Stack.cpp(41,13): error C3254: 'Land': la clase contiene la invalidación explícita 'print', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Stack.cpp(41,13): error C2838: 'print': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Stack.cpp(52,13): error C3254: 'Land': la clase contiene la invalidación explícita 'isEmpty', pero no deriva de una interfaz que contiene la declaración de función
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Stack.cpp(52,13): error C2838: 'isEmpty': nombre completo no válido en la declaración de miembro
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Land.hpp(5): fatal  error C1075: "{": no se encontró ningún token coincidente
+  Town.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(21,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(22,42): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(24,1): error C2059: error de sintaxis: '=='
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(26,33): error C2238: símbolos (token) inesperados delante de ';'
+  Wheat.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(21,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(22,42): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(24,1): error C2059: error de sintaxis: '=='
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(26,33): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Wheat.hpp(29,12): error C2039: "Image": no es un miembro de "Window"
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.hpp(24,7): message : vea la declaración de 'Window'
   Window.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(38,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(41,1): error C2059: error de sintaxis: '=='
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(42,1): warning C4138: '*/' se encontró fuera del comentario
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(43,1): error C2143: error de sintaxis: falta ';' delante de '}'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(43,1): error C2059: error de sintaxis: '}'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(45,14): error C2039: "loadImages": no es un miembro de "Window"
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.hpp(24,7): message : vea la declaración de 'Window'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(45,27): error C2143: error de sintaxis: falta ';' delante de '{'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(45,27): error C2447: '{': falta el encabezado de función (¿lista formal de estilo anterior?)
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(47,1): error C2059: error de sintaxis: '>>'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(48,28): error C2143: error de sintaxis: falta ';' delante de '{'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(48,28): error C2447: '{': falta el encabezado de función (¿lista formal de estilo anterior?)
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(59,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(60,58): error C2143: error de sintaxis: falta ';' delante de '{'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(60,58): error C2447: '{': falta el encabezado de función (¿lista formal de estilo anterior?)
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(74,1): error C2059: error de sintaxis: '=='
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(76,14): error C2039: "Image": no es un miembro de "Window"
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.hpp(24,7): message : vea la declaración de 'Window'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(76,37): error C2143: error de sintaxis: falta ';' delante de '{'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(78,27): error C2065: 'url': identificador no declarado
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(78,21): error C2737: 'img': se debe inicializar el objeto const
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(169,1): error C2059: error de sintaxis: '>>'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.cpp(171,1): fatal  error C1004: se encontró un final de archivo no esperado
+  Wood.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(21,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(22,42): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(24,1): error C2059: error de sintaxis: '=='
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(26,33): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Wood.hpp(28,12): error C2039: "Image": no es un miembro de "Window"
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.hpp(24,7): message : vea la declaración de 'Window'
+  Wool.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(21,1): error C2059: error de sintaxis: '<<'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(22,42): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(24,1): error C2059: error de sintaxis: '=='
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Component.hpp(26,33): error C2238: símbolos (token) inesperados delante de ';'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Wool.hpp(28,12): error C2039: "Image": no es un miembro de "Window"
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Proyecto_Catan_VSM\Window.hpp(24,7): message : vea la declaración de 'Window'
   Generando código...
-  Proyecto_Catan_VSM.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Proyecto_Catan_VSM.exe

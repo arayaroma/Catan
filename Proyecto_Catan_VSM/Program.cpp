@@ -25,7 +25,6 @@ void Program::assemblyLand() {
   lands.add(new Land("Brick", "Images/tiles/Brick.png", 0, 0));
   lands.to_string();
   lands.printImage();
-
 }
 
 void Program::loadStacks() {}
