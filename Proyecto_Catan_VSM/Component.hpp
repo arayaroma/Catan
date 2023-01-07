@@ -18,11 +18,8 @@ public:
 public:
   Component();
 
-<<<<<<< HEAD
-  virtual void printImage(int x, int y)=0;
+  virtual void printHexagon(int x, int y)=0;
 
-=======
->>>>>>> 2cedb8d6aca886621312c34b9843c1109b9bdc86
   void setTypeClass(std::string);
   std::string getTypeClass();
 

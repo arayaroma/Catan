@@ -1,4 +1,11 @@
 #include "Land.hpp"
+Land::Land() {
+    setTypeClass(LAND);
+    this->type = "";
+    this->url = "";
+    this->posx = 0;
+    this->posy = 0;
+}
 
 Land::Land(std::string typeLand, std::string urlLand, double x, double y) {
   this->type = typeLand;

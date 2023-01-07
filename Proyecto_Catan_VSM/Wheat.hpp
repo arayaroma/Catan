@@ -2,7 +2,7 @@
 #pragma once
 #include "Component.hpp"
 
-class Wheat : Component {
+class Wheat : public  Component {
 private:
   const char *name = "Wheat";
   const char *imagePath = "Images/resourcesCards/wheatCard.png";

@@ -1,7 +1,7 @@
 #pragma once
 #include "Component.hpp"
 
-class Wood : Component {
+class Wood : public Component {
 private:
   const char *name = "Wood";
   const char *imagePath = "Images/resourcesCards/woodCard.png";

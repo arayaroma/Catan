@@ -21,22 +21,22 @@ void LinkedList::printImage() {
     Node* temp = head;
             x1 += 180;
             for (int q = 100; q <= 200; q += 50) {
-                temp->get_data()->printImage(x, q); 
+                temp->get_data()->printHexagon(x, q);
                 temp = temp->next;
-                temp->get_data()->printImage(x1, q);
+                temp->get_data()->printHexagon(x1, q);
                 temp = temp->next;
             }
             x += 45;
             x1 = 480;
             for (int w = 75; w <= 225; w += 50) {
-                temp->get_data()->printImage(x, w);
+                temp->get_data()->printHexagon(x, w);
                 temp = temp->next;
-                temp->get_data()->printImage(x1, w);
+                temp->get_data()->printHexagon(x1, w);
                 temp = temp->next;
             }
             x += 45;
             for (int d = 50; d <= 250; d += 50) {
-                temp->get_data()->printImage(x, d);
+                temp->get_data()->printHexagon(x, d);
                temp = temp->next;
             }
     
