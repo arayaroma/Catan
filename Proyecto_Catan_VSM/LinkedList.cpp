@@ -15,6 +15,14 @@ void LinkedList::delete_node(Node *node_before) {
   delete temp;
 }
 
+void LinkedList::printImage() {
+    Node* temp = head;
+    while (temp != NULL) {
+        temp->get_data()->printImage();
+        temp = temp->next;
+    }
+}
+
 void LinkedList::to_string() {
   Node *temp = head;
   while (temp != NULL) {

@@ -17,10 +17,16 @@ extern Label *catan;
 extern Label *playLabel;
 extern Label *about;
 
+ 
+extern const char* const img; 
+
+
 class Window {
 
 private:
 public:
-  void printTitleScreenLabels();
-  void showDisplay();
+	void printTitleScreenLabels();
+	void showDisplay();
+     void loadImages();
+	 void Image(std::string);
 };

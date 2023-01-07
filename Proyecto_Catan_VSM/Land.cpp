@@ -12,3 +12,4 @@ double Land::getPosy() { return posy; }
 
 void Land::setPosx(double x) { this->posx = x; }
 double Land::getPosx() { return posx; }
+

@@ -16,6 +16,8 @@ public:
 
   Component();
 
+  virtual void printImage()=0;
+
   void setTypeClass(std::string);
   std::string getTypeClass();
 
