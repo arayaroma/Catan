@@ -26,4 +26,5 @@ public:
   void printImage() override {
     Window::getInstance().Image(this->imagePath);
   }
+  void printHexagon(int x, int y) override {}
 };

@@ -1,6 +1,6 @@
 # Carpeta del Demonio
 .vs/*
-.vs/Proyecto_Catan_VSM/*
+.vs/Catan/*
 
 # My vscode config
 .vscode/*
