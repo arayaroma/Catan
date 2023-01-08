@@ -16,27 +16,28 @@ void LinkedList::delete_node(Node *node_before) {
 }
 
 void LinkedList::printImage() {
-    int x = 10;//primera,segunda,tercera
-    int x1 = 10;//ultima y penultima columna de hexagonos
+    int top_height = 10;//primera,segunda,tercera
+    int bot_height = 10;//ultima y penultima columna de hexagonos
+    int cycle_cord_x=0;
     Node* temp = head;
-            x1 += 295;
-            for (int q = 450; q <= 600; q += 75) {
-                temp->get_data()->printHexagon(q, x);
+    bot_height += 295;
+            for ( cycle_cord_x = 470; cycle_cord_x <= 620; cycle_cord_x += 75) {
+                temp->get_data()->printHexagon(cycle_cord_x, top_height);
                 temp = temp->next;
-                temp->get_data()->printHexagon(q,x1);
-                temp = temp->next;
-            }
-            x += 75;
-            x1 = 230;
-            for (int w = 425; w <= 675; w += 75) {
-                temp->get_data()->printHexagon(w, x);
-                temp = temp->next;
-                temp->get_data()->printHexagon(w, x1);
+                temp->get_data()->printHexagon(cycle_cord_x, bot_height);
                 temp = temp->next;
             }
-            x += 75;
-            for (int d = 400; d <= 700; d += 75) {
-                temp->get_data()->printHexagon(d, x);
+            top_height += 75;
+            bot_height = 230;
+            for (cycle_cord_x = 435; cycle_cord_x <= 695; cycle_cord_x += 75) {
+                temp->get_data()->printHexagon(cycle_cord_x, top_height);
+                temp = temp->next;
+                temp->get_data()->printHexagon(cycle_cord_x, bot_height);
+                temp = temp->next;
+            }
+            top_height += 75;
+            for ( cycle_cord_x = 400; cycle_cord_x <= 700; cycle_cord_x += 75) {
+                temp->get_data()->printHexagon(cycle_cord_x, top_height);
                temp = temp->next;
             }
     
