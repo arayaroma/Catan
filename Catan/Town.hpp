@@ -1,5 +1,5 @@
 #pragma once
-#include "Component.hpp"
+#include "Figure.hpp"
 #include <iostream>
 
 /*
@@ -25,18 +25,22 @@
     Every town worth 1 point.!
 */
 
-class Town : public Component {
+class Town : public Figure {
 public:
   const int worthPoint = 1;
 
 public:
+  Town();
+
   Component *getResource();
 
-  void toString() override {}
+  int getWorthPoints() const override { return this->worthPoints; }
 
   void getClassName() override {
     std::cout << typeid(this).name() << std::endl;
   }
 
   void printImage() override {}
+
+  void toString() override {}
 };

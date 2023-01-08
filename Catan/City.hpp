@@ -1,5 +1,5 @@
 #pragma once
-#include "Component.hpp"
+#include "Figure.hpp"
 
 /*
     16X Cities
@@ -21,13 +21,17 @@
     Every city worths 2 points.
 */
 
-class City : public Component {
+class City : public Figure {
 public:
-  void toString() override {}
+  City();
+
+  int getWorthPoints() const override { return this->worthPoints; }
 
   void getClassName() override {
     std::cout << typeid(this).name() << std::endl;
   }
 
   void printImage() override {}
+
+  void toString() override {}
 };
