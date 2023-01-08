@@ -8,7 +8,11 @@
 */
 
 class VictoryPoints : public Card{
+private:
+    std::string m_Url;
+
 public:
-VictoryPoints();
+    VictoryPoints() {}
+    VictoryPoints(std::string url) : m_Url(url) {}
 };
 

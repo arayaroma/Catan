@@ -10,8 +10,9 @@
 class Knight : public Card {
 
 private:
-
+    std::string m_Url;
 
 public:
-  Knight();
+    Knight() {}
+  Knight(std::string url) : m_Url(url) {}
 };
