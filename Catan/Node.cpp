@@ -10,8 +10,8 @@ Node::Node(Component *data) {
   this->next = NULL;
 }
 
-void Node::set_data(Component *data) { this->data = data; }
-Component *Node::get_data() { return this->data; }
+void Node::setData(Component *data) { this->data = data; }
+Component *Node::getData() { return this->data; }
 
-void Node::set_next(Node *next) { this->next = next; }
-Node *Node::get_next() { return this->next; }
+void Node::setNext(Node *next) { this->next = next; }
+Node *Node::getNext() { return this->next; }

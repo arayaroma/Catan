@@ -23,8 +23,6 @@ public:
   void getClassName() override {
     std::cout << typeid(this).name() << std::endl;
   }
-  void printImage() override {
-    Window::getInstance().Image(this->imagePath);
-  }
+  void printImage() override { Window::getInstance().Image(this->imagePath); }
   void printHexagon(int x, int y) override {}
 };

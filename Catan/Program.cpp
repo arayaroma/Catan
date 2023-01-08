@@ -24,7 +24,7 @@ void Program::assemblyLand() {
   }
 
   lands.add(new Land("Dessert", "Images/tiles/Dessert.png", 0, 0));
-  lands.to_string();
+  lands.toString();
   lands.printImage();
 }
 

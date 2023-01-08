@@ -1,13 +1,14 @@
 #pragma once
-#include <iostream>
+#include "Game.hpp"
 #include <string>
-#include "Window.hpp"
 
 #define LAND "Land"
 #define FIGURE "Figure"
 #define CARD "Card"
 
-class Component {
+class Component : public Game {
+friend class Game;
+
 protected:
   std::string url;
   std::string type;
@@ -27,8 +28,8 @@ public:
   void setUrl(std::string);
   std::string getUrl();
 
-  virtual void printHexagon(int x, int y)=0;
-  virtual void toString() = 0;
   virtual void getClassName() = 0;
   virtual void printImage() = 0;
+  virtual void printHexagon(int x, int y)=0;
+  virtual void toString() = 0;
 };

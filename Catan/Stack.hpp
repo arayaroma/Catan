@@ -1,19 +1,16 @@
 #pragma once
-#include "Card.hpp"
 #include "Node.hpp"
 #include <iostream>
 
 class Stack {
 private:
-	
   Component *data;
   Node *aux;
-  Node*head;
-  Node*end;
+  Node *head;
+  Node *end;
 
 public:
-
-	Stack(); 
+  Stack();
   void push(Component *);
   Component *pop();
   Component *top();

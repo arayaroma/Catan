@@ -1,17 +1,16 @@
 #pragma once
 #include "CImg.h"
+#include "LinkedList.hpp"
+#include "Stack.hpp"
 #include "Card.hpp"
 #include "Component.hpp"
 #include "Land.hpp"
-#include "LinkedList.hpp"
-#include "Stack.hpp"
-#include <iostream>
-#include <string>
-#include "Wood.hpp"
-#include "Wool.hpp"
-#include "Wheat.hpp"
 #include "Clay.hpp"
 #include "Mineral.hpp"
+#include "Wheat.hpp"
+#include "Wood.hpp"
+#include "Wool.hpp"
+
 using namespace cimg_library;
 
 extern std::string urlKnight;
@@ -45,8 +44,6 @@ public:
   void makeMaterialCard();
   void makeDevelopCard();
   void playDevelopCard();
-  
-
 
   void loadStacks();
 };

@@ -1,6 +1,8 @@
 #pragma once
-#include "Program.hpp"
 #include "Window.hpp"
+#include "Game.hpp"
+
+#include "Program.hpp"
 
 class Application {
 public:

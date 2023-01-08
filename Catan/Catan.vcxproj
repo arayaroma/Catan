@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,8 +129,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardNode.cpp" />
+    <ClCompile Include="Computer.cpp" />
+    <ClCompile Include="Dice.cpp" />
+    <ClCompile Include="Figure.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Knight.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="City.cpp" />
@@ -139,6 +145,7 @@
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Land.cpp" />
     <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="Match.cpp" />
     <ClCompile Include="Mineral.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -154,31 +161,6 @@
     <ClCompile Include="Wool.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Application.hpp" />
-    <ClInclude Include="Card.hpp" />
-    <ClInclude Include="CardNode.hpp" />
-    <ClInclude Include="CImg.h" />
-    <ClInclude Include="City.hpp" />
-    <ClInclude Include="Clay.hpp" />
-    <ClInclude Include="Component.hpp" />
-    <ClInclude Include="HexaManage.hpp" />
-    <ClInclude Include="Knight.hpp" />
-    <ClInclude Include="Label.hpp" />
-    <ClInclude Include="Land.hpp" />
-    <ClInclude Include="LinkedList.hpp" />
-    <ClInclude Include="Mineral.hpp" />
-    <ClInclude Include="Node.hpp" />
-    <ClInclude Include="Player.hpp" />
-    <ClInclude Include="Program.hpp" />
-    <ClInclude Include="Progress.hpp" />
-    <ClInclude Include="Road.hpp" />
-    <ClInclude Include="Stack.hpp" />
-    <ClInclude Include="Town.hpp" />
-    <ClInclude Include="VictoryPoints.hpp" />
-    <ClInclude Include="Wheat.hpp" />
-    <ClInclude Include="Window.hpp" />
-    <ClInclude Include="Wood.hpp" />
-    <ClInclude Include="Wool.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

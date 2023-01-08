@@ -2,7 +2,7 @@
 #pragma once
 #include "Component.hpp"
 
-class Wheat : public  Component {
+class Wheat : public Component {
 private:
   const char *name = "Wheat";
   const char *imagePath = "Images/resourcesCards/wheatCard.png";
@@ -24,8 +24,6 @@ public:
   void getClassName() override {
     std::cout << typeid(this).name() << std::endl;
   }
-  void printImage() override {
-    Window::getInstance().Image(this->imagePath);
-  }
+  void printImage() override { Window::getInstance().Image(this->imagePath); }
   void printHexagon(int x, int y) override {}
 };

@@ -1,5 +1,4 @@
 #include "Card.hpp"
-#include "iostream"
 using namespace std;
 
 Card::Card(string typeCard, string urlCard, string nameCard) {
