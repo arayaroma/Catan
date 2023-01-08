@@ -42,9 +42,6 @@
     <ClCompile Include="HexaManage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Program.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -129,48 +126,18 @@
     <ClCompile Include="Progress.cpp">
       <Filter>Game\Components\Cards</Filter>
     </ClCompile>
+    <ClCompile Include="DataStructures.cpp">
+      <Filter>DataStructures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Card.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CardNode.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CImg.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="City.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Clay.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HexaManage.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Label.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Land.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LinkedList.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Mineral.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Node.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Player.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Program.hpp">
+    <ClInclude Include="Progress.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Road.hpp">
@@ -180,6 +147,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Town.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VictoryPoints.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Wheat.hpp">
@@ -197,22 +167,28 @@
     <ClInclude Include="Application.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Progress.hpp">
+    <ClInclude Include="Button.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="VictoryPoints.hpp">
+    <ClInclude Include="Card.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Knight.hpp">
+    <ClInclude Include="CardNode.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game.hpp">
+    <ClInclude Include="City.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Match.hpp">
+    <ClInclude Include="Clay.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Computer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructures.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Dice.hpp">
@@ -221,7 +197,31 @@
     <ClInclude Include="Figure.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Button.hpp">
+    <ClInclude Include="Game.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HexaManage.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Knight.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Label.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Land.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedList.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Match.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mineral.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

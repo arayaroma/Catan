@@ -2,7 +2,7 @@
 #include "Window.hpp"
 #include "Game.hpp"
 
-#include "Program.hpp"
+#include "DataStructures.hpp"
 
 class Application {
 public:

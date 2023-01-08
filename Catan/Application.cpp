@@ -2,7 +2,7 @@
 
 Application &Application::run() {
 
-  Program program;
+  DataStructures program;
   program.assemblyLand();
 
   Window::getInstance().printTitleScreenLabels();

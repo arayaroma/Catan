@@ -133,6 +133,7 @@
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardNode.cpp" />
     <ClCompile Include="Computer.cpp" />
+    <ClCompile Include="DataStructures.cpp" />
     <ClCompile Include="Dice.cpp" />
     <ClCompile Include="Figure.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -149,7 +150,6 @@
     <ClCompile Include="Mineral.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Program.cpp" />
     <ClCompile Include="Progress.cpp" />
     <ClCompile Include="Road.cpp" />
     <ClCompile Include="Stack.cpp" />
@@ -161,6 +161,37 @@
     <ClCompile Include="Wool.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Application.hpp" />
+    <ClInclude Include="Button.hpp" />
+    <ClInclude Include="Card.hpp" />
+    <ClInclude Include="CardNode.hpp" />
+    <ClInclude Include="CImg.h" />
+    <ClInclude Include="City.hpp" />
+    <ClInclude Include="Clay.hpp" />
+    <ClInclude Include="Component.hpp" />
+    <ClInclude Include="Computer.hpp" />
+    <ClInclude Include="DataStructures.hpp" />
+    <ClInclude Include="Dice.hpp" />
+    <ClInclude Include="Figure.hpp" />
+    <ClInclude Include="Game.hpp" />
+    <ClInclude Include="HexaManage.hpp" />
+    <ClInclude Include="Knight.hpp" />
+    <ClInclude Include="Label.hpp" />
+    <ClInclude Include="Land.hpp" />
+    <ClInclude Include="LinkedList.hpp" />
+    <ClInclude Include="Match.hpp" />
+    <ClInclude Include="Mineral.hpp" />
+    <ClInclude Include="Node.hpp" />
+    <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Progress.hpp" />
+    <ClInclude Include="Road.hpp" />
+    <ClInclude Include="Stack.hpp" />
+    <ClInclude Include="Town.hpp" />
+    <ClInclude Include="VictoryPoints.hpp" />
+    <ClInclude Include="Wheat.hpp" />
+    <ClInclude Include="Window.hpp" />
+    <ClInclude Include="Wood.hpp" />
+    <ClInclude Include="Wool.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
