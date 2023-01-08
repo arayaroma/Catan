@@ -1,6 +1,7 @@
 #pragma once
-#include <iostream>
 #include <cstdlib>
+#include <iostream>
+
 
 enum Numbers {
   one,
@@ -19,7 +20,8 @@ enum Numbers {
 
 class Dice {
 private:
-    int min, max;
+  int min, max;
+
 public:
   Dice();
 

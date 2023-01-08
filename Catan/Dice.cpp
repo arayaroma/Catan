@@ -6,7 +6,8 @@ Dice::Dice() {
 }
 
 int Dice::getNumber() const {
-  srand(time(0));
+
+  srand(time(nullptr));
   return rand() % (max - min + 1) + min;
 }
 
