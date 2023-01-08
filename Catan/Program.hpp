@@ -7,7 +7,11 @@
 #include "Stack.hpp"
 #include <iostream>
 #include <string>
-
+#include "Wood.hpp"
+#include "Wool.hpp"
+#include "Wheat.hpp"
+#include "Clay.hpp"
+#include "Mineral.hpp"
 using namespace cimg_library;
 
 extern std::string urlKnight;

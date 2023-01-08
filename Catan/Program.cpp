@@ -29,17 +29,14 @@ void Program::assemblyLand() {
 void Program::loadStacks() {}
 
 void Program::makeMaterialCard() {
-  ////for (int i = 0; i < 19; i++) {
-  // woodCard->push(new Card("Material", "Wood",
-  // "images/resources_cards/wood_card.png")); woolCard->push(new
-  // Card("Material", "Wool", "images/resources_cards/sheep_card.png"));
-  // cerealCard->push(new Card("Material", "Cereal",
-  // "images/resources_cards/wheat_card.png")); clayCard->push(new
-  // Card("Material", "Clay", "images/resources_cards/brick_card.jpeg"));
-  // mineralCard->push(new Card("Material", "Mineral",
-  // "images/resources_cards/stone_card.png"));
-  ////}
-  // woodCard->print();
+        for (int i = 0; i < 19; i++) {
+            woodCards->push(new Wood());
+            woolCards->push(new Wool());
+            wheatCards->push(new Wheat());
+            clayCards->push(new Clay());
+            mineralCards->push(new Mineral());
+        }
+        woodCards->print();
 }
 
 void Program::makeDevelopCard() {

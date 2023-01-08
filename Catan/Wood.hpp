@@ -27,4 +27,5 @@ public:
     Window window;
     window.Image(this->imagePath);
   }
+  void printHexagon(int x, int y) override {}
 };
