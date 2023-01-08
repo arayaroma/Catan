@@ -2,6 +2,7 @@
 #include "CImg.h"
 #include "Label.hpp"
 #include <iostream>
+
 using namespace cimg_library;
 
 extern const unsigned char WHITE[3];
@@ -17,17 +18,24 @@ extern Label *catan;
 extern Label *playLabel;
 extern Label *about;
 
- 
-extern const char* const img; 
-
+extern const char *const img;
 
 class Window {
 
-private:
 public:
-	void printTitleScreenLabels();
-	void showDisplay();
-	void showGameDisplay();
-	 void printHexagon(std::string, int x, int y);
-	 void Image(std::string);
+  Window(const Window &) = delete;
+
+  static Window &getInstance() {
+    static Window instance;
+    return instance;
+  }
+
+  void printTitleScreenLabels();
+  void showDisplay();
+  void showGameDisplay();
+  void printHexagon(std::string, int x, int y);
+  void Image(std::string);
+
+private:
+  Window() {}
 };

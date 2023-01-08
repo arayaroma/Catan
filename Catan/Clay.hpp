@@ -20,10 +20,7 @@ public:
               << "totalCards: " << this->imagePath << std::endl;
   }
 
-  void printImage() override {
-    Window window;
-    window.Image(this->imagePath);
-  }
+  void printImage() override { Window::getInstance().Image(this->imagePath); }
 
   void getClassName() override {
     std::cout << typeid(this).name() << std::endl;

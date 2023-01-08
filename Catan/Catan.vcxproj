@@ -127,8 +127,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Application.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardNode.cpp" />
+    <ClCompile Include="Knight.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="City.cpp" />
     <ClCompile Include="Clay.cpp" />
@@ -141,15 +143,18 @@
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Program.cpp" />
+    <ClCompile Include="Progress.cpp" />
     <ClCompile Include="Road.cpp" />
     <ClCompile Include="Stack.cpp" />
     <ClCompile Include="Town.cpp" />
+    <ClCompile Include="VictoryPoints.cpp" />
     <ClCompile Include="Wheat.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="Wood.cpp" />
     <ClCompile Include="Wool.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Application.hpp" />
     <ClInclude Include="Card.hpp" />
     <ClInclude Include="CardNode.hpp" />
     <ClInclude Include="CImg.h" />
@@ -157,6 +162,7 @@
     <ClInclude Include="Clay.hpp" />
     <ClInclude Include="Component.hpp" />
     <ClInclude Include="HexaManage.hpp" />
+    <ClInclude Include="Knight.hpp" />
     <ClInclude Include="Label.hpp" />
     <ClInclude Include="Land.hpp" />
     <ClInclude Include="LinkedList.hpp" />
@@ -164,9 +170,11 @@
     <ClInclude Include="Node.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Program.hpp" />
+    <ClInclude Include="Progress.hpp" />
     <ClInclude Include="Road.hpp" />
     <ClInclude Include="Stack.hpp" />
     <ClInclude Include="Town.hpp" />
+    <ClInclude Include="VictoryPoints.hpp" />
     <ClInclude Include="Wheat.hpp" />
     <ClInclude Include="Window.hpp" />
     <ClInclude Include="Wood.hpp" />

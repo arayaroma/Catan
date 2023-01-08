@@ -10,5 +10,3 @@ Card::Card(string typeCard, string urlCard, string nameCard) {
 
 string Card::getName() { return name; }
 void Card::setName(string nameCard) { name = nameCard; }
-
-void Card::to_string() { cout << type << "   " << url << " " << name << endl; }

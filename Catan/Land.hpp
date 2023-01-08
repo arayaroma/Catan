@@ -27,8 +27,8 @@ public:
     std::cout << typeid(this).name() << std::endl;
   }
   void printHexagon(int x, int y) override {
-    Window window;
-    window.printHexagon(this->url, x, y);
+    
+    Window::getInstance().printHexagon(this->url, x, y);
   }
 
   void printImage() override {}

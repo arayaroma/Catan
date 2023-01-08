@@ -1,25 +1,2 @@
-﻿  Card.cpp
-  CardNode.cpp
-  main.cpp
-  City.cpp
-  Clay.cpp
-  Component.cpp
-  HexaManage.cpp
-  Label.cpp
-  Land.cpp
-  LinkedList.cpp
-  Mineral.cpp
-  Node.cpp
-  Player.cpp
-  Program.cpp
-  Road.cpp
-  Stack.cpp
-  Town.cpp
-  Wheat.cpp
-  Window.cpp
-  Wood.cpp
-  Generating Code...
-  Compiling...
-  Wool.cpp
-  Generating Code...
+﻿  Application.cpp
   Catan.vcxproj -> C:\Users\DanyG\Desktop\repos\Catan\x64\Debug\Catan.exe

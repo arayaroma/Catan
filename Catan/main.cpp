@@ -1,20 +1,7 @@
-#include "CImg.h"
-#include "Label.hpp"
-#include "Program.hpp"
-#include "Window.hpp"
-#include <iostream>
-#include <string>
-
-using namespace cimg_library;
-using namespace std;
+#include "Application.hpp"
 
 int main() {
-	Program program;
-	program.assemblyLand();
+  Application::getInstance().run();
 
-	Window window;
-	window.printTitleScreenLabels();
-	window.showDisplay();
-
-	return 0;
+  return 0;
 }

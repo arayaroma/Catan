@@ -24,7 +24,6 @@ public:
     std::cout << typeid(this).name() << std::endl;
   }
   void printImage() override {
-    Window window;
-    window.Image(this->imagePath);
+    Window::getInstance().Image(this->imagePath);
   }
 };

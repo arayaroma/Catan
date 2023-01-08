@@ -1,9 +1,8 @@
 #pragma once
 #include "Component.hpp"
-#include <string>
 
 class Card : public Component {
-private:
+protected:
   std::string name;
 
 public:
@@ -13,7 +12,9 @@ public:
   std::string getName();
   void setName(std::string NameCard);
 
-  void to_string();
-
-  virtual void getClassName() = 0;
+  void to_string() {}
+  void printHexagon(int x, int y) {}
+  void toString() {}
+  void getClassName() {}
+  void printImage() {}
 };
