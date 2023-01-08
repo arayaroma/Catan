@@ -16,27 +16,27 @@ void LinkedList::delete_node(Node *node_before) {
 }
 
 void LinkedList::printImage() {
-    int x = 345;//primera,segunda,tercera
-    int x1 = 345;//ultima y penultima columna de hexagonos
+    int x = 10;//primera,segunda,tercera
+    int x1 = 10;//ultima y penultima columna de hexagonos
     Node* temp = head;
-            x1 += 180;
-            for (int q = 100; q <= 200; q += 50) {
-                temp->get_data()->printHexagon(x, q);
+            x1 += 295;
+            for (int q = 450; q <= 600; q += 75) {
+                temp->get_data()->printHexagon(q, x);
                 temp = temp->next;
-                temp->get_data()->printHexagon(x1, q);
-                temp = temp->next;
-            }
-            x += 45;
-            x1 = 480;
-            for (int w = 75; w <= 225; w += 50) {
-                temp->get_data()->printHexagon(x, w);
-                temp = temp->next;
-                temp->get_data()->printHexagon(x1, w);
+                temp->get_data()->printHexagon(q,x1);
                 temp = temp->next;
             }
-            x += 45;
-            for (int d = 50; d <= 250; d += 50) {
-                temp->get_data()->printHexagon(x, d);
+            x += 75;
+            x1 = 230;
+            for (int w = 425; w <= 675; w += 75) {
+                temp->get_data()->printHexagon(w, x);
+                temp = temp->next;
+                temp->get_data()->printHexagon(w, x1);
+                temp = temp->next;
+            }
+            x += 75;
+            for (int d = 400; d <= 700; d += 75) {
+                temp->get_data()->printHexagon(d, x);
                temp = temp->next;
             }
     
