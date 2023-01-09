@@ -5,7 +5,7 @@
   Computer.cpp
   DataStructures.cpp
   Dice.cpp
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\Dice.cpp(9,13): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\DanyG\Desktop\repos\Catan\Catan\Dice.cpp(10,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Figure.cpp
   Game.cpp
   Knight.cpp
@@ -19,8 +19,8 @@ C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\Dice.cpp(9,13): wa
   LinkedList.cpp
   Match.cpp
   Mineral.cpp
-  Generando código...
-  Compilando...
+  Generating Code...
+  Compiling...
   Node.cpp
   Player.cpp
   Progress.cpp
@@ -32,5 +32,5 @@ C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\Dice.cpp(9,13): wa
   Window.cpp
   Wood.cpp
   Wool.cpp
-  Generando código...
-  Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe
+  Generating Code...
+  Catan.vcxproj -> C:\Users\DanyG\Desktop\repos\Catan\x64\Debug\Catan.exe

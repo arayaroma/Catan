@@ -7,8 +7,10 @@ const float opacity = 1;
 const char *catan_window_title = "Catan - Title Screen";
 const char *const image_path = "images/catan_1280x720.jpg";
 unsigned int catan_title_display_width = 1280, catan_title_display_height = 720;
+
 CImg<unsigned char> image(image_path);
 CImg<unsigned char> image2(image_path);
+
 CImgDisplay title_display(catan_title_display_width, catan_title_display_height,
                           catan_window_title, 3, false, false);
 
