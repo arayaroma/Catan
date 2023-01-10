@@ -1,6 +1,5 @@
 #pragma once
 #include "Figure.hpp"
-
 /*
     20x Towns
     It needs to be shopped:
@@ -26,11 +25,11 @@
 
 class Town : public Figure {
 public:
-  const int worthPoint = 1;
 
+private:
 public:
   Town();
+  Town(std::string, std::string, double, double);
 
   int getWorthPoints() const override { return this->worthPoints; }
-
 };

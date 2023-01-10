@@ -22,8 +22,9 @@
 */
 
 class Road : public Figure {
+private:
 public:
   Road();
-
+  Road(std::string, std::string, double, double);
   int getWorthPoints() const override { return this->worthPoints; }
 };

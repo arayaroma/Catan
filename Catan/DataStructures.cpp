@@ -1,7 +1,12 @@
 #include "DataStructures.hpp"
 using namespace std;
 
-DataStructures::DataStructures() { lands = LinkedList<Land>(); }
+DataStructures::DataStructures() {
+  lands = LinkedList<Land>();
+  townFigures = LinkedList<Town>();
+  cityFigures = LinkedList<City>();
+  roadFigures = LinkedList<Road>();
+}
 
 void DataStructures::loadMaps() {
   loadProgressPaths();
@@ -93,5 +98,17 @@ void DataStructures::makeDevelopCard() {
     victoryPointCards->push(VictoryPoints(victoryPointsPath));
 
     num++;
+  }
+}
+
+void DataStructures::makeFigures() {
+  int i = 0;
+  for (i = 0; i < 60; i++) {
+    if (i < 16)
+      cityFigures.add(City("City", "12", 0, 0));
+    if (i < 20)
+      townFigures.add(Town("Town", "Images/puebloX.png", 0, 0));
+
+    roadFigures.add(Road("Road", "12", 0, 0));
   }
 }

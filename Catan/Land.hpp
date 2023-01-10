@@ -18,7 +18,7 @@ public:
   void setPosy(double y);
   double getPosy();
 
-  void toString() override {}
+  void toString() override { std::cout << posx << " " << posy << std::endl; }
 
   void getClassName() override {
     std::cout << typeid(this).name() << std::endl;

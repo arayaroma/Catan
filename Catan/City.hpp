@@ -22,8 +22,10 @@
 */
 
 class City : public Figure {
+private:
 public:
   City();
+  City(std::string, std::string, double, double);
 
   int getWorthPoints() const override { return this->worthPoints; }
 };

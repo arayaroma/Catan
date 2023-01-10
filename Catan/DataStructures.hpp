@@ -11,6 +11,9 @@ class DataStructures {
 public:
   std::unordered_map<const char *, const char *> um_Paths;
   LinkedList<Land> lands;
+  LinkedList<Town> townFigures;
+  LinkedList<City> cityFigures;
+  LinkedList<Road> roadFigures;
 
   Stack<Clay> *clayCards = new Stack<Clay>();
   Stack<Mineral> *mineralCards = new Stack<Mineral>();
@@ -43,7 +46,7 @@ public:
   void makeMaterialCard();
   void makeDevelopCard();
   void playDevelopCard();
-
+  void makeFigures();
   void makeConstructionCostsCard();
   void makeSpecialCard();
 };

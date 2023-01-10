@@ -1,10 +1,11 @@
 #pragma once
 #include "CImg.h"
+#include "DataStructures.hpp"
 #include "Label.hpp"
 #include "Land.hpp"
 #include "LinkedList.hpp"
 #include <iostream>
-#include "DataStructures.hpp"
+
 
 using namespace cimg_library;
 
@@ -20,6 +21,10 @@ extern unsigned int catan_title_display_width, catan_title_display_height;
 extern Label *catan;
 extern Label *playLabel;
 extern Label *about;
+extern Label *princingTable;
+extern Label *materialCard;
+extern Label *developCard;
+extern const char *const img;
 
 class Window {
 
@@ -35,9 +40,17 @@ public:
   void showDisplay();
   void showGameDisplay();
   void printHexagon(std::string, int x, int y);
+  void printTown(std::string, int x, int y);
   void Image(std::string);
   void mouseFunction();
   void printBoard();
+
+  bool clickLabel(double, double);
+  void printMaterialCard();
+  bool clickAboutLabel(double, double, Label *);
+  void showInfoGame();
+  void printTowns();
+
 
 private:
   Window() {}

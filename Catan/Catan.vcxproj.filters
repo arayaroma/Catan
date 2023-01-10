@@ -215,5 +215,8 @@
     <ClInclude Include="ProgressCards.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Figures.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
