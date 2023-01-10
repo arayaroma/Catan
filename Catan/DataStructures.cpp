@@ -19,16 +19,14 @@ void DataStructures::assemblyLand() {
     lands.add(new Land("Grass", "Images/tiles/Grass.png", 0, 0));
     lands.add(new Land("Forest", "Images/tiles/Forest.png", 0, 0));
     lands.add(new Land("Brick", "Images/tiles/Brick.png", 0, 0));
-    lands.add(new Land("Brick", "Images/tiles/Ocean.png", 0, 0));
     if (i < 3) {
       lands.add(new Land("Mountain", "Images/tiles/Mountain.png", 0, 0));
       lands.add(new Land("Field", "Images/tiles/Field.png", 0, 0));
     }
   }
-
   lands.add(new Land("Dessert", "Images/tiles/Dessert.png", 0, 0));
-  lands.toString();
   lands.printImage();
+  lands.toString();
 }
 
 void DataStructures::loadStacks() {}

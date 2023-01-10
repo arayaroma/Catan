@@ -33,7 +33,7 @@ void LinkedList::printImage() {
 
   top_height += 75;
   bot_height = 230;
-  for (cycle_cord_x = 435; cycle_cord_x <= 695; cycle_cord_x += 75) {
+  for (cycle_cord_x = 435; cycle_cord_x <= 660; cycle_cord_x += 75) {
     temp->getData()->printHexagon(cycle_cord_x, top_height);
     temp = temp->next;
     temp->getData()->printHexagon(cycle_cord_x, bot_height);

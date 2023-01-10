@@ -21,13 +21,17 @@ public:
   void setPosy(double y);
   double getPosy();
 
-  void toString() override {}
+  void toString() override {
+      std::cout << posx <<" "<<posy<< std::endl;
+  }
 
   void getClassName() override {
     std::cout << typeid(this).name() << std::endl;
   }
   void printHexagon(int x, int y) override {
-    
+      this->posx = x;
+      this->posy = y;
+      
     Window::getInstance().printHexagon(this->url, x, y);
   }
 
