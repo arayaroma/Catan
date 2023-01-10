@@ -144,13 +144,11 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Land.cpp" />
-    <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="Match.cpp" />
     <ClCompile Include="Mineral.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Progress.cpp" />
     <ClCompile Include="Road.cpp" />
-    <ClCompile Include="Stack.cpp" />
     <ClCompile Include="Town.cpp" />
     <ClCompile Include="VictoryPoints.cpp" />
     <ClCompile Include="Wheat.cpp" />

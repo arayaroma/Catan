@@ -10,15 +10,15 @@ public:
   LinkedList() { this->head = nullptr; }
 
   void add(T data) {
-    Node<T> *node = new Node<T>();
-    node->data = data;
-    node->next = head;
-    head = node;
+    Node<T> *temp = new Node<T>();
+    temp->setData(data);
+    temp->setNext(head);
+    head = temp;
   }
 
-  void delete_node(Node<T> *node_before) {
+  void delete_node(Node<T> *nodeBefore) {
     Node<T> *temp = new Node<T>();
-    temp = node_before->next = temp->next;
+    temp = nodeBefore->getNext() = temp->getNext();
     delete temp;
   }
 
@@ -30,7 +30,7 @@ public:
     Node<T> *temp = head;
     while (temp != nullptr) {
       temp->getData()->toString();
-      temp = temp->next;
+      temp = temp->getNext();
     }
   }
 };
