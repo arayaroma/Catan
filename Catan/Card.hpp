@@ -1,15 +1,12 @@
 #pragma once
-#include "Component.hpp"
-
-class Card : public Component {
+#include <iostream>
+class Card {
 protected:
+  std::string type, url;
+
 public:
-  Card() { setTypeClass(CARD); }
+  Card() {}
   Card(std::string, std::string);
 
-  void to_string() {}
-  void printHexagon(int x, int y) {}
-  void toString() {}
-  void getClassName() {}
-  void printImage() {}
+  virtual void toString() = 0;
 };

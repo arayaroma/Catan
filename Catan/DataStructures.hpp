@@ -7,18 +7,19 @@
 #include "Stack.hpp"
 #include <unordered_map>
 
-
 class DataStructures {
-private:
-  LinkedList lands;
+public:
   std::unordered_map<const char *, const char *> um_Paths;
+  LinkedList<Land> lands;
 
-  Stack *woodCards = new Stack(), *mineralCards = new Stack(),
-        *clayCards = new Stack(), *wheatCards = new Stack(),
-        *woolCards = new Stack();
-
-  Stack *knightCards = new Stack(), *progressCards = new Stack(),
-        *victoryPointCards = new Stack();
+  Stack<Clay> *clayCards = new Stack<Clay>();
+  Stack<Mineral> *mineralCards = new Stack<Mineral>();
+  Stack<Wheat> *wheatCards = new Stack<Wheat>();
+  Stack<Wood> *woodCards = new Stack<Wood>();
+  Stack<Wool> *woolCards = new Stack<Wool>();
+  Stack<Knight> *knightCards = new Stack<Knight>();
+  Stack<Progress> *progressCards = new Stack<Progress>();
+  Stack<VictoryPoints> *victoryPointCards = new Stack<VictoryPoints>();
 
   Card *constructionCosts;
   Card *specialCard[2];

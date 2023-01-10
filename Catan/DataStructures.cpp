@@ -1,7 +1,7 @@
 #include "DataStructures.hpp"
 using namespace std;
 
-DataStructures::DataStructures() { lands = LinkedList(); }
+DataStructures::DataStructures() { lands = LinkedList<Land>(); }
 
 void DataStructures::loadMaps() {
   loadProgressPaths();
@@ -46,14 +46,14 @@ void DataStructures::loadLands() {
   int i;
   for (i = 0; i < 4; i++) {
     if (i < 1)
-      lands.add(new Land("Dessert", um_Paths.at("dessertPath"), 0, 0));
+      lands.add(Land("Dessert", um_Paths.at("dessertPath"), 0, 0));
     if (i < 3) {
-      lands.add(new Land("Mountain", um_Paths.at("mountainPath"), 0, 0));
-      lands.add(new Land("Field", um_Paths.at("fieldPath"), 0, 0));
+      lands.add(Land("Mountain", um_Paths.at("mountainPath"), 0, 0));
+      lands.add(Land("Field", um_Paths.at("fieldPath"), 0, 0));
     }
-    lands.add(new Land("Grass", um_Paths.at("grassPath"), 0, 0));
-    lands.add(new Land("Forest", um_Paths.at("forestPath"), 0, 0));
-    lands.add(new Land("Brick", um_Paths.at("brickPath"), 0, 0));
+    lands.add(Land("Grass", um_Paths.at("grassPath"), 0, 0));
+    lands.add(Land("Forest", um_Paths.at("forestPath"), 0, 0));
+    lands.add(Land("Brick", um_Paths.at("brickPath"), 0, 0));
   }
 }
 
@@ -61,22 +61,22 @@ void DataStructures::loadStacks() {}
 
 void DataStructures::makeConstructionCostsCard() {
   constructionCosts =
-      new Card("ConstructionCosts", "Images/extraCards/pricingTable.png");
+      new Progress("ConstructionCosts", "Images/extraCards/pricingTable.png");
 }
 
 void DataStructures::makeSpecialCard() {
-  specialCard[0] = new Card("SpecialCard", um_Paths.at("biggestPath"));
-  specialCard[1] = new Card("SpecialCard", um_Paths.at("biggestArmyPath"));
+  specialCard[0] = new Progress("SpecialCard", um_Paths.at("biggestPath"));
+  specialCard[1] = new Progress("SpecialCard", um_Paths.at("biggestArmyPath"));
 }
 
 void DataStructures::makeMaterialCard() {
   int i, numberOfCards = 19;
   for (i = 0; i < numberOfCards; i++) {
-    woodCards->push(new Wood());
-    woolCards->push(new Wool());
-    wheatCards->push(new Wheat());
-    clayCards->push(new Clay());
-    mineralCards->push(new Mineral());
+    woodCards->push(Wood());
+    woolCards->push(Wool());
+    wheatCards->push(Wheat());
+    clayCards->push(Clay());
+    mineralCards->push(Mineral());
   }
 }
 
@@ -91,9 +91,9 @@ void DataStructures::makeDevelopCard() {
     victoryPointsPath = um_Paths.at("victoryPointsPath") + stringNumber;
 
     if (i < 2)
-      progressCards->push(new Progress(progressPath));
-    knightCards->push(new Knight(knightPath));
-    victoryPointCards->push(new VictoryPoints(victoryPointsPath));
+      progressCards->push(Progress(progressPath));
+    knightCards->push(Knight(knightPath));
+    victoryPointCards->push(VictoryPoints(victoryPointsPath));
 
     num++;
   }

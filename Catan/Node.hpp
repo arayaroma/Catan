@@ -1,18 +1,36 @@
 #pragma once
-#include "Component.hpp"
+#include "Materials.hpp"
+#include "ProgressCards.hpp"
 
-class Node {
-private:
+template <typename T> class Node {
+
 public:
-  Component *data;
+  T data;
   Node *next;
 
-  Node();
-  Node(Component *);
+public:
+  Node() {
+    this->data = T();
+    this->next = nullptr;
+  }
 
-  Node *getNext();
-  void setNext(Node *);
+  Node(T data) {
+    this->data = data;
+    this->next = nullptr;
+  }
 
-  Component *getData();
-  void setData(Component *);
+  void setNext(Node *next) { this->next = next; }
+  Node *getNext() const { return this->next; }
+
+  void setData(T data) { this->data = data; }
+  T getData() const { return this->data; }
 };
+
+template class Node<VictoryPoints>;
+template class Node<Knight>;
+template class Node<Progress>;
+template class Node<Clay>;
+template class Node<Mineral>;
+template class Node<Wheat>;
+template class Node<Wood>;
+template class Node<Wool>;

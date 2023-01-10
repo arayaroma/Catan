@@ -2,7 +2,6 @@
 #include <cstdlib>
 #include <iostream>
 
-
 enum Numbers {
   one,
   two,

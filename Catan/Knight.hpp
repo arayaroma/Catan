@@ -1,6 +1,5 @@
 #pragma once
 #include "Card.hpp"
-
 /*
     14x Knights
     To be shopped:
@@ -10,9 +9,10 @@
 class Knight : public Card {
 
 private:
-    std::string m_Url;
+  std::string m_Url;
 
 public:
-    Knight() {}
+  Knight() {}
   Knight(std::string url) : m_Url(url) {}
+  void toString() {}
 };

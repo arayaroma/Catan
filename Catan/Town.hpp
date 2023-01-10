@@ -1,6 +1,5 @@
 #pragma once
 #include "Figure.hpp"
-#include <iostream>
 
 /*
     20x Towns
@@ -32,15 +31,6 @@ public:
 public:
   Town();
 
-  Component *getResource();
-
   int getWorthPoints() const override { return this->worthPoints; }
 
-  void getClassName() override {
-    std::cout << typeid(this).name() << std::endl;
-  }
-
-  void printImage() override {}
-
-  void toString() override {}
 };

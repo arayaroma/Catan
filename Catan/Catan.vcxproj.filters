@@ -45,9 +45,6 @@
     <ClCompile Include="LinkedList.cpp">
       <Filter>DataStructures</Filter>
     </ClCompile>
-    <ClCompile Include="Node.cpp">
-      <Filter>DataStructures</Filter>
-    </ClCompile>
     <ClCompile Include="Clay.cpp">
       <Filter>Game\Components\Cards\Materials</Filter>
     </ClCompile>

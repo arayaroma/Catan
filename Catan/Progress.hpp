@@ -8,10 +8,13 @@
 */
 
 class Progress : public Card {
-private:
-    std::string m_Url;
-
 public:
-    Progress() {}
-    Progress(std::string url) : m_Url(url) {}
+  Progress() {}
+  Progress(std::string url) { this->url = url; }
+  Progress(std::string type, std::string url) {
+    this->type = type;
+    this->url = url;
+  }
+
+  void toString() {}
 };

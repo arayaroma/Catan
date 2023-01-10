@@ -9,6 +9,7 @@ const char *const image_path = "Images/catan_1280x720.jpg";
 unsigned int catan_title_display_width = 1280, catan_title_display_height = 720;
 
 CImg<unsigned char> image(image_path);
+CImg<unsigned char> image2(image_path);
 
 CImgDisplay title_display(catan_title_display_width, catan_title_display_height,
                           catan_window_title, 3, false, false);
@@ -40,13 +41,15 @@ void Window::showDisplay() {
   while (!title_display.is_closed()) {
     title_display.display(image);
     title_display.wait();
+    mouseFunction();
   }
 }
 
 void Window::mouseFunction() {
   if (title_display.button() && title_display.mouse_x() < 100 &&
       title_display.mouse_y() < 100) {
-    std::cout << "1" << std::endl;
+    std::cout << "isClicked" << std::endl;
+    printBoard();
     showGameDisplay();
   }
 }
@@ -54,7 +57,7 @@ void Window::mouseFunction() {
 void Window::printHexagon(std::string url, int x, int y) {
   const char *const img = url.c_str();
   CImg<unsigned char> imageHexa(img);
-  // image2.draw_image(x, y, imageHexa);
+  image2.draw_image(x, y, imageHexa);
 }
 
 void Window::showGameDisplay() {
@@ -64,7 +67,47 @@ void Window::showGameDisplay() {
   title_display.close();
   while (!game_title_display.is_closed()) {
     game_title_display.wait();
-    // game_title_display.display(image2);
+    game_title_display.display(image2);
+  }
+}
+
+void Window::printBoard() {
+  int top_height = 10; // primera,segunda,tercera
+  int bot_height = 10; // ultima y penultima columna de hexagonos
+  int cycle_cord_x = 0;
+
+  DataStructures dataStructures;
+  dataStructures.loadLands();
+  Node<Land> *temp = dataStructures.lands.head;
+  std::string tempUrl = temp->getData().getUrl();
+  std::cout << temp->getData().getUrl();
+
+  bot_height += 295;
+  for (cycle_cord_x = 470; cycle_cord_x <= 620; cycle_cord_x += 75) {
+
+    Window::getInstance().printHexagon(tempUrl, cycle_cord_x, top_height);
+    temp = temp->getNext();
+
+    Window::getInstance().printHexagon(tempUrl, cycle_cord_x, bot_height);
+    temp = temp->getNext();
+  }
+
+  top_height += 75;
+  bot_height = 230;
+  for (cycle_cord_x = 435; cycle_cord_x <= 695; cycle_cord_x += 75) {
+
+    Window::getInstance().printHexagon(tempUrl, cycle_cord_x, top_height);
+    temp = temp->getNext();
+
+    Window::getInstance().printHexagon(tempUrl, cycle_cord_x, bot_height);
+    temp = temp->getNext();
+  }
+
+  top_height += 75;
+  for (cycle_cord_x = 400; cycle_cord_x <= 700; cycle_cord_x += 75) {
+
+    Window::getInstance().printHexagon(tempUrl, cycle_cord_x, top_height);
+    temp = temp->getNext();
   }
 }
 

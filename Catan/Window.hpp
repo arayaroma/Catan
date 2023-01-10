@@ -1,7 +1,10 @@
 #pragma once
 #include "CImg.h"
 #include "Label.hpp"
+#include "Land.hpp"
+#include "LinkedList.hpp"
 #include <iostream>
+#include "DataStructures.hpp"
 
 using namespace cimg_library;
 
@@ -34,6 +37,7 @@ public:
   void printHexagon(std::string, int x, int y);
   void Image(std::string);
   void mouseFunction();
+  void printBoard();
 
 private:
   Window() {}

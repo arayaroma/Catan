@@ -15,5 +15,4 @@ public:
 
   void setMatchID(int);
   int getMatchID() const;
-
 };

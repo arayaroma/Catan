@@ -1,13 +1,12 @@
 #pragma once
-#include "Game.hpp"
 #include <string>
 
 #define LAND "Land"
 #define FIGURE "Figure"
 #define CARD "Card"
 
-class Component : public Game {
-friend class Game;
+class Component {
+  friend class Game;
 
 protected:
   std::string url;

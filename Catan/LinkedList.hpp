@@ -1,19 +1,36 @@
 #pragma once
-#include "Component.hpp"
 #include "Node.hpp"
+#include <iostream>
 
-class LinkedList {
-private:
-  Node *head;
+template <typename T> class LinkedList {
+public:
+  Node<T> *head;
 
 public:
-  LinkedList();
+  LinkedList() { this->head = nullptr; }
 
-  void add(Component *);
-  void delete_node(Node *);
+  void add(T data) {
+    Node<T> *node = new Node<T>();
+    node->data = data;
+    node->next = head;
+    head = node;
+  }
 
-  bool isEmpty();
-  void printImage();
+  void delete_node(Node<T> *node_before) {
+    Node<T> *temp = new Node<T>();
+    temp = node_before->next = temp->next;
+    delete temp;
+  }
 
-  void toString();
+  bool isEmpty() { return (this->head == nullptr); }
+
+  void printImage() {}
+
+  void toString() {
+    Node<T> *temp = head;
+    while (temp != nullptr) {
+      temp->getData()->toString();
+      temp = temp->next;
+    }
+  }
 };

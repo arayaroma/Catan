@@ -1,6 +1,5 @@
 #pragma once
 #include "DataStructures.hpp"
-#include "Game.hpp"
 #include "Window.hpp"
 
 

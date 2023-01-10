@@ -147,7 +147,6 @@
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="Match.cpp" />
     <ClCompile Include="Mineral.cpp" />
-    <ClCompile Include="Node.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Progress.cpp" />
     <ClCompile Include="Road.cpp" />

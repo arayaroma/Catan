@@ -1,13 +1,12 @@
 #include "Component.hpp"
-using namespace std;
 
 Component::Component() {}
 
-void Component::setTypeClass(string type) { this->type = type; }
-string Component::getTypeClass() { return type; }
+void Component::setTypeClass(std::string type) { this->type = type; }
+std::string Component::getTypeClass() { return type; }
 
-void Component::setType(string type) { this->type = type; }
-string Component::getType() { return type; }
+void Component::setType(std::string type) { this->type = type; }
+std::string Component::getType() { return type; }
 
-void Component::setUrl(string url) { this->url = url; }
-string Component::getUrl() { return url; }
+void Component::setUrl(std::string url) { this->url = url; }
+std::string Component::getUrl() { return url; }

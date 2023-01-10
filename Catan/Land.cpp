@@ -1,10 +1,10 @@
 #include "Land.hpp"
 Land::Land() {
-    setTypeClass(LAND);
-    this->type = "";
-    this->url = "";
-    this->posx = 0;
-    this->posy = 0;
+  setTypeClass(LAND);
+  this->type = "";
+  this->url = "";
+  this->posx = 0;
+  this->posy = 0;
 }
 
 Land::Land(std::string typeLand, std::string urlLand, double x, double y) {
@@ -19,4 +19,3 @@ double Land::getPosy() { return posy; }
 
 void Land::setPosx(double x) { this->posx = x; }
 double Land::getPosx() { return posx; }
-

@@ -1,6 +1,5 @@
 #pragma once
-#include "Component.hpp"
-class Figure : public Component {
+class Figure {
 public:
   int worthPoints;
 

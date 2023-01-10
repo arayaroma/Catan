@@ -26,12 +26,4 @@ public:
   Road();
 
   int getWorthPoints() const override { return this->worthPoints; }
-
-  void getClassName() override {
-    std::cout << typeid(this).name() << std::endl;
-  }
-
-  void printImage() override {}
-
-  void toString() override {}
 };
