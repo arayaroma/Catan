@@ -39,9 +39,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HexaManage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -74,9 +71,6 @@
     </ClCompile>
     <ClCompile Include="Component.cpp">
       <Filter>Game\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="CardNode.cpp">
-      <Filter>DataStructures</Filter>
     </ClCompile>
     <ClCompile Include="Card.cpp">
       <Filter>Game\Components</Filter>
@@ -129,6 +123,9 @@
     <ClCompile Include="DataStructures.cpp">
       <Filter>DataStructures</Filter>
     </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CImg.h">
@@ -173,9 +170,6 @@
     <ClInclude Include="Card.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CardNode.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="City.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -200,9 +194,6 @@
     <ClInclude Include="Game.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HexaManage.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Knight.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -222,6 +213,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Node.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Materials.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgressCards.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

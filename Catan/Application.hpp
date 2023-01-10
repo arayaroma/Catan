@@ -1,8 +1,8 @@
 #pragma once
-#include "Window.hpp"
-#include "Game.hpp"
-
 #include "DataStructures.hpp"
+#include "Game.hpp"
+#include "Window.hpp"
+
 
 class Application {
 public:

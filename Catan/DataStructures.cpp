@@ -1,67 +1,100 @@
 #include "DataStructures.hpp"
 using namespace std;
-std::string urlKnight = "images/knight_cards/knight_";
-std::string urlEnd = "_card.png";
-std::string urlProgress = "images/develop_cards/develop_";
-std::string urlVictoryPoint = "Images/victory_points_cards/victory_point_";
 
-DataStructures::DataStructures() {
-  this->turn = 0;
-  lands = LinkedList();
+DataStructures::DataStructures() { lands = LinkedList(); }
+
+void DataStructures::loadMaps() {
+  loadProgressPaths();
+  loadTilesPaths();
 }
 
-void DataStructures::assemblyLand() {
+void DataStructures::loadSpecialCards() {
+  um_Paths.insert(pair<const char *, const char *>(
+      "biggestPath", "Images/extraCards/biggestPathCard.png"));
+  um_Paths.insert(pair<const char *, const char *>(
+      "biggestArmyPath", "Images/extraCards/biggestArmyCard.png"));
+}
+void DataStructures::loadProgressPaths() {
+  um_Paths.insert(pair<const char *, const char *>(
+      "knightPath", "Images/knightCards/knightCard"));
 
-  for (int i = 0; i < 4; i++) {
-    lands.add(new Land("Grass", "Images/tiles/Grass.png", 0, 0));
-    lands.add(new Land("Forest", "Images/tiles/Forest.png", 0, 0));
-    lands.add(new Land("Brick", "Images/tiles/Brick.png", 0, 0));
-    lands.add(new Land("Brick", "Images/tiles/Ocean.png", 0, 0));
+  um_Paths.insert(pair<const char *, const char *>(
+      "progressPath", "Images/progressCards/progressCard"));
+
+  um_Paths.insert(pair<const char *, const char *>(
+      "victoryPointsPath", "Images/victoryPointsCards/victoryPointCard"));
+}
+
+void DataStructures::loadTilesPaths() {
+  um_Paths.insert(
+      pair<const char *, const char *>("grassPath", "Images/tiles/Grass.png"));
+  um_Paths.insert(
+      pair<const char *, const char *>("brickPath", "Images/tiles/Brick.png"));
+  um_Paths.insert(
+      pair<const char *, const char *>("fieldPath", "Images/tiles/Field.png"));
+
+  um_Paths.insert(pair<const char *, const char *>(
+      "mountainPath", "Images/tiles/Mountain.png"));
+  um_Paths.insert(pair<const char *, const char *>("forestPath",
+                                                   "Images/tiles/Forest.png"));
+  um_Paths.insert(pair<const char *, const char *>("dessertPath",
+                                                   "Images/tiles/Dessert.png"));
+}
+
+void DataStructures::loadLands() {
+  loadTilesPaths();
+  int i;
+  for (i = 0; i < 4; i++) {
+    if (i < 1)
+      lands.add(new Land("Dessert", um_Paths.at("dessertPath"), 0, 0));
     if (i < 3) {
-      lands.add(new Land("Mountain", "Images/tiles/Mountain.png", 0, 0));
-      lands.add(new Land("Field", "Images/tiles/Field.png", 0, 0));
+      lands.add(new Land("Mountain", um_Paths.at("mountainPath"), 0, 0));
+      lands.add(new Land("Field", um_Paths.at("fieldPath"), 0, 0));
     }
+    lands.add(new Land("Grass", um_Paths.at("grassPath"), 0, 0));
+    lands.add(new Land("Forest", um_Paths.at("forestPath"), 0, 0));
+    lands.add(new Land("Brick", um_Paths.at("brickPath"), 0, 0));
   }
-
-  lands.add(new Land("Dessert", "Images/tiles/Dessert.png", 0, 0));
-  lands.toString();
-  lands.printImage();
 }
 
 void DataStructures::loadStacks() {}
 
+void DataStructures::makeConstructionCostsCard() {
+  constructionCosts =
+      new Card("ConstructionCosts", "Images/extraCards/pricingTable.png");
+}
+
+void DataStructures::makeSpecialCard() {
+  specialCard[0] = new Card("SpecialCard", um_Paths.at("biggestPath"));
+  specialCard[1] = new Card("SpecialCard", um_Paths.at("biggestArmyPath"));
+}
+
 void DataStructures::makeMaterialCard() {
-        for (int i = 0; i < 19; i++) {
-            woodCards->push(new Wood());
-            woolCards->push(new Wool());
-            wheatCards->push(new Wheat());
-            clayCards->push(new Clay());
-            mineralCards->push(new Mineral());
-        }
-        woodCards->print();
+  int i, numberOfCards = 19;
+  for (i = 0; i < numberOfCards; i++) {
+    woodCards->push(new Wood());
+    woolCards->push(new Wool());
+    wheatCards->push(new Wheat());
+    clayCards->push(new Clay());
+    mineralCards->push(new Mineral());
+  }
 }
 
 void DataStructures::makeDevelopCard() {
-  int num = 1;
-  for (int i = 0; i < 4; i++) {
-          string num_str1(std::to_string(num));
-          string fullUrlKnight = urlKnight + num_str1 + urlEnd;
-          string fullUrlProgress = urlProgress + num_str1 + urlEnd;
-          string fullUrlVictoryPoint = urlVictoryPoint + num_str1 + urlEnd;
-          knightCards->push(new Knight( fullUrlKnight));
-          victoryPointCards->push(new VictoryPoints( fullUrlVictoryPoint));
-          if (i < 2) { 
-              progressCards->push(new Progress( fullUrlProgress));
-          }
-          num++;
+  std::string knightPath, progressPath, victoryPointsPath;
+  int i, num = 1, numberOfCards = 4;
+  for (i = 0; i < numberOfCards; i++) {
+    std::string stringNumber(std::to_string(num));
+
+    knightPath = um_Paths.at("knightPath") + stringNumber;
+    progressPath = um_Paths.at("progressPath") + stringNumber;
+    victoryPointsPath = um_Paths.at("victoryPointsPath") + stringNumber;
+
+    if (i < 2)
+      progressCards->push(new Progress(progressPath));
+    knightCards->push(new Knight(knightPath));
+    victoryPointCards->push(new VictoryPoints(victoryPointsPath));
+
+    num++;
   }
-}
-void DataStructures::makeConstructionCostsCard() {
-    for (int i = 0; i < 4;i++) {
-        constructionCosts[i] =  Card("ConstructionCosts", "Images/extraCards/pricingTable.png");
-    }
-}
-void DataStructures::makeSpecialCard() {
-   specialCard[0] =  Card("SpecialCard", "Images/extraCards/biggestPathCard.png");
-   specialCard[1] = Card("SpecialCard", "Images/extraCards/biggestArmyCard.png");
 }

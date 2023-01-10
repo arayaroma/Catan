@@ -25,5 +25,4 @@ public:
   void getClassName() override {
     std::cout << typeid(this).name() << std::endl;
   }
-  void printHexagon(int x, int y) override {}
 };

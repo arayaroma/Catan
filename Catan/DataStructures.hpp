@@ -1,59 +1,49 @@
 #pragma once
-#include "CImg.h"
-#include "LinkedList.hpp"
-#include "Stack.hpp"
 #include "Card.hpp"
-#include "Component.hpp"
 #include "Land.hpp"
-#include "Clay.hpp"
-#include "Mineral.hpp"
-#include "Knight.hpp"
-#include "VictoryPoints.hpp"
-#include "Progress.hpp"
-#include "Wheat.hpp"
-#include "Wood.hpp"
-#include "Wool.hpp"
+#include "LinkedList.hpp"
+#include "Materials.hpp"
+#include "ProgressCards.hpp"
+#include "Stack.hpp"
+#include <unordered_map>
 
-using namespace cimg_library;
-
-extern std::string urlKnight;
-extern std::string urlEnd;
-extern std::string urlProgress;
-extern std::string urlVictoryPoint;
 
 class DataStructures {
 private:
-  int turn;
   LinkedList lands;
+  std::unordered_map<const char *, const char *> um_Paths;
 
-  Stack *woodCards = new Stack();
-  Stack *mineralCards = new Stack();
-  Stack *clayCards = new Stack();
-  Stack *wheatCards = new Stack();
-  Stack *woolCards = new Stack();
+  Stack *woodCards = new Stack(), *mineralCards = new Stack(),
+        *clayCards = new Stack(), *wheatCards = new Stack(),
+        *woolCards = new Stack();
 
-  Stack *knightCards = new Stack();
-  Stack *progressCards = new Stack();
-  Stack *victoryPointCards = new Stack();
+  Stack *knightCards = new Stack(), *progressCards = new Stack(),
+        *victoryPointCards = new Stack();
 
-  Card constructionCosts[4];
-  Card specialCard[2];
-
+  Card *constructionCosts;
+  Card *specialCard[2];
 
 public:
   DataStructures();
+
+  void loadMaps();
+
+  void loadSpecialCards();
+  void loadProgressPaths();
+  void loadTilesPaths();
+
+  void loadStacks();
+
   void play();
   void build();
 
   void tradeMaterials();
-  void assemblyLand();
+  void loadLands();
 
   void makeMaterialCard();
   void makeDevelopCard();
   void playDevelopCard();
-  
+
   void makeConstructionCostsCard();
   void makeSpecialCard();
-
-  void loadStacks();
 };

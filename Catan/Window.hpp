@@ -18,8 +18,6 @@ extern Label *catan;
 extern Label *playLabel;
 extern Label *about;
 
-extern const char *const img;
-
 class Window {
 
 public:
@@ -35,6 +33,7 @@ public:
   void showGameDisplay();
   void printHexagon(std::string, int x, int y);
   void Image(std::string);
+  void mouseFunction();
 
 private:
   Window() {}

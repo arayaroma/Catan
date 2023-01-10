@@ -3,7 +3,7 @@
 Application &Application::run() {
 
   DataStructures program;
-  program.assemblyLand();
+  program.loadLands();
 
   Window::getInstance().printTitleScreenLabels();
   Window::getInstance().showDisplay();

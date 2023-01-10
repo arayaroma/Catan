@@ -22,27 +22,38 @@ void LinkedList::printImage() {
   int bot_height = 10; // ultima y penultima columna de hexagonos
   int cycle_cord_x = 0;
   Node *temp = head;
+  std::string tempUrl = temp->getData()->getUrl();
 
   bot_height += 295;
   for (cycle_cord_x = 470; cycle_cord_x <= 620; cycle_cord_x += 75) {
-    temp->getData()->printHexagon(cycle_cord_x, top_height);
+
+    Window::getInstance().printHexagon(tempUrl, cycle_cord_x, top_height);
+    // temp->getData()->printHexagon(cycle_cord_x, top_height);
     temp = temp->next;
-    temp->getData()->printHexagon(cycle_cord_x, bot_height);
+
+    Window::getInstance().printHexagon(tempUrl, cycle_cord_x, bot_height);
+    // temp->getData()->printHexagon(cycle_cord_x, bot_height);
     temp = temp->next;
   }
 
   top_height += 75;
   bot_height = 230;
   for (cycle_cord_x = 435; cycle_cord_x <= 695; cycle_cord_x += 75) {
-    temp->getData()->printHexagon(cycle_cord_x, top_height);
+
+    Window::getInstance().printHexagon(tempUrl, cycle_cord_x, top_height);
+    // temp->getData()->printHexagon(cycle_cord_x, top_height);
     temp = temp->next;
-    temp->getData()->printHexagon(cycle_cord_x, bot_height);
+
+    Window::getInstance().printHexagon(tempUrl, cycle_cord_x, bot_height);
+    // temp->getData()->printHexagon(cycle_cord_x, bot_height);
     temp = temp->next;
   }
 
   top_height += 75;
   for (cycle_cord_x = 400; cycle_cord_x <= 700; cycle_cord_x += 75) {
-    temp->getData()->printHexagon(cycle_cord_x, top_height);
+
+    Window::getInstance().printHexagon(tempUrl, cycle_cord_x, top_height);
+    // temp->getData()->printHexagon(cycle_cord_x, top_height);
     temp = temp->next;
   }
 }

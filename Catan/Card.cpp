@@ -1,7 +1,7 @@
 #include "Card.hpp"
 using namespace std;
 
-Card::Card(string typeCard, string urlCard) {
-  type = typeCard;
-  url = urlCard;
+Card::Card(string type, string url) {
+  this->type = type;
+  this->url = url;
 }

@@ -3,11 +3,9 @@
 
 class Card : public Component {
 protected:
-
 public:
   Card() { setTypeClass(CARD); }
-  Card(std::string typeCard, std::string urlCard);
-
+  Card(std::string, std::string);
 
   void to_string() {}
   void printHexagon(int x, int y) {}

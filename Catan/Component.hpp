@@ -30,6 +30,5 @@ public:
 
   virtual void getClassName() = 0;
   virtual void printImage() = 0;
-  virtual void printHexagon(int x, int y)=0;
   virtual void toString() = 0;
 };
