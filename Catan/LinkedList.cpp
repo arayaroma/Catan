@@ -54,3 +54,33 @@ void LinkedList::toString() {
     temp = temp->next;
   }
 }
+
+void LinkedList::printTown() {
+    int top_height = 5; // primera,segunda,tercera
+    int bot_height = 5; // ultima y penultima columna de hexagonos
+    int cycle_cord_x = 0;
+    Node* temp = head;
+
+    bot_height += 295;
+    for (cycle_cord_x = 500; cycle_cord_x <= 650; cycle_cord_x += 75) {
+        temp->getData()->printHexagon(cycle_cord_x, top_height);
+        temp = temp->next;
+        temp->getData()->printHexagon(cycle_cord_x, bot_height);
+        temp = temp->next;
+    }
+
+    top_height += 75;
+    bot_height = 235;
+    for (cycle_cord_x = 465; cycle_cord_x <= 690; cycle_cord_x += 75) {
+        temp->getData()->printHexagon(cycle_cord_x, top_height);
+        temp = temp->next;
+        temp->getData()->printHexagon(cycle_cord_x, bot_height);
+        temp = temp->next;
+    }
+
+    top_height += 75;
+    for (cycle_cord_x = 430; cycle_cord_x <= 655; cycle_cord_x += 75) {
+        temp->getData()->printHexagon(cycle_cord_x, top_height);
+        temp = temp->next;
+    }
+}

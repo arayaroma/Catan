@@ -14,6 +14,10 @@
 #include "Wood.hpp"
 #include "Wool.hpp"
 
+#include "Town.hpp"
+#include "Road.hpp"
+#include "City.hpp"
+
 using namespace cimg_library;
 
 extern std::string urlKnight;
@@ -36,6 +40,10 @@ private:
   Stack *progressCards = new Stack();
   Stack *victoryPointCards = new Stack();
 
+  LinkedList townFigures;
+  LinkedList cityFigures;
+  LinkedList roadFigures;
+
   Card constructionCosts[4];
   Card specialCard[2];
 
@@ -51,7 +59,7 @@ public:
   void makeMaterialCard();
   void makeDevelopCard();
   void playDevelopCard();
-  
+  void makeFigures();
   void makeConstructionCostsCard();
   void makeSpecialCard();
 

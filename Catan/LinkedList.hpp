@@ -14,6 +14,6 @@ public:
 
   bool isEmpty();
   void printImage();
-
+  void printTown();
   void toString();
 };

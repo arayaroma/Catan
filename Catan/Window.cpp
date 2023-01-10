@@ -66,3 +66,8 @@ void Window::showGameDisplay() {
 void Window::Image(std::string url) {
 
 }
+void Window::printTown(std::string url, int x, int y) {
+    const char* const img = url.c_str();
+    CImg <unsigned char>imageTown(img);
+    image2.draw_image(x, y, imageTown);
+}

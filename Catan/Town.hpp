@@ -1,7 +1,7 @@
 #pragma once
 #include "Figure.hpp"
 #include <iostream>
-
+#include <string>
 /*
     20x Towns
     It needs to be shopped:
@@ -29,9 +29,12 @@ class Town : public Figure {
 public:
   const int worthPoint = 1;
 
+private:
+    double posx;
+    double posy;
 public:
-  Town();
-
+   Town();
+  Town(std::string, std::string, double x, double y);
   Component *getResource();
 
   int getWorthPoints() const override { return this->worthPoints; }
@@ -41,6 +44,10 @@ public:
   }
 
   void printImage() override {}
+
+  void printHexagon(int x, int y) override {
+      Window::getInstance().printTown(this->url,x,y);
+  }
 
   void toString() override {}
 };

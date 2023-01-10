@@ -34,6 +34,7 @@ public:
   void showDisplay();
   void showGameDisplay();
   void printHexagon(std::string, int x, int y);
+  void printTown(std::string, int x, int y);
   void Image(std::string);
 
 private:

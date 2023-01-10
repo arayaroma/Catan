@@ -22,9 +22,12 @@
 */
 
 class Road : public Figure {
+private:
+    double posx;
+    double posy;
 public:
   Road();
-
+  Road(std::string, std::string, double x, double y);
   int getWorthPoints() const override { return this->worthPoints; }
 
   void getClassName() override {
@@ -32,6 +35,8 @@ public:
   }
 
   void printImage() override {}
+
+  void printHexagon(int x, int y) override {}
 
   void toString() override {}
 };

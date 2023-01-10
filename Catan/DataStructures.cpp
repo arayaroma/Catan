@@ -8,6 +8,9 @@ std::string urlVictoryPoint = "Images/victory_points_cards/victory_point_";
 DataStructures::DataStructures() {
   this->turn = 0;
   lands = LinkedList();
+  townFigures = LinkedList();
+  cityFigures = LinkedList();
+  roadFigures = LinkedList();
 }
 
 void DataStructures::assemblyLand() {
@@ -64,4 +67,18 @@ void DataStructures::makeConstructionCostsCard() {
 void DataStructures::makeSpecialCard() {
    specialCard[0] =  Card("SpecialCard", "Images/extraCards/biggestPathCard.png");
    specialCard[1] = Card("SpecialCard", "Images/extraCards/biggestArmyCard.png");
+}
+
+void DataStructures::makeFigures() {
+    int i = 0;
+    for (i = 0; i < 60; i++) {
+        roadFigures.add(new Road("Road", "12",0,0));
+        if (i < 20) {
+            townFigures.add(new Town("Town", "Images/puebloX.png", 0, 0));
+        }
+        if (i < 16) {
+            cityFigures.add(new City("City", "12", 0, 0));
+        }
+    }
+    townFigures.printTown();
 }

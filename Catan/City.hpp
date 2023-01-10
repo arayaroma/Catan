@@ -22,8 +22,12 @@
 */
 
 class City : public Figure {
+private:
+    double posx;
+    double posy;
 public:
-  City();
+    City();
+    City(std::string, std::string, double x, double y);
 
   int getWorthPoints() const override { return this->worthPoints; }
 
@@ -34,4 +38,5 @@ public:
   void printImage() override {}
 
   void toString() override {}
+  void printHexagon(int x, int y) override {}
 };
