@@ -2,7 +2,6 @@
 #include "CImg.h"
 #include "Label.hpp"
 #include <iostream>
-
 using namespace cimg_library;
 
 extern const unsigned char WHITE[3];
@@ -17,7 +16,9 @@ extern unsigned int catan_title_display_width, catan_title_display_height;
 extern Label *catan;
 extern Label *playLabel;
 extern Label *about;
-
+extern Label* princingTable;
+extern Label* materialCard;
+extern Label* developCard;
 extern const char *const img;
 
 class Window {
@@ -36,7 +37,8 @@ public:
   void printHexagon(std::string, int x, int y);
   void printTown(std::string, int x, int y);
   void Image(std::string);
-
+  bool clickLabel(double, double);
+  void printMaterialCard();
 private:
   Window() {}
 };

@@ -30,6 +30,7 @@ private:
   int turn;
   LinkedList lands;
 
+public:
   Stack *woodCards = new Stack();
   Stack *mineralCards = new Stack();
   Stack *clayCards = new Stack();
