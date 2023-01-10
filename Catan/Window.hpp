@@ -38,7 +38,9 @@ public:
   void printTown(std::string, int x, int y);
   void Image(std::string);
   bool clickLabel(double, double);
-  void printMaterialCard();
+  void printMaterialCard(); 
+  bool clickAboutLabel(double, double, Label*);
+  void showInfoGame();
 private:
   Window() {}
 };
