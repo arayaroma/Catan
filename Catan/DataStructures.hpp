@@ -21,7 +21,6 @@ public:
   Stack<Progress> *progressCards = new Stack<Progress>();
   Stack<VictoryPoints> *victoryPointCards = new Stack<VictoryPoints>();
 
-  Card *constructionCosts;
   Card *specialCard[2];
 
 public:

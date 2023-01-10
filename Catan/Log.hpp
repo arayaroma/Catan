@@ -1,5 +1,5 @@
 #pragma once
-class Log
-{
-};
 
+#define log(x) std::cout << x << std::endl;
+
+class Log {};

@@ -79,14 +79,15 @@ void Window::printBoard() {
   DataStructures dataStructures;
   dataStructures.loadLands();
   Node<Land> *temp = dataStructures.lands.head;
-  std::string tempUrl = temp->getData().getUrl();
   std::cout << temp->getData().getUrl();
 
   bot_height += 295;
   for (cycle_cord_x = 470; cycle_cord_x <= 620; cycle_cord_x += 75) {
+    std::string tempUrl = temp->getData().getUrl();
 
     Window::getInstance().printHexagon(tempUrl, cycle_cord_x, top_height);
     temp = temp->getNext();
+    tempUrl = temp->getData().getUrl();
 
     Window::getInstance().printHexagon(tempUrl, cycle_cord_x, bot_height);
     temp = temp->getNext();
@@ -95,9 +96,10 @@ void Window::printBoard() {
   top_height += 75;
   bot_height = 230;
   for (cycle_cord_x = 435; cycle_cord_x <= 695; cycle_cord_x += 75) {
-
+    std::string tempUrl = temp->getData().getUrl();
     Window::getInstance().printHexagon(tempUrl, cycle_cord_x, top_height);
     temp = temp->getNext();
+    tempUrl = temp->getData().getUrl();
 
     Window::getInstance().printHexagon(tempUrl, cycle_cord_x, bot_height);
     temp = temp->getNext();
@@ -105,6 +107,7 @@ void Window::printBoard() {
 
   top_height += 75;
   for (cycle_cord_x = 400; cycle_cord_x <= 700; cycle_cord_x += 75) {
+    std::string tempUrl = temp->getData().getUrl();
 
     Window::getInstance().printHexagon(tempUrl, cycle_cord_x, top_height);
     temp = temp->getNext();

@@ -14,6 +14,7 @@ void DataStructures::loadSpecialCards() {
   um_Paths.insert(pair<const char *, const char *>(
       "biggestArmyPath", "Images/extraCards/biggestArmyCard.png"));
 }
+
 void DataStructures::loadProgressPaths() {
   um_Paths.insert(pair<const char *, const char *>(
       "knightPath", "Images/knightCards/knightCard"));
@@ -59,11 +60,6 @@ void DataStructures::loadLands() {
 
 void DataStructures::loadStacks() {}
 
-void DataStructures::makeConstructionCostsCard() {
-  constructionCosts =
-      new Progress("ConstructionCosts", "Images/extraCards/pricingTable.png");
-}
-
 void DataStructures::makeSpecialCard() {
   specialCard[0] = new Progress("SpecialCard", um_Paths.at("biggestPath"));
   specialCard[1] = new Progress("SpecialCard", um_Paths.at("biggestArmyPath"));
@@ -86,6 +82,7 @@ void DataStructures::makeDevelopCard() {
   for (i = 0; i < numberOfCards; i++) {
     std::string stringNumber(std::to_string(num));
 
+    // Poner .png
     knightPath = um_Paths.at("knightPath") + stringNumber;
     progressPath = um_Paths.at("progressPath") + stringNumber;
     victoryPointsPath = um_Paths.at("victoryPointsPath") + stringNumber;
