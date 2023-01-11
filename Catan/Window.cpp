@@ -1,4 +1,5 @@
 #include "Window.hpp"
+
 const unsigned char WHITE[] = {255, 255, 255};
 const unsigned char BLUEGREEN[] = {0, 170, 255};
 const unsigned char ORANGE[] = {255, 140, 0};
@@ -7,18 +8,27 @@ const int transparent = 0;
 const float opacity = 1;
 
 const char *catan_window_title = "Catan - Title Screen";
-const char *const image_path = "images/catan_1280x720.jpg";
+const char *const image_info = "Images/acercaDe.jpg";
+const char *const image_path = "Images/catan_1280x720.jpg";
 const char *const image_path_table = "Images/extraCards/pricingTable.jpeg";
-const char *const info_game_path = "images/acercaDe.jpg";
+const char *const info_game_path = "Images/acercaDe.jpg";
 unsigned int catan_title_display_width = 1280, catan_title_display_height = 720;
 
 CImg<unsigned char> image(image_path);
-CImg<unsigned char> pricingTable(image_path_table);
 CImg<unsigned char> image2(image_path);
+CImg<unsigned char> image3(image_info);
+
+CImg<unsigned char> pricingTable(image_path_table);
 CImg<unsigned char> info_game_display(info_game_path);
 
-const char *const image_info = "images/acercaDe.jpg";
-CImg<unsigned char> image3(image_info);
+CImgDisplay titleDisplay(catan_title_display_width, catan_title_display_height,
+                         catan_window_title, 3, false, false);
+
+CImgDisplay gameDisplay(catan_title_display_width, catan_title_display_height,
+                        catan_window_title, 3, false, true);
+
+CImgDisplay aboutDisplay(catan_title_display_width, catan_title_display_height,
+                         catan_window_title, 3, false, true);
 
 Label *catan = new Label("Catan", 490, 50, 128);
 Label *playLabel = new Label("Jugar", 515, 250, 128);
@@ -27,6 +37,17 @@ Label *princingTable = new Label("Pricing Table", 0, 1, 20);
 Label *materialCard = new Label("Material Card", 0, 215, 20);
 Label *developCard = new Label("Develop Card", 0, 320, 20);
 Label *returnWindow = new Label("<--", 0, 10, 20);
+
+bool Window::isLeftClicked(CImgDisplay &display) {
+  while (!display.is_closed()) {
+    if (display.button()) {
+      return true;
+      std::cout << "Entra" << std::endl;
+    }
+    display.wait();
+  }
+  return false;
+}
 
 void Window::printTitleScreenLabels() {
   image.draw_text(catan->get_x_position(), catan->get_y_position(),
@@ -40,87 +61,80 @@ void Window::printTitleScreenLabels() {
   image.draw_text(about->get_x_position(), about->get_y_position(),
                   about->mod_get_text(), ORANGE, transparent, opacity,
                   about->get_font_size());
+}
 
+void Window::goTitleDisplay() {
+  FlowController::getInstance().close();
+  FlowController::getInstance().goView(titleDisplay, image);
+}
+
+bool Window::isPlayClicked() {
+  if (isLeftClicked(titleDisplay) &&
+      clickAboutLabel(titleDisplay.mouse_x(), titleDisplay.mouse_y(),
+                      playLabel)) {
+    return true;
+  }
+  return false;
+}
+
+void Window::goPlayView() {
+  FlowController::getInstance().close();
+  loadPlayDisplay();
+  FlowController::getInstance().goView(gameDisplay, image2);
+}
+
+void Window::loadPlayDisplay() {
+  image2.draw_image(0, 20, pricingTable);
+  image2.draw_text(princingTable->get_x_position(),
+                   princingTable->get_y_position(),
+                   princingTable->mod_get_text(), ORANGE, transparent, opacity,
+                   princingTable->get_font_size());
+  image2.draw_text(materialCard->get_x_position(),
+                   materialCard->get_y_position(), materialCard->mod_get_text(),
+                   ORANGE, transparent, opacity, materialCard->get_font_size());
+  printBoard();
+  printMaterialCard();
+}
+
+bool Window::isAboutClicked() {
+  if (isLeftClicked(titleDisplay) &&
+      clickAboutLabel(titleDisplay.mouse_x(), titleDisplay.mouse_y(), about)) {
+    return true;
+  }
+  return false;
+}
+
+void Window::goAboutView() {
+  FlowController::getInstance().close();
+  loadAboutDisplay();
+  FlowController::getInstance().goView(aboutDisplay, image3);
+}
+
+void Window::loadAboutDisplay() {
   image3.draw_text(returnWindow->get_x_position(),
                    returnWindow->get_y_position(), returnWindow->mod_get_text(),
                    ORANGE, transparent, opacity, returnWindow->get_font_size());
 }
 
-void Window::showDisplay() {
-
-  CImgDisplay title_display(catan_title_display_width,
-                            catan_title_display_height, catan_window_title, 3,
-                            false, false);
-  while (!title_display.is_closed()) {
-    title_display.display(image);
-    title_display.wait();
-    if (title_display.button()) {
-      if (clickAboutLabel(title_display.mouse_x(), title_display.mouse_y(),
-                          playLabel)) {
-        std::cout << "1" << std::endl;
-        showGameDisplay();
-      } else if (clickAboutLabel(title_display.mouse_x(),
-                                 title_display.mouse_y(), about)) {
-        showInfoGame();
-      }
-    }
-  }
-}
-
 bool Window::clickAboutLabel(double x, double y, Label *label) {
   if (x > label->get_x_position() && x < label->get_x_position() + 245 &&
-      y > label->get_y_position() && y < label->get_y_position() + 245) {
+      y > label->get_y_position() && y < label->get_y_position() + 245)
     return true;
-  }
   return false;
+}
+
+void Window::goBackTitle() {
+  if (isLeftClicked(aboutDisplay) &&
+      clickAboutLabel(aboutDisplay.mouse_x(), aboutDisplay.mouse_y(),
+                      returnWindow)) {
+    goTitleDisplay();
+  }
 }
 
 void Window::printHexagon(std::string url, int x, int y) {
   const char *const img = url.c_str();
   CImg<unsigned char> imageHexa(img);
   image2.draw_image(x, y, imageHexa);
-}
-
-void Window::showInfoGame() {
-  CImgDisplay info_display(catan_title_display_width,
-                           catan_title_display_height, catan_window_title, 3,
-                           false, false);
-
-  while (!info_display.is_closed()) {
-
-    info_display.wait();
-    info_display.display(image3);
-    if (info_display.button()) {
-      std::cout << "1" << std::endl;
-      if (clickAboutLabel(info_display.mouse_x(), info_display.mouse_y(),
-                          returnWindow)) {
-        info_display.close();
-        showDisplay();
-      }
-    }
-  }
-}
-
-void Window::showGameDisplay() {
-  CImgDisplay game_title_display(catan_title_display_width,
-                                 catan_title_display_height, catan_window_title,
-                                 3, false, false);
-  while (!game_title_display.is_closed()) {
-    game_title_display.wait();
-    game_title_display.display(image2);
-    image2.draw_image(0, 20, pricingTable);
-    image2.draw_text(princingTable->get_x_position(),
-                     princingTable->get_y_position(),
-                     princingTable->mod_get_text(), ORANGE, transparent,
-                     opacity, princingTable->get_font_size());
-    image2.draw_text(materialCard->get_x_position(),
-                     materialCard->get_y_position(),
-                     materialCard->mod_get_text(), ORANGE, transparent, opacity,
-                     materialCard->get_font_size());
-    printBoard();
-    printMaterialCard();
-    image2.draw_image(0, 20, pricingTable);
-  }
 }
 
 void Window::printBoard() {
@@ -202,7 +216,6 @@ void Window::printTown(std::string url, int x, int y) {
 
     Window::getInstance().printHexagon(tempUrl, cycle_cord_x, top_height);
     temp = temp->getNext();
-
     Window::getInstance().printHexagon(tempUrl, cycle_cord_x, bot_height);
     temp = temp->getNext();
   }

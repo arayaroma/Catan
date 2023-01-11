@@ -1,11 +1,11 @@
 #pragma once
 #include "CImg.h"
 #include "DataStructures.hpp"
+#include "FlowController.hpp"
 #include "Label.hpp"
 #include "Land.hpp"
 #include "LinkedList.hpp"
 #include <iostream>
-
 
 using namespace cimg_library;
 
@@ -36,21 +36,32 @@ public:
     return instance;
   }
 
-  void printTitleScreenLabels();
-  void showDisplay();
-  void showGameDisplay();
-  void printHexagon(std::string, int x, int y);
+  bool isLeftClicked(CImgDisplay &);
+
+  // Re hacer codigo -> se vuelve repetitivo
+  bool isPlayClicked();
+  void goPlayView();
+  void loadPlayDisplay();
+
+  bool isAboutClicked();
+  void goAboutView();
+  void loadAboutDisplay();
+
+  void goTitleDisplay();
+  void goBackTitle();
+
+  void printTowns();
   void printTown(std::string, int x, int y);
-  void Image(std::string);
-  void mouseFunction();
+  void printHexagon(std::string, int x, int y);
+  void printTitleScreenLabels();
+  void printMaterialCard();
   void printBoard();
 
-  bool clickLabel(double, double);
-  void printMaterialCard();
-  bool clickAboutLabel(double, double, Label *);
-  void showInfoGame();
-  void printTowns();
+  void Image(std::string);
+  void mouseFunction();
 
+  bool clickAboutLabel(double, double, Label *);
+  bool clickLabel(double, double);
 
 private:
   Window() {}

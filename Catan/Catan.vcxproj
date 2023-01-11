@@ -135,6 +135,7 @@
     <ClCompile Include="DataStructures.cpp" />
     <ClCompile Include="Dice.cpp" />
     <ClCompile Include="Figure.cpp" />
+    <ClCompile Include="FlowController.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Knight.cpp" />
     <ClCompile Include="Log.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="Dice.hpp" />
     <ClInclude Include="Figure.hpp" />
     <ClInclude Include="Figures.hpp" />
+    <ClInclude Include="FlowController.hpp" />
     <ClInclude Include="Game.hpp" />
     <ClInclude Include="Knight.hpp" />
     <ClInclude Include="Label.hpp" />
