@@ -1,32 +1,4 @@
-﻿  Application.cpp
-  Button.cpp
-  Card.cpp
-  Computer.cpp
-  DataStructures.cpp
-  Dice.cpp
-  Figure.cpp
-  FlowController.cpp
-  Game.cpp
-  Knight.cpp
-  Log.cpp
-  main.cpp
-  City.cpp
-  Clay.cpp
-  Component.cpp
-  Label.cpp
-  Land.cpp
-  Match.cpp
-  Mineral.cpp
-  Player.cpp
-  Generating Code...
-  Compiling...
-  Progress.cpp
-  Road.cpp
-  Town.cpp
-  VictoryPoints.cpp
-  Wheat.cpp
+﻿  main.cpp
   Window.cpp
-  Wood.cpp
-  Wool.cpp
   Generating Code...
   Catan.vcxproj -> C:\Users\DanyG\Desktop\repos\Catan\x64\Debug\Catan.exe

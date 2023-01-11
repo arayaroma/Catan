@@ -4,7 +4,6 @@ extern CImg<unsigned char> image;
 
 void FlowController::initializeFlow() {
   Window::getInstance().printTitleScreenLabels();
-  this->currentDisplay = titleDisplay;
 
   goView(titleDisplay, image);
   constantFlow();
@@ -24,8 +23,8 @@ void FlowController::goView(CImgDisplay &display, CImg<unsigned char> &image) {
   this->currentDisplay = display;
   display.show();
   while (!display.is_closed()) {
-    display.wait();
     display.display(image);
+    display.wait();
   }
 }
 

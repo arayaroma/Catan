@@ -39,12 +39,9 @@ Label *developCard = new Label("Develop Card", 0, 320, 20);
 Label *returnWindow = new Label("<--", 0, 10, 20);
 
 bool Window::isLeftClicked(CImgDisplay &display) {
-  while (!display.is_closed()) {
-    if (display.button()) {
-      return true;
-      std::cout << "Entra" << std::endl;
-    }
-    display.wait();
+  if (display.button()) {
+    return true;
+    std::cout << "Entra" << std::endl;
   }
   return false;
 }
