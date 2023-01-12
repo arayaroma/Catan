@@ -1,1 +1,32 @@
-﻿
+﻿  Application.cpp
+  Button.cpp
+  Card.cpp
+  Computer.cpp
+  DataStructures.cpp
+  Dice.cpp
+  Figure.cpp
+  Game.cpp
+  Knight.cpp
+  Log.cpp
+  main.cpp
+  City.cpp
+  Clay.cpp
+  Component.cpp
+  Label.cpp
+  Land.cpp
+  Match.cpp
+  Mineral.cpp
+  Player.cpp
+  Progress.cpp
+  Generando código...
+  Compilando...
+  Road.cpp
+  Town.cpp
+  Vertex.cpp
+  VictoryPoints.cpp
+  Wheat.cpp
+  Window.cpp
+  Wood.cpp
+  Wool.cpp
+  Generando código...
+  Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe

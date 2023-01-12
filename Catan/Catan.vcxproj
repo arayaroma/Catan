@@ -134,8 +134,10 @@
     <ClCompile Include="Computer.cpp" />
     <ClCompile Include="DataStructures.cpp" />
     <ClCompile Include="Dice.cpp" />
+    <ClCompile Include="Edge.cpp" />
     <ClCompile Include="Figure.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Graph.cpp" />
     <ClCompile Include="Knight.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
@@ -150,6 +152,7 @@
     <ClCompile Include="Progress.cpp" />
     <ClCompile Include="Road.cpp" />
     <ClCompile Include="Town.cpp" />
+    <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="VictoryPoints.cpp" />
     <ClCompile Include="Wheat.cpp" />
     <ClCompile Include="Window.cpp" />
@@ -167,9 +170,11 @@
     <ClInclude Include="Computer.hpp" />
     <ClInclude Include="DataStructures.hpp" />
     <ClInclude Include="Dice.hpp" />
+    <ClInclude Include="Edge.h" />
     <ClInclude Include="Figure.hpp" />
     <ClInclude Include="Figures.hpp" />
     <ClInclude Include="Game.hpp" />
+    <ClInclude Include="Graph.h" />
     <ClInclude Include="Knight.hpp" />
     <ClInclude Include="Label.hpp" />
     <ClInclude Include="Land.hpp" />
@@ -185,6 +190,7 @@
     <ClInclude Include="Road.hpp" />
     <ClInclude Include="Stack.hpp" />
     <ClInclude Include="Town.hpp" />
+    <ClInclude Include="Vertex.h" />
     <ClInclude Include="VictoryPoints.hpp" />
     <ClInclude Include="Wheat.hpp" />
     <ClInclude Include="Window.hpp" />
