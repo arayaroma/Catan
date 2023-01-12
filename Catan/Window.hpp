@@ -39,6 +39,8 @@ public:
   bool isLeftClicked(CImgDisplay &);
 
   // Re hacer codigo -> se vuelve repetitivo
+  bool isBackClicked();
+
   bool isPlayClicked();
   void goPlayView();
   void loadPlayDisplay();
@@ -47,7 +49,6 @@ public:
   void goAboutView();
   void loadAboutDisplay();
 
-  void goTitleDisplay();
   void goBackTitle();
 
   void printTowns();

@@ -22,7 +22,7 @@ CImg<unsigned char> pricingTable(image_path_table);
 CImg<unsigned char> info_game_display(info_game_path);
 
 CImgDisplay titleDisplay(catan_title_display_width, catan_title_display_height,
-                         catan_window_title, 3, false, false);
+                         catan_window_title, 3, false, true);
 
 CImgDisplay gameDisplay(catan_title_display_width, catan_title_display_height,
                         catan_window_title, 3, false, true);
@@ -39,9 +39,12 @@ Label *developCard = new Label("Develop Card", 0, 320, 20);
 Label *returnWindow = new Label("<--", 0, 10, 20);
 
 bool Window::isLeftClicked(CImgDisplay &display) {
-  if (display.button()) {
-    return true;
-    std::cout << "Entra" << std::endl;
+  while (!display.is_closed()) {
+    if (display.button() & 1) {
+      std::cout << "Entra" << std::endl;
+      display.wait();
+      return true;
+    }
   }
   return false;
 }
@@ -60,9 +63,13 @@ void Window::printTitleScreenLabels() {
                   about->get_font_size());
 }
 
-void Window::goTitleDisplay() {
-  FlowController::getInstance().close();
-  FlowController::getInstance().goView(titleDisplay, image);
+bool Window::isBackClicked() {
+  if (isLeftClicked(aboutDisplay) &&
+      clickAboutLabel(aboutDisplay.mouse_x(), aboutDisplay.mouse_y(),
+                      returnWindow)) {
+    return true;
+  }
+  return false;
 }
 
 bool Window::isPlayClicked() {
@@ -121,11 +128,8 @@ bool Window::clickAboutLabel(double x, double y, Label *label) {
 }
 
 void Window::goBackTitle() {
-  if (isLeftClicked(aboutDisplay) &&
-      clickAboutLabel(aboutDisplay.mouse_x(), aboutDisplay.mouse_y(),
-                      returnWindow)) {
-    goTitleDisplay();
-  }
+  FlowController::getInstance().close();
+  FlowController::getInstance().goView(titleDisplay, image);
 }
 
 void Window::printHexagon(std::string url, int x, int y) {

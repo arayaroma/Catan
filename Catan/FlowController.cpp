@@ -11,21 +11,22 @@ void FlowController::initializeFlow() {
 
 void FlowController::constantFlow() {
   while (true) {
+    // Play Label
     if (Window::getInstance().isPlayClicked())
       Window::getInstance().goPlayView();
-
+    // About Label
     if (Window::getInstance().isAboutClicked())
       Window::getInstance().goAboutView();
+    // Back Label
+    if (Window::getInstance().isBackClicked())
+      Window::getInstance().goBackTitle();
   }
 }
 
 void FlowController::goView(CImgDisplay &display, CImg<unsigned char> &image) {
   this->currentDisplay = display;
   display.show();
-  while (!display.is_closed()) {
-    display.display(image);
-    display.wait();
-  }
+  display.display(image);
 }
 
 void FlowController::close() { this->currentDisplay.close(); }

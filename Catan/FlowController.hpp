@@ -13,6 +13,7 @@ public:
     static FlowController instance;
     return instance;
   }
+
   void initializeFlow();
   void constantFlow();
 
