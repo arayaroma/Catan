@@ -21,14 +21,8 @@ CImg<unsigned char> image3(image_info);
 CImg<unsigned char> pricingTable(image_path_table);
 CImg<unsigned char> info_game_display(info_game_path);
 
-CImgDisplay titleDisplay(catan_title_display_width, catan_title_display_height,
-                         catan_window_title, 3, false, true);
-
-CImgDisplay gameDisplay(catan_title_display_width, catan_title_display_height,
+CImgDisplay mainDisplay(catan_title_display_width, catan_title_display_height,
                         catan_window_title, 3, false, true);
-
-CImgDisplay aboutDisplay(catan_title_display_width, catan_title_display_height,
-                         catan_window_title, 3, false, true);
 
 Label *catan = new Label("Catan", 490, 50, 128);
 Label *playLabel = new Label("Jugar", 515, 250, 128);
@@ -41,7 +35,6 @@ Label *returnWindow = new Label("<--", 0, 10, 20);
 bool Window::isLeftClicked(CImgDisplay &display) {
   while (!display.is_closed()) {
     if (display.button() & 1) {
-      std::cout << "Entra" << std::endl;
       display.wait();
       return true;
     }
@@ -64,8 +57,10 @@ void Window::printTitleScreenLabels() {
 }
 
 bool Window::isBackClicked() {
-  if (isLeftClicked(aboutDisplay) &&
-      clickAboutLabel(aboutDisplay.mouse_x(), aboutDisplay.mouse_y(),
+
+  if (isLeftClicked(FlowController::getInstance().currentDisplay) &&
+      clickAboutLabel(FlowController::getInstance().currentDisplay.mouse_x(),
+                      FlowController::getInstance().currentDisplay.mouse_y(),
                       returnWindow)) {
     return true;
   }
@@ -73,8 +68,8 @@ bool Window::isBackClicked() {
 }
 
 bool Window::isPlayClicked() {
-  if (isLeftClicked(titleDisplay) &&
-      clickAboutLabel(titleDisplay.mouse_x(), titleDisplay.mouse_y(),
+  if (isLeftClicked(mainDisplay) &&
+      clickAboutLabel(mainDisplay.mouse_x(), mainDisplay.mouse_y(),
                       playLabel)) {
     return true;
   }
@@ -82,9 +77,9 @@ bool Window::isPlayClicked() {
 }
 
 void Window::goPlayView() {
-  FlowController::getInstance().close();
   loadPlayDisplay();
-  FlowController::getInstance().goView(gameDisplay, image2);
+  FlowController::getInstance().isMainDisplay = false;
+  FlowController::getInstance().goView(image2);
 }
 
 void Window::loadPlayDisplay() {
@@ -101,17 +96,17 @@ void Window::loadPlayDisplay() {
 }
 
 bool Window::isAboutClicked() {
-  if (isLeftClicked(titleDisplay) &&
-      clickAboutLabel(titleDisplay.mouse_x(), titleDisplay.mouse_y(), about)) {
+  if (isLeftClicked(mainDisplay) &&
+      clickAboutLabel(mainDisplay.mouse_x(), mainDisplay.mouse_y(), about)) {
     return true;
   }
   return false;
 }
 
 void Window::goAboutView() {
-  FlowController::getInstance().close();
   loadAboutDisplay();
-  FlowController::getInstance().goView(aboutDisplay, image3);
+  FlowController::getInstance().isMainDisplay = false;
+  FlowController::getInstance().goView(image3);
 }
 
 void Window::loadAboutDisplay() {
@@ -128,8 +123,8 @@ bool Window::clickAboutLabel(double x, double y, Label *label) {
 }
 
 void Window::goBackTitle() {
-  FlowController::getInstance().close();
-  FlowController::getInstance().goView(titleDisplay, image);
+  FlowController::getInstance().isMainDisplay = true;
+  FlowController::getInstance().goView(image);
 }
 
 void Window::printHexagon(std::string url, int x, int y) {

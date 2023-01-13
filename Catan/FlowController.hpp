@@ -3,7 +3,7 @@
 #include "Window.hpp"
 using namespace cimg_library;
 
-extern CImgDisplay titleDisplay;
+extern CImgDisplay mainDisplay;
 
 class FlowController {
 public:
@@ -17,11 +17,13 @@ public:
   void initializeFlow();
   void constantFlow();
 
-  void goView(CImgDisplay &, CImg<unsigned char> &);
+  void goView(CImg<unsigned char> &);
   void close();
 
 public:
-  CImgDisplay &currentDisplay = titleDisplay;
+  CImgDisplay &currentDisplay = mainDisplay;
+  CImg<unsigned char> currentImage;
+  bool isMainDisplay = true;
 
 private:
   FlowController() {}

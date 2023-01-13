@@ -4,18 +4,17 @@ extern CImg<unsigned char> image;
 
 void FlowController::initializeFlow() {
   Window::getInstance().printTitleScreenLabels();
-
-  goView(titleDisplay, image);
+  goView(image);
   constantFlow();
 }
 
 void FlowController::constantFlow() {
   while (true) {
     // Play Label
-    if (Window::getInstance().isPlayClicked())
+    if (Window::getInstance().isPlayClicked() && isMainDisplay == true)
       Window::getInstance().goPlayView();
     // About Label
-    if (Window::getInstance().isAboutClicked())
+    if (Window::getInstance().isAboutClicked() && isMainDisplay == true)
       Window::getInstance().goAboutView();
     // Back Label
     if (Window::getInstance().isBackClicked())
@@ -23,10 +22,10 @@ void FlowController::constantFlow() {
   }
 }
 
-void FlowController::goView(CImgDisplay &display, CImg<unsigned char> &image) {
-  this->currentDisplay = display;
-  display.show();
-  display.display(image);
+void FlowController::goView(CImg<unsigned char> &image) {
+  this->currentImage = image;
+  this->currentDisplay.show();
+  this->currentDisplay.display(image);
 }
 
 void FlowController::close() { this->currentDisplay.close(); }
