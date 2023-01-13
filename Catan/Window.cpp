@@ -1,10 +1,5 @@
 #include "Window.hpp"
 
-const unsigned char WHITE[] = {255, 255, 255};
-const unsigned char BLUEGREEN[] = {0, 170, 255};
-const unsigned char ORANGE[] = {255, 140, 0};
-const unsigned char BLACK[] = {0, 0, 0};
-const int transparent = 0;
 const float opacity = 1;
 
 const char *catan_window_title = "Catan - Title Screen";
@@ -24,13 +19,20 @@ CImg<unsigned char> info_game_display(info_game_path);
 CImgDisplay mainDisplay(catan_title_display_width, catan_title_display_height,
                         catan_window_title, 3, false, true);
 
-Label *catan = new Label("Catan", 490, 50, 128);
-Label *playLabel = new Label("Jugar", 515, 250, 128);
-Label *about = new Label("Acerca de", 400, 450, 128);
-Label *princingTable = new Label("Pricing Table", 0, 1, 20);
-Label *materialCard = new Label("Material Card", 0, 215, 20);
-Label *developCard = new Label("Develop Card", 0, 320, 20);
-Label *returnWindow = new Label("<--", 0, 10, 20);
+Label *catan = new Label(image, "Catan", 490, 50, 128, ORANGE, transparent);
+Label *playLabel =
+    new Label(image, "Jugar", 515, 250, 128, ORANGE, transparent);
+Label *about =
+    new Label(image, "Acerca de", 400, 450, 128, ORANGE, transparent);
+Label *princingTable =
+    new Label(image2, "Pricing Table", 0, 1, 20, ORANGE, transparent);
+Label *materialCard =
+    new Label(image2, "Material Card", 0, 215, 20, ORANGE, transparent);
+Label *developCard =
+    new Label(image2, "Develop Card", 0, 350, 20, ORANGE, transparent);
+Label *returnWindow = new Label(image3, "<--", 0, 10, 20, ORANGE, transparent);
+
+Button *prueba = new Button(image, "Button", 200, 200, 32, GRAY);
 
 bool Window::isLeftClicked(CImgDisplay &display) {
   while (!display.is_closed()) {
@@ -40,20 +42,6 @@ bool Window::isLeftClicked(CImgDisplay &display) {
     }
   }
   return false;
-}
-
-void Window::printTitleScreenLabels() {
-  image.draw_text(catan->get_x_position(), catan->get_y_position(),
-                  catan->mod_get_text(), ORANGE, transparent, opacity,
-                  catan->get_font_size());
-
-  image.draw_text(playLabel->get_x_position(), playLabel->get_y_position(),
-                  playLabel->mod_get_text(), ORANGE, transparent, opacity,
-                  playLabel->get_font_size());
-
-  image.draw_text(about->get_x_position(), about->get_y_position(),
-                  about->mod_get_text(), ORANGE, transparent, opacity,
-                  about->get_font_size());
 }
 
 bool Window::isBackClicked() {
@@ -191,7 +179,7 @@ void Window::printMaterialCard() {
   image2.draw_image(140, 240, image_wheat);
   image2.draw_image(210, 240, image_wood);
   image2.draw_image(280, 240, image_wool);
-  image2.draw_image(0, 365, image_develop);
+  image2.draw_image(0, 370, image_develop);
 }
 void Window::Image(std::string url) {}
 

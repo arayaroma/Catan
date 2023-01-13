@@ -1,4 +1,5 @@
 #pragma once
+#include "Button.hpp"
 #include "CImg.h"
 #include "DataStructures.hpp"
 #include "FlowController.hpp"
@@ -54,7 +55,6 @@ public:
   void printTowns();
   void printTown(std::string, int x, int y);
   void printHexagon(std::string, int x, int y);
-  void printTitleScreenLabels();
   void printMaterialCard();
   void printBoard();
 

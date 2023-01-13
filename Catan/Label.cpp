@@ -7,12 +7,20 @@ Label::Label() {
   this->font_size = 12;
 }
 
-Label::Label(const char *text, int x_position, int y_position,
-             unsigned int font_size) {
+Label::Label(CImg<unsigned char> &image, const char *text, int x_position,
+             int y_position, unsigned int font_size,
+             const unsigned char *const foreground_color,
+             const int background_color) {
   this->text = text;
   this->x_position = x_position;
   this->y_position = y_position;
   this->font_size = font_size;
+  this->foreground_color = foreground_color;
+  this->background_color = background_color;
+
+  image.draw_text(this->get_x_position(), this->get_y_position(),
+                  this->mod_get_text(), foreground_color, background_color, 1,
+                  this->get_font_size());
 }
 
 void Label::set_text(const char *text) { this->text = text; }

@@ -1,14 +1,19 @@
 #pragma once
+#include "CImg.h"
+using namespace cimg_library;
 
 class Label {
-private:
+protected:
   const char *text;
   int x_position, y_position;
   unsigned int font_size;
+  const unsigned char *foreground_color;
+  int background_color;
 
 public:
   Label();
-  Label(const char *, int, int, unsigned int);
+  Label(CImg<unsigned char> &, const char *, int, int, unsigned int,
+        const unsigned char*, const int);
 
   void set_text(const char *);
   const char *get_text() const;

@@ -164,6 +164,7 @@
     <ClInclude Include="CImg.h" />
     <ClInclude Include="City.hpp" />
     <ClInclude Include="Clay.hpp" />
+    <ClInclude Include="Colors.hpp" />
     <ClInclude Include="Component.hpp" />
     <ClInclude Include="Computer.hpp" />
     <ClInclude Include="DataStructures.hpp" />

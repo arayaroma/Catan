@@ -3,14 +3,15 @@
 extern CImg<unsigned char> image;
 
 void FlowController::initializeFlow() {
-  Window::getInstance().printTitleScreenLabels();
   goView(image);
   constantFlow();
 }
 
 void FlowController::constantFlow() {
+  Button buttonInstance;
   while (true) {
     // Play Label
+    buttonInstance.changeState();
     if (Window::getInstance().isPlayClicked() && isMainDisplay == true)
       Window::getInstance().goPlayView();
     // About Label
