@@ -11,7 +11,7 @@ public:
 	bool isEmpty();
 	Vertex* getVertex(int);
 	void insertVertex(Vertex*);
-	void insertEdge(Vertex* originVertex, Vertex* destinyVertex);
-
+	void insertEdge(int origin, int destiny);
+	void showListAdjacency();
 };
 

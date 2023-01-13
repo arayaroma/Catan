@@ -175,6 +175,7 @@
     <ClInclude Include="Figures.hpp" />
     <ClInclude Include="Game.hpp" />
     <ClInclude Include="Graph.h" />
+    <ClInclude Include="StructureGraph.h" />
     <ClInclude Include="Knight.hpp" />
     <ClInclude Include="Label.hpp" />
     <ClInclude Include="Land.hpp" />

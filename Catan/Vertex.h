@@ -1,9 +1,11 @@
 #pragma once
 #include <iostream>
+#include "Town.hpp"
 class Edge;
 class Vertex
 {
 private:
+	Town* town;
 	int idVertex;
 	std::string ownerTown;
 	int idHexagon;
@@ -12,6 +14,6 @@ private:
 	friend class Graph;
 public:
 	Vertex();
-	Vertex(int,std::string,int);
+	Vertex(int,std::string,int, Town*);
 };
 

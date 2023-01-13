@@ -3,6 +3,5 @@
 
 Edge::Edge(Vertex* destinyVertex) {
 	this->destinyVertex = destinyVertex;
-	destinyVertex = NULL;
 	next = NULL;
 }

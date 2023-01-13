@@ -6,7 +6,7 @@
 #include "ProgressCards.hpp"
 #include "Stack.hpp"
 #include <unordered_map>
-
+#include "StructureGraph.h"
 class DataStructures {
 public:
   std::unordered_map<const char *, const char *> um_Paths;
@@ -25,6 +25,8 @@ public:
   Stack<VictoryPoints> *victoryPointCards = new Stack<VictoryPoints>();
 
   Card *specialCard[2];
+
+  Graph graph;
 
 public:
   DataStructures();
@@ -49,4 +51,6 @@ public:
   void makeFigures();
   void makeConstructionCostsCard();
   void makeSpecialCard();
+
+  void makeGraph();
 };
