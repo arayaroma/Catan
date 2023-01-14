@@ -2,10 +2,13 @@
 #include "CImg.h"
 #include "Colors.hpp"
 #include "Label.hpp"
-
+#include <iostream>
 using namespace cimg_library;
 
+#define log(x) std::cout << x << std::endl;
+
 extern CImgDisplay mainDisplay;
+
 class Button : public Label {
 private:
   const int offset_x = 100;
@@ -15,6 +18,7 @@ private:
 
   const unsigned char *primaryColor;
   const unsigned char *secondaryColor;
+
   CImg<unsigned char> image;
 
   int mouse_x = mainDisplay.mouse_x(), mouse_y = mainDisplay.mouse_y();
@@ -25,18 +29,24 @@ private:
 
   bool _isPressed;
 
-public:
-  Button();
-  Button(CImg<unsigned char> &, const char *, int, int, unsigned int,
-         const unsigned char *);
-
-  void setPressed(bool);
-  bool isPressed() const;
-
+private:
   bool isMouseOver();
   bool isMouseInTop();
   bool isMouseInBot();
 
   void changeState();
   void changeColor(const unsigned char *);
+
+  void resizeRectangle();
+  int length(const char *);
+  int getOffsetX();
+  int getOffsetY();
+
+public:
+  Button();
+  Button(CImg<unsigned char>&, const char *, int, int, unsigned int,
+         const unsigned char *);
+
+  void setPressed(bool);
+  bool isPressed() const;
 };

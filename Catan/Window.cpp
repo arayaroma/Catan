@@ -1,7 +1,5 @@
 #include "Window.hpp"
 
-const float opacity = 1;
-
 const char *catan_window_title = "Catan - Title Screen";
 const char *const image_info = "Images/acercaDe.jpg";
 const char *const image_path = "Images/catan_1280x720.jpg";
@@ -32,7 +30,7 @@ Label *developCard =
     new Label(image2, "Develop Card", 0, 350, 20, ORANGE, transparent);
 Label *returnWindow = new Label(image3, "<--", 0, 10, 20, ORANGE, transparent);
 
-Button *prueba = new Button(image, "Button", 200, 200, 32, GRAY);
+Button *prueba = new Button(image, "Cartas Desarrollo", 200, 200, 32, GRAY);
 
 bool Window::isLeftClicked(CImgDisplay &display) {
   while (!display.is_closed()) {

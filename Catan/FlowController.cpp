@@ -8,10 +8,13 @@ void FlowController::initializeFlow() {
 }
 
 void FlowController::constantFlow() {
-  Button buttonInstance;
+  
+  //Button buttonInstance;
   while (true) {
+    
+    //buttonInstance.changeState();
+    
     // Play Label
-    buttonInstance.changeState();
     if (Window::getInstance().isPlayClicked() && isMainDisplay == true)
       Window::getInstance().goPlayView();
     // About Label

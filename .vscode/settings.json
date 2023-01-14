@@ -50,6 +50,7 @@
         "map": "cpp",
         "unordered_map": "cpp",
         "vector": "cpp",
-        "xtree": "cpp"
+        "xtree": "cpp",
+        "span": "cpp"
     }
 }

@@ -1,4 +1,11 @@
-﻿  Button.cpp
+﻿  Application.cpp
+  Button.cpp
+C:\Users\DanyG\Desktop\repos\Catan\Catan\Button.cpp(34,14): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
   FlowController.cpp
+  Game.cpp
+  Match.cpp
+  Player.cpp
+  Window.cpp
+  main.cpp
   Generating Code...
   Catan.vcxproj -> C:\Users\DanyG\Desktop\repos\Catan\x64\Debug\Catan.exe

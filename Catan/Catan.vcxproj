@@ -138,7 +138,6 @@
     <ClCompile Include="FlowController.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Knight.cpp" />
-    <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="City.cpp" />
     <ClCompile Include="Clay.cpp" />
@@ -177,7 +176,6 @@
     <ClInclude Include="Label.hpp" />
     <ClInclude Include="Land.hpp" />
     <ClInclude Include="LinkedList.hpp" />
-    <ClInclude Include="Log.hpp" />
     <ClInclude Include="Match.hpp" />
     <ClInclude Include="Materials.hpp" />
     <ClInclude Include="Mineral.hpp" />
