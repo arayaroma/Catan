@@ -4,8 +4,6 @@ Application &Application::run() {
 
   DataStructures program;
   program.loadLands();
-  program.makeGraph();
-
   Window::getInstance().printTitleScreenLabels();
   Window::getInstance().showDisplay();
  // 
