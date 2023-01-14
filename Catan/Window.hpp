@@ -35,17 +35,14 @@ public:
 
   void goBackTitle();
 
-  void printTowns();
-  void printTown(std::string, int x, int y);
   void printHexagon(std::string, int x, int y);
   void printMaterialCard();
+  void printImageTown(std::string url, int x, int y);
   void printBoard();
-
+  void printTown();
   void Image(std::string);
-  void mouseFunction();
 
   bool clickAboutLabel(double, double, Label *);
-  bool clickLabel(double, double);
 
 private:
   Window() {}

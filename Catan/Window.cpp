@@ -119,6 +119,12 @@ void Window::printHexagon(std::string url, int x, int y) {
   CImg<unsigned char> imageHexa(img);
   image2.draw_image(x, y, imageHexa);
 }
+void Window::printImageTown(std::string url, int x, int y) {
+    const char* const img = url.c_str();
+    CImg<unsigned char> imageTown(img);
+    image2.draw_image(x, y, imageTown);
+}
+
 
 void Window::printBoard() {
   int top_height = 10; // primera,segunda,tercera
@@ -182,14 +188,14 @@ void Window::printMaterialCard() {
 }
 void Window::Image(std::string url) {}
 
-void Window::printTown(std::string url, int x, int y) {
-  int top_height = 5; // primera,segunda,tercera
-  int bot_height = 5; // ultima y penultima columna de hexagonos
-  int cycle_cord_x = 0;
-
+void Window::printTown() {
+    int top_height = 5; // primera,segunda,tercera
+    int bot_height = 5; // ultima y penultima columna de hexagonos
+    int cycle_cord_x = 0;
+  int i = 1;
   DataStructures dataStructures;
-  dataStructures.loadLands();
-  Node<Land> *temp = dataStructures.lands.head;
+  dataStructures.makeGraph();
+  Vertex* temp = dataStructures.graph.firstVertex;
 
   // Cambiar -> mapa de Rutas
   std::string tempUrl = "Images/puebloX.png";
@@ -197,25 +203,37 @@ void Window::printTown(std::string url, int x, int y) {
   bot_height += 295;
   for (cycle_cord_x = 500; cycle_cord_x <= 650; cycle_cord_x += 75) {
 
-    Window::getInstance().printHexagon(tempUrl, cycle_cord_x, top_height);
-    temp = temp->getNext();
-    Window::getInstance().printHexagon(tempUrl, cycle_cord_x, bot_height);
-    temp = temp->getNext();
+    Window::getInstance().printImageTown(tempUrl, cycle_cord_x, top_height);
+    temp->town->setPosX(cycle_cord_x);
+    temp->town->setPosY(top_height);
+    temp = temp->next;
+
+    Window::getInstance().printImageTown(tempUrl, cycle_cord_x, bot_height);
+    temp->town->setPosX(cycle_cord_x);
+    temp->town->setPosY(top_height);
+    temp = temp->next;
   }
 
   top_height += 75;
   bot_height = 235;
   for (cycle_cord_x = 465; cycle_cord_x <= 690; cycle_cord_x += 75) {
 
-    Window::getInstance().printHexagon(tempUrl, cycle_cord_x, top_height);
-    temp = temp->getNext();
-    Window::getInstance().printHexagon(tempUrl, cycle_cord_x, bot_height);
-    temp = temp->getNext();
+    Window::getInstance().printImageTown(tempUrl, cycle_cord_x, top_height);
+    temp->town->setPosX(cycle_cord_x);
+    temp->town->setPosY(top_height);
+    temp = temp->next;
+    Window::getInstance().printImageTown(tempUrl, cycle_cord_x, bot_height);
+    temp->town->setPosX(cycle_cord_x);
+    temp->town->setPosY(top_height);
+    temp = temp->next;
   }
 
   top_height += 75;
   for (cycle_cord_x = 430; cycle_cord_x <= 655; cycle_cord_x += 75) {
-    Window::getInstance().printHexagon(tempUrl, cycle_cord_x, top_height);
-    temp = temp->getNext();
+    Window::getInstance().printImageTown(tempUrl, cycle_cord_x, top_height);
+    temp->town->setPosX(cycle_cord_x);
+    temp->town->setPosY(top_height);
+    temp = temp->next;
   }
+  dataStructures.printVertexXY();
 }

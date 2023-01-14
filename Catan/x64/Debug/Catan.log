@@ -5,10 +5,13 @@ C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\Button.cpp(34,14):
   Computer.cpp
   DataStructures.cpp
   Dice.cpp
+  Edge.cpp
   Figure.cpp
   FlowController.cpp
   Game.cpp
+  Graph.cpp
   Knight.cpp
+  LinkedList.cpp
   main.cpp
   City.cpp
   Clay.cpp
@@ -16,18 +19,18 @@ C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\Button.cpp(34,14):
   Label.cpp
   Land.cpp
   Match.cpp
+  Generando código...
+  Compilando...
   Mineral.cpp
   Player.cpp
   Progress.cpp
-  Generando código...
-  Compilando...
   Road.cpp
   Town.cpp
+  Vertex.cpp
   VictoryPoints.cpp
   Wheat.cpp
   Window.cpp
   Wood.cpp
   Wool.cpp
   Generando código...
-  LINK : no se encontró C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
   Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe

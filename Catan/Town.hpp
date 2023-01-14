@@ -30,6 +30,9 @@ private:
 public:
   Town();
   Town(std::string, std::string, double, double);
-
+  void setPosX(double posx) { this->posx = posx; }
+  void setPosY(double posy) { this->posy = posy; }
+  double getPosX() { return this->posx; }
+  double getPosY() { return this->posy; }
   int getWorthPoints() const override { return this->worthPoints; }
 };

@@ -112,3 +112,92 @@ void DataStructures::makeFigures() {
     roadFigures.add(Road("Road", "12", 0, 0));
   }
 }
+void DataStructures::makeGraph() {
+    int vertexId=1;
+    int vertexJump = 4;
+    Town* town = new Town("Town", "Images/puebloX.png", 0, 0);
+    /// <summary>
+    /// SE CREAN LOS VERTICES
+    /// </summary>
+    for (vertexId = 1; vertexId < 55; vertexId++) {
+        Vertex* vertex = new Vertex(vertexId, "", town);
+        graph.insertVertex(vertex);
+    }
+    /// <summary>
+    /// SE CREAN CONEXIONES ENTRE VERTICES CON ARISTAS
+    /// </summary>
+    /// 
+    /*
+    for (vertexId = 1; vertexId < 4; vertexId++) {
+        graph.insertEdge(vertexId,vertexJump + vertexId);
+        graph.insertEdge(vertexId, vertexId + vertexJump -1);
+    }
+    for (vertexId = 4; vertexId < 8; vertexId++) {
+        graph.insertEdge(vertexId, vertexId + vertexJump);
+    }
+    for (vertexId = 8; vertexId < 12; vertexId++) {
+        graph.insertEdge(vertexId, vertexId + vertexJump );
+        graph.insertEdge(vertexId, vertexId + vertexJump + 1);
+    }
+    vertexJump++; ////==5
+    for (vertexId = 12; vertexId < 17; vertexId++) {
+        graph.insertEdge(vertexId, vertexId + vertexJump);
+    }
+    for (vertexId = 17; vertexId < 22; vertexId++) {
+        graph.insertEdge(vertexId, vertexId + vertexJump);
+        graph.insertEdge(vertexId, vertexId + vertexJump + 1);
+    }
+    vertexJump++;////==6
+    for (vertexId = 22; vertexId < 28; vertexId++) {
+        graph.insertEdge(vertexId, vertexId + vertexJump);
+    }
+    vertexJump--;////==5
+    for (vertexId = 28; vertexId < 34; vertexId++) {
+        if (vertexId == 28) {
+            graph.insertEdge(vertexId, vertexId + vertexJump+1);
+        }
+        else if (vertexId == 33) {
+            graph.insertEdge(vertexId, vertexId + vertexJump);
+        }
+        else {
+            graph.insertEdge(vertexId, vertexId + vertexJump);
+            graph.insertEdge(vertexId, vertexId + vertexJump - 1);
+        }
+    }
+    for (vertexId = 34; vertexId < 39; vertexId++) {
+        graph.insertEdge(vertexId, vertexId + vertexJump);
+    }
+    for (vertexId = 39; vertexId < 44; vertexId++) {
+        if (vertexId == 39) {
+            graph.insertEdge(vertexId, vertexId + vertexJump);
+        }
+        else if (vertexId == 43) {
+            graph.insertEdge(vertexId, vertexId + vertexJump-1);
+        }
+        else {
+            graph.insertEdge(vertexId, vertexId + vertexJump);
+            graph.insertEdge(vertexId, vertexId + vertexJump - 1);
+        }
+    }
+    for (vertexId = 44; vertexId < 48; vertexId++) {
+        graph.insertEdge(vertexId, vertexId + vertexJump-1);
+    }
+    vertexJump--;////==3
+    for (vertexId = 48; vertexId < 52; vertexId++) {
+        if (vertexId == 48) {
+            graph.insertEdge(vertexId, vertexId + vertexJump );
+        }
+        else if (vertexId == 52) {
+            graph.insertEdge(vertexId, vertexId + vertexJump);
+        }
+        else {
+            graph.insertEdge(vertexId, vertexId + vertexJump);
+            graph.insertEdge(vertexId, vertexId + vertexJump - 1);
+        }
+
+    }*/
+    graph.showListAdjacency();
+}
+void DataStructures::makeVertexOwners() {
+
+}
