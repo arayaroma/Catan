@@ -1,6 +1,6 @@
 ﻿  Application.cpp
   Button.cpp
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\Button.cpp(34,14): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\DanyG\OneDrive\Documentos\repos\Catan\Catan\Button.cpp(34,14): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
   Card.cpp
   Computer.cpp
   DataStructures.cpp
@@ -19,8 +19,8 @@ C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\Button.cpp(34,14):
   Label.cpp
   Land.cpp
   Match.cpp
-  Generando código...
-  Compilando...
+  Generating Code...
+  Compiling...
   Mineral.cpp
   Player.cpp
   Progress.cpp
@@ -32,5 +32,6 @@ C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\Button.cpp(34,14):
   Window.cpp
   Wood.cpp
   Wool.cpp
-  Generando código...
-  Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe
+  Generating Code...
+  LINK : C:\Users\DanyG\OneDrive\Documentos\repos\Catan\x64\Debug\Catan.exe not found or not built by the last incremental link; performing full link
+  Catan.vcxproj -> C:\Users\DanyG\OneDrive\Documentos\repos\Catan\x64\Debug\Catan.exe
