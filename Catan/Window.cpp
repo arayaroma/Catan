@@ -30,7 +30,8 @@ Label *developCard =
     new Label(image2, "Develop Card", 0, 350, 20, ORANGE, transparent);
 Label *returnWindow = new Label(image3, "<--", 0, 10, 20, ORANGE, transparent);
 
-Button *prueba = new Button(image, "Cartas Desarrollo", 200, 200, 32, GRAY);
+// Ya Button esta implementado aquí la prueba.
+// Button *prueba = new Button(image, "Cartas Desarrollo", 200, 200, 32, GRAY);
 
 bool Window::isLeftClicked(CImgDisplay &display) {
   while (!display.is_closed()) {
