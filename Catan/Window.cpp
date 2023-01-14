@@ -2,12 +2,14 @@
 
 const char *catan_window_title = "Catan - Title Screen";
 const char *const image_info = "Images/acercaDe.jpg";
+const char* const image_path_ini = "Images/inicio.jpg";
 const char *const image_path = "Images/catan_1280x720.jpg";
 const char *const image_path_table = "Images/extraCards/pricingTable.jpeg";
 const char *const info_game_path = "Images/acercaDe.jpg";
 unsigned int catan_title_display_width = 1280, catan_title_display_height = 720;
 
-CImg<unsigned char> image(image_path);
+bool click= false; 
+CImg<unsigned char> image(image_path_ini);
 CImg<unsigned char> image2(image_path);
 CImg<unsigned char> image3(image_info);
 
@@ -30,6 +32,8 @@ Label *developCard =
     new Label(image2, "Develop Card", 0, 350, 20, ORANGE, transparent);
 Label *returnWindow = new Label(image3, "<--", 0, 10, 20, ORANGE, transparent);
 
+
+
 // Ya Button esta implementado aquí la prueba.
 // Button *prueba = new Button(image, "Cartas Desarrollo", 200, 200, 32, GRAY);
 
@@ -37,6 +41,7 @@ bool Window::isLeftClicked(CImgDisplay &display) {
   while (!display.is_closed()) {
     if (display.button() & 1) {
       display.wait();
+      click = true;
       return true;
     }
   }
@@ -70,16 +75,43 @@ void Window::goPlayView() {
 }
 
 void Window::loadPlayDisplay() {
-  image2.draw_image(0, 20, pricingTable);
-  image2.draw_text(princingTable->get_x_position(),
-                   princingTable->get_y_position(),
-                   princingTable->mod_get_text(), ORANGE, transparent, opacity,
-                   princingTable->get_font_size());
-  image2.draw_text(materialCard->get_x_position(),
-                   materialCard->get_y_position(), materialCard->mod_get_text(),
-                   ORANGE, transparent, opacity, materialCard->get_font_size());
-  printBoard();
-  printMaterialCard();
+
+    click = false;
+    Button* play = new Button(image2, "Jugar", 1050, 10, 32, GREEN);
+    Button* close = new Button(image2, "Cerrar", 1150, 10, 32, RED);
+ 
+    if (click=true) {
+        Label* playerCards = new Label(image2, "Cartas", 510, 570, 20, WHITE, transparent);
+
+        Label* turns = new Label(image2, "Turnos", 1120, 80, 20, WHITE, transparent);
+
+        cout << "Se presionó";
+        Button* trade = new Button(image2, "Comerciar", 75, 585, 32, SILVER);
+        Button* build = new Button(image2, "Construir", 75, 655, 32, SILVER);
+        Button* turn = new Button(image2, "Turno", 910, 585, 32, CYAN);
+        Button* opcional1 = new Button(image2, "opcional 1", 1100, 585, 32, CYAN);
+        Button* opcional2 = new Button(image2, "opcional 2", 910, 655, 32, CYAN);
+        Button* opcional3 = new Button(image2, "opcional 3", 1100, 655, 32, CYAN);
+
+        image2.draw_image(0, 20, pricingTable);
+        image2.draw_text(princingTable->get_x_position(),
+            princingTable->get_y_position(),
+            princingTable->mod_get_text(), ORANGE, transparent, opacity,
+            princingTable->get_font_size());
+        image2.draw_text(materialCard->get_x_position(),
+            materialCard->get_y_position(), materialCard->mod_get_text(),
+            ORANGE, transparent, opacity, materialCard->get_font_size());
+
+        image2.draw_text(playerCards->get_x_position(),
+            playerCards->get_y_position(), playerCards->mod_get_text(),
+            WHITE, transparent, opacity, playerCards->get_font_size());
+
+        printBoard();
+        printMaterialCard();
+        image2.draw_rectangle(280, 590, 840, 705, BLACK, 0.4);
+        image2.draw_rectangle(1050, 100, 1250, 520, BLACK, 0.4);
+    }
+  
 }
 
 bool Window::isAboutClicked() {
@@ -88,6 +120,10 @@ bool Window::isAboutClicked() {
     return true;
   }
   return false;
+}
+bool Window::isStartClicked() {
+  //acá
+    return true; 
 }
 
 void Window::goAboutView() {

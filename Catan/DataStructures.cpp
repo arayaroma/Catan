@@ -33,18 +33,18 @@ void DataStructures::loadProgressPaths() {
 
 void DataStructures::loadTilesPaths() {
   um_Paths.insert(
-      pair<const char *, const char *>("grassPath", "Images/tiles/Grass.png"));
+      pair<const char *, const char *>("grassPath", "Images/tiles/Grass.jpg"));
   um_Paths.insert(
-      pair<const char *, const char *>("brickPath", "Images/tiles/Brick.png"));
+      pair<const char *, const char *>("brickPath", "Images/tiles/Brick.jpg"));
   um_Paths.insert(
-      pair<const char *, const char *>("fieldPath", "Images/tiles/Field.png"));
+      pair<const char *, const char *>("fieldPath", "Images/tiles/Field.jpg"));
 
   um_Paths.insert(pair<const char *, const char *>(
-      "mountainPath", "Images/tiles/Mountain.png"));
+      "mountainPath", "Images/tiles/Mountain.jpg"));
   um_Paths.insert(pair<const char *, const char *>("forestPath",
-                                                   "Images/tiles/Forest.png"));
+                                                   "Images/tiles/Forest.jpg"));
   um_Paths.insert(pair<const char *, const char *>("dessertPath",
-                                                   "Images/tiles/Dessert.png"));
+                                                   "Images/tiles/Dessert.jpg"));
 }
 
 void DataStructures::loadLands() {

@@ -1,37 +1,4 @@
-﻿  Application.cpp
-  Button.cpp
-C:\Users\DanyG\OneDrive\Documentos\repos\Catan\Catan\Button.cpp(34,14): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  Card.cpp
-  Computer.cpp
-  DataStructures.cpp
-  Dice.cpp
-  Edge.cpp
-  Figure.cpp
-  FlowController.cpp
-  Game.cpp
-  Graph.cpp
-  Knight.cpp
-  LinkedList.cpp
-  main.cpp
-  City.cpp
-  Clay.cpp
-  Component.cpp
-  Label.cpp
-  Land.cpp
-  Match.cpp
-  Generating Code...
-  Compiling...
-  Mineral.cpp
-  Player.cpp
-  Progress.cpp
-  Road.cpp
-  Town.cpp
-  Vertex.cpp
-  VictoryPoints.cpp
-  Wheat.cpp
-  Window.cpp
-  Wood.cpp
-  Wool.cpp
-  Generating Code...
-  LINK : C:\Users\DanyG\OneDrive\Documentos\repos\Catan\x64\Debug\Catan.exe not found or not built by the last incremental link; performing full link
-  Catan.vcxproj -> C:\Users\DanyG\OneDrive\Documentos\repos\Catan\x64\Debug\Catan.exe
+﻿  Window.cpp
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\Window.cpp(111,61): warning C4305: 'argumento': truncamiento de 'double' a 'const float'
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\Window.cpp(112,63): warning C4305: 'argumento': truncamiento de 'double' a 'const float'
+  Catan.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Catan.exe

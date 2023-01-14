@@ -8,6 +8,7 @@
 #include "LinkedList.hpp"
 #include <iostream>
 
+using namespace std; 
 using namespace cimg_library;
 
 class Window {
@@ -28,7 +29,7 @@ public:
   bool isPlayClicked();
   void goPlayView();
   void loadPlayDisplay();
-
+  bool isStartClicked();
   bool isAboutClicked();
   void goAboutView();
   void loadAboutDisplay();
