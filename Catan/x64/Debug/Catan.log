@@ -1,4 +1,2 @@
 ﻿  Window.cpp
-C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\Window.cpp(111,61): warning C4305: 'argumento': truncamiento de 'double' a 'const float'
-C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\Window.cpp(112,63): warning C4305: 'argumento': truncamiento de 'double' a 'const float'
-  Catan.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Catan.exe
+  Catan.vcxproj -> C:\Users\DanyG\Desktop\repos\Catan\x64\Debug\Catan.exe

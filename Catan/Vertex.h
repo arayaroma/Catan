@@ -1,21 +1,22 @@
 #pragma once
-#include <iostream>
 #include "Town.hpp"
+#include <iostream>
+
 #define TAM 3;
 class Edge;
-class Vertex
-{
+class Vertex {
 private:
-	int idVertex;
-	std::string ownerTown;
-	int ownerHexagon[3];
-	Edge* firstEdge;
-	friend class Graph;
-public:
-	Vertex* next;
-	Town* town;
-public:
-	Vertex();
-	Vertex(int,std::string, Town*);
-};
+  friend class Graph;
+  int idVertex;
+  std::string ownerTown;
+  int ownerHexagon[3];
+  Edge *firstEdge;
 
+public:
+  Vertex *next;
+  Town *town;
+
+public:
+  Vertex();
+  Vertex(int, std::string, Town *);
+};

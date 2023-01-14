@@ -1,9 +1,5 @@
 #pragma once
-#include "CImg.h"
 #include "Window.hpp"
-using namespace cimg_library;
-
-extern CImgDisplay mainDisplay;
 
 class FlowController {
 public:
@@ -15,15 +11,12 @@ public:
   }
 
   void initializeFlow();
-  void constantFlow();
+  void goView(sf::RenderWindow);
 
-  void goView(CImg<unsigned char> &);
   void close();
 
 public:
-  CImgDisplay &currentDisplay = mainDisplay;
-  CImg<unsigned char> currentImage;
-  bool isMainDisplay = true;
+    sf::RenderWindow actualWindow;
 
 private:
   FlowController() {}

@@ -1,13 +1,9 @@
 #pragma once
-#include "CImg.h"
 #include "Colors.hpp"
 #include "Label.hpp"
 #include <iostream>
-using namespace cimg_library;
 
 #define log(x) std::cout << x << std::endl;
-
-extern CImgDisplay mainDisplay;
 
 class Button : public Label {
 private:
@@ -19,13 +15,9 @@ private:
   const unsigned char *primaryColor;
   const unsigned char *secondaryColor;
 
-  CImg<unsigned char> image;
-
-  int mouse_x = mainDisplay.mouse_x(), mouse_y = mainDisplay.mouse_y();
-
-  int top_bound_x = get_x_position(), top_bound_y = get_y_position(),
+  /*int top_bound_x = get_x_position(), top_bound_y = get_y_position(),
       bot_bound_x = get_x_position() + offset_x,
-      bot_bound_y = get_y_position() + offset_y;
+      bot_bound_y = get_y_position() + offset_y;*/
 
   bool _isPressed;
 
@@ -44,7 +36,7 @@ private:
 
 public:
   Button();
-  Button(CImg<unsigned char>&, const char *, int, int, unsigned int,
+  Button(const char *, int, int, unsigned int,
          const unsigned char *);
 
   void setPressed(bool);

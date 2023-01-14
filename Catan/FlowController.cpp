@@ -1,35 +1,18 @@
 #include "FlowController.hpp"
 
-extern CImg<unsigned char> image;
-
 void FlowController::initializeFlow() {
-  goView(image);
-  constantFlow();
+	Window::getInstance().goTitleView();
 }
 
-void FlowController::constantFlow() {
-  
-  //Button buttonInstance;
-  while (true) {
-    
-    //buttonInstance.changeState();
-    
-    // Play Label
-    if (Window::getInstance().isPlayClicked() && isMainDisplay == true)
-      Window::getInstance().goPlayView();
-    // About Label
-    if (Window::getInstance().isAboutClicked() && isMainDisplay == true)
-      Window::getInstance().goAboutView();
-    // Back Label
-    if (Window::getInstance().isBackClicked())
-      Window::getInstance().goBackTitle();
-  }
+void FlowController::goView(sf::RenderWindow window) {
+	while (window.isOpen()) {
+		sf::Event event;
+		while (window.pollEvent(event)) {
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+		window.display();
+	}
 }
 
-void FlowController::goView(CImg<unsigned char> &image) {
-  this->currentImage = image;
-  this->currentDisplay.show();
-  this->currentDisplay.display(image);
-}
-
-void FlowController::close() { this->currentDisplay.close(); }
+void FlowController::close() {}

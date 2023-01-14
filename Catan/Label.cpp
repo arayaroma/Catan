@@ -1,45 +1,23 @@
 #include "Label.hpp"
 
-Label::Label() {
-  this->text = "";
-  this->x_position = 0;
-  this->y_position = 0;
-  this->font_size = 12;
-}
+Label::Label() {}
 
-Label::Label(CImg<unsigned char> &image, const char *text, int x_position,
-             int y_position, unsigned int font_size,
-             const unsigned char *const foreground_color,
-             const int background_color) {
+Label::Label(const sf::String &text, const sf::Color &color,
+             const sf::Font &font, sf::Uint32 style, unsigned int font_size,
+             float pos_x, float pos_y) {
   this->text = text;
-  this->x_position = x_position;
-  this->y_position = y_position;
+  this->color = color;
+  this->font = font;
+  this->style = style;
   this->font_size = font_size;
-  this->foreground_color = foreground_color;
-  this->background_color = background_color;
-
-  image.draw_text(this->get_x_position(), this->get_y_position(),
-                  this->mod_get_text(), foreground_color, background_color, 1,
-                  this->get_font_size());
+  this->pos_x = pos_x;
+  this->pos_y = pos_y;
+  this->textInstance.setString(text);
+  this->textInstance.setFillColor(color);
+  this->textInstance.setFont(font);
+  this->textInstance.setStyle(style);
+  this->textInstance.setCharacterSize(font_size);
+  this->textInstance.setPosition(pos_x, pos_y);
 }
 
-void Label::set_text(const char *text) { this->text = text; }
-
-const char *Label::get_text() const { return this->text; }
-
-const char *const Label::mod_get_text() const {
-  const char *const text_c = this->text;
-  return text_c;
-}
-
-void Label::set_x_position(int x_position) { this->x_position = x_position; }
-int Label::get_x_position() const { return x_position; }
-
-void Label::set_y_position(int y_position) { this->y_position = y_position; }
-int Label::get_y_position() const { return this->y_position; }
-
-void Label::set_font_size(unsigned int font_size) {
-  this->font_size = font_size;
-}
-
-unsigned int Label::get_font_size() const { return this->font_size; }
+const sf::Text Label::getTextInstance() const { return this->textInstance; }
