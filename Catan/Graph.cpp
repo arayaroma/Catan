@@ -16,6 +16,13 @@ Vertex* Graph::getVertex(int id) {
 	}
 	return NULL;
 }
+void Graph::vertexXY() {
+	Vertex* auxVertex = firstVertex;
+	while (auxVertex != NULL) {
+		cout<<auxVertex->town->getPosX() << " " << auxVertex->town->getPosY() << endl;
+		auxVertex = auxVertex->next;
+	}
+}
 void  Graph::insertVertex(Vertex* newVertex)
 {
 	if (getVertex(newVertex->idVertex) == NULL)
@@ -38,7 +45,15 @@ void  Graph::insertVertex(Vertex* newVertex)
 	}
 		
 }
-
+void Graph::insertOwnerHexagon(int id, int vecOwners[]) {
+	Vertex* vertex = getVertex(id);
+	if (vertex != NULL)
+	{
+		for (int i = 0; i < 3; i++) {
+			vertex->ownerHexagon[i] = vecOwners[i];
+		}
+	}
+}
 void  Graph::insertEdge(int origin, int destiny)
 {
 	Vertex* originVertex = getVertex(origin);

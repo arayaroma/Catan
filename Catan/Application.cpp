@@ -8,6 +8,6 @@ Application &Application::run() {
 
   Window::getInstance().printTitleScreenLabels();
   Window::getInstance().showDisplay();
-
+ // 
   return this->getInstance();
 }

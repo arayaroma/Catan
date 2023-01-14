@@ -114,19 +114,20 @@ void DataStructures::makeFigures() {
 }
 void DataStructures::makeGraph() {
     int vertexId=1;
-    int hexagonId=1;
     int vertexJump = 4;
     Town* town = new Town("Town", "Images/puebloX.png", 0, 0);
     /// <summary>
     /// SE CREAN LOS VERTICES
     /// </summary>
     for (vertexId = 1; vertexId < 55; vertexId++) {
-        Vertex* vertex = new Vertex(vertexId, "", hexagonId, town);
+        Vertex* vertex = new Vertex(vertexId, "", town);
         graph.insertVertex(vertex);
     }
     /// <summary>
     /// SE CREAN CONEXIONES ENTRE VERTICES CON ARISTAS
     /// </summary>
+    /// 
+    /*
     for (vertexId = 1; vertexId < 4; vertexId++) {
         graph.insertEdge(vertexId,vertexJump + vertexId);
         graph.insertEdge(vertexId, vertexId + vertexJump -1);
@@ -194,6 +195,9 @@ void DataStructures::makeGraph() {
             graph.insertEdge(vertexId, vertexId + vertexJump - 1);
         }
 
-    }
+    }*/
     graph.showListAdjacency();
+}
+void DataStructures::makeVertexOwners() {
+
 }

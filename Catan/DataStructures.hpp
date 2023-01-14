@@ -51,6 +51,7 @@ public:
   void makeFigures();
   void makeConstructionCostsCard();
   void makeSpecialCard();
-
+  void printVertexXY() { graph.vertexXY(); }
   void makeGraph();
+  void makeVertexOwners();
 };

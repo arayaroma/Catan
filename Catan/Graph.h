@@ -4,13 +4,16 @@
 class Graph
 {
 private:
-	Vertex* firstVertex;
 	int size;
+public:
+	Vertex* firstVertex;
 public:
 	Graph();
 	bool isEmpty();
 	Vertex* getVertex(int);
+	void vertexXY();
 	void insertVertex(Vertex*);
+	void insertOwnerHexagon(int, int vecOwners[]);
 	void insertEdge(int origin, int destiny);
 	void showListAdjacency();
 };

@@ -40,7 +40,8 @@ public:
   void showDisplay();
   void showGameDisplay();
   void printHexagon(std::string, int x, int y);
-  void printTown(std::string, int x, int y);
+  void printTown();
+  void printImageTown(std::string url, int x, int y);
   void Image(std::string);
   void mouseFunction();
   void printBoard();

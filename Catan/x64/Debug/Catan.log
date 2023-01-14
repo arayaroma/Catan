@@ -1,4 +1,9 @@
 ﻿  Application.cpp
-  Vertex.cpp
+  DataStructures.cpp
+  Game.cpp
+  Match.cpp
+  Player.cpp
+  Window.cpp
+  main.cpp
   Generando código...
   Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe
