@@ -1,11 +1,11 @@
 #pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
-class Button
-{
+class Button{
 public:
 	Button();
 	Button(std::string, sf::Vector2f, int, sf::Color, sf::Color);
+
 	void setFont(sf::Font&);
 	void setBackColor(sf::Color);
 	void setTextColor(sf::Color);
@@ -15,8 +15,10 @@ public:
 
 
 private:
-	sf::RectangleShape button;
+	sf::RectangleShape rectangle;
 	sf::Text text;
-
+	int mouse_x, mouse_y;
+	float rectangle_x, rectangle_y;
+	float rectangle_width, rectangle_height;
 };
 

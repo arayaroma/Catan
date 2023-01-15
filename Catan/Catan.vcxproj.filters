@@ -242,7 +242,7 @@
     <ClInclude Include="StructureGraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Button.h">
+    <ClInclude Include="Button.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

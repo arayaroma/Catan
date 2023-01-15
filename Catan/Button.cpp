@@ -1,52 +1,51 @@
-#include "Button.h"
+#include "Button.hpp"
 
-Button::Button() {
-}
+Button::Button() {}
 
-Button::Button(std::string t, sf::Vector2f size, int charSize, sf::Color bgColor, sf::Color textColor) {
-	text.setString(t);
-	//text.setColor(textColor);
+Button::Button(std::string message, sf::Vector2f size, int charSize,
+	sf::Color bgColor, sf::Color textColor) {
+
+	text.setString(message);
 	text.setCharacterSize(charSize);
-	button.setSize(size);
-	button.setFillColor(bgColor);
+	rectangle.setSize(size);
+	rectangle.setFillColor(bgColor);
 }
 
-void Button::setFont(sf::Font& font) {
-	text.setFont(font);
-}
+void Button::setFont(sf::Font& font) { text.setFont(font); }
 
-void Button::setBackColor(sf::Color color) {
-	button.setFillColor(color);
-}
+void Button::setBackColor(sf::Color color) { rectangle.setFillColor(color); }
+
 void Button::setTextColor(sf::Color color) {
-	//text.setColor(color);
 }
 
 void Button::setPosition(sf::Vector2f pos) {
 
-	button.setPosition(pos);
-	float xPos = (pos.x + button.getLocalBounds().width / 2) - (text.getLocalBounds().width / 2);
-	float yPos = (pos.y + button.getLocalBounds().height / 2) - (text.getLocalBounds().height / 2);
-	text.setPosition({ xPos,yPos });
+	rectangle.setPosition(pos);
+	float xPos = (pos.x + rectangle.getLocalBounds().width / 2) -
+		(text.getLocalBounds().width / 2);
+	float yPos = (pos.y + rectangle.getLocalBounds().height / 2) -
+		(text.getLocalBounds().height / 2);
+	text.setPosition({ xPos, yPos });
 }
 
 void Button::drawTo(sf::RenderWindow& window) {
-	window.draw(button);
+	window.draw(rectangle);
 	window.draw(text);
 }
 
-bool  Button::isMouseOver(sf::RenderWindow& window) {
+bool Button::isMouseOver(sf::RenderWindow& window) {
 
-	float mouseX = sf::Mouse::getPosition(window).x;
-	float mouseY = sf::Mouse::getPosition(window).y;
+	mouse_x = sf::Mouse::getPosition(window).x;
+	mouse_y = sf::Mouse::getPosition(window).y;
 
-	float btnPosX = button.getPosition().x;
-	float btnPosY = button.getPosition().y;
+	rectangle_x = rectangle.getPosition().x;
+	rectangle_y = rectangle.getPosition().y;
 
-	float btnxPosWidth = button.getPosition().x + button.getLocalBounds().width;
-	float btnyPosHeight = button.getPosition().y + button.getLocalBounds().height;
+	rectangle_width = rectangle.getPosition().x + rectangle.getLocalBounds().width;
+	rectangle_height = rectangle.getPosition().y + rectangle.getLocalBounds().height;
 
-	if (mouseX < btnxPosWidth && mouseX > btnPosX && mouseY < btnyPosHeight && mouseY>btnPosY)
+	if (mouse_x < rectangle_width && mouse_x > rectangle_x && mouse_y < rectangle_height &&
+		mouse_y > rectangle_y)
 		return true;
 	return false;
 }

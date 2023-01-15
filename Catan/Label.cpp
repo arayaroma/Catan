@@ -21,3 +21,6 @@ Label::Label(const sf::String &text, const sf::Color &color,
 }
 
 const sf::Text Label::getTextInstance() const { return this->textInstance; }
+
+int Label::get_pos_x() const { return static_cast<int>(this->pos_x); }
+int Label::get_pos_y() const { return static_cast<int>(this->pos_y); }
