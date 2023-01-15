@@ -1,5 +1,6 @@
 #pragma once
 #include "Window.hpp"
+#include <SFML/Graphics.hpp>
 
 class FlowController {
 public:

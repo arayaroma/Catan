@@ -1,8 +1,11 @@
 #pragma once
+ #include <SFML/Graphics.hpp>
+
 const int transparent = 0;
 const float opacity = 1;
 
-const unsigned char BLACK[] = {0, 0, 0};
+
+
 const unsigned char WHITE[] = {255, 255, 255};
 const unsigned char DARKGRAY[] = {35, 35, 35};
 

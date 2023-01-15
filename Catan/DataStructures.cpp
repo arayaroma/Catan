@@ -116,7 +116,7 @@ void DataStructures::makeGraph() {
     int vertexId=1;
     int vertexJump = 4;
     Town* town = new Town("Town", "Images/puebloX.png", 0, 0);
-    /// <summary>
+    // <summary>
     /// SE CREAN LOS VERTICES
     /// </summary>
     for (vertexId = 1; vertexId < 55; vertexId++) {

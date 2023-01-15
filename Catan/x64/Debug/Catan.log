@@ -1,2 +1,4 @@
 ﻿  Window.cpp
-  Catan.vcxproj -> C:\Users\DanyG\Desktop\repos\Catan\x64\Debug\Catan.exe
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\Window.cpp(161,27): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\Window.cpp(161,25): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Catan.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Catan.exe

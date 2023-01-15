@@ -1,82 +1,61 @@
-#include "Button.hpp"
+#include "Button.h"
 
-Button::Button() {}
+Button::Button() {
 
-Button::Button(const char *text, int x_position,
-               int y_position, unsigned int font_size,
-               const unsigned char *color) {
-  /*this->text = text;
-  this->x_position = x_position;
-  this->y_position = y_position;
-  this->font_size = font_size;
-  this->primaryColor = color;
-  this->image = image;
-
-  resizeRectangle();
-
-  image.draw_rectangle(x_position, y_position, x_position + getOffsetX(),
-                       y_position + offset_y, primaryColor, opacity);
-  Label *_text =
-      new Label(image, text, x_position + text_offset_x,
-                y_position + text_offset_y, font_size, WHITE, transparent);*/
 }
 
-int Button::getOffsetX() {
- /* if (length(this->text) == 1)
-    return length(this->text) * 50;
-  if (length(this->text) < 10)
-    return length(this->text) * 18 + 5;
-  return length(this->text) * 13 + 15;*/
-  return 0;
+Button::Button(std::string t, sf::Vector2f size, int charSize, sf::Color bgColor, sf::Color textColor) {
+
+	text.setString(t);
+	//text.setColor(textColor);
+	text.setCharacterSize(charSize);
+
+	button.setSize(size);
+	button.setFillColor(bgColor);
 }
 
-int Button::length(const char *array) {
-  std::size_t Size = strlen(array);
-  return Size;
+void Button::setFont(sf::Font& font) {
+
+	text.setFont(font);
 }
 
-void Button::resizeRectangle() {/* log("size: " << length(this->text));*/ }
+void Button::setBackColor(sf::Color color) {
 
-void Button::setPressed(bool isPressed) { this->_isPressed = isPressed; }
-bool Button::isPressed() const {
- /* while (!mainDisplay.is_closed()) {
-    if (mainDisplay.button() & 1) {
-      mainDisplay.wait();
-      log("Pressed");
-      return true;
-    }
-  }*/
-  return false;
+	button.setFillColor(color);
+}
+void Button::setTextColor(sf::Color color) {
+
+	//text.setColor(color);
 }
 
-bool Button::isMouseOver() {
-  if (isMouseInTop() && isMouseInBot())
-    return true;
-  return false;
+void Button::setPosition(sf::Vector2f pos) {
+
+	button.setPosition(pos);
+	float xPos = (pos.x + button.getLocalBounds().width / 2) - (text.getLocalBounds().width / 2);
+	float yPos = (pos.y + button.getLocalBounds().height / 2) - (text.getLocalBounds().height / 2);
+	text.setPosition({ xPos,yPos });
 }
 
-bool Button::isMouseInTop() {
- /* if (mouse_x > top_bound_x && mouse_y > top_bound_y)
-    return true;*/
-  return false;
+void Button::drawTo(sf::RenderWindow& window) {
+	window.draw(button);
+	window.draw(text);
 }
 
-bool Button::isMouseInBot() {
-  /*if (mouse_x < bot_bound_x && mouse_y < bot_bound_y)
-    return true;*/
-  return false;
-}
+bool  Button::isMouseOver(sf::RenderWindow& window) {
 
-void Button::changeColor(const unsigned char *color) {
-  /*image.draw_rectangle(x_position, y_position, x_position + offset_x,
-                       y_position + offset_y, color, 1);
+	float mouseX = sf::Mouse::getPosition(window).x;
+	float mouseY = sf::Mouse::getPosition(window).y;
 
-  Label *_text =
-      new Label(image, text, x_position + text_offset_x,
-                y_position + text_offset_y, font_size, WHITE, transparent);*/
-}
+	float btnPosX = button.getPosition().x;
+	float btnPosY = button.getPosition().y;
 
-void Button::changeState() {
-  if (isMouseOver())
-    changeColor(WHITE);
+	float btnxPosWidth = button.getPosition().x + button.getLocalBounds().width;
+	float btnyPosHeight = button.getPosition().y + button.getLocalBounds().height;
+
+	if (mouseX < btnxPosWidth && mouseX > btnPosX && mouseY < btnyPosHeight && mouseY>btnPosY) {
+
+		return true;
+	}
+	return false;
+
 }

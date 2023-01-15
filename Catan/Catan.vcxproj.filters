@@ -69,9 +69,6 @@
     <ClCompile Include="Figure.cpp">
       <Filter>Game\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>Graphic</Filter>
-    </ClCompile>
     <ClCompile Include="Label.cpp">
       <Filter>Graphic</Filter>
     </ClCompile>
@@ -129,6 +126,9 @@
     <ClCompile Include="LinkedList.cpp">
       <Filter>DataStructures</Filter>
     </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Graphic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CImg.h">
@@ -165,9 +165,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Application.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Card.hpp">
@@ -243,6 +240,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StructureGraph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

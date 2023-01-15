@@ -1,5 +1,5 @@
 #pragma once
-#include "Button.hpp"
+#include "Button.h"
 #include "DataStructures.hpp"
 #include "FlowController.hpp"
 #include "Label.hpp"
@@ -7,6 +7,8 @@
 #include "LinkedList.hpp"
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Colors.hpp"
+
 
 class Window {
 private:
@@ -25,13 +27,20 @@ public:
 	bool isMouseOverAbout();
 	void goTitleView();
 	void goAboutView();
+	void goPlayView();
+	bool goBack(sf::RenderWindow& window);
 
-	void printHexagon(std::string, int x, int y);
-	void printMaterialCard();
+	void printResources(sf::RenderWindow& window, std::string, int , int );
+	void printMaterialCard(sf::RenderWindow& window);
 	void printImageTown(std::string url, int x, int y);
-	void printBoard();
-	void printTown();
+	void printBoard(sf::RenderWindow& window);
+	void printTown(sf::RenderWindow& window);
 	void Image(std::string);
+
+
+	void crateButton( sf::RenderWindow& window);
+
+	
 
 private:
 	Window() {}
