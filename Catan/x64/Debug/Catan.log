@@ -1,11 +1,4 @@
-﻿  Application.cpp
-  FlowController.cpp
-  Game.cpp
-  Match.cpp
-  Player.cpp
-  Window.cpp
-C:\Users\DanyG\Desktop\repos\Catan\Catan\Window.cpp(149,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\DanyG\Desktop\repos\Catan\Catan\Window.cpp(149,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  main.cpp
-  Generating Code...
-  Catan.vcxproj -> C:\Users\DanyG\Desktop\repos\Catan\x64\Debug\Catan.exe
+﻿  Window.cpp
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\Window.cpp(183,28): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\Window.cpp(183,25): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Catan.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Catan.exe

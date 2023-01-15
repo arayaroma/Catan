@@ -14,16 +14,23 @@ void Window::goTitleView() {
 	titleWindow.draw(play->getTextInstance());
 	titleWindow.draw(about->getTextInstance());
 	titleWindow.display();
+
+
 	while (titleWindow.isOpen()) {
 
-		while (titleWindow.pollEvent(event)) {
-			if (event.type == sf::Event::Closed)
+		while (titleWindow.pollEvent(event))
+		{
+			// check the type of the event...
+			switch (event.type)
+			{
+				// window closed
+			case sf::Event::Closed:
 				titleWindow.close();
+				break;
 
-			if (goBack(titleWindow))
-				titleWindow.close();
+				// key pressed
+			case sf::Event::MouseButtonPressed:
 
-			if (event.type == sf::Event::MouseButtonPressed) {
 				if (event.mouseButton.button == sf::Mouse::Left) {
 					showCoordinates(titleWindow);
 					//Pantalla Juego
@@ -37,10 +44,15 @@ void Window::goTitleView() {
 						goAboutView();
 					}
 				}
+				break;
 
+
+			default:
+				if (goBack(titleWindow))
+					titleWindow.close();
+				break;
 			}
 		}
-
 	}
 }
 
@@ -55,23 +67,31 @@ void Window::goAboutView() {
 	aboutWindow.draw(aboutSprite);
 	aboutWindow.draw(back->getTextInstance());
 	aboutWindow.display();
+
+
 	while (aboutWindow.isOpen()) {
-		while (aboutWindow.pollEvent(event)) {
-
-			if (event.type == sf::Event::Closed)
+		while (aboutWindow.pollEvent(event))
+		{
+			// check the type of the event...
+			switch (event.type)
+			{
+				// window closed
+			case sf::Event::Closed:
 				aboutWindow.close();
-
-			if (goBack(aboutWindow)) {
-				aboutWindow.close();
-				goTitleView();
-			}
-			if (event.type == sf::Event::MouseButtonPressed) {
-				if (event.mouseButton.button == sf::Mouse::Left)
+				break;
+				// key pressed
+			case sf::Event::MouseButtonPressed:
+				if (event.mouseButton.button == sf::Mouse::Left) {
 					showCoordinates(aboutWindow);
+				}
+				break;
+			default:
+				if (goBack(aboutWindow))
+					aboutWindow.close();
+				break;
 			}
 		}
 	}
-
 }
 
 void Window::goPlayView() {
@@ -86,38 +106,60 @@ void Window::goPlayView() {
 	printMaterialCard(playWindow);
 	printTown(playWindow);
 
-	//ancho largo 
-	// 
-	// //hacer el metodo bien de button 
-	// 
+
 	Button btn1("ClickMe", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
 	btn1.setPosition({ 800,200 });
 	btn1.setFont(arial);
 	btn1.drawTo(playWindow);
 	playWindow.display();
 
+
 	while (playWindow.isOpen()) {
-		while (playWindow.pollEvent(event)) {
-			if (event.type == sf::Event::Closed)
-				playWindow.close();
 
-			if (goBack(playWindow)) {
+		while (playWindow.pollEvent(event))
+		{
+			// check the type of the event...
+			switch (event.type)
+			{
+				// window closed
+			case sf::Event::Closed:
 				playWindow.close();
-				goTitleView();
-			}
+				break;
 
-			if (event.type == sf::Event::MouseButtonPressed) {
-				if (event.mouseButton.button == sf::Mouse::Left)
+			case sf::Event::KeyPressed:
+				if (goBack(playWindow))
+				{
+					goTitleView();
+					playWindow.close();
+
+				}
+				break;
+
+				// key pressed
+			case sf::Event::MouseButtonPressed:
+
+				if (event.mouseButton.button == sf::Mouse::Left) {
 					showCoordinates(playWindow);
 
-				if (btn1.isMouseOver(playWindow))
-					btn1.setBackColor(sf::Color::White);
+				}
+				break;
 
-				if (!btn1.isMouseOver(playWindow))
-					btn1.setBackColor(sf::Color::Green);
+
+
+			default:
+				if (goBack(playWindow))
+					playWindow.close();
+				break;
 			}
+			break;
 		}
 	}
+
+
+
+	
+
+	
 }
 
 // devuelve true si se le da el ESC
