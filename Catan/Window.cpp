@@ -17,12 +17,12 @@ void Window::goTitleView() {
 	while (titleWindow.isOpen()) {
 
 		while (titleWindow.pollEvent(event)) {
-			if (event.type == sf::Event::Closed) {
+			if (event.type == sf::Event::Closed)
 				titleWindow.close();
-			}
-			if (goBack(titleWindow)) {
+
+			if (goBack(titleWindow))
 				titleWindow.close();
-			}
+
 			if (event.type == sf::Event::MouseButtonPressed) {
 				if (event.mouseButton.button == sf::Mouse::Left) {
 					showCoordinates(titleWindow);
@@ -40,13 +40,11 @@ void Window::goTitleView() {
 
 			}
 		}
-		
+
 	}
 }
 
-
 void Window::goAboutView() {
-
 	sf::RenderWindow aboutWindow(sf::VideoMode(1280, 720), "About");
 	sf::Texture aboutImage;
 	aboutImage.loadFromFile("Images/acercaDe.jpg");
@@ -58,23 +56,20 @@ void Window::goAboutView() {
 	aboutWindow.draw(back->getTextInstance());
 	aboutWindow.display();
 	while (aboutWindow.isOpen()) {
-
 		while (aboutWindow.pollEvent(event)) {
 
-			if (event.type == sf::Event::Closed) {
+			if (event.type == sf::Event::Closed)
 				aboutWindow.close();
-			}
+
 			if (goBack(aboutWindow)) {
 				aboutWindow.close();
 				goTitleView();
 			}
 			if (event.type == sf::Event::MouseButtonPressed) {
-				if (event.mouseButton.button == sf::Mouse::Left) {
+				if (event.mouseButton.button == sf::Mouse::Left)
 					showCoordinates(aboutWindow);
-				}
 			}
 		}
-		
 	}
 
 }
@@ -87,11 +82,9 @@ void Window::goPlayView() {
 	playWindow.draw(playSprite);
 	sf::Font arial;
 
-
 	printBoard(playWindow);
 	printMaterialCard(playWindow);
 	printTown(playWindow);
-
 
 	//ancho largo 
 	// 
@@ -101,37 +94,31 @@ void Window::goPlayView() {
 	btn1.setPosition({ 800,200 });
 	btn1.setFont(arial);
 	btn1.drawTo(playWindow);
-
 	playWindow.display();
 
-	
 	while (playWindow.isOpen()) {
 		while (playWindow.pollEvent(event)) {
-			if (event.type == sf::Event::Closed) {
+			if (event.type == sf::Event::Closed)
 				playWindow.close();
-			}
+
 			if (goBack(playWindow)) {
 				playWindow.close();
 				goTitleView();
 			}
-			if (event.type == sf::Event::MouseButtonPressed) {
-				if (event.mouseButton.button == sf::Mouse::Left) {
-					showCoordinates(playWindow);
-				}
-				if (btn1.isMouseOver(playWindow)) {
-					btn1.setBackColor(sf::Color::White);
-					//playWindow.display();
-				}
-				else {
 
+			if (event.type == sf::Event::MouseButtonPressed) {
+				if (event.mouseButton.button == sf::Mouse::Left)
+					showCoordinates(playWindow);
+
+				if (btn1.isMouseOver(playWindow))
+					btn1.setBackColor(sf::Color::White);
+
+				if (!btn1.isMouseOver(playWindow))
 					btn1.setBackColor(sf::Color::Green);
-					//playWindow.display();
-				}
 			}
 		}
 	}
 }
-
 
 // devuelve true si se le da el ESC
 bool Window::goBack(sf::RenderWindow& window) {
@@ -141,26 +128,18 @@ bool Window::goBack(sf::RenderWindow& window) {
 	return false;
 }
 
-
 void Window::showCoordinates(sf::RenderWindow& window) {
 	std::cout << "x: " << sf::Mouse::getPosition(window).x << std::endl;
 	std::cout << "y: " << sf::Mouse::getPosition(window).y << std::endl;
 }
 
-bool Window::isMouseOverAbout() {
-	return false;
-}
-
-
-void Window::printResources(sf::RenderWindow& window,std::string url, int x, int y) {
-	
+void Window::printResources(sf::RenderWindow& window, std::string url, int x, int y) {
 	std::string img = url;
 	sf::Texture path;
 	path.loadFromFile(img);
 	sf::Sprite pathSprite(path);
-	pathSprite.setPosition(x,y);
+	pathSprite.setPosition(x, y);
 	window.draw(pathSprite);
-	
 }
 
 void Window::printBoard(sf::RenderWindow& window) {
@@ -175,40 +154,38 @@ void Window::printBoard(sf::RenderWindow& window) {
 
 	bot_height += 295;
 	for (cycle_cord_x = 470; cycle_cord_x <= 620; cycle_cord_x += 75) {
-			std::string tempUrl = temp->getData().getUrl();
-			Window::getInstance().printResources(window, tempUrl, cycle_cord_x, top_height);
-			temp = temp->getNext();
-			tempUrl = temp->getData().getUrl();
+		std::string tempUrl = temp->getData().getUrl();
+		Window::getInstance().printResources(window, tempUrl, cycle_cord_x, top_height);
+		temp = temp->getNext();
+		tempUrl = temp->getData().getUrl();
 
-			Window::getInstance().printResources(window, tempUrl, cycle_cord_x, bot_height);
-			temp = temp->getNext();
+		Window::getInstance().printResources(window, tempUrl, cycle_cord_x, bot_height);
+		temp = temp->getNext();
 	}
 
 	top_height += 75;
 	bot_height = 230;
 	for (cycle_cord_x = 435; cycle_cord_x <= 695; cycle_cord_x += 75) {
-			std::string tempUrl = temp->getData().getUrl();
-			Window::getInstance().printResources(window , tempUrl, cycle_cord_x, top_height);
-			temp = temp->getNext();
-			tempUrl = temp->getData().getUrl();
+		std::string tempUrl = temp->getData().getUrl();
+		Window::getInstance().printResources(window, tempUrl, cycle_cord_x, top_height);
+		temp = temp->getNext();
+		tempUrl = temp->getData().getUrl();
 
-			Window::getInstance().printResources(window, tempUrl, cycle_cord_x, bot_height);
-			temp = temp->getNext();
+		Window::getInstance().printResources(window, tempUrl, cycle_cord_x, bot_height);
+		temp = temp->getNext();
 	}
 
 	top_height += 75;
 	for (cycle_cord_x = 400; cycle_cord_x <= 700; cycle_cord_x += 75) {
-			std::string tempUrl = temp->getData().getUrl();
+		std::string tempUrl = temp->getData().getUrl();
 
-			Window::getInstance().printResources(window, tempUrl, cycle_cord_x, top_height);
-			temp = temp->getNext();
+		Window::getInstance().printResources(window, tempUrl, cycle_cord_x, top_height);
+		temp = temp->getNext();
 	}
 }
 
-
-
 void Window::printMaterialCard(sf::RenderWindow& window) {
-	printResources( window, "Images/resourcesCards/clayCard.png",0,240);
+	printResources(window, "Images/resourcesCards/clayCard.png", 0, 240);
 	printResources(window, "Images/resourcesCards/mineralCard.png", 70, 240);
 	printResources(window, "Images/resourcesCards/wheatCard.png", 140, 240);
 	printResources(window, "Images/resourcesCards/woodCard.png", 210, 240);
@@ -217,7 +194,6 @@ void Window::printMaterialCard(sf::RenderWindow& window) {
 	printResources(window, "Images/extraCards/pricingTable.jpeg", 0, 20);
 
 }
-void Window::Image(std::string url) {}
 
 void Window::printTown(sf::RenderWindow& window) {
 	int top_height = 5; // primera,segunda,tercera
@@ -234,37 +210,37 @@ void Window::printTown(sf::RenderWindow& window) {
 	bot_height += 295;
 	for (cycle_cord_x = 500; cycle_cord_x <= 650; cycle_cord_x += 75) {
 
-			Window::getInstance().printResources(window,tempUrl, cycle_cord_x,
-	top_height); temp->town->setPosX(cycle_cord_x);
-			temp->town->setPosY(top_height);
-			temp = temp->next;
+		Window::getInstance().printResources(window, tempUrl, cycle_cord_x,
+			top_height); temp->town->setPosX(cycle_cord_x);
+		temp->town->setPosY(top_height);
+		temp = temp->next;
 
-			Window::getInstance().printResources(window,tempUrl, cycle_cord_x,
-	bot_height); temp->town->setPosX(cycle_cord_x);
-			temp->town->setPosY(top_height);
-			temp = temp->next;
+		Window::getInstance().printResources(window, tempUrl, cycle_cord_x,
+			bot_height); temp->town->setPosX(cycle_cord_x);
+		temp->town->setPosY(top_height);
+		temp = temp->next;
 	}
 
 	top_height += 75;
 	bot_height = 235;
 	for (cycle_cord_x = 465; cycle_cord_x <= 690; cycle_cord_x += 75) {
 
-			Window::getInstance().printResources(window,tempUrl, cycle_cord_x,
-	top_height); temp->town->setPosX(cycle_cord_x);
-			temp->town->setPosY(top_height);
-			temp = temp->next;
-			Window::getInstance().printResources(window,tempUrl, cycle_cord_x,
-	bot_height); temp->town->setPosX(cycle_cord_x);
-			temp->town->setPosY(top_height);
-			temp = temp->next;
+		Window::getInstance().printResources(window, tempUrl, cycle_cord_x,
+			top_height); temp->town->setPosX(cycle_cord_x);
+		temp->town->setPosY(top_height);
+		temp = temp->next;
+		Window::getInstance().printResources(window, tempUrl, cycle_cord_x,
+			bot_height); temp->town->setPosX(cycle_cord_x);
+		temp->town->setPosY(top_height);
+		temp = temp->next;
 	}
 
 	top_height += 75;
 	for (cycle_cord_x = 430; cycle_cord_x <= 655; cycle_cord_x += 75) {
-			Window::getInstance().printResources(window,tempUrl, cycle_cord_x,
-	top_height); temp->town->setPosX(cycle_cord_x);
-			temp->town->setPosY(top_height);
-			temp = temp->next;
+		Window::getInstance().printResources(window, tempUrl, cycle_cord_x,
+			top_height); temp->town->setPosX(cycle_cord_x);
+		temp->town->setPosY(top_height);
+		temp = temp->next;
 	}
 	dataStructures.printVertexXY();
 }

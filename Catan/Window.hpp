@@ -24,23 +24,16 @@ public:
 	}
 
 	void showCoordinates(sf::RenderWindow&);
-	bool isMouseOverAbout();
 	void goTitleView();
 	void goAboutView();
 	void goPlayView();
-	bool goBack(sf::RenderWindow& window);
+	bool goBack(sf::RenderWindow&);
 
-	void printResources(sf::RenderWindow& window, std::string, int , int );
-	void printMaterialCard(sf::RenderWindow& window);
-	void printImageTown(std::string url, int x, int y);
-	void printBoard(sf::RenderWindow& window);
-	void printTown(sf::RenderWindow& window);
-	void Image(std::string);
-
-
-	void crateButton( sf::RenderWindow& window);
-
-	
+	void printResources(sf::RenderWindow&, std::string, int, int);
+	void printMaterialCard(sf::RenderWindow&);
+	void printImageTown(std::string, int, int);
+	void printBoard(sf::RenderWindow&);
+	void printTown(sf::RenderWindow&);
 
 private:
 	Window() {}

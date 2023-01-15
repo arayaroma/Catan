@@ -1,30 +1,24 @@
 #include "Button.h"
 
 Button::Button() {
-
 }
 
 Button::Button(std::string t, sf::Vector2f size, int charSize, sf::Color bgColor, sf::Color textColor) {
-
 	text.setString(t);
 	//text.setColor(textColor);
 	text.setCharacterSize(charSize);
-
 	button.setSize(size);
 	button.setFillColor(bgColor);
 }
 
 void Button::setFont(sf::Font& font) {
-
 	text.setFont(font);
 }
 
 void Button::setBackColor(sf::Color color) {
-
 	button.setFillColor(color);
 }
 void Button::setTextColor(sf::Color color) {
-
 	//text.setColor(color);
 }
 
@@ -52,10 +46,7 @@ bool  Button::isMouseOver(sf::RenderWindow& window) {
 	float btnxPosWidth = button.getPosition().x + button.getLocalBounds().width;
 	float btnyPosHeight = button.getPosition().y + button.getLocalBounds().height;
 
-	if (mouseX < btnxPosWidth && mouseX > btnPosX && mouseY < btnyPosHeight && mouseY>btnPosY) {
-
+	if (mouseX < btnxPosWidth && mouseX > btnPosX && mouseY < btnyPosHeight && mouseY>btnPosY)
 		return true;
-	}
 	return false;
-
 }
