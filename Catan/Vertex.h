@@ -17,5 +17,6 @@ public:
 public:
 	Vertex();
 	Vertex(int,std::string, Town*);
+	void toString() { std::cout << this->idVertex << "  " ; }
 };
 

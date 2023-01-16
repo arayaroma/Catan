@@ -11,6 +11,7 @@ public:
 	Graph();
 	bool isEmpty();
 	Vertex* getVertex(int);
+	int getIdVertex(Vertex*);
 	void vertexXY();
 	void insertVertex(Vertex*);
 	void insertOwnerHexagon(int, int vecOwners[]);

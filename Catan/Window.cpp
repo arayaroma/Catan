@@ -6,7 +6,7 @@ const char *const image_path = "Images/catan_1280x720.jpg";
 const char *const image_path_table = "Images/extraCards/pricingTable.jpeg";
 const char *const info_game_path = "Images/acercaDe.jpg";
 unsigned int catan_title_display_width = 1280, catan_title_display_height = 720;
-
+using namespace std;
 CImg<unsigned char> image(image_path);
 CImg<unsigned char> image2(image_path);
 CImg<unsigned char> image3(image_info);
@@ -80,6 +80,8 @@ void Window::loadPlayDisplay() {
                    ORANGE, transparent, opacity, materialCard->get_font_size());
   printBoard();
   printMaterialCard();
+  printTown();
+  dataStructures.assignTownsToLand();
 }
 
 bool Window::isAboutClicked() {
@@ -125,24 +127,22 @@ void Window::printImageTown(std::string url, int x, int y) {
     image2.draw_image(x, y, imageTown);
 }
 
-
 void Window::printBoard() {
   int top_height = 10; // primera,segunda,tercera
   int bot_height = 10; // ultima y penultima columna de hexagonos
   int cycle_cord_x = 0;
 
-  DataStructures dataStructures;
+  
   dataStructures.loadLands();
   Node<Land> *temp = dataStructures.lands.head;
-  std::cout << temp->getData().getUrl();
 
   bot_height += 295;
   for (cycle_cord_x = 470; cycle_cord_x <= 620; cycle_cord_x += 75) {
-    std::string tempUrl = temp->getData().getUrl();
+    std::string tempUrl = temp->getData()->getUrl();
 
     Window::getInstance().printHexagon(tempUrl, cycle_cord_x, top_height);
     temp = temp->getNext();
-    tempUrl = temp->getData().getUrl();
+    tempUrl = temp->getData()->getUrl();
 
     Window::getInstance().printHexagon(tempUrl, cycle_cord_x, bot_height);
     temp = temp->getNext();
@@ -151,10 +151,10 @@ void Window::printBoard() {
   top_height += 75;
   bot_height = 230;
   for (cycle_cord_x = 435; cycle_cord_x <= 695; cycle_cord_x += 75) {
-    std::string tempUrl = temp->getData().getUrl();
+    std::string tempUrl = temp->getData()->getUrl();
     Window::getInstance().printHexagon(tempUrl, cycle_cord_x, top_height);
     temp = temp->getNext();
-    tempUrl = temp->getData().getUrl();
+    tempUrl = temp->getData()->getUrl();
 
     Window::getInstance().printHexagon(tempUrl, cycle_cord_x, bot_height);
     temp = temp->getNext();
@@ -162,7 +162,7 @@ void Window::printBoard() {
 
   top_height += 75;
   for (cycle_cord_x = 400; cycle_cord_x <= 700; cycle_cord_x += 75) {
-    std::string tempUrl = temp->getData().getUrl();
+    std::string tempUrl = temp->getData()->getUrl();
 
     Window::getInstance().printHexagon(tempUrl, cycle_cord_x, top_height);
     temp = temp->getNext();
@@ -193,7 +193,6 @@ void Window::printTown() {
     int bot_height = 5; // ultima y penultima columna de hexagonos
     int cycle_cord_x = 0;
   int i = 1;
-  DataStructures dataStructures;
   dataStructures.makeGraph();
   Vertex* temp = dataStructures.graph.firstVertex;
 
@@ -202,15 +201,12 @@ void Window::printTown() {
 
   bot_height += 295;
   for (cycle_cord_x = 500; cycle_cord_x <= 650; cycle_cord_x += 75) {
-
     Window::getInstance().printImageTown(tempUrl, cycle_cord_x, top_height);
-    temp->town->setPosX(cycle_cord_x);
-    temp->town->setPosY(top_height);
+    printNeighborsVertex(tempUrl, cycle_cord_x, top_height);
     temp = temp->next;
 
     Window::getInstance().printImageTown(tempUrl, cycle_cord_x, bot_height);
-    temp->town->setPosX(cycle_cord_x);
-    temp->town->setPosY(top_height);
+    printNeighborsVertex(tempUrl, cycle_cord_x, bot_height);
     temp = temp->next;
   }
 
@@ -219,21 +215,25 @@ void Window::printTown() {
   for (cycle_cord_x = 465; cycle_cord_x <= 690; cycle_cord_x += 75) {
 
     Window::getInstance().printImageTown(tempUrl, cycle_cord_x, top_height);
-    temp->town->setPosX(cycle_cord_x);
-    temp->town->setPosY(top_height);
+    printNeighborsVertex(tempUrl, cycle_cord_x, top_height);
     temp = temp->next;
     Window::getInstance().printImageTown(tempUrl, cycle_cord_x, bot_height);
-    temp->town->setPosX(cycle_cord_x);
-    temp->town->setPosY(top_height);
+    printNeighborsVertex(tempUrl, cycle_cord_x, bot_height);
     temp = temp->next;
   }
 
   top_height += 75;
   for (cycle_cord_x = 430; cycle_cord_x <= 655; cycle_cord_x += 75) {
     Window::getInstance().printImageTown(tempUrl, cycle_cord_x, top_height);
-    temp->town->setPosX(cycle_cord_x);
-    temp->town->setPosY(top_height);
+    printNeighborsVertex(tempUrl, cycle_cord_x, top_height);
     temp = temp->next;
   }
-  dataStructures.printVertexXY();
+  //dataStructures.printVertexXY();
+}
+void Window::printNeighborsVertex(std::string url, int x, int y) {
+    Window::getInstance().printImageTown(url, x+30, y+25);
+    Window::getInstance().printImageTown(url, x-30, y+25);
+    Window::getInstance().printImageTown(url, x+50, y+50);
+    Window::getInstance().printImageTown(url, x-40, y+50);
+    Window::getInstance().printImageTown(url, x, y+80);
 }

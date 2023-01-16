@@ -15,7 +15,7 @@ public:
     this->head = nullptr;
     this->end = nullptr;
   }
-  void push(T data) {
+  void push(T* data) {
     Node<T> *temp = new Node<T>(data);
     if (isEmpty()) {
       this->head = temp;
@@ -25,7 +25,7 @@ public:
     temp->setNext(head);
     head = temp;
   }
-  T pop() {
+  T* pop() {
     Node<T> *temp = this->head;
     if (!isEmpty()) {
       head = head->getNext();
@@ -34,9 +34,9 @@ public:
     return temp->getData();
   }
 
-  T top() {
+  T* top() {
     if (isEmpty())
-      return T();
+      return NULL;
     return this->head->getData();
   }
 
@@ -45,7 +45,7 @@ public:
   void print() {
     Node<T> *temp = head;
     while (temp != NULL) {
-      temp->getData().toString();
+      temp->getData()->toString();
       temp = temp->getNext();
     }
   }

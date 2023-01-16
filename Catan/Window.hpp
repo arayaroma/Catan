@@ -14,7 +14,7 @@ class Window {
 
 public:
   Window(const Window &) = delete;
-
+  DataStructures dataStructures;
   static Window &getInstance() {
     static Window instance;
     return instance;
@@ -37,9 +37,14 @@ public:
 
   void printHexagon(std::string, int x, int y);
   void printMaterialCard();
-  void printImageTown(std::string url, int x, int y);
   void printBoard();
+
+
+  void printImageTown(std::string url, int x, int y);
+  void printNeighborsVertex(std::string url, int x, int y);
   void printTown();
+
+  
   void Image(std::string);
 
   bool clickAboutLabel(double, double, Label *);

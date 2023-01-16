@@ -14,6 +14,7 @@ public:
   LinkedList<Town> townFigures;
   LinkedList<City> cityFigures;
   LinkedList<Road> roadFigures;
+  LinkedList<int> towns;
 
   Stack<Clay> *clayCards = new Stack<Clay>();
   Stack<Mineral> *mineralCards = new Stack<Mineral>();
@@ -28,11 +29,11 @@ public:
 
   Graph graph;
 
+  Land land;
 public:
   DataStructures();
 
   void loadMaps();
-
   void loadSpecialCards();
   void loadProgressPaths();
   void loadTilesPaths();
@@ -45,6 +46,10 @@ public:
   void tradeMaterials();
   void loadLands();
 
+  void assignTownsToLand();
+  void assignTowns(Node<Land>*, int, int, int, int, int, int);
+  void assignTownsMiddleRow(Node<Land>*, int, int, int, int, int, int);
+  void assignTownsLastRows(Node<Land>*, int, int, int, int, int, int);
   void makeMaterialCard();
   void makeDevelopCard();
   void playDevelopCard();

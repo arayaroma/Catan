@@ -16,6 +16,9 @@ Vertex* Graph::getVertex(int id) {
 	}
 	return NULL;
 }
+int Graph::getIdVertex(Vertex* auxVertex) {
+	return auxVertex->idVertex;
+}
 void Graph::vertexXY() {
 	Vertex* auxVertex = firstVertex;
 	while (auxVertex != NULL) {
