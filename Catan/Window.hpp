@@ -14,6 +14,22 @@ class Window {
 private:
 	sf::Font font;
 	sf::Event event;
+	Button Prueba;
+	Button btnTrade;
+	Button btnBuy;
+	Button btnTurns;
+	Button btnClose;
+	Button btnOpcional1;
+	Button btnOpcional2;
+
+	sf::RectangleShape prueba;
+	sf::RectangleShape trade;
+	sf::RectangleShape buy;
+	sf::RectangleShape Turnos;
+	sf::RectangleShape close2;
+	sf::RectangleShape opcional1;
+	sf::RectangleShape opcional2;
+
 
 public:
 	Window(const Window&) = delete;
@@ -34,6 +50,9 @@ public:
 	void printImageTown(std::string, int, int);
 	void printBoard(sf::RenderWindow&);
 	void printTown(sf::RenderWindow&);
+	void updateDisplay(); 
+	void loadStartButtons();
+	void loadGameButtons();
 
 private:
 	Window() {}
