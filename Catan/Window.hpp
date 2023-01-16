@@ -13,7 +13,6 @@
 class Window {
 private:
 	sf::Font font;
-	sf::Event event;
 	Button Prueba;
 	Button btnTrade;
 	Button btnBuy;
