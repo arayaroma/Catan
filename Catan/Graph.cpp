@@ -1,96 +1,96 @@
-#include "Graph.h"
+#include "Graph.hpp"
 using namespace std;
 Graph::Graph() {
-	firstVertex = NULL;
+	firstVertex = nullptr;
 	this->size = 0;
 }
+
 bool Graph::isEmpty() {
 	return size == 0;
 }
+
 Vertex* Graph::getVertex(int id) {
 	Vertex* auxVertex = firstVertex;
-	while (auxVertex != NULL) {
+	while (auxVertex != nullptr) {
 		if (auxVertex->idVertex == id)
 			return auxVertex;
 		auxVertex = auxVertex->next;
 	}
-	return NULL;
+	return nullptr;
+}
+
+int Graph::getIdVertex(Vertex* auxVertex) {
+	return auxVertex->idVertex;
 }
 void Graph::vertexXY() {
 	Vertex* auxVertex = firstVertex;
-	while (auxVertex != NULL) {
-		cout<<auxVertex->town->getPosX() << " " << auxVertex->town->getPosY() << endl;
+	while (auxVertex != nullptr) {
+		cout << auxVertex->town->getPosX() << " " << auxVertex->town->getPosY() << endl;
 		auxVertex = auxVertex->next;
 	}
 }
-void  Graph::insertVertex(Vertex* newVertex)
-{
-	if (getVertex(newVertex->idVertex) == NULL)
-	{
+
+void Graph::insertVertex(Vertex* newVertex) {
+	if (getVertex(newVertex->idVertex) == nullptr) {
 		if (isEmpty()) {
 			firstVertex = newVertex;
-			firstVertex->next = NULL;
+			firstVertex->next = nullptr;
 		}
 		else {
 			Vertex* auxVertex = firstVertex;
-			while (auxVertex->next != NULL) {
+			while (auxVertex->next != nullptr) {
 				auxVertex = auxVertex->next;
 			}
 			auxVertex->next = newVertex;
 		}
 		size++;
 	}
-	else {
-		cout << " Ese Vertex ya existe en el Graph " << endl;
-	}
-		
+	cout << " Ese Vertex ya existe en el Graph " << endl;
 }
+
 void Graph::insertOwnerHexagon(int id, int vecOwners[]) {
 	Vertex* vertex = getVertex(id);
-	if (vertex != NULL)
-	{
+	if (vertex != nullptr){
 		for (int i = 0; i < 3; i++) {
 			vertex->ownerHexagon[i] = vecOwners[i];
 		}
 	}
 }
-void  Graph::insertEdge(int origin, int destiny)
-{
+
+void  Graph::insertEdge(int origin, int destiny){
 	Vertex* originVertex = getVertex(origin);
 	Vertex* destinyVertex = getVertex(destiny);
 
-	if(originVertex == NULL)
+	if (originVertex == nullptr)
 		cout << " El Vertex origen no existe " << endl;
 
-	if(destinyVertex == NULL)
+	if (destinyVertex == nullptr)
 		cout << " El Vertex destino no existe " << endl;
 
-	if (originVertex != NULL && destinyVertex != NULL)
-	{
+	if (originVertex != nullptr && destinyVertex != nullptr){
 		Edge* newEdge = new  Edge(destinyVertex);
 
-		if (originVertex->firstEdge == NULL) {
+		if (originVertex->firstEdge == nullptr) {
 			originVertex->firstEdge = newEdge;
 		}
 		else {
 			Edge* auxEdge = originVertex->firstEdge;
-			while (auxEdge->next != NULL) {
+			while (auxEdge->next != nullptr) {
 				auxEdge = auxEdge->next;
 			}
 			auxEdge->next = newEdge;
-			
+
 		}
 	}
 }
-void Graph::showListAdjacency(){
+
+void Graph::showListAdjacency() {
 	Vertex* auxVertex = firstVertex;
-	while (auxVertex != NULL)
-	{
+	while (auxVertex != nullptr){
 		Edge* auxEdge = auxVertex->firstEdge;
 		cout << auxVertex->idVertex << " = ";
-		while (auxEdge != NULL)
-		{
-			cout << auxVertex->idVertex << "->"<< auxEdge->destinyVertex->idVertex << ",";
+		while (auxEdge != nullptr){
+			cout << auxVertex->idVertex << "->" << auxEdge->destinyVertex->idVertex << ",";
 			auxEdge = auxEdge->next;
 		}
 		cout << endl;

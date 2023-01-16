@@ -177,13 +177,13 @@
     <ClInclude Include="Computer.hpp" />
     <ClInclude Include="DataStructures.hpp" />
     <ClInclude Include="Dice.hpp" />
-    <ClInclude Include="Edge.h" />
+    <ClInclude Include="Edge.hpp" />
     <ClInclude Include="Figure.hpp" />
     <ClInclude Include="Figures.hpp" />
     <ClInclude Include="FlowController.hpp" />
     <ClInclude Include="Game.hpp" />
-    <ClInclude Include="Graph.h" />
-    <ClInclude Include="StructureGraph.h" />
+    <ClInclude Include="Graph.hpp" />
+    <ClInclude Include="StructureGraph.hpp" />
     <ClInclude Include="Knight.hpp" />
     <ClInclude Include="Label.hpp" />
     <ClInclude Include="Land.hpp" />
@@ -198,7 +198,7 @@
     <ClInclude Include="Road.hpp" />
     <ClInclude Include="Stack.hpp" />
     <ClInclude Include="Town.hpp" />
-    <ClInclude Include="Vertex.h" />
+    <ClInclude Include="Vertex.hpp" />
     <ClInclude Include="VictoryPoints.hpp" />
     <ClInclude Include="Wheat.hpp" />
     <ClInclude Include="Window.hpp" />

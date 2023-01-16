@@ -1,7 +1,7 @@
-#include "Edge.h"
+#include "Edge.hpp"
 #include <cstddef>
 
 Edge::Edge(Vertex* destinyVertex) {
 	this->destinyVertex = destinyVertex;
-	next = NULL;
+	next = nullptr;
 }

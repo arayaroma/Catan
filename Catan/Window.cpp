@@ -216,14 +216,14 @@ void Window::printBoard(sf::RenderWindow& window) {
 	DataStructures dataStructures;
 	dataStructures.loadLands();
 	Node<Land>* temp = dataStructures.lands.head;
-	std::cout << temp->getData().getUrl();
+	std::cout << temp->getData()->getUrl();
 
 	bot_height += 295;
 	for (cycle_cord_x = 530; cycle_cord_x <= 680; cycle_cord_x += 75) {
-		std::string tempUrl = temp->getData().getUrl();
+		std::string tempUrl = temp->getData()->getUrl();
 		Window::getInstance().printResources(window, tempUrl, cycle_cord_x, top_height);
 		temp = temp->getNext();
-		tempUrl = temp->getData().getUrl();
+		tempUrl = temp->getData()->getUrl();
 
 		Window::getInstance().printResources(window, tempUrl, cycle_cord_x, bot_height);
 		temp = temp->getNext();
@@ -232,10 +232,10 @@ void Window::printBoard(sf::RenderWindow& window) {
 	top_height += 75;
 	bot_height = 250;
 	for (cycle_cord_x = 505; cycle_cord_x <= 755; cycle_cord_x += 75) {
-		std::string tempUrl = temp->getData().getUrl();
+		std::string tempUrl = temp->getData()->getUrl();
 		Window::getInstance().printResources(window, tempUrl, cycle_cord_x, top_height);
 		temp = temp->getNext();
-		tempUrl = temp->getData().getUrl();
+		tempUrl = temp->getData()->getUrl();
 
 		Window::getInstance().printResources(window, tempUrl, cycle_cord_x, bot_height);
 		temp = temp->getNext();
@@ -243,7 +243,7 @@ void Window::printBoard(sf::RenderWindow& window) {
 
 	top_height += 75;
 	for (cycle_cord_x = 460; cycle_cord_x <= 760; cycle_cord_x += 75) {
-		std::string tempUrl = temp->getData().getUrl();
+		std::string tempUrl = temp->getData()->getUrl();
 
 		Window::getInstance().printResources(window, tempUrl, cycle_cord_x, top_height);
 		temp = temp->getNext();

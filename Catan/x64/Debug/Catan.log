@@ -1,2 +1,12 @@
-﻿  Window.cpp
+﻿  Application.cpp
+  DataStructures.cpp
+  FlowController.cpp
+  Game.cpp
+  main.cpp
+  Land.cpp
+  Match.cpp
+  Player.cpp
+  Vertex.cpp
+  Window.cpp
+  Generating Code...
   Catan.vcxproj -> C:\Users\DanyG\Desktop\repos\Catan\x64\Debug\Catan.exe
