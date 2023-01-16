@@ -10,9 +10,24 @@
 #include "Colors.hpp"
 
 class Window {
+private:
+	sf::Font font;
+	Button Prueba;
+	Button btnTrade;
+	Button btnBuy;
+	Button btnTurns;
+	Button btnClose;
+	Button btnOpcional1;
+	Button btnOpcional2;
 
-public:
-	sf::RenderWindow *actualWindow;
+	sf::RectangleShape prueba;
+	sf::RectangleShape trade;
+	sf::RectangleShape buy;
+	sf::RectangleShape Turnos;
+	sf::RectangleShape close2;
+	sf::RectangleShape opcional1;
+	sf::RectangleShape opcional2;
+
 
 public:
 	Window(const Window&) = delete;
@@ -22,20 +37,20 @@ public:
 		return instance;
 	}
 
-	bool isMouseButtonPressedLeft();
-	bool isClicked(int, int, int, int);
-
 	void showCoordinates(sf::RenderWindow&);
 	void goTitleView();
 	void goAboutView();
 	void goPlayView();
-	bool isEscapePressed();
+	bool goBack(sf::RenderWindow&);
 
 	void printResources(sf::RenderWindow&, std::string, int, int);
 	void printMaterialCard(sf::RenderWindow&);
 	void printImageTown(std::string, int, int);
 	void printBoard(sf::RenderWindow&);
 	void printTown(sf::RenderWindow&);
+	void updateDisplay();
+	void loadStartButtons();
+	void loadGameButtons();
 
 private:
 	Window() {}

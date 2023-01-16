@@ -17,7 +17,4 @@ public:
 	Label(const sf::String&, const sf::Color&, const sf::Font&, sf::Uint32,
 		unsigned int, float, float);
 	const sf::Text getTextInstance() const;
-
-	int get_pos_x() const;
-	int get_pos_y() const;
 };
