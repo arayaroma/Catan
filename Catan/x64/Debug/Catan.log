@@ -1,35 +1,5 @@
-﻿  Application.cpp
-  Button.cpp
-  Card.cpp
-  Computer.cpp
-  DataStructures.cpp
-  Dice.cpp
-  Edge.cpp
-  Figure.cpp
-  FlowController.cpp
-  Game.cpp
-  Graph.cpp
-  Knight.cpp
-  LinkedList.cpp
-  main.cpp
-  City.cpp
-  Clay.cpp
-  Component.cpp
-  Label.cpp
-  Land.cpp
-  Mineral.cpp
-  Generating Code...
-  Compiling...
+﻿  main.cpp
   Player.cpp
-  Progress.cpp
-  Road.cpp
-  Town.cpp
-  Vertex.cpp
-  VictoryPoints.cpp
-  Wheat.cpp
   Window.cpp
-  Wood.cpp
-  Wool.cpp
   Generating Code...
-  LINK : C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe not found or not built by the last incremental link; performing full link
   Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe

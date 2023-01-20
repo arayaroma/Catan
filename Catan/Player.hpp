@@ -1,7 +1,7 @@
 #pragma once
-#include "Game.hpp"
+#include <string>
 
-class Player : public Game {
+class Player  {
 private:
   std::string name;
   int score;
