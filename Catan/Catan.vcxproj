@@ -167,7 +167,6 @@
     <ClInclude Include="Application.hpp" />
     <ClInclude Include="Button.hpp" />
     <ClInclude Include="Card.hpp" />
-    <ClInclude Include="CImg.h" />
     <ClInclude Include="City.hpp" />
     <ClInclude Include="Clay.hpp" />
     <ClInclude Include="Colors.hpp" />

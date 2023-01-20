@@ -135,11 +135,9 @@ void Window::goPlayView() {
 						playWindow.draw(playSprite);
 						loadStartButtons();
 						loadGameButtons();
-						printBoard(playWindow);
-						printMaterialCard(playWindow);
-						printTown(playWindow);
-						DataStructures data;
-						data.assignTownsToLand();
+						//printBoard(playWindow);
+						//printMaterialCard(playWindow);
+						//printTown(playWindow);
 
 					}
 					if (sf::Mouse::getPosition(playWindow).x > 1200 &&
@@ -210,7 +208,7 @@ void Window::loadGameButtons() {
 	btnOpcional2.createButton(playWindow, "opcional2", opcional2, { 1000,650 }, sf::Color(0, 0, 255, 110), { 130,40 }, { 1010, 650 });
 }
 
-void Window::printBoard(sf::RenderWindow& window) {
+/*void Window::printBoard(sf::RenderWindow& window) {
 	int top_height = 30; // primera,segunda,tercera
 	int bot_height = 30; // ultima y penultima columna de hexagonos
 	int cycle_cord_x = 0;
@@ -323,4 +321,4 @@ void Window::printTown(sf::RenderWindow& window) {
 	dataStructures.printVertexXY();
 	playWindow.display();
 	cont++;
-}
+}*/

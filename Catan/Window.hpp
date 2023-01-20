@@ -1,13 +1,9 @@
 #pragma once
-#include "Button.hpp"
-#include "DataStructures.hpp"
-#include "FlowController.hpp"
-#include "Label.hpp"
-#include "Land.hpp"
-#include "LinkedList.hpp"
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "Colors.hpp"
+#include "Button.hpp"
+#include "Label.hpp"
+#include "Land.hpp"
 
 class Window {
 private:

@@ -2,11 +2,7 @@
 using namespace std;
 
 DataStructures::DataStructures() {
-  lands = LinkedList<Land>();
-  townFigures = LinkedList<Town>();
-  cityFigures = LinkedList<City>();
-  roadFigures = LinkedList<Road>();
-   towns = LinkedList<int>();
+
 }
 
 void DataStructures::loadMaps() {
@@ -54,20 +50,20 @@ void DataStructures::loadLands() {
   int idLand = 1;
   for (i = 0; i < 4; i++) {
      if (i < 1) {
-       lands.add(new Land("Dessert", um_Paths.at("dessertPath"), 0, 0, idLand));
+       //lands.add(new Land("Dessert", um_Paths.at("dessertPath"), 0, 0, idLand));
        idLand++;
      }
     if (i < 3) {
-      lands.add(new Land("Mountain", um_Paths.at("mountainPath"), 0, 0, idLand));
+      //lands.add(new Land("Mountain", um_Paths.at("mountainPath"), 0, 0, idLand));
       idLand++;
-      lands.add(new Land("Field", um_Paths.at("fieldPath"), 0, 0, idLand));
+      //lands.add(new Land("Field", um_Paths.at("fieldPath"), 0, 0, idLand));
       idLand++;
     }
-    lands.add(new Land("Grass", um_Paths.at("grassPath"), 0, 0, idLand));
+    //lands.add(new Land("Grass", um_Paths.at("grassPath"), 0, 0, idLand));
     idLand++;
-    lands.add(new Land("Forest", um_Paths.at("forestPath"), 0, 0, idLand));
+    //lands.add(new Land("Forest", um_Paths.at("forestPath"), 0, 0, idLand));
     idLand++;
-    lands.add(new Land("Brick", um_Paths.at("brickPath"), 0, 0, idLand));
+    //lands.add(new Land("Brick", um_Paths.at("brickPath"), 0, 0, idLand));
     idLand++;
   }
   //lands.toString();
@@ -83,11 +79,11 @@ void DataStructures::makeSpecialCard() {
 void DataStructures::makeMaterialCard() {
   int i, numberOfCards = 19;
   for (i = 0; i < numberOfCards; i++) {
-    woodCards->push(new Wood());
-    woolCards->push(new Wool());
-    wheatCards->push(new Wheat());
-    clayCards->push(new Clay());
-    mineralCards->push(new Mineral());
+    //woodCards->push(new Wood());
+    //woolCards->push(new Wool());
+    //wheatCards->push(new Wheat());
+    //clayCards->push(new Clay());
+    //mineralCards->push(new Mineral());
   }
 }
 
@@ -103,9 +99,9 @@ void DataStructures::makeDevelopCard() {
     victoryPointsPath = um_Paths.at("victoryPointsPath") + stringNumber;
 
     if (i < 2)
-      progressCards->push(new Progress(progressPath));
-    knightCards->push(new Knight(knightPath));
-    victoryPointCards->push(new VictoryPoints(victoryPointsPath));
+    //  progressCards->push(new Progress(progressPath));
+    //knightCards->push(new Knight(knightPath));
+    //victoryPointCards->push(new VictoryPoints(victoryPointsPath));
 
     num++;
   }
@@ -114,14 +110,15 @@ void DataStructures::makeDevelopCard() {
 void DataStructures::makeFigures() {
   int i = 0;
   for (i = 0; i < 60; i++) {
-    if (i < 16)
-      cityFigures.add(new City("City", "12", 0, 0));
-    if (i < 20)
-      townFigures.add(new Town("Town", "Images/puebloX.png", 0, 0));
+    //if (i < 16)
+      //cityFigures.add(new City("City", "12", 0, 0));
+    //if (i < 20)
+      //townFigures.add(new Town("Town", "Images/puebloX.png", 0, 0));
 
-    roadFigures.add(new Road("Road", "12", 0, 0));
+    //roadFigures.add(new Road("Road", "12", 0, 0));
   }
 }
+
 void DataStructures::makeGraph() {
     int vertexId=1;
     int vertexJump = 4;
@@ -213,20 +210,20 @@ void DataStructures::makeVertexOwners() {
 }
 
 void DataStructures::assignTownsToLand() {
-    Node<Land>* temp = lands.head;
+    //Node<Land>* temp = lands.head;
     int contLands = 1;
     int idVertex = 1, endVertex = 10, sumId = 3;
     while (contLands <4) {
-        assignTowns(temp, idVertex, endVertex, sumId);
-        temp = temp->getNext();
+        //assignTowns(temp, idVertex, endVertex, sumId);
+        //temp = temp->getNext();
         idVertex++, endVertex++;
         contLands++;
     }
     sumId++,contLands = 1;
     idVertex = 8, endVertex = 19;
     while (contLands < 5) {
-        assignTowns(temp, idVertex, endVertex, sumId);
-        temp = temp->getNext();
+       // assignTowns(temp, idVertex, endVertex, sumId);
+        //temp = temp->getNext();
         idVertex++, endVertex++;
         contLands++;
     }
@@ -234,28 +231,28 @@ void DataStructures::assignTownsToLand() {
     sumId++, contLands = 1;
     idVertex = 17, endVertex = 30;
     while (contLands < 6) {
-        assignTownsMiddleRow(temp, idVertex, endVertex, sumId);
-        temp = temp->getNext();
+        //assignTownsMiddleRow(temp, idVertex, endVertex, sumId);
+        //temp = temp->getNext();
         idVertex++, endVertex++;
         contLands++;
     }
     contLands = 1; idVertex = 29, endVertex = 41;
     while (contLands < 5) {
-        assignTownsLastRows(temp, idVertex, endVertex, sumId );
-        temp = temp->getNext();
+       // assignTownsLastRows(temp, idVertex, endVertex, sumId );
+        //temp = temp->getNext();
         idVertex++, endVertex++;
         contLands++;
     }
     sumId=4;
     contLands = 1; idVertex = 40, endVertex = 50;
     while (contLands < 4) {
-        assignTownsLastRows(temp, idVertex,  endVertex, sumId );
-        temp = temp->getNext();
+       // assignTownsLastRows(temp, idVertex,  endVertex, sumId );
+       // temp = temp->getNext();
         idVertex++,  endVertex++;
         contLands++;
     }
 }
-void DataStructures::assignTowns(Node<Land>* temp, int idVertex, int endVertex, int sumId) {
+/*void DataStructures::assignTowns(Node<Land>* temp, int idVertex, int endVertex, int sumId) {
     int conditional = 0;
     int firstVertex = idVertex;
     Town* town = new Town("Town", "Images/puebloX.png", 0, 0);
@@ -300,4 +297,4 @@ void DataStructures::assignTownsLastRows(Node<Land>* temp, int idVertex, int end
     }
     temp->getData()->towns.toString();
     cout << endl;
-}
+}*/
