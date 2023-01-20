@@ -131,9 +131,6 @@
     <ClInclude Include="Road.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Stack.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Town.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>

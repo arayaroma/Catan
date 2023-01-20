@@ -189,7 +189,6 @@
     <ClInclude Include="Progress.hpp" />
     <ClInclude Include="ProgressCards.hpp" />
     <ClInclude Include="Road.hpp" />
-    <ClInclude Include="Stack.hpp" />
     <ClInclude Include="Town.hpp" />
     <ClInclude Include="Vertex.hpp" />
     <ClInclude Include="VictoryPoints.hpp" />
