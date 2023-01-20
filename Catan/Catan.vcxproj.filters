@@ -75,9 +75,6 @@
     <ClCompile Include="Land.cpp">
       <Filter>Game\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Match.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Game</Filter>
     </ClCompile>
@@ -204,9 +201,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LinkedList.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Match.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Mineral.hpp">

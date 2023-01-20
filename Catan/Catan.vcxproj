@@ -152,7 +152,6 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Land.cpp" />
-    <ClCompile Include="Match.cpp" />
     <ClCompile Include="Mineral.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Progress.cpp" />
@@ -188,7 +187,6 @@
     <ClInclude Include="Label.hpp" />
     <ClInclude Include="Land.hpp" />
     <ClInclude Include="LinkedList.hpp" />
-    <ClInclude Include="Match.hpp" />
     <ClInclude Include="Materials.hpp" />
     <ClInclude Include="Mineral.hpp" />
     <ClInclude Include="Node.hpp" />
