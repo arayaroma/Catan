@@ -188,9 +188,6 @@
     <ClInclude Include="Mineral.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Node.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Materials.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>

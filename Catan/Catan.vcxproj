@@ -184,7 +184,6 @@
     <ClInclude Include="Land.hpp" />
     <ClInclude Include="Materials.hpp" />
     <ClInclude Include="Mineral.hpp" />
-    <ClInclude Include="Node.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Progress.hpp" />
     <ClInclude Include="ProgressCards.hpp" />
