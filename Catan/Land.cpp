@@ -5,7 +5,6 @@ Land::Land() {
   this->url = "";
   this->posx = 0;
   this->posy = 0;
-  towns = LinkedList<Vertex>();
 }
 
 Land::Land(std::string typeLand, std::string urlLand, double x, double y,int id) {
@@ -14,7 +13,6 @@ Land::Land(std::string typeLand, std::string urlLand, double x, double y,int id)
   this->posx = x;
   this->posy = y;
   this->idLand = id;
-  towns = LinkedList<Vertex>();
 }
 
 void Land::setPosy(double y) { this->posy = y; }

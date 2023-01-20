@@ -1,2 +1,8 @@
-﻿  DataStructures.cpp
+﻿  Application.cpp
+  DataStructures.cpp
+  FlowController.cpp
+  main.cpp
+  Land.cpp
+  Window.cpp
+  Generating Code...
   Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe

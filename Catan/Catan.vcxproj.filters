@@ -117,9 +117,6 @@
     <ClCompile Include="Graph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LinkedList.cpp">
-      <Filter>DataStructures</Filter>
-    </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>Graphic</Filter>
     </ClCompile>
@@ -189,9 +186,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Land.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LinkedList.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Mineral.hpp">

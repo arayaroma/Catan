@@ -144,7 +144,6 @@
     <ClCompile Include="FlowController.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="Knight.cpp" />
-    <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="City.cpp" />
     <ClCompile Include="Clay.cpp" />
@@ -183,7 +182,6 @@
     <ClInclude Include="Knight.hpp" />
     <ClInclude Include="Label.hpp" />
     <ClInclude Include="Land.hpp" />
-    <ClInclude Include="LinkedList.hpp" />
     <ClInclude Include="Materials.hpp" />
     <ClInclude Include="Mineral.hpp" />
     <ClInclude Include="Node.hpp" />
