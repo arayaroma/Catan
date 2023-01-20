@@ -1,5 +1,5 @@
 #include "Game.hpp"
-using namespace std;
+using std::pair;
 
 Game::Game() {
 
@@ -11,36 +11,36 @@ void Game::loadMaps() {
 }
 
 void Game::loadSpecialCards() {
-  um_Paths.insert(pair<const char *, const char *>(
+  um_Paths.insert(pair<string, string>(
       "biggestPath", "Images/extraCards/biggestPathCard.png"));
-  um_Paths.insert(pair<const char *, const char *>(
+  um_Paths.insert(pair<string, string>(
       "biggestArmyPath", "Images/extraCards/biggestArmyCard.png"));
 }
 
 void Game::loadProgressPaths() {
-  um_Paths.insert(pair<const char *, const char *>(
+  um_Paths.insert(pair<string, string>(
       "knightPath", "Images/knightCards/knightCard"));
 
-  um_Paths.insert(pair<const char *, const char *>(
+  um_Paths.insert(pair<string, string>(
       "progressPath", "Images/progressCards/progressCard"));
 
-  um_Paths.insert(pair<const char *, const char *>(
+  um_Paths.insert(pair<string, string>(
       "victoryPointsPath", "Images/victoryPointsCards/victoryPointCard"));
 }
 
 void Game::loadTilesPaths() {
   um_Paths.insert(
-      pair<const char *, const char *>("grassPath", "Images/tiles/Grass.jpg"));
+      pair<string, string>("grassPath", "Images/tiles/Grass.jpg"));
   um_Paths.insert(
-      pair<const char *, const char *>("brickPath", "Images/tiles/Brick.jpg"));
+      pair<string, string>("brickPath", "Images/tiles/Brick.jpg"));
   um_Paths.insert(
-      pair<const char *, const char *>("fieldPath", "Images/tiles/Field.jpg"));
+      pair<string, string>("fieldPath", "Images/tiles/Field.jpg"));
 
-  um_Paths.insert(pair<const char *, const char *>(
+  um_Paths.insert(pair<string, string>(
       "mountainPath", "Images/tiles/Mountain.jpg"));
-  um_Paths.insert(pair<const char *, const char *>("forestPath",
+  um_Paths.insert(pair<string, string>("forestPath",
                                                    "Images/tiles/Forest.jpg"));
-  um_Paths.insert(pair<const char *, const char *>("dessertPath",
+  um_Paths.insert(pair<string, string> ("dessertPath",
                                                    "Images/tiles/Dessert.jpg"));
 }
 

@@ -1,10 +1,14 @@
 #pragma once
+#include "StructureGraph.hpp"
+#include "ProgressCards.hpp"
+#include "Materials.hpp"
 #include "Card.hpp"
 #include "Land.hpp"
-#include "Materials.hpp"
-#include "ProgressCards.hpp"
-#include "StructureGraph.hpp"
+#include <string>
+#include <list>
+#include <stack>
 #include <unordered_map>
+using std::string, std::unordered_map;
 
 /*
   Points:
@@ -40,7 +44,7 @@
 
 class Game {
 public:
-	std::unordered_map<const char*, const char*> um_Paths;
+	unordered_map<string, string> um_Paths;
 	//LinkedList<Land> lands;
 	//LinkedList<Town> townFigures;
 	//LinkedList<City> cityFigures;
