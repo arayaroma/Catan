@@ -38,7 +38,7 @@
   thief stands in the same place.
 */
 
-class DataStructures {
+class Game {
 public:
 	std::unordered_map<const char*, const char*> um_Paths;
 	//LinkedList<Land> lands;
@@ -61,7 +61,7 @@ public:
 	Land land;
 
 public:
-	DataStructures();
+	Game();
 
 	void loadMaps();
 	void loadSpecialCards();

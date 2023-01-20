@@ -137,7 +137,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Computer.cpp" />
-    <ClCompile Include="DataStructures.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Dice.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="Figure.cpp" />
@@ -171,7 +171,7 @@
     <ClInclude Include="Colors.hpp" />
     <ClInclude Include="Component.hpp" />
     <ClInclude Include="Computer.hpp" />
-    <ClInclude Include="DataStructures.hpp" />
+    <ClInclude Include="Game.hpp" />
     <ClInclude Include="Dice.hpp" />
     <ClInclude Include="Edge.hpp" />
     <ClInclude Include="Figure.hpp" />

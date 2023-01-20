@@ -1,23 +1,23 @@
-#include "DataStructures.hpp"
+#include "Game.hpp"
 using namespace std;
 
-DataStructures::DataStructures() {
+Game::Game() {
 
 }
 
-void DataStructures::loadMaps() {
+void Game::loadMaps() {
   loadProgressPaths();
   loadTilesPaths();
 }
 
-void DataStructures::loadSpecialCards() {
+void Game::loadSpecialCards() {
   um_Paths.insert(pair<const char *, const char *>(
       "biggestPath", "Images/extraCards/biggestPathCard.png"));
   um_Paths.insert(pair<const char *, const char *>(
       "biggestArmyPath", "Images/extraCards/biggestArmyCard.png"));
 }
 
-void DataStructures::loadProgressPaths() {
+void Game::loadProgressPaths() {
   um_Paths.insert(pair<const char *, const char *>(
       "knightPath", "Images/knightCards/knightCard"));
 
@@ -28,7 +28,7 @@ void DataStructures::loadProgressPaths() {
       "victoryPointsPath", "Images/victoryPointsCards/victoryPointCard"));
 }
 
-void DataStructures::loadTilesPaths() {
+void Game::loadTilesPaths() {
   um_Paths.insert(
       pair<const char *, const char *>("grassPath", "Images/tiles/Grass.jpg"));
   um_Paths.insert(
@@ -44,7 +44,7 @@ void DataStructures::loadTilesPaths() {
                                                    "Images/tiles/Dessert.jpg"));
 }
 
-void DataStructures::loadLands() {
+void Game::loadLands() {
   loadTilesPaths();
   int i;
   int idLand = 1;
@@ -69,14 +69,14 @@ void DataStructures::loadLands() {
   //lands.toString();
 }
 
-void DataStructures::loadStacks() {}
+void Game::loadStacks() {}
 
-void DataStructures::makeSpecialCard() {
+void Game::makeSpecialCard() {
   specialCard[0] = new Progress("SpecialCard", um_Paths.at("biggestPath"));
   specialCard[1] = new Progress("SpecialCard", um_Paths.at("biggestArmyPath"));
 }
 
-void DataStructures::makeMaterialCard() {
+void Game::makeMaterialCard() {
   int i, numberOfCards = 19;
   for (i = 0; i < numberOfCards; i++) {
     //woodCards->push(new Wood());
@@ -87,7 +87,7 @@ void DataStructures::makeMaterialCard() {
   }
 }
 
-void DataStructures::makeDevelopCard() {
+void Game::makeDevelopCard() {
   std::string knightPath, progressPath, victoryPointsPath;
   int i, num = 1, numberOfCards = 4;
   for (i = 0; i < numberOfCards; i++) {
@@ -107,7 +107,7 @@ void DataStructures::makeDevelopCard() {
   }
 }
 
-void DataStructures::makeFigures() {
+void Game::makeFigures() {
   int i = 0;
   for (i = 0; i < 60; i++) {
     //if (i < 16)
@@ -119,7 +119,7 @@ void DataStructures::makeFigures() {
   }
 }
 
-void DataStructures::makeGraph() {
+void Game::makeGraph() {
     int vertexId=1;
     int vertexJump = 4;
     Town* town = new Town("Town", "Images/puebloX.png", 0, 0);
@@ -205,11 +205,11 @@ void DataStructures::makeGraph() {
     }
     //graph.showListAdjacency();
 }
-void DataStructures::makeVertexOwners() {
+void Game::makeVertexOwners() {
 
 }
 
-void DataStructures::assignTownsToLand() {
+void Game::assignTownsToLand() {
     //Node<Land>* temp = lands.head;
     int contLands = 1;
     int idVertex = 1, endVertex = 10, sumId = 3;
@@ -252,7 +252,7 @@ void DataStructures::assignTownsToLand() {
         contLands++;
     }
 }
-/*void DataStructures::assignTowns(Node<Land>* temp, int idVertex, int endVertex, int sumId) {
+/*void Game::assignTowns(Node<Land>* temp, int idVertex, int endVertex, int sumId) {
     int conditional = 0;
     int firstVertex = idVertex;
     Town* town = new Town("Town", "Images/puebloX.png", 0, 0);
@@ -270,7 +270,7 @@ void DataStructures::assignTownsToLand() {
     temp->getData()->towns.toString();
     cout << endl;
 }
-void DataStructures::assignTownsMiddleRow(Node<Land>* temp, int idVertex, int endVertex, int sumId) {
+void Game::assignTownsMiddleRow(Node<Land>* temp, int idVertex, int endVertex, int sumId) {
     int firstVertex = idVertex;
     Town* town = new Town("Town", "Images/puebloX.png", 0, 0);
     for (idVertex = firstVertex; idVertex < endVertex; idVertex += sumId+1) {
@@ -280,7 +280,7 @@ void DataStructures::assignTownsMiddleRow(Node<Land>* temp, int idVertex, int en
     temp->getData()->towns.toString();
     cout << endl;
 }
-void DataStructures::assignTownsLastRows(Node<Land>* temp, int idVertex, int endVertex, int sumId) {
+void Game::assignTownsLastRows(Node<Land>* temp, int idVertex, int endVertex, int sumId) {
     int conditional = 0;
     int firstVertex = idVertex;
     Town* town = new Town("Town", "Images/puebloX.png", 0, 0);

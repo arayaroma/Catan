@@ -102,7 +102,7 @@
     <ClCompile Include="Progress.cpp">
       <Filter>Game\Components\Cards</Filter>
     </ClCompile>
-    <ClCompile Include="DataStructures.cpp">
+    <ClCompile Include="Game.cpp">
       <Filter>DataStructures</Filter>
     </ClCompile>
     <ClCompile Include="FlowController.cpp">
@@ -167,7 +167,7 @@
     <ClInclude Include="Computer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DataStructures.hpp">
+    <ClInclude Include="Game.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Dice.hpp">
