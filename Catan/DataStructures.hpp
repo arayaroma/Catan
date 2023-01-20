@@ -47,9 +47,9 @@ public:
 	void loadLands();
 
 	void assignTownsToLand();
-	void assignTowns(Node<Land>*, int, int, int, int, int, int);
-	void assignTownsMiddleRow(Node<Land>*, int, int, int, int, int, int);
-	void assignTownsLastRows(Node<Land>*, int, int, int, int, int, int);
+	void assignTowns(Node<Land>*, int, int, int);
+	void assignTownsMiddleRow(Node<Land>*, int, int, int);
+	void assignTownsLastRows(Node<Land>*, int, int, int);
 	void makeMaterialCard();
 	void makeDevelopCard();
 	void playDevelopCard();

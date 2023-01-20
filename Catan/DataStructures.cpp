@@ -215,57 +215,51 @@ void DataStructures::makeVertexOwners() {
 void DataStructures::assignTownsToLand() {
     Node<Land>* temp = lands.head;
     int contLands = 1;
-    int idVertex = 1, firstVertex = 1, endVertex = 10, sumId = 3, sumIdAux = 4;
-    int vertexConditional = 2;
+    int idVertex = 1, endVertex = 10, sumId = 3;
     while (contLands <4) {
-        assignTowns(temp, idVertex, firstVertex, endVertex, sumId, sumIdAux, vertexConditional);
+        assignTowns(temp, idVertex, endVertex, sumId);
         temp = temp->getNext();
-        idVertex++, firstVertex++, endVertex++;
+        idVertex++, endVertex++;
         contLands++;
     }
-    vertexConditional++;
-    sumIdAux++;//5
     sumId++,contLands = 1;
-    idVertex = 8, firstVertex=idVertex, endVertex = 19;
-    vertexConditional = 10;
+    idVertex = 8, endVertex = 19;
     while (contLands < 5) {
-        assignTowns(temp, idVertex, firstVertex, endVertex, sumId, sumIdAux, vertexConditional);
+        assignTowns(temp, idVertex, endVertex, sumId);
         temp = temp->getNext();
-        idVertex++, firstVertex++, endVertex++;
+        idVertex++, endVertex++;
         contLands++;
     }
     
-    vertexConditional = 12;
-    sumId++, sumIdAux++, contLands = 1;
-    idVertex = 17, firstVertex = idVertex, endVertex = 30;
+    sumId++, contLands = 1;
+    idVertex = 17, endVertex = 30;
     while (contLands < 6) {
-        assignTownsMiddleRow(temp, idVertex, firstVertex, endVertex, sumId, sumIdAux, vertexConditional );
+        assignTownsMiddleRow(temp, idVertex, endVertex, sumId);
         temp = temp->getNext();
-        idVertex++, firstVertex++, endVertex++;
+        idVertex++, endVertex++;
         contLands++;
     }
-    vertexConditional = 11;
-    contLands = 1; idVertex = 29, firstVertex = idVertex, endVertex = 41;
+    contLands = 1; idVertex = 29, endVertex = 41;
     while (contLands < 5) {
-        assignTownsLastRows(temp, idVertex, firstVertex, endVertex, sumId, sumIdAux, vertexConditional);
+        assignTownsLastRows(temp, idVertex, endVertex, sumId );
         temp = temp->getNext();
-        idVertex++, firstVertex++, endVertex++;
+        idVertex++, endVertex++;
         contLands++;
     }
-    sumId=4, sumIdAux=5;
-    vertexConditional = 4;
-    contLands = 1; idVertex = 40, firstVertex = idVertex, endVertex = 50;
+    sumId=4;
+    contLands = 1; idVertex = 40, endVertex = 50;
     while (contLands < 4) {
-        assignTownsLastRows(temp, idVertex, firstVertex, endVertex, sumId, sumIdAux, vertexConditional);
+        assignTownsLastRows(temp, idVertex,  endVertex, sumId );
         temp = temp->getNext();
-        idVertex++, firstVertex++, endVertex++;
+        idVertex++,  endVertex++;
         contLands++;
     }
 }
-void DataStructures::assignTowns(Node<Land>* temp, int idVertex, int firstVertex, int endVertex, int sumId, int sumIdAux, int vertexConditional) {
+void DataStructures::assignTowns(Node<Land>* temp, int idVertex, int endVertex, int sumId) {
     int conditional = 0;
+    int firstVertex = idVertex;
     Town* town = new Town("Town", "Images/puebloX.png", 0, 0);
-    for (idVertex = firstVertex; idVertex < endVertex; idVertex += sumIdAux) {
+    for (idVertex = firstVertex; idVertex < endVertex; idVertex += sumId+1) {
         if (conditional != 2) {
             temp->getData()->towns.add(new Vertex(idVertex, "", town));
             temp->getData()->towns.add(new Vertex(idVertex + sumId, "", town));
@@ -273,32 +267,34 @@ void DataStructures::assignTowns(Node<Land>* temp, int idVertex, int firstVertex
         }
         else {
             temp->getData()->towns.add(new Vertex(idVertex, "", town));
-            temp->getData()->towns.add(new Vertex(idVertex + sumIdAux, "", town));
+            temp->getData()->towns.add(new Vertex(idVertex + sumId + 1, "", town));
         }
     }
     temp->getData()->towns.toString();
     cout << endl;
 }
-void DataStructures::assignTownsMiddleRow(Node<Land>* temp, int idVertex, int firstVertex, int endVertex, int sumId, int sumIdAux, int vertexConditional) {
+void DataStructures::assignTownsMiddleRow(Node<Land>* temp, int idVertex, int endVertex, int sumId) {
+    int firstVertex = idVertex;
     Town* town = new Town("Town", "Images/puebloX.png", 0, 0);
-    for (idVertex = firstVertex; idVertex < endVertex; idVertex += sumIdAux) {
+    for (idVertex = firstVertex; idVertex < endVertex; idVertex += sumId+1) {
         temp->getData()->towns.add(new Vertex(idVertex, "", town));
         temp->getData()->towns.add(new Vertex(idVertex + sumId, "", town));
     }
     temp->getData()->towns.toString();
     cout << endl;
 }
-void DataStructures::assignTownsLastRows(Node<Land>* temp, int idVertex, int firstVertex, int endVertex, int sumId, int sumIdAux, int vertexConditional) {
+void DataStructures::assignTownsLastRows(Node<Land>* temp, int idVertex, int endVertex, int sumId) {
     int conditional = 0;
+    int firstVertex = idVertex;
     Town* town = new Town("Town", "Images/puebloX.png", 0, 0);
-    for (idVertex = firstVertex; idVertex < endVertex; idVertex += sumIdAux) {
+    for (idVertex = firstVertex; idVertex < endVertex; idVertex += sumId+1) {
         if (conditional == 0) {
             temp->getData()->towns.add(new Vertex(idVertex, "", town));
-            temp->getData()->towns.add(new Vertex(idVertex + sumIdAux, "", town));        
+            temp->getData()->towns.add(new Vertex(idVertex + sumId , "", town));
         }
         else {
             temp->getData()->towns.add(new Vertex(idVertex, "", town));
-            temp->getData()->towns.add(new Vertex(idVertex + sumId, "", town));
+            temp->getData()->towns.add(new Vertex(idVertex + sumId-1, "", town));
             conditional++;
         }
     }

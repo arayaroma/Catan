@@ -138,6 +138,8 @@ void Window::goPlayView() {
 						printBoard(playWindow);
 						printMaterialCard(playWindow);
 						printTown(playWindow);
+						DataStructures data;
+						data.assignTownsToLand();
 
 					}
 					if (sf::Mouse::getPosition(playWindow).x > 1200 &&
