@@ -45,7 +45,7 @@ void Graph::insertVertex(Vertex* newVertex) {
 		}
 		size++;
 	}
-	cout << " Ese Vertex ya existe en el Graph " << endl;
+	
 }
 
 void Graph::insertOwnerHexagon(int id, int vecOwners[]) {

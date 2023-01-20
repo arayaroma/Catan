@@ -208,9 +208,7 @@ void DataStructures::makeGraph() {
     }
     //graph.showListAdjacency();
 }
-void DataStructures::makeVertexOwners() {
 
-}
 
 void DataStructures::assignTownsToLand() {
     Node<Land>* temp = lands.head;

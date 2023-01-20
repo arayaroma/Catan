@@ -7,7 +7,6 @@
 #include "Stack.hpp"
 #include "StructureGraph.hpp"
 #include <unordered_map>
-
 class DataStructures {
 public:
 	std::unordered_map<const char*, const char*> um_Paths;
@@ -58,5 +57,4 @@ public:
 	void makeSpecialCard();
 	void printVertexXY() { graph.vertexXY(); }
 	void makeGraph();
-	void makeVertexOwners();
 };

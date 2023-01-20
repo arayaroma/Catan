@@ -138,8 +138,7 @@ void Window::goPlayView() {
 						printBoard(playWindow);
 						printMaterialCard(playWindow);
 						printTown(playWindow);
-						DataStructures data;
-						data.assignTownsToLand();
+						dataStructures.assignTownsToLand();
 
 					}
 					if (sf::Mouse::getPosition(playWindow).x > 1200 &&
@@ -215,7 +214,6 @@ void Window::printBoard(sf::RenderWindow& window) {
 	int bot_height = 30; // ultima y penultima columna de hexagonos
 	int cycle_cord_x = 0;
 
-	DataStructures dataStructures;
 	dataStructures.loadLands();
 	Node<Land>* temp = dataStructures.lands.head;
 	std::cout << temp->getData()->getUrl();
@@ -278,7 +276,6 @@ void Window::printTown(sf::RenderWindow& window) {
 	int bot_height = 25; // ultima y penultima columna de hexagonos
 	int cycle_cord_x = 0;
 	int i = 1;
-	DataStructures dataStructures;
 	dataStructures.makeGraph();
 	Vertex* temp = dataStructures.graph.firstVertex;
 
@@ -321,6 +318,5 @@ void Window::printTown(sf::RenderWindow& window) {
 		temp = temp->next;
 	}
 	dataStructures.printVertexXY();
-	playWindow.display();
 	cont++;
 }

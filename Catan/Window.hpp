@@ -28,7 +28,7 @@ private:
 	sf::RectangleShape opcional1;
 	sf::RectangleShape opcional2;
 
-
+	DataStructures dataStructures;
 public:
 	Window(const Window&) = delete;
 

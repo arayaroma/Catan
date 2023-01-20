@@ -47,3 +47,4 @@ template class Node<City>;
 template class Node<Town>;
 template class Node<Road>;
 template class Node<Vertex>;
+
