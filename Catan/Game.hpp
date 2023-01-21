@@ -4,11 +4,12 @@
 #include "Materials.hpp"
 #include "Card.hpp"
 #include "Land.hpp"
+#include "Figures.hpp"
 #include <string>
 #include <list>
 #include <stack>
 #include <unordered_map>
-using std::string, std::unordered_map;
+using std::string, std::unordered_map, std::list, std::stack;
 
 /*
   Points:
@@ -45,23 +46,27 @@ using std::string, std::unordered_map;
 class Game {
 public:
 	unordered_map<string, string> um_Paths;
-	//LinkedList<Land> lands;
-	//LinkedList<Town> townFigures;
-	//LinkedList<City> cityFigures;
-	//LinkedList<Road> roadFigures;
-	//LinkedList<int> towns;
+	Graph graph;
 
-	//Stack<Clay>* clayCards = new Stack<Clay>();
-	//Stack<Mineral>* mineralCards = new Stack<Mineral>();
-	//Stack<Wheat>* wheatCards = new Stack<Wheat>();
-	//Stack<Wood>* woodCards = new Stack<Wood>();
-	//Stack<Wool>* woolCards = new Stack<Wool>();
-	//Stack<Knight>* knightCards = new Stack<Knight>();
-	//Stack<Progress>* progressCards = new Stack<Progress>();
-	//Stack<VictoryPoints>* victoryPointCards = new Stack<VictoryPoints>();
+	list<int> townsID;
+	list<Town> towns;
+
+	list<City> cities;
+	list<Road> roads;
+	list<Land> lands;
 
 	Card* specialCard[2];
-	Graph graph;
+
+	stack<Knight>* knightCards = new stack<Knight>();
+	stack<Progress>* progressCards = new stack<Progress>();
+	stack<VictoryPoints>* victoryPointCards = new stack<VictoryPoints>();
+
+	stack<Clay> *clayCards = new stack<Clay>;
+	stack<Mineral> *mineralCards = new stack<Mineral>;
+	stack<Wheat> *wheatCards = new stack<Wheat>;
+	stack<Wood> *woodCards = new stack<Wood>;
+	stack<Wool> *woolCards = new stack<Wool>;
+
 	Land land;
 
 public:
