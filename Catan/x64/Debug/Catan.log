@@ -1,7 +1,9 @@
 ﻿  Application.cpp
+  Computer.cpp
   DataStructures.cpp
   FlowController.cpp
   Game.cpp
+  Human.cpp
   LinkedList.cpp
   main.cpp
   Land.cpp
