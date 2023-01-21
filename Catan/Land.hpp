@@ -1,6 +1,6 @@
 #pragma once
 #include "Component.hpp"
-#include <iostream>
+
 #define TAM 3;
 
 class Land : public Component {
@@ -12,7 +12,7 @@ public:
   Land();
   int idTowns[6];
   //LinkedList<Vertex> towns;
-  Land(std::string, std::string, double x, double y, int id);
+  Land(string, string, double x, double y, int id);
 
   //LinkedList<Vertex> getTwons() {return this->towns;}
   void setPosx(double x);

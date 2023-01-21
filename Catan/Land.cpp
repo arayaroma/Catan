@@ -1,18 +1,18 @@
 #include "Land.hpp"
 Land::Land() {
   setTypeClass(LAND);
-  this->type = "";
-  this->url = "";
-  this->posx = 0;
-  this->posy = 0;
+  this->type = nullptr;
+  this->imagePath = nullptr;
+  this->posx = NULL;
+  this->posy = NULL;
 }
 
-Land::Land(std::string typeLand, std::string urlLand, double x, double y,int id) {
-  this->type = typeLand;
-  this->url = urlLand;
+Land::Land(string type, string imagePath, double x, double y, int idLand) {
+  this->type = type;
+  this->imagePath = imagePath;
   this->posx = x;
   this->posy = y;
-  this->idLand = id;
+  this->idLand = idLand;
 }
 
 void Land::setPosy(double y) { this->posy = y; }

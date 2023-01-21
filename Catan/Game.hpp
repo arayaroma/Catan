@@ -5,10 +5,10 @@
 #include "Card.hpp"
 #include "Land.hpp"
 #include "Figures.hpp"
+#include <unordered_map>
 #include <string>
 #include <list>
 #include <stack>
-#include <unordered_map>
 using std::string, std::unordered_map, std::list, std::stack;
 
 /*
@@ -19,7 +19,6 @@ using std::string, std::unordered_map, std::list, std::stack;
   Biggest Path Card - II Points.
   However if someone have more than the highest roads player number
   then inmediatly it gets the card.
-
 
   Knight Cards
   If a player has at least 3 Knight cards, it gets:
@@ -45,29 +44,28 @@ using std::string, std::unordered_map, std::list, std::stack;
 
 class Game {
 public:
-	unordered_map<string, string> um_Paths;
+	unordered_map<string, string> imagePaths;
 	Graph graph;
+	Land land;
 
-	list<int> townsID;
-	list<Town> towns;
+	list<int> *townsID;
+	list<Town> *towns;
 
-	list<City> cities;
-	list<Road> roads;
-	list<Land> lands;
+	list<City> *cities;
+	list<Road> *roads;
+	list<Land*> *lands;
 
 	Card* specialCard[2];
 
-	stack<Knight>* knightCards = new stack<Knight>();
-	stack<Progress>* progressCards = new stack<Progress>();
-	stack<VictoryPoints>* victoryPointCards = new stack<VictoryPoints>();
+	stack<Knight> *knightCards = new stack<Knight>();
+	stack<Progress> *progressCards = new stack<Progress>();
+	stack<VictoryPoints> *victoryPointCards = new stack<VictoryPoints>();
 
 	stack<Clay> *clayCards = new stack<Clay>;
 	stack<Mineral> *mineralCards = new stack<Mineral>;
 	stack<Wheat> *wheatCards = new stack<Wheat>;
 	stack<Wood> *woodCards = new stack<Wood>;
 	stack<Wool> *woolCards = new stack<Wool>;
-
-	Land land;
 
 public:
 	Game();
@@ -86,16 +84,16 @@ public:
 	void loadLands();
 
 	void assignTownsToLand();
-	//void assignTowns(Node<Land>*, int, int, int);
-	//void assignTownsMiddleRow(Node<Land>*, int, int, int);
-	//void assignTownsLastRows(Node<Land>*, int, int, int);
+	void assignTowns(Land, int, int, int);
+	void assignTownsMiddleRow(Land, int, int, int);
+	void assignTownsLastRows(Land, int, int, int);
 	void makeMaterialCard();
 	void makeDevelopCard();
 	void playDevelopCard();
 	void makeFigures();
 	void makeConstructionCostsCard();
 	void makeSpecialCard();
-	//void printVertexXY() { graph.vertexXY(); }
+	void printVertexXY() { graph.vertexXY(); }
 	void makeGraph();
 	void makeVertexOwners();
 };
