@@ -105,9 +105,6 @@
     <ClCompile Include="Game.cpp">
       <Filter>DataStructures</Filter>
     </ClCompile>
-    <ClCompile Include="FlowController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Vertex.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -195,9 +192,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Figures.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FlowController.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Colors.hpp">

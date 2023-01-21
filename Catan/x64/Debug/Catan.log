@@ -1,2 +1,7 @@
-﻿  Game.cpp
+﻿  Card.cpp
+  main.cpp
+  Clay.cpp
+  Land.cpp
+  Wool.cpp
+  Generating Code...
   Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe

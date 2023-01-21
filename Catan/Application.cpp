@@ -1,6 +1,6 @@
 #include "Application.hpp"
 
 Application &Application::run() {
-  FlowController::getInstance().initializeFlow();
+  Window::getInstance().goTitleView();
   return this->getInstance();
 }

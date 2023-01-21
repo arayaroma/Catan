@@ -1,38 +1,48 @@
 #pragma once
 #include "Component.hpp"
+#include "StructureGraph.hpp"
+#include <list>
+#include <vector>
 
 #define TAM 3;
 
+using std::list;
+using std::vector;
 class Land : public Component {
 private:
-  double posx;
-  double posy;
-  int idLand;
+  int landId;
+  double posX;
+  double posY;
+
+public:
+  vector<int> v_townsId;
+  list<Vertex *> *townsList;
+
 public:
   Land();
-  int idTowns[6];
-  //LinkedList<Vertex> towns;
-  Land(string, string, double x, double y, int id);
+  Land(int, string, double, double);
 
-  //LinkedList<Vertex> getTwons() {return this->towns;}
-  void setPosx(double x);
-  double getPosx();
+  list<Vertex *> *getTownsList() const { return this->townsList; }
 
-  void setPosy(double y);
-  double getPosy();
+  void setPosX(double);
+  double getPosX() const;
 
-  void setIdLand(int id);
-  int getIdLand();
+  void setPosY(double);
+  double getPosY() const;
 
-  void toString() override { std::cout << posx << " " << posy << " " << idLand << std::endl; }
+  void setLandId(int);
+  int getLandId() const;
 
-  void getClassName() override {
-    std::cout << typeid(this).name() << std::endl;
+  string getType() const override { return LAND; }
+  string getImagePath() override { return ""; }
+  void toString() override {
+    std::cout << "posX: " << posX << "\n"
+              << "posY: " << posY << "\n " << landId << std::endl;
   }
-  void printImage() override {}
-  void cleanVec() {
-      for (int i = 0; i < 6; i++) {
-          idTowns[i] = 0;
-      }
+
+  void cleanTownsId() {
+    for (int i : v_townsId) {
+      v_townsId[i] = NULL;
+    }
   }
 };

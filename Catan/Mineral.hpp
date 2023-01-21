@@ -11,7 +11,7 @@ public:
   Mineral();
 
   const char *getName() const;
-  const char *getImagePath() const;
+  string getImagePath() override { return this->imagePath;}
   int getTotalCards() const;
 
   void toString() override {

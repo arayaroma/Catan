@@ -1,3 +1,9 @@
 #include "Figure.hpp"
 
-Figure::Figure() { this->worthPoints = 0; }
+Figure::Figure() {
+  this->type = FIGURE;
+  this->imagePath = "";
+  this->posX = NULL;
+  this->posY = NULL;
+  this->worthPoints = NULL;
+}

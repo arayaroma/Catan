@@ -1,25 +1,25 @@
 #include "Land.hpp"
+
 Land::Land() {
-  setTypeClass(LAND);
-  this->type = nullptr;
-  this->imagePath = nullptr;
-  this->posx = NULL;
-  this->posy = NULL;
+  this->type = "";
+  this->imagePath = "";
+  this->posX = NULL;
+  this->posY = NULL;
 }
 
-Land::Land(string type, string imagePath, double x, double y, int idLand) {
-  this->type = type;
+Land::Land(int landId, string imagePath, double posX, double posY) {
+  this->type = LAND;
   this->imagePath = imagePath;
-  this->posx = x;
-  this->posy = y;
-  this->idLand = idLand;
+  this->posX = posX;
+  this->posY = posY;
+  this->landId = landId;
 }
 
-void Land::setPosy(double y) { this->posy = y; }
-double Land::getPosy() { return posy; }
+void Land::setPosY(double posY)  { this->posY = posY; }
+double Land::getPosY() const { return this->posY; }
 
-void Land::setPosx(double x) { this->posx = x; }
-double Land::getPosx() { return posx; }
+void Land::setPosX(double posX) { this->posX = posX; }
+double Land::getPosX() const { return this->posX; }
 
-void Land::setIdLand(int id) { this->idLand = id; }
-int Land::getIdLand() { return idLand; }
+void Land::setLandId(int landId) { this->landId = landId; }
+int Land::getLandId() const { return this->landId; }

@@ -1,12 +1,11 @@
 #pragma once
-#include <iostream>
-class Card {
-protected:
-  std::string type, url;
+#include "Component.hpp"
+class Card : public Component {
 
 public:
   Card() {}
-  Card(std::string, std::string);
-
-  virtual void toString() = 0;
+  Card(string, string);
+  string getType() const override { return CARD; }
+  string getImagePath() override { return ""; }
+  void toString() override {}
 };

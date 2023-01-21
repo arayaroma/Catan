@@ -141,7 +141,6 @@
     <ClCompile Include="Dice.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="Figure.cpp" />
-    <ClCompile Include="FlowController.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="Knight.cpp" />
     <ClCompile Include="main.cpp" />
@@ -176,7 +175,6 @@
     <ClInclude Include="Edge.hpp" />
     <ClInclude Include="Figure.hpp" />
     <ClInclude Include="Figures.hpp" />
-    <ClInclude Include="FlowController.hpp" />
     <ClInclude Include="Graph.hpp" />
     <ClInclude Include="StructureGraph.hpp" />
     <ClInclude Include="Knight.hpp" />

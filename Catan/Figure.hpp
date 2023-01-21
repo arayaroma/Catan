@@ -1,14 +1,17 @@
 #pragma once
-#include <iostream>
-class Figure {
+#include "Component.hpp"
+
+class Figure : public Component {
 protected:
-  std::string type, url;
-  double posx, posy;
+  double posX, posY;
   int worthPoints;
 
 public:
   Figure();
 
-  virtual int getWorthPoints() const = 0;
+  string getType() const override { return FIGURE; }
+  string getImagePath() override { return ""; }
+  void toString() override {}
 
+  virtual int getWorthPoints() const = 0;
 };

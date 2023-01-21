@@ -1,15 +1,20 @@
 #pragma once
-#include "StructureGraph.hpp"
-#include "ProgressCards.hpp"
-#include "Materials.hpp"
 #include "Card.hpp"
-#include "Land.hpp"
 #include "Figures.hpp"
-#include <unordered_map>
-#include <string>
+#include "Land.hpp"
+#include "Materials.hpp"
+#include "ProgressCards.hpp"
+#include "StructureGraph.hpp"
+#include <iostream>
 #include <list>
 #include <stack>
-using std::string, std::unordered_map, std::list, std::stack;
+#include <string>
+#include <unordered_map>
+
+using std::list;
+using std::stack;
+using std::string;
+using std::unordered_map;
 
 /*
   Points:
@@ -18,7 +23,7 @@ using std::string, std::unordered_map, std::list, std::stack;
   If a player has more than 5 roads consecutive it gets:
   Biggest Path Card - II Points.
   However if someone have more than the highest roads player number
-  then inmediatly it gets the card.
+  then immediately it gets the card.
 
   Knight Cards
   If a player has at least 3 Knight cards, it gets:
@@ -44,56 +49,58 @@ using std::string, std::unordered_map, std::list, std::stack;
 
 class Game {
 public:
-	unordered_map<string, string> imagePaths;
-	Graph graph;
-	Land land;
+  unordered_map<string, string> imagePaths;
+  Graph graph;
+  Land land;
 
-	list<int> *townsID;
-	list<Town> *towns;
+  list<int> *townsID;
+  list<Town *> *townsList;
 
-	list<City> *cities;
-	list<Road> *roads;
-	list<Land*> *lands;
+  list<City *> *citiesList;
+  list<Road *> *roadsList;
+  list<Land *> *landsList;
 
-	Card* specialCard[2];
+  Card *specialCard;
 
-	stack<Knight> *knightCards = new stack<Knight>();
-	stack<Progress> *progressCards = new stack<Progress>();
-	stack<VictoryPoints> *victoryPointCards = new stack<VictoryPoints>();
+  stack<Knight *> *knightCards = new stack<Knight *>();
+  stack<Progress *> *progressCards = new stack<Progress *>();
+  stack<VictoryPoints *> *victoryPointCards = new stack<VictoryPoints *>();
 
-	stack<Clay> *clayCards = new stack<Clay>;
-	stack<Mineral> *mineralCards = new stack<Mineral>;
-	stack<Wheat> *wheatCards = new stack<Wheat>;
-	stack<Wood> *woodCards = new stack<Wood>;
-	stack<Wool> *woolCards = new stack<Wool>;
+  stack<Clay *> *clayCards = new stack<Clay *>;
+  stack<Mineral *> *mineralCards = new stack<Mineral *>;
+  stack<Wheat *> *wheatCards = new stack<Wheat *>;
+  stack<Wood *> *woodCards = new stack<Wood *>;
+  stack<Wool *> *woolCards = new stack<Wool *>;
 
 public:
-	Game();
+  list<Land *> *getLandsList() const { return this->landsList; }
 
-	void loadMaps();
-	void loadSpecialCards();
-	void loadProgressPaths();
-	void loadTilesPaths();
+public:
+  Game();
 
-	void loadStacks();
+  void loadMaps();
+  void loadSpecialCards();
+  void loadProgressPaths();
+  void loadTilesPaths();
+  void loadStacks();
 
-	void play();
-	void build();
+  void play();
+  void build();
 
-	void tradeMaterials();
-	void loadLands();
+  void tradeMaterials();
+  void loadLands();
 
-	void assignTownsToLand();
-	void assignTowns(Land, int, int, int);
-	void assignTownsMiddleRow(Land, int, int, int);
-	void assignTownsLastRows(Land, int, int, int);
-	void makeMaterialCard();
-	void makeDevelopCard();
-	void playDevelopCard();
-	void makeFigures();
-	void makeConstructionCostsCard();
-	void makeSpecialCard();
-	void printVertexXY() { graph.vertexXY(); }
-	void makeGraph();
-	void makeVertexOwners();
+  void assignTownsToLand();
+  void assignTowns(Land *, int, int, int);
+  void assignTownsMiddleRow(Land *, int, int, int);
+  void assignTownsLastRows(Land *, int, int, int);
+  void makeMaterialCard();
+  void makeDevelopCard();
+  void playDevelopCard();
+  void makeFigures();
+  void makeConstructionCostsCard();
+  void makeSpecialCard();
+  void printVertexXY() { graph.vertexXY(); }
+  void makeGraph();
+  void makeVertexOwners();
 };

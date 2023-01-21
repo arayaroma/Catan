@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <string>
 
 #define FIGURE "Figure"
@@ -8,16 +9,17 @@
 
 using std::string;
 class Component {
-  friend class Game;
-
 protected:
   string type;
   string imagePath;
 
 public:
-  Component(const Component&) = delete;
+  Component() {
+    this->type = "";
+    this->imagePath = "";
+  }
 
-  virtual void getType() = 0;
-  virtual void printImage() = 0;
+  virtual string getType() const = 0;
+  virtual string getImagePath() = 0;
   virtual void toString() = 0;
 };
