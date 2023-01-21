@@ -289,12 +289,15 @@ void DataStructures::assignTownsLastRows(Node<Land>* temp, int idVertex, int end
         if (conditional == 0) {
             temp->getData()->towns.add(new Vertex(idVertex, "", town));
             temp->getData()->towns.add(new Vertex(idVertex + sumId , "", town));
+            conditional++;
         }
         else {
             temp->getData()->towns.add(new Vertex(idVertex, "", town));
             temp->getData()->towns.add(new Vertex(idVertex + sumId-1, "", town));
             conditional++;
         }
+        if (conditional == 2)
+            idVertex--;
     }
     temp->getData()->towns.toString();
     cout << endl;
