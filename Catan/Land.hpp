@@ -10,7 +10,7 @@ private:
   int idLand;
 public:
   Land();
-  int idTowns[6];
+ 
   LinkedList<Vertex> towns;
   Land(std::string, std::string, double x, double y, int id);
 
@@ -32,9 +32,7 @@ public:
     std::cout << typeid(this).name() << std::endl;
   }
   void printImage() override {}
-  void cleanVec() {
-      for (int i = 0; i < 6; i++) {
-          idTowns[i] = 0;
-      }
-  }
+
+
+
 };

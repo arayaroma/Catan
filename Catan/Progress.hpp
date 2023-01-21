@@ -8,9 +8,12 @@
 */
 
 class Progress : public Card {
+
 public:
   Progress() {}
+
   Progress(std::string url) { this->url = url; }
+
   Progress(std::string type, std::string url) {
     this->type = type;
     this->url = url;

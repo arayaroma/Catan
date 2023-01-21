@@ -9,10 +9,10 @@
 class Knight : public Card {
 
 private:
-  std::string m_Url;
+
 
 public:
   Knight() {}
-  Knight(std::string url) : m_Url(url) {}
+  Knight(std::string url) {}
   void toString() {}
 };
