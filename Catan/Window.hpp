@@ -32,7 +32,10 @@ private:
   sf::RectangleShape close2;
   sf::RectangleShape opcional1;
   sf::RectangleShape opcional2;
+  sf::RectangleShape turn;
 
+  int i = 100;
+  int turnNumber = 0;
 public:
   Window(const Window &) = delete;
 
@@ -56,9 +59,11 @@ public:
   void printBoard(sf::RenderWindow &);
   void printTown(sf::RenderWindow &);
   void updateDisplay();
-  void loadStartButtons();
-  void loadGameButtons();
+  void loadStartButtons(sf::RenderWindow& playWindow);
+  void loadGameButtons(sf::RenderWindow& playWindow);
 
+  void setTurn(int numbrePlayers);
+  void drawTurn(int turn, int);
 private:
   Window() {}
 };

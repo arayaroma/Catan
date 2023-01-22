@@ -1,6 +1,6 @@
 #include "Window.hpp"
 
-sf::RenderWindow playWindow(sf::VideoMode(1280, 720), "Play");
+
 
 Button btnStart;
 Button btnClose;
@@ -103,63 +103,85 @@ void Window::goAboutView() {
 }
 
 void Window::goPlayView() {
-
+    sf::RenderWindow playWindow(sf::VideoMode(1280, 720), "Play");
   sf::Texture playImage;
   playImage.loadFromFile("Images/catan_1280x720.jpg");
   sf::Sprite playSprite(playImage);
-
-  playWindow.draw(playSprite);
-  loadStartButtons();
-  var = true;
-
-  playWindow.display();
+  bool start = true;
+  //playWindow.draw(playSprite);
+  //loadStartButtons(playWindow);
+  //var = true;
+  //playWindow.display();
+  playWindow.setFramerateLimit(120);
+  
   while (playWindow.isOpen()) {
     sf::Event event;
     while (playWindow.pollEvent(event)) {
-      switch (event.type) {
-      case sf::Event::Closed:
-        playWindow.close();
-        break;
+        if (event.type == sf::Event::Closed) {
+            playWindow.close();
+        }
+    }
+    playWindow.clear();
+    playWindow.draw(playSprite);
+    loadStartButtons(playWindow);
 
-      case sf::Event::KeyPressed:
-        if (sf::Keyboard::Escape)
-          playWindow.close();
-        break;
+    playWindow.waitEvent(event);
 
-      case sf::Event::MouseButtonPressed:
-
-        if (event.mouseButton.button == sf::Mouse::Left) {
-          showCoordinates(playWindow);
-          if (sf::Mouse::getPosition(playWindow).x > 1080 &&
-              sf::Mouse::getPosition(playWindow).y > 0 &&
-              sf::Mouse::getPosition(playWindow).x < 1175 &&
-              sf::Mouse::getPosition(playWindow).y < 40) {
-            updateDisplay();
+    if (event.MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+        //showCoordinates(playWindow);
+        if (sf::Mouse::getPosition(playWindow).x > 1080 &&
+            sf::Mouse::getPosition(playWindow).y > 0 &&
+            sf::Mouse::getPosition(playWindow).x < 1175 &&
+            sf::Mouse::getPosition(playWindow).y < 40) {
+            playWindow.clear();
             playWindow.draw(playSprite);
-            loadStartButtons();
-            loadGameButtons();
+            loadGameButtons(playWindow);
             printBoard(playWindow);
             printMaterialCard(playWindow);
-            printTown(playWindow); 
-          }
-          if (sf::Mouse::getPosition(playWindow).x > 1200 &&
-              sf::Mouse::getPosition(playWindow).y > 0 &&
-              sf::Mouse::getPosition(playWindow).x < 1270 &&
-              sf::Mouse::getPosition(playWindow).y < 40) {
-            playWindow.close();
-          }
+            printTown(playWindow);
         }
-        break;
-      }
+        if (sf::Mouse::getPosition(playWindow).x > 1200 &&
+            sf::Mouse::getPosition(playWindow).y > 0 &&
+            sf::Mouse::getPosition(playWindow).x < 1270 &&
+            sf::Mouse::getPosition(playWindow).y < 40) {
+            setTurn(4);
+        }
     }
+    loadGameButtons(playWindow);
+    printBoard(playWindow);
+    printMaterialCard(playWindow);
+    printTown(playWindow);
+
+    playWindow.display();
   }
 }
 
-void Window::updateDisplay() {
+/*void Window::updateDisplay() {
   playWindow.clear();
   playWindow.display();
-}
+}*/
+void Window::setTurn(int numberPlayers) {
+    std::cout << turnNumber << std::endl;
 
+    if (turnNumber == numberPlayers) {
+        turnNumber = 0;
+        i = 100;
+        drawTurn(turnNumber, i);
+    }
+    else {
+
+        drawTurn(turnNumber, i);
+        i = i + 45;
+        turnNumber++;
+
+    }
+
+}
+void Window::drawTurn(int turns, int posiI) {
+
+    //turn.move(1020,posiI);
+
+}
 bool Window::goBack(sf::RenderWindow &window) {
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     return true;
@@ -171,8 +193,7 @@ void Window::showCoordinates(sf::RenderWindow &window) {
   std::cout << "y: " << sf::Mouse::getPosition(window).y << std::endl;
 }
 
-void Window::printResources(sf::RenderWindow &window, string imagePath,
-                            int posX, int posY) {
+void Window::printResources(sf::RenderWindow &window, string imagePath,int posX, int posY) {
   // string imagePath = imagePath;
   sf::Texture path;
   path.loadFromFile(imagePath);
@@ -181,7 +202,7 @@ void Window::printResources(sf::RenderWindow &window, string imagePath,
   window.draw(sprite);
 }
 
-void Window::loadStartButtons() {
+void Window::loadStartButtons(sf::RenderWindow& playWindow) {
   sf::RectangleShape start;
   sf::RectangleShape close;
   btnStart.createButton(playWindow, "Iniciar", start, {1080, 0},
@@ -190,12 +211,18 @@ void Window::loadStartButtons() {
                         {90, 40}, {1190, 5});
 }
 
-void Window::loadGameButtons() {
+void Window::loadGameButtons(sf::RenderWindow& playWindow) {
   Prueba.createButton(playWindow, "", prueba, {0, 0}, sf::Color::Blue, {0, 0},
                       {0, 0});
 
   sf::RectangleShape playerRectangle;
   sf::RectangleShape cardsRectangle;
+  turn.setPosition(1020, 100);
+  turn.setOutlineColor(sf::Color::Black);
+  turn.setSize({ 220,90 });
+  turn.setFillColor(sf::Color(255, 255, 255, 128));
+  playWindow.draw(turn);
+
   playerRectangle.setPosition(1020, 100);
   playerRectangle.setOutlineColor(sf::Color::Black);
   playerRectangle.setSize({220, 400});
@@ -227,9 +254,9 @@ void Window::initializeLandsList() {
 }
 
 void Window::showLandsImagePath() {
-  initializeLandsList();
-  for (it; it != landsList->end(); it++)
-    std::cout << (*it)->getImagePath() << std::endl;
+  //initializeLandsList();
+ // for (it; it != landsList->end(); it++)
+   // std::cout << (*it)->getImagePath() << std::endl;
 }
 
 void Window::printBoard(sf::RenderWindow &window) {
@@ -272,13 +299,17 @@ void Window::printBoard(sf::RenderWindow &window) {
   }
 
   top_height += 75;
+  /// <summary>
+  /// este for hice algo
+  /// </summary>
+  /// <param name="window"></param>
   for (cycle_cord_x = 460; cycle_cord_x <= 760; cycle_cord_x += 75) {
-    tempImagePath = (*it)->getImagePath();
-	top_height += 75;
-	}
-Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
-                                         top_height);
-    it++;
+      tempImagePath = (*it)->getImagePath();
+      top_height += 75;
+      Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
+          top_height);
+      it++;
+  }
   }
 
 
