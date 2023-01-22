@@ -138,9 +138,9 @@ void Window::goPlayView() {
             playWindow.draw(playSprite);
             loadStartButtons();
             loadGameButtons();
-            printBoard(playWindow);
-            printMaterialCard(playWindow);
-            printTown(playWindow);
+            printBoard(playWindow);// se sale con codigo de error
+            //printMaterialCard(playWindow);
+            //printTown(playWindow); // se sale con codigo de error
           }
           if (sf::Mouse::getPosition(playWindow).x > 1200 &&
               sf::Mouse::getPosition(playWindow).y > 0 &&
@@ -220,9 +220,10 @@ void Window::loadGameButtons() {
                             sf::Color(0, 0, 255, 110), {130, 40}, {1010, 650});
 }
 void Window::initializeLandsList() {
-  game->loadLands();
-  landsList = game->getLandsList();
+  game.loadLands();
+  landsList = game.getLandsList();
   it = landsList->begin();
+  std::cout << (*it)->getType() << std::endl;
 }
 
 void Window::showLandsImagePath() {
@@ -243,16 +244,17 @@ void Window::printBoard(sf::RenderWindow &window) {
 
   bot_height += 295;
   for (cycle_cord_x = 530; cycle_cord_x <= 680; cycle_cord_x += 75) {
+      if (landsList->begin() != landsList->end()) {
+          tempImagePath = (*it)->getImagePath();//problemas
+          Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
+              top_height);
+          it++;
 
-    tempImagePath = (*it)->getImagePath();
-    Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
-                                         top_height);
-    it++;
-
-    tempImagePath = (*it)->getImagePath();
-    Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
-                                         bot_height);
-    it++;
+          tempImagePath = (*it)->getImagePath();
+          Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
+              bot_height);
+          it++;
+      }
   }
 
   top_height += 75;
@@ -274,7 +276,6 @@ void Window::printBoard(sf::RenderWindow &window) {
     tempImagePath = (*it)->getImagePath();
 	top_height += 75;
 	}
-	cont++;
 Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
                                          top_height);
     it++;
@@ -309,8 +310,8 @@ void Window::printMaterialCard(sf::RenderWindow &window) {
 void Window::printTown(sf::RenderWindow &window) {
   int top_height = 25, bot_height = 25, cycle_cord_x = 0, i = 1;
 
-  game->makeGraph();
-  Vertex *temp = game->graph.firstVertex;
+  game.makeGraph();
+  Vertex *temp = game.graph.firstVertex;
 
   // Cambiar -> mapa de Rutas
   string tempImagePath = "Images/puebloX.png";

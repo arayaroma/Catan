@@ -11,7 +11,7 @@ using std::list;
 
 class Window {
 public:
-  Game *game;
+  Game game;
   list<Land *> *landsList;
   list<Land *>::iterator it;
 

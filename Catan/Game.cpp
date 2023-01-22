@@ -1,7 +1,13 @@
 #include "Game.hpp"
 using std::pair;
 
-Game::Game() {}
+Game::Game() {
+    townsList = new list<Town*>();
+    players = new list<Player*>();
+    citiesList = new list<City*>();
+    roadsList = new list<Road*>();
+    landsList = new list<Land*>();
+}
 
 void Game::loadMaps() {
   loadProgressPaths();
@@ -9,39 +15,38 @@ void Game::loadMaps() {
 }
 
 void Game::loadSpecialCards() {
-  imagePaths.insert(pair<string, string>(
+  imagePaths.insert(pair<string,string>(
       "biggestPath", "Images/extraCards/biggestPathCard.png"));
-  imagePaths.insert(pair<string, string>(
+  imagePaths.insert(pair<string,string>(
       "biggestArmyPath", "Images/extraCards/biggestArmyCard.png"));
 }
-
 void Game::loadProgressPaths() {
   imagePaths.insert(
-      pair<string, string>("knightPath", "Images/knightCards/knightCard"));
+      pair<string,string>("knightPath", "Images/knightCards/knightCard"));
 
-  imagePaths.insert(pair<string, string>("progressPath",
+  imagePaths.insert(pair<string,string>("progressPath",
                                          "Images/progressCards/progressCard"));
 
-  imagePaths.insert(pair<string, string>(
+  imagePaths.insert(pair<string,string>(
       "victoryPointsPath", "Images/victoryPointsCards/victoryPointCard"));
 }
 
 void Game::loadTilesPaths() {
   imagePaths.insert(
-      pair<string, string>("grassPath", "Images/tiles/Grass.jpg"));
+      pair<string,string>("grassPath", "Images/tiles/Grass.jpg"));
   imagePaths.insert(
-      pair<string, string>("brickPath", "Images/tiles/Brick.jpg"));
+      pair<string,string>("brickPath", "Images/tiles/Brick.jpg"));
   imagePaths.insert(
-      pair<string, string>("fieldPath", "Images/tiles/Field.jpg"));
+      pair<string,string>("fieldPath", "Images/tiles/Field.jpg"));
 
   imagePaths.insert(
-      pair<string, string>("mountainPath", "Images/tiles/Mountain.jpg"));
+      pair<string,string>("mountainPath", "Images/tiles/Mountain.jpg"));
 
   imagePaths.insert(
-      pair<string, string>("forestPath", "Images/tiles/Forest.jpg"));
+      pair<string,string>("forestPath", "Images/tiles/Forest.jpg"));
 
   imagePaths.insert(
-      pair<string, string>("dessertPath", "Images/tiles/Dessert.jpg"));
+      pair<string,string>("dessertPath", "Images/tiles/Dessert.jpg"));
 }
 
 void Game::loadLands() {
@@ -262,7 +267,6 @@ void Game::assignTowns(Land *temp, int idVertex, int endVertex, int sumId) {
   }
   // Show List
 }
-
 void Game::assignTownsMiddleRow(Land *temp, int idVertex, int endVertex,
                                 int sumId) {
   int firstVertex = idVertex;
@@ -274,8 +278,7 @@ void Game::assignTownsMiddleRow(Land *temp, int idVertex, int endVertex,
   // Show List
 }
 
-void Game::assignTownsLastRows(Land *temp, int idVertex, int endVertex,
-                               int sumId) {
+void Game::assignTownsLastRows(Land *temp, int idVertex, int endVertex,int sumId) {
   int conditional = 0;
   int firstVertex = idVertex;
   Town *town = new Town();
@@ -283,6 +286,7 @@ void Game::assignTownsLastRows(Land *temp, int idVertex, int endVertex,
     if (conditional == 0) {
       temp->townsList->push_front(new Vertex(idVertex, "", town));
       temp->townsList->push_front(new Vertex(idVertex + sumId, "", town));
+      conditional++;
     } else {
       temp->townsList->push_front(new Vertex(idVertex, "", town));
       temp->townsList->push_front(new Vertex(idVertex + sumId - 1, "", town));

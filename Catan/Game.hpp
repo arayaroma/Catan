@@ -3,6 +3,7 @@
 #include "Figures.hpp"
 #include "Land.hpp"
 #include "Materials.hpp"
+#include "Player.hpp"
 #include "ProgressCards.hpp"
 #include "StructureGraph.hpp"
 #include <iostream>
@@ -49,13 +50,12 @@ using std::unordered_map;
 
 class Game {
 public:
-  unordered_map<string, string> imagePaths;
+  unordered_map<string,string> imagePaths;
   Graph graph;
   Land land;
 
-  list<int> *townsID;
   list<Town *> *townsList;
-
+  list<Player*> *players;
   list<City *> *citiesList;
   list<Road *> *roadsList;
   list<Land *> *landsList;
