@@ -1,27 +1,25 @@
 #include "Land.hpp"
+
 Land::Land() {
-  setTypeClass(LAND);
   this->type = "";
-  this->url = "";
-  this->posx = 0;
-  this->posy = 0;
-  towns = LinkedList<Vertex>();
+  this->imagePath = "";
+  this->posX = NULL;
+  this->posY = NULL;
 }
 
-Land::Land(std::string typeLand, std::string urlLand, double x, double y,int id) {
-  this->type = typeLand;
-  this->url = urlLand;
-  this->posx = x;
-  this->posy = y;
-  this->idLand = id;
-  towns = LinkedList<Vertex>();
+Land::Land(int landId, string imagePath, double posX, double posY) {
+  this->type = LAND;
+  this->imagePath = imagePath;
+  this->posX = posX;
+  this->posY = posY;
+  this->landId = landId;
 }
 
-void Land::setPosy(double y) { this->posy = y; }
-double Land::getPosy() { return posy; }
+void Land::setPosY(double posY)  { this->posY = posY; }
+double Land::getPosY() const { return this->posY; }
 
-void Land::setPosx(double x) { this->posx = x; }
-double Land::getPosx() { return posx; }
+void Land::setPosX(double posX) { this->posX = posX; }
+double Land::getPosX() const { return this->posX; }
 
-void Land::setIdLand(int id) { this->idLand = id; }
-int Land::getIdLand() { return idLand; }
+void Land::setLandId(int landId) { this->landId = landId; }
+int Land::getLandId() const { return this->landId; }

@@ -10,10 +10,11 @@
 class Progress : public Card {
 public:
   Progress() {}
-  Progress(std::string url) { this->url = url; }
-  Progress(std::string type, std::string url) {
+  Progress(string imagePath) { this->imagePath = imagePath; }
+
+  Progress(string type, string imagePath) {
     this->type = type;
-    this->url = url;
+    this->imagePath = imagePath;
   }
 
   void toString() {}

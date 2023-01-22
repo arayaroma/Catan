@@ -18,13 +18,21 @@
     (Doesn't count bifurcations), It would get the Special Card:
     Longest Commercial Path, however if another player build a
     longer path that the player who has the special card, it would
-    get inmediatly that card, therefore 2 points.
+    get immediately that card, therefore 2 points.
 */
 
 class Road : public Figure {
-private:
 public:
   Road();
-  Road(std::string, std::string, double, double);
+
+  void setPosX(double posX) { this->posX = posX; }
+  double getPosX() { return this->posX; }
+
+  void setPosY(double posY) { this->posY = posY; }
+  double getPosY() { return this->posY; }
+
+  string getType() const override { return FIGURE; }
+  string getImagePath() override { return "Images/figures/road"; }
+  void toString() override {}
   int getWorthPoints() const override { return this->worthPoints; }
 };

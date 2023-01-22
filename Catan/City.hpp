@@ -18,14 +18,21 @@
     surrounding tiles, 2 resources_cards, whenever the dice dictate.
 
     IV.
-    Every city worths 2 points.
+    Every city worth 2 points.
 */
 
 class City : public Figure {
-private:
 public:
   City();
-  City(std::string, std::string, double, double);
+
+  void setPosX(double posX) { this->posX = posX; }
+  double getPosX() { return this->posX; }
+
+  void setPosY(double posY) { this->posY = posY; }
+  double getPosY() { return this->posY; }
 
   int getWorthPoints() const override { return this->worthPoints; }
+  string getType() const override { return FIGURE; }
+  string getImagePath() override { return "Images/figures/city"; }
+  void toString() override {}
 };

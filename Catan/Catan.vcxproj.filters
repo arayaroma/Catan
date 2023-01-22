@@ -57,9 +57,6 @@
     <ClCompile Include="Wool.cpp">
       <Filter>Game\Components\Cards\Materials</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="Component.cpp">
       <Filter>Game\Components</Filter>
     </ClCompile>
@@ -74,9 +71,6 @@
     </ClCompile>
     <ClCompile Include="Land.cpp">
       <Filter>Game\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Match.cpp">
-      <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Game</Filter>
@@ -108,11 +102,8 @@
     <ClCompile Include="Progress.cpp">
       <Filter>Game\Components\Cards</Filter>
     </ClCompile>
-    <ClCompile Include="DataStructures.cpp">
+    <ClCompile Include="Game.cpp">
       <Filter>DataStructures</Filter>
-    </ClCompile>
-    <ClCompile Include="FlowController.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Vertex.cpp">
       <Filter>Source Files</Filter>
@@ -123,17 +114,11 @@
     <ClCompile Include="Graph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LinkedList.cpp">
-      <Filter>DataStructures</Filter>
-    </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>Graphic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CImg.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Player.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -141,9 +126,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Road.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Stack.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Town.hpp">
@@ -182,16 +164,13 @@
     <ClInclude Include="Computer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DataStructures.hpp">
+    <ClInclude Include="Game.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Dice.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Figure.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Knight.hpp">
@@ -203,16 +182,7 @@
     <ClInclude Include="Land.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LinkedList.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Match.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Mineral.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Node.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Materials.hpp">
@@ -222,9 +192,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Figures.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FlowController.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Colors.hpp">

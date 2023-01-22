@@ -1,13 +1,15 @@
 #pragma once
-#include "Game.hpp"
+#include <string>
 #include "Figures.hpp"
-class Player : public Game {
+#include <list>
+using std::list;
+class Player  {
 private:
   std::string name;
   int score;
-  LinkedList<Town> towns;
-  LinkedList<Road> roads;
-  LinkedList<City> citys;
+  list<Town> towns;
+  list<Road> roads;
+  list<City> citys;
 public:
   Player(){};
   Player(std::string, int);

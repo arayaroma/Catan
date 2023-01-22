@@ -25,14 +25,16 @@
 
 class Town : public Figure {
 public:
-
-private:
-public:
   Town();
-  Town(std::string, std::string, double, double);
-  void setPosX(double posx) { this->posx = posx; }
-  void setPosY(double posy) { this->posy = posy; }
-  double getPosX() { return this->posx; }
-  double getPosY() { return this->posy; }
+
+  void setPosX(double posX) { this->posX = posX; }
+  double getPosX() { return this->posX; }
+
+  void setPosY(double posY) { this->posY = posY; }
+  double getPosY() { return this->posY; }
+
   int getWorthPoints() const override { return this->worthPoints; }
+  string getType() const override { return FIGURE; }
+  string getImagePath() override { return "Images/figures/town"; }
+  void toString() override {}
 };

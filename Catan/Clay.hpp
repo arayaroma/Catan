@@ -1,5 +1,6 @@
 #pragma once
 #include "Card.hpp"
+using std::string;
 
 class Clay : public Card {
 private:
@@ -11,7 +12,8 @@ public:
   Clay();
 
   const char *getName() const;
-  const char *getImagePath() const;
+  string getImagePath() override { return "Images/resourcesCards/clayCard.png"; }
+  string getType() const override{ return CARD; }
   int getTotalCards() const;
 
   void toString() override {

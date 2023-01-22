@@ -3,15 +3,15 @@
 
 class Wood : public Card {
 private:
-  const char *name = "Wood";
-  const char *imagePath = "Images/resourcesCards/woodCard.png";
+  string name = "Wood";
+  string imagePath = "Images/resourcesCards/woodCard.png";
   int totalCards = 19;
 
 public:
   Wood();
 
-  const char *getName() const;
-  const char *getImagePath() const;
+  string getName() const;
+  string getImagePath() override { return this->imagePath; }
   int getTotalCards() const;
 
   void toString() override {

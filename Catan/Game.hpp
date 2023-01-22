@@ -1,6 +1,21 @@
 #pragma once
-#include "Window.hpp"
+#include "Card.hpp"
+#include "Figures.hpp"
+#include "Land.hpp"
+#include "Materials.hpp"
+#include "ProgressCards.hpp"
+#include "StructureGraph.hpp"
 #include <iostream>
+#include <list>
+#include <stack>
+#include <string>
+#include <unordered_map>
+
+using std::list;
+using std::stack;
+using std::string;
+using std::unordered_map;
+
 /*
   Points:
   If a player has 10 points wins.
@@ -8,8 +23,7 @@
   If a player has more than 5 roads consecutive it gets:
   Biggest Path Card - II Points.
   However if someone have more than the highest roads player number
-  then inmediatly it gets the card.
-
+  then immediately it gets the card.
 
   Knight Cards
   If a player has at least 3 Knight cards, it gets:
@@ -32,15 +46,61 @@
   that has towns or cities in those numbers get no material, and the
   thief stands in the same place.
 */
+
 class Game {
 public:
-  Game(const Game &) = delete;
+  unordered_map<string, string> imagePaths;
+  Graph graph;
+  Land land;
 
-  static Game &getInstance() {
-    static Game instance;
-    return instance;
-  }
+  list<int> *townsID;
+  list<Town *> *townsList;
 
-protected:
-  Game() {}
+  list<City *> *citiesList;
+  list<Road *> *roadsList;
+  list<Land *> *landsList;
+
+  Card *specialCard;
+
+  stack<Knight *> *knightCards = new stack<Knight *>();
+  stack<Progress *> *progressCards = new stack<Progress *>();
+  stack<VictoryPoints *> *victoryPointCards = new stack<VictoryPoints *>();
+
+  stack<Clay *> *clayCards = new stack<Clay *>;
+  stack<Mineral *> *mineralCards = new stack<Mineral *>;
+  stack<Wheat *> *wheatCards = new stack<Wheat *>;
+  stack<Wood *> *woodCards = new stack<Wood *>;
+  stack<Wool *> *woolCards = new stack<Wool *>;
+
+public:
+  list<Land *> *getLandsList() const { return this->landsList; }
+
+public:
+  Game();
+
+  void loadMaps();
+  void loadSpecialCards();
+  void loadProgressPaths();
+  void loadTilesPaths();
+  void loadStacks();
+
+  void play();
+  void build();
+
+  void tradeMaterials();
+  void loadLands();
+
+  void assignTownsToLand();
+  void assignTowns(Land *, int, int, int);
+  void assignTownsMiddleRow(Land *, int, int, int);
+  void assignTownsLastRows(Land *, int, int, int);
+  void makeMaterialCard();
+  void makeDevelopCard();
+  void playDevelopCard();
+  void makeFigures();
+  void makeConstructionCostsCard();
+  void makeSpecialCard();
+  void printVertexXY() { graph.vertexXY(); }
+  void makeGraph();
+  void makeVertexOwners();
 };
