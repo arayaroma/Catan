@@ -138,9 +138,9 @@ void Window::goPlayView() {
             playWindow.draw(playSprite);
             loadStartButtons();
             loadGameButtons();
-            printBoard(playWindow);// se sale con codigo de error
-            //printMaterialCard(playWindow);
-            //printTown(playWindow); // se sale con codigo de error
+            printBoard(playWindow);
+            printMaterialCard(playWindow);
+            printTown(playWindow); 
           }
           if (sf::Mouse::getPosition(playWindow).x > 1200 &&
               sf::Mouse::getPosition(playWindow).y > 0 &&
@@ -223,7 +223,7 @@ void Window::initializeLandsList() {
   game.loadLands();
   landsList = game.getLandsList();
   it = landsList->begin();
-  std::cout << (*it)->getType() << std::endl;
+  //std::cout << (*it)->getType() << std::endl;
 }
 
 void Window::showLandsImagePath() {
@@ -240,7 +240,7 @@ void Window::printBoard(sf::RenderWindow &window) {
 	int i = 1;
   // Traverse the list
   initializeLandsList();
-  showLandsImagePath();
+  //showLandsImagePath();
 
   bot_height += 295;
   for (cycle_cord_x = 530; cycle_cord_x <= 680; cycle_cord_x += 75) {
