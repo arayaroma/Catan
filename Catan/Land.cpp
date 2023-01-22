@@ -7,7 +7,7 @@ Land::Land() {
   this->posY = NULL;
 }
 
-Land::Land(int landId, string imagePath, double posX, double posY) {
+Land::Land( string imagePath, double posX, double posY, int landId) {
   this->type = LAND;
   this->imagePath = imagePath;
   this->posX = posX;

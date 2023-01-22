@@ -51,21 +51,21 @@ void Game::loadLands() {
   for (i = 0; i < 4; i++) {
     if (i < 1) {
       landsList->push_front(
-          new Land(landId, imagePaths.at("dessertPath"), 0, 0));
+          new Land( imagePaths.at("dessertPath"), 0, 0, landId));
       landId++;
     }
     if (i < 3) {
       landsList->push_front(
-          new Land(landId, imagePaths.at("mountainPath"), 0, 0));
+          new Land( imagePaths.at("mountainPath"), 0, 0, landId));
       landId++;
-      landsList->push_front(new Land(landId, imagePaths.at("fieldPath"), 0, 0));
+      landsList->push_front(new Land(imagePaths.at("fieldPath"), 0, 0, landId));
       landId++;
     }
-    landsList->push_front(new Land(landId, imagePaths.at("grassPath"), 0, 0));
+    landsList->push_front(new Land( imagePaths.at("grassPath"), 0, 0, landId));
     landId++;
-    landsList->push_front(new Land(landId, imagePaths.at("forestPath"), 0, 0));
+    landsList->push_front(new Land( imagePaths.at("forestPath"), 0, 0, landId));
     landId++;
-    landsList->push_front(new Land(landId, imagePaths.at("brickPath"), 0, 0));
+    landsList->push_front(new Land( imagePaths.at("brickPath"), 0, 0, landId));
     landId++;
   }
 }
@@ -73,8 +73,8 @@ void Game::loadLands() {
 void Game::loadStacks() {}
 
 void Game::makeSpecialCard() {
-  specialCard = new Progress("SpecialCard", imagePaths.at("biggestPath"));
-  specialCard = new Progress("SpecialCard", imagePaths.at("biggestArmyPath"));
+  specialCard = new Progress( imagePaths.at("biggestPath"));
+  specialCard = new Progress( imagePaths.at("biggestArmyPath"));
 }
 
 void Game::makeMaterialCard() {

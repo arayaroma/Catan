@@ -8,11 +8,12 @@
 */
 
 class Progress : public Card {
+
 public:
   Progress() {}
-  Progress(string imagePath) { this->imagePath = imagePath; }
 
-  Progress(string type, string imagePath) {
+
+  Progress( std::string url) {
     this->type = type;
     this->imagePath = imagePath;
   }

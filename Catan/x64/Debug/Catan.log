@@ -7,6 +7,7 @@
   Edge.cpp
   Figure.cpp
   Graph.cpp
+  Human.cpp
   Knight.cpp
   main.cpp
   City.cpp
@@ -17,9 +18,9 @@
   Mineral.cpp
   Player.cpp
   Progress.cpp
-  Road.cpp
   Generando código...
   Compilando...
+  Road.cpp
   Town.cpp
   Vertex.cpp
   VictoryPoints.cpp

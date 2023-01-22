@@ -20,7 +20,8 @@ public:
 
 public:
   Land();
-  Land(int, string, double, double);
+ 
+  Land( std::string, double x, double y, int id);
 
   list<Vertex *> *getTownsList() const { return this->townsList; }
 
