@@ -352,7 +352,4 @@ void Window::printTown(sf::RenderWindow &window) {
     temp->town->setPosY(top_height);
     temp = temp->next;
   }
-  game->printVertexXY();
-  playWindow.display();
-  cont++;
 }
