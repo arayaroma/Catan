@@ -1,7 +1,5 @@
 #include "Window.hpp"
 
-
-
 Button btnStart;
 Button btnClose;
 
@@ -108,39 +106,39 @@ void Window::goPlayView() {
   playImage.loadFromFile("Images/catan_1280x720.jpg");
   sf::Sprite playSprite(playImage);
   bool start = true;
-  //playWindow.draw(playSprite);
-  //loadStartButtons(playWindow);
-  //var = true;
-  //playWindow.display();
+  // playWindow.draw(playSprite);
+  // loadStartButtons(playWindow);
+  // var = true;
+  // playWindow.display();
   playWindow.setFramerateLimit(120);
-  
+
   while (playWindow.isOpen()) {
     sf::Event event;
     playWindow.clear();
     while (playWindow.pollEvent(event)) {
-        if (event.type == sf::Event::Closed) {
-            playWindow.close();
-        }
+      if (event.type == sf::Event::Closed) {
+        playWindow.close();
+      }
 
-       // playWindow.waitEvent(event);
+      // playWindow.waitEvent(event);
 
-        if (event.MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
-            //showCoordinates(playWindow);
-            if (sf::Mouse::getPosition(playWindow).x > 1080 &&
-                sf::Mouse::getPosition(playWindow).y > 0 &&
-                sf::Mouse::getPosition(playWindow).x < 1175 &&
-                sf::Mouse::getPosition(playWindow).y < 40) {
-                playWindow.clear();
-                playWindow.draw(playSprite);
-                
-            }
-            if (sf::Mouse::getPosition(playWindow).x > 1200 &&
-                sf::Mouse::getPosition(playWindow).y > 0 &&
-                sf::Mouse::getPosition(playWindow).x < 1270 &&
-                sf::Mouse::getPosition(playWindow).y < 40) {
-                setTurn(4);
-            }
+      if (event.MouseButtonPressed &&
+          event.mouseButton.button == sf::Mouse::Left) {
+        // showCoordinates(playWindow);
+        if (sf::Mouse::getPosition(playWindow).x > 1080 &&
+            sf::Mouse::getPosition(playWindow).y > 0 &&
+            sf::Mouse::getPosition(playWindow).x < 1175 &&
+            sf::Mouse::getPosition(playWindow).y < 40) {
+          playWindow.clear();
+          playWindow.draw(playSprite);
         }
+        if (sf::Mouse::getPosition(playWindow).x > 1200 &&
+            sf::Mouse::getPosition(playWindow).y > 0 &&
+            sf::Mouse::getPosition(playWindow).x < 1270 &&
+            sf::Mouse::getPosition(playWindow).y < 40) {
+          setTurn(4);
+        }
+      }
     }
 
     playWindow.draw(playSprite);
@@ -158,26 +156,22 @@ void Window::goPlayView() {
   playWindow.display();
 }*/
 void Window::setTurn(int numberPlayers) {
-    std::cout << turnNumber << std::endl;
+  std::cout << turnNumber << std::endl;
 
-    if (turnNumber == numberPlayers) {
-        turnNumber = 0;
-        i = 100;
-        drawTurn(turnNumber, i);
-    }
-    else {
+  if (turnNumber == numberPlayers) {
+    turnNumber = 0;
+    i = 100;
+    drawTurn(turnNumber, i);
+  } else {
 
-        drawTurn(turnNumber, i);
-        i = i + 45;
-        turnNumber++;
-
-    }
-
+    drawTurn(turnNumber, i);
+    i = i + 45;
+    turnNumber++;
+  }
 }
 void Window::drawTurn(int turns, int posiI) {
 
-    //turn.move(1020,posiI);
-
+  // turn.move(1020,posiI);
 }
 bool Window::goBack(sf::RenderWindow &window) {
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
@@ -190,7 +184,8 @@ void Window::showCoordinates(sf::RenderWindow &window) {
   std::cout << "y: " << sf::Mouse::getPosition(window).y << std::endl;
 }
 
-void Window::printResources(sf::RenderWindow &window, string imagePath,int posX, int posY) {
+void Window::printResources(sf::RenderWindow &window, string imagePath,
+                            int posX, int posY) {
   // string imagePath = imagePath;
   sf::Texture path;
   path.loadFromFile(imagePath);
@@ -199,7 +194,7 @@ void Window::printResources(sf::RenderWindow &window, string imagePath,int posX,
   window.draw(sprite);
 }
 
-void Window::loadStartButtons(sf::RenderWindow& playWindow) {
+void Window::loadStartButtons(sf::RenderWindow &playWindow) {
   sf::RectangleShape start;
   sf::RectangleShape close;
   btnStart.createButton(playWindow, "Iniciar", start, {1080, 0},
@@ -208,7 +203,7 @@ void Window::loadStartButtons(sf::RenderWindow& playWindow) {
                         {90, 40}, {1190, 5});
 }
 
-void Window::loadGameButtons(sf::RenderWindow& playWindow) {
+void Window::loadGameButtons(sf::RenderWindow &playWindow) {
   Prueba.createButton(playWindow, "", prueba, {0, 0}, sf::Color::Blue, {0, 0},
                       {0, 0});
 
@@ -216,7 +211,7 @@ void Window::loadGameButtons(sf::RenderWindow& playWindow) {
   sf::RectangleShape cardsRectangle;
   turn.setPosition(1020, 100);
   turn.setOutlineColor(sf::Color::Black);
-  turn.setSize({ 220,90 });
+  turn.setSize({220, 90});
   turn.setFillColor(sf::Color(255, 255, 255, 128));
   playWindow.draw(turn);
 
@@ -247,13 +242,13 @@ void Window::initializeLandsList() {
   game.loadLands();
   landsList = game.getLandsList();
   it = landsList->begin();
-  //std::cout << (*it)->getType() << std::endl;
+  // std::cout << (*it)->getType() << std::endl;
 }
 
 void Window::showLandsImagePath() {
-  //initializeLandsList();
- // for (it; it != landsList->end(); it++)
-   // std::cout << (*it)->getImagePath() << std::endl;
+  // initializeLandsList();
+  // for (it; it != landsList->end(); it++)
+  // std::cout << (*it)->getImagePath() << std::endl;
 }
 
 void Window::printBoard(sf::RenderWindow &window) {
@@ -262,35 +257,39 @@ void Window::printBoard(sf::RenderWindow &window) {
   int i = 1;
   // Traverse the list
   initializeLandsList();
-  //showLandsImagePath();
+  // showLandsImagePath();
 
   bot_height += 295;
   for (cycle_cord_x = 530; cycle_cord_x <= 680; cycle_cord_x += 75) {
-      if (landsList->begin() != landsList->end()) {
-          tempImagePath = (*it)->getImagePath();//problemas
-          Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,top_height);
-          (*it)->setPosX(cycle_cord_x);
-          (*it)->setPosY(top_height);
-          it++;
-          tempImagePath = (*it)->getImagePath();
-          Window::getInstance().printResources(window, tempImagePath, cycle_cord_x, bot_height);
-          (*it)->setPosX(cycle_cord_x);
-          (*it)->setPosY(bot_height);
-          it++;
-      }
+    if (landsList->begin() != landsList->end()) {
+      tempImagePath = (*it)->getImagePath(); // problemas
+      Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
+                                           top_height);
+      (*it)->setPosX(cycle_cord_x);
+      (*it)->setPosY(top_height);
+      it++;
+      tempImagePath = (*it)->getImagePath();
+      Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
+                                           bot_height);
+      (*it)->setPosX(cycle_cord_x);
+      (*it)->setPosY(bot_height);
+      it++;
+    }
   }
 
   top_height += 75;
   bot_height = 250;
   for (cycle_cord_x = 505; cycle_cord_x <= 755; cycle_cord_x += 75) {
     tempImagePath = (*it)->getImagePath();
-    Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,top_height);
+    Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
+                                         top_height);
     (*it)->setPosX(cycle_cord_x);
     (*it)->setPosY(top_height);
     it++;
     tempImagePath = (*it)->getImagePath();
 
-    Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,bot_height);
+    Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
+                                         bot_height);
     (*it)->setPosX(cycle_cord_x);
     (*it)->setPosY(top_height);
     it++;
@@ -298,18 +297,21 @@ void Window::printBoard(sf::RenderWindow &window) {
 
   top_height += 75;
   for (cycle_cord_x = 460; cycle_cord_x <= 760; cycle_cord_x += 75) {
-      tempImagePath = (*it)->getImagePath();
-      Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,top_height);
-      (*it)->setPosX(cycle_cord_x);
-      (*it)->setPosY(top_height);
-      it++;
+    tempImagePath = (*it)->getImagePath();
+    Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
+                                         top_height);
+    (*it)->setPosX(cycle_cord_x);
+    (*it)->setPosY(top_height);
+    it++;
   }
-  }
-void vertexHexagon(/*falta poner el nodo de la lista*/int x, int y) {
-    /*aca se van a calcular todos los vertices de cada uno de los hexagonos*/
-    /*utilizando la formula*/
-    /*cuando se calcula el vertice, se manda posicion (x y) y el id del vertice al metodo printTown*/
-    /*para poder obtener el id del vertice de la lista del hexagono, se debe recorrer la lista en orden*/
+}
+void vertexHexagon(/*falta poner el nodo de la lista*/ int x, int y) {
+  /*aca se van a calcular todos los vertices de cada uno de los hexagonos*/
+  /*utilizando la formula*/
+  /*cuando se calcula el vertice, se manda posicion (x y) y el id del vertice al
+   * metodo printTown*/
+  /*para poder obtener el id del vertice de la lista del hexagono, se debe
+   * recorrer la lista en orden*/
 }
 void Window::printMaterialCard(sf::RenderWindow &window) {
 
@@ -338,116 +340,135 @@ void Window::printMaterialCard(sf::RenderWindow &window) {
 
 void Window::printTown(sf::RenderWindow &window) {
   int top_height = 25, bot_height = 25, cycle_cord_x = 0, i = 1;
-  game.makeGraph(); Vertex *temp = game.graph.firstVertex;
+  game.makeGraph();
+  Vertex *temp = game.graph.firstVertex;
   // Cambiar -> mapa de Rutas
   string tempImagePath = "Images/puebloX.png";
   bot_height += 295;
   for (cycle_cord_x = 560; cycle_cord_x <= 710; cycle_cord_x += 75) {
-      if (cycle_cord_x == 710) {
-          Window::getInstance().printResources(window, tempImagePath, cycle_cord_x, top_height);
-          setPosXYtoVertex(temp, cycle_cord_x, top_height);
-          printNeighborsTowns(window, temp, tempImagePath, cycle_cord_x, top_height);
-          printNeighborsFinalTowns(window, temp, tempImagePath, cycle_cord_x, top_height);
-      }
-      else {
-          Window::getInstance().printResources(window, tempImagePath, cycle_cord_x, top_height);
-          setPosXYtoVertex(temp, cycle_cord_x, top_height);
-          printNeighborsTowns(window, temp, tempImagePath, cycle_cord_x, top_height);
-          temp = temp->next;
-      }
+    if (cycle_cord_x == 710) {
+      Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
+                                           top_height);
+      setPosXYtoVertex(temp, cycle_cord_x, top_height);
+      printNeighborsTowns(window, temp, tempImagePath, cycle_cord_x,
+                          top_height);
+      printNeighborsFinalTowns(window, temp, tempImagePath, cycle_cord_x,
+                               top_height);
+    } else {
+      Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
+                                           top_height);
+      setPosXYtoVertex(temp, cycle_cord_x, top_height);
+      printNeighborsTowns(window, temp, tempImagePath, cycle_cord_x,
+                          top_height);
+      temp = temp->next;
+    }
   }
   temp = game.graph.getVertex(40);
   for (cycle_cord_x = 560; cycle_cord_x <= 710; cycle_cord_x += 75) {
-      if (cycle_cord_x == 710) {
-          Window::getInstance().printResources(window, tempImagePath, cycle_cord_x, bot_height);
-          setPosXYtoVertex(temp, cycle_cord_x, bot_height);
-          printNeighborsTowns(window, temp, tempImagePath, cycle_cord_x, bot_height);
-          printNeighborsFinalTowns(window, temp, tempImagePath, cycle_cord_x, bot_height);
-      }
-      else {
-          Window::getInstance().printResources(window, tempImagePath, cycle_cord_x, bot_height);
-          setPosXYtoVertex(temp, cycle_cord_x, bot_height);
-          printNeighborsTowns(window, temp, tempImagePath, cycle_cord_x, bot_height);
-          temp = temp->next;
-      }
-   
+    if (cycle_cord_x == 710) {
+      Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
+                                           bot_height);
+      setPosXYtoVertex(temp, cycle_cord_x, bot_height);
+      printNeighborsTowns(window, temp, tempImagePath, cycle_cord_x,
+                          bot_height);
+      printNeighborsFinalTowns(window, temp, tempImagePath, cycle_cord_x,
+                               bot_height);
+    } else {
+      Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
+                                           bot_height);
+      setPosXYtoVertex(temp, cycle_cord_x, bot_height);
+      printNeighborsTowns(window, temp, tempImagePath, cycle_cord_x,
+                          bot_height);
+      temp = temp->next;
+    }
   }
   temp = game.graph.getVertex(8);
   top_height += 75;
   bot_height = 250;
   for (cycle_cord_x = 535; cycle_cord_x <= 760; cycle_cord_x += 75) {
-      if (cycle_cord_x == 760) {
-          Window::getInstance().printResources(window, tempImagePath, cycle_cord_x, top_height);
-          setPosXYtoVertex(temp, cycle_cord_x, top_height);
-          printNeighborsTowns(window, temp, tempImagePath, cycle_cord_x, top_height);
-          printNeighborsFinalTowns(window, temp, tempImagePath, cycle_cord_x, top_height);
-      }
-      else {
-          Window::getInstance().printResources(window, tempImagePath, cycle_cord_x, top_height);
-          setPosXYtoVertex(temp, cycle_cord_x, top_height);
-          printNeighborsTowns(window, temp, tempImagePath, cycle_cord_x, top_height);
-          temp = temp->next;
-      }
-      
+    if (cycle_cord_x == 760) {
+      Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
+                                           top_height);
+      setPosXYtoVertex(temp, cycle_cord_x, top_height);
+      printNeighborsTowns(window, temp, tempImagePath, cycle_cord_x,
+                          top_height);
+      printNeighborsFinalTowns(window, temp, tempImagePath, cycle_cord_x,
+                               top_height);
+    } else {
+      Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
+                                           top_height);
+      setPosXYtoVertex(temp, cycle_cord_x, top_height);
+      printNeighborsTowns(window, temp, tempImagePath, cycle_cord_x,
+                          top_height);
+      temp = temp->next;
+    }
   }
   temp = game.graph.getVertex(29);
   for (cycle_cord_x = 535; cycle_cord_x <= 760; cycle_cord_x += 75) {
-      if (cycle_cord_x == 760) {
-          Window::getInstance().printResources(window, tempImagePath, cycle_cord_x, bot_height);
-          setPosXYtoVertex(temp, cycle_cord_x, bot_height);
-          printNeighborsTowns(window, temp, tempImagePath, cycle_cord_x, bot_height);
-          printNeighborsFinalTowns(window, temp, tempImagePath, cycle_cord_x, bot_height);
-      }
-      else {
-          Window::getInstance().printResources(window, tempImagePath, cycle_cord_x, bot_height);
-          setPosXYtoVertex(temp, cycle_cord_x, bot_height);
-          printNeighborsTowns(window, temp, tempImagePath, cycle_cord_x, bot_height);
-          temp = temp->next;
-      }
+    if (cycle_cord_x == 760) {
+      Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
+                                           bot_height);
+      setPosXYtoVertex(temp, cycle_cord_x, bot_height);
+      printNeighborsTowns(window, temp, tempImagePath, cycle_cord_x,
+                          bot_height);
+      printNeighborsFinalTowns(window, temp, tempImagePath, cycle_cord_x,
+                               bot_height);
+    } else {
+      Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
+                                           bot_height);
+      setPosXYtoVertex(temp, cycle_cord_x, bot_height);
+      printNeighborsTowns(window, temp, tempImagePath, cycle_cord_x,
+                          bot_height);
+      temp = temp->next;
+    }
   }
   temp = game.graph.getVertex(17);
   top_height += 75;
   for (cycle_cord_x = 490; cycle_cord_x <= 790; cycle_cord_x += 75) {
-      if (cycle_cord_x == 790) {
-          Window::getInstance().printResources(window, tempImagePath, cycle_cord_x, top_height);
-          setPosXYtoVertex(temp, cycle_cord_x, top_height);
-          printNeighborsTowns(window, temp, tempImagePath, cycle_cord_x, top_height);
-          printNeighborsFinalTowns(window, temp, tempImagePath, cycle_cord_x, top_height);
-      }
-      else {
-          Window::getInstance().printResources(window, tempImagePath, cycle_cord_x, top_height);
-          setPosXYtoVertex(temp, cycle_cord_x, top_height);
-          printNeighborsTowns(window, temp, tempImagePath, cycle_cord_x, top_height);
-          temp = temp->next;
-      }
-    
+    if (cycle_cord_x == 790) {
+      Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
+                                           top_height);
+      setPosXYtoVertex(temp, cycle_cord_x, top_height);
+      printNeighborsTowns(window, temp, tempImagePath, cycle_cord_x,
+                          top_height);
+      printNeighborsFinalTowns(window, temp, tempImagePath, cycle_cord_x,
+                               top_height);
+    } else {
+      Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
+                                           top_height);
+      setPosXYtoVertex(temp, cycle_cord_x, top_height);
+      printNeighborsTowns(window, temp, tempImagePath, cycle_cord_x,
+                          top_height);
+      temp = temp->next;
+    }
   }
-  //game.printVertexXY();
+  // game.printVertexXY();
 }
-void Window::printNeighborsTowns(sf::RenderWindow& window, Vertex* temp, std::string tempImagePath, int x, int y) {
-    Window::getInstance().printResources(window, tempImagePath, x - 35, y + 25);
-    //temp = game.graph.getVertex(game.graph.getIdVertex(temp) + 3);
-    //assingXYtoTowns(temp, x - 35, y + 25);
+void Window::printNeighborsTowns(sf::RenderWindow &window, Vertex *temp,
+                                 std::string tempImagePath, int x, int y) {
+  Window::getInstance().printResources(window, tempImagePath, x - 35, y + 25);
+  // temp = game.graph.getVertex(game.graph.getIdVertex(temp) + 3);
+  // assingXYtoTowns(temp, x - 35, y + 25);
 
-    Window::getInstance().printResources(window, tempImagePath, x - 35, y + 50);
-    //temp = game.graph.getVertex(game.graph.getIdVertex(temp) + 7);
-    //assingXYtoTowns(temp, x - 35, y + 50);
+  Window::getInstance().printResources(window, tempImagePath, x - 35, y + 50);
+  // temp = game.graph.getVertex(game.graph.getIdVertex(temp) + 7);
+  // assingXYtoTowns(temp, x - 35, y + 50);
 
-    Window::getInstance().printResources(window, tempImagePath, x, y + 60);
-    //temp = game.graph.getVertex(game.graph.getIdVertex(temp) + 12);
-    //assingXYtoTowns(temp, x, y + 60);
-   
+  Window::getInstance().printResources(window, tempImagePath, x, y + 60);
+  // temp = game.graph.getVertex(game.graph.getIdVertex(temp) + 12);
+  // assingXYtoTowns(temp, x, y + 60);
 }
-void Window::printNeighborsFinalTowns(sf::RenderWindow& window, Vertex* temp, std::string tempImagePath, int x, int y) {
-    Window::getInstance().printResources(window, tempImagePath, x + 30, y + 25);
-    //temp = game.graph.getVertex(game.graph.getIdVertex(temp) + 4);
-    //assingXYtoTowns(temp, x + 30, y + 25);
+void Window::printNeighborsFinalTowns(sf::RenderWindow &window, Vertex *temp,
+                                      std::string tempImagePath, int x, int y) {
+  Window::getInstance().printResources(window, tempImagePath, x + 30, y + 25);
+  // temp = game.graph.getVertex(game.graph.getIdVertex(temp) + 4);
+  // assingXYtoTowns(temp, x + 30, y + 25);
 
-    Window::getInstance().printResources(window, tempImagePath, x + 30, y + 50);
-    //temp = game.graph.getVertex(game.graph.getIdVertex(temp) + 8);
-   // assingXYtoTowns(temp, x + 30, y + 50);
+  Window::getInstance().printResources(window, tempImagePath, x + 30, y + 50);
+  // temp = game.graph.getVertex(game.graph.getIdVertex(temp) + 8);
+  // assingXYtoTowns(temp, x + 30, y + 50);
 }
-void Window::setPosXYtoVertex(Vertex* temp, int x, int y) {
-    temp->town->setPosX(x);
-    temp->town->setPosY(y);
+void Window::setPosXYtoVertex(Vertex *temp, int x, int y) {
+  temp->town->setPosX(x);
+  temp->town->setPosY(y);
 }
