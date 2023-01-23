@@ -56,7 +56,10 @@ public:
   void printResources(sf::RenderWindow &, std::string, int, int);
   void printMaterialCard(sf::RenderWindow &);
   void printImageTown(std::string, int, int);
+
+
   void printBoard(sf::RenderWindow &);
+  void vertexHexagon(/*falta poner el nodo de la lista*/int x, int y);
 
   ///ediciones
   void printTown(sf::RenderWindow &);

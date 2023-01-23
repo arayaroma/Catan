@@ -259,9 +259,7 @@ void Window::showLandsImagePath() {
 void Window::printBoard(sf::RenderWindow &window) {
   int top_height = 30, bot_height = 30, cycle_cord_x = 0;
   string tempImagePath;
-
-
-	int i = 1;
+  int i = 1;
   // Traverse the list
   initializeLandsList();
   //showLandsImagePath();
@@ -307,6 +305,12 @@ void Window::printBoard(sf::RenderWindow &window) {
       it++;
   }
   }
+void vertexHexagon(/*falta poner el nodo de la lista*/int x, int y) {
+    /*aca se van a calcular todos los vertices de cada uno de los hexagonos*/
+    /*utilizando la formula*/
+    /*cuando se calcula el vertice, se manda posicion (x y) y el id del vertice al metodo printTown*/
+    /*para poder obtener el id del vertice de la lista del hexagono, se debe recorrer la lista en orden*/
+}
 void Window::printMaterialCard(sf::RenderWindow &window) {
 
   Label *materialCard =
