@@ -57,7 +57,14 @@ public:
   void printMaterialCard(sf::RenderWindow &);
   void printImageTown(std::string, int, int);
   void printBoard(sf::RenderWindow &);
+
+  ///ediciones
   void printTown(sf::RenderWindow &);
+  void printNeighborsTowns(sf::RenderWindow& , Vertex* temp,std::string url, int x, int y);
+  void printNeighborsFinalTowns(sf::RenderWindow&, Vertex* temp, std::string url, int x, int y);
+  void assingXYtoTowns(Vertex* temp, int x, int y);
+  ///
+
   void updateDisplay();
   void loadStartButtons(sf::RenderWindow& playWindow);
   void loadGameButtons(sf::RenderWindow& playWindow);

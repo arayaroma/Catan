@@ -58,7 +58,6 @@ void Game::loadLands() {
     if (i < 1) {
       landsList->push_front(
           new Land( imagePaths.at("dessertPath"), 0, 0, landId));
-      std::cout << imagePaths.at("dessertPath") << std::endl;
       landId++;
     }
     if (i < 3) {

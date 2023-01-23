@@ -12,8 +12,10 @@ bool Graph::isEmpty() {
 Vertex* Graph::getVertex(int id) {
 	Vertex* auxVertex = firstVertex;
 	while (auxVertex != nullptr) {
-		if (auxVertex->idVertex == id)
+		if (auxVertex->idVertex == id) {
+			std::cout << "encontro" << std::endl;
 			return auxVertex;
+		}
 		auxVertex = auxVertex->next;
 	}
 	return nullptr;
@@ -60,12 +62,6 @@ void Graph::insertOwnerHexagon(int id, int vecOwners[]) {
 void  Graph::insertEdge(int origin, int destiny){
 	Vertex* originVertex = getVertex(origin);
 	Vertex* destinyVertex = getVertex(destiny);
-
-	if (originVertex == nullptr)
-		cout << " El Vertex origen no existe " << endl;
-
-	if (destinyVertex == nullptr)
-		cout << " El Vertex destino no existe " << endl;
 
 	if (originVertex != nullptr && destinyVertex != nullptr){
 		Edge* newEdge = new  Edge(destinyVertex);
