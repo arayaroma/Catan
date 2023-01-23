@@ -103,7 +103,7 @@ void Window::goAboutView() {
 }
 
 void Window::goPlayView() {
-    sf::RenderWindow playWindow(sf::VideoMode(1280, 720), "Play");
+  sf::RenderWindow playWindow(sf::VideoMode(1280, 720), "Play");
   sf::Texture playImage;
   playImage.loadFromFile("Images/catan_1280x720.jpg");
   sf::Sprite playSprite(playImage);
@@ -116,39 +116,40 @@ void Window::goPlayView() {
   
   while (playWindow.isOpen()) {
     sf::Event event;
+    playWindow.clear();
     while (playWindow.pollEvent(event)) {
         if (event.type == sf::Event::Closed) {
             playWindow.close();
         }
+
+       // playWindow.waitEvent(event);
+
+        if (event.MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+            //showCoordinates(playWindow);
+            std::cout << "dentro" << std::endl;
+            if (sf::Mouse::getPosition(playWindow).x > 1080 &&
+                sf::Mouse::getPosition(playWindow).y > 0 &&
+                sf::Mouse::getPosition(playWindow).x < 1175 &&
+                sf::Mouse::getPosition(playWindow).y < 40) {
+                playWindow.clear();
+                playWindow.draw(playSprite);
+                
+            }
+            if (sf::Mouse::getPosition(playWindow).x > 1200 &&
+                sf::Mouse::getPosition(playWindow).y > 0 &&
+                sf::Mouse::getPosition(playWindow).x < 1270 &&
+                sf::Mouse::getPosition(playWindow).y < 40) {
+                setTurn(4);
+            }
+        }
     }
-    playWindow.clear();
+
     playWindow.draw(playSprite);
+    loadGameButtons(playWindow);
+    printBoard(playWindow);
+    printMaterialCard(playWindow);
+    printTown(playWindow);
     loadStartButtons(playWindow);
-
-    playWindow.waitEvent(event);
-
-    if (event.MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
-        //showCoordinates(playWindow);
-        if (sf::Mouse::getPosition(playWindow).x > 1080 &&
-            sf::Mouse::getPosition(playWindow).y > 0 &&
-            sf::Mouse::getPosition(playWindow).x < 1175 &&
-            sf::Mouse::getPosition(playWindow).y < 40) {
-            playWindow.clear();
-            playWindow.draw(playSprite);
-            loadGameButtons(playWindow);
-            printBoard(playWindow);
-            printMaterialCard(playWindow);
-            printTown(playWindow);
-        }
-        if (sf::Mouse::getPosition(playWindow).x > 1200 &&
-            sf::Mouse::getPosition(playWindow).y > 0 &&
-            sf::Mouse::getPosition(playWindow).x < 1270 &&
-            sf::Mouse::getPosition(playWindow).y < 40) {
-            setTurn(4);
-        }
-    }
-   
-
     playWindow.display();
   }
 }
@@ -302,7 +303,6 @@ void Window::printBoard(sf::RenderWindow &window) {
   /// <param name="window"></param>
   for (cycle_cord_x = 460; cycle_cord_x <= 760; cycle_cord_x += 75) {
       tempImagePath = (*it)->getImagePath();
-      top_height += 75;
       Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
           top_height);
       it++;
