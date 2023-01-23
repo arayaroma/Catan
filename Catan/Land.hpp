@@ -13,7 +13,6 @@ private:
   int landId;
   double posX;
   double posY;
-
 public:
   vector<int> v_townsId;
   list<Vertex *> *townsList;
@@ -35,7 +34,7 @@ public:
   int getLandId() const;
 
   string getType() const override { return LAND; }
-  string getImagePath() override { return ""; }
+  string getImagePath() override { return this->imagePath; }
   void toString() override {
     std::cout << "posX: " << posX << "\n"
               << "posY: " << posY << "\n " << landId << std::endl;

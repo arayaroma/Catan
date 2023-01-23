@@ -147,10 +147,7 @@ void Window::goPlayView() {
             setTurn(4);
         }
     }
-    loadGameButtons(playWindow);
-    printBoard(playWindow);
-    printMaterialCard(playWindow);
-    printTown(playWindow);
+   
 
     playWindow.display();
   }
