@@ -62,7 +62,7 @@ public:
   void printTown(sf::RenderWindow &);
   void printNeighborsTowns(sf::RenderWindow& , Vertex* temp,std::string url, int x, int y);
   void printNeighborsFinalTowns(sf::RenderWindow&, Vertex* temp, std::string url, int x, int y);
-  void assingXYtoTowns(Vertex* temp, int x, int y);
+  void setPosXYtoVertex(Vertex* temp, int x, int y);
   ///
 
   void updateDisplay();
