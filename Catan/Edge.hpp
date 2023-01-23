@@ -1,12 +1,11 @@
 #pragma once
 class Vertex;
-class Edge
-{
+class Edge {
 private:
-	Edge* next;
-	Vertex* destinyVertex;
-	friend class Graph;
-public:
-	Edge(Vertex*);
-};
+  friend class Graph;
+  Edge *next;
+  Vertex *destinyVertex;
 
+public:
+  Edge(Vertex *);
+};

@@ -155,6 +155,7 @@ void Window::goPlayView() {
   playWindow.clear();
   playWindow.display();
 }*/
+
 void Window::setTurn(int numberPlayers) {
   std::cout << turnNumber << std::endl;
 
@@ -170,7 +171,6 @@ void Window::setTurn(int numberPlayers) {
   }
 }
 void Window::drawTurn(int turns, int posiI) {
-
   // turn.move(1020,posiI);
 }
 bool Window::goBack(sf::RenderWindow &window) {
@@ -252,10 +252,8 @@ void Window::showLandsImagePath() {
 }
 
 void Window::printBoard(sf::RenderWindow &window) {
-  int top_height = 30, bot_height = 30, cycle_cord_x = 0;
+  int top_height = 30, bot_height = 30, cycle_cord_x = 0, i = 1;
   string tempImagePath;
-  int i = 1;
-  // Traverse the list
   initializeLandsList();
   // showLandsImagePath();
 
@@ -267,6 +265,7 @@ void Window::printBoard(sf::RenderWindow &window) {
                                            top_height);
       (*it)->setPosX(cycle_cord_x);
       (*it)->setPosY(top_height);
+      calculateHexagonVertexes(it, cycle_cord_x, top_height);
       it++;
       tempImagePath = (*it)->getImagePath();
       Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,
@@ -274,6 +273,7 @@ void Window::printBoard(sf::RenderWindow &window) {
       (*it)->setPosX(cycle_cord_x);
       (*it)->setPosY(bot_height);
       it++;
+      calculateHexagonVertexes(it, cycle_cord_x, top_height);
     }
   }
 
@@ -305,7 +305,34 @@ void Window::printBoard(sf::RenderWindow &window) {
     it++;
   }
 }
-void vertexHexagon(/*falta poner el nodo de la lista*/ int x, int y) {
+
+void Window::loadHexagonNodes(list<Vertex *>::iterator it, double posX,
+                              double posY) {
+  double relativePositionX =
+      posX + (landsRadius * cos(getFormula((*it)->getVertexId())));
+  double relativePositionY =
+      posY + (landsRadius * sin(getFormula((*it)->getVertexId())));
+}
+
+double Window::getFormula(int vertexId) {
+  if (vertexId == 1)
+    return firstAngle;
+  if (vertexId == 2)
+    return secondAngle;
+  if (vertexId == 3)
+    return thirdAngle;
+  if (vertexId == 4)
+    return fourthAngle;
+  if (vertexId == 5)
+    return fifthAngle;
+  if (vertexId == 6)
+    return sexthAngle;
+  return 0;
+}
+
+void Window::calculateHexagonVertexes(list<Land *>::iterator it, int x, int y) {
+
+  // del for para empezar a dibujar desde l
   /*aca se van a calcular todos los vertices de cada uno de los hexagonos*/
   /*utilizando la formula*/
   /*cuando se calcula el vertice, se manda posicion (x y) y el id del vertice al
@@ -313,6 +340,7 @@ void vertexHexagon(/*falta poner el nodo de la lista*/ int x, int y) {
   /*para poder obtener el id del vertice de la lista del hexagono, se debe
    * recorrer la lista en orden*/
 }
+
 void Window::printMaterialCard(sf::RenderWindow &window) {
 
   Label *materialCard =

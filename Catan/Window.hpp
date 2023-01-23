@@ -7,6 +7,15 @@
 #include <iostream>
 #include <iterator>
 
+#define pi 3.14159265358979323846
+#define firstAngle pi / 2
+#define secondAngle (3 * pi) / 4
+#define thirdAngle pi / 4
+#define fourthAngle (5 * pi) / 4
+#define fifthAngle (7 * pi) / 4
+#define sexthAngle (3 * pi) / 2
+#define landsRadius 37.5
+
 using std::list;
 
 class Window {
@@ -36,6 +45,7 @@ private:
 
   int i = 100;
   int turnNumber = 0;
+
 public:
   Window(const Window &) = delete;
 
@@ -57,23 +67,28 @@ public:
   void printMaterialCard(sf::RenderWindow &);
   void printImageTown(std::string, int, int);
 
-
   void printBoard(sf::RenderWindow &);
-  void vertexHexagon(/*falta poner el nodo de la lista*/int x, int y);
+  void calculateHexagonVertexes(list<Land *>::iterator it, int x, int y);
 
-  ///ediciones
+  void loadHexagonNodes(list<Vertex *>::iterator, double, double);
+  double getFormula(int);
+
+  /// ediciones
   void printTown(sf::RenderWindow &);
-  void printNeighborsTowns(sf::RenderWindow& , Vertex* temp,std::string url, int x, int y);
-  void printNeighborsFinalTowns(sf::RenderWindow&, Vertex* temp, std::string url, int x, int y);
-  void setPosXYtoVertex(Vertex* temp, int x, int y);
+  void printNeighborsTowns(sf::RenderWindow &, Vertex *temp, std::string url,
+                           int x, int y);
+  void printNeighborsFinalTowns(sf::RenderWindow &, Vertex *temp,
+                                std::string url, int x, int y);
+  void setPosXYtoVertex(Vertex *temp, int x, int y);
   ///
 
   void updateDisplay();
-  void loadStartButtons(sf::RenderWindow& playWindow);
-  void loadGameButtons(sf::RenderWindow& playWindow);
+  void loadStartButtons(sf::RenderWindow &playWindow);
+  void loadGameButtons(sf::RenderWindow &playWindow);
 
   void setTurn(int numbrePlayers);
   void drawTurn(int turn, int);
+
 private:
   Window() {}
 };

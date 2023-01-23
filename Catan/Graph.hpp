@@ -1,23 +1,22 @@
 #pragma once
-#include "Vertex.hpp"
 #include "Edge.hpp"
+#include "Vertex.hpp"
 
-class Graph{
+class Graph {
 private:
-	int size;
+  int size;
 
 public:
-	Vertex* firstVertex;
+  Vertex *firstVertex;
 
 public:
-	Graph();
-	bool isEmpty();
-	Vertex* getVertex(int);
-	int getIdVertex(Vertex*);
-	void vertexXY();
-	void insertVertex(Vertex*);
-	void insertOwnerHexagon(int, int vecOwners[]);
-	void insertEdge(int origin, int destiny);
-	void showListAdjacency();
+  Graph();
+  bool isEmpty();
+  Vertex *getVertex(int);
+  int getVertexId(Vertex *);
+  void vertexXY();
+  void insertVertex(Vertex *);
+  void insertOwnerHexagon(int, int vecOwners[]);
+  void insertEdge(int origin, int destiny);
+  void showAdjacencyList();
 };
-
