@@ -6,9 +6,11 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <iterator>
-
+#include <iomanip>
+#include <numbers>
+#define LandsRadius  37.5
+# define PI 3.14159265358979323846
 using std::list;
-
 class Window {
 public:
   Game game;
@@ -59,7 +61,7 @@ public:
 
 
   void printBoard(sf::RenderWindow &);
-  void vertexHexagon(/*falta poner el nodo de la lista*/int x, int y);
+  void calculateHexagonVertexes(std::list<Land*>::iterator it,int x, int y);
 
   ///ediciones
   void printTown(sf::RenderWindow &);

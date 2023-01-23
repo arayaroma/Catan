@@ -271,12 +271,14 @@ void Window::printBoard(sf::RenderWindow &window) {
           Window::getInstance().printResources(window, tempImagePath, cycle_cord_x,top_height);
           (*it)->setPosX(cycle_cord_x);
           (*it)->setPosY(top_height);
+          calculateHexagonVertexes( it, cycle_cord_x, top_height);
           it++;
           tempImagePath = (*it)->getImagePath();
           Window::getInstance().printResources(window, tempImagePath, cycle_cord_x, bot_height);
           (*it)->setPosX(cycle_cord_x);
           (*it)->setPosY(bot_height);
           it++;
+          calculateHexagonVertexes(it, cycle_cord_x, top_height);
       }
   }
 
@@ -305,7 +307,9 @@ void Window::printBoard(sf::RenderWindow &window) {
       it++;
   }
   }
-void vertexHexagon(/*falta poner el nodo de la lista*/int x, int y) {
+void calculateHexagonVertexes(std::list<Land>::iterator it,int x, int y) {
+    float auxY = x + (LandsRadius)*sin(2 * PI / 4);//
+    float auxX = y + (LandsRadius)*cos(2 * PI / 4);// se caldulo los 2 primeros puntos antes del for para empezar a dibujar desde l
     /*aca se van a calcular todos los vertices de cada uno de los hexagonos*/
     /*utilizando la formula*/
     /*cuando se calcula el vertice, se manda posicion (x y) y el id del vertice al metodo printTown*/
