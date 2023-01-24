@@ -1,10 +1,2 @@
-﻿  Application.cpp
-  Game.cpp
-  Edge.cpp
-  Graph.cpp
-  main.cpp
-  Land.cpp
-  Vertex.cpp
-  Window.cpp
-  Generating Code...
-  Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe
+﻿  Window.cpp
+  Catan.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Catan.exe

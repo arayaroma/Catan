@@ -350,7 +350,7 @@ void Window::printMaterialCard(sf::RenderWindow &window) {
                                   font, sf::Text::Bold, 20, 5.f, 0.f);
   Label *turns = new Label("Jugadores", sf::Color(0, 0, 255, 128), font,
                            sf::Text::Bold, 20, 1050.f, 60.f);
-  Label *cards = new Label("Cartas", sf::Color(0, 0, 255, 128), font,
+  Label *cards = new Label("Componentes", sf::Color(0, 0, 255, 128), font,
                            sf::Text::Bold, 20, 565.f, 575.f);
 
   printResources(window, "Images/resourcesCards/clayCard.png", 0, 255);
