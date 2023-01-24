@@ -23,6 +23,8 @@ public:
   Game game;
   list<Land *> *landsList;
   list<Land *>::iterator it;
+  list<Vertex*> vertexesList;
+  list<Vertex*>::iterator vertexIterator;
 private:
   sf::Font font;
   Button Prueba;
@@ -55,7 +57,7 @@ public:
 
   void showLandsImagePath();
   void initializeLandsList();
-
+  void initializeVertexesList();
   void showCoordinates(sf::RenderWindow &);
   void goTitleView();
   void goAboutView();

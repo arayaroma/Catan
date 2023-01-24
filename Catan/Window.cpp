@@ -238,12 +238,7 @@ void Window::loadGameButtons(sf::RenderWindow &playWindow) {
   btnOpcional2.createButton(playWindow, "opcional2", opcional2, {1000, 650},
                             sf::Color(0, 0, 255, 110), {130, 40}, {1010, 650});
 }
-void Window::initializeLandsList() {
-  game.loadLands();
-  game.assignTownsToLand();
-  landsList = game.getLandsList();
-  it = landsList->begin();
-}
+
 ///separar en 3 metodos
 void Window::traverseFirstAndLastRow(int x, int top_height,int bot_height, sf::RenderWindow& window) {
     
@@ -286,17 +281,16 @@ void Window::traverseSecondAndNextToLastRow(int cycle_cord_x, int top_height, in
     
 }
 void Window::traverseMiddleRow(int cycle_cord_x, int top_height, int bot_height, sf::RenderWindow& window) {
-    
+    if (landsList->begin() != landsList->end()) {
         string tempImagePath;
         tempImagePath = (*it)->getImagePath();
         Window::getInstance().printImages(window, tempImagePath, cycle_cord_x,
             top_height);
         (*it)->setPosX(cycle_cord_x);
         (*it)->setPosY(top_height);
-        cFormTraverse(window, it, cycle_cord_x, top_height, lastIteration);
+       // cFormTraverse(window, it, cycle_cord_x, top_height, lastIteration);
         it++;
-
-    
+    }
 }
 void Window::printBoard(sf::RenderWindow &window) {
   int top_height = 30, bot_height = 30, cycle_cord_x = 0, i = 1;
@@ -331,10 +325,10 @@ void Window::loadHexagonNodes(sf::RenderWindow& window,list<Vertex *>::iterator 
             printTowns(window, relativePositionX, relativePositionY + 15);
         }
 }
-void Window::setHexagonCoordinates(list<Vertex*>::iterator it, double posX, double posY, int iterationNumber) {
+void Window::setHexagonCoordinates(list<Vertex*>::iterator vertexIterator, double posX, double posY, int iterationNumber) {
   double relativePositionX = posX - 10 + landsRadius + (landsRadius * cos(getFormula(iterationNumber)));
   double relativePositionY = posY - 20 + landsRadius + (landsRadius * sin(getFormula(iterationNumber)));
- // (*it)->getTown()->setPosX(relativePositionX);
+  //(*vertexIterator)->getTown()->setPosX(relativePositionX);
   //(*it)->getTown()->setPosY(relativePositionY);
   //setPosXYtoVertex(it, relativePositionX, relativePositionY);
 }
@@ -353,22 +347,30 @@ double Window::getFormula(int vertexId) {
     return sexthAngle;
   return 0;
 }
-
+void Window::initializeLandsList() {
+    game.loadLands();
+    game.assignTownsToLand();
+    landsList = game.getLandsList();
+    it = landsList->begin();
+}
+void Window::initializeVertexesList() {
+    vertexesList = (*it)->getTownsList();
+    vertexIterator = vertexesList.begin();
+}
 void Window::cFormTraverse(sf::RenderWindow& window,list<Land *>::iterator it, int x, int y,bool lastIteration) {
     int  iterationNumber=1;
-    list<Vertex*>::iterator vertexIterator;
-    vertexIterator = (*it)->getTownsList().begin();
+    initializeVertexesList();
     for (iterationNumber = 1; iterationNumber < 7; iterationNumber++) {
-        if (iterationNumber == 3 || iterationNumber == 5) {
-            setHexagonCoordinates( vertexIterator, x, y, iterationNumber);
+        if (vertexesList.begin() != vertexesList.end()) {
+            if (iterationNumber == 3 || iterationNumber == 5)
+                setHexagonCoordinates(vertexIterator, x, y, iterationNumber);
+            loadHexagonNodes(window, vertexIterator, x, y, iterationNumber);
+            vertexIterator++;
+            if (lastIteration) {
+                loadHexagonNodes(window, vertexIterator, x, y, iterationNumber);
+                vertexIterator++;
+            }
         }
-        else {
-            loadHexagonNodes(window, vertexIterator, x, y, iterationNumber);
-            it++;}
-        if(lastIteration){
-            loadHexagonNodes(window, vertexIterator, x, y, iterationNumber);
-            it++;
-        } 
     }
 }
 
