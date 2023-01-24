@@ -53,13 +53,13 @@ public:
   unordered_map<string,string> imagePaths;
   Graph graph;
   Land land;
-
+  
   list<Town *> *townsList;
   list<Player*> *players;
   list<City *> *citiesList;
   list<Road *> *roadsList;
   list<Land *> *landsList;
-
+  list<Land*>::iterator landIterator;
   Card *specialCard;
 
   stack<Knight *> *knightCards = new stack<Knight *>();
@@ -91,7 +91,7 @@ public:
   void loadLands();
 
   void assignTownsToLand();
-  void assignTowns(Land *, int, int, int);
+  void assignTowns(Land* , int, int, int);
   void assignTownsMiddleRow(Land *, int, int, int);
   void assignTownsLastRows(Land *, int, int, int);
   void makeMaterialCard();

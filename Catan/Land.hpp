@@ -14,15 +14,14 @@ private:
   double posX;
   double posY;
 public:
-  vector<int> v_townsId;
-  list<Vertex *> *townsList;
+  list<Vertex *> townsList;
 
 public:
   Land();
  
   Land( std::string, double x, double y, int id);
 
-  list<Vertex *> *getTownsList() const { return this->townsList; }
+  list<Vertex *> getTownsList() const { return townsList; }
 
   void setPosX(double);
   double getPosX() const;
@@ -40,9 +39,5 @@ public:
               << "posY: " << posY << "\n " << landId << std::endl;
   }
 
-  void cleanTownsId() {
-    for (int i : v_townsId) {
-      v_townsId[i] = NULL;
-    }
-  }
+  
 };

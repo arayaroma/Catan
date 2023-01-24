@@ -23,7 +23,6 @@ public:
   Game game;
   list<Land *> *landsList;
   list<Land *>::iterator it;
-
 private:
   sf::Font font;
   Button Prueba;
@@ -45,7 +44,7 @@ private:
 
   int i = 100;
   int turnNumber = 0;
-
+  bool lastIteration = false;
 public:
   Window(const Window &) = delete;
 
@@ -63,23 +62,23 @@ public:
   void goPlayView();
   bool goBack(sf::RenderWindow &);
 
-  void printResources(sf::RenderWindow &, std::string, int, int);
+  void printImages(sf::RenderWindow &, std::string, int, int);
   void printMaterialCard(sf::RenderWindow &);
-  void printImageTown(std::string, int, int);
 
   void printBoard(sf::RenderWindow &);
-  void calculateHexagonVertexes(list<Land *>::iterator it, int x, int y);
+  void traverseFirstAndLastRow(int x, int top_height, int bot_height, sf::RenderWindow& window);
+  void traverseSecondAndNextToLastRow(int x, int top_height, int bot_height, sf::RenderWindow& window);
+  void traverseMiddleRow(int x, int top_height, int bot_height, sf::RenderWindow& window);
+  void cFormTraverse(sf::RenderWindow& window,list<Land *>::iterator it, int x, int y,bool);
 
-  void loadHexagonNodes(list<Vertex *>::iterator, double, double);
+  void loadHexagonNodes(sf::RenderWindow& window,list<Vertex *>::iterator, double, double, int iterationNumber);
+  void setHexagonCoordinates(list<Vertex*>::iterator, double, double, int iterationNumber);
   double getFormula(int);
 
+
   /// ediciones
-  void printTown(sf::RenderWindow &);
-  void printNeighborsTowns(sf::RenderWindow &, Vertex *temp, std::string url,
-                           int x, int y);
-  void printNeighborsFinalTowns(sf::RenderWindow &, Vertex *temp,
-                                std::string url, int x, int y);
-  void setPosXYtoVertex(Vertex *temp, int x, int y);
+  void printTowns(sf::RenderWindow &,double x, double y);
+  void setPosXYtoVertex(list<Vertex*>::iterator it, int x, int y);
   ///
 
   void updateDisplay();

@@ -23,6 +23,6 @@ public:
   Vertex(int, std::string, Town *);
 
   int getVertexId() const { return this->vertexId; }
-
+  Town* getTown() const { return this->town; }
   void toString() { std::cout << this->vertexId << " "; }
 };

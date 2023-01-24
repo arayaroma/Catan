@@ -1,10 +1,4 @@
-﻿  Application.cpp
-  Game.cpp
-  Edge.cpp
-  Graph.cpp
-  main.cpp
-  Land.cpp
-  Vertex.cpp
-  Window.cpp
-  Generating Code...
-  Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe
+﻿  Window.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\Window.cpp(400,65): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\Window.cpp(400,62): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+  Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe
