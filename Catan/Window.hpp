@@ -23,8 +23,30 @@ public:
   Game game;
   list<Land *> *landsList;
   list<Land *>::iterator it;
-  list<Vertex*> vertexesList;
-  list<Vertex*>::iterator vertexIterator;
+  list<Vertex *> vertexesList;
+
+  list<Vertex *>::iterator vertexIterator;
+
+private:
+  bool lastIteration = false;
+  int lastIterationNumber = 680;
+  int vertexIterationNumber;
+  string tempImagePath;
+
+public:
+  // Land
+  void setAndTraverse(sf::RenderWindow &, int, int);
+  void iterateLand();
+  void lastIterationBehaviour(int);
+  bool isLastIteration(int) const;
+  bool isLandsListTraversal() const;
+  // Vertex
+  void iterateVertex();
+  bool isTwoLastVertex() const;
+  bool isVertexesListTraversal() const;
+  void setTempImagePath(string);
+  void setPosXYtoLand(double, double);
+
 private:
   sf::Font font;
   Button Prueba;
@@ -46,7 +68,7 @@ private:
 
   int i = 100;
   int turnNumber = 0;
-  bool lastIteration = false;
+
 public:
   Window(const Window &) = delete;
 
@@ -68,27 +90,26 @@ public:
   void printMaterialCard(sf::RenderWindow &);
 
   void printBoard(sf::RenderWindow &);
-  void traverseFirstAndLastRow(int x, int top_height, int bot_height, sf::RenderWindow& window);
-  void traverseSecondAndNextToLastRow(int x, int top_height, int bot_height, sf::RenderWindow& window);
-  void traverseMiddleRow(int x, int top_height, int bot_height, sf::RenderWindow& window);
-  void cFormTraverse(sf::RenderWindow& window,list<Land *>::iterator it, int x, int y,bool);
+  void traverseFirstAndLastRow(int, int, int, sf::RenderWindow &);
+  void traverseSecondAndNextToLastRow(int, int, int, sf::RenderWindow &);
+  void traverseMiddleRow(int, int, int, sf::RenderWindow &);
+  void C_Traversal(sf::RenderWindow &, int, int);
 
-  void loadHexagonNodes(sf::RenderWindow& window,list<Vertex *>::iterator, double, double, int iterationNumber);
-  void setHexagonCoordinates(list<Vertex*>::iterator, double, double, int iterationNumber);
+  void loadHexagonNodes(sf::RenderWindow &, list<Vertex *>::iterator,
+                        double, double, int);
+  void setHexagonCoordinates(list<Vertex *>::iterator, double, double,
+                             int);
   double getFormula(int);
 
-
   /// ediciones
-  void printTowns(sf::RenderWindow &,double x, double y);
-  void setPosXYtoVertex(list<Vertex*>::iterator it, int x, int y);
-  ///
+  void printTowns(sf::RenderWindow &, double , double );
 
   void updateDisplay();
-  void loadStartButtons(sf::RenderWindow &playWindow);
-  void loadGameButtons(sf::RenderWindow &playWindow);
+  void loadStartButtons(sf::RenderWindow &);
+  void loadGameButtons(sf::RenderWindow &);
 
-  void setTurn(int numbrePlayers);
-  void drawTurn(int turn, int);
+  void setTurn(int);
+  void drawTurn(int, int);
 
 private:
   Window() {}

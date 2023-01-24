@@ -140,21 +140,15 @@ void Window::goPlayView() {
         }
       }
     }
-
     playWindow.draw(playSprite);
     loadGameButtons(playWindow);
     printBoard(playWindow);
     printMaterialCard(playWindow);
-    //printTown(playWindow);
+    // printTown(playWindow);
     loadStartButtons(playWindow);
     playWindow.display();
   }
 }
-
-/*void Window::updateDisplay() {
-  playWindow.clear();
-  playWindow.display();
-}*/
 
 void Window::setTurn(int numberPlayers) {
   std::cout << turnNumber << std::endl;
@@ -170,9 +164,9 @@ void Window::setTurn(int numberPlayers) {
     turnNumber++;
   }
 }
-void Window::drawTurn(int turns, int posiI) {
-  // turn.move(1020,posiI);
-}
+
+void Window::drawTurn(int turns, int posiI) {}
+
 bool Window::goBack(sf::RenderWindow &window) {
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     return true;
@@ -184,8 +178,8 @@ void Window::showCoordinates(sf::RenderWindow &window) {
   std::cout << "y: " << sf::Mouse::getPosition(window).y << std::endl;
 }
 
-void Window::printImages(sf::RenderWindow &window, string imagePath,
-                            int posX, int posY) {
+void Window::printImages(sf::RenderWindow &window, string imagePath, int posX,
+                         int posY) {
   // string imagePath = imagePath;
   sf::Texture path;
   path.loadFromFile(imagePath);
@@ -239,99 +233,161 @@ void Window::loadGameButtons(sf::RenderWindow &playWindow) {
                             sf::Color(0, 0, 255, 110), {130, 40}, {1010, 650});
 }
 
-///separar en 3 metodos
-void Window::traverseFirstAndLastRow(int x, int top_height,int bot_height, sf::RenderWindow& window) {
-    
-    string tempImagePath;
-    if (landsList->begin() != landsList->end()) {
-        if (x == 680)lastIteration = true;
-        tempImagePath = (*it)->getImagePath(); // problemas
-        Window::getInstance().printImages(window, tempImagePath, x, top_height);
-        (*it)->setPosX(x);
-        (*it)->setPosY(top_height);
-        cFormTraverse(window, it, x, top_height, lastIteration);
-        it++;
-        tempImagePath = (*it)->getImagePath();
-        Window::getInstance().printImages(window, tempImagePath, x, bot_height);
-        (*it)->setPosX(x);
-        (*it)->setPosY(bot_height);
-        cFormTraverse(window, it, x, bot_height, lastIteration);
-        it++;
-    }
-}
-void Window::traverseSecondAndNextToLastRow(int cycle_cord_x, int top_height, int bot_height, sf::RenderWindow& window) {
-    if (landsList->begin() != landsList->end()) {
-        string tempImagePath;
-        tempImagePath = (*it)->getImagePath();
-        Window::getInstance().printImages(window, tempImagePath, cycle_cord_x,
-            top_height);
-        (*it)->setPosX(cycle_cord_x);
-        (*it)->setPosY(top_height);
-        cFormTraverse(window, it, cycle_cord_x, top_height, lastIteration);
-        it++;
-        tempImagePath = (*it)->getImagePath();
+// Agregado recientemente -> Separar en clases los metodos de Window
+void Window::setTempImagePath(string image) { this->tempImagePath = image; }
 
-        Window::getInstance().printImages(window, tempImagePath, cycle_cord_x,
-            bot_height);
-        (*it)->setPosX(cycle_cord_x);
-        (*it)->setPosY(top_height);
-        cFormTraverse(window, it, cycle_cord_x, bot_height, lastIteration);
-        it++;
-    }
-    
+bool Window::isLandsListTraversal() const { return (it != landsList->end()); }
+
+void Window::iterateLand() { it++; }
+
+bool Window::isLastIteration(int number) const {
+  return (number == lastIterationNumber);
 }
-void Window::traverseMiddleRow(int cycle_cord_x, int top_height, int bot_height, sf::RenderWindow& window) {
-    if (landsList->begin() != landsList->end()) {
-        string tempImagePath;
-        tempImagePath = (*it)->getImagePath();
-        Window::getInstance().printImages(window, tempImagePath, cycle_cord_x,
-            top_height);
-        (*it)->setPosX(cycle_cord_x);
-        (*it)->setPosY(top_height);
-       // cFormTraverse(window, it, cycle_cord_x, top_height, lastIteration);
-        it++;
+
+void Window::lastIterationBehaviour(int number) {
+  if (isLastIteration(number))
+    lastIteration = true;
+  lastIteration = false;
+}
+
+void Window::setPosXYtoLand(double posX, double posY) {
+  (*it)->setPosX(posX);
+  (*it)->setPosY(posY);
+}
+
+void Window::setAndTraverse(sf::RenderWindow &window, int posX, int posY) {
+  setTempImagePath((*it)->getImagePath());
+  setPosXYtoLand(posX, posY);
+  Window::getInstance().printImages(window, tempImagePath, posX, posY);
+  C_Traversal(window, posX, posY);
+}
+void Window::initializeLandsList() {
+  game.loadLands();
+  game.assignTownsToLand();
+  landsList = game.getLandsList();
+  it = landsList->begin();
+}
+
+void Window::initializeVertexesList() {
+  vertexesList = (*it)->getTownsList();
+  vertexIterator = vertexesList.begin();
+}
+
+bool Window::isVertexesListTraversal() const {
+  return (vertexIterator != vertexesList.end());
+}
+
+void Window::iterateVertex() { vertexIterator++; }
+
+bool Window::isTwoLastVertex() const {
+  return (vertexIterationNumber == 3 || vertexIterationNumber == 5);
+}
+
+void Window::traverseFirstAndLastRow(int posX, int topHeight, int botHeight,
+                                     sf::RenderWindow &window) {
+  if (isLandsListTraversal()) {
+    lastIterationBehaviour(posX);
+
+    setAndTraverse(window, posX, topHeight);
+    iterateLand();
+
+    setAndTraverse(window, posX, botHeight);
+    iterateLand();
+  }
+}
+
+void Window::traverseSecondAndNextToLastRow(int posX, int topHeight,
+                                            int botHeight,
+                                            sf::RenderWindow &window) {
+  if (isLandsListTraversal()) {
+    setAndTraverse(window, posX, topHeight);
+    iterateLand();
+
+    setAndTraverse(window, posX, botHeight);
+    iterateLand();
+  }
+}
+
+void Window::traverseMiddleRow(int posX, int topHeight, int botHeight,
+                               sf::RenderWindow &window) {
+  if (isLandsListTraversal()) {
+    setAndTraverse(window, posX, topHeight);
+    iterateLand();
+  }
+}
+
+void Window::C_Traversal(sf::RenderWindow &window, int posX, int posY) {
+  vertexIterationNumber = 1;
+  initializeVertexesList();
+
+  for (vertexIterationNumber; vertexIterationNumber < 7;
+       vertexIterationNumber++) {
+    if (isVertexesListTraversal()) {
+      loadHexagonNodes(window, vertexIterator, posX, posY,
+                       vertexIterationNumber);
+
+      if (isTwoLastVertex())
+        setHexagonCoordinates(vertexIterator, posX, posY,
+                              vertexIterationNumber);
+
+      if (lastIteration) {
+        loadHexagonNodes(window, vertexIterator, posX, posY,
+                         vertexIterationNumber);
+        iterateVertex();
+      }
+      iterateVertex();
     }
+  }
 }
 void Window::printBoard(sf::RenderWindow &window) {
   int top_height = 30, bot_height = 30, cycle_cord_x = 0, i = 1;
   initializeLandsList();
   bot_height += 330;
   for (cycle_cord_x = 530; cycle_cord_x <= 680; cycle_cord_x += 75) {
-        traverseFirstAndLastRow(cycle_cord_x, top_height, bot_height, window);
+    traverseFirstAndLastRow(cycle_cord_x, top_height, bot_height, window);
   }
   lastIteration = false;
   top_height += 80;
   bot_height = 270;
   for (cycle_cord_x = 505; cycle_cord_x <= 755; cycle_cord_x += 75) {
 
-      traverseSecondAndNextToLastRow(cycle_cord_x, top_height, bot_height, window);
+    traverseSecondAndNextToLastRow(cycle_cord_x, top_height, bot_height,
+                                   window);
   }
   lastIteration = false;
   top_height += 80;
   for (cycle_cord_x = 460; cycle_cord_x <= 760; cycle_cord_x += 75) {
-      traverseMiddleRow(cycle_cord_x, top_height, bot_height, window);
+    traverseMiddleRow(cycle_cord_x, top_height, bot_height, window);
   }
 }
 
-void Window::loadHexagonNodes(sf::RenderWindow& window,list<Vertex *>::iterator it, double posX,double posY,int iterationNumber) {
-        if (iterationNumber < 4) {
-            double relativePositionX = posX - 10 + landsRadius + (landsRadius * cos(getFormula(iterationNumber)));
-            double relativePositionY = posY - 20 + landsRadius + (landsRadius * sin(getFormula(iterationNumber)));
-            printTowns(window, relativePositionX, relativePositionY - 3);
-        }
-        else {
-            double relativePositionX = posX - 10 + landsRadius + (landsRadius * cos(getFormula(iterationNumber)));
-            double relativePositionY = posY - 20 + landsRadius + (landsRadius * sin(getFormula(iterationNumber)));
-            printTowns(window, relativePositionX, relativePositionY + 15);
-        }
+void Window::loadHexagonNodes(sf::RenderWindow &window,
+                              list<Vertex *>::iterator it, double posX,
+                              double posY, int iterationNumber) {
+  if (iterationNumber < 4) {
+    double relativePositionX = posX - 10 + landsRadius +
+                               (landsRadius * cos(getFormula(iterationNumber)));
+    double relativePositionY = posY - 20 + landsRadius +
+                               (landsRadius * sin(getFormula(iterationNumber)));
+    printTowns(window, relativePositionX, relativePositionY - 3);
+  } else {
+    double relativePositionX = posX - 10 + landsRadius +
+                               (landsRadius * cos(getFormula(iterationNumber)));
+    double relativePositionY = posY - 20 + landsRadius +
+                               (landsRadius * sin(getFormula(iterationNumber)));
+    printTowns(window, relativePositionX, relativePositionY + 15);
+  }
 }
-void Window::setHexagonCoordinates(list<Vertex*>::iterator vertexIterator, double posX, double posY, int iterationNumber) {
-  double relativePositionX = posX - 10 + landsRadius + (landsRadius * cos(getFormula(iterationNumber)));
-  double relativePositionY = posY - 20 + landsRadius + (landsRadius * sin(getFormula(iterationNumber)));
-  //(*vertexIterator)->getTown()->setPosX(relativePositionX);
-  //(*it)->getTown()->setPosY(relativePositionY);
-  //setPosXYtoVertex(it, relativePositionX, relativePositionY);
+
+void Window::setHexagonCoordinates(list<Vertex *>::iterator vertexIterator,
+                                   double posX, double posY,
+                                   int iterationNumber) {
+  double relativePositionX = posX - 10 + landsRadius +
+                             (landsRadius * cos(getFormula(iterationNumber)));
+  double relativePositionY = posY - 20 + landsRadius +
+                             (landsRadius * sin(getFormula(iterationNumber)));
 }
+
 double Window::getFormula(int vertexId) {
   if (vertexId == 1)
     return firstAngle;
@@ -346,32 +402,6 @@ double Window::getFormula(int vertexId) {
   if (vertexId == 6)
     return sexthAngle;
   return 0;
-}
-void Window::initializeLandsList() {
-    game.loadLands();
-    game.assignTownsToLand();
-    landsList = game.getLandsList();
-    it = landsList->begin();
-}
-void Window::initializeVertexesList() {
-    vertexesList = (*it)->getTownsList();
-    vertexIterator = vertexesList.begin();
-}
-void Window::cFormTraverse(sf::RenderWindow& window,list<Land *>::iterator it, int x, int y,bool lastIteration) {
-    int  iterationNumber=1;
-    initializeVertexesList();
-    for (iterationNumber = 1; iterationNumber < 7; iterationNumber++) {
-        if (vertexesList.begin() != vertexesList.end()) {
-            if (iterationNumber == 3 || iterationNumber == 5)
-                setHexagonCoordinates(vertexIterator, x, y, iterationNumber);
-            loadHexagonNodes(window, vertexIterator, x, y, iterationNumber);
-            vertexIterator++;
-            if (lastIteration) {
-                loadHexagonNodes(window, vertexIterator, x, y, iterationNumber);
-                vertexIterator++;
-            }
-        }
-    }
 }
 
 void Window::printMaterialCard(sf::RenderWindow &window) {
@@ -397,11 +427,9 @@ void Window::printMaterialCard(sf::RenderWindow &window) {
   window.draw(turns->getTextInstance());
   window.draw(cards->getTextInstance());
 }
-void Window::printTowns(sf::RenderWindow& window, double x, double y) {
-    string tempImagePath = "Images/puebloX.png";
-    Window::getInstance().printImages(window, tempImagePath, x, y);
-}
-void Window::setPosXYtoVertex(list<Vertex*>::iterator it, int x, int y) {
-    (*it)->town->setPosX(x);
-    (*it)->town->setPosY(y);
+
+void Window::printTowns(sf::RenderWindow &window, double x, double y) {
+  string tempImagePath = "Images/puebloX.png";
+  Window::getInstance().printImages(window, tempImagePath, static_cast<int>(x),
+                                    static_cast<int>(y));
 }
