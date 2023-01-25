@@ -1,6 +1,7 @@
 #pragma once
 #include "Button.hpp"
 #include "Game.hpp"
+#include "Graph.hpp"
 #include "Label.hpp"
 #include "Land.hpp"
 #include <SFML/Graphics.hpp>
@@ -40,13 +41,18 @@ public:
   void lastIterationBehaviour(int);
   bool isLastIteration(int) const;
   bool isLandsListTraversal() const;
+  void setPosXYtoLand(double, double);
+  void initializeLandsList();
   // Vertex
   void iterateVertex();
   bool isTwoLastVertex() const;
   bool isVertexesListTraversal() const;
   void setTempImagePath(string);
-  void setPosXYtoLand(double, double);
-
+  void setPosXYtoVertex(list<Vertex*>::iterator , double,double);
+  void initializeVertexesList();
+  // Graph
+  void setPosXYtoVertexesGraph(int, double, double);
+  void initializeGraph();
 private:
   sf::Font font;
   Button Prueba;
@@ -78,8 +84,8 @@ public:
   }
 
   void showLandsImagePath();
-  void initializeLandsList();
-  void initializeVertexesList();
+  
+  
   void showCoordinates(sf::RenderWindow &);
   void goTitleView();
   void goAboutView();

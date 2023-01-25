@@ -1,9 +1,2 @@
-﻿  Application.cpp
-  Computer.cpp
-  Game.cpp
-  Human.cpp
-  Player.cpp
-  Window.cpp
-  main.cpp
-  Generating Code...
-  Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe
+﻿  Window.cpp
+  Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe
