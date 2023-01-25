@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <iterator>
+#include "TextBox.h"
 
 #define pi 3.14159265358979323846
 #define firstAngle pi / 2
@@ -23,25 +24,10 @@ public:
   Game game;
   list<Land *> *landsList;
   list<Land *>::iterator it;
-
+   
 private:
-  sf::Font font;
-  Button Prueba;
-  Button btnTrade;
-  Button btnBuy;
-  Button btnTurns;
-  Button btnClose;
-  Button btnOpcional1;
-  Button btnOpcional2;
-
-  sf::RectangleShape prueba;
-  sf::RectangleShape trade;
-  sf::RectangleShape buy;
-  sf::RectangleShape Turnos;
-  sf::RectangleShape close2;
-  sf::RectangleShape opcional1;
-  sf::RectangleShape opcional2;
-  sf::RectangleShape turn;
+ 
+    sf::Font font; 
 
   int i = 100;
   int turnNumber = 0;
@@ -61,6 +47,7 @@ public:
   void goTitleView();
   void goAboutView();
   void goPlayView();
+  void goRegisterView();
   bool goBack(sf::RenderWindow &);
 
   void printResources(sf::RenderWindow &, std::string, int, int);
@@ -88,6 +75,9 @@ public:
 
   void setTurn(int numbrePlayers);
   void drawTurn(int turn, int);
+
+  void registerButton(sf::RenderWindow &window); 
+
 
 private:
   Window() {}

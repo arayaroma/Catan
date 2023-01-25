@@ -1,7 +1,7 @@
 #include "Window.hpp"
-
+/*
 Button btnStart;
-Button btnClose;
+Button btnClose;*/
 
 int cont = 0;
 bool var = false;
@@ -39,7 +39,8 @@ void Window::goTitleView() {
           if (event.mouseButton.x > 485 && event.mouseButton.y > 265 &&
               event.mouseButton.x < 805 && event.mouseButton.y < 355) {
             titleWindow.close();
-            goPlayView();
+           // goPlayView(); 
+            goRegisterView();
           }
           // pantalla de acerca de
           if (event.mouseButton.x > 485 && event.mouseButton.y > 460 &&
@@ -100,61 +101,204 @@ void Window::goAboutView() {
   }
 }
 
+void  Window::goRegisterView() {
+  
+    sf::RenderWindow registerView(sf::VideoMode(1280, 720), "About");
+     registerView.setKeyRepeatEnabled(true);
+
+    sf::ConvexShape register; 
+    sf::Texture registerImage;
+    registerImage.loadFromFile("Images/catan_1280x720.jpg");
+    sf::Sprite registerSprite(registerImage);
+    font.loadFromFile("mononoki.ttf");
+
+    TextBox text1 = TextBox(15, sf::Color::Black, false, { 345,240 }, { 180, 40 }, sf::Color::White);
+    text1.serFont(font);
+    text1.setPosition({ 365,250 });
+
+    Button btnPlay("Jugar", { 150,60 }, 20, sf::Color::Blue, sf::Color::Black);
+    btnPlay.setPosition({ 1000,320 });
+    btnPlay.setFont(font);
+
+    Button btn3Players("3 Jugadores", { 200,60 }, 20, sf::Color::Green, sf::Color::Black);
+    btn3Players.setPosition2({ 100,280 });
+    btn3Players.setFont(font);
+
+    Button btn4Players("4 Jugadores", { 200,60 }, 20, sf::Color::Green, sf::Color::Black);
+    btn4Players.setPosition2({ 100,350 });
+    btn4Players.setFont(font);
+
+  
+
+    while (registerView.isOpen())
+    {
+        sf::Event event;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+            text1.setSelected(true);
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+            text1.setSelected(false);
+        }
+
+        while (registerView.pollEvent(event))
+        {
+            switch (event.type) {
+            case sf::Event::Closed:
+
+                registerView.close();
+
+            case sf::Event::TextEntered:
+
+                text1.typeOn(event);
+
+                break;
+
+            case sf::Event::MouseMoved:
+
+                if (btnPlay.isMouseOver(registerView)) {
+
+                    btnPlay.setBackColor(sf::Color::White);
+                }
+                else {
+                    btnPlay.setBackColor(sf::Color::Blue);
+                }
+         
+                if (btn3Players.isMouseOver(registerView)) {
+                    btn3Players.setBackColor(sf::Color::White);
+                }
+
+                else {
+                    btn3Players.setBackColor(sf::Color::Green);
+                }
+
+                if (btn4Players.isMouseOver(registerView)) {
+                    btn4Players.setBackColor(sf::Color::White);
+                }
+                else {
+                    btn4Players.setBackColor(sf::Color::Green);
+                }
+
+                break; 
+
+            case sf::Event::MouseButtonPressed:
+
+                if (event.mouseButton.button == sf::Mouse::Left && btnPlay.isMouseOver(registerView)) {
+                   
+                    registerView.close(); 
+                    goPlayView();
+                }
+            }
+
+        if (event.type == sf::Event::MouseButtonPressed) {
+
+            if (event.mouseButton.button == sf::Mouse::Right)
+            {
+                std::cout << "the right button was pressed" << std::endl;
+                std::cout << "mouse x: " << event.mouseButton.x << std::endl;
+                std::cout << "mouse y: " << event.mouseButton.y << std::endl;
+            }
+        }
+        if (event.type == sf::Event::MouseButtonPressed)
+        {
+            if (event.mouseButton.button == sf::Mouse::Left)
+            {
+                std::cout << "the Left button was pressed" << std::endl;
+                std::cout << "mouse x: " << event.mouseButton.x << std::endl;
+                std::cout << "mouse y: " << event.mouseButton.y << std::endl;
+            }
+          }
+        }
+        registerView.clear(); 
+        registerView.draw(registerSprite); 
+        registerButton(registerView);
+        text1.drawTo(registerView);
+        btnPlay.drawTo(registerView);
+        btn3Players.drawTo(registerView);
+        btn4Players.drawTo(registerView); 
+        registerView.display();
+    }
+}
+
+void Window::registerButton(sf::RenderWindow &window) {
+
+    
+    Label* title = new Label("Registro de Usuarios", sf::Color::Black, font, sf::Text::Bold, 30, 480.f, 50.f);
+    Label* name = new Label("Nombre", sf::Color::Black, font, sf::Text::Bold, 20, 405.f, 200.f);
+    Label* type = new Label("Tipo de jugador", sf::Color::Black, font, sf::Text::Bold, 20, 545.f, 200.f);
+    Label* color = new Label("Color", sf::Color::Black, font, sf::Text::Bold, 20, 800.f, 200.f);
+    
+    window.draw(title->getTextInstance());
+    window.draw(type->getTextInstance());
+    window.draw(name->getTextInstance());
+    window.draw(color->getTextInstance());
+    
+}
+
+
+
 void Window::goPlayView() {
   sf::RenderWindow playWindow(sf::VideoMode(1280, 720), "Play");
   sf::Texture playImage;
   playImage.loadFromFile("Images/catan_1280x720.jpg");
   sf::Sprite playSprite(playImage);
-  bool start = true;
-  // playWindow.draw(playSprite);
-  // loadStartButtons(playWindow);
-  // var = true;
-  // playWindow.display();
+ 
+  Button btnIni("Iniciar", { 100,40 }, 20, sf::Color::Green, sf::Color::Black);
+  btnIni.setPosition3({ 1080,0 });
+  btnIni.setFont(font);
+
+  Button btnClose("Cerrar", { 100,40 }, 20, sf::Color::Red, sf::Color::Black);
+  btnClose.setPosition2({ 1185,0 });
+  btnClose.setFont(font);
+
+
+
   playWindow.setFramerateLimit(120);
 
   while (playWindow.isOpen()) {
-    sf::Event event;
+   
     playWindow.clear();
+    sf::Event event;
     while (playWindow.pollEvent(event)) {
-      if (event.type == sf::Event::Closed) {
-        playWindow.close();
-      }
 
-      // playWindow.waitEvent(event);
+        
+        switch (event.type) {
+        case sf::Event::Closed:
 
-      if (event.MouseButtonPressed &&
-          event.mouseButton.button == sf::Mouse::Left) {
-        // showCoordinates(playWindow);
-        if (sf::Mouse::getPosition(playWindow).x > 1080 &&
-            sf::Mouse::getPosition(playWindow).y > 0 &&
-            sf::Mouse::getPosition(playWindow).x < 1175 &&
-            sf::Mouse::getPosition(playWindow).y < 40) {
-          playWindow.clear();
-          playWindow.draw(playSprite);
+            playWindow.close();
+
+        case sf::Event::MouseMoved:
+
+            if (btnIni.isMouseOver(playWindow)) {
+
+                btnIni.setBackColor(sf::Color::Blue);
+            }
+            else {
+                btnIni.setBackColor(sf::Color::Green);
+            }
+            if (btnClose.isMouseOver(playWindow)) {
+
+                btnClose.setBackColor(sf::Color::Blue);
+            }
+            else {
+                btnClose.setBackColor(sf::Color::Red);
+            }
         }
-        if (sf::Mouse::getPosition(playWindow).x > 1200 &&
-            sf::Mouse::getPosition(playWindow).y > 0 &&
-            sf::Mouse::getPosition(playWindow).x < 1270 &&
-            sf::Mouse::getPosition(playWindow).y < 40) {
-          setTurn(4);
-        }
-      }
-    }
-
+     }
+    playWindow.clear();
     playWindow.draw(playSprite);
-    loadGameButtons(playWindow);
+    btnIni.drawTo(playWindow);
+    btnClose.drawTo(playWindow);
     printBoard(playWindow);
     printMaterialCard(playWindow);
     printTown(playWindow);
-    loadStartButtons(playWindow);
+    loadGameButtons(playWindow);
     playWindow.display();
   }
 }
 
-/*void Window::updateDisplay() {
-  playWindow.clear();
-  playWindow.display();
-}*/
+
+
+
 
 void Window::setTurn(int numberPlayers) {
   std::cout << turnNumber << std::endl;
@@ -195,28 +339,19 @@ void Window::printResources(sf::RenderWindow &window, string imagePath,
 }
 
 void Window::loadStartButtons(sf::RenderWindow &playWindow) {
-  sf::RectangleShape start;
-  sf::RectangleShape close;
-  btnStart.createButton(playWindow, "Iniciar", start, {1080, 0},
-                        sf::Color::Green, {95, 40}, {1085, 5});
-  btnClose.createButton(playWindow, "Cerrar", close, {1185, 0}, sf::Color::Red,
-                        {90, 40}, {1190, 5});
+ 
+  
 }
 
 void Window::loadGameButtons(sf::RenderWindow &playWindow) {
-  Prueba.createButton(playWindow, "", prueba, {0, 0}, sf::Color::Blue, {0, 0},
-                      {0, 0});
-
+ 
+   
   sf::RectangleShape playerRectangle;
   sf::RectangleShape cardsRectangle;
-  turn.setPosition(1020, 100);
-  turn.setOutlineColor(sf::Color::Black);
-  turn.setSize({220, 90});
-  turn.setFillColor(sf::Color(255, 255, 255, 128));
-  playWindow.draw(turn);
+
 
   playerRectangle.setPosition(1020, 100);
-  playerRectangle.setOutlineColor(sf::Color::Black);
+  playerRectangle.setOutlineColor(sf::Color::White);
   playerRectangle.setSize({220, 400});
   playerRectangle.setFillColor(sf::Color(255, 255, 255, 128));
   playWindow.draw(playerRectangle);
@@ -224,7 +359,9 @@ void Window::loadGameButtons(sf::RenderWindow &playWindow) {
   cardsRectangle.setPosition(350, 600);
   cardsRectangle.setSize({600, 100});
   playWindow.draw(cardsRectangle);
-  // x y                                     x+  y+      pos Label
+  // x y                
+  
+  /*
   btnTrade.createButton(playWindow, "Comerciar", trade, {25, 650},
                         sf::Color(0, 0, 255, 110), {125, 40}, {30, 650});
   btnBuy.createButton(playWindow, "Comprar", buy, {170, 650},
@@ -237,6 +374,7 @@ void Window::loadGameButtons(sf::RenderWindow &playWindow) {
                             sf::Color(0, 0, 255, 110), {130, 40}, {1010, 590});
   btnOpcional2.createButton(playWindow, "opcional2", opcional2, {1000, 650},
                             sf::Color(0, 0, 255, 110), {130, 40}, {1010, 650});
+             */               
 }
 void Window::initializeLandsList() {
   game.loadLands();
