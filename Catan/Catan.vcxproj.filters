@@ -215,7 +215,7 @@
     <ClInclude Include="Button.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Human.h">
+    <ClInclude Include="Human.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

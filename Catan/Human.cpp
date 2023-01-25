@@ -1,13 +1,9 @@
-#include "Human.h"
+#include "Human.hpp"
 
-Human::Human(){}
-
-void Human::setName(string name){name = name; }
-string Human::getName() {return name;}
-void Human::setColor(string color){color = color;}
-string Human::getColor(){return color; }
-
-void Human::play() 
-{
-
+Human::Human() {
+  this->name = "";
+  this->color = "";
+  this->score = NULL;
 }
+
+void Human::play() {}

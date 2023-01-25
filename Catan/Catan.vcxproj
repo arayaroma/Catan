@@ -177,7 +177,7 @@
     <ClInclude Include="Figure.hpp" />
     <ClInclude Include="Figures.hpp" />
     <ClInclude Include="Graph.hpp" />
-    <ClInclude Include="Human.h" />
+    <ClInclude Include="Human.hpp" />
     <ClInclude Include="StructureGraph.hpp" />
     <ClInclude Include="Knight.hpp" />
     <ClInclude Include="Label.hpp" />
