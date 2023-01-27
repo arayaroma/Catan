@@ -35,13 +35,13 @@ void Window::goTitleView() {
       case sf::Event::MouseButtonPressed:
         if (event.mouseButton.button == sf::Mouse::Left) {
           showCoordinates(titleWindow);
-          // Pantalla Juego
+          // playWindow
           if (event.mouseButton.x > 485 && event.mouseButton.y > 265 &&
               event.mouseButton.x < 805 && event.mouseButton.y < 355) {
             titleWindow.close();
             goPlayView();
           }
-          // pantalla de acerca de
+          // aboutWindow
           if (event.mouseButton.x > 485 && event.mouseButton.y > 460 &&
               event.mouseButton.x < 850 && event.mouseButton.y < 560) {
             titleWindow.close();
