@@ -222,7 +222,7 @@ void Game::assignTownsToLand() {
     assignTownsMiddleRow(*landIterator, idVertex, endVertex, sumId);
     idVertex++, endVertex++, contLands++, landIterator++;
   }
-  contLands = 1, idVertex = 29, endVertex = 41;
+  sumId = 5, contLands = 1, idVertex = 29, endVertex = 41;
 
   while (contLands < 5) {
     assignTownsLastRows(*landIterator, idVertex, endVertex, sumId);

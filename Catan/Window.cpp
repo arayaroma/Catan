@@ -346,7 +346,7 @@ void Window::C_Traversal(int posX, int posY) {
 void Window::printBoard() {
   int top_height = 30, bot_height = 30, cycle_cord_x = 0, i = 1;
   initializeLandsList();
-  // initializeGraph();
+   initializeGraph();
   bot_height += 330;
   for (cycle_cord_x = 530; cycle_cord_x <= 680; cycle_cord_x += 75) {
     traverseFirstAndLastRow(cycle_cord_x, top_height, bot_height);
