@@ -264,11 +264,6 @@ void Window::initializeLandsList() {
   it = landsList->begin();
 }
 
-void Window::initializeGraph() {
-  game.assignTownsToLand();
-  game.makeGraph();
-}
-
 void Window::initializeVertexesList() {
   vertexesList = (*it)->getTownsList();
   vertexIterator = vertexesList.begin();
@@ -324,29 +319,16 @@ void Window::C_Traversal(int posX, int posY) {
 
   for (vertexIterationNumber; vertexIterationNumber < 7;
        vertexIterationNumber++) {
-    if (isVertexesListTraversal()) {
-      if (!isTwoLastVertex()) {
-        loadHexagonNodes(vertexIterator, posX, posY, vertexIterationNumber);
-        iterateVertex();
+      if (isVertexesListTraversal()) {
+          loadHexagonNodes(vertexIterator, posX, posY, vertexIterationNumber);
+          iterateVertex();
       }
-
-      if (isTwoLastVertex() && !lastIteration) {
-        setHexagonCoordinates(vertexIterator, posX, posY,
-                              vertexIterationNumber);
-        iterateVertex();
-      }
-      if (lastIteration) {
-        loadHexagonNodes(vertexIterator, posX, posY, vertexIterationNumber);
-        iterateVertex();
-      }
-    }
   }
 }
 
 void Window::printBoard() {
   int top_height = 30, bot_height = 30, cycle_cord_x = 0, i = 1;
   initializeLandsList();
-   initializeGraph();
   bot_height += 330;
   for (cycle_cord_x = 530; cycle_cord_x <= 680; cycle_cord_x += 75) {
     traverseFirstAndLastRow(cycle_cord_x, top_height, bot_height);
@@ -396,6 +378,7 @@ void Window::setHexagonCoordinates(list<Vertex *>::iterator vertexIterator,
                              (landsRadius * cos(getFormula(iterationNumber)));
   double relativePositionY = posY - 20 + landsRadius +
                              (landsRadius * sin(getFormula(iterationNumber)));
+  setPosXYtoVertex(vertexIterator, relativePositionX, relativePositionY);
 }
 
 double Window::getFormula(int vertexId) {
@@ -450,8 +433,8 @@ void Window::setPosXYtoVertex(list<Vertex *>::iterator vertexIterator, double x,
   (*vertexIterator)->town->setPosY(y);
 }
 void Window::setPosXYtoVertexesGraph(int idVertex, double x, double y) {
-  game.graph.getVertex(idVertex)->getTown()->setPosX(x);
-  game.graph.getVertex(idVertex)->getTown()->setPosY(y);
+  //game.graph.getVertex(idVertex)->getTown()->setPosX(x);
+  //game.graph.getVertex(idVertex)->getTown()->setPosY(y);
 }
 //////////////////////// CARGAR /////////////////////////
 

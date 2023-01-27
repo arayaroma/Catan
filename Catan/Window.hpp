@@ -70,7 +70,6 @@ public:
   void initializeVertexesList();
   // Graph
   void setPosXYtoVertexesGraph(int, double, double);
-  void initializeGraph();
 
   void consolePrintLandAndVertex();
 
