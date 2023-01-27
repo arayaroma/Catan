@@ -7,57 +7,61 @@ int cont = 0;
 bool var = false;
 
 void Window::goTitleView() {
-  sf::RenderWindow titleWindow(sf::VideoMode(1280, 720), "Main Menu");
-  sf::Texture titleImage;
-  titleImage.loadFromFile("Images/inicio.jpg");
-  sf::Sprite titleSprite(titleImage);
-  font.loadFromFile("mononoki.ttf");
-  Label *title = new Label("Catan", sf::Color::Black, font, sf::Text::Bold, 100,
-                           500.f, 50.f);
-  Label *play = new Label("Jugar", sf::Color::Black, font, sf::Text::Bold, 100,
-                          500.f, 250.f);
-  Label *about = new Label("Acerca", sf::Color::Black, font, sf::Text::Bold,
-                           100, 500.f, 450.f);
-  titleWindow.draw(titleSprite);
-  titleWindow.draw(title->getTextInstance());
-  titleWindow.draw(play->getTextInstance());
-  titleWindow.draw(about->getTextInstance());
-  titleWindow.display();
+ 
+    sf::RenderWindow titleWindow(sf::VideoMode(1280, 720), "Main Menu");
+    sf::Texture titleImage;
+    titleImage.loadFromFile("Images/inicio.jpg");
+    sf::Sprite titleSprite(titleImage);
+    font.loadFromFile("mononoki.ttf");
 
-  while (titleWindow.isOpen()) {
-    sf::Event event;
-    while (titleWindow.pollEvent(event)) {
-      switch (event.type) {
-      case sf::Event::Closed:
-        titleWindow.close();
-        break;
+    Label* title = new Label("Catan", sf::Color::Black, font, sf::Text::Bold, 100,
+        500.f, 50.f);
+    Label* play = new Label("Jugar", sf::Color::Black, font, sf::Text::Bold, 100,
+        500.f, 250.f);
+    Label* about = new Label("Acerca", sf::Color::Black, font, sf::Text::Bold,
+        100, 500.f, 450.f);
+    titleWindow.draw(titleSprite);
+    titleWindow.draw(title->getTextInstance());
+    titleWindow.draw(play->getTextInstance());
+    titleWindow.draw(about->getTextInstance());
+    titleWindow.display();
 
-      case sf::Event::MouseButtonPressed:
-        if (event.mouseButton.button == sf::Mouse::Left) {
-          showCoordinates(titleWindow);
-          // Pantalla Juego
-          if (event.mouseButton.x > 485 && event.mouseButton.y > 265 &&
-              event.mouseButton.x < 805 && event.mouseButton.y < 355) {
-            titleWindow.close();
-           // goPlayView(); 
-            goRegisterView();
-          }
-          // pantalla de acerca de
-          if (event.mouseButton.x > 485 && event.mouseButton.y > 460 &&
-              event.mouseButton.x < 850 && event.mouseButton.y < 560) {
-            titleWindow.close();
-            goAboutView();
-          }
+    while (titleWindow.isOpen()) {
+        sf::Event event;
+        while (titleWindow.pollEvent(event)) {
+            switch (event.type) {
+            case sf::Event::Closed:
+                titleWindow.close();
+                break;
+
+
+
+            case sf::Event::MouseButtonPressed:
+                if (event.mouseButton.button == sf::Mouse::Left) {
+                    showCoordinates(titleWindow);
+                    // Pantalla Juego
+                    if (event.mouseButton.x > 485 && event.mouseButton.y > 265 &&
+                        event.mouseButton.x < 805 && event.mouseButton.y < 355) {
+                        titleWindow.close();
+                        // goPlayView(); 
+                        goRegisterView();
+                    }
+                    // pantalla de acerca de
+                    if (event.mouseButton.x > 485 && event.mouseButton.y > 460 &&
+                        event.mouseButton.x < 850 && event.mouseButton.y < 560) {
+                        titleWindow.close();
+                        goAboutView();
+                    }
+                }
+                break;
+
+            default:
+                if (goBack(titleWindow))
+                    titleWindow.close();
+                break;
+            }
         }
-        break;
-
-      default:
-        if (goBack(titleWindow))
-          titleWindow.close();
-        break;
-      }
     }
-  }
 }
 
 void Window::goAboutView() {
@@ -128,8 +132,6 @@ void  Window::goRegisterView() {
     btn4Players.setPosition2({ 100,350 });
     btn4Players.setFont(font);
 
-  
-
     while (registerView.isOpen())
     {
         sf::Event event;
@@ -153,31 +155,32 @@ void  Window::goRegisterView() {
 
                 break;
 
+            case sf::Event::KeyPressed:
+                if (goBack(registerView)) {
+                    registerView.close();
+                    goTitleView();
+                }
+
             case sf::Event::MouseMoved:
 
                 if (btnPlay.isMouseOver(registerView)) {
-
                     btnPlay.setBackColor(sf::Color::White);
                 }
                 else {
                     btnPlay.setBackColor(sf::Color::Blue);
                 }
-         
                 if (btn3Players.isMouseOver(registerView)) {
                     btn3Players.setBackColor(sf::Color::White);
                 }
-
                 else {
                     btn3Players.setBackColor(sf::Color::Green);
                 }
-
                 if (btn4Players.isMouseOver(registerView)) {
                     btn4Players.setBackColor(sf::Color::White);
                 }
                 else {
                     btn4Players.setBackColor(sf::Color::Green);
                 }
-
                 break; 
 
             case sf::Event::MouseButtonPressed:
@@ -220,8 +223,6 @@ void  Window::goRegisterView() {
 }
 
 void Window::registerButton(sf::RenderWindow &window) {
-
-    
     Label* title = new Label("Registro de Usuarios", sf::Color::Black, font, sf::Text::Bold, 30, 480.f, 50.f);
     Label* name = new Label("Nombre", sf::Color::Black, font, sf::Text::Bold, 20, 405.f, 200.f);
     Label* type = new Label("Tipo de jugador", sf::Color::Black, font, sf::Text::Bold, 20, 545.f, 200.f);
@@ -231,125 +232,149 @@ void Window::registerButton(sf::RenderWindow &window) {
     window.draw(type->getTextInstance());
     window.draw(name->getTextInstance());
     window.draw(color->getTextInstance());
-    
 }
-
-
 
 void Window::goPlayView() {
   sf::RenderWindow playWindow(sf::VideoMode(1280, 720), "Play");
   sf::Texture playImage;
   playImage.loadFromFile("Images/catan_1280x720.jpg");
   sf::Sprite playSprite(playImage);
- 
-  Button btnIni("Iniciar", { 100,40 }, 20, sf::Color::Green, sf::Color::Black);
-  btnIni.setPosition3({ 1080,0 });
-  btnIni.setFont(font);
-
-  Button btnClose("Cerrar", { 100,40 }, 20, sf::Color::Red, sf::Color::Black);
-  btnClose.setPosition2({ 1185,0 });
-  btnClose.setFont(font);
-
-
-
   playWindow.setFramerateLimit(120);
 
   while (playWindow.isOpen()) {
-   
     playWindow.clear();
     sf::Event event;
     while (playWindow.pollEvent(event)) {
-
-        
         switch (event.type) {
         case sf::Event::Closed:
 
             playWindow.close();
-
-        case sf::Event::MouseMoved:
-
-            if (btnIni.isMouseOver(playWindow)) {
-
-                btnIni.setBackColor(sf::Color::Blue);
-            }
-            else {
-                btnIni.setBackColor(sf::Color::Green);
-            }
-            if (btnClose.isMouseOver(playWindow)) {
-
-                btnClose.setBackColor(sf::Color::Blue);
-            }
-            else {
-                btnClose.setBackColor(sf::Color::Red);
-            }
         }
      }
     playWindow.clear();
     playWindow.draw(playSprite);
-    btnIni.drawTo(playWindow);
-    btnClose.drawTo(playWindow);
+   
     printBoard(playWindow);
     printMaterialCard(playWindow);
     printTown(playWindow);
+    loadStartButtons(playWindow);
     loadGameButtons(playWindow);
     playWindow.display();
   }
 }
 
-
-
-
-
-void Window::setTurn(int numberPlayers) {
-  std::cout << turnNumber << std::endl;
-
-  if (turnNumber == numberPlayers) {
-    turnNumber = 0;
-    i = 100;
-    drawTurn(turnNumber, i);
-  } else {
-
-    drawTurn(turnNumber, i);
-    i = i + 45;
-    turnNumber++;
-  }
-}
-void Window::drawTurn(int turns, int posiI) {
-  // turn.move(1020,posiI);
-}
-bool Window::goBack(sf::RenderWindow &window) {
-  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-    return true;
-  return false;
-}
-
-void Window::showCoordinates(sf::RenderWindow &window) {
-  std::cout << "x: " << sf::Mouse::getPosition(window).x << std::endl;
-  std::cout << "y: " << sf::Mouse::getPosition(window).y << std::endl;
-}
-
-void Window::printResources(sf::RenderWindow &window, string imagePath,
-                            int posX, int posY) {
-  // string imagePath = imagePath;
-  sf::Texture path;
-  path.loadFromFile(imagePath);
-  sf::Sprite sprite(path);
-  sprite.setPosition(static_cast<float>(posX), static_cast<float>(posY));
-  window.draw(sprite);
-}
-
 void Window::loadStartButtons(sf::RenderWindow &playWindow) {
  
+    Button p("p", { 0,0 }, 20, sf::Color::Green, sf::Color::Black);
+    p.setPosition3({ 0,50 });
   
+    Button btnIni("Iniciar", { 100,40 }, 20, sf::Color::Green, sf::Color::Black);
+    btnIni.setPosition3({ 1040,0 });
+  
+    Button btnClose("Cerrar", { 100,40 }, 20, sf::Color::Red, sf::Color::Black);
+    btnClose.setPosition2({ 1145,0 });
+
+    Button btnTurn("Turno", { 100,40 }, 20, sf::Color::Red, sf::Color::Black);
+    btnTurn.setPosition2({ 980,600 });
+
+    Button btnTrade("Comerciar", { 160,40 }, 20, sf::Color::Red, sf::Color::Black);
+    btnTrade.setPosition2({ 30,625 });
+
+    Button btnBuy("Comprar", { 130,40 }, 20, sf::Color::Red, sf::Color::Black);
+    btnBuy.setPosition2({ 200,625 });
+
+    btnClose.setFont(font);
+    p.setFont(font);
+    btnIni.setFont(font);
+    btnTurn.setFont(font);
+    btnTrade.setFont(font);
+    btnBuy.setFont(font);
+
+    if (btnIni.isMouseOver(playWindow)) {
+
+        btnIni.setBackColor(sf::Color::Blue);
+    }
+    else {
+        btnIni.setBackColor(sf::Color::Green);
+    }
+    if (btnClose.isMouseOver(playWindow)) {
+
+        btnClose.setBackColor(sf::Color::Blue);
+    }
+    else {
+        btnClose.setBackColor(sf::Color::Red);
+    }
+    if (btnTurn.isMouseOver(playWindow)) {
+
+        btnTurn.setBackColor(sf::Color::Blue);
+    }
+    else {
+        btnTurn.setBackColor(sf::Color::Magenta);
+    }
+    if (btnTrade.isMouseOver(playWindow)) {
+
+        btnTrade.setBackColor(sf::Color::Blue);
+    }
+    else {
+        btnTrade.setBackColor(sf::Color::Magenta);
+    }
+    if (btnBuy.isMouseOver(playWindow)) {
+
+        btnBuy.setBackColor(sf::Color::Blue);
+    }
+    else {
+        btnBuy.setBackColor(sf::Color::Magenta);
+    }
+
+    p.drawTo(playWindow);
+    btnIni.drawTo(playWindow);
+    btnClose.drawTo(playWindow);
+    btnTurn.drawTo(playWindow);
+    btnTrade.drawTo(playWindow);
+    btnBuy.drawTo(playWindow);
+  
+}
+void Window::setTurn(int numberPlayers) {
+    std::cout << turnNumber << std::endl;
+
+    if (turnNumber == numberPlayers) {
+        turnNumber = 0;
+        i = 100;
+        drawTurn(turnNumber, i);
+    }
+    else {
+
+        drawTurn(turnNumber, i);
+        i = i + 45;
+        turnNumber++;
+    }
+}
+void Window::drawTurn(int turns, int posiI) {
+    // turn.move(1020,posiI);
+}
+bool Window::goBack(sf::RenderWindow& window) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+        return true;
+    return false;
+}
+void Window::showCoordinates(sf::RenderWindow& window) {
+    std::cout << "x: " << sf::Mouse::getPosition(window).x << std::endl;
+    std::cout << "y: " << sf::Mouse::getPosition(window).y << std::endl;
+}
+void Window::printResources(sf::RenderWindow& window, string imagePath,
+int posX, int posY) {
+    // string imagePath = imagePath;
+    sf::Texture path;
+    path.loadFromFile(imagePath);
+    sf::Sprite sprite(path);
+    sprite.setPosition(static_cast<float>(posX), static_cast<float>(posY));
+    window.draw(sprite);
 }
 
 void Window::loadGameButtons(sf::RenderWindow &playWindow) {
- 
    
   sf::RectangleShape playerRectangle;
   sf::RectangleShape cardsRectangle;
-
-
   playerRectangle.setPosition(1020, 100);
   playerRectangle.setOutlineColor(sf::Color::White);
   playerRectangle.setSize({220, 400});
@@ -359,22 +384,6 @@ void Window::loadGameButtons(sf::RenderWindow &playWindow) {
   cardsRectangle.setPosition(350, 600);
   cardsRectangle.setSize({600, 100});
   playWindow.draw(cardsRectangle);
-  // x y                
-  
-  /*
-  btnTrade.createButton(playWindow, "Comerciar", trade, {25, 650},
-                        sf::Color(0, 0, 255, 110), {125, 40}, {30, 650});
-  btnBuy.createButton(playWindow, "Comprar", buy, {170, 650},
-                      sf::Color(0, 0, 255, 110), {130, 40}, {185, 650});
-  btnTurns.createButton(playWindow, "Turno", Turnos, {1170, 590},
-                        sf::Color(0, 0, 255, 110), {90, 40}, {1175, 590});
-  btnClose.createButton(playWindow, "Cerrar", close2, {1170, 650},
-                        sf::Color(0, 0, 255, 110), {90, 40}, {1175, 650});
-  btnOpcional1.createButton(playWindow, "opcional1", opcional1, {1000, 590},
-                            sf::Color(0, 0, 255, 110), {130, 40}, {1010, 590});
-  btnOpcional2.createButton(playWindow, "opcional2", opcional2, {1000, 650},
-                            sf::Color(0, 0, 255, 110), {130, 40}, {1010, 650});
-             */               
 }
 void Window::initializeLandsList() {
   game.loadLands();
