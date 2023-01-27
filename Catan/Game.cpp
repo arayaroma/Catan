@@ -237,9 +237,9 @@ void Game::assignTownsToLand() {
 }
 
 void Game::assignTowns(Land *temp, int idVertex, int endVertex, int sumId) {
-  int conditional = 0, firstVertex = idVertex;
+  int conditional = 0;
   Town *town = new Town();
-  for (idVertex = firstVertex; idVertex < endVertex; idVertex += sumId + 1) {
+  for (idVertex; idVertex < endVertex; idVertex += sumId + 1) {
     if (conditional < 2) {
       temp->townsList.push_back(new Vertex(idVertex, "", town)); // aca se cae
       temp->townsList.push_back(new Vertex(idVertex + sumId, "", town));
@@ -253,9 +253,9 @@ void Game::assignTowns(Land *temp, int idVertex, int endVertex, int sumId) {
 
 void Game::assignTownsMiddleRow(Land *temp, int idVertex, int endVertex,
                                 int sumId) {
-  int firstVertex = idVertex;
+  
   Town *town = new Town();
-  for (idVertex = firstVertex; idVertex < endVertex; idVertex += sumId + 1) {
+  for (idVertex; idVertex < endVertex; idVertex += sumId + 1) {
     temp->townsList.push_back(new Vertex(idVertex, "", town));
     temp->townsList.push_back(new Vertex(idVertex + sumId, "", town));
   }
@@ -263,18 +263,21 @@ void Game::assignTownsMiddleRow(Land *temp, int idVertex, int endVertex,
 
 void Game::assignTownsLastRows(Land *temp, int idVertex, int endVertex,
                                int sumId) {
-  int conditional = 0, firstVertex = idVertex;
+  int cycleNumber = 0;
+  const int secondCycle =1;
+  int iterationSumSpecialCase = sumId + 1;// 5 + 1 == 6
   Town *town = new Town();
-  for (idVertex = firstVertex; idVertex < endVertex; idVertex += sumId + 1) {
-    if (conditional == 0) {
-      temp->townsList.push_back(new Vertex(idVertex, "", town));
-      temp->townsList.push_back(new Vertex(idVertex + sumId, "", town));
-      conditional++;
+  for (idVertex; idVertex < endVertex; idVertex += iterationSumSpecialCase) {
+    if (cycleNumber >= secondCycle) {
+        temp->townsList.push_back(new Vertex(idVertex, "", town));
+        temp->townsList.push_back(new Vertex(idVertex + sumId - 1, "", town));
+        iterationSumSpecialCase--;
     } else {
-      temp->townsList.push_back(new Vertex(idVertex, "", town));
-      temp->townsList.push_back(new Vertex(idVertex + sumId - 1, "", town));
-      conditional++;
+        temp->townsList.push_back(new Vertex(idVertex, "", town));
+        temp->townsList.push_back(new Vertex(idVertex + sumId, "", town));
+      
     }
+    cycleNumber++;
   }
 }
 
