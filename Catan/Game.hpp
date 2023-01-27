@@ -103,4 +103,6 @@ public:
   void printVertexXY() { graph.vertexXY(); }
   void makeGraph();
   void makeVertexOwners();
+  void printLand(list<Land*>* landsList);
+  void printVertex(list<Vertex*> vertexList);
 };

@@ -53,6 +53,8 @@ public:
   // Graph
   void setPosXYtoVertexesGraph(int, double, double);
   void initializeGraph();
+
+  void consolePrintLandAndVertex();
 private:
   sf::Font font;
   Button Prueba;

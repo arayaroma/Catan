@@ -23,7 +23,9 @@ void Window::goTitleView() {
   titleWindow.draw(play->getTextInstance());
   titleWindow.draw(about->getTextInstance());
   titleWindow.display();
-
+  game.loadLands();
+  game.makeGraph();
+  game.assignTownsToLand();
   while (titleWindow.isOpen()) {
     sf::Event event;
     while (titleWindow.pollEvent(event)) {
@@ -111,7 +113,7 @@ void Window::goPlayView() {
   // var = true;
   // playWindow.display();
   playWindow.setFramerateLimit(120);
-
+  //consolePrintLandAndVertex();
   while (playWindow.isOpen()) {
     sf::Event event;
     playWindow.clear();
@@ -148,6 +150,7 @@ void Window::goPlayView() {
     loadStartButtons(playWindow);
     playWindow.display();
   }
+  //consolePrintLandAndVertex();
 }
 
 void Window::setTurn(int numberPlayers) {
@@ -462,3 +465,15 @@ void Window::setPosXYtoVertexesGraph(int idVertex, double x, double y) {
     game.graph.getVertex(idVertex)->getTown()->setPosX(x);
     game.graph.getVertex(idVertex)->getTown()->setPosY(y);
 }
+void Window::consolePrintLandAndVertex() {
+   
+    game.printLand(landsList);
+    it = landsList->begin();
+    while (it != landsList->end()) {
+        game.printVertex((*it)->getTownsList());
+        it++;
+    }
+}
+
+
+/////////////////////////METODOS PARA CARGAR E IMPRIMIR EN CONSOLA///////////////////////////////////////////////////

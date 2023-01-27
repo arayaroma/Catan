@@ -11,7 +11,6 @@ Vertex *Graph::getVertex(int id) {
   Vertex *auxVertex = firstVertex;
   while (auxVertex != nullptr) {
     if (auxVertex->getVertexId() == id) {
-      std::cout << "encontro" << std::endl;
       return auxVertex;
     }
     auxVertex = auxVertex->next;
@@ -78,7 +77,8 @@ void Graph::showAdjacencyList() {
   Vertex *auxVertex = firstVertex;
   while (auxVertex != nullptr) {
     Edge *auxEdge = auxVertex->firstEdge;
-    cout << auxVertex->getVertexId() << " = ";
+    cout << auxVertex->getVertexId() <<" "<< auxVertex->getTown()->getPosX()<<" "<<
+            auxVertex->getTown()->getPosX() << " = ";
     while (auxEdge != nullptr) {
       cout << auxVertex->getVertexId() << "->"
            << auxEdge->destinyVertex->getVertexId() << ",";
