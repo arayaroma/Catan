@@ -26,6 +26,8 @@ public:
   Game game;
   list<Land *> *landsList;
   list<Land *>::iterator it;
+  list<Land*>::iterator it2;
+
   list<Vertex *> vertexesList;
 
   list<Vertex *>::iterator vertexIterator;
@@ -44,9 +46,9 @@ public:
 
 public:
   // Land
-  void setAndTraverse(int, int);
+  void setAndTraverse(int, int, list<Land*>::iterator);
   void printImages(string, int, int); // Renombrar -> playWindow
-  void C_Traversal(int, int);
+  void C_Traversal(int, int, list<Land*>::iterator);
   void loadHexagonNodes(list<Vertex *>::iterator, double, double, int);
   void printTowns(double, double);
   void traverseFirstAndLastRow(int, int, int);
@@ -56,10 +58,11 @@ public:
 
   /////////////////////////////////////////////////////////////
   void iterateLand();
+  void iterateLand2();
   void lastIterationBehaviour(int);
   bool isLastIteration(int) const;
   bool isLandsListTraversal() const;
-  void setPosXYtoLand(double, double);
+  void setPosXYtoLand(double, double,list<Land*>::iterator auxIt);
   void initializeLandsList();
   // Vertex
   void iterateVertex();
@@ -67,7 +70,7 @@ public:
   bool isVertexesListTraversal() const;
   void setTempImagePath(string);
   void setPosXYtoVertex(list<Vertex *>::iterator, double, double);
-  void initializeVertexesList();
+  void initializeVertexesList(list<Land*>::iterator);
   // Graph
   void setPosXYtoVertexesGraph(int, double, double);
 
@@ -116,8 +119,6 @@ public:
 
   void printMaterialCard(sf::RenderWindow &);
 
-
-  void setHexagonCoordinates(list<Vertex *>::iterator, double, double, int);
   double getFormula(int);
 
   /// ediciones

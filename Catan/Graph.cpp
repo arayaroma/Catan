@@ -77,8 +77,8 @@ void Graph::showAdjacencyList() {
   Vertex *auxVertex = firstVertex;
   while (auxVertex != nullptr) {
     Edge *auxEdge = auxVertex->firstEdge;
-    cout << auxVertex->getVertexId() << " " << auxVertex->getTown()->getPosX()
-         << " " << auxVertex->getTown()->getPosX() << " = ";
+    cout << auxVertex->getVertexId() << " PosX: " << auxVertex->getTown()->getPosX()
+         << " PosY: " << auxVertex->getTown()->getPosY() << " = ";
     while (auxEdge != nullptr) {
       cout << auxVertex->getVertexId() << "->"
            << auxEdge->destinyVertex->getVertexId() << ",";
