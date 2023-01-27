@@ -2,12 +2,12 @@
 using std::pair;
 
 Game::Game() {
-    townsList = new list<Town*>();
-    players = new list<Player*>();
-    citiesList = new list<City*>();
-    roadsList = new list<Road*>();
-    landsList = new list<Land*>();
-    loadMaps();
+  townsList = new list<Town *>();
+  players = new list<Player *>();
+  citiesList = new list<City *>();
+  roadsList = new list<Road *>();
+  landsList = new list<Land *>();
+  loadMaps();
 }
 
 void Game::loadMaps() {
@@ -16,38 +16,39 @@ void Game::loadMaps() {
 }
 
 void Game::loadSpecialCards() {
-  imagePaths.insert(pair<string,string>(
+  imagePaths.insert(pair<string, string>(
       "biggestPath", "Images/extraCards/biggestPathCard.png"));
-  imagePaths.insert(pair<string,string>(
+  imagePaths.insert(pair<string, string>(
       "biggestArmyPath", "Images/extraCards/biggestArmyCard.png"));
 }
+
 void Game::loadProgressPaths() {
   imagePaths.insert(
-      pair<string,string>("knightPath", "Images/knightCards/knightCard"));
+      pair<string, string>("knightPath", "Images/knightCards/knightCard"));
 
-  imagePaths.insert(pair<string,string>("progressPath",
+  imagePaths.insert(pair<string, string>("progressPath",
                                          "Images/progressCards/progressCard"));
 
-  imagePaths.insert(pair<string,string>(
+  imagePaths.insert(pair<string, string>(
       "victoryPointsPath", "Images/victoryPointsCards/victoryPointCard"));
 }
 
 void Game::loadTilesPaths() {
   imagePaths.insert(
-      pair<string,string>("grassPath", "Images/tiles/Grass.jpg"));
+      pair<string, string>("grassPath", "Images/tiles/Grass.jpg"));
   imagePaths.insert(
-      pair<string,string>("brickPath", "Images/tiles/Brick.jpg"));
+      pair<string, string>("brickPath", "Images/tiles/Brick.jpg"));
   imagePaths.insert(
-      pair<string,string>("fieldPath", "Images/tiles/Field.jpg"));
+      pair<string, string>("fieldPath", "Images/tiles/Field.jpg"));
 
   imagePaths.insert(
-      pair<string,string>("mountainPath", "Images/tiles/Mountain.jpg"));
+      pair<string, string>("mountainPath", "Images/tiles/Mountain.jpg"));
 
   imagePaths.insert(
-      pair<string,string>("forestPath", "Images/tiles/Forest.jpg"));
+      pair<string, string>("forestPath", "Images/tiles/Forest.jpg"));
 
   imagePaths.insert(
-      pair<string,string>("dessertPath", "Images/tiles/Dessert.jpg"));
+      pair<string, string>("dessertPath", "Images/tiles/Dessert.jpg"));
 }
 
 void Game::loadLands() {
@@ -57,31 +58,30 @@ void Game::loadLands() {
   for (i = 0; i < 4; i++) {
     if (i < 1) {
       landsList->push_back(
-          new Land( imagePaths.at("dessertPath"), 0, 0, landId));
+          new Land(imagePaths.at("dessertPath"), 0, 0, landId));
       landId++;
     }
     if (i < 3) {
       landsList->push_back(
-          new Land( imagePaths.at("mountainPath"), 0, 0, landId));
+          new Land(imagePaths.at("mountainPath"), 0, 0, landId));
       landId++;
       landsList->push_back(new Land(imagePaths.at("fieldPath"), 0, 0, landId));
       landId++;
     }
-    landsList->push_back(new Land( imagePaths.at("grassPath"), 0, 0, landId));
+    landsList->push_back(new Land(imagePaths.at("grassPath"), 0, 0, landId));
     landId++;
-    landsList->push_back(new Land( imagePaths.at("forestPath"), 0, 0, landId));
+    landsList->push_back(new Land(imagePaths.at("forestPath"), 0, 0, landId));
     landId++;
-    landsList->push_back(new Land( imagePaths.at("brickPath"), 0, 0, landId));
+    landsList->push_back(new Land(imagePaths.at("brickPath"), 0, 0, landId));
     landId++;
   }
- // printLand(landsList);
 }
 
 void Game::loadStacks() {}
 
 void Game::makeSpecialCard() {
-  specialCard = new Progress( imagePaths.at("biggestPath"));
-  specialCard = new Progress( imagePaths.at("biggestArmyPath"));
+  specialCard = new Progress(imagePaths.at("biggestPath"));
+  specialCard = new Progress(imagePaths.at("biggestArmyPath"));
 }
 
 void Game::makeMaterialCard() {
@@ -199,45 +199,49 @@ void Game::makeGraph() {
       graph.insertEdge(vertexId, vertexId + vertexJump - 1);
     }
   }
-   //graph.showAdjacencyList();
 }
 void Game::makeVertexOwners() {}
 
 void Game::assignTownsToLand() {
   int contLands = 1, idVertex = 1, endVertex = 10, sumId = 3;
   landIterator = landsList->begin();
+  
   while (contLands < 4) {
     assignTowns(*landIterator, idVertex, endVertex, sumId);
-    idVertex++, endVertex++,contLands++,landIterator++;
+    idVertex++, endVertex++, contLands++, landIterator++;
   }
-  sumId++, contLands = 1,idVertex = 8, endVertex = 19;
+  sumId++, contLands = 1, idVertex = 8, endVertex = 19;
+
   while (contLands < 5) {
     assignTowns(*landIterator, idVertex, endVertex, sumId);
-    idVertex++, endVertex++,contLands++ , landIterator++;
+    idVertex++, endVertex++, contLands++, landIterator++;
   }
+  sumId++, contLands = 1, idVertex = 17, endVertex = 30;
 
-  sumId++, contLands = 1,idVertex = 17, endVertex = 30;
   while (contLands < 6) {
     assignTownsMiddleRow(*landIterator, idVertex, endVertex, sumId);
-    idVertex++, endVertex++,contLands++, landIterator++;
+    idVertex++, endVertex++, contLands++, landIterator++;
   }
-  contLands = 1,idVertex = 29, endVertex = 41;
+  contLands = 1, idVertex = 29, endVertex = 41;
+
   while (contLands < 5) {
     assignTownsLastRows(*landIterator, idVertex, endVertex, sumId);
-    idVertex++, endVertex++,contLands++, landIterator++;
+    idVertex++, endVertex++, contLands++, landIterator++;
   }
-  sumId = 4,contLands = 1,idVertex = 40, endVertex = 50;
+  sumId = 4, contLands = 1, idVertex = 40, endVertex = 50;
+
   while (contLands < 4) {
     assignTownsLastRows(*landIterator, idVertex, endVertex, sumId);
-    idVertex++, endVertex++,contLands++, landIterator++;
+    idVertex++, endVertex++, contLands++, landIterator++;
   }
 }
+
 void Game::assignTowns(Land *temp, int idVertex, int endVertex, int sumId) {
   int conditional = 0, firstVertex = idVertex;
   Town *town = new Town();
   for (idVertex = firstVertex; idVertex < endVertex; idVertex += sumId + 1) {
     if (conditional < 2) {
-      temp->townsList.push_back(new Vertex(idVertex, "", town));//aca se cae
+      temp->townsList.push_back(new Vertex(idVertex, "", town)); // aca se cae
       temp->townsList.push_back(new Vertex(idVertex + sumId, "", town));
       conditional++;
     } else {
@@ -245,22 +249,21 @@ void Game::assignTowns(Land *temp, int idVertex, int endVertex, int sumId) {
       temp->townsList.push_back(new Vertex(idVertex + sumId + 1, "", town));
     }
   }
-  //std::cout << "IdLand: " << temp->getLandId() << "  " << std::endl;
-  //printVertex(temp->townsList) ;
 }
-void Game::assignTownsMiddleRow(Land *temp, int idVertex, int endVertex,int sumId) {
+
+void Game::assignTownsMiddleRow(Land *temp, int idVertex, int endVertex,
+                                int sumId) {
   int firstVertex = idVertex;
   Town *town = new Town();
   for (idVertex = firstVertex; idVertex < endVertex; idVertex += sumId + 1) {
     temp->townsList.push_back(new Vertex(idVertex, "", town));
     temp->townsList.push_back(new Vertex(idVertex + sumId, "", town));
   }
-  //std::cout << "IdLand: " << temp->getLandId() << "  " << std::endl;
-  //printVertex(temp->townsList);
 }
 
-void Game::assignTownsLastRows(Land *temp, int idVertex, int endVertex,int sumId) {
-  int conditional = 0,firstVertex = idVertex;
+void Game::assignTownsLastRows(Land *temp, int idVertex, int endVertex,
+                               int sumId) {
+  int conditional = 0, firstVertex = idVertex;
   Town *town = new Town();
   for (idVertex = firstVertex; idVertex < endVertex; idVertex += sumId + 1) {
     if (conditional == 0) {
@@ -273,23 +276,27 @@ void Game::assignTownsLastRows(Land *temp, int idVertex, int endVertex,int sumId
       conditional++;
     }
   }
-  //std::cout << "IdLand: " << temp->getLandId() << "  " << std::endl;
-  //printVertex(temp->townsList);
 }
-void Game::printLand(list<Land*>* landsList) {
-    landIterator = landsList->begin();
-    while (landIterator != landsList->end()) {
-        std::cout <<"Type: "<<(*landIterator)->getType() << "  IdLand " <<(*landIterator)->getLandId() << "  PosX: " <<
-            (*landIterator)->getPosX() << "  PosY: " <<(*landIterator)->getPosY() << std::endl;
-        landIterator++;
-    }
+
+void Game::printLand(list<Land *> *landsList) {
+  landIterator = landsList->begin();
+  while (landIterator != landsList->end()) {
+    std::cout << "Type: " << (*landIterator)->getType() << " landId "
+              << (*landIterator)->getLandId()
+              << " posX: " << (*landIterator)->getPosX()
+              << " posY: " << (*landIterator)->getPosY() << std::endl;
+    landIterator++;
+  }
 }
-void Game::printVertex(list<Vertex*> vertexList) {
-    list<Vertex*>::iterator vertexIterator;
-    vertexIterator = vertexList.begin();
-    while (vertexIterator != vertexList.end()) {
-        std::cout << "IdVertex: "  << (*vertexIterator)->getVertexId() << "  PosX: "<< (*vertexIterator)->getTown()->getPosX()<< " PosY: "<< 
-            (*vertexIterator)->getTown()->getPosY() << std::endl;
-        vertexIterator++;
-    }
+
+void Game::printVertex(list<Vertex *> vertexList) {
+  list<Vertex *>::iterator vertexIterator;
+  vertexIterator = vertexList.begin();
+  while (vertexIterator != vertexList.end()) {
+    std::cout << "vertexId: " << (*vertexIterator)->getVertexId()
+              << " posX: " << (*vertexIterator)->getTown()->getPosX()
+              << " posY: " << (*vertexIterator)->getTown()->getPosY()
+              << std::endl;
+    vertexIterator++;
+  }
 }

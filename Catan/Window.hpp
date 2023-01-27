@@ -8,6 +8,8 @@
 #include <iostream>
 #include <iterator>
 
+#define log(x) std::cout << x << std::endl;
+
 #define pi 3.14159265358979323846
 #define firstAngle pi / 2
 #define secondAngle (3 * pi) / 4
@@ -35,8 +37,24 @@ private:
   string tempImagePath;
 
 public:
+  sf::RenderWindow titleWindow;
+  sf::RenderWindow playWindow;
+  sf::RenderWindow aboutWindow;
+  sf::RenderWindow &actualWindow = titleWindow;
+
+public:
   // Land
-  void setAndTraverse(sf::RenderWindow &, int, int);
+  void setAndTraverse(int, int);
+  void printImages(string, int, int); // Renombrar -> playWindow
+  void C_Traversal(int, int);
+  void loadHexagonNodes(list<Vertex *>::iterator, double, double, int);
+  void printTowns(double, double);
+  void traverseFirstAndLastRow(int, int, int);
+  void traverseSecondAndNextToLastRow(int, int, int);
+  void traverseMiddleRow(int, int, int);
+  void printBoard();
+
+  /////////////////////////////////////////////////////////////
   void iterateLand();
   void lastIterationBehaviour(int);
   bool isLastIteration(int) const;
@@ -48,13 +66,14 @@ public:
   bool isTwoLastVertex() const;
   bool isVertexesListTraversal() const;
   void setTempImagePath(string);
-  void setPosXYtoVertex(list<Vertex*>::iterator , double,double);
+  void setPosXYtoVertex(list<Vertex *>::iterator, double, double);
   void initializeVertexesList();
   // Graph
   void setPosXYtoVertexesGraph(int, double, double);
   void initializeGraph();
 
   void consolePrintLandAndVertex();
+
 private:
   sf::Font font;
   Button Prueba;
@@ -85,32 +104,24 @@ public:
     return instance;
   }
 
+  // IMPRIMIR
+  // CARGAR
+
   void showLandsImagePath();
-  
-  
+
   void showCoordinates(sf::RenderWindow &);
   void goTitleView();
   void goAboutView();
   void goPlayView();
   bool goBack(sf::RenderWindow &);
 
-  void printImages(sf::RenderWindow &, std::string, int, int);
   void printMaterialCard(sf::RenderWindow &);
 
-  void printBoard(sf::RenderWindow &);
-  void traverseFirstAndLastRow(int, int, int, sf::RenderWindow &);
-  void traverseSecondAndNextToLastRow(int, int, int, sf::RenderWindow &);
-  void traverseMiddleRow(int, int, int, sf::RenderWindow &);
-  void C_Traversal(sf::RenderWindow &, int, int);
 
-  void loadHexagonNodes(sf::RenderWindow &, list<Vertex *>::iterator,
-                        double, double, int);
-  void setHexagonCoordinates(list<Vertex *>::iterator, double, double,
-                             int);
+  void setHexagonCoordinates(list<Vertex *>::iterator, double, double, int);
   double getFormula(int);
 
   /// ediciones
-  void printTowns(sf::RenderWindow &, double , double );
 
   void updateDisplay();
   void loadStartButtons(sf::RenderWindow &);

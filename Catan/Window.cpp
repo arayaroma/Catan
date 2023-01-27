@@ -7,7 +7,7 @@ int cont = 0;
 bool var = false;
 
 void Window::goTitleView() {
-  sf::RenderWindow titleWindow(sf::VideoMode(1280, 720), "Main Menu");
+  titleWindow.create(sf::VideoMode(1280, 720), "Main Menu");
   sf::Texture titleImage;
   titleImage.loadFromFile("Images/inicio.jpg");
   sf::Sprite titleSprite(titleImage);
@@ -23,9 +23,7 @@ void Window::goTitleView() {
   titleWindow.draw(play->getTextInstance());
   titleWindow.draw(about->getTextInstance());
   titleWindow.display();
-  game.loadLands();
-  game.makeGraph();
-  game.assignTownsToLand();
+
   while (titleWindow.isOpen()) {
     sf::Event event;
     while (titleWindow.pollEvent(event)) {
@@ -62,7 +60,7 @@ void Window::goTitleView() {
 }
 
 void Window::goAboutView() {
-  sf::RenderWindow aboutWindow(sf::VideoMode(1280, 720), "About");
+  aboutWindow.create(sf::VideoMode(1280, 720), "About");
   sf::Texture aboutImage;
   aboutImage.loadFromFile("Images/acercaDe.jpg");
   sf::Sprite aboutSprite(aboutImage);
@@ -103,17 +101,15 @@ void Window::goAboutView() {
 }
 
 void Window::goPlayView() {
-  sf::RenderWindow playWindow(sf::VideoMode(1280, 720), "Play");
+  playWindow.create(sf::VideoMode(1280, 720), "Play");
+  playWindow.setFramerateLimit(120);
   sf::Texture playImage;
   playImage.loadFromFile("Images/catan_1280x720.jpg");
   sf::Sprite playSprite(playImage);
   bool start = true;
-  // playWindow.draw(playSprite);
-  // loadStartButtons(playWindow);
-  // var = true;
-  // playWindow.display();
-  playWindow.setFramerateLimit(120);
-  //consolePrintLandAndVertex();
+
+  printBoard();
+  consolePrintLandAndVertex();
   while (playWindow.isOpen()) {
     sf::Event event;
     playWindow.clear();
@@ -121,9 +117,7 @@ void Window::goPlayView() {
       if (event.type == sf::Event::Closed) {
         playWindow.close();
       }
-
       // playWindow.waitEvent(event);
-
       if (event.MouseButtonPressed &&
           event.mouseButton.button == sf::Mouse::Left) {
         // showCoordinates(playWindow);
@@ -144,13 +138,10 @@ void Window::goPlayView() {
     }
     playWindow.draw(playSprite);
     loadGameButtons(playWindow);
-    printBoard(playWindow);
     printMaterialCard(playWindow);
-    // printTown(playWindow);
     loadStartButtons(playWindow);
     playWindow.display();
   }
-  //consolePrintLandAndVertex();
 }
 
 void Window::setTurn(int numberPlayers) {
@@ -181,14 +172,13 @@ void Window::showCoordinates(sf::RenderWindow &window) {
   std::cout << "y: " << sf::Mouse::getPosition(window).y << std::endl;
 }
 
-void Window::printImages(sf::RenderWindow &window, string imagePath, int posX,
-                         int posY) {
-  // string imagePath = imagePath;
+// Renombrar -> playWindow
+void Window::printImages(string imagePath, int posX, int posY) {
   sf::Texture path;
   path.loadFromFile(imagePath);
   sf::Sprite sprite(path);
   sprite.setPosition(static_cast<float>(posX), static_cast<float>(posY));
-  window.draw(sprite);
+  // playWindow.draw(sprite);
 }
 
 void Window::loadStartButtons(sf::RenderWindow &playWindow) {
@@ -248,13 +238,11 @@ bool Window::isLastIteration(int number) const {
 }
 
 void Window::lastIterationBehaviour(int number) {
-    if (isLastIteration(number)) {
-        lastIteration = true;
-    }
-    else {
-        lastIteration = false;
-    }
- 
+  if (isLastIteration(number)) {
+    lastIteration = true;
+  } else {
+    lastIteration = false;
+  }
 }
 
 void Window::setPosXYtoLand(double posX, double posY) {
@@ -262,22 +250,25 @@ void Window::setPosXYtoLand(double posX, double posY) {
   (*it)->setPosY(posY);
 }
 
-void Window::setAndTraverse(sf::RenderWindow &window, int posX, int posY) {
+void Window::setAndTraverse(int posX, int posY) {
   setTempImagePath((*it)->getImagePath());
   setPosXYtoLand(posX, posY);
-  Window::getInstance().printImages(window, tempImagePath, posX, posY);
-  C_Traversal(window, posX, posY);
+  Window::getInstance().printImages(tempImagePath, posX, posY);
+  C_Traversal(posX, posY);
 }
+
 void Window::initializeLandsList() {
   game.loadLands();
   game.assignTownsToLand();
   landsList = game.getLandsList();
   it = landsList->begin();
 }
+
 void Window::initializeGraph() {
-    game.makeGraph();
-    game.assignTownsToLand();
+  game.assignTownsToLand();
+  game.makeGraph();
 }
+
 void Window::initializeVertexesList() {
   vertexesList = (*it)->getTownsList();
   vertexIterator = vertexesList.begin();
@@ -293,44 +284,41 @@ bool Window::isTwoLastVertex() const {
   return (vertexIterationNumber == 3 || vertexIterationNumber == 5);
 }
 
-void Window::traverseFirstAndLastRow(int posX, int topHeight, int botHeight,
-                                     sf::RenderWindow &window) {
+void Window::traverseFirstAndLastRow(int posX, int topHeight, int botHeight) {
   if (isLandsListTraversal()) {
     lastIterationBehaviour(posX);
 
-    setAndTraverse(window, posX, topHeight);
+    setAndTraverse(posX, topHeight);
     iterateLand();
 
-    setAndTraverse(window, posX, botHeight);
+    setAndTraverse(posX, botHeight);
     iterateLand();
   }
 }
 
 void Window::traverseSecondAndNextToLastRow(int posX, int topHeight,
-                                            int botHeight,
-                                            sf::RenderWindow &window) {
+                                            int botHeight) {
   if (isLandsListTraversal()) {
     lastIterationBehaviour(posX);
 
-    setAndTraverse(window, posX, topHeight);
+    setAndTraverse(posX, topHeight);
     iterateLand();
 
-    setAndTraverse(window, posX, botHeight);
+    setAndTraverse(posX, botHeight);
     iterateLand();
   }
 }
 
-void Window::traverseMiddleRow(int posX, int topHeight, int botHeight,
-                               sf::RenderWindow &window) {
+void Window::traverseMiddleRow(int posX, int topHeight, int botHeight) {
   if (isLandsListTraversal()) {
     lastIterationBehaviour(posX);
 
-    setAndTraverse(window, posX, topHeight);
+    setAndTraverse(posX, topHeight);
     iterateLand();
   }
 }
 
-void Window::C_Traversal(sf::RenderWindow &window, int posX, int posY) {
+void Window::C_Traversal(int posX, int posY) {
   vertexIterationNumber = 1;
   initializeVertexesList();
 
@@ -338,68 +326,66 @@ void Window::C_Traversal(sf::RenderWindow &window, int posX, int posY) {
        vertexIterationNumber++) {
     if (isVertexesListTraversal()) {
       if (!isTwoLastVertex()) {
-            loadHexagonNodes(window, vertexIterator, posX, posY,
-                vertexIterationNumber);
-            iterateVertex();
+        loadHexagonNodes(vertexIterator, posX, posY, vertexIterationNumber);
+        iterateVertex();
       }
 
       if (isTwoLastVertex() && !lastIteration) {
-          setHexagonCoordinates(vertexIterator, posX, posY,
-              vertexIterationNumber);
-          iterateVertex();
+        setHexagonCoordinates(vertexIterator, posX, posY,
+                              vertexIterationNumber);
+        iterateVertex();
       }
       if (lastIteration) {
-        loadHexagonNodes(window, vertexIterator, posX, posY,
-                         vertexIterationNumber);
+        loadHexagonNodes(vertexIterator, posX, posY, vertexIterationNumber);
         iterateVertex();
       }
     }
   }
 }
-void Window::printBoard(sf::RenderWindow &window) {
+
+void Window::printBoard() {
   int top_height = 30, bot_height = 30, cycle_cord_x = 0, i = 1;
   initializeLandsList();
-  initializeGraph();
+  // initializeGraph();
   bot_height += 330;
   for (cycle_cord_x = 530; cycle_cord_x <= 680; cycle_cord_x += 75) {
-    traverseFirstAndLastRow(cycle_cord_x, top_height, bot_height, window);
+    traverseFirstAndLastRow(cycle_cord_x, top_height, bot_height);
   }
   lastIteration = false;
   top_height += 80;
   bot_height = 270;
   lastIterationNumber = 755;
   for (cycle_cord_x = 505; cycle_cord_x <= 755; cycle_cord_x += 75) {
-
-    traverseSecondAndNextToLastRow(cycle_cord_x, top_height, bot_height,
-                                   window);
+    traverseSecondAndNextToLastRow(cycle_cord_x, top_height, bot_height);
   }
   lastIteration = false;
   top_height += 80;
   lastIterationNumber = 760;
   for (cycle_cord_x = 460; cycle_cord_x <= 760; cycle_cord_x += 75) {
-    traverseMiddleRow(cycle_cord_x, top_height, bot_height, window);
+    traverseMiddleRow(cycle_cord_x, top_height, bot_height);
   }
 }
 
-void Window::loadHexagonNodes(sf::RenderWindow &window,
-                              list<Vertex *>::iterator it, double posX,
+void Window::loadHexagonNodes(list<Vertex *>::iterator it, double posX,
                               double posY, int iterationNumber) {
   if (iterationNumber < 4) {
     double relativePositionX = posX - 10 + landsRadius +
                                (landsRadius * cos(getFormula(iterationNumber)));
     double relativePositionY = posY - 20 + landsRadius +
                                (landsRadius * sin(getFormula(iterationNumber)));
-    printTowns(window, relativePositionX, relativePositionY - 3);
-    setPosXYtoVertex(it,  relativePositionX,  relativePositionY);
-    setPosXYtoVertexesGraph((*it)->getVertexId(), relativePositionX, relativePositionY);
+    // printTowns(relativePositionX, relativePositionY - 3);
+    setPosXYtoVertex(it, relativePositionX, relativePositionY);
+    setPosXYtoVertexesGraph((*it)->getVertexId(), relativePositionX,
+                            relativePositionY);
   } else {
     double relativePositionX = posX - 10 + landsRadius +
                                (landsRadius * cos(getFormula(iterationNumber)));
     double relativePositionY = posY - 20 + landsRadius +
                                (landsRadius * sin(getFormula(iterationNumber)));
-    printTowns(window, relativePositionX, relativePositionY + 15);
+    printTowns(relativePositionX, relativePositionY + 15);
     setPosXYtoVertex(it, relativePositionX, relativePositionY);
-    setPosXYtoVertexesGraph((*it)->getVertexId(), relativePositionX, relativePositionY);
+    setPosXYtoVertexesGraph((*it)->getVertexId(), relativePositionX,
+                            relativePositionY);
   }
 }
 
@@ -439,41 +425,43 @@ void Window::printMaterialCard(sf::RenderWindow &window) {
   Label *cards = new Label("Cartas", sf::Color(0, 0, 255, 128), font,
                            sf::Text::Bold, 20, 565.f, 575.f);
 
-  printImages(window, "Images/resourcesCards/clayCard.png", 0, 255);
-  printImages(window, "Images/resourcesCards/mineralCard.png", 70, 255);
-  printImages(window, "Images/resourcesCards/wheatCard.png", 140, 255);
-  printImages(window, "Images/resourcesCards/woodCard.png", 210, 255);
-  printImages(window, "Images/resourcesCards/woolCard.png", 280, 255);
-  printImages(window, "Images/extraCards/progressCardBackwards.png", 0, 385);
-  printImages(window, "Images/extraCards/pricingTable.jpeg", 0, 25);
+  printImages("Images/resourcesCards/clayCard.png", 0, 255);
+  printImages("Images/resourcesCards/mineralCard.png", 70, 255);
+  printImages("Images/resourcesCards/wheatCard.png", 140, 255);
+  printImages("Images/resourcesCards/woodCard.png", 210, 255);
+  printImages("Images/resourcesCards/woolCard.png", 280, 255);
+  printImages("Images/extraCards/progressCardBackwards.png", 0, 385);
+  printImages("Images/extraCards/pricingTable.jpeg", 0, 25);
+
   window.draw(materialCard->getTextInstance());
   window.draw(pricingTable->getTextInstance());
   window.draw(turns->getTextInstance());
   window.draw(cards->getTextInstance());
 }
 
-void Window::printTowns(sf::RenderWindow &window, double x, double y) {
+void Window::printTowns(double x, double y) {
   string tempImagePath = "Images/puebloX.png";
-  Window::getInstance().printImages(window, tempImagePath, static_cast<int>(x),
+  Window::getInstance().printImages(tempImagePath, static_cast<int>(x),
                                     static_cast<int>(y));
 }
-void Window::setPosXYtoVertex(list<Vertex*>::iterator vertexIterator, double x, double y) {
-    (*vertexIterator)->town->setPosX(x);
-    (*vertexIterator)->town->setPosY(y);
+void Window::setPosXYtoVertex(list<Vertex *>::iterator vertexIterator, double x,
+                              double y) {
+  (*vertexIterator)->town->setPosX(x);
+  (*vertexIterator)->town->setPosY(y);
 }
 void Window::setPosXYtoVertexesGraph(int idVertex, double x, double y) {
-    game.graph.getVertex(idVertex)->getTown()->setPosX(x);
-    game.graph.getVertex(idVertex)->getTown()->setPosY(y);
+  game.graph.getVertex(idVertex)->getTown()->setPosX(x);
+  game.graph.getVertex(idVertex)->getTown()->setPosY(y);
 }
+//////////////////////// CARGAR /////////////////////////
+
+///////////////////////// IMPRIMIR //////////////////////
 void Window::consolePrintLandAndVertex() {
-   
-    game.printLand(landsList);
-    it = landsList->begin();
-    while (it != landsList->end()) {
-        game.printVertex((*it)->getTownsList());
-        it++;
-    }
+  game.printLand(landsList);
+  it = landsList->begin();
+  while (it != landsList->end()) {
+    log("landId: " << (*it)->getLandId());
+    game.printVertex((*it)->getTownsList());
+    it++;
+  }
 }
-
-
-/////////////////////////METODOS PARA CARGAR E IMPRIMIR EN CONSOLA///////////////////////////////////////////////////

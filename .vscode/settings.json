@@ -63,7 +63,8 @@
         "xlocmon": "cpp",
         "xloctime": "cpp",
         "ranges": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "numbers": "cpp"
     },
     "spellright.language": [
         "en"
