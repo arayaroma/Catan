@@ -109,10 +109,8 @@ void Window::goPlayView() {
   bool start = true;
 
   printBoard();
-
   consolePrintLandAndVertex();
-  //setPosXYtoVertexesGraph();
-  std::cout << "GRAFO:" << std::endl;
+  log("Grafo");
   game.graph.showAdjacencyList();
 
   while (playWindow.isOpen()) {
@@ -150,7 +148,7 @@ void Window::goPlayView() {
 }
 
 void Window::setTurn(int numberPlayers) {
-  std::cout << turnNumber << std::endl;
+  log(turnNumber);
 
   if (turnNumber == numberPlayers) {
     turnNumber = 0;
@@ -173,8 +171,8 @@ bool Window::goBack(sf::RenderWindow &window) {
 }
 
 void Window::showCoordinates(sf::RenderWindow &window) {
-  std::cout << "x: " << sf::Mouse::getPosition(window).x << std::endl;
-  std::cout << "y: " << sf::Mouse::getPosition(window).y << std::endl;
+  log("x: " << sf::Mouse::getPosition(window).x);
+  log("y: " << sf::Mouse::getPosition(window).y);
 }
 
 // Renombrar -> playWindow
@@ -183,7 +181,7 @@ void Window::printImages(string imagePath, int posX, int posY) {
   path.loadFromFile(imagePath);
   sf::Sprite sprite(path);
   sprite.setPosition(static_cast<float>(posX), static_cast<float>(posY));
-  // playWindow.draw(sprite);
+  playWindow.draw(sprite);
 }
 
 void Window::loadStartButtons(sf::RenderWindow &playWindow) {
@@ -421,21 +419,21 @@ void Window::loadHexagonNodes(list<Vertex *>::iterator itX, double posX,
   double relativePositionY = posY - 20 + landsRadius +
                              (landsRadius * sin(getFormula(iterationNumber)));
   if (iterationNumber < 4) {
-    // printTowns(relativePositionX, relativePositionY - 3);
+    printTowns(relativePositionX, relativePositionY - 3);
     setPosXYtoVertex(itX, relativePositionX, relativePositionY);
     setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
                             relativePositionY);
   } else {
-    // printTowns(relativePositionX, relativePositionY + 15);
+    printTowns(relativePositionX, relativePositionY + 15);
     setPosXYtoVertex(itX, relativePositionX, relativePositionY);
     setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
-        relativePositionY);
+                            relativePositionY);
   }
 }
 
 void Window::setPosXYtoVertexesGraph(int vertexId, double posX, double posY) {
-    game.graph.getVertex(vertexId)->getTown()->setPosX(posX);
-    game.graph.getVertex(vertexId)->getTown()->setPosY(posY);
+  game.graph.getVertex(vertexId)->getTown()->setPosX(posX);
+  game.graph.getVertex(vertexId)->getTown()->setPosY(posY);
 }
 
 //////////////////////// CARGAR /////////////////////////

@@ -1,6 +1,7 @@
 #pragma once
 #include "Edge.hpp"
 #include "Vertex.hpp"
+#define log(x) std::cout << x << std::endl;
 
 class Graph {
 private:
@@ -18,5 +19,4 @@ public:
   void insertVertex(Vertex *);
   void insertEdge(int origin, int destiny);
   void showAdjacencyList();
-  
 };

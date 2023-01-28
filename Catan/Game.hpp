@@ -50,8 +50,15 @@ using std::unordered_map;
 
 class Game {
 public:
-  unordered_map<string, string> imagePaths;
   Graph graph;
+  int vertexId, vertexJump;
+  const int graphNodes = 54;
+
+public:
+  void createGraphVertex();
+
+public:
+  unordered_map<string, string> imagePaths;
   Land land;
 
   list<Town *> *townsList;
@@ -104,7 +111,6 @@ public:
   void makeSpecialCard();
   void printVertexXY() { graph.vertexXY(); }
   void makeGraph();
-  void makeVertexOwners();
   void printLand(list<Land *> *landsList);
   void printVertex(list<Vertex *> *vertexList);
 };

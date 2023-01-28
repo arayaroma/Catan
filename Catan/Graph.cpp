@@ -1,5 +1,7 @@
 #include "Graph.hpp"
-using namespace std;
+using std::cout;
+using std::endl;
+
 Graph::Graph() {
   firstVertex = nullptr;
   this->size = NULL;
@@ -23,8 +25,7 @@ int Graph::getVertexId(Vertex *auxVertex) { return auxVertex->getVertexId(); }
 void Graph::vertexXY() {
   Vertex *auxVertex = firstVertex;
   while (auxVertex != nullptr) {
-    cout << auxVertex->town->getPosX() << " " << auxVertex->town->getPosY()
-         << endl;
+    log(auxVertex->town->getPosX() << " " << auxVertex->town->getPosY());
     auxVertex = auxVertex->next;
   }
 }
@@ -44,8 +45,6 @@ void Graph::insertVertex(Vertex *newVertex) {
     size++;
   }
 }
-
-
 
 void Graph::insertEdge(int origin, int destiny) {
   Vertex *originVertex = getVertex(origin);
@@ -70,7 +69,8 @@ void Graph::showAdjacencyList() {
   Vertex *auxVertex = firstVertex;
   while (auxVertex != nullptr) {
     Edge *auxEdge = auxVertex->firstEdge;
-    cout << auxVertex->getVertexId() << " PosX: " << auxVertex->getTown()->getPosX()
+    cout << auxVertex->getVertexId()
+         << " PosX: " << auxVertex->getTown()->getPosX()
          << " PosY: " << auxVertex->getTown()->getPosY() << " = ";
     while (auxEdge != nullptr) {
       cout << auxVertex->getVertexId() << "->"
@@ -81,4 +81,3 @@ void Graph::showAdjacencyList() {
     auxVertex = auxVertex->next;
   }
 }
-

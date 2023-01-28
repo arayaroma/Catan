@@ -126,14 +126,20 @@ void Game::makeFigures() {
   }
 }
 
+void Game::createGraphVertex() {
+  for (vertexId = 1; vertexId < 55; vertexId++) {
+    Vertex *vertex = new Vertex(vertexId, "", new Town());
+    graph.insertVertex(vertex);
+  }
+}
+
 void Game::makeGraph() {
-  int vertexId = 1;
-  int vertexJump = 4;
-  Town *town = new Town();
+  vertexId = 1;
+  vertexJump = 4;
 
   // SE CREAN LOS VERTICES
   for (vertexId = 1; vertexId < 55; vertexId++) {
-    Vertex *vertex = new Vertex(vertexId, "", town);
+    Vertex *vertex = new Vertex(vertexId, "", new Town());
     graph.insertVertex(vertex);
   }
 
@@ -142,26 +148,32 @@ void Game::makeGraph() {
     graph.insertEdge(vertexId, vertexJump + vertexId);
     graph.insertEdge(vertexId, vertexId + vertexJump - 1);
   }
+
   for (vertexId = 4; vertexId < 8; vertexId++) {
     graph.insertEdge(vertexId, vertexId + vertexJump);
   }
+
   for (vertexId = 8; vertexId < 12; vertexId++) {
     graph.insertEdge(vertexId, vertexId + vertexJump);
     graph.insertEdge(vertexId, vertexId + vertexJump + 1);
   }
   vertexJump++; ////==5
+
   for (vertexId = 12; vertexId < 17; vertexId++) {
     graph.insertEdge(vertexId, vertexId + vertexJump);
   }
+
   for (vertexId = 17; vertexId < 22; vertexId++) {
     graph.insertEdge(vertexId, vertexId + vertexJump);
     graph.insertEdge(vertexId, vertexId + vertexJump + 1);
   }
   vertexJump++; ////==6
+
   for (vertexId = 22; vertexId < 28; vertexId++) {
     graph.insertEdge(vertexId, vertexId + vertexJump);
   }
   vertexJump--; ////==5
+
   for (vertexId = 28; vertexId < 34; vertexId++) {
     if (vertexId == 28) {
       graph.insertEdge(vertexId, vertexId + vertexJump + 1);
@@ -172,9 +184,11 @@ void Game::makeGraph() {
       graph.insertEdge(vertexId, vertexId + vertexJump - 1);
     }
   }
+
   for (vertexId = 34; vertexId < 39; vertexId++) {
     graph.insertEdge(vertexId, vertexId + vertexJump);
   }
+
   for (vertexId = 39; vertexId < 44; vertexId++) {
     if (vertexId == 39) {
       graph.insertEdge(vertexId, vertexId + vertexJump);
@@ -185,10 +199,12 @@ void Game::makeGraph() {
       graph.insertEdge(vertexId, vertexId + vertexJump - 1);
     }
   }
+
   for (vertexId = 44; vertexId < 48; vertexId++) {
     graph.insertEdge(vertexId, vertexId + vertexJump - 1);
   }
   vertexJump--; ////==3
+
   for (vertexId = 48; vertexId < 52; vertexId++) {
     if (vertexId == 48) {
       graph.insertEdge(vertexId, vertexId + vertexJump);
@@ -200,7 +216,6 @@ void Game::makeGraph() {
     }
   }
 }
-void Game::makeVertexOwners() {}
 
 void Game::assignTownsToLand() {
   int contLands = 1, idVertex = 1, endVertex = 10, sumId = 3;
