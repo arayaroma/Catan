@@ -434,6 +434,8 @@ void Window::loadHexagonNodes(list<Vertex *>::iterator itX, double posX,
 }
 
 void Window::setPosXYtoVertexesGraph(int vertexId, double posX, double posY) {
+    game.graph.getVertex(vertexId)->getTown()->setPosX(posX);
+    game.graph.getVertex(vertexId)->getTown()->setPosY(posY);
 }
 
 //////////////////////// CARGAR /////////////////////////
