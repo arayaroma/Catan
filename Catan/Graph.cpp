@@ -88,3 +88,4 @@ void Graph::showAdjacencyList() {
     auxVertex = auxVertex->next;
   }
 }
+
