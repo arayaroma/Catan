@@ -109,11 +109,12 @@ void Window::goPlayView() {
   bool start = true;
 
   printBoard();
-  
+
   consolePrintLandAndVertex();
   //setPosXYtoVertexesGraph();
   std::cout << "GRAFO:" << std::endl;
   game.graph.showAdjacencyList();
+
   while (playWindow.isOpen()) {
     sf::Event event;
     playWindow.clear();
@@ -238,7 +239,6 @@ bool Window::isLandsListTraversal() const { return (it != landsList->end()); }
 void Window::iterateLand() { it++; }
 void Window::iterateLand2() { it2++; }
 
-
 bool Window::isLastIteration(int number) const {
   return (number == lastIterationNumber);
 }
@@ -251,14 +251,15 @@ void Window::lastIterationBehaviour(int number) {
   }
 }
 
-void Window::setPosXYtoLand(double posX, double posY, list<Land*>::iterator auxIt) {
+void Window::setPosXYtoLand(double posX, double posY,
+                            list<Land *>::iterator auxIt) {
   (*auxIt)->setPosX(posX);
   (*auxIt)->setPosY(posY);
 }
 
-void Window::setAndTraverse(int posX, int posY, list<Land*>::iterator auxIt) {
+void Window::setAndTraverse(int posX, int posY, list<Land *>::iterator auxIt) {
   setTempImagePath((*auxIt)->getImagePath());
-  setPosXYtoLand(posX, posY,auxIt);
+  setPosXYtoLand(posX, posY, auxIt);
   Window::getInstance().printImages(tempImagePath, posX, posY);
   C_Traversal(posX, posY, auxIt);
 }
@@ -269,10 +270,9 @@ void Window::initializeLandsList() {
   game.makeGraph();
   landsList = game.getLandsList();
   it = landsList->begin();
-  
 }
 
-void Window::initializeVertexesList(list<Land*>::iterator auxIt) {
+void Window::initializeVertexesList(list<Land *>::iterator auxIt) {
   vertexesList = (*auxIt)->getTownsList();
   vertexIterator = vertexesList->begin();
 }
@@ -291,11 +291,10 @@ void Window::traverseFirstAndLastRow(int posX, int topHeight, int botHeight) {
   if (isLandsListTraversal()) {
     lastIterationBehaviour(posX);
 
-    setAndTraverse(posX, topHeight,it);
+    setAndTraverse(posX, topHeight, it);
     iterateLand();
 
-
-    setAndTraverse(posX, botHeight,it2);
+    setAndTraverse(posX, botHeight, it2);
     iterateLand2();
   }
 }
@@ -322,16 +321,16 @@ void Window::traverseMiddleRow(int posX, int topHeight, int botHeight) {
   }
 }
 
-void Window::C_Traversal(int posX, int posY, list<Land*>::iterator auxIt) {
+void Window::C_Traversal(int posX, int posY, list<Land *>::iterator auxIt) {
   vertexIterationNumber = 1;
   initializeVertexesList(auxIt);
 
   for (vertexIterationNumber; vertexIterationNumber < 7;
        vertexIterationNumber++) {
-      if (isVertexesListTraversal()) {    
-          loadHexagonNodes(vertexIterator, posX, posY, vertexIterationNumber);
-          iterateVertex();
-      }
+    if (isVertexesListTraversal()) {
+      loadHexagonNodes(vertexIterator, posX, posY, vertexIterationNumber);
+      iterateVertex();
+    }
   }
 }
 
@@ -360,21 +359,6 @@ void Window::printBoard() {
   std::advance(it2, 7);
   for (cycle_cord_x = 460; cycle_cord_x <= 760; cycle_cord_x += 75) {
     traverseMiddleRow(cycle_cord_x, top_height, bot_height);
-  }
-}
-
-void Window::loadHexagonNodes(list<Vertex *>::iterator itX, double posX,
-                              double posY, int iterationNumber) {
-    double relativePositionX = posX - 10 + landsRadius +
-        (landsRadius * cos(getFormula(iterationNumber)));
-    double relativePositionY = posY - 20 + landsRadius +
-        (landsRadius * sin(getFormula(iterationNumber)));
-  if (iterationNumber < 4) {
-    // printTowns(relativePositionX, relativePositionY - 3);
-    setPosXYtoVertex(itX, relativePositionX, relativePositionY );
-  } else {
-    //printTowns(relativePositionX, relativePositionY + 15);
-    setPosXYtoVertex(itX, relativePositionX, relativePositionY );
   }
 }
 
@@ -429,24 +413,29 @@ void Window::setPosXYtoVertex(list<Vertex *>::iterator vertexIterator, double x,
   (*vertexIterator)->town->setPosX(x);
   (*vertexIterator)->town->setPosY(y);
 }
-void Window::setPosXYtoVertexesGraph() {
-   list<Land*>::iterator landIterator = landsList->begin();
-   list<Vertex*>::iterator vertexIterator;
-   while (landIterator != landsList->end()) {
-       vertexesList = (*landIterator)->getTownsList();
-       vertexIterator = vertexesList->begin();
-       while (vertexIterator != vertexesList->end()) {
-           game.graph.getVertex((*vertexIterator)->getVertexId())->getTown()->setPosX((*vertexIterator)->getTown()->getPosX());
-           game.graph.getVertex((*vertexIterator)->getVertexId())->getTown()->setPosY((*vertexIterator)->getTown()->getPosY());
-           vertexIterator++;
-       }
-       landIterator++;
-   }
-   
-    
-  
-  
+
+void Window::loadHexagonNodes(list<Vertex *>::iterator itX, double posX,
+                              double posY, int iterationNumber) {
+  double relativePositionX = posX - 10 + landsRadius +
+                             (landsRadius * cos(getFormula(iterationNumber)));
+  double relativePositionY = posY - 20 + landsRadius +
+                             (landsRadius * sin(getFormula(iterationNumber)));
+  if (iterationNumber < 4) {
+    // printTowns(relativePositionX, relativePositionY - 3);
+    setPosXYtoVertex(itX, relativePositionX, relativePositionY);
+    setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
+                            relativePositionY);
+  } else {
+    // printTowns(relativePositionX, relativePositionY + 15);
+    setPosXYtoVertex(itX, relativePositionX, relativePositionY);
+    setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
+        relativePositionY);
+  }
 }
+
+void Window::setPosXYtoVertexesGraph(int vertexId, double posX, double posY) {
+}
+
 //////////////////////// CARGAR /////////////////////////
 
 ///////////////////////// IMPRIMIR //////////////////////
