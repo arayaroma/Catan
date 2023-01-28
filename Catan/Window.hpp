@@ -26,9 +26,9 @@ public:
   Game game;
   list<Land *> *landsList;
   list<Land *>::iterator it;
-  list<Land*>::iterator it2;
+  list<Land *>::iterator it2;
 
-  list<Vertex *>* vertexesList;
+  list<Vertex *> *vertexesList;
 
   list<Vertex *>::iterator vertexIterator;
 
@@ -46,9 +46,9 @@ public:
 
 public:
   // Land
-  void setAndTraverse(int, int, list<Land*>::iterator);
+  void setAndTraverse(int, int, list<Land *>::iterator);
   void printImages(string, int, int); // Renombrar -> playWindow
-  void C_Traversal(int, int, list<Land*>::iterator);
+  void C_Traversal(int, int, list<Land *>::iterator);
   void loadHexagonNodes(list<Vertex *>::iterator, double, double, int);
   void printTowns(double, double);
   void traverseFirstAndLastRow(int, int, int);
@@ -62,7 +62,7 @@ public:
   void lastIterationBehaviour(int);
   bool isLastIteration(int) const;
   bool isLandsListTraversal() const;
-  void setPosXYtoLand(double, double,list<Land*>::iterator auxIt);
+  void setPosXYtoLand(double, double, list<Land *>::iterator auxIt);
   void initializeLandsList();
   // Vertex
   void iterateVertex();
@@ -70,9 +70,9 @@ public:
   bool isVertexesListTraversal() const;
   void setTempImagePath(string);
   void setPosXYtoVertex(list<Vertex *>::iterator, double, double);
-  void initializeVertexesList(list<Land*>::iterator);
+  void initializeVertexesList(list<Land *>::iterator);
   // Graph
-  void setPosXYtoVertexesGraph();
+  void setPosXYtoVertexesGraph(int, double, double);
 
   void consolePrintLandAndVertex();
 

@@ -206,78 +206,77 @@ void Game::assignTownsToLand() {
   int contLands = 1, idVertex = 1, endVertex = 10, sumId = 3;
   landIterator = landsList->begin();
   while (landIterator != landsList->end()) {
-      while (contLands < 4) {
-          assignTowns(*landIterator, idVertex, endVertex, sumId);
-          idVertex++, endVertex++, contLands++, landIterator++;
-      }
-      sumId++, contLands = 1, idVertex = 8, endVertex = 19;
+    while (contLands < 4) {
+      assignTowns(*landIterator, idVertex, endVertex, sumId);
+      idVertex++, endVertex++, contLands++, landIterator++;
+    }
+    sumId++, contLands = 1, idVertex = 8, endVertex = 19;
 
-      while (contLands < 5) {
-          assignTowns(*landIterator, idVertex, endVertex, sumId);
-          idVertex++, endVertex++, contLands++, landIterator++;
-      }
-      sumId++, contLands = 1, idVertex = 17, endVertex = 30;
+    while (contLands < 5) {
+      assignTowns(*landIterator, idVertex, endVertex, sumId);
+      idVertex++, endVertex++, contLands++, landIterator++;
+    }
+    sumId++, contLands = 1, idVertex = 17, endVertex = 30;
 
-      while (contLands < 6) {
-          assignTownsMiddleRow(*landIterator, idVertex, endVertex, sumId);
-          idVertex++, endVertex++, contLands++, landIterator++;
-      }
-      sumId = 5, contLands = 1, idVertex = 29, endVertex = 41;
+    while (contLands < 6) {
+      assignTownsMiddleRow(*landIterator, idVertex, endVertex, sumId);
+      idVertex++, endVertex++, contLands++, landIterator++;
+    }
+    sumId = 5, contLands = 1, idVertex = 29, endVertex = 41;
 
-      while (contLands < 5) {
-          assignTownsLastRows(*landIterator, idVertex, endVertex, sumId);
-          idVertex++, endVertex++, contLands++, landIterator++;
-      }
-      sumId = 4, contLands = 1, idVertex = 40, endVertex = 50;
+    while (contLands < 5) {
+      assignTownsLastRows(*landIterator, idVertex, endVertex, sumId);
+      idVertex++, endVertex++, contLands++, landIterator++;
+    }
+    sumId = 4, contLands = 1, idVertex = 40, endVertex = 50;
 
-      while (contLands < 4) {
-          assignTownsLastRows(*landIterator, idVertex, endVertex, sumId);
-          idVertex++, endVertex++, contLands++, landIterator++;
-      }
+    while (contLands < 4) {
+      assignTownsLastRows(*landIterator, idVertex, endVertex, sumId);
+      idVertex++, endVertex++, contLands++, landIterator++;
+    }
   }
 }
 
 void Game::assignTowns(Land *temp, int idVertex, int endVertex, int sumId) {
   int conditional = 0;
   vertexesList = temp->townsList;
-  Town *town = new Town();
   for (idVertex; idVertex < endVertex; idVertex += sumId + 1) {
     if (conditional < 2) {
-        vertexesList->push_back(new Vertex(idVertex, "", town)); // aca se cae
-        vertexesList->push_back(new Vertex(idVertex + sumId, "", town));
+      vertexesList->push_back(
+          new Vertex(idVertex, "", new Town())); // aca se cae
+      vertexesList->push_back(new Vertex(idVertex + sumId, "", new Town()));
       conditional++;
     } else {
-        vertexesList->push_back(new Vertex(idVertex, "", town));
-        vertexesList->push_back(new Vertex(idVertex + sumId + 1, "", town));
+      vertexesList->push_back(new Vertex(idVertex, "", new Town()));
+      vertexesList->push_back(new Vertex(idVertex + sumId + 1, "", new Town()));
     }
   }
 }
 
 void Game::assignTownsMiddleRow(Land *temp, int idVertex, int endVertex,
                                 int sumId) {
-  
-  Town *town = new Town();
+
   for (idVertex; idVertex < endVertex; idVertex += sumId + 1) {
-    temp->townsList->push_back(new Vertex(idVertex, "", town));
-    temp->townsList->push_back(new Vertex(idVertex + sumId, "", town));
+    temp->townsList->push_back(new Vertex(idVertex, "", new Town()));
+    temp->townsList->push_back(new Vertex(idVertex + sumId, "", new Town()));
   }
 }
 
 void Game::assignTownsLastRows(Land *temp, int idVertex, int endVertex,
                                int sumId) {
   int cycleNumber = 0;
-  const int secondCycle =1;
-  int iterationSumSpecialCase = sumId + 1;// 5 + 1 == 6
-  Town *town = new Town();
+  const int secondCycle = 1;
+  int iterationSumSpecialCase = sumId + 1; // 5 + 1 == 6
+
   for (idVertex; idVertex < endVertex; idVertex += iterationSumSpecialCase) {
     if (cycleNumber >= secondCycle) {
-        temp->townsList->push_back(new Vertex(idVertex, "", town));
-        temp->townsList->push_back(new Vertex(idVertex + sumId - 1, "", town));
-        iterationSumSpecialCase--;
+      temp->townsList->push_back(new Vertex(idVertex, "", new Town()));
+      temp->townsList->push_back(
+          new Vertex(idVertex + sumId - 1, "", new Town()));
+      iterationSumSpecialCase--;
     } else {
-        temp->townsList->push_back(new Vertex(idVertex, "", town));
-        temp->townsList->push_back(new Vertex(idVertex + sumId, "", town));
-      
+      temp->townsList->push_back(new Vertex(idVertex, "", new Town()));
+      temp->townsList->push_back(new Vertex(idVertex + sumId, "", new Town()));
     }
     cycleNumber++;
   }
@@ -294,7 +293,7 @@ void Game::printLand(list<Land *> *landsList) {
   }
 }
 
-void Game::printVertex(list<Vertex *>* vertexList) {
+void Game::printVertex(list<Vertex *> *vertexList) {
   list<Vertex *>::iterator vertexIterator;
   vertexIterator = vertexList->begin();
   while (vertexIterator != vertexList->end()) {

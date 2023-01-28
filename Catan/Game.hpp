@@ -50,19 +50,19 @@ using std::unordered_map;
 
 class Game {
 public:
-  unordered_map<string,string> imagePaths;
+  unordered_map<string, string> imagePaths;
   Graph graph;
   Land land;
-  
+
   list<Town *> *townsList;
-  list<Player*> *players;
+  list<Player *> *players;
   list<City *> *citiesList;
   list<Road *> *roadsList;
   list<Land *> *landsList;
-  list<Land*>::iterator landIterator;
+  list<Land *>::iterator landIterator;
   Card *specialCard;
 
-  list<Vertex*>* vertexesList;
+  list<Vertex *> *vertexesList;
 
   stack<Knight *> *knightCards = new stack<Knight *>();
   stack<Progress *> *progressCards = new stack<Progress *>();
@@ -93,7 +93,7 @@ public:
   void loadLands();
 
   void assignTownsToLand();
-  void assignTowns(Land* , int, int, int);
+  void assignTowns(Land *, int, int, int);
   void assignTownsMiddleRow(Land *, int, int, int);
   void assignTownsLastRows(Land *, int, int, int);
   void makeMaterialCard();
@@ -105,6 +105,6 @@ public:
   void printVertexXY() { graph.vertexXY(); }
   void makeGraph();
   void makeVertexOwners();
-  void printLand(list<Land*>* landsList);
-  void printVertex(list<Vertex*>* vertexList);
+  void printLand(list<Land *> *landsList);
+  void printVertex(list<Vertex *> *vertexList);
 };
