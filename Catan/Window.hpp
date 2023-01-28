@@ -37,7 +37,7 @@ private:
   int lastIterationNumber = 680;
   int vertexIterationNumber;
   string tempImagePath;
-
+  bool firstCalltoPrintBoard = true;
 public:
   sf::RenderWindow titleWindow;
   sf::RenderWindow playWindow;

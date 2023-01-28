@@ -107,44 +107,47 @@ void Window::goPlayView() {
   playImage.loadFromFile("Images/catan_1280x720.jpg");
   sf::Sprite playSprite(playImage);
   bool start = true;
-
-  printBoard();
-  consolePrintLandAndVertex();
-  log("Grafo");
-  game.graph.showAdjacencyList();
-
   while (playWindow.isOpen()) {
     sf::Event event;
-    playWindow.clear();
     while (playWindow.pollEvent(event)) {
-      if (event.type == sf::Event::Closed) {
-        playWindow.close();
-      }
-      // playWindow.waitEvent(event);
-      if (event.MouseButtonPressed &&
-          event.mouseButton.button == sf::Mouse::Left) {
-        // showCoordinates(playWindow);
-        if (sf::Mouse::getPosition(playWindow).x > 1080 &&
-            sf::Mouse::getPosition(playWindow).y > 0 &&
-            sf::Mouse::getPosition(playWindow).x < 1175 &&
-            sf::Mouse::getPosition(playWindow).y < 40) {
-          playWindow.clear();
-          playWindow.draw(playSprite);
+        if (event.type == sf::Event::Closed) {
+            playWindow.close();
         }
-        if (sf::Mouse::getPosition(playWindow).x > 1200 &&
-            sf::Mouse::getPosition(playWindow).y > 0 &&
-            sf::Mouse::getPosition(playWindow).x < 1270 &&
-            sf::Mouse::getPosition(playWindow).y < 40) {
-          setTurn(4);
+        // playWindow.waitEvent(event);
+        if (event.MouseButtonPressed &&
+            event.mouseButton.button == sf::Mouse::Left) {
+            // showCoordinates(playWindow);
+            if (sf::Mouse::getPosition(playWindow).x > 1080 &&
+                sf::Mouse::getPosition(playWindow).y > 0 &&
+                sf::Mouse::getPosition(playWindow).x < 1175 &&
+                sf::Mouse::getPosition(playWindow).y < 40) {
+                playWindow.clear();
+                playWindow.draw(playSprite);
+            }
+            if (sf::Mouse::getPosition(playWindow).x > 1200 &&
+                sf::Mouse::getPosition(playWindow).y > 0 &&
+                sf::Mouse::getPosition(playWindow).x < 1270 &&
+                sf::Mouse::getPosition(playWindow).y < 40) {
+                setTurn(4);
+            }
         }
-      }
     }
+    if (firstCalltoPrintBoard) {
+        printBoard();
+        firstCalltoPrintBoard = false;
+    }
+    playWindow.clear();
     playWindow.draw(playSprite);
     loadGameButtons(playWindow);
     printMaterialCard(playWindow);
+    //printBoard();
+   
     loadStartButtons(playWindow);
     playWindow.display();
   }
+ // consolePrintLandAndVertex();
+ // log("Grafo");
+ // game.graph.showAdjacencyList();
 }
 
 void Window::setTurn(int numberPlayers) {
