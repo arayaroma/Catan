@@ -154,6 +154,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Progress.cpp" />
     <ClCompile Include="Road.cpp" />
+    <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="Town.cpp" />
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="VictoryPoints.cpp" />
@@ -188,6 +189,7 @@
     <ClInclude Include="Progress.hpp" />
     <ClInclude Include="ProgressCards.hpp" />
     <ClInclude Include="Road.hpp" />
+    <ClInclude Include="TextBox.h" />
     <ClInclude Include="Town.hpp" />
     <ClInclude Include="Vertex.hpp" />
     <ClInclude Include="VictoryPoints.hpp" />

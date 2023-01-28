@@ -1,2 +1,7 @@
-﻿  Window.cpp
+﻿  Application.cpp
+  Window.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\Window.cpp(106,21): warning C5033: "register" ya no es una clase de almacenamiento admitida
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\Window.cpp(106,29): warning C4091: '': se ha omitido a la izquierda de 'sf::ConvexShape' cuando no hay ninguna variable declarada
+  main.cpp
+  Generando código...
   Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe

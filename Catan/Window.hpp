@@ -7,6 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <iterator>
+#include "TextBox.h"
 
 #define log(x) std::cout << x << std::endl;
 
@@ -43,6 +44,7 @@ public:
   sf::RenderWindow playWindow;
   sf::RenderWindow aboutWindow;
   sf::RenderWindow &actualWindow = titleWindow;
+  sf::RenderWindow registerView;
 
 public:
   // Land
@@ -77,23 +79,8 @@ public:
   void consolePrintLandAndVertex();
 
 private:
-  sf::Font font;
-  Button Prueba;
-  Button btnTrade;
-  Button btnBuy;
-  Button btnTurns;
-  Button btnClose;
-  Button btnOpcional1;
-  Button btnOpcional2;
-
-  sf::RectangleShape prueba;
-  sf::RectangleShape trade;
-  sf::RectangleShape buy;
-  sf::RectangleShape Turnos;
-  sf::RectangleShape close2;
-  sf::RectangleShape opcional1;
-  sf::RectangleShape opcional2;
-  sf::RectangleShape turn;
+ 
+    sf::Font font; 
 
   int i = 100;
   int turnNumber = 0;
@@ -111,10 +98,16 @@ public:
 
   void showLandsImagePath();
 
+  void showCoordinates(sf::RenderWindow &, sf::Event event);
   void showCoordinates(sf::RenderWindow &);
   void goTitleView();
   void goAboutView();
   void goPlayView();
+
+  void loadTextFields(sf::RenderWindow& registerwindow, TextBox &tex1, TextBox& tex2, TextBox& tex3, TextBox& tex4);
+  void loadRegisterButtons(sf::RenderWindow& registerwindow, Button& btn1, Button& btn2, Button& btn3);
+
+  void goRegisterView();
   bool goBack(sf::RenderWindow &);
 
   void printMaterialCard(sf::RenderWindow &);
@@ -130,6 +123,14 @@ public:
   void setTurn(int);
   void drawTurn(int, int);
 
+  void registerButton(sf::RenderWindow &window); 
+
+
 private:
+
   Window() {}
+
+  bool Player3 = false;
+  bool Player4 = false;
+
 };

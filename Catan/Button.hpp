@@ -1,19 +1,24 @@
 #pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "Label.hpp"
-
-class Button{
+class Button
+{
 public:
 	Button();
-	~Button();
+	Button(std::string t, sf::Vector2f size, int charSize, sf::Color bgColor, sf::Color textColor);
+	void setFont(sf::Font& font);
+	void setBackColor(sf::Color color);
+	void setTextColor(sf::Color color);
+	void setPosition(sf::Vector2f pos);
+	void setPosition2(sf::Vector2f pos);
+	void setPosition3(sf::Vector2f pos);
+	void drawTo(sf::RenderWindow& window);
+	bool  isMouseOver(sf::RenderWindow& window);
 
-	void createButton(sf::RenderWindow& window, std::string,
-		sf::RectangleShape name, sf::Vector2f posRec,
-		sf::Color color, sf::Vector2f size, sf::Vector2f posLabel);
 
 private:
-	sf::Font font;
+
 	sf::RectangleShape button;
 	sf::Text text;
+
 };
