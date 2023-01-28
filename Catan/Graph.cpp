@@ -45,14 +45,7 @@ void Graph::insertVertex(Vertex *newVertex) {
   }
 }
 
-void Graph::insertOwnerHexagon(int id, int vecOwners[]) {
-  Vertex *vertex = getVertex(id);
-  if (vertex != nullptr) {
-    for (int i = 0; i < 3; i++) {
-      vertex->ownerHexagon[i] = vecOwners[i];
-    }
-  }
-}
+
 
 void Graph::insertEdge(int origin, int destiny) {
   Vertex *originVertex = getVertex(origin);

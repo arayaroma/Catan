@@ -1,10 +1,16 @@
 #include "Vertex.hpp"
-Vertex::Vertex() {}
+Vertex::Vertex() {
+	this->next = nullptr;
+	this->firstEdge = nullptr;
+	this->town = nullptr;
+	this->vertexId = NULL;
+	this->ownerTown = nullptr;
+}
 
-Vertex::Vertex(int id, std::string owner, Town *town) {
+Vertex::Vertex(int id, string owner, Town *town) {
   this->vertexId = id;
   this->ownerTown = owner;
   this->town = town;
-  next = nullptr;
-  firstEdge = nullptr;
+  this->next = nullptr;
+  this->firstEdge = nullptr;
 }

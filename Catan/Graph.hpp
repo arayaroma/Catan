@@ -16,7 +16,6 @@ public:
   int getVertexId(Vertex *);
   void vertexXY();
   void insertVertex(Vertex *);
-  void insertOwnerHexagon(int, int vecOwners[]);
   void insertEdge(int origin, int destiny);
   void showAdjacencyList();
   

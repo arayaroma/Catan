@@ -2,8 +2,6 @@
 #include "Town.hpp"
 #include <iostream>
 
-#define TAM 3;
-
 class Edge;
 
 class Vertex {
@@ -11,8 +9,7 @@ private:
   friend class Graph;
   int vertexId;
   Edge *firstEdge;
-  int ownerHexagon[3];
-  std::string ownerTown;
+  string ownerTown;
 
 public:
   Vertex *next;
@@ -20,7 +17,7 @@ public:
 
 public:
   Vertex();
-  Vertex(int, std::string, Town *);
+  Vertex(int, string, Town *);
 
   int getVertexId() const { return this->vertexId; }
   Town* getTown() const { return this->town; }
