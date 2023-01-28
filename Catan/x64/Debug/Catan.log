@@ -1,2 +1,4 @@
-﻿  Game.cpp
+﻿  Window.cpp
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\Window.cpp(112,21): warning C5033: "register" ya no es una clase de almacenamiento admitida
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\Window.cpp(112,29): warning C4091: '': se ha omitido a la izquierda de 'sf::ConvexShape' cuando no hay ninguna variable declarada
   Catan.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Catan.exe

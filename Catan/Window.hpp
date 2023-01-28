@@ -43,10 +43,14 @@ public:
   void showLandsImagePath();
   void initializeLandsList();
 
-  void showCoordinates(sf::RenderWindow &);
+  void showCoordinates(sf::RenderWindow &, sf::Event event);
   void goTitleView();
   void goAboutView();
   void goPlayView();
+
+  void loadTextFields(sf::RenderWindow& registerwindow, TextBox &tex1, TextBox& tex2, TextBox& tex3, TextBox& tex4);
+  void loadRegisterButtons(sf::RenderWindow& registerwindow, Button& btn1, Button& btn2, Button& btn3);
+
   void goRegisterView();
   bool goBack(sf::RenderWindow &);
 
@@ -80,5 +84,10 @@ public:
 
 
 private:
+
   Window() {}
+
+  bool Player3 = false;
+  bool Player4 = false;
+
 };

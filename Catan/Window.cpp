@@ -38,7 +38,7 @@ void Window::goTitleView() {
 
             case sf::Event::MouseButtonPressed:
                 if (event.mouseButton.button == sf::Mouse::Left) {
-                    showCoordinates(titleWindow);
+                    showCoordinates(titleWindow, event);
                     // Pantalla Juego
                     if (event.mouseButton.x > 485 && event.mouseButton.y > 265 &&
                         event.mouseButton.x < 805 && event.mouseButton.y < 355) {
@@ -87,7 +87,7 @@ void Window::goAboutView() {
 
       case sf::Event::MouseButtonPressed:
         if (event.mouseButton.button == sf::Mouse::Left)
-          showCoordinates(aboutWindow);
+          showCoordinates(aboutWindow, event);
         break;
 
       case sf::Event::KeyPressed:
@@ -106,53 +106,62 @@ void Window::goAboutView() {
 }
 
 void  Window::goRegisterView() {
-  
-    sf::RenderWindow registerView(sf::VideoMode(1280, 720), "About");
-     registerView.setKeyRepeatEnabled(true);
 
-    sf::ConvexShape register; 
+    sf::RenderWindow registerView(sf::VideoMode(1280, 720), "About");
+    registerView.setKeyRepeatEnabled(true);
+    sf::ConvexShape register;
     sf::Texture registerImage;
     registerImage.loadFromFile("Images/catan_1280x720.jpg");
     sf::Sprite registerSprite(registerImage);
     font.loadFromFile("mononoki.ttf");
-
-    TextBox text1 = TextBox(15, sf::Color::Black, false, { 345,240 }, { 180, 40 }, sf::Color::White);
-    text1.serFont(font);
-    text1.setPosition({ 365,250 });
+    registerView.setFramerateLimit(120);
+    TextBox name1 = TextBox(15, sf::Color::Black, false, { 345,240 }, { 180, 40 }, sf::Color::White);
+    name1.serFont(font);
+    name1.setPosition({ 365,250 });
+    TextBox name2 = TextBox(15, sf::Color::Black, false, { 345,300 }, { 180, 40 }, sf::Color::White);
+    name2.serFont(font);
+    name2.setPosition({ 365,310 });
+    TextBox name3 = TextBox(15, sf::Color::Black, false, { 345,360 }, { 180, 40 }, sf::Color::White);
+    name3.serFont(font);
+    name3.setPosition({ 365,370 });
+    TextBox name4 = TextBox(15, sf::Color::Black, false, { 345,420 }, { 180, 40 }, sf::Color::White);
+    name4.serFont(font);
+    name4.setPosition({ 365,430 });
 
     Button btnPlay("Jugar", { 150,60 }, 20, sf::Color::Blue, sf::Color::Black);
     btnPlay.setPosition({ 1000,320 });
     btnPlay.setFont(font);
-
     Button btn3Players("3 Jugadores", { 200,60 }, 20, sf::Color::Green, sf::Color::Black);
     btn3Players.setPosition2({ 100,280 });
     btn3Players.setFont(font);
-
     Button btn4Players("4 Jugadores", { 200,60 }, 20, sf::Color::Green, sf::Color::Black);
     btn4Players.setPosition2({ 100,350 });
     btn4Players.setFont(font);
-
     while (registerView.isOpen())
     {
         sf::Event event;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
-            text1.setSelected(true);
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-            text1.setSelected(false);
-        }
 
         while (registerView.pollEvent(event))
         {
             switch (event.type) {
             case sf::Event::Closed:
-
                 registerView.close();
-
+             
             case sf::Event::TextEntered:
+                if (name1.isMouseOver(registerView)) {
+                    name1.typeOn(event);
+                }
+                else if (name2.isMouseOver(registerView)) {
 
-                text1.typeOn(event);
+                    name2.typeOn(event);
+                }
+                else if (name3.isMouseOver(registerView)) {
 
+                    name3.typeOn(event);
+                }
+                else if (name4.isMouseOver(registerView)) {
+                    name4.typeOn(event);
+                }
                 break;
 
             case sf::Event::KeyPressed:
@@ -160,65 +169,107 @@ void  Window::goRegisterView() {
                     registerView.close();
                     goTitleView();
                 }
+            case sf::Event::MouseButtonPressed:
+                showCoordinates(registerView, event);
+                if (event.mouseButton.button == sf::Mouse::Left) {
+                    if (btnPlay.isMouseOver(registerView)) {
+                       
+                        goPlayView();
+                        registerView.close();
+                    }
+                    else if (btn3Players.isMouseOver(registerView)) {
 
-            case sf::Event::MouseMoved:
+                        Player3 = true;
+                    }
+                    else if (btn4Players.isMouseOver(registerView)) {
 
-                if (btnPlay.isMouseOver(registerView)) {
-                    btnPlay.setBackColor(sf::Color::White);
-                }
-                else {
-                    btnPlay.setBackColor(sf::Color::Blue);
-                }
-                if (btn3Players.isMouseOver(registerView)) {
-                    btn3Players.setBackColor(sf::Color::White);
-                }
-                else {
-                    btn3Players.setBackColor(sf::Color::Green);
-                }
-                if (btn4Players.isMouseOver(registerView)) {
-                    btn4Players.setBackColor(sf::Color::White);
-                }
-                else {
-                    btn4Players.setBackColor(sf::Color::Green);
+                        Player4 = true;
+                    }
                 }
                 break; 
-
-            case sf::Event::MouseButtonPressed:
-
-                if (event.mouseButton.button == sf::Mouse::Left && btnPlay.isMouseOver(registerView)) {
-                   
-                    registerView.close(); 
-                    goPlayView();
-                }
-            }
-
-        if (event.type == sf::Event::MouseButtonPressed) {
-
-            if (event.mouseButton.button == sf::Mouse::Right)
-            {
-                std::cout << "the right button was pressed" << std::endl;
-                std::cout << "mouse x: " << event.mouseButton.x << std::endl;
-                std::cout << "mouse y: " << event.mouseButton.y << std::endl;
             }
         }
-        if (event.type == sf::Event::MouseButtonPressed)
-        {
-            if (event.mouseButton.button == sf::Mouse::Left)
-            {
-                std::cout << "the Left button was pressed" << std::endl;
-                std::cout << "mouse x: " << event.mouseButton.x << std::endl;
-                std::cout << "mouse y: " << event.mouseButton.y << std::endl;
-            }
-          }
-        }
-        registerView.clear(); 
-        registerView.draw(registerSprite); 
+        registerView.clear();
+        registerView.draw(registerSprite);
         registerButton(registerView);
-        text1.drawTo(registerView);
+        loadRegisterButtons(registerView, btnPlay, btn3Players, btn4Players);
         btnPlay.drawTo(registerView);
         btn3Players.drawTo(registerView);
-        btn4Players.drawTo(registerView); 
+        btn4Players.drawTo(registerView);
+        loadTextFields(registerView, name1, name2, name3, name4);
         registerView.display();
+    }
+}
+
+void Window::loadTextFields(sf::RenderWindow& registerView, TextBox& name1, TextBox& name2, TextBox& name3, TextBox& name4) {
+
+    if (Player3 == true) {
+        if (name1.isMouseOver(registerView)) {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+                name1.setSelected(true);
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::End)) {
+                name1.setSelected(false);
+            }
+        }
+        else if (name2.isMouseOver(registerView)) {
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+                name2.setSelected(true);
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::End)) {
+                name2.setSelected(false);
+            }
+        }
+        else if (name3.isMouseOver(registerView)) {
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+                name3.setSelected(true);
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::End)) {
+                name3.setSelected(false);
+            }
+        }
+        else if (name4.isMouseOver(registerView)) {
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+                name4.setSelected(true);
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::End)) {
+                name4.setSelected(false);
+            }
+        }
+    }
+
+    if (Player3 == true) {
+        name1.drawTo(registerView);
+        name2.drawTo(registerView);
+        name3.drawTo(registerView);
+    }if (Player4 == true) {
+        name4.drawTo(registerView);
+    }
+
+}
+
+void Window::loadRegisterButtons(sf::RenderWindow& registerView, Button& btnPlay, Button& btn3Players, Button& btn4Players) {
+
+    if (btnPlay.isMouseOver(registerView)) {
+        btnPlay.setBackColor(sf::Color::White);
+    }
+    else {
+        btnPlay.setBackColor(sf::Color::Blue);
+    }
+    if (btn3Players.isMouseOver(registerView)) {
+        btn3Players.setBackColor(sf::Color::White);
+    }
+    else {
+        btn3Players.setBackColor(sf::Color::Green);
+    }
+    if (btn4Players.isMouseOver(registerView)) {
+        btn4Players.setBackColor(sf::Color::White);
+    }
+    else {
+        btn4Players.setBackColor(sf::Color::Green);
     }
 }
 
@@ -232,6 +283,27 @@ void Window::registerButton(sf::RenderWindow &window) {
     window.draw(type->getTextInstance());
     window.draw(name->getTextInstance());
     window.draw(color->getTextInstance());
+}
+
+void Window::showCoordinates(sf::RenderWindow& window, sf::Event event) {
+    if (event.type == sf::Event::MouseButtonPressed) {
+
+        if (event.mouseButton.button == sf::Mouse::Right)
+        {
+            std::cout << "the right button was pressed" << std::endl;
+            std::cout << "mouse x: " << event.mouseButton.x << std::endl;
+            std::cout << "mouse y: " << event.mouseButton.y << std::endl;
+        }
+    }
+    if (event.type == sf::Event::MouseButtonPressed)
+    {
+        if (event.mouseButton.button == sf::Mouse::Left)
+        {
+            std::cout << "the Left button was pressed" << std::endl;
+            std::cout << "mouse x: " << event.mouseButton.x << std::endl;
+            std::cout << "mouse y: " << event.mouseButton.y << std::endl;
+        }
+    }
 }
 
 void Window::goPlayView() {
@@ -250,10 +322,9 @@ void Window::goPlayView() {
 
             playWindow.close();
         }
-     }
+    }
     playWindow.clear();
     playWindow.draw(playSprite);
-   
     printBoard(playWindow);
     printMaterialCard(playWindow);
     printTown(playWindow);
@@ -332,8 +403,8 @@ void Window::loadStartButtons(sf::RenderWindow &playWindow) {
     btnTurn.drawTo(playWindow);
     btnTrade.drawTo(playWindow);
     btnBuy.drawTo(playWindow);
-  
 }
+
 void Window::setTurn(int numberPlayers) {
     std::cout << turnNumber << std::endl;
 
@@ -349,20 +420,18 @@ void Window::setTurn(int numberPlayers) {
         turnNumber++;
     }
 }
+
 void Window::drawTurn(int turns, int posiI) {
     // turn.move(1020,posiI);
 }
+
 bool Window::goBack(sf::RenderWindow& window) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
         return true;
     return false;
 }
-void Window::showCoordinates(sf::RenderWindow& window) {
-    std::cout << "x: " << sf::Mouse::getPosition(window).x << std::endl;
-    std::cout << "y: " << sf::Mouse::getPosition(window).y << std::endl;
-}
-void Window::printResources(sf::RenderWindow& window, string imagePath,
-int posX, int posY) {
+
+void Window::printResources(sf::RenderWindow& window, string imagePath,int posX, int posY) {
     // string imagePath = imagePath;
     sf::Texture path;
     path.loadFromFile(imagePath);
@@ -385,6 +454,7 @@ void Window::loadGameButtons(sf::RenderWindow &playWindow) {
   cardsRectangle.setSize({600, 100});
   playWindow.draw(cardsRectangle);
 }
+
 void Window::initializeLandsList() {
   game.loadLands();
   landsList = game.getLandsList();
@@ -453,8 +523,7 @@ void Window::printBoard(sf::RenderWindow &window) {
   }
 }
 
-void Window::loadHexagonNodes(list<Vertex *>::iterator it, double posX,
-                              double posY) {
+void Window::loadHexagonNodes(list<Vertex *>::iterator it, double posX,double posY) {
   double relativePositionX =
       posX + (landsRadius * cos(getFormula((*it)->getVertexId())));
   double relativePositionY =
@@ -619,8 +688,8 @@ void Window::printTown(sf::RenderWindow &window) {
   }
   // game.printVertexXY();
 }
-void Window::printNeighborsTowns(sf::RenderWindow &window, Vertex *temp,
-                                 std::string tempImagePath, int x, int y) {
+
+void Window::printNeighborsTowns(sf::RenderWindow &window, Vertex *temp,std::string tempImagePath, int x, int y) {
   Window::getInstance().printResources(window, tempImagePath, x - 35, y + 25);
   // temp = game.graph.getVertex(game.graph.getIdVertex(temp) + 3);
   // assingXYtoTowns(temp, x - 35, y + 25);
@@ -633,8 +702,8 @@ void Window::printNeighborsTowns(sf::RenderWindow &window, Vertex *temp,
   // temp = game.graph.getVertex(game.graph.getIdVertex(temp) + 12);
   // assingXYtoTowns(temp, x, y + 60);
 }
-void Window::printNeighborsFinalTowns(sf::RenderWindow &window, Vertex *temp,
-                                      std::string tempImagePath, int x, int y) {
+
+void Window::printNeighborsFinalTowns(sf::RenderWindow &window, Vertex *temp, std::string tempImagePath, int x, int y) {
   Window::getInstance().printResources(window, tempImagePath, x + 30, y + 25);
   // temp = game.graph.getVertex(game.graph.getIdVertex(temp) + 4);
   // assingXYtoTowns(temp, x + 30, y + 25);
@@ -643,6 +712,7 @@ void Window::printNeighborsFinalTowns(sf::RenderWindow &window, Vertex *temp,
   // temp = game.graph.getVertex(game.graph.getIdVertex(temp) + 8);
   // assingXYtoTowns(temp, x + 30, y + 50);
 }
+
 void Window::setPosXYtoVertex(Vertex *temp, int x, int y) {
   temp->town->setPosX(x);
   temp->town->setPosY(y);

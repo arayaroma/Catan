@@ -98,3 +98,23 @@ void TextBox::typeOn(sf::Event input) {
 		}
 	}
 }
+
+
+bool TextBox::isMouseOver(sf::RenderWindow& window) {
+
+	float mouseX = sf::Mouse::getPosition(window).x;
+	float mouseY = sf::Mouse::getPosition(window).y;
+
+	float btnPosX = border.getPosition().x;
+	float btnPosY = border.getPosition().y;
+
+	float btnxPosWidth = border.getPosition().x + border.getGlobalBounds().width;
+	float btnyPosHeight = border.getPosition().y + border.getGlobalBounds().height;
+
+	if (mouseX < btnxPosWidth && mouseX > btnPosX && mouseY < btnyPosHeight && mouseY>btnPosY) {
+
+		return true;
+	}
+	return false;
+
+}

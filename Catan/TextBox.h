@@ -23,7 +23,7 @@ public :
 	string getText(); 
 	void drawTo(sf::RenderWindow& window);
 	void typeOn(sf::Event input); 
-	
+	bool isMouseOver(sf::RenderWindow& window); 
 
 private: 
 
