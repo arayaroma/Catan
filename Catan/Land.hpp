@@ -14,14 +14,14 @@ private:
   double posX;
   double posY;
 public:
-  list<Vertex *> townsList;
+  list<Vertex *>* townsList;
 
 public:
   Land();
  
   Land( std::string, double x, double y, int id);
 
-  list<Vertex *> getTownsList() const { return townsList; }
+  list<Vertex *>* getTownsList() const { return this->townsList; }
 
   void setPosX(double);
   double getPosX() const;

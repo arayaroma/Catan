@@ -62,6 +62,8 @@ public:
   list<Land*>::iterator landIterator;
   Card *specialCard;
 
+  list<Vertex*>* vertexesList;
+
   stack<Knight *> *knightCards = new stack<Knight *>();
   stack<Progress *> *progressCards = new stack<Progress *>();
   stack<VictoryPoints *> *victoryPointCards = new stack<VictoryPoints *>();
@@ -104,5 +106,5 @@ public:
   void makeGraph();
   void makeVertexOwners();
   void printLand(list<Land*>* landsList);
-  void printVertex(list<Vertex*> vertexList);
+  void printVertex(list<Vertex*>* vertexList);
 };

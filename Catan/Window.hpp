@@ -28,7 +28,7 @@ public:
   list<Land *>::iterator it;
   list<Land*>::iterator it2;
 
-  list<Vertex *> vertexesList;
+  list<Vertex *>* vertexesList;
 
   list<Vertex *>::iterator vertexIterator;
 
@@ -72,7 +72,7 @@ public:
   void setPosXYtoVertex(list<Vertex *>::iterator, double, double);
   void initializeVertexesList(list<Land*>::iterator);
   // Graph
-  void setPosXYtoVertexesGraph(int, double, double);
+  void setPosXYtoVertexesGraph();
 
   void consolePrintLandAndVertex();
 

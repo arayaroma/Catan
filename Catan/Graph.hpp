@@ -19,4 +19,5 @@ public:
   void insertOwnerHexagon(int, int vecOwners[]);
   void insertEdge(int origin, int destiny);
   void showAdjacencyList();
+  
 };

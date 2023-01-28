@@ -111,6 +111,7 @@ void Window::goPlayView() {
   printBoard();
   
   consolePrintLandAndVertex();
+  //setPosXYtoVertexesGraph();
   std::cout << "GRAFO:" << std::endl;
   game.graph.showAdjacencyList();
   while (playWindow.isOpen()) {
@@ -273,11 +274,11 @@ void Window::initializeLandsList() {
 
 void Window::initializeVertexesList(list<Land*>::iterator auxIt) {
   vertexesList = (*auxIt)->getTownsList();
-  vertexIterator = vertexesList.begin();
+  vertexIterator = vertexesList->begin();
 }
 
 bool Window::isVertexesListTraversal() const {
-  return (vertexIterator != vertexesList.end());
+  return (vertexIterator != vertexesList->end());
 }
 
 void Window::iterateVertex() { vertexIterator++; }
@@ -327,7 +328,7 @@ void Window::C_Traversal(int posX, int posY, list<Land*>::iterator auxIt) {
 
   for (vertexIterationNumber; vertexIterationNumber < 7;
        vertexIterationNumber++) {
-      if (isVertexesListTraversal()) {
+      if (isVertexesListTraversal()) {    
           loadHexagonNodes(vertexIterator, posX, posY, vertexIterationNumber);
           iterateVertex();
       }
@@ -364,24 +365,16 @@ void Window::printBoard() {
 
 void Window::loadHexagonNodes(list<Vertex *>::iterator itX, double posX,
                               double posY, int iterationNumber) {
+    double relativePositionX = posX - 10 + landsRadius +
+        (landsRadius * cos(getFormula(iterationNumber)));
+    double relativePositionY = posY - 20 + landsRadius +
+        (landsRadius * sin(getFormula(iterationNumber)));
   if (iterationNumber < 4) {
-    double relativePositionX = posX - 10 + landsRadius +
-                               (landsRadius * cos(getFormula(iterationNumber)));
-    double relativePositionY = posY - 20 + landsRadius +
-                               (landsRadius * sin(getFormula(iterationNumber)));
     // printTowns(relativePositionX, relativePositionY - 3);
-    setPosXYtoVertex(itX, relativePositionX, relativePositionY);
-    setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
-                            relativePositionY);
+    setPosXYtoVertex(itX, relativePositionX, relativePositionY );
   } else {
-    double relativePositionX = posX - 10 + landsRadius +
-                               (landsRadius * cos(getFormula(iterationNumber)));
-    double relativePositionY = posY - 20 + landsRadius +
-                               (landsRadius * sin(getFormula(iterationNumber)));
-    printTowns(relativePositionX, relativePositionY + 15);
-    setPosXYtoVertex(itX, relativePositionX, relativePositionY);
-    setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
-                            relativePositionY);
+    //printTowns(relativePositionX, relativePositionY + 15);
+    setPosXYtoVertex(itX, relativePositionX, relativePositionY );
   }
 }
 
@@ -436,9 +429,23 @@ void Window::setPosXYtoVertex(list<Vertex *>::iterator vertexIterator, double x,
   (*vertexIterator)->town->setPosX(x);
   (*vertexIterator)->town->setPosY(y);
 }
-void Window::setPosXYtoVertexesGraph(int idVertex, double x, double y) {
-  game.graph.getVertex(idVertex)->getTown()->setPosX(x);
-  game.graph.getVertex(idVertex)->getTown()->setPosY(y);
+void Window::setPosXYtoVertexesGraph() {
+   list<Land*>::iterator landIterator = landsList->begin();
+   list<Vertex*>::iterator vertexIterator;
+   while (landIterator != landsList->end()) {
+       vertexesList = (*landIterator)->getTownsList();
+       vertexIterator = vertexesList->begin();
+       while (vertexIterator != vertexesList->end()) {
+           game.graph.getVertex((*vertexIterator)->getVertexId())->getTown()->setPosX((*vertexIterator)->getTown()->getPosX());
+           game.graph.getVertex((*vertexIterator)->getVertexId())->getTown()->setPosY((*vertexIterator)->getTown()->getPosY());
+           vertexIterator++;
+       }
+       landIterator++;
+   }
+   
+    
+  
+  
 }
 //////////////////////// CARGAR /////////////////////////
 
