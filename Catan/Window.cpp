@@ -332,15 +332,11 @@ void Window::goPlayView() {
             }
         }
     }
-    if (firstCalltoPrintBoard) {
-        printBoard();
-        firstCalltoPrintBoard = false;
-    }
     playWindow.clear();
     playWindow.draw(playSprite);
     loadGameButtons(playWindow);
     printMaterialCard(playWindow);
-    //printBoard();
+    printBoard();
    
     loadStartButtons(playWindow);
     loadGameButtons(playWindow);

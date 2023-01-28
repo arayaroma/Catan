@@ -220,7 +220,6 @@ void Game::makeGraph() {
 void Game::assignTownsToLand() {
   int contLands = 1, idVertex = 1, endVertex = 10, sumId = 3;
   landIterator = landsList->begin();
-  while (landIterator != landsList->end()) {
     while (contLands < 4) {
       assignTowns(*landIterator, idVertex, endVertex, sumId);
       idVertex++, endVertex++, contLands++, landIterator++;
@@ -249,7 +248,6 @@ void Game::assignTownsToLand() {
       assignTownsLastRows(*landIterator, idVertex, endVertex, sumId);
       idVertex++, endVertex++, contLands++, landIterator++;
     }
-  }
 }
 
 void Game::assignTowns(Land *temp, int idVertex, int endVertex, int sumId) {
