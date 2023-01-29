@@ -98,9 +98,9 @@ void RegisterView::goRegisterView() {
         showCoordinates(registerView, event);
         if (event.mouseButton.button == sf::Mouse::Left) {
           if (btnPlay.isMouseOver(registerView)) {
-            // PlayView playView;
-            // playView.goPlayView();
             registerView.close();
+            PlayView playView;
+            playView.goPlayView();
           } else if (btn3Players.isMouseOver(registerView)) {
 
             Player3 = true;

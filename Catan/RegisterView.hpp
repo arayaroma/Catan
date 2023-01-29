@@ -6,7 +6,6 @@
 #include "TitleView.hpp"
 #include <SFML/Graphics.hpp>
 
-
 class RegisterView {
 public:
   void goRegisterView();
@@ -30,7 +29,6 @@ private:
   sf::Sprite registerSprite;
   sf::Font font;
   sf::Event event;
-  // sf::ConvexShape register;
   Button btnPlay, btn3Players, btn4Players;
   TextBox name1, name2, name3, name4;
 
