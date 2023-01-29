@@ -1,9 +1,9 @@
 #include "Application.hpp"
 
 Application &Application::run() {
-	
-  Window::getInstance().goTitleView();
-  
+
+  TitleView titleView;
+  titleView.goTitleView();
+
   return this->getInstance();
-	
 }

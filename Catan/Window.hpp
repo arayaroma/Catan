@@ -4,10 +4,10 @@
 #include "Graph.hpp"
 #include "Label.hpp"
 #include "Land.hpp"
+#include "TextBox.hpp"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <iterator>
-#include "TextBox.h"
 
 #define log(x) std::cout << x << std::endl;
 
@@ -23,6 +23,17 @@
 using std::list;
 
 class Window {
+private:
+  Window() {}
+
+public:
+  Window(const Window &) = delete;
+
+  static Window &getInstance() {
+    static Window instance;
+    return instance;
+  }
+
 public:
   Game game;
   list<Land *> *landsList;
@@ -30,7 +41,6 @@ public:
   list<Land *>::iterator it2;
 
   list<Vertex *> *vertexesList;
-
   list<Vertex *>::iterator vertexIterator;
 
 private:
@@ -39,11 +49,11 @@ private:
   int vertexIterationNumber;
   string tempImagePath;
   bool firstCalltoPrintBoard = true;
+
 public:
   sf::RenderWindow titleWindow;
   sf::RenderWindow playWindow;
   sf::RenderWindow aboutWindow;
-  sf::RenderWindow &actualWindow = titleWindow;
   sf::RenderWindow registerView;
 
 public:
@@ -79,58 +89,28 @@ public:
   void consolePrintLandAndVertex();
 
 private:
- 
-    sf::Font font; 
-
+  sf::Font font;
   int i = 100;
   int turnNumber = 0;
 
-public:
-  Window(const Window &) = delete;
-
-  static Window &getInstance() {
-    static Window instance;
-    return instance;
-  }
-
-  // IMPRIMIR
-  // CARGAR
-
+private:
   void showLandsImagePath();
-
   void showCoordinates(sf::RenderWindow &, sf::Event event);
   void showCoordinates(sf::RenderWindow &);
-  void goTitleView();
-  void goAboutView();
+
   void goPlayView();
 
-  void loadTextFields(sf::RenderWindow& registerwindow, TextBox &tex1, TextBox& tex2, TextBox& tex3, TextBox& tex4);
-  void loadRegisterButtons(sf::RenderWindow& registerwindow, Button& btn1, Button& btn2, Button& btn3);
-
-  void goRegisterView();
   bool goBack(sf::RenderWindow &);
 
   void printMaterialCard(sf::RenderWindow &);
 
   double getFormula(int);
 
-  /// ediciones
-
   void updateDisplay();
-  void loadStartButtons(sf::RenderWindow &);
   void loadGameButtons(sf::RenderWindow &);
 
   void setTurn(int);
   void drawTurn(int, int);
 
-  void registerButton(sf::RenderWindow &window); 
-
-
-private:
-
-  Window() {}
-
-  bool Player3 = false;
-  bool Player4 = false;
-
+  void registerButton(sf::RenderWindow &window);
 };

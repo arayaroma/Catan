@@ -1,4 +1,4 @@
-#include "TextBox.h"
+#include "TextBox.hpp"
 
 TextBox::TextBox() {
 	///cargar todo en nullptr

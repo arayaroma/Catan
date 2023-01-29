@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AboutView.cpp" />
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Card.cpp" />
@@ -152,9 +153,12 @@
     <ClCompile Include="Land.cpp" />
     <ClCompile Include="Mineral.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayView.cpp" />
     <ClCompile Include="Progress.cpp" />
+    <ClCompile Include="RegisterView.cpp" />
     <ClCompile Include="Road.cpp" />
     <ClCompile Include="TextBox.cpp" />
+    <ClCompile Include="TitleView.cpp" />
     <ClCompile Include="Town.cpp" />
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="VictoryPoints.cpp" />
@@ -164,6 +168,7 @@
     <ClCompile Include="Wool.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AboutView.hpp" />
     <ClInclude Include="Application.hpp" />
     <ClInclude Include="Button.hpp" />
     <ClInclude Include="Card.hpp" />
@@ -179,6 +184,8 @@
     <ClInclude Include="Figures.hpp" />
     <ClInclude Include="Graph.hpp" />
     <ClInclude Include="Human.hpp" />
+    <ClInclude Include="PlayView.hpp" />
+    <ClInclude Include="RegisterView.hpp" />
     <ClInclude Include="StructureGraph.hpp" />
     <ClInclude Include="Knight.hpp" />
     <ClInclude Include="Label.hpp" />
@@ -189,7 +196,8 @@
     <ClInclude Include="Progress.hpp" />
     <ClInclude Include="ProgressCards.hpp" />
     <ClInclude Include="Road.hpp" />
-    <ClInclude Include="TextBox.h" />
+    <ClInclude Include="TextBox.hpp" />
+    <ClInclude Include="TitleView.hpp" />
     <ClInclude Include="Town.hpp" />
     <ClInclude Include="Vertex.hpp" />
     <ClInclude Include="VictoryPoints.hpp" />
