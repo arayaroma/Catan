@@ -163,7 +163,6 @@
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="VictoryPoints.cpp" />
     <ClCompile Include="Wheat.cpp" />
-    <ClCompile Include="Window.cpp" />
     <ClCompile Include="Wood.cpp" />
     <ClCompile Include="Wool.cpp" />
   </ItemGroup>
@@ -202,7 +201,6 @@
     <ClInclude Include="Vertex.hpp" />
     <ClInclude Include="VictoryPoints.hpp" />
     <ClInclude Include="Wheat.hpp" />
-    <ClInclude Include="Window.hpp" />
     <ClInclude Include="Wood.hpp" />
     <ClInclude Include="Wool.hpp" />
   </ItemGroup>
