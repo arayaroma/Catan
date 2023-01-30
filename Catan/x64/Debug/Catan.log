@@ -1,4 +1,7 @@
-﻿  Application.cpp
+﻿  AboutView.cpp
+  Application.cpp
+  RegisterView.cpp
+  TitleView.cpp
   main.cpp
-  Generating Code...
-  Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe
+  Generando código...
+  Catan.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Nueva carpeta (5)\Catan\x64\Debug\Catan.exe
