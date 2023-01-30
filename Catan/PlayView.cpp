@@ -290,19 +290,26 @@ void PlayView::loadHexagonNodes(list<Vertex *>::iterator itX, double posX,
                              (landsRadius * cos(getFormula(iterationNumber)));
   double relativePositionY = posY - 20 + landsRadius +
                              (landsRadius * sin(getFormula(iterationNumber)));
-  if (iterationNumber < 4) {
-    printTowns(relativePositionX, relativePositionY - 3);
-    setPosXYtoVertex(itX, relativePositionX, relativePositionY);
-    setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
-                            relativePositionY);
-  } else {
-    printTowns(relativePositionX, relativePositionY + 15);
-    setPosXYtoVertex(itX, relativePositionX, relativePositionY);
-    setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
-                            relativePositionY);
+  if (game.graph.getVertex((*itX)->getVertexId())->getIsPrint() == false) {
+      game.graph.getVertex((*itX)->getVertexId())->setIsPrinted(true);
+      if (iterationNumber < 4) {
+          printTowns(relativePositionX, relativePositionY - 3);
+          setPosXYtoVertex(itX, relativePositionX, relativePositionY);
+          setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
+              relativePositionY);
+      }
+      else {
+          printTowns(relativePositionX, relativePositionY + 15);
+          setPosXYtoVertex(itX, relativePositionX, relativePositionY);
+          setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
+              relativePositionY);
+          
+      }
   }
 }
-
+void PlayView::isPrinted(int vertexId) {
+    game.graph.getVertex(vertexId)->setIsPrinted(true);
+}
 void PlayView::setPosXYtoVertexesGraph(int vertexId, double posX, double posY) {
   game.graph.getVertex(vertexId)->getTown()->setPosX(posX);
   game.graph.getVertex(vertexId)->getTown()->setPosY(posY);

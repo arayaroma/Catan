@@ -8,6 +8,7 @@ class Vertex {
 private:
   friend class Graph;
   int vertexId;
+  bool isPrinted;
   Edge *firstEdge;
   string ownerTown;
 
@@ -17,9 +18,11 @@ public:
 
 public:
   Vertex();
-  Vertex(int, string, Town *);
+  Vertex(int, string, Town *, bool);
 
   int getVertexId() const { return this->vertexId; }
   Town* getTown() const { return this->town; }
   void toString() { std::cout << this->vertexId << " "; }
+  bool getIsPrint() { return this->isPrinted; }
+  void setIsPrinted(bool band) { this->isPrinted = band; }
 };
