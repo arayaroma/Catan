@@ -75,6 +75,8 @@ private:
   void setPosXYtoVertexesGraph(int, double, double);
   void consolePrintLandAndVertex();
 
+  void isPrinted(int);
+
 private:
   sf::RenderWindow playView;
   sf::Texture playImage;

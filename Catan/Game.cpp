@@ -128,7 +128,7 @@ void Game::makeFigures() {
 
 void Game::createGraphVertex() {
   for (vertexId = 1; vertexId < 55; vertexId++) {
-    Vertex *vertex = new Vertex(vertexId, "", new Town());
+    Vertex *vertex = new Vertex(vertexId, "", new Town(), false);
     graph.insertVertex(vertex);
   }
 }
@@ -139,7 +139,7 @@ void Game::makeGraph() {
 
   // SE CREAN LOS VERTICES
   for (vertexId = 1; vertexId < 55; vertexId++) {
-    Vertex *vertex = new Vertex(vertexId, "", new Town());
+    Vertex *vertex = new Vertex(vertexId, "", new Town(), false);
     graph.insertVertex(vertex);
   }
 
@@ -256,12 +256,12 @@ void Game::assignTowns(Land *temp, int idVertex, int endVertex, int sumId) {
   for (idVertex; idVertex < endVertex; idVertex += sumId + 1) {
     if (conditional < 2) {
       vertexesList->push_back(
-          new Vertex(idVertex, "", new Town())); // aca se cae
-      vertexesList->push_back(new Vertex(idVertex + sumId, "", new Town()));
+          new Vertex(idVertex, "", new Town(), false)); // aca se cae
+      vertexesList->push_back(new Vertex(idVertex + sumId, "", new Town(), false));
       conditional++;
     } else {
-      vertexesList->push_back(new Vertex(idVertex, "", new Town()));
-      vertexesList->push_back(new Vertex(idVertex + sumId + 1, "", new Town()));
+      vertexesList->push_back(new Vertex(idVertex, "", new Town(), false));
+      vertexesList->push_back(new Vertex(idVertex + sumId + 1, "", new Town(), false));
     }
   }
 }
@@ -270,8 +270,8 @@ void Game::assignTownsMiddleRow(Land *temp, int idVertex, int endVertex,
                                 int sumId) {
 
   for (idVertex; idVertex < endVertex; idVertex += sumId + 1) {
-    temp->townsList->push_back(new Vertex(idVertex, "", new Town()));
-    temp->townsList->push_back(new Vertex(idVertex + sumId, "", new Town()));
+    temp->townsList->push_back(new Vertex(idVertex, "", new Town(), false));
+    temp->townsList->push_back(new Vertex(idVertex + sumId, "", new Town(), false));
   }
 }
 
@@ -283,13 +283,13 @@ void Game::assignTownsLastRows(Land *temp, int idVertex, int endVertex,
 
   for (idVertex; idVertex < endVertex; idVertex += iterationSumSpecialCase) {
     if (cycleNumber >= secondCycle) {
-      temp->townsList->push_back(new Vertex(idVertex, "", new Town()));
+      temp->townsList->push_back(new Vertex(idVertex, "", new Town(), false));
       temp->townsList->push_back(
-          new Vertex(idVertex + sumId - 1, "", new Town()));
+          new Vertex(idVertex + sumId - 1, "", new Town(), false));
       iterationSumSpecialCase--;
     } else {
-      temp->townsList->push_back(new Vertex(idVertex, "", new Town()));
-      temp->townsList->push_back(new Vertex(idVertex + sumId, "", new Town()));
+      temp->townsList->push_back(new Vertex(idVertex, "", new Town(), false));
+      temp->townsList->push_back(new Vertex(idVertex + sumId, "", new Town(), false));
     }
     cycleNumber++;
   }
