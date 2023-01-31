@@ -46,7 +46,7 @@ private:
   void loadCardsRectangle();
   void loadGameButtons();
   void printMaterialCard();
-  void printImages(string, int, int);
+  void printImages(string, double, double);
   void createLabels();
   void drawLabels();
   void printBoard();
@@ -57,20 +57,29 @@ private:
   bool isLandsListTraversal() const;
   void iterateLand();
   void iterateLand2();
-  bool isLastIteration(int) const;
-  void lastIterationBehaviour(int);
+  bool isLastIteration(double) const;
+  void lastIterationBehaviour(double);
   void setPosXYtoLand(double, double, list<Land *>::iterator);
-  void setAndTraverse(int, int, list<Land *>::iterator);
+  void setAndTraverse(double, double, list<Land *>::iterator);
   void initializeVertexesList(list<Land *>::iterator);
   bool isVertexesListTraversal() const;
   void iterateVertex();
   bool isTwoLastVertex() const;
-  void traverseFirstAndLastRow(int, int, int);
-  void traverseSecondAndNextToLastRow(int, int, int);
-  void traverseMiddleRow(int, int, int);
-  void C_Traversal(int, int, list<Land *>::iterator);
+  void traverseFirstAndLastRow(double, double, double);
+  void traverseSecondAndNextToLastRow(double, double, double);
+  void traverseMiddleRow(double, double, double);
+  void C_Traversal(double, double, list<Land *>::iterator);
   double getFormula(int) const;
   void printTowns(double, double);
+
+  //cambiar nombres
+  void printTownsTest();
+  void traverseFirstAndLastRowTest(double, double, double);
+  void traverseSecondAndNextToLastRowTest(double, double, double);
+  void traverseMiddleRowTest(double, double, double);
+  void setAndTraverseTest(double, double, list<Land*>::iterator);
+
+
   void setPosXYtoVertex(list<Vertex *>::iterator, double, double);
   void loadHexagonNodes(list<Vertex *>::iterator, double, double, int);
   void setPosXYtoVertexesGraph(int, double, double);
@@ -79,7 +88,18 @@ private:
   void isPrinted(int);
   void showCoordinates(sf::Event event);
 
+  void createLabelNamePlayers();
+  void drawLabelNamePlayers();
+  void printPlayerCard();
+  void createLabelCardPlayer();
+  void drawLabelCardPlayer();
+  void createLabelFigurePlayer();
+  void drawLabelFigurePlayer();
+  void printPlayerFigure();
 private:
   sf::RectangleShape playerRectangle, cardsRectangle;
-  Label *materialCard, *pricingTable, *turns, *cards;
+  Label* materialCard, * pricingTable, * turns, * cards, * developCard;
+  Label* player1, * player2, * player3, * player4;
+  Label* clayCard, * mineralPlayerCard, * wheatPlayerCard, * woodPlayerCard, * woolPlayerCard;
+  Label* townPlayer, * cityPlayer, * roadPlayer;
 };
