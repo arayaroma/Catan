@@ -1,24 +1,22 @@
 #pragma once
 #include "Label.hpp"
 #include "TitleView.hpp"
+#include "View.hpp"
 #include <SFML/Graphics.hpp>
 
-class AboutView {
+class AboutView : public View {
 public:
-  void goAboutView();
+  void goView() override;
 
 private:
-  void loadAboutView();
+  void loadView() override;
+  void drawView() override;
+
+private:
   void loadLabels();
-  void drawAboutView();
   bool isMouseLeft(sf::Event) const;
   bool isEscapePressed() const;
 
 private:
-  sf::RenderWindow aboutView;
-  sf::Texture aboutImage;
-  sf::Sprite aboutSprite;
-  sf::Font font;
-  sf::Event event;
   Label *back;
 };

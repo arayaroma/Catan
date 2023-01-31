@@ -13,10 +13,10 @@ void PlayView::createLabels() {
 
 void PlayView::drawLabels() {
   createLabels();
-  playView.draw(materialCard->getTextInstance());
-  playView.draw(pricingTable->getTextInstance());
-  playView.draw(turns->getTextInstance());
-  playView.draw(cards->getTextInstance());
+  view.draw(materialCard->getTextInstance());
+  view.draw(pricingTable->getTextInstance());
+  view.draw(turns->getTextInstance());
+  view.draw(cards->getTextInstance());
 }
 
 void PlayView::printMaterialCard() {
@@ -35,14 +35,14 @@ void PlayView::loadPlayersRectangle() {
   playerRectangle.setOutlineColor(sf::Color::White);
   playerRectangle.setSize({220, 400});
   playerRectangle.setFillColor(sf::Color(255, 255, 255, 128));
-  playView.draw(playerRectangle);
+  view.draw(playerRectangle);
 }
 
 void PlayView::loadCardsRectangle() {
   cardsRectangle = playerRectangle;
   cardsRectangle.setPosition(350, 600);
   cardsRectangle.setSize({600, 100});
-  playView.draw(cardsRectangle);
+  view.draw(cardsRectangle);
 }
 
 void PlayView::loadGameButtons() {
@@ -50,30 +50,30 @@ void PlayView::loadGameButtons() {
   loadCardsRectangle();
 }
 
-void PlayView::loadPlayView() {
-  playView.create(sf::VideoMode(1280, 720), "Play");
-  playImage.loadFromFile("Images/catan_1280x720.jpg");
-  playSprite.setTexture(playImage);
+void PlayView::loadView() {
+  view.create(sf::VideoMode(1280, 720), "Play");
+  image.loadFromFile("Images/catan_1280x720.jpg");
+  sprite.setTexture(image);
   font.loadFromFile("mononoki.ttf");
-  playView.setFramerateLimit(120);
+  view.setFramerateLimit(120);
 }
 
-void PlayView::drawPlayView() {
-  playView.clear();
-  playView.draw(playSprite);
+void PlayView::drawView() {
+  view.clear();
+  view.draw(sprite);
   loadGameButtons();
   drawLabels();
   printBoard();
-  playView.display();
+  view.display();
 }
 
-void PlayView::goPlayView() {
-  loadPlayView();
-  drawPlayView();
+void PlayView::goView() {
+  loadView();
+  drawView();
   start = true;
-  while (playView.isOpen()) {
-    while (playView.pollEvent(event)) {
-      playView.waitEvent(event);
+  while (view.isOpen()) {
+    while (view.pollEvent(event)) {
+      view.waitEvent(event);
       showCoordinates(event);
       switch (event.type) {
       case sf::Event::MouseButtonPressed:
@@ -81,19 +81,10 @@ void PlayView::goPlayView() {
         }
         break;
       case sf::Event::Closed:
-        playView.close();
+        view.close();
         break;
       }
     }
-    // playView.clear();
-    // playView.draw(playSprite);
-    // loadGameButtons();
-    // drawLabels();
-    // printMaterialCard();
-    // printBoard();
-    //  loadStartButtons(playWindow);
-    // loadGameButtons();
-    // playView.display();
   }
   // consolePrintLandAndVertex();
   // log("Grafo");
@@ -122,10 +113,9 @@ void PlayView::printImages(string imagePath, int posX, int posY) {
   path.loadFromFile(imagePath);
   sf::Sprite tempSprite(path);
   tempSprite.setPosition(static_cast<float>(posX), static_cast<float>(posY));
-  playView.draw(tempSprite);
+  view.draw(tempSprite);
 }
 
-// Ver que pex con Game -> Window
 void PlayView::initializeLandsList() {
   game.loadLands();
   game.assignTownsToLand();
@@ -287,34 +277,32 @@ void PlayView::setPosXYtoVertex(list<Vertex *>::iterator vertexIterator,
 
 void PlayView::loadHexagonNodes(list<Vertex *>::iterator itX, double posX,
                                 double posY, int iterationNumber) {
-  double relativePositionX = posX -400  + landsRadius +
+  double relativePositionX = posX - 400 + landsRadius +
                              (landsRadius * cos(getFormula(iterationNumber)));
-  double relativePositionY = posY  + landsRadius +
-                             (landsRadius * sin(getFormula(iterationNumber)));
-  
-     
-      if (iterationNumber < 4) {
-              
-          if (!game.graph.getVertex((*itX)->getVertexId())->getIsPrint()) {
-              game.graph.getVertex((*itX)->getVertexId())->setIsPrinted(true);
-              printTowns(relativePositionX, relativePositionY );
-              setPosXYtoVertex(itX, relativePositionX, relativePositionY);
-              setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
-                  relativePositionY);
-          }
-      }
-      else {
-          if (game.graph.getVertex((*itX)->getVertexId())->getIsPrint() == false) {
-              game.graph.getVertex((*itX)->getVertexId())->setIsPrinted(true);
-              printTowns(relativePositionX, relativePositionY );
-              setPosXYtoVertex(itX, relativePositionX, relativePositionY);
-              setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
-                  relativePositionY);
-          }
-      }
+  double relativePositionY =
+      posY + landsRadius + (landsRadius * sin(getFormula(iterationNumber)));
+
+  if (iterationNumber < 4) {
+
+    if (!game.graph.getVertex((*itX)->getVertexId())->getIsPrint()) {
+      game.graph.getVertex((*itX)->getVertexId())->setIsPrinted(true);
+      printTowns(relativePositionX, relativePositionY);
+      setPosXYtoVertex(itX, relativePositionX, relativePositionY);
+      setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
+                              relativePositionY);
+    }
+  } else {
+    if (game.graph.getVertex((*itX)->getVertexId())->getIsPrint() == false) {
+      game.graph.getVertex((*itX)->getVertexId())->setIsPrinted(true);
+      printTowns(relativePositionX, relativePositionY);
+      setPosXYtoVertex(itX, relativePositionX, relativePositionY);
+      setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
+                              relativePositionY);
+    }
+  }
 }
 void PlayView::isPrinted(int vertexId) {
-    game.graph.getVertex(vertexId)->setIsPrinted(true);
+  game.graph.getVertex(vertexId)->setIsPrinted(true);
 }
 void PlayView::setPosXYtoVertexesGraph(int vertexId, double posX, double posY) {
   game.graph.getVertex(vertexId)->getTown()->setPosX(posX);
@@ -332,9 +320,8 @@ void PlayView::consolePrintLandAndVertex() {
 }
 
 void PlayView::showCoordinates(sf::Event event) {
-        if (event.mouseButton.button == sf::Mouse::Left) {
-            std::cout << "mouse x: " << event.mouseButton.x << std::endl;
-            std::cout << "mouse y: " << event.mouseButton.y << std::endl;
-        }
-    
+  if (event.mouseButton.button == sf::Mouse::Left) {
+    std::cout << "mouse x: " << event.mouseButton.x << std::endl;
+    std::cout << "mouse y: " << event.mouseButton.y << std::endl;
+  }
 }

@@ -4,29 +4,24 @@
 #include "PlayView.hpp"
 #include "TextBox.hpp"
 #include "TitleView.hpp"
+#include "View.hpp"
 #include <SFML/Graphics.hpp>
 
-class RegisterView {
+class RegisterView : public View {
 public:
-  void goRegisterView();
+  void goView() override;
 
 private:
-  void drawRegisterView();
+  void loadView() override;
+  void drawView() override;
 
+private:
   void registerButton(sf::RenderWindow &);
   void showCoordinates(sf::RenderWindow &, sf::Event);
   bool goBack(sf::RenderWindow &);
   void loadTextFields(sf::RenderWindow &registerwindow, TextBox &tex1);
   void loadTextureButtons();
-
   void loadRegisterButtons(sf::RenderWindow &registerwindow, Button &btn1);
-
-private:
-  sf::RenderWindow registerView;
-  sf::Texture registerImage;
-  sf::Sprite registerSprite;
-  sf::Font font;
-  sf::Event event;
 
 private:
   bool Player3 = false;

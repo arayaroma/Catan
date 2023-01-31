@@ -21,6 +21,7 @@ bool RegisterView::goBack(sf::RenderWindow &window) {
 }
 
 void RegisterView::loadTextureButtons() {
+
   name1.serFont(font);
   name1.setPosition({365, 250});
   name2.serFont(font);
@@ -37,58 +38,59 @@ void RegisterView::loadTextureButtons() {
   btn4Players.setFont(font);
 }
 
-void RegisterView::drawRegisterView() {
-  registerView.create(sf::VideoMode(1280, 720), "Register");
-  registerView.setKeyRepeatEnabled(true);
-  registerView.setFramerateLimit(120);
+void RegisterView::loadView() {}
+
+void RegisterView::drawView() {
+  view.create(sf::VideoMode(1280, 720), "Register");
+  view.setKeyRepeatEnabled(true);
+  view.setFramerateLimit(120);
 }
 
-void RegisterView::goRegisterView() {
+void RegisterView::goView() {
   loadTextureButtons();
   sf::Texture registerImage;
   registerImage.loadFromFile("Images/catan_1280x720.jpg");
   sf::Sprite registerSprite(registerImage);
   font.loadFromFile("mononoki.ttf");
-  drawRegisterView();
+  drawView();
 
-  while (registerView.isOpen()) {
-    while (registerView.pollEvent(event)) {
+  while (view.isOpen()) {
+    while (view.pollEvent(event)) {
       switch (event.type) {
       case sf::Event::Closed:
-        registerView.close();
+        view.close();
 
       case sf::Event::TextEntered:
-        if (name1.isMouseOver(registerView)) {
+        if (name1.isMouseOver(view)) {
           name1.typeOn(event);
-        } else if (name2.isMouseOver(registerView)) {
+        } else if (name2.isMouseOver(view)) {
 
           name2.typeOn(event);
-        } else if (name3.isMouseOver(registerView)) {
+        } else if (name3.isMouseOver(view)) {
 
           name3.typeOn(event);
-        } else if (name4.isMouseOver(registerView)) {
+        } else if (name4.isMouseOver(view)) {
           name4.typeOn(event);
         }
         break;
 
       case sf::Event::KeyPressed:
-        if (goBack(registerView)) {
-          registerView.close();
+        if (goBack(view)) {
+          view.close();
           TitleView titleView;
-          titleView.goTitleView();
+          titleView.goView();
         }
-
       case sf::Event::MouseButtonPressed:
-        showCoordinates(registerView, event);
+        showCoordinates(view, event);
         if (event.mouseButton.button == sf::Mouse::Left) {
-          if (btnPlay.isMouseOver(registerView)) {
-            registerView.close();
+          if (btnPlay.isMouseOver(view)) {
+            view.close();
             PlayView playView;
-            playView.goPlayView();
-          } else if (btn3Players.isMouseOver(registerView)) {
+            playView.goView();
+          } else if (btn3Players.isMouseOver(view)) {
 
             Player3 = true;
-          } else if (btn4Players.isMouseOver(registerView)) {
+          } else if (btn4Players.isMouseOver(view)) {
 
             Player4 = true;
           }
@@ -96,22 +98,22 @@ void RegisterView::goRegisterView() {
         break;
       }
     }
-    registerView.clear();
-    registerView.draw(registerSprite);
-    registerButton(registerView);
-    loadRegisterButtons(registerView, btnPlay);
-    loadRegisterButtons(registerView, btn3Players);
-    loadRegisterButtons(registerView, btn4Players);
+    view.clear();
+    view.draw(registerSprite);
+    registerButton(view);
+    loadRegisterButtons(view, btnPlay);
+    loadRegisterButtons(view, btn3Players);
+    loadRegisterButtons(view, btn4Players);
 
     if (Player3 == true) {
-      loadTextFields(registerView, name1);
-      loadTextFields(registerView, name2);
-      loadTextFields(registerView, name3);
+      loadTextFields(view, name1);
+      loadTextFields(view, name2);
+      loadTextFields(view, name3);
       if (Player4 == true) {
-        loadTextFields(registerView, name4);
+        loadTextFields(view, name4);
       }
     }
-    registerView.display();
+    view.display();
   }
 }
 void RegisterView::registerButton(sf::RenderWindow &window) {
@@ -132,7 +134,6 @@ void RegisterView::registerButton(sf::RenderWindow &window) {
 
 void RegisterView::loadRegisterButtons(sf::RenderWindow &registerView,
                                        Button &btn) {
-
   if (btn.isMouseOver(registerView)) {
     btn.setBackColor(sf::Color::White);
   } else {
@@ -140,8 +141,10 @@ void RegisterView::loadRegisterButtons(sf::RenderWindow &registerView,
   }
   btn.drawTo(registerView);
 }
+
 void RegisterView::loadTextFields(sf::RenderWindow &registerView,
                                   TextBox &name1) {
+
   if (name1.isMouseOver(registerView)) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
       name1.setSelected(true);
