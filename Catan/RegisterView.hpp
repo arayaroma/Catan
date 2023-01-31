@@ -11,17 +11,15 @@ public:
   void goRegisterView();
 
 private:
-
   void drawRegisterView();
 
   void registerButton(sf::RenderWindow &);
   void showCoordinates(sf::RenderWindow &, sf::Event);
   bool goBack(sf::RenderWindow &);
-  void loadTextFields(sf::RenderWindow& registerwindow, TextBox& tex1);
+  void loadTextFields(sf::RenderWindow &registerwindow, TextBox &tex1);
   void loadTextureButtons();
 
-  void loadRegisterButtons(sf::RenderWindow& registerwindow, Button& btn1);
-
+  void loadRegisterButtons(sf::RenderWindow &registerwindow, Button &btn1);
 
 private:
   sf::RenderWindow registerView;
@@ -33,6 +31,4 @@ private:
 private:
   bool Player3 = false;
   bool Player4 = false;
-
-
 };
