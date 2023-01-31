@@ -63,6 +63,7 @@ public:
 
   list<Town *> *townsList;
   list<Player *> *players;
+  list<Player*>::iterator playerIterator;
   list<City *> *citiesList;
   list<Road *> *roadsList;
   list<Land *> *landsList;
@@ -91,7 +92,6 @@ public:
   void loadSpecialCards();
   void loadProgressPaths();
   void loadTilesPaths();
-  void loadStacks();
 
   void play();
   void build();
@@ -114,9 +114,9 @@ public:
   void printLand(list<Land *> *landsList);
   void printVertex(list<Vertex *> *vertexList);
 
-  void makePlayer(list<Player*>* playersList);
-  void loadFiguresToPlayer(Player*);
-  void loadRhoades(Player*);
-  void loadCities(Player*);
-  void loadTowns(Player*);
+  void makePlayer(list<Player *> *playersList);
+  void loadFiguresToPlayer(Player *);
+  void loadRhoades(Player *);
+  void loadCities(Player *);
+  void loadTowns(Player *);
 };

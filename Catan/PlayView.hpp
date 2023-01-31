@@ -18,12 +18,12 @@ using std::string;
 
 class PlayView : public View {
 public:
+  list<Vertex *> *vertexesList;
+  list<Vertex *>::iterator vertexIterator;
+
   list<Land *> *landsList;
   list<Land *>::iterator it;
   list<Land *>::iterator it2;
-
-  list<Vertex *> *vertexesList;
-  list<Vertex *>::iterator vertexIterator;
 
 private:
   bool start;
@@ -40,6 +40,9 @@ public:
 private:
   void loadView() override;
   void drawView() override;
+
+public:
+  PlayView();
 
 private:
   void loadPlayersRectangle();
@@ -72,13 +75,12 @@ private:
   double getFormula(int) const;
   void printTowns(double, double);
 
-  //cambiar nombres
+  // cambiar nombres
   void printTownsTest();
   void traverseFirstAndLastRowTest(double, double, double);
   void traverseSecondAndNextToLastRowTest(double, double, double);
   void traverseMiddleRowTest(double, double, double);
-  void setAndTraverseTest(double, double, list<Land*>::iterator);
-
+  void setAndTraverseTest(double, double, list<Land *>::iterator);
 
   void setPosXYtoVertex(list<Vertex *>::iterator, double, double);
   void loadHexagonNodes(list<Vertex *>::iterator, double, double, int);
@@ -96,10 +98,12 @@ private:
   void createLabelFigurePlayer();
   void drawLabelFigurePlayer();
   void printPlayerFigure();
+
 private:
   sf::RectangleShape playerRectangle, cardsRectangle;
-  Label* materialCard, * pricingTable, * turns, * cards, * developCard;
-  Label* player1, * player2, * player3, * player4;
-  Label* clayCard, * mineralPlayerCard, * wheatPlayerCard, * woodPlayerCard, * woolPlayerCard;
-  Label* townPlayer, * cityPlayer, * roadPlayer;
+  Label *materialCard, *pricingTable, *turns, *cards, *developCard;
+  Label *player1, *player2, *player3, *player4;
+  Label *clayCard, *mineralPlayerCard, *wheatPlayerCard, *woodPlayerCard,
+      *woolPlayerCard;
+  Label *townPlayer, *cityPlayer, *roadPlayer;
 };

@@ -13,6 +13,19 @@ private:
   virtual void loadView() = 0;
   virtual void drawView() = 0;
 
+public:
+  virtual bool isMousePressed(sf::Event event) const {
+    return (event.type == sf::Event::MouseButtonPressed);
+  }
+
+  virtual bool isMouseLeftClicked(sf::Event event) const {
+    return (event.mouseButton.button == sf::Mouse::Left);
+  }
+
+  virtual bool isMouseRightClicked(sf::Event event) const {
+    return (event.mouseButton.button == sf::Mouse::Right);
+  }
+
 protected:
   Game game;
 
@@ -22,7 +35,4 @@ protected:
   sf::Sprite sprite;
   sf::Font font;
   sf::Event event;
-
-  list<Player*>* players;
-  list<Player*>::iterator playerIterator;
 };

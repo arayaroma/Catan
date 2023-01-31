@@ -1,8 +1,9 @@
 #pragma once
+#include "Cards.h"
 #include "Figures.hpp"
 #include <list>
 #include <string>
-#include "Cards.h"
+
 using std::list;
 
 class Player {
@@ -11,6 +12,7 @@ protected:
   string color;
   int score;
   int turnNumber;
+
 public:
   Player();
   Player(string, int, string);
@@ -24,14 +26,14 @@ public:
   void setScore(int);
   int getScore() const;
   // Implementar metodos abstractos
-  // 
-  //figures
-  list<Town*> *towns;
-  list<Road*> *roads;
-  list<City*> *citys;
-  //carts
-  list<Wool*> *woolCard;
-  list<Wood*> *woodCard;
-  list<Clay*> *clayCard;
-  list<Mineral*> *mineralCard;
+  //
+  // figures
+  list<Town *> *towns;
+  list<Road *> *roads;
+  list<City *> *citys;
+  // carts
+  list<Wool *> *woolCard;
+  list<Wood *> *woodCard;
+  list<Clay *> *clayCard;
+  list<Mineral *> *mineralCard;
 };
