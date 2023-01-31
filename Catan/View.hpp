@@ -1,4 +1,5 @@
 #pragma once
+#include "Game.hpp"
 #include <SFML/Graphics.hpp>
 
 #define log(x) std::cout << x << std::endl;
@@ -12,7 +13,10 @@ private:
   virtual void loadView() = 0;
   virtual void drawView() = 0;
 
-private:
+protected:
+  Game game;
+
+protected:
   sf::RenderWindow view;
   sf::Texture image;
   sf::Sprite sprite;

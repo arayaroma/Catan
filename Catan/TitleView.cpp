@@ -1,11 +1,55 @@
 #include "TitleView.hpp"
 
-void TitleView::loadTitleView() {
-  titleWindow.create(sf::VideoMode(1280, 720), "Main Menu");
-  titleImage.loadFromFile("Images/inicio.jpg");
-  titleSprite.setTexture(titleImage);
+void TitleView::loadView() {
+  view.create(sf::VideoMode(1280, 720), "Main Menu");
+  image.loadFromFile("Images/inicio.jpg");
+  sprite.setTexture(image);
   font.loadFromFile("mononoki.ttf");
   loadLabels();
+}
+
+void TitleView::drawView() {
+  view.draw(sprite);
+  view.draw(title->getTextInstance());
+  view.draw(play->getTextInstance());
+  view.draw(about->getTextInstance());
+  view.display();
+}
+
+void TitleView::goView() {
+  loadView();
+  Alert *alert = new Alert(view, NONE, "Titulo", "Esto es un mensaje");
+  drawView();
+
+  while (view.isOpen()) {
+    while (view.pollEvent(event)) {
+      switch (event.type) {
+      case sf::Event::Closed:
+        view.close();
+        break;
+      case sf::Event::MouseButtonPressed:
+        if (isMouseLeft(event)) {
+          if (isPlayView(event)) {
+            view.close();
+            RegisterView registerView;
+            registerView.goView();
+          }
+
+          if (isAboutView(event)) {
+            view.close();
+            AboutView aboutView;
+            aboutView.goView();
+          }
+        }
+        break;
+
+      default:
+        // if (goBack(titleWindow))
+        // titleWindow.close();
+        break;
+      }
+    }
+  }
 }
 
 void TitleView::loadLabels() {
@@ -15,14 +59,6 @@ void TitleView::loadLabels() {
                    250.f);
   about = new Label("Acerca", sf::Color::Black, font, sf::Text::Bold, 100,
                     500.f, 450.f);
-}
-
-void TitleView::drawTitleView() {
-  titleWindow.draw(titleSprite);
-  titleWindow.draw(title->getTextInstance());
-  titleWindow.draw(play->getTextInstance());
-  titleWindow.draw(about->getTextInstance());
-  titleWindow.display();
 }
 
 bool TitleView::isMouseLeft(sf::Event event) const {
@@ -40,40 +76,4 @@ bool TitleView::isPlayView(sf::Event event) const {
   return (
       event.mouseButton.x > playView_X0 && event.mouseButton.y > playView_Y0 &&
       event.mouseButton.x < playView_X1 && event.mouseButton.y < playView_Y1);
-}
-
-void TitleView::goTitleView() {
-  loadTitleView();
-  Alert *alert = new Alert(titleWindow, NONE, "Titulo", "Esto es un mensaje");
-  drawTitleView();
-
-  while (titleWindow.isOpen()) {
-    while (titleWindow.pollEvent(event)) {
-      switch (event.type) {
-      case sf::Event::Closed:
-        titleWindow.close();
-        break;
-      case sf::Event::MouseButtonPressed:
-        if (isMouseLeft(event)) {
-          if (isPlayView(event)) {
-            titleWindow.close();
-            RegisterView registerView;
-            registerView.goRegisterView();
-          }
-
-          if (isAboutView(event)) {
-            titleWindow.close();
-            AboutView aboutView;
-            aboutView.goAboutView();
-          }
-        }
-        break;
-
-      default:
-        // if (goBack(titleWindow))
-        // titleWindow.close();
-        break;
-      }
-    }
-  }
 }

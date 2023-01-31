@@ -3,7 +3,7 @@
 Application &Application::run() {
 
   TitleView titleView;
-  titleView.goTitleView();
+  titleView.goView();
 
   return this->getInstance();
 }

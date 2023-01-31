@@ -1,7 +1,7 @@
 #include "Alert.hpp"
 
 Alert::Alert() {
-  panel.setPosition(posX + offsetX, posY + offsetY);
+  panel.setPosition(alertPosX + alertOffsetX, alertPosY + alertOffsetY);
   title = new Label();
   message = new Label();
   alertType = NONE;
@@ -14,9 +14,9 @@ Alert::Alert(sf::RenderWindow &view, string alertType, string titleText,
   panel.setSize({400, 400});
   panel.setFillColor(sf::Color(0, 235, 45, 255));
   title = new Label(titleText, sf::Color(0, 0, 0, 255), font, sf::Text::Regular,
-                    24, posX - 20, posY - 10);
+                    24, alertPosX - 20, alertPosY - 10);
   message = new Label(messageText, sf::Color(0, 0, 0, 255), font,
-                      sf::Text::Regular, 22, posX - 10, posY - 5);
+                      sf::Text::Regular, 22, alertPosX - 10, alertPosY - 5);
   alertType = alertType;
   view.draw(panel);
   view.draw(title->getTextInstance());

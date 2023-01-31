@@ -1,12 +1,12 @@
 #pragma once
-#include "Game.hpp"
 #include "Label.hpp"
+#include "View.hpp"
 #include <SFML/Graphics.hpp>
 #include <string>
 
 #define pi 3.14159265358979323846
 #define firstAngle (3 * pi) / 2
-#define secondAngle (5 * pi) / 4 
+#define secondAngle (5 * pi) / 4
 #define thirdAngle (7 * pi) / 4
 #define fourthAngle (3 * pi) / 4
 #define fifthAngle pi / 4
@@ -16,9 +16,8 @@
 using std::list;
 using std::string;
 
-class PlayView {
+class PlayView : public View {
 public:
-  Game game;
   list<Land *> *landsList;
   list<Land *>::iterator it;
   list<Land *>::iterator it2;
@@ -36,11 +35,13 @@ private:
   string tempImagePath;
 
 public:
-  void goPlayView();
+  void goView() override;
 
 private:
-  void loadPlayView();
-  void drawPlayView();
+  void loadView() override;
+  void drawView() override;
+
+private:
   void loadPlayersRectangle();
   void loadCardsRectangle();
   void loadGameButtons();
@@ -79,11 +80,6 @@ private:
   void showCoordinates(sf::Event event);
 
 private:
-  sf::RenderWindow playView;
-  sf::Texture playImage;
-  sf::Sprite playSprite;
-  sf::Font font;
-  sf::Event event;
   sf::RectangleShape playerRectangle, cardsRectangle;
   Label *materialCard, *pricingTable, *turns, *cards;
 };

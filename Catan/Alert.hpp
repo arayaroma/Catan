@@ -10,10 +10,10 @@
 #define ERROR "Error"
 #define NONE "None"
 
-#define posX 1280 / 2
-#define posY 720 / 2
-#define offsetX -200
-#define offsetY -50
+#define alertPosX 1280 / 2
+#define alertPosY 720 / 2
+#define alertOffsetX -200
+#define alertOffsetY -50
 
 using std::string;
 

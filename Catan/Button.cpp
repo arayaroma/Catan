@@ -52,8 +52,8 @@ void Button::drawTo(sf::RenderWindow &window) {
 
 bool Button::isMouseOver(sf::RenderWindow &window) {
 
-  float mouseX = sf::Mouse::getPosition(window).x;
-  float mouseY = sf::Mouse::getPosition(window).y;
+  float mouseX = static_cast<float>(sf::Mouse::getPosition(window).x);
+  float mouseY = static_cast<float>(sf::Mouse::getPosition(window).y);
 
   float btnPosX = button.getPosition().x;
   float btnPosY = button.getPosition().y;
