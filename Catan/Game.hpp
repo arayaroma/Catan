@@ -114,5 +114,9 @@ public:
   void printLand(list<Land *> *landsList);
   void printVertex(list<Vertex *> *vertexList);
 
-  void makePlayer();
+  void makePlayer(list<Player*>* playersList);
+  void loadFiguresToPlayer(Player*);
+  void loadRhoades(Player*);
+  void loadCities(Player*);
+  void loadTowns(Player*);
 };

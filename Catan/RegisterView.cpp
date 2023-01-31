@@ -86,6 +86,8 @@ void RegisterView::goView() {
         if (event.mouseButton.button == sf::Mouse::Left) {
           if (btnPlay.isMouseOver(view)) {
             view.close();
+            loadPlayerList();
+            game.makePlayer(players);
             PlayView playView;
             //Acá se meten los nombres en un metodo a la lista
             getNames(); 
@@ -222,10 +224,21 @@ void RegisterView::showCoordinates( sf::Event event) {
 }
 
 void RegisterView::getNames() {
-
    std::cout<< name1.getText()<<std:: endl; 
    std::cout<< name2.getText()<<std:: endl; 
    std::cout<< name3.getText()<<std:: endl; 
    std::cout<< name4.getText()<<std:: endl;
-
+}
+void RegisterView::loadPlayerList() {
+    if (Player3) {
+        players->push_back(new Player(name1.getText(),0,"COLOR"));
+        players->push_back(new Player(name2.getText(), 0, "COLOR"));
+        players->push_back(new Player(name3.getText(), 0, "COLOR"));
+    }
+    else {
+        players->push_back(new Player(name1.getText(), 0, "COLOR"));
+        players->push_back(new Player(name2.getText(), 0, "COLOR"));
+        players->push_back(new Player(name3.getText(), 0, "COLOR"));
+        players->push_back(new Player(name4.getText(), 0, "COLOR"));
+    }
 }

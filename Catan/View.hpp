@@ -22,4 +22,7 @@ protected:
   sf::Sprite sprite;
   sf::Font font;
   sf::Event event;
+
+  list<Player*>* players;
+  list<Player*>::iterator playerIterator;
 };

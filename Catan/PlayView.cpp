@@ -18,6 +18,7 @@ void PlayView::drawLabels()
 {
   createLabels();
   view.draw(materialCard->getTextInstance());
+  view.draw(developCard->getTextInstance());
   view.draw(pricingTable->getTextInstance());
   view.draw(turns->getTextInstance());
   view.draw(cards->getTextInstance());
@@ -25,14 +26,30 @@ void PlayView::drawLabels()
 
 void PlayView::createLabelNamePlayers()
 {
-  player1 = new Label("Jesus", sf::Color(0, 0, 255, 128),
-                      font, sf::Text::Bold, 20, 1100.f, 120.f);
-  player2 = new Label("Daniel", sf::Color(0, 0, 255, 128),
-                      font, sf::Text::Bold, 20, 1100.f, 180.f);
-  player3 = new Label("Dilan", sf::Color(0, 0, 255, 128),
-                      font, sf::Text::Bold, 20, 1100.f, 240.f);
-  player4 = new Label("Profe", sf::Color(0, 0, 255, 128),
-                      font, sf::Text::Bold, 20, 1100.f, 300.f);
+  playerIterator = game.players->begin();
+  if (game.players->size() == 3) {
+      player1 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+          font, sf::Text::Bold, 20, 1100.f, 120.f);
+      playerIterator++;
+      player2 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+          font, sf::Text::Bold, 20, 1100.f, 180.f);
+      playerIterator++;
+      player3 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+          font, sf::Text::Bold, 20, 1100.f, 240.f);
+  }
+  else {
+      player1 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+          font, sf::Text::Bold, 20, 1100.f, 120.f);
+      playerIterator++;
+      player2 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+          font, sf::Text::Bold, 20, 1100.f, 180.f);
+      playerIterator++;
+      player3 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+          font, sf::Text::Bold, 20, 1100.f, 240.f);
+      playerIterator++;
+      player4 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+          font, sf::Text::Bold, 20, 1100.f, 300.f);
+  }
 }
 void PlayView::drawLabelNamePlayers()
 {

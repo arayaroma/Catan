@@ -185,6 +185,7 @@
     <ClInclude Include="Figure.hpp" />
     <ClInclude Include="Figures.hpp" />
     <ClInclude Include="Graph.hpp" />
+    <ClInclude Include="Cards.h" />
     <ClInclude Include="Human.hpp" />
     <ClInclude Include="PlayView.hpp" />
     <ClInclude Include="RegisterView.hpp" />

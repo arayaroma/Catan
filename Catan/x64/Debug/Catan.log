@@ -1,11 +1,14 @@
 ﻿  AboutView.cpp
   Application.cpp
+  Game.cpp
+  PlayView.cpp
   RegisterView.cpp
-C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\RegisterView.cpp(171,37): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\RegisterView.cpp(181,39): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\RegisterView.cpp(190,36): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\RegisterView.cpp(199,38): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\RegisterView.cpp(174,37): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\RegisterView.cpp(184,39): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\RegisterView.cpp(193,36): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\RegisterView.cpp(202,38): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
   TitleView.cpp
+  View.cpp
   main.cpp
   Generando código...
-  Catan.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Catan.exe
+  Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe

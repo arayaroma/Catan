@@ -317,3 +317,30 @@ void Game::printVertex(list<Vertex *> *vertexList) {
     vertexIterator++;
   }
 }
+void Game::makePlayer(list<Player*>* playersList) {
+    players = playersList;
+    list<Player*>::iterator playerIterator;
+    playerIterator = players->begin();
+    while (playerIterator != players->end()) {
+        loadFiguresToPlayer((*playerIterator));
+    }
+}
+void Game::loadFiguresToPlayer(Player* player) {
+    int iterator;
+    for (iterator = 0; iterator < 15; iterator++) {
+        loadRhoades(player);
+        if (iterator < 4)
+            loadCities(player);
+        if (iterator < 5)
+            loadTowns(player);
+    }
+}
+void Game::loadRhoades(Player* player) {
+    player->roads->push_back(new Road());
+}
+void Game::loadCities(Player* player) {
+    player->citys->push_back(new City());
+}
+void Game::loadTowns(Player* player) {
+    player->towns->push_back(new Town());
+}

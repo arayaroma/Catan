@@ -233,5 +233,8 @@
     <ClInclude Include="View.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Cards.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
