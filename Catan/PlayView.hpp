@@ -5,12 +5,12 @@
 #include <string>
 
 #define pi 3.14159265358979323846
-#define firstAngle pi / 2
-#define secondAngle (3 * pi) / 4
-#define thirdAngle pi / 4
-#define fourthAngle (5 * pi) / 4
-#define fifthAngle (7 * pi) / 4
-#define sexthAngle (3 * pi) / 2
+#define firstAngle (3 * pi) / 2
+#define secondAngle (5 * pi) / 4 
+#define thirdAngle (7 * pi) / 4
+#define fourthAngle (3 * pi) / 4
+#define fifthAngle pi / 4
+#define sexthAngle pi / 2
 #define landsRadius 37.5
 
 using std::list;
@@ -76,6 +76,7 @@ private:
   void consolePrintLandAndVertex();
 
   void isPrinted(int);
+  void showCoordinates(sf::Event event);
 
 private:
   sf::RenderWindow playView;

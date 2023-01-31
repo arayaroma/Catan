@@ -74,6 +74,7 @@ void PlayView::goPlayView() {
   while (playView.isOpen()) {
     while (playView.pollEvent(event)) {
       playView.waitEvent(event);
+      showCoordinates(event);
       switch (event.type) {
       case sf::Event::MouseButtonPressed:
         if (event.mouseButton.button == sf::Mouse::Left) {
@@ -286,26 +287,31 @@ void PlayView::setPosXYtoVertex(list<Vertex *>::iterator vertexIterator,
 
 void PlayView::loadHexagonNodes(list<Vertex *>::iterator itX, double posX,
                                 double posY, int iterationNumber) {
-  double relativePositionX = posX - 10 + landsRadius +
+  double relativePositionX = posX -400  + landsRadius +
                              (landsRadius * cos(getFormula(iterationNumber)));
-  double relativePositionY = posY - 20 + landsRadius +
+  double relativePositionY = posY  + landsRadius +
                              (landsRadius * sin(getFormula(iterationNumber)));
-  if (game.graph.getVertex((*itX)->getVertexId())->getIsPrint() == false) {
-      game.graph.getVertex((*itX)->getVertexId())->setIsPrinted(true);
+  
+     
       if (iterationNumber < 4) {
-          printTowns(relativePositionX, relativePositionY - 3);
-          setPosXYtoVertex(itX, relativePositionX, relativePositionY);
-          setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
-              relativePositionY);
+              
+          if (!game.graph.getVertex((*itX)->getVertexId())->getIsPrint()) {
+              game.graph.getVertex((*itX)->getVertexId())->setIsPrinted(true);
+              printTowns(relativePositionX, relativePositionY );
+              setPosXYtoVertex(itX, relativePositionX, relativePositionY);
+              setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
+                  relativePositionY);
+          }
       }
       else {
-          printTowns(relativePositionX, relativePositionY + 15);
-          setPosXYtoVertex(itX, relativePositionX, relativePositionY);
-          setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
-              relativePositionY);
-          
+          if (game.graph.getVertex((*itX)->getVertexId())->getIsPrint() == false) {
+              game.graph.getVertex((*itX)->getVertexId())->setIsPrinted(true);
+              printTowns(relativePositionX, relativePositionY );
+              setPosXYtoVertex(itX, relativePositionX, relativePositionY);
+              setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
+                  relativePositionY);
+          }
       }
-  }
 }
 void PlayView::isPrinted(int vertexId) {
     game.graph.getVertex(vertexId)->setIsPrinted(true);
@@ -323,4 +329,12 @@ void PlayView::consolePrintLandAndVertex() {
     game.printVertex((*it)->getTownsList());
     it++;
   }
+}
+
+void PlayView::showCoordinates(sf::Event event) {
+        if (event.mouseButton.button == sf::Mouse::Left) {
+            std::cout << "mouse x: " << event.mouseButton.x << std::endl;
+            std::cout << "mouse y: " << event.mouseButton.y << std::endl;
+        }
+    
 }

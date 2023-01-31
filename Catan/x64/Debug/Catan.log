@@ -1,12 +1,2 @@
-﻿  AboutView.cpp
-  Application.cpp
-  Game.cpp
-  Graph.cpp
-  Land.cpp
-  PlayView.cpp
-  RegisterView.cpp
-  TitleView.cpp
-  Vertex.cpp
-  main.cpp
-  Generando código...
-  Catan.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Nueva carpeta (5)\Catan\x64\Debug\Catan.exe
+﻿  PlayView.cpp
+  Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe
