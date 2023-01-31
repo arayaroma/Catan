@@ -163,6 +163,7 @@
     <ClCompile Include="Town.cpp" />
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="VictoryPoints.cpp" />
+    <ClCompile Include="View.cpp" />
     <ClCompile Include="Wheat.cpp" />
     <ClCompile Include="Wood.cpp" />
     <ClCompile Include="Wool.cpp" />
@@ -202,6 +203,7 @@
     <ClInclude Include="Town.hpp" />
     <ClInclude Include="Vertex.hpp" />
     <ClInclude Include="VictoryPoints.hpp" />
+    <ClInclude Include="View.hpp" />
     <ClInclude Include="Wheat.hpp" />
     <ClInclude Include="Wood.hpp" />
     <ClInclude Include="Wool.hpp" />
