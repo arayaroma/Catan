@@ -15,7 +15,6 @@ bool RegisterView::goBack(sf::RenderWindow &window) {
 }
 
 void RegisterView::loadTextureButtons() {
-
     name1.serFont(font);
     name1.setPosition({ 365,250 });
     name2.serFont(font);
@@ -30,7 +29,6 @@ void RegisterView::loadTextureButtons() {
     btn3Players.setFont(font);
     btn4Players.setPosition2({ 100,350 });
     btn4Players.setFont(font);
-
 }
 
 void RegisterView::drawRegisterView() {

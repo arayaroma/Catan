@@ -3,10 +3,12 @@
 void PlayView::createLabels() {
   materialCard = new Label("Cartas de Materiales", sf::Color(0, 0, 255, 128),
                            font, sf::Text::Bold, 20, 5.f, 230.f);
+  developCard = new Label("Cartas de Desarrollo", sf::Color(0, 0, 255, 128),
+                           font, sf::Text::Bold, 20, 5.f, 360.f);
   pricingTable = new Label("Tabla de precios", sf::Color(0, 0, 255, 128), font,
                            sf::Text::Bold, 20, 5.f, 0.f);
   turns = new Label("Jugadores", sf::Color(0, 0, 255, 128), font,
-                    sf::Text::Bold, 20, 1050.f, 60.f);
+                    sf::Text::Bold, 20, 1070.f, 60.f);
   cards = new Label("Componentes", sf::Color(0, 0, 255, 128), font,
                     sf::Text::Bold, 20, 565.f, 575.f);
 }
@@ -14,11 +16,75 @@ void PlayView::createLabels() {
 void PlayView::drawLabels() {
   createLabels();
   playView.draw(materialCard->getTextInstance());
+  playView.draw(developCard->getTextInstance());
   playView.draw(pricingTable->getTextInstance());
   playView.draw(turns->getTextInstance());
   playView.draw(cards->getTextInstance());
 }
 
+void PlayView::createLabelNamePlayers() {
+    player1 = new Label("Jesus", sf::Color(0, 0, 255, 128),
+        font, sf::Text::Bold, 20, 1100.f, 120.f);
+    player2 = new Label("Daniel", sf::Color(0, 0, 255, 128),
+        font, sf::Text::Bold, 20, 1100.f, 180.f);
+    player3 = new Label("Dilan", sf::Color(0, 0, 255, 128),
+        font, sf::Text::Bold, 20, 1100.f, 240.f);
+    player4 = new Label("Profe", sf::Color(0, 0, 255, 128),
+        font, sf::Text::Bold, 20, 1100.f, 300.f);
+}
+void PlayView::drawLabelNamePlayers() {
+    createLabelNamePlayers();
+    playView.draw(player1->getTextInstance());
+    playView.draw(player2->getTextInstance());
+    playView.draw(player3->getTextInstance());
+    playView.draw(player4->getTextInstance());
+}
+void PlayView::printPlayerCard() {
+    printImages("Images/playerCard/clayCard.png", 360, 640);
+    printImages("Images/playerCard/mineralCard.png", 400, 640);
+    printImages("Images/playerCard/wheatCard.png", 440, 640);
+    printImages("Images/playerCard/woodCard.png", 480, 640);
+    printImages("Images/playerCard/woolCard.png", 520, 640);
+}
+void PlayView::createLabelCardPlayer() {
+    clayCard = new Label("0", sf::Color(0, 0, 255, 128),
+        font, sf::Text::Bold, 20, 375.f, 620.f);
+    mineralPlayerCard = new Label("0", sf::Color(0, 0, 255, 128),
+        font, sf::Text::Bold, 20, 415.f, 620.f);
+    wheatPlayerCard = new Label("0", sf::Color(0, 0, 255, 128),
+        font, sf::Text::Bold, 20, 455.f, 620.f);
+    woodPlayerCard = new Label("0", sf::Color(0, 0, 255, 128),
+        font, sf::Text::Bold, 20, 495.f, 620.f);
+    woolPlayerCard = new Label("0", sf::Color(0, 0, 255, 128),
+        font, sf::Text::Bold, 20, 535.f, 620.f);
+
+}
+void PlayView::drawLabelCardPlayer() {
+    createLabelCardPlayer();
+    playView.draw(clayCard->getTextInstance());
+    playView.draw(mineralPlayerCard->getTextInstance());
+    playView.draw(wheatPlayerCard->getTextInstance());
+    playView.draw(woodPlayerCard->getTextInstance());
+    playView.draw(woolPlayerCard->getTextInstance());
+}
+void PlayView::createLabelFigurePlayer() {
+    townPlayer = new Label("0", sf::Color(0, 0, 255, 128),
+        font, sf::Text::Bold, 20, 600.f, 620.f);
+    cityPlayer = new Label("0", sf::Color(0, 0, 255, 128),
+        font, sf::Text::Bold, 20, 640.f, 620.f);
+    roadPlayer = new Label("0", sf::Color(0, 0, 255, 128),
+        font, sf::Text::Bold, 20, 680.f, 620.f);
+}
+void PlayView::drawLabelFigurePlayer() {
+    createLabelFigurePlayer();
+    playView.draw(townPlayer->getTextInstance());
+    playView.draw(cityPlayer->getTextInstance());
+    playView.draw(roadPlayer->getTextInstance());
+}
+void PlayView::printPlayerFigure() {
+    printImages("Images/Figures/TownBlue.png", 590, 650);
+    printImages("Images/Figures/CityBlue.png", 630, 650);
+}
 void PlayView::printMaterialCard() {
   printImages("Images/resourcesCards/clayCard.png", 0, 255);
   printImages("Images/resourcesCards/mineralCard.png", 70, 255);
@@ -64,6 +130,13 @@ void PlayView::drawPlayView() {
   loadGameButtons();
   drawLabels();
   printBoard();
+  printTownsTest();
+  printMaterialCard();
+  printPlayerCard();
+  drawLabelNamePlayers();
+  drawLabelCardPlayer();
+  drawLabelFigurePlayer();
+  printPlayerFigure();
   playView.display();
 }
 
@@ -73,7 +146,6 @@ void PlayView::goPlayView() {
   start = true;
   while (playView.isOpen()) {
     while (playView.pollEvent(event)) {
-      playView.waitEvent(event);
       showCoordinates(event);
       switch (event.type) {
       case sf::Event::MouseButtonPressed:
@@ -85,19 +157,7 @@ void PlayView::goPlayView() {
         break;
       }
     }
-    // playView.clear();
-    // playView.draw(playSprite);
-    // loadGameButtons();
-    // drawLabels();
-    // printMaterialCard();
-    // printBoard();
-    //  loadStartButtons(playWindow);
-    // loadGameButtons();
-    // playView.display();
   }
-  // consolePrintLandAndVertex();
-  // log("Grafo");
-  // game.graph.showAdjacencyList();
 }
 
 void PlayView::setTurn(int numberPlayers) {
@@ -135,33 +195,59 @@ void PlayView::initializeLandsList() {
 }
 
 void PlayView::printBoard() {
-  int top_height = 30, bot_height = 30, cycle_cord_x = 0, i = 1;
+  double top_height = 40, bot_height = 40, cycle_cord_x = 0, i = 1;
   initializeLandsList();
-  bot_height += 330;
+  bot_height += 280;
   it2 = landsList->begin();
   std::advance(it2, 16);
-  for (cycle_cord_x = 530; cycle_cord_x <= 680; cycle_cord_x += 75) {
+  for (cycle_cord_x = 530; cycle_cord_x <= 700; cycle_cord_x += 85) {
     traverseFirstAndLastRow(cycle_cord_x, top_height, bot_height);
   }
   lastIteration = false;
-  top_height += 80;
-  bot_height = 270;
+  top_height += 70;
+  bot_height = 250;
   lastIterationNumber = 755;
   it2 = landsList->begin();
   std::advance(it2, 12);
-  for (cycle_cord_x = 505; cycle_cord_x <= 755; cycle_cord_x += 75) {
+  for (cycle_cord_x = 487.5; cycle_cord_x <= 757.5; cycle_cord_x += 85) {
     traverseSecondAndNextToLastRow(cycle_cord_x, top_height, bot_height);
   }
   lastIteration = false;
-  top_height += 80;
+  top_height += 70;
   lastIterationNumber = 760;
   it2 = landsList->begin();
   std::advance(it2, 7);
-  for (cycle_cord_x = 460; cycle_cord_x <= 760; cycle_cord_x += 75) {
+  for (cycle_cord_x = 445; cycle_cord_x <= 785; cycle_cord_x += 85) {
     traverseMiddleRow(cycle_cord_x, top_height, bot_height);
   }
 }
-
+void PlayView::printTownsTest() {
+    double top_height = 40, bot_height = 40, cycle_cord_x = 0, i = 1;
+    initializeLandsList();
+    bot_height += 280;
+    it2 = landsList->begin();
+    std::advance(it2, 16);
+    for (cycle_cord_x = 530; cycle_cord_x <= 700; cycle_cord_x += 85) {
+        traverseFirstAndLastRowTest(cycle_cord_x, top_height, bot_height);
+    }
+    lastIteration = false;
+    top_height += 70;
+    bot_height = 250;
+    lastIterationNumber = 755;
+    it2 = landsList->begin();
+    std::advance(it2, 12);
+    for (cycle_cord_x = 487.5; cycle_cord_x <= 757.5; cycle_cord_x += 85) {
+        traverseSecondAndNextToLastRowTest(cycle_cord_x, top_height, bot_height);
+    }
+    lastIteration = false;
+    top_height += 70;
+    lastIterationNumber = 760;
+    it2 = landsList->begin();
+    std::advance(it2, 7);
+    for (cycle_cord_x = 445; cycle_cord_x <= 785; cycle_cord_x += 85) {
+        traverseMiddleRowTest(cycle_cord_x, top_height, bot_height);
+    }
+}
 // Agregado recientemente -> Separar en clases los metodos de Window
 void PlayView::setTempImagePath(string image) { this->tempImagePath = image; }
 
@@ -193,9 +279,11 @@ void PlayView::setAndTraverse(int posX, int posY,
   setTempImagePath((*auxIt)->getImagePath());
   setPosXYtoLand(posX, posY, auxIt);
   printImages(tempImagePath, posX, posY);
-  C_Traversal(posX, posY, auxIt);
+ 
 }
-
+void PlayView::setAndTraverseTest(int posX, int posY, list<Land*>::iterator auxIt) {
+     C_Traversal(posX, posY, auxIt);
+}
 void PlayView::initializeVertexesList(list<Land *>::iterator auxIt) {
   vertexesList = (*auxIt)->getTownsList();
   vertexIterator = vertexesList->begin();
@@ -245,6 +333,41 @@ void PlayView::traverseMiddleRow(int posX, int topHeight, int botHeight) {
   }
 }
 
+void PlayView::traverseFirstAndLastRowTest(int posX, int topHeight, int botHeight) {
+    if (isLandsListTraversal()) {
+        lastIterationBehaviour(posX);
+
+        setAndTraverseTest(posX, topHeight, it);
+        iterateLand();
+
+        setAndTraverseTest(posX, botHeight, it2);
+        iterateLand2();
+    }
+}
+
+void PlayView::traverseSecondAndNextToLastRowTest(int posX, int topHeight,
+    int botHeight) {
+    if (isLandsListTraversal()) {
+        lastIterationBehaviour(posX);
+
+        setAndTraverseTest(posX, topHeight, it);
+        iterateLand();
+
+        setAndTraverseTest(posX, botHeight, it2);
+        iterateLand2();
+    }
+}
+
+void PlayView::traverseMiddleRowTest(int posX, int topHeight, int botHeight) {
+    if (isLandsListTraversal()) {
+        lastIterationBehaviour(posX);
+
+        setAndTraverseTest(posX, topHeight, it2);
+        iterateLand2();
+    }
+}
+
+
 void PlayView::C_Traversal(int posX, int posY, list<Land *>::iterator auxIt) {
   vertexIterationNumber = 1;
   initializeVertexesList(auxIt);
@@ -275,7 +398,7 @@ double PlayView::getFormula(int vertexId) const {
 }
 
 void PlayView::printTowns(double x, double y) {
-  string tempImagePath = "Images/puebloX.png";
+  string tempImagePath = "Images/Town.png";
   printImages(tempImagePath, static_cast<int>(x), static_cast<int>(y));
 }
 
@@ -287,31 +410,17 @@ void PlayView::setPosXYtoVertex(list<Vertex *>::iterator vertexIterator,
 
 void PlayView::loadHexagonNodes(list<Vertex *>::iterator itX, double posX,
                                 double posY, int iterationNumber) {
-  double relativePositionX = posX -400  + landsRadius +
+  double relativePositionX = posX   + landsRadius +
                              (landsRadius * cos(getFormula(iterationNumber)));
   double relativePositionY = posY  + landsRadius +
                              (landsRadius * sin(getFormula(iterationNumber)));
-  
-     
-      if (iterationNumber < 4) {
-              
-          if (!game.graph.getVertex((*itX)->getVertexId())->getIsPrint()) {
-              game.graph.getVertex((*itX)->getVertexId())->setIsPrinted(true);
-              printTowns(relativePositionX, relativePositionY );
-              setPosXYtoVertex(itX, relativePositionX, relativePositionY);
-              setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
-                  relativePositionY);
-          }
-      }
-      else {
-          if (game.graph.getVertex((*itX)->getVertexId())->getIsPrint() == false) {
-              game.graph.getVertex((*itX)->getVertexId())->setIsPrinted(true);
-              printTowns(relativePositionX, relativePositionY );
-              setPosXYtoVertex(itX, relativePositionX, relativePositionY);
-              setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
-                  relativePositionY);
-          }
-      }
+  if (!game.graph.getVertex((*itX)->getVertexId())->getIsPrint()) {
+      game.graph.getVertex((*itX)->getVertexId())->setIsPrinted(true);
+      printTowns(relativePositionX, relativePositionY);
+      setPosXYtoVertex(itX, relativePositionX, relativePositionY);
+      setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
+          relativePositionY);
+  }
 }
 void PlayView::isPrinted(int vertexId) {
     game.graph.getVertex(vertexId)->setIsPrinted(true);
@@ -336,5 +445,4 @@ void PlayView::showCoordinates(sf::Event event) {
             std::cout << "mouse x: " << event.mouseButton.x << std::endl;
             std::cout << "mouse y: " << event.mouseButton.y << std::endl;
         }
-    
 }

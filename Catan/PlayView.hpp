@@ -70,6 +70,15 @@ private:
   void C_Traversal(int, int, list<Land *>::iterator);
   double getFormula(int) const;
   void printTowns(double, double);
+
+
+  void printTownsTest();
+  void traverseFirstAndLastRowTest(int, int, int);
+  void traverseSecondAndNextToLastRowTest(int, int, int);
+  void traverseMiddleRowTest(int, int, int);
+  void setAndTraverseTest(int, int, list<Land*>::iterator);
+
+
   void setPosXYtoVertex(list<Vertex *>::iterator, double, double);
   void loadHexagonNodes(list<Vertex *>::iterator, double, double, int);
   void setPosXYtoVertexesGraph(int, double, double);
@@ -78,6 +87,14 @@ private:
   void isPrinted(int);
   void showCoordinates(sf::Event event);
 
+  void createLabelNamePlayers();
+  void drawLabelNamePlayers();
+  void printPlayerCard();
+  void createLabelCardPlayer();
+  void drawLabelCardPlayer();
+  void createLabelFigurePlayer();
+  void drawLabelFigurePlayer();
+  void printPlayerFigure();
 private:
   sf::RenderWindow playView;
   sf::Texture playImage;
@@ -85,5 +102,8 @@ private:
   sf::Font font;
   sf::Event event;
   sf::RectangleShape playerRectangle, cardsRectangle;
-  Label *materialCard, *pricingTable, *turns, *cards;
+  Label* materialCard, * pricingTable, * turns, * cards, * developCard;
+  Label* player1, * player2, * player3, * player4;
+  Label* clayCard, * mineralPlayerCard, * wheatPlayerCard, * woodPlayerCard, * woolPlayerCard;
+  Label* townPlayer, * cityPlayer, * roadPlayer;
 };

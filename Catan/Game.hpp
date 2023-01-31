@@ -113,4 +113,6 @@ public:
   void makeGraph();
   void printLand(list<Land *> *landsList);
   void printVertex(list<Vertex *> *vertexList);
+
+  void makePlayer();
 };

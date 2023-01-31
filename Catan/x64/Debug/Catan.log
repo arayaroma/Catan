@@ -1,2 +1,20 @@
 ﻿  PlayView.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(204,55): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(204,43): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(204,29): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(213,62): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(213,50): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(213,36): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(221,49): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(221,37): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(221,23): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(231,63): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(231,51): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(231,37): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(240,70): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(240,58): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(240,44): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(248,57): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(248,45): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(248,31): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
   Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe

@@ -35,20 +35,20 @@ void Game::loadProgressPaths() {
 
 void Game::loadTilesPaths() {
   imagePaths.insert(
-      pair<string, string>("grassPath", "Images/tiles/Grass.jpg"));
+      pair<string, string>("grassPath", "Images/tiles/Grass.png"));
   imagePaths.insert(
-      pair<string, string>("brickPath", "Images/tiles/Brick.jpg"));
+      pair<string, string>("brickPath", "Images/tiles/Brick.png"));
   imagePaths.insert(
-      pair<string, string>("fieldPath", "Images/tiles/Field.jpg"));
+      pair<string, string>("fieldPath", "Images/tiles/Field.png"));
 
   imagePaths.insert(
-      pair<string, string>("mountainPath", "Images/tiles/Mountain.jpg"));
+      pair<string, string>("mountainPath", "Images/tiles/Mountain.png"));
 
   imagePaths.insert(
-      pair<string, string>("forestPath", "Images/tiles/Forest.jpg"));
+      pair<string, string>("forestPath", "Images/tiles/Forest.png"));
 
   imagePaths.insert(
-      pair<string, string>("dessertPath", "Images/tiles/Dessert.jpg"));
+      pair<string, string>("dessertPath", "Images/tiles/Dessert.png"));
 }
 
 void Game::loadLands() {
