@@ -16,13 +16,14 @@ private:
   void drawView() override;
 
 private:
-  void registerButton(sf::RenderWindow &);
-  void showCoordinates(sf::RenderWindow &, sf::Event);
-  bool goBack(sf::RenderWindow &);
-  void loadTextFields(sf::RenderWindow &registerwindow, TextBox &tex1);
+  void registerButton();
+  void showCoordinates( sf::Event);
+  bool goBack();
+  void loadTextFields( TextBox &tex1);
   void loadTextureButtons();
-  void loadRegisterButtons(sf::RenderWindow &registerwindow, Button &btn1);
-
+  void loadRegisterButtons( Button &btn1);
+  void loadColors(); 
+  void getNames(); 
 private:
   bool Player3 = false;
   bool Player4 = false;

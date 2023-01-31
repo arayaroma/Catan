@@ -14,7 +14,7 @@ TextBox name1 = TextBox(15, sf::Color::Black, false, {345, 240}, {180, 40},
 TextBox name2 = TextBox(15, sf::Color::Black, false, {345, 300}, {180, 40},
                         sf::Color::White);
 
-bool RegisterView::goBack(sf::RenderWindow &window) {
+bool RegisterView::goBack() {
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     return true;
   return false;
@@ -53,6 +53,7 @@ void RegisterView::goView() {
   sf::Sprite registerSprite(registerImage);
   font.loadFromFile("mononoki.ttf");
   drawView();
+  
 
   while (view.isOpen()) {
     while (view.pollEvent(event)) {
@@ -75,17 +76,19 @@ void RegisterView::goView() {
         break;
 
       case sf::Event::KeyPressed:
-        if (goBack(view)) {
+        if (goBack()) {
           view.close();
           TitleView titleView;
           titleView.goView();
         }
       case sf::Event::MouseButtonPressed:
-        showCoordinates(view, event);
+        showCoordinates( event);
         if (event.mouseButton.button == sf::Mouse::Left) {
           if (btnPlay.isMouseOver(view)) {
             view.close();
             PlayView playView;
+            //Acá se meten los nombres en un metodo a la lista
+            getNames(); 
             playView.goView();
           } else if (btn3Players.isMouseOver(view)) {
 
@@ -100,52 +103,56 @@ void RegisterView::goView() {
     }
     view.clear();
     view.draw(registerSprite);
-    registerButton(view);
-    loadRegisterButtons(view, btnPlay);
-    loadRegisterButtons(view, btn3Players);
-    loadRegisterButtons(view, btn4Players);
-
+    registerButton();
+   
+    loadRegisterButtons(btnPlay);
+    loadRegisterButtons( btn3Players);
+    loadRegisterButtons(btn4Players);
+ 
     if (Player3 == true) {
-      loadTextFields(view, name1);
-      loadTextFields(view, name2);
-      loadTextFields(view, name3);
+      loadTextFields( name1);
+      loadTextFields( name2);
+      loadTextFields( name3);
       if (Player4 == true) {
-        loadTextFields(view, name4);
+        loadTextFields(name4);
       }
     }
+    loadColors();
     view.display();
   }
 }
-void RegisterView::registerButton(sf::RenderWindow &window) {
+void RegisterView::registerButton() {
   Label *title = new Label("Registro de Usuarios", sf::Color::Black, font,
                            sf::Text::Bold, 30, 480.f, 50.f);
   Label *name = new Label("Nombre", sf::Color::Black, font, sf::Text::Bold, 20,
                           405.f, 200.f);
-  Label *type = new Label("Tipo de jugador", sf::Color::Black, font,
-                          sf::Text::Bold, 20, 545.f, 200.f);
-  Label *color = new Label("Color", sf::Color::Black, font, sf::Text::Bold, 20,
-                           800.f, 200.f);
 
-  window.draw(title->getTextInstance());
-  window.draw(type->getTextInstance());
-  window.draw(name->getTextInstance());
-  window.draw(color->getTextInstance());
+  Label *color = new Label("Color", sf::Color::Black, font, sf::Text::Bold, 20,
+                           600.f, 200.f);
+
+
+  Label* note = new Label("Nota: Acerca el cursor al campo de texto del jugador, presiona ENTER para escribir y END para salir.", sf::Color::Blue, font, sf::Text::Bold, 20,
+      10.f, 640.f);
+
+  view.draw(title->getTextInstance());
+  view.draw(name->getTextInstance());
+  view.draw(color->getTextInstance());
+  view.draw(note->getTextInstance());
+
 }
 
-void RegisterView::loadRegisterButtons(sf::RenderWindow &registerView,
-                                       Button &btn) {
-  if (btn.isMouseOver(registerView)) {
+void RegisterView::loadRegisterButtons(Button &btn) {
+  if (btn.isMouseOver(view)) {
     btn.setBackColor(sf::Color::White);
   } else {
     btn.setBackColor(sf::Color::Blue);
   }
-  btn.drawTo(registerView);
+  btn.drawTo(view);
 }
 
-void RegisterView::loadTextFields(sf::RenderWindow &registerView,
-                                  TextBox &name1) {
+void RegisterView::loadTextFields( TextBox &name1) {
 
-  if (name1.isMouseOver(registerView)) {
+  if (name1.isMouseOver(view)) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
       name1.setSelected(true);
     }
@@ -153,10 +160,50 @@ void RegisterView::loadTextFields(sf::RenderWindow &registerView,
       name1.setSelected(false);
     }
   }
-  name1.drawTo(registerView);
+  name1.drawTo(view);
 }
 
-void RegisterView::showCoordinates(sf::RenderWindow &window, sf::Event event) {
+void RegisterView::loadColors() {
+    int  y=245;
+    for (int i = 0; i < 4; i++) {
+        sf::Texture blue;
+        blue.loadFromFile("Images/Colors/Blue.png");
+        sf::Sprite blueSprite(blue);
+        blueSprite.setPosition(580, y);
+        y += 60;
+        view.draw(blueSprite);
+   
+    }
+    y = 245;
+    for (int i = 0; i < 4; i++) {
+        sf::Texture yellow;
+        yellow.loadFromFile("Images/Colors/Yellow.png");
+        sf::Sprite yellowSprite(yellow);
+        yellowSprite.setPosition(620, y);
+        y += 60;
+        view.draw(yellowSprite);
+    }
+    y = 245;
+    for (int i = 0; i < 4; i++) {
+        sf::Texture red;
+        red.loadFromFile("Images/Colors/Red.png");
+        sf::Sprite redSprite(red);
+        redSprite.setPosition(660, y);
+        y += 60;
+        view.draw(redSprite);
+    }
+    y = 245;
+    for (int i = 0; i < 4; i++) {
+        sf::Texture green;
+        green.loadFromFile("Images/Colors/Green.png");
+        sf::Sprite greenSprite(green);
+        greenSprite.setPosition(700, y);
+        y += 60;
+        view.draw(greenSprite);
+    }
+}
+
+void RegisterView::showCoordinates( sf::Event event) {
   if (event.type == sf::Event::MouseButtonPressed) {
 
     if (event.mouseButton.button == sf::Mouse::Right) {
@@ -172,4 +219,13 @@ void RegisterView::showCoordinates(sf::RenderWindow &window, sf::Event event) {
       std::cout << "mouse y: " << event.mouseButton.y << std::endl;
     }
   }
+}
+
+void RegisterView::getNames() {
+
+   std::cout<< name1.getText()<<std:: endl; 
+   std::cout<< name2.getText()<<std:: endl; 
+   std::cout<< name3.getText()<<std:: endl; 
+   std::cout<< name4.getText()<<std:: endl;
+
 }
