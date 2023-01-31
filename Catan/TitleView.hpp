@@ -3,6 +3,7 @@
 #include "AboutView.hpp"
 #include "RegisterView.hpp"
 #include <SFML/Graphics.hpp>
+#include "Alert.hpp"
 
 #define log(x) std::cout << x << std::endl;
 

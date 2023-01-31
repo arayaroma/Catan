@@ -44,6 +44,7 @@ bool TitleView::isPlayView(sf::Event event) const {
 
 void TitleView::goTitleView() {
   loadTitleView();
+  Alert *alert = new Alert(titleWindow, NONE, "Titulo", "Esto es un mensaje");
   drawTitleView();
 
   while (titleWindow.isOpen()) {
