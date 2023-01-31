@@ -1,2 +1,8 @@
-﻿  TitleView.cpp
+﻿  AboutView.cpp
+  Application.cpp
+  PlayView.cpp
+  RegisterView.cpp
+  TitleView.cpp
+  main.cpp
+  Generating Code...
   Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe
