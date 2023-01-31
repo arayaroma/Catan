@@ -19,6 +19,7 @@ using std::string;
 
 class Alert {
 private:
+  // Pasar a Pantalla 600x400
   sf::RectangleShape panel;
   sf::Font font;
   Label *title, *message;
