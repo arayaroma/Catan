@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\alert.obj
 c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\button.obj
 c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\card.obj
@@ -24,3 +25,55 @@ c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\wool.obj
 c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\vc143.idb
 c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\vc143.pdb
 c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\catan.tlog\cl.command.1.tlog
+=======
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\vc143.pdb
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\vc143.idb
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\component.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\clay.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\city.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\main.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\knight.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\informationalert.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\human.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\graph.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\figure.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\edge.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\dice.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\game.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\erroralert.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\confirmationalert.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\computer.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\card.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\button.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\application.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\alert.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\aboutview.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\wool.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\wood.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\wheat.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\warningalert.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\view.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\victorypoints.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\vertex.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\town.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\titleview.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\textbox.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\road.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\registerview.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\progress.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\playview.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\player.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\nonealert.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\mineral.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\land.obj
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\label.obj
+c:\users\lic. dilan sancho\desktop\catan\x64\debug\catan.exe
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\catan.ilk
+c:\users\lic. dilan sancho\desktop\catan\x64\debug\catan.pdb
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\catan.tlog\cl.command.1.tlog
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\catan.tlog\cl.read.1.tlog
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\catan.tlog\cl.write.1.tlog
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\catan.tlog\link.command.1.tlog
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\catan.tlog\link.read.1.tlog
+c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\catan.tlog\link.write.1.tlog
+>>>>>>> feature/alert
