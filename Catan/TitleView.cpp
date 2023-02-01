@@ -18,15 +18,11 @@ void TitleView::drawView() {
 
 void TitleView::goView() {
   loadView();
-  Alert *alert = new Alert(view, NONE, "Titulo", "Esto es un mensaje");
   drawView();
 
   while (view.isOpen()) {
     while (view.pollEvent(event)) {
       switch (event.type) {
-      case sf::Event::Closed:
-        view.close();
-        break;
       case sf::Event::MouseButtonPressed:
         if (isMouseLeft(event)) {
           if (isPlayView(event)) {
@@ -41,6 +37,10 @@ void TitleView::goView() {
             aboutView.goView();
           }
         }
+        break;
+
+      case sf::Event::Closed:
+        view.close();
         break;
 
       default:

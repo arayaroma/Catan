@@ -43,11 +43,11 @@ RegisterView::RegisterView() {}
 
 void RegisterView::loadButtons() {
   makeButtons();
-  playButton.setPosition({1000, 320});
+  playButton.setPosition({1000, 320}, 3);
   playButton.setFont(font);
-  threePlayersButton.setPosition2({100, 280});
+  threePlayersButton.setPosition({100, 280}, 5);
   threePlayersButton.setFont(font);
-  fourPlayersButton.setPosition2({100, 350});
+  fourPlayersButton.setPosition({100, 350}, 5);
   fourPlayersButton.setFont(font);
 }
 
@@ -212,9 +212,9 @@ void RegisterView::registerButton() {
 
 void RegisterView::loadRegisterButtons(Button &button) {
   if (button.isMouseOver(view)) {
-    button.setBackColor(sf::Color::White);
+    button.setBackgroundColor(sf::Color::White);
   } else {
-    button.setBackColor(sf::Color::Blue);
+    button.setBackgroundColor(sf::Color::Blue);
   }
   button.drawTo(view);
 }
@@ -231,7 +231,7 @@ void RegisterView::loadTextFields(TextBox &textbox) {
 }
 
 void RegisterView::loadColors() {
-  int y = 245;
+  float y = 245;
   for (int i = 0; i < 4; i++) {
     sf::Texture blue;
     blue.loadFromFile("Images/Colors/Blue.png");
