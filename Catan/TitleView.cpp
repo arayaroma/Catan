@@ -17,9 +17,9 @@ void TitleView::drawView() {
 }
 
 void TitleView::goView() {
-  Alert *alert = new Alert(NONE, "Titulo",
-                           "Esto es un mensaje, con bastante texto indefinido, "
-                           "para probar esta alerta");
+  NoneAlert *alert = new NoneAlert(
+      "Titulo", "Esto es un mensaje, con bastante texto indefinido, "
+                "para probar esta alerta");
   loadView();
   drawView();
   alert->goView();

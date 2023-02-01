@@ -231,7 +231,7 @@ void RegisterView::loadTextFields(TextBox &textbox) {
 }
 
 void RegisterView::loadColors() {
-  int y = 245;
+  float y = 245;
   for (int i = 0; i < 4; i++) {
     sf::Texture blue;
     blue.loadFromFile("Images/Colors/Blue.png");

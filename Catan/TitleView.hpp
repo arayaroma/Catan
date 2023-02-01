@@ -1,6 +1,6 @@
 #pragma once
 #include "AboutView.hpp"
-#include "Alert.hpp"
+#include "NoneAlert.hpp"
 #include "Label.hpp"
 #include "RegisterView.hpp"
 #include "View.hpp"
@@ -16,6 +16,7 @@
 #define playView_Y0 265
 #define playView_Y1 355
 
+using std::string;
 class TitleView : public View {
 
 public:

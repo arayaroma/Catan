@@ -139,12 +139,15 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Computer.cpp" />
+    <ClCompile Include="ConfirmationAlert.cpp" />
+    <ClCompile Include="ErrorAlert.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Dice.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="Figure.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="Human.cpp" />
+    <ClCompile Include="InformationAlert.cpp" />
     <ClCompile Include="Knight.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="City.cpp" />
@@ -153,6 +156,7 @@
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Land.cpp" />
     <ClCompile Include="Mineral.cpp" />
+    <ClCompile Include="NoneAlert.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayView.cpp" />
     <ClCompile Include="Progress.cpp" />
@@ -164,6 +168,7 @@
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="VictoryPoints.cpp" />
     <ClCompile Include="View.cpp" />
+    <ClCompile Include="WarningAlert.cpp" />
     <ClCompile Include="Wheat.cpp" />
     <ClCompile Include="Wood.cpp" />
     <ClCompile Include="Wool.cpp" />
@@ -179,6 +184,8 @@
     <ClInclude Include="Colors.hpp" />
     <ClInclude Include="Component.hpp" />
     <ClInclude Include="Computer.hpp" />
+    <ClInclude Include="ConfirmationAlert.hpp" />
+    <ClInclude Include="ErrorAlert.hpp" />
     <ClInclude Include="Game.hpp" />
     <ClInclude Include="Dice.hpp" />
     <ClInclude Include="Edge.hpp" />
@@ -187,6 +194,8 @@
     <ClInclude Include="Graph.hpp" />
     <ClInclude Include="Cards.h" />
     <ClInclude Include="Human.hpp" />
+    <ClInclude Include="InformationAlert.hpp" />
+    <ClInclude Include="NoneAlert.hpp" />
     <ClInclude Include="PlayView.hpp" />
     <ClInclude Include="RegisterView.hpp" />
     <ClInclude Include="StructureGraph.hpp" />
@@ -205,6 +214,7 @@
     <ClInclude Include="Vertex.hpp" />
     <ClInclude Include="VictoryPoints.hpp" />
     <ClInclude Include="View.hpp" />
+    <ClInclude Include="WarningAlert.hpp" />
     <ClInclude Include="Wheat.hpp" />
     <ClInclude Include="Wood.hpp" />
     <ClInclude Include="Wool.hpp" />
