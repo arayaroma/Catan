@@ -3,6 +3,7 @@
 #include "View.hpp"
 #include <SFML/Graphics.hpp>
 #include <string>
+#include "Button.hpp"
 
 #define pi 3.14159265358979323846
 #define firstAngle (3 * pi) / 2
@@ -57,9 +58,11 @@ private:
   void loadPlayersRectangle();
   void loadCardsRectangle();
   void loadGameButtons();
+  void loadRegisterButtons(Button& btn); 
   void printMaterialCard();
   void printImages(string, double, double);
   void createLabels();
+  void createButtons(); 
   void drawLabels();
   void printBoard();
   void initializeLandsList();
@@ -119,4 +122,6 @@ private:
   Label *clayCard, *mineralPlayerCard, *wheatPlayerCard, *woodPlayerCard,
       *woolPlayerCard;
   Label *townPlayer, *cityPlayer, *roadPlayer;
+
+  Button turn , buy, trade, option1, p;
 };

@@ -19,6 +19,54 @@ void PlayView::createLabels() {
   cards = new Label("Componentes", sf::Color(0, 0, 255, 128), font,
                     sf::Text::Bold, 20, 565.f, 575.f);
 }
+void PlayView::createButtons() {
+
+
+        p =
+        Button("Turn", { 0, 0 }, 16, sf::Color::Green, sf::Color::White);
+
+        turn  =
+            Button("Turn", { 120, 35 }, 16, sf::Color::Green, sf::Color::White);
+        trade =
+            Button("Trade", { 120, 35 }, 16, sf::Color::Green, sf::Color::White);
+        buy =
+            Button("Buy", { 120, 35 }, 16, sf::Color::Green, sf::Color::White);
+        option1 =
+            Button("Option1", { 120, 35 }, 16, sf::Color::Green, sf::Color::White);
+
+        p.setFont(font);
+        p.setPosition({ 0, 0 });
+
+        turn.setFont(font); 
+        turn.setPosition({ 985, 600 });
+
+        trade.setFont(font);
+        trade.setPosition({ 20, 600 });
+
+        buy.setFont(font);
+        buy.setPosition({ 150, 600 });
+
+        option1.setFont(font);
+        option1.setPosition({ 1120, 600 });
+
+        loadRegisterButtons(p);
+        loadRegisterButtons(turn);
+        loadRegisterButtons(trade);
+        loadRegisterButtons(buy);
+        loadRegisterButtons(option1);
+
+}
+
+
+void PlayView::loadRegisterButtons(Button& button) {
+    if (button.isMouseOver(view)) {
+        button.setBackColor(sf::Color::White);
+    }
+    else {
+        button.setBackColor(sf::Color::Blue);
+    }
+    button.drawTo(view);
+}
 
 void PlayView::drawLabels() {
   createLabels();
@@ -176,19 +224,21 @@ void PlayView::loadView() {
 }
 
 void PlayView::drawView() {
-  view.clear();
-  view.draw(sprite);
-  loadGameButtons();
-  drawLabels();
-  printBoard();
-  printTownsTest();
-  printMaterialCard();
-  printPlayerCard();
-  drawLabelNamePlayers();
-  drawLabelCardPlayer();
-  drawLabelFigurePlayer();
-  printPlayerFigure();
-  view.display();
+    view.clear();
+    view.draw(sprite);
+    loadGameButtons();
+    drawLabels();
+    printBoard();
+    printTownsTest();
+    printMaterialCard();
+    printPlayerCard();
+    drawLabelNamePlayers();
+    drawLabelCardPlayer();
+    drawLabelFigurePlayer();
+    printPlayerFigure();
+    createButtons();
+    view.display();
+ 
 }
 void PlayView::searhTown(double x, double y) {
     initializeLandsList();
@@ -220,28 +270,35 @@ void PlayView::traverseTown(double x, double y, list<Land*>::iterator it) {
 }
 void PlayView::goView() {
   loadView();
-  drawView();
   start = true;
-  
+
+
+  view.draw(sprite);
   while (view.isOpen()) {
       sf::Event eventTest;
       srand(time(NULL));
-       view.setFramerateLimit(120);
-    while (view.pollEvent(eventTest)) {
-      showCoordinates(eventTest);
-      switch (eventTest.type) {
-        case sf::Event::Closed:
-        view.close();
-        break;
-      }
-      break;
-    }
-        view.waitEvent(eventTest);
-        if (eventTest.mouseButton.button == sf::Mouse::Left)
-            searhTown(sf::Mouse::getPosition(view).x, sf::Mouse::getPosition(view).y);
-    
-  }
+      view.setFramerateLimit(120);
 
+      while (view.pollEvent(eventTest)) {
+          showCoordinates(eventTest);
+          switch (eventTest.type) {
+
+          case sf::Event::Closed:
+              view.close();
+              break;
+
+          case sf::Event::MouseButtonPressed:
+              if (eventTest.mouseButton.button == sf::Mouse::Left) {
+                  searhTown(sf::Mouse::getPosition(view).x, sf::Mouse::getPosition(view).y);
+                  
+              }
+              break;
+          }
+          
+          break; 
+      }
+      drawView(); 
+  }
 }
 
 void PlayView::setTurn(int numberPlayers) {
