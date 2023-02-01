@@ -77,41 +77,40 @@ void PlayView::drawLabels() {
   view.draw(cards->getTextInstance());
 }
 
-void PlayView::createLabelNamePlayers() {
-  game.playerIterator = game.players->begin();
-  if (game.playerIterator != game.players->end()) {
+void PlayView::createLabelNamePlayers() {;
+    playerIterator = game.players->begin();
+  if (playerIterator != game.players->end()) {
       if (game.players->size() == 3) {
           player1 =
-              new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+              new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
                   font, sf::Text::Bold, 20, 1100.f, 120.f);
-          game.playerIterator++;
+          playerIterator++;
           player2 =
-              new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+              new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
                   font, sf::Text::Bold, 20, 1100.f, 180.f);
-          game.playerIterator++;
+          playerIterator++;
           player3 =
-              new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+              new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
                   font, sf::Text::Bold, 20, 1100.f, 240.f);
       }
       if (game.players->size() == 4) {
           player1 =
-              new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+              new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
                   font, sf::Text::Bold, 20, 1100.f, 120.f);
-          game.playerIterator++;
+          playerIterator++;
           player2 =
-              new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+              new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
                   font, sf::Text::Bold, 20, 1100.f, 180.f);
-          game.playerIterator++;
+          playerIterator++;
           player3 =
-              new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+              new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
                   font, sf::Text::Bold, 20, 1100.f, 240.f);
-          game.playerIterator++;
+          playerIterator++;
           player4 =
-              new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+              new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
                   font, sf::Text::Bold, 20, 1100.f, 300.f);
       }
   }
-  game.playerIterator = game.players->begin();
 }
 
 void PlayView::drawLabelNamePlayers() {
@@ -232,6 +231,7 @@ void PlayView::drawView() {
     printBoard();
     printTownsTest();
     printMaterialCard();
+    drawLabelNamePlayers();
     printPlayerCard();
     drawLabelCardPlayer();
     drawLabelFigurePlayer();
@@ -278,16 +278,10 @@ bool PlayView::isTownClicked(list<Vertex*>::iterator vertexIterator, double x, d
     return false;
 }
 void PlayView::goView() {
-    loadView();
-    //arreglar
-    view.clear();
-    drawLabelNamePlayers();
-    //
-    view.display();
-    drawView();
+  game.playerIterator = game.players->begin();
+  loadView();
+  drawView();
   start = true;
-
-
   view.draw(sprite);
   while (view.isOpen()) {
       sf::Event eventTest;
@@ -303,20 +297,19 @@ void PlayView::goView() {
       break;
     }
         view.waitEvent(eventTest);
-        if (eventTest.mouseButton.button == sf::Mouse::Left) {
+        if (eventTest.MouseButtonPressed && eventTest.mouseButton.button == sf::Mouse::Left) {
             traverseLands(sf::Mouse::getPosition(view).x, sf::Mouse::getPosition(view).y);
-            prueba(sf::Mouse::getPosition(view).x, sf::Mouse::getPosition(view).y);
+            isTurnButtonClicked(sf::Mouse::getPosition(view).x, sf::Mouse::getPosition(view).y);
         }
-        
         drawView();
   }
 }
-void PlayView::prueba(int x, int y) {
+void PlayView::isTurnButtonClicked(int x, int y) {
     if (turn.isMouseOver(view)) {
         if (game.playerIterator != game.players->end()) {
             game.playerIterator++;
         }
-        else {
+        if (game.playerIterator == game.players->end()) {
             game.playerIterator = game.players->begin();
         }
     }

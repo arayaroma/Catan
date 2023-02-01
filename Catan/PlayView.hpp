@@ -30,6 +30,8 @@ public:
   list<City*>::iterator cityIterator;
   list<Town*>::iterator townIterator;
 
+  list<Player*>::iterator playerIterator;
+
 private:
   bool start;
   bool lastIteration = false;
@@ -111,7 +113,7 @@ private:
   bool isTownClicked(list<Vertex*>::iterator,  double x, double y);
   void isPrintedFalse();
 
-  void prueba(int, int);
+  void isTurnButtonClicked(int, int);
 
   bool getIsVertexGraphClicked(list<Vertex*>::iterator it);
   bool getIsVertexGraphPrinted(list<Vertex*>::iterator it);
