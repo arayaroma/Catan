@@ -18,3 +18,5 @@ string Alert::separateText(string text) {
 sf::Text Alert::getTitleMessage() const {
   return this->titleLabel->getTextInstance();
 }
+
+bool Alert::isOkButtonPressed()const { return (okButton);}

@@ -1,22 +1,37 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <iostream>
+#include <string>
+using std::string;
 
 class Button {
+private:
+  bool _isPressed;
+
 public:
   Button();
-  Button(std::string t, sf::Vector2f size, int charSize, sf::Color bgColor,
-         sf::Color textColor);
-  void setFont(sf::Font &font);
-  void setBackColor(sf::Color color);
-  void setTextColor(sf::Color color);
-  void setPosition(sf::Vector2f pos);
-  void setPosition2(sf::Vector2f pos);
-  void setPosition3(sf::Vector2f pos);
-  void drawTo(sf::RenderWindow &window);
-  bool isMouseOver(sf::RenderWindow &window);
+  Button(string, sf::Vector2f, int, sf::Color, sf::Color);
+
+public:
+  bool isPressed() const;
+  void setFont(sf::Font &);
+  void setBackgroundColor(sf::Color);
+  void setForegroundColor(sf::Color);
+  void setPosition(sf::Vector2f);
+  void setPositionLeft(sf::Vector2f);
+  void setPositionLefter(sf::Vector2f);
+  void drawTo(sf::RenderWindow &);
+  bool isMouseOver(sf::RenderWindow &);
 
 private:
   sf::RectangleShape button;
   sf::Text text;
+  float buttonPosX, buttonPosY, mousePosX, mousePosY, buttonWidth, buttonHeight,
+      xPos, yPos;
+
+private:
+  float getButtonPosX();
+  float getButtonPosY();
+  float getMousePosX(sf::RenderWindow &);
+  float getMousePosY(sf::RenderWindow &);
+  bool isInsideButton() const;
 };

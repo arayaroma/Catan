@@ -35,4 +35,5 @@ protected:
 protected:
   virtual string separateText(string);
   virtual sf::Text getTitleMessage() const;
+  virtual bool isOkButtonPressed() const;
 };

@@ -4,7 +4,7 @@ using std::string;
 
 class NoneAlert : public Alert {
 private:
-   string noneAlertPath = "Images/alerts/information.png";
+  const string noneAlertPath = "Images/alerts/none.png";
 
 private:
   void makeOkButton() override;
@@ -21,5 +21,5 @@ private:
 public:
   NoneAlert();
   NoneAlert(string, string);
-   string getNoneAlertPath() const { return this->noneAlertPath; }
+  const string getNoneAlertPath() const { return this->noneAlertPath; }
 };

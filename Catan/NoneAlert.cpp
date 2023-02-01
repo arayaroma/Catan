@@ -4,9 +4,9 @@ NoneAlert::NoneAlert() {}
 
 NoneAlert::NoneAlert(string titleMessage, string bodyMessage) {
   titleLabel = new Label(titleMessage, sf::Color::Black, font,
-                         sf::Text::Regular, 24, 165, 0);
+                         sf::Text::Regular, 24, 160, 5);
   messageLabel = new Label(bodyMessage, sf::Color::Black, font,
-                           sf::Text::Regular, 16, 20, 50);
+                           sf::Text::Regular, 16, 20, 70);
   titleMessage = titleMessage;
   bodyMessage = bodyMessage;
   alertType = NONE;
@@ -15,7 +15,7 @@ NoneAlert::NoneAlert(string titleMessage, string bodyMessage) {
 void NoneAlert::makeOkButton() {
   okButton =
       Button("Ok", {60, 30}, 14, sf::Color(0, 25, 225, 255), sf::Color::Black);
-  okButton.setPosition({170, 150});
+  okButton.setPosition({160, 150});
   okButton.setFont(font);
 }
 
@@ -31,7 +31,7 @@ void NoneAlert::drawButton(Button &button) {
 void NoneAlert::loadImageIcon() {
   imageIcon.loadFromFile(noneAlertPath);
   imageIconSprite.setTexture(imageIcon);
-  imageIconSprite.setPosition(50, 50);
+  imageIconSprite.setPosition(2, 2);
 }
 
 void NoneAlert::loadView() {
@@ -43,44 +43,32 @@ void NoneAlert::loadView() {
 }
 
 void NoneAlert::drawView() {
-  // loadImageIcon(); 
-
+  loadImageIcon();
   view.draw(sprite);
- // view.draw(imageIconSprite);
-
-    sf::Texture blue;
-    blue.loadFromFile(noneAlertPath);
-    sf::Sprite blueSprite(blue);
-    blueSprite.setPosition(5,5);
-    view.draw(blueSprite);
-      view.draw(titleLabel->getTextInstance());
+  view.draw(imageIconSprite);
+  view.draw(titleLabel->getTextInstance());
   view.draw(messageLabel->getTextInstance());
   drawButton(okButton);
 }
 
 void NoneAlert::goView() {
   loadView();
-  //loadImageIcon();
-  drawView(); 
+  drawView();
   while (view.isOpen()) {
     while (view.pollEvent(event)) {
       switch (event.type) {
 
       case sf::Event::MouseButtonPressed:
-          if (isMouseLeftClicked(event) && okButton.isMouseOver(view)) {
-
-              log("mouse x: " << event.mouseButton.x);
-              view.close(); 
-          }
-    
+        if (isMouseLeftClicked(event) && okButton.isMouseOver(view))
           view.close();
+
+        view.close();
       case sf::Event::Closed:
         view.close();
         break;
       }
     }
     view.clear();
-   // loadImageIcon();
     drawView();
     view.display();
   }
