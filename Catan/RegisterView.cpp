@@ -35,7 +35,7 @@ void RegisterView::makeButtons() {
       new Button("Jugar", {150, 60}, 20, sf::Color::Blue, sf::Color::Black);
 }
 
-RegisterView::RegisterView() { game.players = new list<Player *>(); }
+RegisterView::RegisterView() {  }
 
 void RegisterView::loadButtons() {
   makeButtons();
@@ -77,14 +77,14 @@ void RegisterView::typeOverTextbox(sf::Event event) {
 
 void RegisterView::loadBeforeChangingScene() {
   loadPlayerList();
-  game.makePlayer(game.players);
+  game.makePlayer();
   getNames();
 }
 
 void RegisterView::playButtonPressed() {
   loadBeforeChangingScene();
   view.close();
-  PlayView playView;
+  PlayView playView = PlayView(game.players);
   playView.goView();
 }
 
@@ -264,16 +264,16 @@ void RegisterView::getNames() {
 }
 
 void RegisterView::loadThreePlayers() {
-  game.players->push_back(new Player(firstTextbox->getText(), 0, "COLOR"));
-  game.players->push_back(new Player(secondTextbox->getText(), 0, "COLOR"));
-  game.players->push_back(new Player(thirdTextbox->getText(), 0, "COLOR"));
+  game.players->push_back(new Player("jesus", 0, "COLOR"));
+  game.players->push_back(new Player("dilan", 0, "COLOR"));
+  game.players->push_back(new Player("daniel", 0, "COLOR"));
 }
 
 void RegisterView::loadFourPlayers() {
-  game.players->push_back(new Player(firstTextbox->getText(), 0, "COLOR"));
-  game.players->push_back(new Player(secondTextbox->getText(), 0, "COLOR"));
-  game.players->push_back(new Player(thirdTextbox->getText(), 0, "COLOR"));
-  game.players->push_back(new Player(fourthTextbox->getText(), 0, "COLOR"));
+  game.players->push_back(new Player("jesus", 0, "COLOR"));
+  game.players->push_back(new Player("jesus", 0, "COLOR"));
+  game.players->push_back(new Player("jesus", 0, "COLOR"));
+  game.players->push_back(new Player("jesus", 0, "COLOR"));
 }
 
 void RegisterView::loadPlayerList() {

@@ -8,7 +8,7 @@ class View {
 
 public:
   virtual void goView() = 0;
-
+  View(){ game.players = new list<Player*>(); }
 private:
   virtual void loadView() = 0;
   virtual void drawView() = 0;

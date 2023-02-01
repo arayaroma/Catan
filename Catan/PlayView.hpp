@@ -35,6 +35,7 @@ private:
   string tempImagePath;
 
 public:
+
   void goView() override;
 
 private:
@@ -43,7 +44,7 @@ private:
 
 public:
   PlayView();
-
+  PlayView(list<Player*>*);
 private:
   void loadPlayersRectangle();
   void loadCardsRectangle();

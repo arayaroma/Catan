@@ -18,6 +18,14 @@ Player::Player(string name, int score, string color) {
   this->name = name;
   this->score = score;
   this->color = color;
+  towns = new list<Town*>();
+  roads = new list<Road*>();
+  citys = new list<City*>();
+  //carts
+  woolCard = new list<Wool*>();
+  woodCard = new list<Wood*>();
+  clayCard = new list<Clay*>();
+  mineralCard = new list<Mineral*>();
 }
 
 void Player::setName(string name) { this->name = name; }

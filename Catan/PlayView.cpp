@@ -3,9 +3,10 @@
 PlayView::PlayView() {
   landsList = new list<Land *>();
   vertexesList = new list<Vertex *>();
-  game.players = new list<Player *>();
 }
-
+PlayView::PlayView(list<Player*>* players) {
+    game.players = players;
+}
 void PlayView::createLabels() {
   materialCard = new Label("Cartas de Materiales", sf::Color(0, 0, 255, 128),
                            font, sf::Text::Bold, 20, 5.f, 230.f);
@@ -30,34 +31,37 @@ void PlayView::drawLabels() {
 
 void PlayView::createLabelNamePlayers() {
   game.playerIterator = game.players->begin();
-  if (game.players->size() == 3) {
-    player1 =
-        new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+  if (game.playerIterator != game.players->end()) {
+      if (game.players->size() == 3) {
+          player1 =
+              new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
                   font, sf::Text::Bold, 20, 1100.f, 120.f);
-    game.playerIterator++;
-    player2 =
-        new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+          game.playerIterator++;
+          player2 =
+              new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
                   font, sf::Text::Bold, 20, 1100.f, 180.f);
-    game.playerIterator++;
-    player3 =
-        new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+          game.playerIterator++;
+          player3 =
+              new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
                   font, sf::Text::Bold, 20, 1100.f, 240.f);
-  } else {
-    player1 =
-        new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+      }
+      if (game.players->size() == 4) {
+          player1 =
+              new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
                   font, sf::Text::Bold, 20, 1100.f, 120.f);
-    game.playerIterator++;
-    player2 =
-        new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+          game.playerIterator++;
+          player2 =
+              new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
                   font, sf::Text::Bold, 20, 1100.f, 180.f);
-    game.playerIterator++;
-    player3 =
-        new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+          game.playerIterator++;
+          player3 =
+              new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
                   font, sf::Text::Bold, 20, 1100.f, 240.f);
-    game.playerIterator++;
-    player4 =
-        new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+          game.playerIterator++;
+          player4 =
+              new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
                   font, sf::Text::Bold, 20, 1100.f, 300.f);
+      }
   }
 }
 
@@ -66,7 +70,7 @@ void PlayView::drawLabelNamePlayers() {
   view.draw(player1->getTextInstance());
   view.draw(player2->getTextInstance());
   view.draw(player3->getTextInstance());
-  view.draw(player4->getTextInstance());
+ /// view.draw(player4->getTextInstance());
 }
 
 void PlayView::printPlayerCard() {

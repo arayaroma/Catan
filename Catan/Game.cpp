@@ -114,7 +114,7 @@ void Game::makeDevelopCard() {
 }
 
 void Game::makeFigures() {
-  int i = 0;
+  int i;
   for (i = 0; i < 60; i++) {
     if (i < 16)
       citiesList->push_back(new City());
@@ -320,12 +320,11 @@ void Game::printVertex(list<Vertex *> *vertexList) {
   }
 }
 
-void Game::makePlayer(list<Player *> *playersList) {
-  players = playersList;
-  list<Player *>::iterator playerIterator;
+void Game::makePlayer() {
   playerIterator = players->begin();
   while (playerIterator != players->end()) {
     loadFiguresToPlayer((*playerIterator));
+    playerIterator++;
   }
 }
 
@@ -340,6 +339,6 @@ void Game::loadFiguresToPlayer(Player *player) {
   }
 }
 
-void Game::loadRhoades(Player *player) { player->roads->push_back(new Road()); }
+void Game::loadRhoades(Player *player) { player->roads->push_back(new Road());}
 void Game::loadCities(Player *player) { player->citys->push_back(new City()); }
 void Game::loadTowns(Player *player) { player->towns->push_back(new Town()); }
