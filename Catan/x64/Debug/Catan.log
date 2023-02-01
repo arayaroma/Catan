@@ -1,14 +1,2 @@
-﻿  AboutView.cpp
-  Application.cpp
-  PlayView.cpp
-  RegisterView.cpp
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\RegisterView.cpp(239,33): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\RegisterView.cpp(248,35): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\RegisterView.cpp(257,32): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\RegisterView.cpp(266,34): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-  TextBox.cpp
-  TitleView.cpp
-  View.cpp
-  main.cpp
-  Generando código...
+﻿  PlayView.cpp
   Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe

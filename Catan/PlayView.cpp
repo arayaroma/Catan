@@ -176,7 +176,7 @@ void PlayView::loadView() {
 }
 
 void PlayView::drawView() {
-  //view.clear();
+  view.clear();
   view.draw(sprite);
   loadGameButtons();
   drawLabels();
@@ -188,7 +188,6 @@ void PlayView::drawView() {
   drawLabelCardPlayer();
   drawLabelFigurePlayer();
   printPlayerFigure();
-  view.display();
 }
 void PlayView::searhTown(double x, double y) {
     initializeLandsList();
@@ -199,26 +198,27 @@ void PlayView::searhTown(double x, double y) {
 }
 void PlayView::traverseTown(double x, double y, list<Land*>::iterator it) {
     initializeVertexesList(it);
+    bool band = false;
     while (vertexIterator != (*it)->getTownsList()->end()) {
-        if(x>(*vertexIterator)->getTown()->getPosX()-15 && x < (*vertexIterator)->getTown()->getPosX() + 15 
-            && y > (*vertexIterator)->getTown()->getPosY() - 15 && y < (*vertexIterator)->getTown()->getPosX() + 15){ 
-            string tempImagePath = "Images/Figures/TownBlue.png";
-            printImages(tempImagePath, (*vertexIterator)->getTown()->getPosX(), (*vertexIterator)->getTown()->getPosY());
-            view.display();
-            std::cout << "prueba" << std::endl;
-            break;
+        if (!band) {
+            if (x > (*vertexIterator)->getTown()->getPosX()  && x < (*vertexIterator)->getTown()->getPosX() + 30
+                && y >(*vertexIterator)->getTown()->getPosY()  && y < (*vertexIterator)->getTown()->getPosY() + 30) {
+                string tempImagePath = "Images/Figures/TownBlue.png";
+                printImages(tempImagePath, (*vertexIterator)->getTown()->getPosX(), (*vertexIterator)->getTown()->getPosY());
+                view.display();
+                band = true;
+                break;
+            }
         }
         vertexIterator++;
     }
 }
 void PlayView::goView() {
   loadView();
-  drawView();
   start = true;
   while (view.isOpen()) {
     while (view.pollEvent(event)) {
       showCoordinates(event);
-      
       switch (event.type) {
       case sf::Event::MouseButtonPressed:
         if (isMouseLeftClicked(event)) {
@@ -229,7 +229,10 @@ void PlayView::goView() {
         view.close();
         break;
       }
+      break;
     }
+    drawView();
+    view.display();
   }
 }
 
@@ -261,6 +264,7 @@ void PlayView::printImages(string imagePath, double posX, double posY) {
 void PlayView::initializeLandsList() {
   game.loadLands();
   game.assignTownsToLand();
+  game.graph =  Graph();
   game.makeGraph();
   landsList = game.getLandsList();
   it = landsList->begin();
