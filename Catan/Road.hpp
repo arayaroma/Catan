@@ -24,7 +24,7 @@
 class Road : public Figure {
 public:
   Road();
-
+  Road(string url) { this->imagePath = url; }
   void setPosX(double posX) { this->posX = posX; }
   double getPosX() { return this->posX; }
 
@@ -32,7 +32,7 @@ public:
   double getPosY() { return this->posY; }
 
   string getType() const override { return FIGURE; }
-  string getImagePath() override { return "Images/figures/road"; }
+  string getImagePath() override { return this->imagePath; }
   void toString() override {}
   int getWorthPoints() const override { return this->worthPoints; }
 };

@@ -119,8 +119,8 @@ public:
   void printVertex(list<Vertex *> *vertexList);
 
   void makePlayer();
-  void loadFiguresToPlayer(Player *);
-  void loadRhoades(Player *);
+  void loadFiguresToPlayer(Player *, int );
+  void loadRoades(Player *);
   void loadCities(Player *);
   void loadTowns(Player *);
 };

@@ -23,8 +23,8 @@
 
 class City : public Figure {
 public:
-  City();
-
+    City();
+    City(string url) { this->imagePath = url; }
   void setPosX(double posX) { this->posX = posX; }
   double getPosX() { return this->posX; }
 
@@ -33,6 +33,6 @@ public:
 
   int getWorthPoints() const override { return this->worthPoints; }
   string getType() const override { return FIGURE; }
-  string getImagePath() override { return "Images/figures/city"; }
+  string getImagePath() override { return this->imagePath; }
   void toString() override {}
 };

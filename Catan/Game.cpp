@@ -117,10 +117,10 @@ void Game::makeFigures() {
   int i;
   for (i = 0; i < 60; i++) {
     if (i < 16)
-      citiesList->push_back(new City());
+      citiesList->push_back(new City(""));
     if (i < 20)
-      townsList->push_back(new Town());
-    roadsList->push_back(new Road());
+      townsList->push_back(new Town(""));
+    roadsList->push_back(new Road(""));
   }
 }
 
@@ -321,17 +321,19 @@ void Game::printVertex(list<Vertex *> *vertexList) {
 }
 
 void Game::makePlayer() {
+  int numPlayer=0;
   playerIterator = players->begin();
   while (playerIterator != players->end()) {
-    loadFiguresToPlayer((*playerIterator));
+    loadFiguresToPlayer((*playerIterator), numPlayer);
     playerIterator++;
+    numPlayer++;
   }
 }
 
-void Game::loadFiguresToPlayer(Player *player) {
+void Game::loadFiguresToPlayer(Player *player, int numPlayer) {
   int iterator;
   for (iterator = 0; iterator < 15; iterator++) {
-    loadRhoades(player);
+    loadRoades(player);
     if (iterator < 4)
       loadCities(player);
     if (iterator < 5)
@@ -339,6 +341,34 @@ void Game::loadFiguresToPlayer(Player *player) {
   }
 }
 
-void Game::loadRhoades(Player *player) { player->roads->push_back(new Road());}
-void Game::loadCities(Player *player) { player->citys->push_back(new City()); }
-void Game::loadTowns(Player *player) { player->towns->push_back(new Town()); }
+void Game::loadRoades(Player *player) {
+    if (player->getColor() == "RED")
+        player->roads->push_back(new Road("Images/Figures/RoadRed.png"));
+    if (player->getColor() == "BLUE")
+        player->roads->push_back(new Road("Images/Figures/RoadBlue.png"));
+    if (player->getColor() == "GREEN")
+        player->roads->push_back(new Road("Images/Figures/RoadGreen.png"));
+    if (player->getColor() == "YELLOW")
+        player->roads->push_back(new Road("Images/Figures/RoadYellow.png"));
+}
+void Game::loadCities(Player *player) {
+    if (player->getColor() == "RED")
+        player->citys->push_back(new City("Images/Figures/CityRed.png"));
+    if (player->getColor() == "BLUE")
+        player->citys->push_back(new City("Images/Figures/CityBlue.png"));
+    if (player->getColor() == "GREEN")
+        player->citys->push_back(new City("Images/Figures/CityGreen.png"));
+    if (player->getColor() == "YELLOW")
+        player->citys->push_back(new City("Images/Figures/CityYellow.png"));
+
+}
+void Game::loadTowns(Player *player) { 
+    if (player->getColor() == "RED")
+        player->towns->push_back(new Town("Images/Figures/TownRed.png"));
+    if (player->getColor() == "BLUE")
+        player->towns->push_back(new Town("Images/Figures/TownBlue.png"));
+    if (player->getColor() == "GREEN")
+        player->towns->push_back(new Town("Images/Figures/TownGreen.png"));
+    if (player->getColor() == "YELLOW")
+        player->towns->push_back(new Town("Images/Figures/TownYellow.png"));
+}

@@ -25,6 +25,10 @@ public:
   list<Land *>::iterator it;
   list<Land *>::iterator it2;
 
+  list<Road*>::iterator roadIterator;
+  list<City*>::iterator cityIterator;
+  list<Town*>::iterator townIterator;
+
 private:
   bool start;
   bool lastIteration = false;
@@ -99,6 +103,9 @@ private:
   void createLabelFigurePlayer();
   void drawLabelFigurePlayer();
   void printPlayerFigure();
+
+  void searhTown(double, double);
+  void traverseTown(double, double, list<Land*>::iterator it);
 
 private:
   sf::RectangleShape playerRectangle, cardsRectangle;

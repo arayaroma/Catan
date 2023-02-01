@@ -26,7 +26,7 @@
 class Town : public Figure {
 public:
   Town();
-
+  Town(string url) { this->imagePath = url; }
   void setPosX(double posX) { this->posX = posX; }
   double getPosX() { return this->posX; }
 
@@ -35,6 +35,6 @@ public:
 
   int getWorthPoints() const override { return this->worthPoints; }
   string getType() const override { return FIGURE; }
-  string getImagePath() override { return "Images/figures/town"; }
+  string getImagePath() override { return this->imagePath; }
   void toString() override {}
 };
