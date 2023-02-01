@@ -25,9 +25,9 @@ private:
   bool isEscapePressed() const;
   void registerButton();
   void showCoordinates(sf::Event);
-  void loadTextFields(TextBox *);
+  void loadTextFields(TextBox &);
   void loadButtons();
-  void loadRegisterButtons(Button *);
+  void loadRegisterButtons(Button &);
   void loadColors();
   void getNames();
 
@@ -35,9 +35,13 @@ private:
   void loadThreePlayers();
   void loadFourPlayers();
   void loadTextboxes();
+  void makeTextboxes();
   void makeButtons();
   void makePlayerButtons();
   void typeOverTextbox(sf::Event);
+
+  void drawTextboxes();
+  void drawButtons();
 
   void goTitleView();
   bool isPlayButtonPressed();
@@ -45,10 +49,9 @@ private:
   void loadBeforeChangingScene();
 
 private:
-  TextBox *firstTextbox, *secondTextbox, *thirdTextbox, *fourthTextbox;
+  TextBox firstTextbox, secondTextbox, thirdTextbox, fourthTextbox;
   Label *title, *name, *color, *note;
-  Button *threePlayersButton, *fourPlayersButton;
-  Button *playButton;
+  Button threePlayersButton, fourPlayersButton, playButton;
   bool isThreePlayers = false;
   bool isFourPlayers = false;
 };

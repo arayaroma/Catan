@@ -14,7 +14,7 @@ public:
   TextBox();
   TextBox(int size, sf::Color color, bool sel, sf::Vector2f position,
           sf::Vector2f sizeBorder, sf::Color colorBorder);
-  void serFont(sf::Font &font);
+  void setFont(sf::Font &font);
   void setPosition(sf::Vector2f pos);
   void setLimit(bool tOf);
   void setLimit(bool tOf, int lim);
@@ -24,12 +24,15 @@ public:
   void typeOn(sf::Event input);
   bool isMouseOver(sf::RenderWindow &window);
   bool isTyping(int) const;
+  void setVisible(bool);
+  bool isVisible() const;
 
 private:
   sf::RectangleShape border;
   sf::Text textBox;
   std::ostringstream text;
   bool isSelected = false;
+  bool _isVisible;
   bool hasLimit = false;
   int limit;
 

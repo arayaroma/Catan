@@ -26,6 +26,14 @@ public:
     return (event.mouseButton.button == sf::Mouse::Right);
   }
 
+  virtual bool isReturnPressed() const {
+    return (sf::Keyboard::isKeyPressed(sf::Keyboard::Return));
+  }
+  
+  virtual bool isEndPressed() const {
+    return (sf::Keyboard::isKeyPressed(sf::Keyboard::End));
+  }
+
 protected:
   Game game;
 

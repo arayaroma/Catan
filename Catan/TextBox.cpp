@@ -17,6 +17,7 @@ TextBox::TextBox(int size, sf::Color color, bool sel, sf::Vector2f position,
   } else {
     textBox.setString("");
   }
+  _isVisible = true;
 }
 
 bool TextBox::isTyping(int charType) const {
@@ -48,7 +49,7 @@ void TextBox::deleteLastCharacter() {
   textBox.setString(text.str());
 }
 
-void TextBox::serFont(sf::Font &font) { textBox.setFont(font); }
+void TextBox::setFont(sf::Font &font) { textBox.setFont(font); }
 
 void TextBox::setPosition(sf::Vector2f pos) { textBox.setPosition(pos); }
 
@@ -58,6 +59,20 @@ void TextBox::setLimit(bool tOf, int lim) {
   hasLimit = tOf;
   limit = lim;
 }
+
+void TextBox::setVisible(bool isVisible) {
+  if (isVisible) {
+    border.setFillColor(sf::Color::White);
+    _isVisible = true;
+  }
+  if (!isVisible) {
+    border.setFillColor(sf::Color(255, 255, 255, 0));
+    _isVisible = false;
+  }
+}
+
+bool TextBox::isVisible() const { return this->_isVisible; }
+
 // no se entiende que es sel
 void TextBox::setSelected(bool sel) {
   isSelected = sel;
