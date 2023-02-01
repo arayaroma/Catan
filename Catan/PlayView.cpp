@@ -63,6 +63,7 @@ void PlayView::createLabelNamePlayers() {
                   font, sf::Text::Bold, 20, 1100.f, 300.f);
       }
   }
+  game.playerIterator = game.players->begin();
 }
 
 void PlayView::drawLabelNamePlayers() {
@@ -184,7 +185,6 @@ void PlayView::drawView() {
   printTownsTest();
   printMaterialCard();
   printPlayerCard();
-  drawLabelNamePlayers();
   drawLabelCardPlayer();
   drawLabelFigurePlayer();
   printPlayerFigure();
@@ -204,11 +204,13 @@ void PlayView::traverseTown(double x, double y, list<Land*>::iterator it) {
         if (!band) {
             if (x > (*vertexIterator)->getTown()->getPosX()  && x < (*vertexIterator)->getTown()->getPosX() + 30
                 && y >(*vertexIterator)->getTown()->getPosY()  && y < (*vertexIterator)->getTown()->getPosY() + 30) {
-                 url = "Images/Figures/TownBlue.png";
-                game.graph.getVertex((*vertexIterator)->getVertexId())->setIsClicked(true);
+                townIterator = (*game.playerIterator)->towns->begin();
+                
                 xprueba = (*vertexIterator)->getTown()->getPosX();
                 yprueba = (*vertexIterator)->getTown()->getPosY();
-                printImages(url, xprueba, yprueba);
+                game.graph.getVertex((*vertexIterator)->getVertexId())->setIsClicked(true);
+                if (townIterator != (*game.playerIterator)->towns->end())
+                    printImages((*townIterator)->getImagePath(), xprueba, yprueba);
                 view.display();
                 isCliked = true;
                 band = true;
@@ -218,9 +220,13 @@ void PlayView::traverseTown(double x, double y, list<Land*>::iterator it) {
         vertexIterator++;
     }
 }
+
 void PlayView::goView() {
-  loadView();
-  drawView();
+    loadView();
+    view.clear();
+    drawLabelNamePlayers();
+    view.display();
+    drawView();
   start = true;
   
   while (view.isOpen()) {
@@ -237,13 +243,26 @@ void PlayView::goView() {
       break;
     }
         view.waitEvent(eventTest);
-        if (eventTest.mouseButton.button == sf::Mouse::Left)
+        if (eventTest.mouseButton.button == sf::Mouse::Left) {
             searhTown(sf::Mouse::getPosition(view).x, sf::Mouse::getPosition(view).y);
-    
+            prueba(sf::Mouse::getPosition(view).x, sf::Mouse::getPosition(view).y);
+        }
+        
+        drawView();
   }
 
 }
+void PlayView::prueba(int x, int y) {
+    if (x > 590 && x < 590 + 30 && y > 650 && y < 650 + 30) {
+        if (game.playerIterator != game.players->end()) {
+            game.playerIterator++;
+        }
+        else {
+            game.playerIterator = game.players->begin();
+        }
+    }
 
+}
 void PlayView::setTurn(int numberPlayers) {
   std::cout << turnNumber << std::endl;
   int i = 0;
@@ -512,12 +531,20 @@ void PlayView::loadHexagonNodes(list<Vertex *>::iterator itX, double posX,
       posX + landsRadius + (landsRadius * cos(getFormula(iterationNumber)));
   double relativePositionY =
       posY + landsRadius + (landsRadius * sin(getFormula(iterationNumber)));
-  if (!game.graph.getVertex((*itX)->getVertexId())->getIsPrint()  && !game.graph.getVertex((*itX)->getVertexId())->getIsClicked()) {
-    game.graph.getVertex((*itX)->getVertexId())->setIsPrinted(true);
-    printTowns(relativePositionX, relativePositionY);
-    setPosXYtoVertex(itX, relativePositionX, relativePositionY);
-    setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
-                            relativePositionY);
+  if (!game.graph.getVertex((*itX)->getVertexId())->getIsClicked()) {
+      if (!game.graph.getVertex((*itX)->getVertexId())->getIsPrint()) {
+          game.graph.getVertex((*itX)->getVertexId())->setIsPrinted(true);
+          printTowns(relativePositionX, relativePositionY);
+          setPosXYtoVertex(itX, relativePositionX, relativePositionY);
+          setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
+              relativePositionY);
+      }
+  }
+  else if(!game.graph.getVertex((*itX)->getVertexId())->getIsPrint()){
+      game.graph.getVertex((*itX)->getVertexId())->setIsPrinted(true);
+      townIterator = (*game.playerIterator)->towns->begin();
+      if (townIterator != (*game.playerIterator)->towns->end())
+          printImages((*townIterator)->getImagePath(), relativePositionX, relativePositionY);
   }
 }
 

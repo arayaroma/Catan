@@ -112,6 +112,10 @@ private:
   void traverseTown(double, double, list<Land*>::iterator it);
 
   void isPrintedFalse();
+
+  void updatePlayer();
+
+  void prueba(int, int);
 private:
   sf::RectangleShape playerRectangle, cardsRectangle;
   Label *materialCard, *pricingTable, *turns, *cards, *developCard;
