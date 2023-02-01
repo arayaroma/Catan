@@ -240,37 +240,43 @@ void PlayView::drawView() {
     view.display();
  
 }
-void PlayView::searhTown(double x, double y) {
+void PlayView::traverseLands(double x, double y) {
     initializeLandsList();
     while (it != landsList->end()) {
-        traverseTown(x,y, it);
+        searhTown(x,y, it);
         it++;
     }
 }
-void PlayView::traverseTown(double x, double y, list<Land*>::iterator it) {
+void PlayView::searhTown(double x, double y, list<Land*>::iterator it) {
     initializeVertexesList(it);
-    bool band = false;
     while (vertexIterator != (*it)->getTownsList()->end()) {
-        if (!band) {
-            if (x > (*vertexIterator)->getTown()->getPosX()  && x < (*vertexIterator)->getTown()->getPosX() + 30
-                && y >(*vertexIterator)->getTown()->getPosY()  && y < (*vertexIterator)->getTown()->getPosY() + 30) {
-                townIterator = (*game.playerIterator)->towns->begin();
-                
-                xprueba = (*vertexIterator)->getTown()->getPosX();
-                yprueba = (*vertexIterator)->getTown()->getPosY();
+        if (isTownClicked(vertexIterator, x, y)) {
+            townIterator = (*game.playerIterator)->towns->begin();
                 game.graph.getVertex((*vertexIterator)->getVertexId())->setIsClicked(true);
                 if (townIterator != (*game.playerIterator)->towns->end())
-                    printImages((*townIterator)->getImagePath(), xprueba, yprueba);
+                    printImages((*townIterator)->getImagePath(), (*vertexIterator)->getTown()->getPosX(), (*vertexIterator)->getTown()->getPosY());
+                setOwnerToVertexGraph(game.graph.getVertex((*vertexIterator)->getVertexId()));
+                deleteTowntoPlayer();
                 view.display();
-                isCliked = true;
-                band = true;
-                break;
-            }
         }
-        vertexIterator++;
+     vertexIterator++;
     }
 }
-
+void PlayView:: deleteTowntoPlayer() {
+    if(townIterator != (*game.playerIterator)->towns->end())
+        (*game.playerIterator)->towns->pop_back();//poner alerta aca
+}
+void PlayView::setOwnerToVertexGraph(Vertex* vertex) {
+    game.graph.getVertex(vertex->getVertexId())->setOwner((*game.playerIterator));
+}
+bool PlayView::isTownClicked(list<Vertex*>::iterator vertexIterator, double x, double y) {
+    if (x > (*vertexIterator)->getTown()->getPosX() && 
+        x < (*vertexIterator)->getTown()->getPosX() + 30
+        && y >(*vertexIterator)->getTown()->getPosY() && 
+        y < (*vertexIterator)->getTown()->getPosY() + 30)
+        return true;
+    return false;
+}
 void PlayView::goView() {
     loadView();
     //arreglar
@@ -298,7 +304,7 @@ void PlayView::goView() {
     }
         view.waitEvent(eventTest);
         if (eventTest.mouseButton.button == sf::Mouse::Left) {
-            searhTown(sf::Mouse::getPosition(view).x, sf::Mouse::getPosition(view).y);
+            traverseLands(sf::Mouse::getPosition(view).x, sf::Mouse::getPosition(view).y);
             prueba(sf::Mouse::getPosition(view).x, sf::Mouse::getPosition(view).y);
         }
         
@@ -584,8 +590,8 @@ void PlayView::loadHexagonNodes(list<Vertex *>::iterator itX, double posX,
       posX + landsRadius + (landsRadius * cos(getFormula(iterationNumber)));
   double relativePositionY =
       posY + landsRadius + (landsRadius * sin(getFormula(iterationNumber)));
-  if (!game.graph.getVertex((*itX)->getVertexId())->getIsClicked()) {
-      if (!game.graph.getVertex((*itX)->getVertexId())->getIsPrint()) {
+  if (!getIsVertexGraphClicked(itX)) {
+      if (!getIsVertexGraphPrinted(itX)) {
           game.graph.getVertex((*itX)->getVertexId())->setIsPrinted(true);
           printTowns(relativePositionX, relativePositionY);
           setPosXYtoVertex(itX, relativePositionX, relativePositionY);
@@ -593,16 +599,22 @@ void PlayView::loadHexagonNodes(list<Vertex *>::iterator itX, double posX,
               relativePositionY);
       }
   }
-  else if(!game.graph.getVertex((*itX)->getVertexId())->getIsPrint()){
+  else if(!getIsVertexGraphPrinted(itX)){
       game.graph.getVertex((*itX)->getVertexId())->setIsPrinted(true);
-      townIterator = (*game.playerIterator)->towns->begin();
-      if (townIterator != (*game.playerIterator)->towns->end())
+      townIterator = game.graph.getVertex((*itX)->getVertexId())->getOwner()->towns->begin();//(*game.playerIterator)->towns->begin();
+      if (townIterator != game.graph.getVertex((*itX)->getVertexId())->getOwner()->towns->end())
           printImages((*townIterator)->getImagePath(), relativePositionX, relativePositionY);
   }
 }
-
-void PlayView::isPrinted(int vertexId) {
-  game.graph.getVertex(vertexId)->setIsPrinted(true);
+bool PlayView::getIsVertexGraphClicked(list<Vertex*>::iterator it) {
+    if (!game.graph.getVertex((*it)->getVertexId())->getIsClicked())
+        return false;
+    return true;
+}
+bool PlayView::getIsVertexGraphPrinted(list<Vertex*>::iterator it) {
+    if (!game.graph.getVertex((*it)->getVertexId())->getIsPrint())
+        return false;
+    return true;
 }
 
 void PlayView::setPosXYtoVertexesGraph(int vertexId, double posX, double posY) {

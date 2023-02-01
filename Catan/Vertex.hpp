@@ -1,7 +1,7 @@
 #pragma once
 #include "Town.hpp"
 #include <iostream>
-
+#include "Player.hpp"
 class Edge;
 
 class Vertex {
@@ -15,12 +15,16 @@ private:
 public:
   Vertex *next;
   Town *town;
-
+  Player* owner;
 public:
   Vertex();
   Vertex(int, string, Town *, bool);
 
   int getVertexId() const { return this->vertexId; }
+
+  void setOwner(Player* owner) { this->owner = owner; }
+  Player* getOwner() { return this->owner; }
+
   Town* getTown() const { return this->town; }
   void toString() { std::cout << this->vertexId << " "; }
   bool getIsPrint() { return this->isPrinted; }

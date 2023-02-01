@@ -38,10 +38,6 @@ private:
   int vertexIterationNumber;
   int turnNumber;
   string tempImagePath;
-
-  bool isCliked = false;
-  int xprueba=0;
-  int yprueba=0;
   string url="";
 public:
 
@@ -99,7 +95,6 @@ private:
   void setPosXYtoVertexesGraph(int, double, double);
   void consolePrintLandAndVertex();
 
-  void isPrinted(int);
   void showCoordinates(sf::Event event);
 
   void createLabelNamePlayers();
@@ -111,14 +106,19 @@ private:
   void drawLabelFigurePlayer();
   void printPlayerFigure();
 
-  void searhTown(double, double);
-  void traverseTown(double, double, list<Land*>::iterator it);
-
+  void traverseLands(double, double);
+  void searhTown(double, double, list<Land*>::iterator it);
+  bool isTownClicked(list<Vertex*>::iterator,  double x, double y);
   void isPrintedFalse();
 
-  void updatePlayer();
-
   void prueba(int, int);
+
+  bool getIsVertexGraphClicked(list<Vertex*>::iterator it);
+  bool getIsVertexGraphPrinted(list<Vertex*>::iterator it);
+
+  void setOwnerToVertexGraph(Vertex* vertex);
+
+  void deleteTowntoPlayer();
 private:
   sf::RectangleShape playerRectangle, cardsRectangle;
   Label *materialCard, *pricingTable, *turns, *cards, *developCard;
