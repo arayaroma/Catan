@@ -1,35 +1,46 @@
 #pragma once
 #include "Button.hpp"
 #include "Label.hpp"
+#include "View.hpp"
 #include <SFML/Graphics.hpp>
 #include <string>
+#include <sstream>
 
-#define INFORMATION "Information"
-#define CONFIRMATION "Confirmation"
-#define WARNING "Warning"
-#define ERROR "Error"
-#define NONE "None"
-
-#define alertPosX 1280 / 2
-#define alertPosY 720 / 2
-#define alertOffsetX -200
-#define alertOffsetY -50
+#define NONE 0
+#define INFORMATION 1 
+#define CONFIRMATION 2
+#define WARNING 3
+#define ERROR 4
 
 using std::string;
 
-class Alert {
+class Alert : public View {
 private:
-  // Pasar a Pantalla 600x400
-  sf::RectangleShape panel;
-  sf::Font font;
   Label *title, *message;
-  // Button *okButton;
-  string alertType;
+  string titleMessage;
+  Button *okButton;
+  int alertType;
+
+public:
+  void goView() override;
+
+private:
+  void loadView() override;
+  void drawView() override;
+
+private:
+  void makeButton();
+  void drawButton(Button &);
+  string separateText(string);
+  Alert createAlert(int);
+  Alert noneAlert();
+  Alert errorAlert();
+  Alert warningAlert();
+  Alert confirmationAlert();
+  Alert informationAlert();
 
 public:
   Alert();
-  Alert(sf::RenderWindow &, string, string, string);
-  void show();
-  void setTitle(string);
-  string getTitle() const;
+  Alert(int, string, string);
+  sf::Text getTitle() const;
 };

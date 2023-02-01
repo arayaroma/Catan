@@ -17,16 +17,16 @@ void TitleView::drawView() {
 }
 
 void TitleView::goView() {
+  Alert *alert = new Alert(NONE, "Titulo",
+                           "Esto es un mensaje, con bastante texto indefinido, "
+                           "para probar esta alerta");
   loadView();
-  Alert *alert = new Alert(view, NONE, "Titulo", "Esto es un mensaje");
   drawView();
+  alert->goView();
 
   while (view.isOpen()) {
     while (view.pollEvent(event)) {
       switch (event.type) {
-      case sf::Event::Closed:
-        view.close();
-        break;
       case sf::Event::MouseButtonPressed:
         if (isMouseLeft(event)) {
           if (isPlayView(event)) {
@@ -41,6 +41,10 @@ void TitleView::goView() {
             aboutView.goView();
           }
         }
+        break;
+
+      case sf::Event::Closed:
+        view.close();
         break;
 
       default:
