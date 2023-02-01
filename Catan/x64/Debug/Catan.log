@@ -1,38 +1,18 @@
 ﻿  AboutView.cpp
-  Alert.cpp
   Application.cpp
-  Button.cpp
-  Card.cpp
-  City.cpp
-  Clay.cpp
-  Component.cpp
   Computer.cpp
-  Dice.cpp
-  Edge.cpp
-  Figure.cpp
   Game.cpp
-  Graph.cpp
   Human.cpp
-  Knight.cpp
-  Label.cpp
-  Land.cpp
-  Mineral.cpp
   PlayView.cpp
-  Generating Code...
-  Compiling...
   Player.cpp
-  Progress.cpp
   RegisterView.cpp
-  Road.cpp
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\RegisterView.cpp(239,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\RegisterView.cpp(248,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\RegisterView.cpp(257,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\RegisterView.cpp(266,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   TextBox.cpp
   TitleView.cpp
-  Town.cpp
-  Vertex.cpp
-  VictoryPoints.cpp
   View.cpp
-  Wheat.cpp
-  Wood.cpp
-  Wool.cpp
   main.cpp
   Generating Code...
   LINK : C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe not found or not built by the last incremental link; performing full link

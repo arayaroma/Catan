@@ -8,10 +8,31 @@ class View {
 
 public:
   virtual void goView() = 0;
-
+  View(){ game.players = new list<Player*>(); }
 private:
   virtual void loadView() = 0;
   virtual void drawView() = 0;
+
+public:
+  virtual bool isMousePressed(sf::Event event) const {
+    return (event.type == sf::Event::MouseButtonPressed);
+  }
+
+  virtual bool isMouseLeftClicked(sf::Event event) const {
+    return (event.mouseButton.button == sf::Mouse::Left);
+  }
+
+  virtual bool isMouseRightClicked(sf::Event event) const {
+    return (event.mouseButton.button == sf::Mouse::Right);
+  }
+
+  virtual bool isReturnPressed() const {
+    return (sf::Keyboard::isKeyPressed(sf::Keyboard::Return));
+  }
+  
+  virtual bool isEndPressed() const {
+    return (sf::Keyboard::isKeyPressed(sf::Keyboard::End));
+  }
 
 protected:
   Game game;
