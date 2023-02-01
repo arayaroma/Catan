@@ -233,12 +233,12 @@ void RegisterView::loadTextFields(TextBox &textbox) {
 void RegisterView::loadColors() {
   float y = 245;
   for (int i = 0; i < 4; i++) {
-    sf::Texture blue;
-    blue.loadFromFile("Images/Colors/Blue.png");
-    sf::Sprite blueSprite(blue);
-    blueSprite.setPosition(580, y);
-    y += 60;
-    view.draw(blueSprite);
+      sf::Texture blue;
+      blue.loadFromFile("Images/Colors/Blue.png");
+      sf::Sprite blueSprite(blue);
+      blueSprite.setPosition(580, y);
+      y += 60;
+      view.draw(blueSprite);
   }
   y = 245;
   for (int i = 0; i < 4; i++) {

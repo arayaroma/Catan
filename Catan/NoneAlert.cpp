@@ -43,22 +43,36 @@ void NoneAlert::loadView() {
 }
 
 void NoneAlert::drawView() {
+  // loadImageIcon(); 
+
   view.draw(sprite);
-  view.draw(titleLabel->getTextInstance());
+ // view.draw(imageIconSprite);
+
+    sf::Texture blue;
+    blue.loadFromFile(noneAlertPath);
+    sf::Sprite blueSprite(blue);
+    blueSprite.setPosition(5,5);
+    view.draw(blueSprite);
+      view.draw(titleLabel->getTextInstance());
   view.draw(messageLabel->getTextInstance());
-  view.draw(imageIconSprite);
   drawButton(okButton);
 }
 
 void NoneAlert::goView() {
   loadView();
-  loadImageIcon();
+  //loadImageIcon();
+  drawView(); 
   while (view.isOpen()) {
     while (view.pollEvent(event)) {
       switch (event.type) {
 
       case sf::Event::MouseButtonPressed:
-        if (isMouseLeftClicked(event) && okButton.isMouseOver(view))
+          if (isMouseLeftClicked(event) && okButton.isMouseOver(view)) {
+
+              log("mouse x: " << event.mouseButton.x);
+              view.close(); 
+          }
+    
           view.close();
       case sf::Event::Closed:
         view.close();
@@ -66,7 +80,7 @@ void NoneAlert::goView() {
       }
     }
     view.clear();
-    loadImageIcon();
+   // loadImageIcon();
     drawView();
     view.display();
   }
