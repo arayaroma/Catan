@@ -1,50 +1,54 @@
 #include "RegisterView.hpp"
 
+void RegisterView::makeTextboxes() {
+  firstTextbox = TextBox(15, sf::Color::Black, false, {345, 240}, {180, 40},
+                         sf::Color::White);
+  secondTextbox = TextBox(15, sf::Color::Black, false, {345, 300}, {180, 40},
+                          sf::Color::White);
+  thirdTextbox = TextBox(15, sf::Color::Black, false, {345, 360}, {180, 40},
+                         sf::Color::White);
+  fourthTextbox = TextBox(15, sf::Color::Black, false, {345, 420}, {180, 40},
+                          sf::Color::White);
+}
+
 void RegisterView::loadTextboxes() {
-  firstTextbox = new TextBox(15, sf::Color::Black, false, {345, 420}, {180, 40},
-                             sf::Color::White);
-  firstTextbox->serFont(font);
-  firstTextbox->setPosition({365, 250});
+  makeTextboxes();
+  firstTextbox.setFont(font);
+  firstTextbox.setPosition({365, 250});
 
-  secondTextbox = new TextBox(15, sf::Color::Black, false, {345, 360},
-                              {180, 40}, sf::Color::White);
-  secondTextbox->serFont(font);
-  secondTextbox->setPosition({365, 310});
+  secondTextbox.setFont(font);
+  secondTextbox.setPosition({365, 310});
 
-  thirdTextbox = new TextBox(15, sf::Color::Black, false, {345, 240}, {180, 40},
-                             sf::Color::White);
-  thirdTextbox->serFont(font);
-  thirdTextbox->setPosition({365, 370});
+  thirdTextbox.setFont(font);
+  thirdTextbox.setPosition({365, 370});
 
-  fourthTextbox = new TextBox(15, sf::Color::Black, false, {345, 300},
-                              {180, 40}, sf::Color::White);
-  fourthTextbox->serFont(font);
-  fourthTextbox->setPosition({365, 430});
+  fourthTextbox.setFont(font);
+  fourthTextbox.setPosition({365, 430});
 }
 
 void RegisterView::makePlayerButtons() {
-  fourPlayersButton = new Button("4 Jugadores", {200, 60}, 20, sf::Color::Green,
-                                 sf::Color::Black);
-  threePlayersButton = new Button("3 Jugadores", {200, 60}, 20,
-                                  sf::Color::Green, sf::Color::Black);
+  fourPlayersButton =
+      Button("4 Jugadores", {200, 60}, 20, sf::Color::Green, sf::Color::Black);
+  threePlayersButton =
+      Button("3 Jugadores", {200, 60}, 20, sf::Color::Green, sf::Color::Black);
 }
 
 void RegisterView::makeButtons() {
   makePlayerButtons();
   playButton =
-      new Button("Jugar", {150, 60}, 20, sf::Color::Blue, sf::Color::Black);
+      Button("Jugar", {150, 60}, 20, sf::Color::Blue, sf::Color::Black);
 }
 
-RegisterView::RegisterView() {  }
+RegisterView::RegisterView() {}
 
 void RegisterView::loadButtons() {
   makeButtons();
-  playButton->setPosition({1000, 320});
-  playButton->setFont(font);
-  threePlayersButton->setPosition2({100, 280});
-  threePlayersButton->setFont(font);
-  fourPlayersButton->setPosition2({100, 350});
-  fourPlayersButton->setFont(font);
+  playButton.setPosition({1000, 320});
+  playButton.setFont(font);
+  threePlayersButton.setPosition2({100, 280});
+  threePlayersButton.setFont(font);
+  fourPlayersButton.setPosition2({100, 350});
+  fourPlayersButton.setFont(font);
 }
 
 void RegisterView::loadView() {
@@ -62,17 +66,30 @@ void RegisterView::drawView() {
 }
 
 void RegisterView::typeOverTextbox(sf::Event event) {
-  if (firstTextbox->isMouseOver(view))
-    firstTextbox->typeOn(event);
+  if (isThreePlayers) {
+    if (firstTextbox.isMouseOver(view))
+      firstTextbox.typeOn(event);
 
-  if (secondTextbox->isMouseOver(view))
-    secondTextbox->typeOn(event);
+    if (secondTextbox.isMouseOver(view))
+      secondTextbox.typeOn(event);
 
-  if (thirdTextbox->isMouseOver(view))
-    thirdTextbox->typeOn(event);
+    if (thirdTextbox.isMouseOver(view))
+      thirdTextbox.typeOn(event);
+    fourthTextbox.isTyping(false);
+  }
+  if (isFourPlayers) {
+    if (firstTextbox.isMouseOver(view))
+      firstTextbox.typeOn(event);
 
-  if (fourthTextbox->isMouseOver(view))
-    fourthTextbox->typeOn(event);
+    if (secondTextbox.isMouseOver(view))
+      secondTextbox.typeOn(event);
+
+    if (thirdTextbox.isMouseOver(view))
+      thirdTextbox.typeOn(event);
+
+    if (fourthTextbox.isMouseOver(view))
+      fourthTextbox.typeOn(event);
+  }
 }
 
 void RegisterView::loadBeforeChangingScene() {
@@ -89,7 +106,7 @@ void RegisterView::playButtonPressed() {
 }
 
 bool RegisterView::isPlayButtonPressed() {
-  return (playButton->isMouseOver(view));
+  return (playButton.isMouseOver(view));
 }
 
 void RegisterView::goView() {
@@ -110,10 +127,10 @@ void RegisterView::goView() {
           if (isPlayButtonPressed())
             playButtonPressed();
 
-          if (threePlayersButton->isMouseOver(view))
+          if (threePlayersButton.isMouseOver(view))
             isThreePlayers = true;
 
-          if (fourPlayersButton->isMouseOver(view))
+          if (fourPlayersButton.isMouseOver(view))
             isFourPlayers = true;
         }
         break;
@@ -130,22 +147,37 @@ void RegisterView::goView() {
     }
     view.clear();
     view.draw(sprite);
+
     registerButton();
-
-    loadRegisterButtons(playButton);
-    loadRegisterButtons(threePlayersButton);
-    loadRegisterButtons(fourPlayersButton);
-
-    if (isThreePlayers) {
-      loadTextFields(firstTextbox);
-      loadTextFields(secondTextbox);
-      loadTextFields(thirdTextbox);
-      if (isFourPlayers) {
-        loadTextFields(fourthTextbox);
-      }
-    }
+    drawButtons();
+    drawTextboxes();
     loadColors();
+
     view.display();
+  }
+}
+
+void RegisterView::drawButtons() {
+  loadRegisterButtons(playButton);
+  loadRegisterButtons(threePlayersButton);
+  loadRegisterButtons(fourPlayersButton);
+}
+
+void RegisterView::drawTextboxes() {
+  if (isThreePlayers) {
+    isFourPlayers = false;
+    loadTextFields(firstTextbox);
+    loadTextFields(secondTextbox);
+    loadTextFields(thirdTextbox);
+    fourthTextbox.setVisible(false);
+  }
+  if (isFourPlayers) {
+    isThreePlayers = false;
+    fourthTextbox.setVisible(true);
+    loadTextFields(firstTextbox);
+    loadTextFields(secondTextbox);
+    loadTextFields(thirdTextbox);
+    loadTextFields(fourthTextbox);
   }
 }
 
@@ -178,25 +210,24 @@ void RegisterView::registerButton() {
   view.draw(note->getTextInstance());
 }
 
-void RegisterView::loadRegisterButtons(Button *button) {
-  if (button->isMouseOver(view)) {
-    button->setBackColor(sf::Color::White);
+void RegisterView::loadRegisterButtons(Button &button) {
+  if (button.isMouseOver(view)) {
+    button.setBackColor(sf::Color::White);
   } else {
-    button->setBackColor(sf::Color::Blue);
+    button.setBackColor(sf::Color::Blue);
   }
-  button->drawTo(view);
+  button.drawTo(view);
 }
 
-void RegisterView::loadTextFields(TextBox *textbox) {
-  if (textbox->isMouseOver(view)) {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
-      textbox->setSelected(true);
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::End)) {
-      textbox->setSelected(false);
-    }
+void RegisterView::loadTextFields(TextBox &textbox) {
+  if (textbox.isMouseOver(view)) {
+    if (isReturnPressed())
+      textbox.setSelected(true);
+
+    if (isEndPressed())
+      textbox.setSelected(false);
   }
-  textbox->drawTo(view);
+  textbox.drawTo(view);
 }
 
 void RegisterView::loadColors() {
@@ -257,10 +288,10 @@ void RegisterView::showCoordinates(sf::Event event) {
 }
 
 void RegisterView::getNames() {
-  log(firstTextbox->getText());
-  log(secondTextbox->getText());
-  log(thirdTextbox->getText());
-  log(fourthTextbox->getText());
+  log(firstTextbox.getText());
+  log(secondTextbox.getText());
+  log(thirdTextbox.getText());
+  log(fourthTextbox.getText());
 }
 
 void RegisterView::loadThreePlayers() {
