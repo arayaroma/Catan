@@ -49,9 +49,9 @@ private:
   void loadBeforeChangingScene();
 
 private:
-  TextBox firstTextbox, secondTextbox, thirdTextbox, fourthTextbox;
+  TextBox firstTextbox, secondTextbox, thirdTextbox, fourthTextbox,newGame,loadGame;
   Label *title, *name, *color, *note;
-  Button threePlayersButton, fourPlayersButton, playButton;
+  Button threePlayersButton, fourPlayersButton, playButton,loadGames, newGames;
   bool isThreePlayers = false;
   bool isFourPlayers = false;
 };
