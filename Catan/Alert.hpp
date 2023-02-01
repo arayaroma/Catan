@@ -14,13 +14,6 @@
 using std::string;
 
 class Alert : public View {
-protected:
-  int alertType;
-  Label *titleLabel, *messageLabel;
-  string titleMessage, bodyMessage;
-  Button okButton;
-  sf::Texture imageIcon;
-  sf::Sprite imageIconSprite;
 
 public:
   virtual void goView() override = 0;
@@ -35,5 +28,33 @@ protected:
 protected:
   virtual string separateText(string);
   virtual sf::Text getTitleMessage() const;
-  virtual bool isOkButtonPressed() const;
+  virtual bool isOkButtonPressed(sf::Event);
+
+private:
+  int characterLimit;
+  string modifiedText;
+  const int limit = 39;
+  const char enterSpace = '\n';
+
+private:
+  void addToModifiedText(char letter) {
+    modifiedText += letter;
+    characterLimit++;
+  }
+
+  void makeAnEnterSpace() {
+    modifiedText += enterSpace;
+    characterLimit = initializeCharacterLimit();
+  }
+
+  int initializeCharacterLimit() { return characterLimit = 0; }
+  bool reachedLimit() const { return (characterLimit == limit); }
+
+protected:
+  int alertType;
+  Label *titleLabel, *messageLabel;
+  string titleMessage, bodyMessage;
+  Button okButton;
+  sf::Texture imageIcon;
+  sf::Sprite imageIconSprite;
 };

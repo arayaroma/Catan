@@ -1,6 +1,10 @@
 #pragma once
 #include "AboutView.hpp"
 #include "NoneAlert.hpp"
+#include "ConfirmationAlert.hpp"
+#include "WarningAlert.hpp"
+#include "InformationAlert.hpp"
+#include "ErrorAlert.hpp"
 #include "Label.hpp"
 #include "RegisterView.hpp"
 #include "View.hpp"

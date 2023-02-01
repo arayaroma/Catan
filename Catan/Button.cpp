@@ -21,30 +21,13 @@ void Button::setForegroundColor(sf::Color foregroundColor) {
   text.setFillColor(foregroundColor);
 }
 
-void Button::setPosition(sf::Vector2f position) {
+// leftVariance: greater = lefter
+void Button::setPosition(sf::Vector2f position, int leftVariance) {
   button.setPosition(position);
-  xPos = (position.x + button.getGlobalBounds().width / 3) -
-         (text.getGlobalBounds().width / 3);
-  yPos = (position.y + button.getGlobalBounds().height / 3) -
-         (text.getGlobalBounds().height / 3);
-  text.setPosition({xPos, yPos});
-}
-
-void Button::setPositionLeft(sf::Vector2f position) {
-  button.setPosition(position);
-  xPos = (position.x + button.getGlobalBounds().width / 5) -
-         (text.getGlobalBounds().width / 5);
-  yPos = (position.y + button.getGlobalBounds().height / 5) -
-         (text.getGlobalBounds().height / 5);
-  text.setPosition({xPos, yPos});
-}
-
-void Button::setPositionLefter(sf::Vector2f position) {
-  button.setPosition(position);
-  xPos = (position.x + button.getGlobalBounds().width / 7) -
-         (text.getGlobalBounds().width / 7);
-  yPos = (position.y + button.getGlobalBounds().height / 5) -
-         (text.getGlobalBounds().height / 5);
+  xPos = (position.x + button.getGlobalBounds().width / leftVariance) -
+         (text.getGlobalBounds().width / leftVariance);
+  yPos = (position.y + button.getGlobalBounds().height / leftVariance) -
+         (text.getGlobalBounds().height / leftVariance);
   text.setPosition({xPos, yPos});
 }
 
@@ -60,8 +43,8 @@ bool Button::isMouseOver(sf::RenderWindow &view) {
   buttonPosX = getButtonPosX();
   buttonPosY = getButtonPosY();
 
-  buttonWidth = button.getPosition().x + button.getGlobalBounds().width;
-  buttonHeight = button.getPosition().y + button.getGlobalBounds().height;
+  buttonWidth = getButtonWidth();
+  buttonHeight = getButtonHeight();
 
   return (isInsideButton());
 }
@@ -74,6 +57,14 @@ bool Button::isInsideButton() const {
 float Button::getButtonPosX() { return button.getPosition().x; }
 float Button::getButtonPosY() { return button.getPosition().y; }
 
+float Button::getButtonWidth() {
+  return button.getPosition().x + button.getGlobalBounds().width;
+}
+
+float Button::getButtonHeight() {
+  return button.getPosition().y + button.getGlobalBounds().height;
+}
+
 float Button::getMousePosX(sf::RenderWindow &view) {
   return static_cast<float>(sf::Mouse::getPosition(view).x);
 }
@@ -82,4 +73,10 @@ float Button::getMousePosY(sf::RenderWindow &view) {
   return static_cast<float>(sf::Mouse::getPosition(view).y);
 }
 
-bool Button::isPressed() const { return this->_isPressed; }
+bool Button::isPressed(sf::Event event) {
+  return (isInsideButton() && isMouseLeftClickedButton(event));
+}
+
+bool Button::isMouseLeftClickedButton(sf::Event event) {
+  return _isPressed = (event.mouseButton.button == sf::Mouse::Left);
+}

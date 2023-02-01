@@ -17,12 +17,8 @@ void TitleView::drawView() {
 }
 
 void TitleView::goView() {
-  NoneAlert *alert = new NoneAlert(
-      "Titulo", "Esto es un mensaje, con bastante texto indefinido, "
-                "para probar esta alerta");
   loadView();
   drawView();
-  alert->goView();
 
   while (view.isOpen()) {
     while (view.pollEvent(event)) {

@@ -5,8 +5,8 @@ NoneAlert::NoneAlert() {}
 NoneAlert::NoneAlert(string titleMessage, string bodyMessage) {
   titleLabel = new Label(titleMessage, sf::Color::Black, font,
                          sf::Text::Regular, 24, 160, 5);
-  messageLabel = new Label(bodyMessage, sf::Color::Black, font,
-                           sf::Text::Regular, 16, 20, 70);
+  messageLabel = new Label(separateText(bodyMessage), sf::Color::Black, font,
+                           sf::Text::Regular, 16, 20, 50);
   titleMessage = titleMessage;
   bodyMessage = bodyMessage;
   alertType = NONE;
@@ -15,16 +15,16 @@ NoneAlert::NoneAlert(string titleMessage, string bodyMessage) {
 void NoneAlert::makeOkButton() {
   okButton =
       Button("Ok", {60, 30}, 14, sf::Color(0, 25, 225, 255), sf::Color::Black);
-  okButton.setPosition({160, 150});
+  okButton.setPosition({160, 150}, 5);
   okButton.setFont(font);
 }
 
 void NoneAlert::drawButton(Button &button) {
   makeOkButton();
   if (button.isMouseOver(view))
-    button.setBackColor(sf::Color(155, 155, 155, 255));
+    button.setBackgroundColor(sf::Color(155, 155, 155, 255));
   else
-    button.setBackColor(sf::Color(205, 205, 205, 255));
+    button.setBackgroundColor(sf::Color(205, 205, 205, 255));
   button.drawTo(view);
 }
 
@@ -59,10 +59,9 @@ void NoneAlert::goView() {
       switch (event.type) {
 
       case sf::Event::MouseButtonPressed:
-        if (isMouseLeftClicked(event) && okButton.isMouseOver(view))
+        if (isOkButtonPressed(event))
           view.close();
 
-        view.close();
       case sf::Event::Closed:
         view.close();
         break;

@@ -12,13 +12,11 @@ public:
   Button(string, sf::Vector2f, int, sf::Color, sf::Color);
 
 public:
-  bool isPressed() const;
+  bool isPressed(sf::Event);
   void setFont(sf::Font &);
   void setBackgroundColor(sf::Color);
   void setForegroundColor(sf::Color);
-  void setPosition(sf::Vector2f);
-  void setPositionLeft(sf::Vector2f);
-  void setPositionLefter(sf::Vector2f);
+  void setPosition(sf::Vector2f, int);
   void drawTo(sf::RenderWindow &);
   bool isMouseOver(sf::RenderWindow &);
 
@@ -31,7 +29,10 @@ private:
 private:
   float getButtonPosX();
   float getButtonPosY();
+  float getButtonWidth();
+  float getButtonHeight();
   float getMousePosX(sf::RenderWindow &);
   float getMousePosY(sf::RenderWindow &);
   bool isInsideButton() const;
+  bool isMouseLeftClickedButton(sf::Event);
 };
