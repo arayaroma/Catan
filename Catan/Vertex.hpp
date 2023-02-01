@@ -11,7 +11,7 @@ private:
   bool isPrinted;
   Edge *firstEdge;
   string ownerTown;
-
+  bool isClicked;
 public:
   Vertex *next;
   Town *town;
@@ -25,4 +25,7 @@ public:
   void toString() { std::cout << this->vertexId << " "; }
   bool getIsPrint() { return this->isPrinted; }
   void setIsPrinted(bool band) { this->isPrinted = band; }
+
+  bool getIsClicked() { return this->isClicked; }
+  void setIsClicked(bool band) { this->isClicked = band; }
 };

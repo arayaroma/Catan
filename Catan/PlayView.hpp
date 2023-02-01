@@ -38,6 +38,10 @@ private:
   int turnNumber;
   string tempImagePath;
 
+  bool isCliked = false;
+  int xprueba=0;
+  int yprueba=0;
+  string url="";
 public:
 
   void goView() override;
@@ -107,6 +111,7 @@ private:
   void searhTown(double, double);
   void traverseTown(double, double, list<Land*>::iterator it);
 
+  void isPrintedFalse();
 private:
   sf::RectangleShape playerRectangle, cardsRectangle;
   Label *materialCard, *pricingTable, *turns, *cards, *developCard;

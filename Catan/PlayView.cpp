@@ -188,6 +188,7 @@ void PlayView::drawView() {
   drawLabelCardPlayer();
   drawLabelFigurePlayer();
   printPlayerFigure();
+  view.display();
 }
 void PlayView::searhTown(double x, double y) {
     initializeLandsList();
@@ -203,9 +204,13 @@ void PlayView::traverseTown(double x, double y, list<Land*>::iterator it) {
         if (!band) {
             if (x > (*vertexIterator)->getTown()->getPosX()  && x < (*vertexIterator)->getTown()->getPosX() + 30
                 && y >(*vertexIterator)->getTown()->getPosY()  && y < (*vertexIterator)->getTown()->getPosY() + 30) {
-                string tempImagePath = "Images/Figures/TownBlue.png";
-                printImages(tempImagePath, (*vertexIterator)->getTown()->getPosX(), (*vertexIterator)->getTown()->getPosY());
+                 url = "Images/Figures/TownBlue.png";
+                game.graph.getVertex((*vertexIterator)->getVertexId())->setIsClicked(true);
+                xprueba = (*vertexIterator)->getTown()->getPosX();
+                yprueba = (*vertexIterator)->getTown()->getPosY();
+                printImages(url, xprueba, yprueba);
                 view.display();
+                isCliked = true;
                 band = true;
                 break;
             }
@@ -215,25 +220,28 @@ void PlayView::traverseTown(double x, double y, list<Land*>::iterator it) {
 }
 void PlayView::goView() {
   loadView();
+  drawView();
   start = true;
+  
   while (view.isOpen()) {
-    while (view.pollEvent(event)) {
-      showCoordinates(event);
-      switch (event.type) {
-      case sf::Event::MouseButtonPressed:
-        if (isMouseLeftClicked(event)) {
-            searhTown(event.mouseButton.x, event.mouseButton.y);
-        }
-        break;
-      case sf::Event::Closed:
+      sf::Event eventTest;
+      srand(time(NULL));
+       view.setFramerateLimit(120);
+    while (view.pollEvent(eventTest)) {
+      showCoordinates(eventTest);
+      switch (eventTest.type) {
+        case sf::Event::Closed:
         view.close();
         break;
       }
       break;
     }
-    drawView();
-    view.display();
+        view.waitEvent(eventTest);
+        if (eventTest.mouseButton.button == sf::Mouse::Left)
+            searhTown(sf::Mouse::getPosition(view).x, sf::Mouse::getPosition(view).y);
+    
   }
+
 }
 
 void PlayView::setTurn(int numberPlayers) {
@@ -264,12 +272,18 @@ void PlayView::printImages(string imagePath, double posX, double posY) {
 void PlayView::initializeLandsList() {
   game.loadLands();
   game.assignTownsToLand();
-  game.graph =  Graph();
+  isPrintedFalse();
   game.makeGraph();
   landsList = game.getLandsList();
   it = landsList->begin();
 }
-
+void PlayView::isPrintedFalse() {
+    Vertex* auxVertex = game.graph.firstVertex;
+    while (auxVertex != nullptr) {
+        auxVertex->setIsPrinted(false);
+        auxVertex = auxVertex->next;
+    }
+}
 void PlayView::printBoard() {
   double top_height = 40, bot_height = 40, cycle_cord_x = 0, i = 1;
   initializeLandsList();
@@ -498,7 +512,7 @@ void PlayView::loadHexagonNodes(list<Vertex *>::iterator itX, double posX,
       posX + landsRadius + (landsRadius * cos(getFormula(iterationNumber)));
   double relativePositionY =
       posY + landsRadius + (landsRadius * sin(getFormula(iterationNumber)));
-  if (!game.graph.getVertex((*itX)->getVertexId())->getIsPrint()) {
+  if (!game.graph.getVertex((*itX)->getVertexId())->getIsPrint()  && !game.graph.getVertex((*itX)->getVertexId())->getIsClicked()) {
     game.graph.getVertex((*itX)->getVertexId())->setIsPrinted(true);
     printTowns(relativePositionX, relativePositionY);
     setPosXYtoVertex(itX, relativePositionX, relativePositionY);
