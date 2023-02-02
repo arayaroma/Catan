@@ -10,6 +10,114 @@ Game::Game() {
   loadMaps();
 }
 
+void Game::setGraph(Graph graph) { this->graph = graph; }
+Graph Game::getGraph() const { return this->graph; }
+
+void Game::setImagePaths(unordered_map<string, string> imagePaths) {
+  this->imagePaths = imagePaths;
+}
+
+unordered_map<string, string> Game::getImagePaths() const {
+  return this->imagePaths;
+}
+
+void Game::setPlayersList(list<Player *> *playersList) {
+  this->players = playersList;
+}
+
+list<Player *> *Game::getPlayersList() const { return this->players; }
+
+void Game::setTownsList(list<Town *> *townsList) {
+  this->townsList = townsList;
+}
+
+list<Town *> *Game::getTownsList() const { return this->townsList; }
+
+void Game::setCitiesList(list<City *> *citiesList) {
+  this->citiesList = citiesList;
+}
+
+list<City *> *Game::getCitiesList() const { return this->citiesList; }
+
+void Game::setRoadsList(list<Road *> *roadsList) {
+  this->roadsList = roadsList;
+}
+
+list<Road *> *Game::getRoadsList() const { return this->roadsList; }
+
+void Game::setLandsList(list<Land *> *landsList) {
+  this->landsList = landsList;
+}
+
+list<Land *> *Game::getLandsList() const { return this->landsList; }
+
+void Game::setVertexesList(list<Vertex *> *vertexesList) {
+  this->vertexesList = vertexesList;
+}
+
+list<Vertex *> *Game::getVertexesList() const { return this->vertexesList; }
+
+void Game::setSpecialCards(Card *specialCard) {
+  this->specialCard = specialCard;
+}
+
+Card *Game::getSpecialCards() const { return this->specialCard; }
+
+void Game::setLand(Land land) { this->land = land; }
+Land Game::getLand() const { return this->land; }
+
+void Game::setKnightCards(stack<Knight *> *knightCards) {
+  this->knightCards = knightCards;
+}
+
+stack<Knight *> *Game::getKnightCards() const { return this->knightCards; }
+
+void Game::setProgressCards(stack<Progress *> *progressCards) {
+  this->progressCards = progressCards;
+}
+
+stack<Progress *> *Game::getProgressCards() const {
+  return this->progressCards;
+}
+
+void Game::setVictoryPointsCards(stack<VictoryPoints *> *victoryPointCards) {
+  this->victoryPointCards = victoryPointCards;
+}
+
+stack<VictoryPoints *> *Game::getVictoryPointsCards() const {
+  return this->victoryPointCards;
+}
+
+void Game::setClayCards(stack<Clay *> *clayCards) {
+  this->clayCards = clayCards;
+}
+
+stack<Clay *> *Game::getClayCards() const { return this->clayCards; }
+
+void Game::setMineralCards(stack<Mineral *> *mineralCards) {
+  this->mineralCards = mineralCards;
+}
+
+stack<Mineral *> *Game::getMineralCards() const { return this->mineralCards; }
+
+void Game::setWheatCards(stack<Wheat *> *wheatCards) {
+  this->wheatCards = wheatCards;
+}
+
+stack<Wheat *> *Game::getWheatCards() const { return this->wheatCards; }
+
+void Game::setWoodCards(stack<Wood *> *woodCards) {
+  this->woodCards = woodCards;
+}
+
+stack<Wood *> *Game::getWoodCards() const { return this->woodCards; }
+
+void Game::setWoolCards(stack<Wool *> *woolCards) {
+  this->woolCards = woolCards;
+}
+
+stack<Wool *> *Game::getWoolCards() const { return this->woolCards; }
+
 void Game::loadMaps() {
   loadProgressPaths();
   loadTilesPaths();
@@ -321,7 +429,7 @@ void Game::printVertex(list<Vertex *> *vertexList) {
 }
 
 void Game::makePlayer() {
-  int numPlayer=0;
+  int numPlayer = 0;
   playerIterator = players->begin();
   while (playerIterator != players->end()) {
     loadFiguresToPlayer((*playerIterator), numPlayer);
@@ -342,33 +450,32 @@ void Game::loadFiguresToPlayer(Player *player, int numPlayer) {
 }
 
 void Game::loadRoades(Player *player) {
-    if (player->getColor() == "RED")
-        player->roads->push_back(new Road("Images/Figures/RoadRed.png"));
-    if (player->getColor() == "BLUE")
-        player->roads->push_back(new Road("Images/Figures/RoadBlue.png"));
-    if (player->getColor() == "GREEN")
-        player->roads->push_back(new Road("Images/Figures/RoadGreen.png"));
-    if (player->getColor() == "YELLOW")
-        player->roads->push_back(new Road("Images/Figures/RoadYellow.png"));
+  if (player->getColor() == "RED")
+    player->roads->push_back(new Road("Images/Figures/RoadRed.png"));
+  if (player->getColor() == "BLUE")
+    player->roads->push_back(new Road("Images/Figures/RoadBlue.png"));
+  if (player->getColor() == "GREEN")
+    player->roads->push_back(new Road("Images/Figures/RoadGreen.png"));
+  if (player->getColor() == "YELLOW")
+    player->roads->push_back(new Road("Images/Figures/RoadYellow.png"));
 }
 void Game::loadCities(Player *player) {
-    if (player->getColor() == "RED")
-        player->citys->push_back(new City("Images/Figures/CityRed.png"));
-    if (player->getColor() == "BLUE")
-        player->citys->push_back(new City("Images/Figures/CityBlue.png"));
-    if (player->getColor() == "GREEN")
-        player->citys->push_back(new City("Images/Figures/CityGreen.png"));
-    if (player->getColor() == "YELLOW")
-        player->citys->push_back(new City("Images/Figures/CityYellow.png"));
-
+  if (player->getColor() == "RED")
+    player->citys->push_back(new City("Images/Figures/CityRed.png"));
+  if (player->getColor() == "BLUE")
+    player->citys->push_back(new City("Images/Figures/CityBlue.png"));
+  if (player->getColor() == "GREEN")
+    player->citys->push_back(new City("Images/Figures/CityGreen.png"));
+  if (player->getColor() == "YELLOW")
+    player->citys->push_back(new City("Images/Figures/CityYellow.png"));
 }
-void Game::loadTowns(Player *player) { 
-    if (player->getColor() == "RED")
-        player->towns->push_back(new Town("Images/Figures/TownRed.png"));
-    if (player->getColor() == "BLUE")
-        player->towns->push_back(new Town("Images/Figures/TownBlue.png"));
-    if (player->getColor() == "GREEN")
-        player->towns->push_back(new Town("Images/Figures/TownGreen.png"));
-    if (player->getColor() == "YELLOW")
-        player->towns->push_back(new Town("Images/Figures/TownYellow.png"));
+void Game::loadTowns(Player *player) {
+  if (player->getColor() == "RED")
+    player->towns->push_back(new Town("Images/Figures/TownRed.png"));
+  if (player->getColor() == "BLUE")
+    player->towns->push_back(new Town("Images/Figures/TownBlue.png"));
+  if (player->getColor() == "GREEN")
+    player->towns->push_back(new Town("Images/Figures/TownGreen.png"));
+  if (player->getColor() == "YELLOW")
+    player->towns->push_back(new Town("Images/Figures/TownYellow.png"));
 }

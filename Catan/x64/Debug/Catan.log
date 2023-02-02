@@ -6,6 +6,7 @@
   Computer.cpp
   ConfirmationAlert.cpp
   ErrorAlert.cpp
+  FileHandler.cpp
   Game.cpp
   Dice.cpp
   Edge.cpp
@@ -17,9 +18,9 @@
   main.cpp
   City.cpp
   Clay.cpp
+  Generating Code...
+  Compiling...
   Component.cpp
-  Generando código...
-  Compilando...
   Label.cpp
   Land.cpp
   Mineral.cpp
@@ -39,6 +40,6 @@
   Wheat.cpp
   Wood.cpp
   Wool.cpp
-  Generando código...
-  LINK : no se encontró C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
-  Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe
+  Generating Code...
+  LINK : C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe not found or not built by the last incremental link; performing full link
+  Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe
