@@ -49,78 +49,159 @@ using std::unordered_map;
 */
 
 class Game {
+private:
+  string matchName;
+  int matchId;
+
 public:
   Graph graph;
   int vertexId, vertexJump;
   const int graphNodes = 54;
 
-public:
-  void createGraphVertex();
+  void setGraph(Graph);
+  Graph getGraph() const;
 
 public:
   unordered_map<string, string> imagePaths;
-  Land land;
 
-  list<Town *> *townsList;
-  list<Player *> *players;
-  list<Player*>::iterator playerIterator;
-  list<City *> *citiesList;
-  list<City*>::iterator cityIterator;
-
-  list<Road *> *roadsList;
-  list<Road*>::iterator roadIterator;
-
-  list<Land *> *landsList;
-  list<Land *>::iterator landIterator;
-  Card *specialCard;
-
-  list<Vertex *> *vertexesList;
-
-  stack<Knight *> *knightCards = new stack<Knight *>();
-  stack<Progress *> *progressCards = new stack<Progress *>();
-  stack<VictoryPoints *> *victoryPointCards = new stack<VictoryPoints *>();
-
-  stack<Clay *> *clayCards = new stack<Clay *>;
-  stack<Mineral *> *mineralCards = new stack<Mineral *>;
-  stack<Wheat *> *wheatCards = new stack<Wheat *>;
-  stack<Wood *> *woodCards = new stack<Wood *>;
-  stack<Wool *> *woolCards = new stack<Wool *>;
+  void setImagePaths(unordered_map<string, string>);
+  unordered_map<string, string> getImagePaths() const;
 
 public:
-  list<Land *> *getLandsList() const { return this->landsList; }
+  list<Player *> *players;
+  list<Player *>::iterator playerIterator;
+
+  void setPlayersList(list<Player *> *);
+  list<Player *> *getPlayersList() const;
+
+public:
+  list<Town *> *townsList;
+  list<Town *>::iterator townIterator;
+
+  void setTownsList(list<Town *> *);
+  list<Town *> *getTownsList() const;
+
+public:
+  list<City *> *citiesList;
+  list<City *>::iterator cityIterator;
+
+  void setCitiesList(list<City *> *);
+  list<City *> *getCitiesList() const;
+
+public:
+  list<Road *> *roadsList;
+  list<Road *>::iterator roadIterator;
+
+  void setRoadsList(list<Road *> *);
+  list<Road *> *getRoadsList() const;
+
+public:
+  list<Land *> *landsList;
+  list<Land *>::iterator landIterator;
+
+  void setLandsList(list<Land *> *);
+  list<Land *> *getLandsList() const;
+
+public:
+  list<Vertex *> *vertexesList;
+
+  void setVertexesList(list<Vertex *> *);
+  list<Vertex *> *getVertexesList() const;
+
+public:
+  Card *specialCard;
+
+  void setSpecialCards(Card *);
+  Card *getSpecialCards() const;
+
+public:
+  Land land;
+
+  void setLand(Land);
+  Land getLand() const;
+
+public:
+  stack<Knight *> *knightCards = new stack<Knight *>();
+
+  void setKnightCards(stack<Knight *> *);
+  stack<Knight *> *getKnightCards() const;
+
+public:
+  stack<Progress *> *progressCards = new stack<Progress *>();
+
+  void setProgressCards(stack<Progress *> *);
+  stack<Progress *> *getProgressCards() const;
+
+public:
+  stack<VictoryPoints *> *victoryPointCards = new stack<VictoryPoints *>();
+
+  void setVictoryPointsCards(stack<VictoryPoints *> *);
+  stack<VictoryPoints *> *getVictoryPointsCards() const;
+
+public:
+  stack<Clay *> *clayCards = new stack<Clay *>;
+
+  void setClayCards(stack<Clay *> *);
+  stack<Clay *> *getClayCards() const;
+
+public:
+  stack<Mineral *> *mineralCards = new stack<Mineral *>;
+
+  void setMineralCards(stack<Mineral *> *);
+  stack<Mineral *> *getMineralCards() const;
+
+public:
+  stack<Wheat *> *wheatCards = new stack<Wheat *>;
+
+  void setWheatCards(stack<Wheat *> *);
+  stack<Wheat *> *getWheatCards() const;
+
+public:
+  stack<Wood *> *woodCards = new stack<Wood *>;
+
+  void setWoodCards(stack<Wood *> *);
+  stack<Wood *> *getWoodCards() const;
+
+public:
+  stack<Wool *> *woolCards = new stack<Wool *>;
+
+  void setWoolCards(stack<Wool *> *);
+  stack<Wool *> *getWoolCards() const;
 
 public:
   Game();
 
-  void loadMaps();
-  void loadSpecialCards();
-  void loadProgressPaths();
-  void loadTilesPaths();
-
   void play();
   void build();
-
   void tradeMaterials();
+
+  void createGraphVertex();
+  void makeGraph();
+  void printVertex(list<Vertex *> *);
+
+  void loadMaps();
   void loadLands();
+  void loadTilesPaths();
+  void loadSpecialCards();
+  void loadProgressPaths();
+  void loadTowns(Player *);
+  void loadRoades(Player *);
+  void loadCities(Player *);
+  void loadFiguresToPlayer(Player *, int);
 
   void assignTownsToLand();
   void assignTowns(Land *, int, int, int);
   void assignTownsMiddleRow(Land *, int, int, int);
   void assignTownsLastRows(Land *, int, int, int);
-  void makeMaterialCard();
-  void makeDevelopCard();
-  void playDevelopCard();
-  void makeFigures();
-  void makeConstructionCostsCard();
-  void makeSpecialCard();
-  void printVertexXY() { graph.vertexXY(); }
-  void makeGraph();
-  void printLand(list<Land *> *landsList);
-  void printVertex(list<Vertex *> *vertexList);
 
   void makePlayer();
-  void loadFiguresToPlayer(Player *, int );
-  void loadRoades(Player *);
-  void loadCities(Player *);
-  void loadTowns(Player *);
+  void makeFigures();
+  void makeSpecialCard();
+  void makeDevelopCard();
+  void makeMaterialCard();
+  void makeConstructionCostsCard();
+
+  void playDevelopCard();
+  void printVertexXY() { graph.vertexXY(); }
+  void printLand(list<Land *> *);
 };

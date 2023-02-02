@@ -1,3 +1,17 @@
-﻿  PlayView.cpp
-  LINK : C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe not found or not built by the last incremental link; performing full link
+﻿  AboutView.cpp
+  Alert.cpp
+  Application.cpp
+  ConfirmationAlert.cpp
+  ErrorAlert.cpp
+  FileHandler.cpp
+  Game.cpp
+  InformationAlert.cpp
+  main.cpp
+  NoneAlert.cpp
+  PlayView.cpp
+  RegisterView.cpp
+  TitleView.cpp
+  View.cpp
+  WarningAlert.cpp
+  Generating Code...
   Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe
