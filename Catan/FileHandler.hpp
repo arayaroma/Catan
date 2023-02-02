@@ -1,15 +1,17 @@
 #pragma once
 #include "Game.hpp"
+#include <exception>
 #include <fstream>
+#include <string>
+
+#define log(x) std::cout << x << std::endl;
+
 using std::fstream;
+using std::string;
 
 class FileHandler {
-private:
-  fstream file;
-  Game match;
-
 public:
-  void saveFile();
-  void loadFile();
+  void saveFile(const string &, Game &);
+  void loadFile(const string &, Game &);
   FileHandler();
 };

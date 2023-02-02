@@ -56,7 +56,7 @@ private:
 public:
   Graph graph;
   int vertexId, vertexJump;
-  const int graphNodes = 54;
+  int graphNodes = 54;
 
   void setGraph(Graph);
   Graph getGraph() const;
