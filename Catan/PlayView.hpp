@@ -41,6 +41,9 @@ private:
   int turnNumber;
   string tempImagePath;
   string url="";
+
+  
+
 public:
 
   void goView() override;
@@ -121,6 +124,10 @@ private:
   void setOwnerToVertexGraph(Vertex* vertex);
 
   void deleteTowntoPlayer();
+  bool firstTurn();
+  void receiveCard(list<Land*>::iterator it);
+  void receiveMaterialCard();
+
 private:
   sf::RectangleShape playerRectangle, cardsRectangle;
   Label *materialCard, *pricingTable, *turns, *cards, *developCard;
