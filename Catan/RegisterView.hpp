@@ -31,6 +31,8 @@ private:
   void loadColors();
   void getNames();
 
+  void getColor();
+
   void loadPlayerList();
   void loadThreePlayers();
   void loadFourPlayers();

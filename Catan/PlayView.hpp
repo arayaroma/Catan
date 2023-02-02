@@ -129,5 +129,5 @@ private:
       *woolPlayerCard;
   Label *townPlayer, *cityPlayer, *roadPlayer;
 
-  Button turn , buy, trade, option1, p;
+  Button turn , buy, trade, option1, p, save, close;
 };

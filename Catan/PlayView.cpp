@@ -22,34 +22,44 @@ void PlayView::createLabels() {
 
 void PlayView::createButtons() {
 
-  p = Button("Turn", {0, 0}, 16, sf::Color::Green, sf::Color::White);
+    p = Button("Turn", { 0, 0 }, 16, sf::Color::Green, sf::Color::Black);
+    turn = Button("Turn", { 120, 35 }, 16, sf::Color::Green, sf::Color::Black);
+    trade = Button("Trade", { 120, 35 }, 16, sf::Color::Green, sf::Color::Black);
+    buy = Button("Buy", { 120, 35 }, 16, sf::Color::Green, sf::Color::Black);
+    option1 = Button("Option1", { 120, 35 }, 16, sf::Color::Green, sf::Color::Black);
+    save = Button("Guardar", { 120, 35 }, 16, sf::Color::Green, sf::Color::Black);
+    close = Button("Close", { 120, 35 }, 16, sf::Color::Green, sf::Color::Black);
 
-  turn = Button("Turn", {120, 35}, 16, sf::Color::Green, sf::Color::White);
-  trade = Button("Trade", {120, 35}, 16, sf::Color::Green, sf::Color::White);
-  buy = Button("Buy", {120, 35}, 16, sf::Color::Green, sf::Color::White);
-  option1 =
-      Button("Option1", {120, 35}, 16, sf::Color::Green, sf::Color::White);
 
-  p.setFont(font);
-  p.setPosition({0, 0}, 3);
+    p.setFont(font);
+    p.setPosition({ 0, 0 }, 3);
 
-  turn.setFont(font);
-  turn.setPosition({985, 600}, 3);
+    turn.setFont(font);
+    turn.setPosition({ 985, 600 }, 3);
 
-  trade.setFont(font);
-  trade.setPosition({20, 600}, 3);
+    trade.setFont(font);
+    trade.setPosition({ 20, 600 }, 3);
 
-  buy.setFont(font);
-  buy.setPosition({150, 600}, 3);
+    buy.setFont(font);
+    buy.setPosition({ 150, 600 }, 3);
 
-  option1.setFont(font);
-  option1.setPosition({1120, 600}, 3);
+    option1.setFont(font);
+    option1.setPosition({ 1120, 600 }, 3);
+
+    save.setFont(font);
+    save.setPosition({ 1120,660 }, 3);
+
+    close.setFont(font);
+    close.setPosition({ 985,660 }, 3);
 
   loadRegisterButtons(p);
   loadRegisterButtons(turn);
   loadRegisterButtons(trade);
   loadRegisterButtons(buy);
   loadRegisterButtons(option1);
+  loadRegisterButtons(save);
+  loadRegisterButtons(close);
+
 }
 
 void PlayView::loadRegisterButtons(Button &button) {
@@ -240,6 +250,41 @@ void PlayView::drawView() {
   createButtons();
   view.display();
 }
+
+
+void PlayView::goView() {
+    game.playerIterator = game.players->begin();
+    loadView();
+    drawView();
+    start = true;
+    view.draw(sprite);
+    while (view.isOpen()) {
+        sf::Event eventTest;
+        srand((unsigned)time(nullptr));
+        view.setFramerateLimit(120);
+        while (view.pollEvent(eventTest)) {
+            showCoordinates(eventTest);
+            switch (eventTest.type) {
+            case sf::Event::Closed:
+                view.close();
+               
+            view.waitEvent(eventTest);
+            case sf::Event::MouseButtonPressed:
+                if (eventTest.MouseButtonPressed &&
+                    eventTest.mouseButton.button == sf::Mouse::Left) {
+                    traverseLands(sf::Mouse::getPosition(view).x,
+                        sf::Mouse::getPosition(view).y);
+                    isTurnButtonClicked(sf::Mouse::getPosition(view).x,
+                        sf::Mouse::getPosition(view).y);
+                }
+                break; 
+            }
+            break;
+        }
+        drawView();
+    }
+}
+
 void PlayView::traverseLands(double x, double y) {
   initializeLandsList();
   while (it != landsList->end()) {
@@ -285,36 +330,6 @@ bool PlayView::isTownClicked(list<Vertex *>::iterator vertexIterator, double x,
           y < (*vertexIterator)->getTown()->getPosY() + 30);
 }
 
-void PlayView::goView() {
-  game.playerIterator = game.players->begin();
-  loadView();
-  drawView();
-  start = true;
-  view.draw(sprite);
-  while (view.isOpen()) {
-    sf::Event eventTest;
-    srand((unsigned)time(nullptr));
-    view.setFramerateLimit(120);
-    while (view.pollEvent(eventTest)) {
-      showCoordinates(eventTest);
-      switch (eventTest.type) {
-      case sf::Event::Closed:
-        view.close();
-        break;
-      }
-      break;
-    }
-    view.waitEvent(eventTest);
-    if (eventTest.MouseButtonPressed &&
-        eventTest.mouseButton.button == sf::Mouse::Left) {
-      traverseLands(sf::Mouse::getPosition(view).x,
-                    sf::Mouse::getPosition(view).y);
-      isTurnButtonClicked(sf::Mouse::getPosition(view).x,
-                          sf::Mouse::getPosition(view).y);
-    }
-    drawView();
-  }
-}
 
 void PlayView::isTurnButtonClicked(int x, int y) {
   if (turn.isMouseOver(view)) {

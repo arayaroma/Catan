@@ -1,19 +1,17 @@
 #include "RegisterView.hpp"
 
 void RegisterView::makeTextboxes() {
-  firstTextbox = TextBox(15, sf::Color::Black, false, {345, 240}, {180, 40},
-                         sf::Color::White);
-  secondTextbox = TextBox(15, sf::Color::Black, false, {345, 300}, {180, 40},
-                          sf::Color::White);
-  thirdTextbox = TextBox(15, sf::Color::Black, false, {345, 360}, {180, 40},
-                         sf::Color::White);
-  fourthTextbox = TextBox(15, sf::Color::Black, false, {345, 420}, {180, 40},
-                          sf::Color::White);
-  newGame= TextBox(15, sf::Color::Black, false, { 10, 17.5 }, { 180, 40 },
-      sf::Color::White);
+  firstTextbox = TextBox(15, sf::Color::Black, false, {345, 240}, {180, 40},sf::Color::White);
 
-  loadGame= TextBox(15, sf::Color::Black, false, { 900, 17.5 }, { 180, 40 },
-      sf::Color::White);
+  secondTextbox = TextBox(15, sf::Color::Black, false, {345, 300}, {180, 40},sf::Color::White);
+
+  thirdTextbox = TextBox(15, sf::Color::Black, false, {345, 360}, {180, 40},sf::Color::White);
+
+  fourthTextbox = TextBox(15, sf::Color::Black, false, {345, 420}, {180, 40},sf::Color::White);
+
+  newGame= TextBox(15, sf::Color::Black, false, { 10, 17.5 }, { 180, 40 },sf::Color::White);
+
+  loadGame= TextBox(15, sf::Color::Black, false, { 900, 17.5 }, { 180, 40 },sf::Color::White);
 }
 
 void RegisterView::loadTextboxes() {
@@ -55,6 +53,11 @@ void RegisterView::makeButtons() {
 }
 
 RegisterView::RegisterView() {}
+
+
+void RegisterView::getColor() {
+  
+}
 
 void RegisterView::loadButtons() {
   makeButtons();
@@ -108,8 +111,6 @@ void RegisterView::typeOverTextbox(sf::Event event) {
 
     if (fourthTextbox.isMouseOver(view))
       fourthTextbox.typeOn(event);
-
-  
   }
   if (newGame.isMouseOver(view))
       newGame.typeOn(event);
@@ -193,15 +194,14 @@ void RegisterView::drawButtons() {
 
 void RegisterView::drawTextboxes() {
   if (isThreePlayers) {
-    isFourPlayers = false;
+ 
     loadTextFields(firstTextbox);
     loadTextFields(secondTextbox);
     loadTextFields(thirdTextbox);
-    fourthTextbox.setVisible(false);
+   
   }
   if (isFourPlayers) {
-    isThreePlayers = false;
-    fourthTextbox.setVisible(true);
+   
     loadTextFields(firstTextbox);
     loadTextFields(secondTextbox);
     loadTextFields(thirdTextbox);
