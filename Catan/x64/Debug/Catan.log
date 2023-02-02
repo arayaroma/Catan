@@ -1,4 +1,2 @@
-﻿  PlayView.cpp
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(313,23): warning C4553: "==": el resultado de la expresión no se usa. ¿Quiso decir "="?
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(314,19): warning C4553: "==": el resultado de la expresión no se usa. ¿Quiso decir "="?
+﻿  RegisterView.cpp
   Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe

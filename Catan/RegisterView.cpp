@@ -325,16 +325,16 @@ void RegisterView::getNames() {
 }
 
 void RegisterView::loadThreePlayers() {
-  game.players->push_back(new Player("jesus", 0, "RED"));
-  game.players->push_back(new Player("dilan", 0, "BLUE"));
-  game.players->push_back(new Player("daniel", 0, "GREEN"));
+  game.players->push_back(new Player(firstTextbox.getText(), 0, "RED"));
+  game.players->push_back(new Player(secondTextbox.getText(), 0, "BLUE"));
+  game.players->push_back(new Player(thirdTextbox.getText(), 0, "GREEN"));
 }
 
 void RegisterView::loadFourPlayers() {
-  game.players->push_back(new Player("jesus", 0, "RED"));
-  game.players->push_back(new Player("dilan", 0, "BLUE"));
-  game.players->push_back(new Player("daniel", 0, "GREEN"));
-  game.players->push_back(new Player("gabriel", 0, "YELLOW"));
+    game.players->push_back(new Player(firstTextbox.getText(), 0, "RED"));
+    game.players->push_back(new Player(secondTextbox.getText(), 0, "BLUE"));
+    game.players->push_back(new Player(thirdTextbox.getText(), 0, "GREEN"));
+  game.players->push_back(new Player(fourthTextbox.getText(), 0, "YELLOW"));
 }
 
 void RegisterView::loadPlayerList() {
