@@ -41,9 +41,11 @@ private:
   int turnNumber;
   string tempImagePath;
   string url="";
-
+  int numTurn = 1;
   
+  int numDice = 0;
 
+  bool isFirstTurn = true;
 public:
 
   void goView() override;
@@ -124,10 +126,21 @@ private:
   void setOwnerToVertexGraph(Vertex* vertex);
 
   void deleteTowntoPlayer();
-  bool firstTurn();
+  void firstTurn();
   void receiveCard(list<Land*>::iterator it);
   void receiveMaterialCard();
 
+  void makeThreePlayers();
+  void makeFourPlayers();
+
+  void printTownPlayer(list<Vertex*>::iterator, int,int);
+  void initializeIteratorTownList();
+  void setIsClickedToVertexGraph(list<Vertex*>::iterator );
+
+  void createLabelNumTurn();
+  void drawLabelNumTurn();
+
+  void isDiceButtonClicked(int x, int y);
 private:
   sf::RectangleShape playerRectangle, cardsRectangle;
   Label *materialCard, *pricingTable, *turns, *cards, *developCard;
@@ -135,6 +148,6 @@ private:
   Label *clayCard, *mineralPlayerCard, *wheatPlayerCard, *woodPlayerCard,
       *woolPlayerCard;
   Label *townPlayer, *cityPlayer, *roadPlayer;
-
-  Button turn , buy, trade, option1, p;
+  Label* titleTurn, * labelNumTurn, *infoFisrtTurn, *labelNumDice;
+  Button turn , buy, trade, dice, p;
 };
