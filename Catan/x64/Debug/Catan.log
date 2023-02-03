@@ -1,2 +1,44 @@
-﻿  LINK : C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe not found or not built by the last incremental link; performing full link
-  Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe
+﻿  AboutView.cpp
+  Alert.cpp
+  Application.cpp
+  Button.cpp
+  Card.cpp
+  Computer.cpp
+  ConfirmationAlert.cpp
+  ErrorAlert.cpp
+  FileHandler.cpp
+  Game.cpp
+  Dice.cpp
+  Edge.cpp
+  Figure.cpp
+  Graph.cpp
+  Human.cpp
+  InformationAlert.cpp
+  Knight.cpp
+  main.cpp
+  City.cpp
+  Clay.cpp
+  Generando código...
+  Compilando...
+  Component.cpp
+  Label.cpp
+  Land.cpp
+  Mineral.cpp
+  NoneAlert.cpp
+  Player.cpp
+  PlayView.cpp
+  Progress.cpp
+  RegisterView.cpp
+  Road.cpp
+  TextBox.cpp
+  TitleView.cpp
+  Town.cpp
+  Vertex.cpp
+  VictoryPoints.cpp
+  View.cpp
+  WarningAlert.cpp
+  Wheat.cpp
+  Wood.cpp
+  Wool.cpp
+  Generando código...
+  Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe
