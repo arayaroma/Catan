@@ -44,7 +44,7 @@ private:
   int numTurn = 1;
   
   int numDice = 0;
-
+  bool isDiceSpin = false;
   bool isFirstTurn = true;
 public:
 
@@ -127,8 +127,8 @@ private:
 
   void deleteTowntoPlayer();
   void firstTurn();
-  void receiveCard(list<Land*>::iterator it);
-  void receiveMaterialCard();
+  void receiveFirstCard(list<Land*>::iterator it);
+  void receiveFirstMaterialCard();
 
   void makeThreePlayers();
   void makeFourPlayers();
@@ -141,6 +141,10 @@ private:
   void drawLabelNumTurn();
 
   void isDiceButtonClicked(int x, int y);
+
+  void receiveCard(list<Land*>::iterator it);
+  void receiveMaterialCard(int idLand);
+
 private:
   sf::RectangleShape playerRectangle, cardsRectangle;
   Label *materialCard, *pricingTable, *turns, *cards, *developCard;

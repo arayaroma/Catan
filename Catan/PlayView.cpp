@@ -281,7 +281,7 @@ void PlayView::printTownPlayer(list<Vertex*>::iterator vIterator, int x, int y) 
             deleteTowntoPlayer();
             (*game.playerIterator)->setTownFirstTurn(1);
             if ((*game.playerIterator)->getTownFirstTurn() == 2) {
-                receiveMaterialCard();
+                receiveFirstMaterialCard();
             }
             view.display();
         }
@@ -298,7 +298,7 @@ void PlayView::searhTown(double x, double y, list<Land *>::iterator it) {
       vIterator++;
   }
 }
-void PlayView::receiveCard(list<Land*>::iterator it) {
+void PlayView::receiveFirstCard(list<Land*>::iterator it) {
     list<Vertex*>::iterator vIterator;
     vIterator = (*it)->getTownsList()->begin();
     while (vIterator != (*it)->getTownsList()->end()) {
@@ -320,11 +320,11 @@ void PlayView::receiveCard(list<Land*>::iterator it) {
         vIterator++;
     }
 }
-void PlayView::receiveMaterialCard() {
+void PlayView::receiveFirstMaterialCard() {
     list<Land*>::iterator it;
     it = landsList->begin();
     while (it != landsList->end()) {
-       receiveCard(it);
+        receiveFirstCard(it);
        it++;
     }
 }
@@ -400,7 +400,50 @@ void PlayView::goView() {
 }
 void PlayView::isDiceButtonClicked(int x, int y) {
     if (dice.isMouseOver(view)) {
-        numDice++;
+        if (!isDiceSpin) {
+            numDice = 1 + rand() % 19;
+            receiveMaterialCard(numDice);
+            isDiceSpin = true;
+        }
+    }
+}
+void PlayView::receiveCard(list<Land*>::iterator it) {
+    list<Vertex*>::iterator vIterator;
+    vIterator = (*it)->getTownsList()->begin();
+    playerIterator = game.players->begin();
+    while (playerIterator != game.players->end()) {
+        while (vIterator != (*it)->getTownsList()->end()) {
+            if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() != nullptr) {
+                if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner()->getName() ==
+                    (*playerIterator)->getName()) {
+                    if ((*it)->getTypeLand() == "Mountain")
+                        (*playerIterator)->mineralCard->push_back(new Mineral());
+                    if ((*it)->getTypeLand() == "Brick")
+                        (*playerIterator)->clayCard->push_back(new Clay());
+                    if ((*it)->getTypeLand() == "Forest")
+                        (*playerIterator)->woodCard->push_back(new Wood());
+                    if ((*it)->getTypeLand() == "Grass")
+                        (*playerIterator)->woolCard->push_back(new Wool());
+                    if ((*it)->getTypeLand() == "Field")
+                        (*playerIterator)->wheatlCard->push_back(new Wheat());
+                }
+            }
+            vIterator++;
+        }
+        vIterator = (*it)->getTownsList()->begin();
+        playerIterator++;
+    }
+
+}
+void PlayView::receiveMaterialCard(int idLand) {
+    list<Land*>::iterator it;
+    it = landsList->begin();
+    while (it != landsList->end()) {
+        if ((*it)->getLandId() == idLand) {
+            receiveCard(it);
+            break;
+        }
+        it++;
     }
 }
 void PlayView::isTurnButtonClicked(int x, int y) {
@@ -408,6 +451,7 @@ void PlayView::isTurnButtonClicked(int x, int y) {
       if (game.playerIterator != game.players->end()) {
           game.playerIterator++;
           numTurn++;
+          isDiceSpin = false;
       }
       if (game.playerIterator == game.players->end()) {
           game.playerIterator = game.players->begin();
