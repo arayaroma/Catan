@@ -1,6 +1,8 @@
-﻿  PlayView.cpp
-  Progress.cpp
-  Wool.cpp
+﻿  AboutView.cpp
+  Application.cpp
+  PlayView.cpp
+  RegisterView.cpp
+  TitleView.cpp
+  main.cpp
   Generating Code...
-  LINK : C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe not found or not built by the last incremental link; performing full link
   Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe

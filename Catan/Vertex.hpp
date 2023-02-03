@@ -1,38 +1,42 @@
 #pragma once
-#include "Town.hpp"
-#include <iostream>
 #include "Player.hpp"
+#include "Town.hpp"
+#include <SFML/Graphics.hpp>
+
+#define log(x) std::cout << x << std::endl;
+
 class Edge;
 
 class Vertex {
 private:
   friend class Graph;
   int vertexId;
-  bool isPrinted;
   Edge *firstEdge;
-  string ownerTown;
-  bool isClicked;
-  string landType;
+  string townOwner;
+  bool _isPrinted;
+  bool _isClicked;
+  sf::Vertex vertex;
+
 public:
+  Player *owner;
   Vertex *next;
   Town *town;
-  Player* owner;
+
 public:
   Vertex();
   Vertex(int, string, Town *, bool);
 
   int getVertexId() const { return this->vertexId; }
 
-  void setLandType(string landType) { this->landType = landType; }
-  string getLandType() { return this->landType; }
-  void setOwner(Player* owner) { this->owner = owner; }
-  Player* getOwner() { return this->owner; }
+  void setOwner(Player *owner) { this->owner = owner; }
+  Player *getOwner() { return this->owner; }
 
-  Town* getTown() const { return this->town; }
-  void toString() { std::cout << this->vertexId << " "; }
-  bool getIsPrint() { return this->isPrinted; }
-  void setIsPrinted(bool band) { this->isPrinted = band; }
+  Town *getTown() const { return this->town; }
+  void setPrinted(bool isPrinted) { this->_isPrinted = isPrinted; }
+  bool isPrinted() const { return this->_isPrinted; }
 
-  bool getIsClicked() { return this->isClicked; }
-  void setIsClicked(bool band) { this->isClicked = band; }
+  void setClicked(bool isClicked) { this->_isClicked = isClicked; }
+  bool isClicked() const { return this->_isClicked; }
+
+  void toString() { log(this->vertexId); }
 };

@@ -131,9 +131,6 @@ private:
   void receiveFirstCard(list<Land *>::iterator it);
   void receiveFirstMaterialCard();
 
-  void makeThreePlayers();
-  void makeFourPlayers();
-
   void printTownPlayer(list<Vertex *>::iterator, int, int);
   void initializeIteratorTownList();
   void setIsClickedToVertexGraph(list<Vertex *>::iterator);
@@ -145,6 +142,14 @@ private:
 
   void receiveCard(list<Land *>::iterator it);
   void receiveMaterialCard(int idLand);
+
+  void createThreePlayersLabel();
+  void createFourPlayersLabel();
+  bool isThreePlayers() const;
+  bool isFourPlayers() const;
+
+  list<Player *>::iterator beginPlayerIterator() const;
+  bool isPlayerListTraversal() const;
 
 private:
   sf::RectangleShape playerRectangle, cardsRectangle;
