@@ -6,9 +6,13 @@ Dice::Dice() {
 }
 
 int Dice::getNumber() const {
-
   srand((unsigned)time(nullptr));
   return rand() % (max - min + 1) + min;
 }
 
-int Dice::rollDice() const { return getNumber(); }
+int Dice::getActualNumber() const { return this->actualNumber; }
+
+int Dice::rollDice() {
+  actualNumber = getNumber();
+  return actualNumber;
+}

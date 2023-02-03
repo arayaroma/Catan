@@ -15,8 +15,9 @@ void PlayView::createLabelNumTurn() {
   infoFisrtTurn = new Label(
       "Primera Vuelta, por favor elija 2 poblados y pase de turno",
       sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 250.f, 17.f);
-  labelNumDice = new Label(std::to_string(numDice), sf::Color(0, 0, 255, 128),
-                           font, sf::Text::Bold, 20, 1150.f, 570.f);
+  labelNumDice = new Label(std::to_string(diceInstance.getActualNumber()),
+                           sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20,
+                           1150.f, 570.f);
 }
 void PlayView::createLabels() {
   materialCard = new Label("Cartas de Materiales", sf::Color(0, 0, 255, 128),
@@ -60,7 +61,7 @@ void PlayView::createTurnButton() {
 }
 
 void PlayView::createPButton() {
-  p = Button("Turn", {0, 0}, 16, sf::Color::Green, sf::Color::Black);
+  p = Button("P", {0, 0}, 16, sf::Color::Green, sf::Color::Black);
   p.setFont(font);
   p.setPosition({0, 0}, 3);
   p.drawButton(view);
@@ -277,32 +278,6 @@ void PlayView::loadGameButtons() {
   loadCardsRectangle();
 }
 
-void PlayView::loadView() {
-  view.create(sf::VideoMode(1280, 720), "Play");
-  image.loadFromFile("Images/catan_1280x720.jpg");
-  sprite.setTexture(image);
-  font.loadFromFile("mononoki.ttf");
-  view.setFramerateLimit(120);
-}
-
-void PlayView::drawView() {
-  view.clear();
-  view.draw(sprite);
-  loadGameButtons();
-  drawLabels();
-  printBoard();
-  printTownsTest();
-  printMaterialCard();
-  drawLabelNamePlayers();
-  drawLabelNumTurn();
-  printPlayerCard();
-  drawLabelCardPlayer();
-  drawLabelFigurePlayer();
-  printPlayerFigure();
-  createButtons();
-  view.display();
-}
-
 void PlayView::traverseLands(double x, double y) {
   it = landsList->begin();
   while (it != landsList->end()) {
@@ -319,24 +294,37 @@ void PlayView::setIsClickedToVertexGraph(list<Vertex *>::iterator it) {
   game.graph.getVertex((*it)->getVertexId())->setClicked(true);
 }
 
+bool PlayView::isPlayerTownListEmpty() const {
+  return ((*game.playerIterator)->towns->size() == 0);
+}
+
+bool PlayView::playerIsPuttingTowns() const {
+  return ((*game.playerIterator)->getTownFirstTurn() < 2);
+}
+
+bool PlayView::playerHasPutTwoTowns() const {
+  return ((*game.playerIterator)->getTownFirstTurn() == 2);
+}
+
+bool PlayView::isPlayerTownsListTraversal() const {
+  return (townIterator != (*game.playerIterator)->towns->end());
+}
+
 void PlayView::printTownPlayer(list<Vertex *>::iterator vIterator, int x,
                                int y) {
-  if ((*game.playerIterator)->towns->size() > 0) {
-    if ((*game.playerIterator)->getTownFirstTurn() < 2) {
-      initializeIteratorTownList();
-      setIsClickedToVertexGraph(vIterator);
-      if (townIterator != (*game.playerIterator)->towns->end())
-        printImages((*townIterator)->getImagePath(),
-                    (*vIterator)->getTown()->getPosX(),
-                    (*vIterator)->getTown()->getPosY());
-      setOwnerToVertexGraph(game.graph.getVertex((*vIterator)->getVertexId()));
-      deleteTowntoPlayer();
-      (*game.playerIterator)->setTownFirstTurn(1);
-      if ((*game.playerIterator)->getTownFirstTurn() == 2) {
-        receiveFirstMaterialCard();
-      }
-      view.display();
-    }
+  if (playerIsPuttingTowns()) {
+    initializeIteratorTownList();
+    setIsClickedToVertexGraph(vIterator);
+    if (isPlayerTownsListTraversal())
+      printImages((*townIterator)->getImagePath(),
+                  (*vIterator)->getTown()->getPosX(),
+                  (*vIterator)->getTown()->getPosY());
+    setOwnerToVertexGraph(game.graph.getVertex((*vIterator)->getVertexId()));
+    deleteTowntoPlayer();
+    (*game.playerIterator)->setTownFirstTurn(1);
+    if (playerHasPutTwoTowns())
+      receiveFirstMaterialCard();
+    view.display();
   }
   (*game.playerIterator)->setFirstTurnFinished(true);
 }
@@ -352,26 +340,26 @@ void PlayView::searhTown(double x, double y, list<Land *>::iterator it) {
   }
 }
 
+void PlayView::giveCardsToPlayerFirstTurn(list<Land *>::iterator landIterator) {
+  if ((*landIterator)->getTypeLand() == "Mountain")
+    (*game.playerIterator)->mineralCard->push_back(new Mineral());
+  if ((*landIterator)->getTypeLand() == "Brick")
+    (*game.playerIterator)->clayCard->push_back(new Clay());
+  if ((*landIterator)->getTypeLand() == "Forest")
+    (*game.playerIterator)->woodCard->push_back(new Wood());
+  if ((*landIterator)->getTypeLand() == "Grass")
+    (*game.playerIterator)->woolCard->push_back(new Wool());
+  if ((*landIterator)->getTypeLand() == "Field")
+    (*game.playerIterator)->wheatlCard->push_back(new Wheat());
+}
+
 void PlayView::receiveFirstCard(list<Land *>::iterator it) {
   list<Vertex *>::iterator vIterator;
   vIterator = (*it)->getTownsList()->begin();
-  while (vIterator != (*it)->getTownsList()->end()) {
-    if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() !=
-        nullptr) {
-      if (game.graph.getVertex((*vIterator)->getVertexId())
-              ->getOwner()
-              ->getName() == (*game.playerIterator)->getName()) {
-        if ((*it)->getTypeLand() == "Mountain")
-          (*game.playerIterator)->mineralCard->push_back(new Mineral());
-        if ((*it)->getTypeLand() == "Brick")
-          (*game.playerIterator)->clayCard->push_back(new Clay());
-        if ((*it)->getTypeLand() == "Forest")
-          (*game.playerIterator)->woodCard->push_back(new Wood());
-        if ((*it)->getTypeLand() == "Grass")
-          (*game.playerIterator)->woolCard->push_back(new Wool());
-        if ((*it)->getTypeLand() == "Field")
-          (*game.playerIterator)->wheatlCard->push_back(new Wheat());
-      }
+  while (isVertexesListTraversalInTurn(vIterator, it)) {
+    if (existsAnOwnerInVertex(vIterator)) {
+      if (isActualPlayerName(vIterator))
+        giveCardsToPlayerFirstTurn(it);
     }
     vIterator++;
   }
@@ -415,20 +403,44 @@ bool PlayView::isTownClicked(list<Vertex *>::iterator vertexIterator, double x,
           y < (*vertexIterator)->getTown()->getPosY() + 30);
 }
 
-void PlayView::goView() {
+void PlayView::loadView() {
+  view.create(sf::VideoMode(1280, 720), "Play");
+  image.loadFromFile("Images/catan_1280x720.jpg");
+  sprite.setTexture(image);
+  font.loadFromFile("mononoki.ttf");
+  view.setFramerateLimit(120);
   game.playerIterator = beginPlayerIterator();
   game.loadLands();
   game.assignTownsToLand();
   game.makeGraph();
   landsList = game.getLandsList();
+  start = true;
+  srand((unsigned)time(nullptr));
+}
+
+void PlayView::drawView() {
+  view.clear();
+  view.draw(sprite);
+  loadGameButtons();
+  drawLabels();
+  printBoard();
+  printTownsTest();
+  printMaterialCard();
+  drawLabelNamePlayers();
+  drawLabelNumTurn();
+  printPlayerCard();
+  drawLabelCardPlayer();
+  drawLabelFigurePlayer();
+  printPlayerFigure();
+  createButtons();
+  view.display();
+}
+
+void PlayView::goView() {
   loadView();
   drawView();
-  start = true;
   view.draw(sprite);
   while (view.isOpen()) {
-    sf::Event eventTest;
-    srand((unsigned)time(nullptr));
-    view.setFramerateLimit(120);
     while (view.pollEvent(eventTest)) {
       showCoordinates(eventTest);
       switch (eventTest.type) {
@@ -440,7 +452,11 @@ void PlayView::goView() {
     }
     view.waitEvent(eventTest);
     if (eventTest.MouseButtonPressed && isMouseLeftClicked(eventTest)) {
-      traverseLands(getMousePositionX(view), getMousePositionY(view));
+      if (isFirstTurn)
+        traverseLands(getMousePositionX(view), getMousePositionY(view));
+      else
+        isDiceButtonClicked(getMousePositionX(view), getMousePositionY(view));
+
       isTurnButtonClicked(getMousePositionX(view), getMousePositionY(view));
     }
     drawView();
@@ -449,12 +465,45 @@ void PlayView::goView() {
 
 void PlayView::isDiceButtonClicked(int x, int y) {
   if (dice.isMouseOver(view)) {
-    if (!isDiceSpin) {
-      numDice = 1 + rand() % 19;
-      receiveMaterialCard(numDice);
-      isDiceSpin = true;
+    if (!isDiceSpinned) {
+      receiveMaterialCard(diceInstance.rollDice());
+      isDiceSpinned = true;
     }
   }
+}
+
+bool PlayView::existsAnOwnerInVertex(list<Vertex *>::iterator vertexIterator) {
+  return (game.graph.getVertex((*vertexIterator)->getVertexId())->getOwner() !=
+          nullptr);
+}
+
+bool PlayView::isVertexesListTraversalInTurn(
+    list<Vertex *>::iterator vertexIterator,
+    list<Land *>::iterator landIterator) {
+  return (vertexIterator != (*landIterator)->getTownsList()->end());
+}
+
+bool PlayView::isActualPlayerName(list<Vertex *>::iterator vertexIterator) {
+  return (game.graph.getVertex((*vertexIterator)->getVertexId())
+              ->getOwner()
+              ->getName() == (*playerIterator)->getName());
+}
+
+void PlayView::giveCardsToPlayer(list<Land *>::iterator landIterator) {
+  if ((*landIterator)->getTypeLand() == "Mountain")
+    (*playerIterator)->mineralCard->push_back(new Mineral());
+
+  if ((*landIterator)->getTypeLand() == "Brick")
+    (*playerIterator)->clayCard->push_back(new Clay());
+
+  if ((*landIterator)->getTypeLand() == "Forest")
+    (*playerIterator)->woodCard->push_back(new Wood());
+
+  if ((*landIterator)->getTypeLand() == "Grass")
+    (*playerIterator)->woolCard->push_back(new Wool());
+
+  if ((*landIterator)->getTypeLand() == "Field")
+    (*playerIterator)->wheatlCard->push_back(new Wheat());
 }
 
 void PlayView::receiveCard(list<Land *>::iterator it) {
@@ -462,23 +511,10 @@ void PlayView::receiveCard(list<Land *>::iterator it) {
   vIterator = (*it)->getTownsList()->begin();
   playerIterator = beginPlayerIterator();
   while (isPlayerListTraversal()) {
-    while (vIterator != (*it)->getTownsList()->end()) {
-      if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() !=
-          nullptr) {
-        if (game.graph.getVertex((*vIterator)->getVertexId())
-                ->getOwner()
-                ->getName() == (*playerIterator)->getName()) {
-          if ((*it)->getTypeLand() == "Mountain")
-            (*playerIterator)->mineralCard->push_back(new Mineral());
-          if ((*it)->getTypeLand() == "Brick")
-            (*playerIterator)->clayCard->push_back(new Clay());
-          if ((*it)->getTypeLand() == "Forest")
-            (*playerIterator)->woodCard->push_back(new Wood());
-          if ((*it)->getTypeLand() == "Grass")
-            (*playerIterator)->woolCard->push_back(new Wool());
-          if ((*it)->getTypeLand() == "Field")
-            (*playerIterator)->wheatlCard->push_back(new Wheat());
-        }
+    while (isVertexesListTraversalInTurn(vIterator, it)) {
+      if (existsAnOwnerInVertex(vIterator)) {
+        if (isActualPlayerName(vIterator))
+          giveCardsToPlayer(it);
       }
       vIterator++;
     }
@@ -504,7 +540,7 @@ void PlayView::isTurnButtonClicked(int x, int y) {
     if (game.playerIterator != game.players->end()) {
       game.playerIterator++;
       numTurn++;
-      isDiceSpin = false;
+      isDiceSpinned = false;
     }
     if (game.playerIterator == game.players->end()) {
       game.playerIterator = beginPlayerIterator();
