@@ -49,7 +49,9 @@ protected:
 protected:
   sf::RenderWindow view;
   sf::Texture image;
+  sf::Texture OceanImg;
   sf::Sprite sprite;
+  sf::Sprite OCeanSprite;
   sf::Font font;
   sf::Event event;
 };

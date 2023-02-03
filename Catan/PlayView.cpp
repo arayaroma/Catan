@@ -8,15 +8,14 @@ PlayView::PlayView() {
 PlayView::PlayView(list<Player *> *players) { game.players = players; }
 
 void PlayView::createLabelNumTurn() {
-  titleTurn = new Label("Turno:  ", sf::Color(0, 0, 255, 128), font,
-                        sf::Text::Bold, 20, 400.f, 2.f);
-  labelNumTurn = new Label(std::to_string(numTurn), sf::Color(0, 0, 255, 128),
-                           font, sf::Text::Bold, 20, 500.f, 2.f);
-  infoFisrtTurn = new Label(
-      "Primera Vuelta, por favor elija 2 poblados y pase de turno",
-      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 250.f, 17.f);
-  labelNumDice = new Label(std::to_string(numDice), sf::Color(0, 0, 255, 128),
-                           font, sf::Text::Bold, 20, 1150.f, 570.f);
+  titleTurn = new Label("Turno:  ", sf::Color(0, 0, 255, 128), font,sf::Text::Bold, 20, 1000.f, 2.f);
+  
+  labelNumTurn = new Label(std::to_string(numTurn), sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 1100.f, 2.f);
+  
+  infoFisrtTurn = new Label("Primera Vuelta, por favor elija 2 poblados y pase de turno",sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 250.f, 525.f);
+
+  labelNumDice = new Label(std::to_string(numDice), sf::Color(0, 0, 255, 128),font, sf::Text::Bold, 20, 1150.f, 570.f);
+
 }
 void PlayView::createLabels() {
   materialCard = new Label("Cartas de Materiales", sf::Color(0, 0, 255, 128),
@@ -31,6 +30,20 @@ void PlayView::createLabels() {
                     sf::Text::Bold, 20, 565.f, 575.f);
 }
 
+void PlayView::loadthreeXone() {
+
+    firsThreeXone = new Label("3:1", sf::Color :: Black, font, sf::Text::Bold, 20, 500.f, 20.f);
+    view.draw(firsThreeXone->getTextInstance());
+    
+    secondThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 838.f, 75.f);
+    view.draw(secondThreeXone->getTextInstance());
+
+    thirdThreeXone = new Label("3:1", sf::Color::Black , font, sf::Text::Bold, 20, 910.f, 238.f);
+    view.draw(thirdThreeXone->getTextInstance());
+
+    fourThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 510.f, 435.f);
+    view.draw(fourThreeXone->getTextInstance()); 
+}
 
 void PlayView::createButtons() {
 
@@ -342,6 +355,16 @@ void PlayView::loadView() {
   sprite.setTexture(image);
   font.loadFromFile("mononoki.ttf");
   view.setFramerateLimit(120);
+
+}
+
+void PlayView::loadOcean() {
+    
+    OceanImg.loadFromFile("Images/Muelle/Ocean.png");
+    OCeanSprite.setTexture(OceanImg);
+    OCeanSprite.setPosition({ 400,0 });
+    view.draw(OCeanSprite);
+
 }
 
 void PlayView::drawView() {
@@ -349,6 +372,8 @@ void PlayView::drawView() {
   view.draw(sprite);
   loadGameButtons();
   drawLabels();
+  loadOcean(); 
+  loadthreeXone();
   printBoard();
   printTownsTest();
   printMaterialCard();
@@ -627,7 +652,7 @@ void PlayView::isPrintedFalse() {
 }
 
 void PlayView::printBoard() {
-  double top_height = 40, bot_height = 40, cycle_cord_x = 0, i = 1;
+  double top_height = 50, bot_height = 50, cycle_cord_x = 0, i = 1;
   initializeLandsList();
   bot_height += 280;
   it2 = landsList->begin();

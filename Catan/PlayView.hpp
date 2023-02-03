@@ -66,12 +66,14 @@ private:
   void printImages(string, double, double);
 
   void createLabels();
+  void loadthreeXone();
 
   void createButtons(); 
   void setButtonOrigins(); 
   void drawButtons(); 
 
   void loadRegisterButtons(Button &btn);
+  void loadOcean();
 
   void drawLabels();
   void printBoard();
@@ -172,7 +174,7 @@ private:
   Label *materialCard, *pricingTable, *turns, *cards, *developCard;
   Label *player1, *player2, *player3, *player4;
   Label *clayCard, *mineralPlayerCard, *wheatPlayerCard, *woodPlayerCard,
-      *woolPlayerCard;
+      *woolPlayerCard, * firsThreeXone, * secondThreeXone, * thirdThreeXone, * fourThreeXone;
   Label *townPlayer, *cityPlayer, *roadPlayer;
   Label *titleTurn, *labelNumTurn, *infoFisrtTurn, *labelNumDice;
   Button turn, buy, trade, dice, p, option1, save, close;
