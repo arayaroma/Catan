@@ -32,8 +32,8 @@ private:
   void countPlayers();
 
   void loadAll();
-  void load3Colors();
-  void load4Colors();
+  void loadThreeColors();
+  void loadFourColors();
   void getNames();
   void drawColors(); 
 

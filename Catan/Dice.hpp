@@ -19,11 +19,15 @@ enum Numbers {
 
 class Dice {
 private:
+  int actualNumber;
   int min, max;
 
 public:
   Dice();
 
+  int getActualNumber() const;
+  int rollDice();
+
+private:
   int getNumber() const;
-  int rollDice() const;
 };
