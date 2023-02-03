@@ -8,8 +8,8 @@ Land::Land() {
   this->townsList = new list<Vertex*>();
 }
 
-Land::Land( string imagePath, double posX, double posY, int landId) {
-  this->type = LAND;
+Land::Land(string type, string imagePath, double posX, double posY, int landId) {
+  this->typeland = type;
   this->imagePath = imagePath;
   this->posX = posX;
   this->posY = posY;

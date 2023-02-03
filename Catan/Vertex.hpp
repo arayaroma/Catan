@@ -12,6 +12,7 @@ private:
   Edge *firstEdge;
   string ownerTown;
   bool isClicked;
+  string landType;
 public:
   Vertex *next;
   Town *town;
@@ -22,6 +23,8 @@ public:
 
   int getVertexId() const { return this->vertexId; }
 
+  void setLandType(string landType) { this->landType = landType; }
+  string getLandType() { return this->landType; }
   void setOwner(Player* owner) { this->owner = owner; }
   Player* getOwner() { return this->owner; }
 

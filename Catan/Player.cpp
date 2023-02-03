@@ -4,6 +4,7 @@ Player::Player() {
   this->name = "";
   this->color = "";
   this->score = NULL;
+  this->firstTurnFinished = false;
   towns = new list<Town*>();
   roads = new list<Road*>();
   citys = new list<City*>();
@@ -12,6 +13,7 @@ Player::Player() {
   woodCard = new list<Wood*>();
   clayCard = new list<Clay*>();
   mineralCard = new list<Mineral*>();
+  wheatlCard = new list<Wheat*>();
 }
 
 Player::Player(string name, int score, string color) {
@@ -26,6 +28,7 @@ Player::Player(string name, int score, string color) {
   woodCard = new list<Wood*>();
   clayCard = new list<Clay*>();
   mineralCard = new list<Mineral*>();
+  wheatlCard = new list<Wheat*>();
 }
 
 void Player::setName(string name) { this->name = name; }

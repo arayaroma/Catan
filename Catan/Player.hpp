@@ -12,11 +12,16 @@ protected:
   string color;
   int score;
   int turnNumber;
-
+  int townFirstTurn = 0;
+  bool firstTurnFinished = false;
 public:
   Player();
   Player(string, int, string);
 
+  void setFirstTurnFinished(bool band) { firstTurnFinished = band; }
+  bool getFirstTurnFinished() { return this->firstTurnFinished; }
+  void setTownFirstTurn(int it) { townFirstTurn += it; }
+  int getTownFirstTurn() { return this->townFirstTurn; }
   void setName(string);
   string getName() const;
 
@@ -36,4 +41,5 @@ public:
   list<Wood *> *woodCard;
   list<Clay *> *clayCard;
   list<Mineral *> *mineralCard;
+  list<Wheat*>* wheatlCard;
 };

@@ -4,7 +4,7 @@ Vertex::Vertex() {
 	this->firstEdge = nullptr;
 	this->town = nullptr;
 	this->vertexId = NULL;
-	this->ownerTown = nullptr;
+	this->owner = nullptr;
 	this->isPrinted = false;
 }
 
