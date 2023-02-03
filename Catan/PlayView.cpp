@@ -82,6 +82,7 @@ void PlayView::createCloseButton() {
 }
 
 void PlayView::createDiceButton() {
+  dice = Button("Dado", {120, 50}, 15, sf::Color::Green, sf::Color::White);
   dice.setFont(font);
   dice.setPosition({1120, 600}, 3);
   dice.drawButton(view);
