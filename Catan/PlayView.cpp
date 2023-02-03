@@ -243,6 +243,7 @@ void PlayView::drawView() {
   createButtons();
   view.display();
 }
+
 void PlayView::traverseLands(double x, double y) {
   initializeLandsList();
   while (it != landsList->end()) {
@@ -307,8 +308,7 @@ void PlayView::goView() {
       break;
     }
     view.waitEvent(eventTest);
-    if (eventTest.MouseButtonPressed &&
-        eventTest.mouseButton.button == sf::Mouse::Left) {
+    if (eventTest.MouseButtonPressed && isMouseLeftClicked(eventTest)) {
       traverseLands(sf::Mouse::getPosition(view).x,
                     sf::Mouse::getPosition(view).y);
       isTurnButtonClicked(sf::Mouse::getPosition(view).x,

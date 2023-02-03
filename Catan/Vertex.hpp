@@ -15,7 +15,6 @@ private:
   string townOwner;
   bool _isPrinted;
   bool _isClicked;
-  bool _hasOwner;
   sf::Vertex vertex;
 
 public:
@@ -28,8 +27,6 @@ public:
   Vertex(int, string, Town *, bool);
 
   int getVertexId() const { return this->vertexId; }
-
-  bool hasOwner() const { return this->_hasOwner; }
 
   void setOwner(Player *owner) { this->owner = owner; }
   Player *getOwner() { return this->owner; }

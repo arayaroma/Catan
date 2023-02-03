@@ -1,17 +1,5 @@
-﻿  AboutView.cpp
-  Alert.cpp
-  Application.cpp
-  ConfirmationAlert.cpp
-  ErrorAlert.cpp
-  FileHandler.cpp
-  Game.cpp
-  InformationAlert.cpp
-  NoneAlert.cpp
+﻿  main.cpp
   PlayView.cpp
   RegisterView.cpp
-  TitleView.cpp
-  View.cpp
-  WarningAlert.cpp
-  main.cpp
   Generating Code...
   Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe
