@@ -25,7 +25,7 @@ void NoneAlert::drawButton(Button &button) {
     button.setBackgroundColor(sf::Color(155, 155, 155, 255));
   else
     button.setBackgroundColor(sf::Color(205, 205, 205, 255));
-  button.drawTo(view);
+  button.drawButton(view);
 }
 
 void NoneAlert::loadImageIcon() {

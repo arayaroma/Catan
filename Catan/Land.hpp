@@ -12,14 +12,14 @@ private:
   int landId;
   double posX;
   double posY;
-
+  std::string typeland;
 public:
   list<Vertex *> *townsList;
 
 public:
   Land();
 
-  Land(std::string, double x, double y, int id);
+  Land(std::string, std::string, double x, double y, int id);
 
   list<Vertex *> *getTownsList() const { return this->townsList; }
 
@@ -31,7 +31,7 @@ public:
 
   void setLandId(int);
   int getLandId() const;
-
+  string getTypeLand() { return this->typeland; }
   string getType() const override { return LAND; }
   string getImagePath() override { return this->imagePath; }
   void toString() override {

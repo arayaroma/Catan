@@ -6,7 +6,6 @@
 
 #define log(x) std::cout << x << std::endl;
 
-using std::fstream;
 using std::string;
 
 class FileHandler {

@@ -28,7 +28,7 @@ private:
   void loadTextFields(TextBox &);
   void loadButtons();
   void loadRegisterButtons(Button &, sf:: Color color);
-
+  void loadRegisterButtons(Button&);
   void countPlayers();
 
   void loadAll();

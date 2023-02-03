@@ -8,7 +8,8 @@ class View {
 
 public:
   virtual void goView() = 0;
-  View(){ game.players = new list<Player*>(); }
+  View() { game.players = new list<Player *>(); }
+
 private:
   virtual void loadView() = 0;
   virtual void drawView() = 0;
@@ -29,9 +30,17 @@ public:
   virtual bool isReturnPressed() const {
     return (sf::Keyboard::isKeyPressed(sf::Keyboard::Return));
   }
-  
+
   virtual bool isEndPressed() const {
     return (sf::Keyboard::isKeyPressed(sf::Keyboard::End));
+  }
+
+  virtual int getMousePositionX(sf::RenderWindow &view) const {
+    return sf::Mouse::getPosition(view).x;
+  }
+
+  virtual int getMousePositionY(sf::RenderWindow &view) const {
+    return sf::Mouse::getPosition(view).y;
   }
 
 protected:

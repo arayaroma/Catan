@@ -17,8 +17,9 @@ public:
   void setBackgroundColor(sf::Color);
   void setForegroundColor(sf::Color);
   void setPosition(sf::Vector2f, int);
-  void drawTo(sf::RenderWindow &);
   bool isMouseOver(sf::RenderWindow &);
+  void drawButton(sf::RenderWindow &);
+  void buttonInOutColors(sf::Color, sf::Color, sf::RenderWindow &);
 
 private:
   sf::RectangleShape button;

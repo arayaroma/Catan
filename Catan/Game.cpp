@@ -166,21 +166,21 @@ void Game::loadLands() {
   for (i = 0; i < 4; i++) {
     if (i < 1) {
       landsList->push_back(
-          new Land(imagePaths.at("dessertPath"), 0, 0, landId));
+          new Land("Dessert",imagePaths.at("dessertPath"), 0, 0, landId));
       landId++;
     }
     if (i < 3) {
       landsList->push_back(
-          new Land(imagePaths.at("mountainPath"), 0, 0, landId));
+          new Land("Mountain", imagePaths.at("mountainPath"), 0, 0, landId));
       landId++;
-      landsList->push_back(new Land(imagePaths.at("fieldPath"), 0, 0, landId));
+      landsList->push_back(new Land("Field",imagePaths.at("fieldPath"), 0, 0, landId));
       landId++;
     }
-    landsList->push_back(new Land(imagePaths.at("grassPath"), 0, 0, landId));
+    landsList->push_back(new Land("Grass", imagePaths.at("grassPath"), 0, 0, landId));
     landId++;
-    landsList->push_back(new Land(imagePaths.at("forestPath"), 0, 0, landId));
+    landsList->push_back(new Land("Forest", imagePaths.at("forestPath"), 0, 0, landId));
     landId++;
-    landsList->push_back(new Land(imagePaths.at("brickPath"), 0, 0, landId));
+    landsList->push_back(new Land("Brick", imagePaths.at("brickPath"), 0, 0, landId));
     landId++;
   }
 }
@@ -459,6 +459,7 @@ void Game::loadRoades(Player *player) {
   if (player->getColor() == "YELLOW")
     player->roads->push_back(new Road("Images/Figures/RoadYellow.png"));
 }
+
 void Game::loadCities(Player *player) {
   if (player->getColor() == "RED")
     player->citys->push_back(new City("Images/Figures/CityRed.png"));
@@ -469,6 +470,7 @@ void Game::loadCities(Player *player) {
   if (player->getColor() == "YELLOW")
     player->citys->push_back(new City("Images/Figures/CityYellow.png"));
 }
+
 void Game::loadTowns(Player *player) {
   if (player->getColor() == "RED")
     player->towns->push_back(new Town("Images/Figures/TownRed.png"));
