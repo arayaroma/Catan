@@ -73,10 +73,10 @@ void PlayView::drawLabels() {
 void PlayView::createLabelNamePlayers() {
   playerIterator = game.players->begin();
   if (playerIterator != game.players->end()) {
-    if (game.players->size() == 3)
+    if (isThreePlayers())
       createThreePlayersLabel();
 
-    if (game.players->size() == 4)
+    if (isFourPlayers())
       createFourPlayersLabel();
   }
 }
@@ -106,13 +106,17 @@ void PlayView::createFourPlayersLabel() {
                       font, sf::Text::Bold, 20, 1100.f, 300.f);
 }
 
+bool PlayView::isThreePlayers() const { return (game.players->size() == 3); }
+bool PlayView::isFourPlayers() const { return (game.players->size() == 4); }
+
 void PlayView::drawLabelNamePlayers() {
   createLabelNamePlayers();
-  if (game.players->size() == 3) {
+  if (isThreePlayers()) {
     view.draw(player1->getTextInstance());
     view.draw(player2->getTextInstance());
     view.draw(player3->getTextInstance());
-  } else {
+  }
+  if (isFourPlayers()) {
     view.draw(player1->getTextInstance());
     view.draw(player2->getTextInstance());
     view.draw(player3->getTextInstance());

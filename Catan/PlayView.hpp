@@ -125,6 +125,8 @@ private:
 
   void createThreePlayersLabel();
   void createFourPlayersLabel();
+  bool isThreePlayers() const;
+  bool isFourPlayers() const;
 
 private:
   sf::RectangleShape playerRectangle, cardsRectangle;
