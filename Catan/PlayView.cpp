@@ -140,7 +140,7 @@ void PlayView::createLabelNamePlayers() {
             turnRectangleFour.setOutlineColor(sf::Color::White);
             turnRectangleFour.setSize({ 220, 100 });
             turnRectangleFour.setFillColor(sf::Color(255, 255, 255, 128));
-         //   drawRectangleShapes(); 
+            drawRectangleShapes(); 
         }
 
      void PlayView::drawRectangleShapes() {
