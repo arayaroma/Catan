@@ -88,7 +88,8 @@ void TextBox::setSelected(bool sel) {
 }
 
 string TextBox::getText() { return text.str(); }
-void TextBox::drawTo(sf::RenderWindow &window) {
+
+void TextBox::drawTextbox(sf::RenderWindow &window) {
   window.draw(border);
   window.draw(textBox);
 }

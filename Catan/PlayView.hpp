@@ -62,7 +62,6 @@ private:
   void loadPlayersRectangle();
   void loadCardsRectangle();
   void loadGameButtons();
-  void loadRegisterButtons(Button &btn);
   void printMaterialCard();
   void printImages(string, double, double);
   void createLabels();
@@ -115,20 +114,20 @@ private:
   void printPlayerFigure();
 
   void traverseLands(double, double);
-  void searhTown(double, double, list<Land *>::iterator it);
-  bool isTownClicked(list<Vertex *>::iterator, double x, double y);
+  void searhTown(double, double, list<Land *>::iterator);
+  bool isTownClicked(list<Vertex *>::iterator, double, double);
   void isPrintedFalse();
 
   void isTurnButtonClicked(int, int);
 
-  bool getIsVertexGraphClicked(list<Vertex *>::iterator it);
-  bool getIsVertexGraphPrinted(list<Vertex *>::iterator it);
+  bool getIsVertexGraphClicked(list<Vertex *>::iterator);
+  bool getIsVertexGraphPrinted(list<Vertex *>::iterator);
 
-  void setOwnerToVertexGraph(Vertex *vertex);
+  void setOwnerToVertexGraph(Vertex *);
 
   void deleteTowntoPlayer();
   void firstTurn();
-  void receiveFirstCard(list<Land *>::iterator it);
+  void receiveFirstCard(list<Land *>::iterator);
   void receiveFirstMaterialCard();
 
   void printTownPlayer(list<Vertex *>::iterator, int, int);
@@ -138,10 +137,10 @@ private:
   void createLabelNumTurn();
   void drawLabelNumTurn();
 
-  void isDiceButtonClicked(int x, int y);
+  void isDiceButtonClicked(int, int);
 
-  void receiveCard(list<Land *>::iterator it);
-  void receiveMaterialCard(int idLand);
+  void receiveCard(list<Land *>::iterator);
+  void receiveMaterialCard(int);
 
   void createThreePlayersLabel();
   void createFourPlayersLabel();
@@ -150,6 +149,15 @@ private:
 
   list<Player *>::iterator beginPlayerIterator() const;
   bool isPlayerListTraversal() const;
+
+  void createBuyButton();
+  void createTradeButton();
+  void createTurnButton();
+  void createPButton();
+  void createOptionOneButton();
+  void createSaveButton();
+  void createCloseButton();
+  void createDiceButton();
 
 private:
   sf::RectangleShape playerRectangle, cardsRectangle;

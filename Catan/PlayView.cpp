@@ -31,51 +31,75 @@ void PlayView::createLabels() {
                     sf::Text::Bold, 20, 565.f, 575.f);
 }
 
-void PlayView::createButtons() {
-  p = Button("Turn", {0, 0}, 16, sf::Color::Green, sf::Color::Black);
-  turn = Button("Turn", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
-  trade = Button("Trade", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
-  buy = Button("Buy", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
-  option1 =
-      Button("Option1", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
-  save = Button("Guardar", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
-  close = Button("Close", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
-
-  turn = Button("Turn", {120, 35}, 16, sf::Color::Green, sf::Color::White);
-  trade = Button("Trade", {120, 35}, 16, sf::Color::Green, sf::Color::White);
-  buy = Button("Buy", {120, 35}, 16, sf::Color::Green, sf::Color::White);
-  dice = Button("Dice", {120, 35}, 16, sf::Color::Green, sf::Color::White);
-
-  p.setFont(font);
-  p.setPosition({0, 0}, 3);
-
-  turn.setFont(font);
-  turn.setPosition({985, 600}, 3);
-
-  trade.setFont(font);
-  trade.setPosition({20, 600}, 3);
-
+void PlayView::createBuyButton() {
+  buy = Button("Comprar", {120, 35}, 16, sf::Color::Green, sf::Color::White);
   buy.setFont(font);
   buy.setPosition({150, 600}, 3);
+  buy.drawButton(view);
+  buy.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 200, 255),
+                        view);
+}
 
+void PlayView::createTradeButton() {
+  trade = Button("Trueque", {120, 35}, 16, sf::Color::Green, sf::Color::White);
+  trade.setFont(font);
+  trade.setPosition({20, 600}, 3);
+  trade.drawButton(view);
+  trade.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
+                          view);
+}
+
+void PlayView::createTurnButton() {
+  turn = Button("Siguiente\nTurno", {120, 50}, 16, sf::Color::Green,
+                sf::Color::White);
+  turn.setFont(font);
+  turn.setPosition({985, 600}, 3);
+  turn.drawButton(view);
+  turn.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
+                         view);
+}
+
+void PlayView::createPButton() {
+  p = Button("Turn", {0, 0}, 16, sf::Color::Green, sf::Color::Black);
+  p.setFont(font);
+  p.setPosition({0, 0}, 3);
+  p.drawButton(view);
+  p.buttonInOutColors(sf::Color(0, 0, 255, 255), sf::Color(0, 0, 225, 255),
+                      view);
+}
+
+void PlayView::createOptionOneButton() {
+  option1 =
+      Button("Option1", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
+}
+
+void PlayView::createSaveButton() {
+  save = Button("Guardar", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
+}
+
+void PlayView::createCloseButton() {
+  close = Button("Close", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
+}
+
+void PlayView::createDiceButton() {
   dice.setFont(font);
   dice.setPosition({1120, 600}, 3);
-
-  loadRegisterButtons(p);
-  loadRegisterButtons(turn);
-  loadRegisterButtons(trade);
-  loadRegisterButtons(buy);
-  loadRegisterButtons(dice);
+  dice.drawButton(view);
+  dice.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
+                         view);
 }
 
-void PlayView::loadRegisterButtons(Button &button) {
-  if (button.isMouseOver(view)) {
-    button.setBackgroundColor(sf::Color::White);
-  } else {
-    button.setBackgroundColor(sf::Color::Blue);
-  }
-  button.drawTo(view);
+void PlayView::createButtons() {
+  createBuyButton();
+  createTradeButton();
+  createTurnButton();
+  createPButton();
+  createOptionOneButton();
+  createSaveButton();
+  createCloseButton();
+  createDiceButton();
 }
+
 void PlayView::drawLabelNumTurn() {
   createLabelNumTurn();
   view.draw(titleTurn->getTextInstance());
@@ -85,6 +109,7 @@ void PlayView::drawLabelNumTurn() {
     view.draw(infoFisrtTurn->getTextInstance());
   }
 }
+
 void PlayView::drawLabels() {
   createLabels();
   view.draw(materialCard->getTextInstance());

@@ -31,9 +31,18 @@ void Button::setPosition(sf::Vector2f position, int leftVariance) {
   text.setPosition({xPos, yPos});
 }
 
-void Button::drawTo(sf::RenderWindow &view) {
+void Button::drawButton(sf::RenderWindow &view) {
   view.draw(button);
   view.draw(text);
+}
+
+void Button::buttonInOutColors(sf::Color colorIn, sf::Color colorOut,
+                               sf::RenderWindow &view) {
+  if (isMouseOver(view))
+    setBackgroundColor(colorIn);
+  if (!isMouseOver(view))
+    setBackgroundColor(colorOut);
+  drawButton(view);
 }
 
 bool Button::isMouseOver(sf::RenderWindow &view) {

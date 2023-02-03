@@ -20,7 +20,7 @@ public:
   void setLimit(bool tOf, int lim);
   void setSelected(bool);
   string getText();
-  void drawTo(sf::RenderWindow &window);
+  void drawTextbox(sf::RenderWindow &window);
   void typeOn(sf::Event input);
   bool isMouseOver(sf::RenderWindow &window);
   bool isTyping(int) const;

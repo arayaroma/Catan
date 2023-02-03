@@ -1,17 +1,23 @@
 #include "RegisterView.hpp"
 
 void RegisterView::makeTextboxes() {
-  firstTextbox = TextBox(15, sf::Color::Black, false, {345, 240}, {180, 40},sf::Color::White);
+  firstTextbox = TextBox(15, sf::Color::Black, false, {345, 240}, {180, 40},
+                         sf::Color::White);
 
-  secondTextbox = TextBox(15, sf::Color::Black, false, {345, 300}, {180, 40},sf::Color::White);
+  secondTextbox = TextBox(15, sf::Color::Black, false, {345, 300}, {180, 40},
+                          sf::Color::White);
 
-  thirdTextbox = TextBox(15, sf::Color::Black, false, {345, 360}, {180, 40},sf::Color::White);
+  thirdTextbox = TextBox(15, sf::Color::Black, false, {345, 360}, {180, 40},
+                         sf::Color::White);
 
-  fourthTextbox = TextBox(15, sf::Color::Black, false, {345, 420}, {180, 40},sf::Color::White);
+  fourthTextbox = TextBox(15, sf::Color::Black, false, {345, 420}, {180, 40},
+                          sf::Color::White);
 
-  newGame= TextBox(15, sf::Color::Black, false, { 10, 17.5 }, { 180, 40 },sf::Color::White);
+  newGame = TextBox(15, sf::Color::Black, false, {10, 17.5}, {180, 40},
+                    sf::Color::White);
 
-  loadGame= TextBox(15, sf::Color::Black, false, { 900, 17.5 }, { 180, 40 },sf::Color::White);
+  loadGame = TextBox(15, sf::Color::Black, false, {900, 17.5}, {180, 40},
+                     sf::Color::White);
 }
 
 void RegisterView::loadTextboxes() {
@@ -29,10 +35,10 @@ void RegisterView::loadTextboxes() {
   fourthTextbox.setPosition({365, 430});
 
   newGame.setFont(font);
-  newGame.setPosition({ 20,20 });
+  newGame.setPosition({20, 20});
 
   loadGame.setFont(font);
-  loadGame.setPosition({ 1000,20 });
+  loadGame.setPosition({1000, 20});
 }
 
 void RegisterView::makePlayerButtons() {
@@ -46,18 +52,13 @@ void RegisterView::makeButtons() {
   makePlayerButtons();
   playButton =
       Button("Jugar", {150, 60}, 20, sf::Color::Blue, sf::Color::Black);
-  loadGames =
-      Button("Load", { 150, 60 }, 20, sf::Color::Blue, sf::Color::Black);
-  newGames =
-      Button("Create", { 150, 60 }, 20, sf::Color::Blue, sf::Color::Black);
+  loadGames = Button("Load", {150, 60}, 20, sf::Color::Blue, sf::Color::Black);
+  newGames = Button("Create", {150, 60}, 20, sf::Color::Blue, sf::Color::Black);
 }
 
 RegisterView::RegisterView() {}
 
-
-void RegisterView::getColor() {
-  
-}
+void RegisterView::getColor() {}
 
 void RegisterView::loadButtons() {
   makeButtons();
@@ -67,9 +68,9 @@ void RegisterView::loadButtons() {
   threePlayersButton.setFont(font);
   fourPlayersButton.setPosition({100, 350}, 5);
   fourPlayersButton.setFont(font);
-  loadGames.setPosition({ 1100, 10 },5);
+  loadGames.setPosition({1100, 10}, 5);
   loadGames.setFont(font);
-  newGames.setPosition({ 200, 10 },5);
+  newGames.setPosition({200, 10}, 5);
   newGames.setFont(font);
 }
 
@@ -113,10 +114,10 @@ void RegisterView::typeOverTextbox(sf::Event event) {
       fourthTextbox.typeOn(event);
   }
   if (newGame.isMouseOver(view))
-      newGame.typeOn(event);
+    newGame.typeOn(event);
 
   if (loadGame.isMouseOver(view))
-      loadGame.typeOn(event);
+    loadGame.typeOn(event);
 }
 
 void RegisterView::loadBeforeChangingScene() {
@@ -194,14 +195,13 @@ void RegisterView::drawButtons() {
 
 void RegisterView::drawTextboxes() {
   if (isThreePlayers) {
- 
+
     loadTextFields(firstTextbox);
     loadTextFields(secondTextbox);
     loadTextFields(thirdTextbox);
-   
   }
   if (isFourPlayers) {
-   
+
     loadTextFields(firstTextbox);
     loadTextFields(secondTextbox);
     loadTextFields(thirdTextbox);
@@ -246,7 +246,7 @@ void RegisterView::loadRegisterButtons(Button &button) {
   } else {
     button.setBackgroundColor(sf::Color::Blue);
   }
-  button.drawTo(view);
+  button.drawButton(view);
 }
 
 void RegisterView::loadTextFields(TextBox &textbox) {
@@ -257,7 +257,7 @@ void RegisterView::loadTextFields(TextBox &textbox) {
     if (isEndPressed())
       textbox.setSelected(false);
   }
-  textbox.drawTo(view);
+  textbox.drawTextbox(view);
 }
 
 void RegisterView::loadColors() {
@@ -331,9 +331,9 @@ void RegisterView::loadThreePlayers() {
 }
 
 void RegisterView::loadFourPlayers() {
-    game.players->push_back(new Player(firstTextbox.getText(), 0, "RED"));
-    game.players->push_back(new Player(secondTextbox.getText(), 0, "BLUE"));
-    game.players->push_back(new Player(thirdTextbox.getText(), 0, "GREEN"));
+  game.players->push_back(new Player(firstTextbox.getText(), 0, "RED"));
+  game.players->push_back(new Player(secondTextbox.getText(), 0, "BLUE"));
+  game.players->push_back(new Player(thirdTextbox.getText(), 0, "GREEN"));
   game.players->push_back(new Player(fourthTextbox.getText(), 0, "YELLOW"));
 }
 
