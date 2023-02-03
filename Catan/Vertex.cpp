@@ -1,18 +1,22 @@
 #include "Vertex.hpp"
+
 Vertex::Vertex() {
-	this->next = nullptr;
-	this->firstEdge = nullptr;
-	this->town = nullptr;
-	this->vertexId = NULL;
-	this->ownerTown = nullptr;
-	this->isPrinted = false;
+  this->vertexId = NULL;
+  this->firstEdge = nullptr;
+  this->townOwner = nullptr;
+  this->owner = nullptr;
+  this->next = nullptr;
+  this->town = nullptr;
+  this->_isPrinted = false;
+  this->_isClicked = false;
+  this->_hasOwner = false;
 }
 
-Vertex::Vertex(int id, string owner, Town *town, bool isPrinted) {
-  this->vertexId = id;
-  this->ownerTown = owner;
-  this->town = town;
-  this->next = nullptr;
+Vertex::Vertex(int vertexId, string ownerTown, Town *town, bool isPrinted) {
+  this->vertexId = vertexId;
   this->firstEdge = nullptr;
-  this->isPrinted = isPrinted;
+  this->townOwner = ownerTown;
+  this->next = nullptr;
+  this->town = town;
+  this->_isPrinted = isPrinted;
 }

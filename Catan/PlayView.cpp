@@ -71,40 +71,39 @@ void PlayView::drawLabels() {
 }
 
 void PlayView::createLabelNamePlayers() {
-  ;
   playerIterator = game.players->begin();
   if (playerIterator != game.players->end()) {
-    if (game.players->size() == 3) {
-      player1 =
-          new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
-                    font, sf::Text::Bold, 20, 1100.f, 120.f);
-      playerIterator++;
-      player2 =
-          new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
-                    font, sf::Text::Bold, 20, 1100.f, 180.f);
-      playerIterator++;
-      player3 =
-          new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
-                    font, sf::Text::Bold, 20, 1100.f, 240.f);
-    }
-    if (game.players->size() == 4) {
-      player1 =
-          new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
-                    font, sf::Text::Bold, 20, 1100.f, 120.f);
-      playerIterator++;
-      player2 =
-          new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
-                    font, sf::Text::Bold, 20, 1100.f, 180.f);
-      playerIterator++;
-      player3 =
-          new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
-                    font, sf::Text::Bold, 20, 1100.f, 240.f);
-      playerIterator++;
-      player4 =
-          new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
-                    font, sf::Text::Bold, 20, 1100.f, 300.f);
-    }
+    if (game.players->size() == 3)
+      createThreePlayersLabel();
+
+    if (game.players->size() == 4)
+      createFourPlayersLabel();
   }
+}
+
+void PlayView::createThreePlayersLabel() {
+  player1 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+                      font, sf::Text::Bold, 20, 1100.f, 120.f);
+  playerIterator++;
+  player2 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+                      font, sf::Text::Bold, 20, 1100.f, 180.f);
+  playerIterator++;
+  player3 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+                      font, sf::Text::Bold, 20, 1100.f, 240.f);
+}
+
+void PlayView::createFourPlayersLabel() {
+  player1 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+                      font, sf::Text::Bold, 20, 1100.f, 120.f);
+  playerIterator++;
+  player2 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+                      font, sf::Text::Bold, 20, 1100.f, 180.f);
+  playerIterator++;
+  player3 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+                      font, sf::Text::Bold, 20, 1100.f, 240.f);
+  playerIterator++;
+  player4 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+                      font, sf::Text::Bold, 20, 1100.f, 300.f);
 }
 
 void PlayView::drawLabelNamePlayers() {
@@ -253,8 +252,7 @@ void PlayView::searhTown(double x, double y, list<Land *>::iterator it) {
   while (vertexIterator != (*it)->getTownsList()->end()) {
     if (isTownClicked(vertexIterator, x, y)) {
       townIterator = (*game.playerIterator)->towns->begin();
-      game.graph.getVertex((*vertexIterator)->getVertexId())
-          ->setIsClicked(true);
+      game.graph.getVertex((*vertexIterator)->getVertexId())->setClicked(true);
       if (townIterator != (*game.playerIterator)->towns->end())
         printImages((*townIterator)->getImagePath(),
                     (*vertexIterator)->getTown()->getPosX(),
@@ -362,7 +360,7 @@ void PlayView::initializeLandsList() {
 void PlayView::isPrintedFalse() {
   Vertex *auxVertex = game.graph.firstVertex;
   while (auxVertex != nullptr) {
-    auxVertex->setIsPrinted(false);
+    auxVertex->setPrinted(false);
     auxVertex = auxVertex->next;
   }
 }
@@ -594,14 +592,14 @@ void PlayView::loadHexagonNodes(list<Vertex *>::iterator itX, double posX,
 
   if (!getIsVertexGraphClicked(itX)) {
     if (!getIsVertexGraphPrinted(itX)) {
-      game.graph.getVertex((*itX)->getVertexId())->setIsPrinted(true);
+      game.graph.getVertex((*itX)->getVertexId())->setPrinted(true);
       printTowns(relativePositionX, relativePositionY);
       setPosXYtoVertex(itX, relativePositionX, relativePositionY);
       setPosXYtoVertexesGraph((*itX)->getVertexId(), relativePositionX,
                               relativePositionY);
     }
   } else if (!getIsVertexGraphPrinted(itX)) {
-    game.graph.getVertex((*itX)->getVertexId())->setIsPrinted(true);
+    game.graph.getVertex((*itX)->getVertexId())->setPrinted(true);
     townIterator =
         game.graph.getVertex((*itX)->getVertexId())
             ->getOwner()
@@ -614,13 +612,13 @@ void PlayView::loadHexagonNodes(list<Vertex *>::iterator itX, double posX,
 }
 
 bool PlayView::getIsVertexGraphClicked(list<Vertex *>::iterator it) {
-  if (!game.graph.getVertex((*it)->getVertexId())->getIsClicked())
+  if (!game.graph.getVertex((*it)->getVertexId())->isClicked())
     return false;
   return true;
 }
 
 bool PlayView::getIsVertexGraphPrinted(list<Vertex *>::iterator it) {
-  if (!game.graph.getVertex((*it)->getVertexId())->getIsPrint())
+  if (!game.graph.getVertex((*it)->getVertexId())->isPrinted())
     return false;
   return true;
 }

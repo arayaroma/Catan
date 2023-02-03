@@ -459,6 +459,7 @@ void Game::loadRoades(Player *player) {
   if (player->getColor() == "YELLOW")
     player->roads->push_back(new Road("Images/Figures/RoadYellow.png"));
 }
+
 void Game::loadCities(Player *player) {
   if (player->getColor() == "RED")
     player->citys->push_back(new City("Images/Figures/CityRed.png"));
@@ -469,6 +470,7 @@ void Game::loadCities(Player *player) {
   if (player->getColor() == "YELLOW")
     player->citys->push_back(new City("Images/Figures/CityYellow.png"));
 }
+
 void Game::loadTowns(Player *player) {
   if (player->getColor() == "RED")
     player->towns->push_back(new Town("Images/Figures/TownRed.png"));
