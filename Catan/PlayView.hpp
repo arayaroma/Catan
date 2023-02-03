@@ -59,10 +59,14 @@ private:
   void loadRegisterButtons(Button& btn); 
   void printMaterialCard();
   void printImages(string, double, double);
+
   void createLabels();
   void createButtons(); 
+  void setButtonOrigins(); 
+  void drawButtons(); 
   void drawLabels();
   void printBoard();
+
   void initializeLandsList();
   void setTurn(int);
   void drawTurn(int, int);

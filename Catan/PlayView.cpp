@@ -30,6 +30,10 @@ void PlayView::createButtons() {
     save = Button("Guardar", { 120, 35 }, 16, sf::Color::Green, sf::Color::Black);
     close = Button("Close", { 120, 35 }, 16, sf::Color::Green, sf::Color::Black);
 
+    setButtonOrigins(); 
+
+}
+void PlayView::setButtonOrigins() {
 
     p.setFont(font);
     p.setPosition({ 0, 0 }, 3);
@@ -51,16 +55,19 @@ void PlayView::createButtons() {
 
     close.setFont(font);
     close.setPosition({ 985,660 }, 3);
-
-  loadRegisterButtons(p);
-  loadRegisterButtons(turn);
-  loadRegisterButtons(trade);
-  loadRegisterButtons(buy);
-  loadRegisterButtons(option1);
-  loadRegisterButtons(save);
-  loadRegisterButtons(close);
-
 }
+
+void PlayView::drawButtons() {
+    createButtons();
+    loadRegisterButtons(p);
+    loadRegisterButtons(turn);
+    loadRegisterButtons(trade);
+    loadRegisterButtons(buy);
+    loadRegisterButtons(option1);
+    loadRegisterButtons(save);
+    loadRegisterButtons(close);
+}
+
 
 void PlayView::loadRegisterButtons(Button &button) {
   if (button.isMouseOver(view)) {
@@ -247,17 +254,19 @@ void PlayView::drawView() {
   drawLabelCardPlayer();
   drawLabelFigurePlayer();
   printPlayerFigure();
-  createButtons();
+  drawButtons();
   view.display();
 }
 
 
 void PlayView::goView() {
+
     game.playerIterator = game.players->begin();
     loadView();
     drawView();
     start = true;
     view.draw(sprite);
+
     while (view.isOpen()) {
         sf::Event eventTest;
         srand((unsigned)time(nullptr));
@@ -335,6 +344,7 @@ void PlayView::isTurnButtonClicked(int x, int y) {
   if (turn.isMouseOver(view)) {
     if (game.playerIterator != game.players->end())
       game.playerIterator++;
+
 
     if (game.playerIterator == game.players->end())
       game.playerIterator = game.players->begin();
