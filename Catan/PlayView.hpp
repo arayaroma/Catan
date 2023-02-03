@@ -4,6 +4,7 @@
 #include "View.hpp"
 #include <SFML/Graphics.hpp>
 #include <string>
+#include "Dice.hpp"
 
 #define pi 3.14159265358979323846
 #define firstAngle (3 * pi) / 2
@@ -43,8 +44,8 @@ private:
   string url = "";
   int numTurn = 1;
 
-  int numDice = 0;
-  bool isDiceSpin = false;
+  Dice diceInstance;
+  bool isDiceSpinned = false;
   bool isFirstTurn = true;
 
 public:
@@ -64,10 +65,18 @@ private:
   void loadGameButtons();
   void printMaterialCard();
   void printImages(string, double, double);
+
   void createLabels();
-  void createButtons();
+
+  void createButtons(); 
+  void setButtonOrigins(); 
+  void drawButtons(); 
+
+  void loadRegisterButtons(Button &btn);
+
   void drawLabels();
   void printBoard();
+
   void initializeLandsList();
   void setTurn(int);
   void drawTurn(int, int);
@@ -150,6 +159,18 @@ private:
   list<Player *>::iterator beginPlayerIterator() const;
   bool isPlayerListTraversal() const;
 
+  bool existsAnOwnerInVertex(list<Vertex *>::iterator);
+  bool isVertexesListTraversalInTurn(list<Vertex *>::iterator,
+                                     list<Land *>::iterator);
+  bool isActualPlayerName(list<Vertex *>::iterator);
+  void giveCardsToPlayer(list<Land *>::iterator);
+  void giveCardsToPlayerFirstTurn(list<Land *>::iterator);
+
+  bool isPlayerTownListEmpty() const;
+  bool playerIsPuttingTowns() const;
+  bool playerHasPutTwoTowns() const;
+  bool isPlayerTownsListTraversal() const;
+
   void createBuyButton();
   void createTradeButton();
   void createTurnButton();
@@ -160,6 +181,7 @@ private:
   void createDiceButton();
 
 private:
+  sf::Event eventTest;
   sf::RectangleShape playerRectangle, cardsRectangle;
   Label *materialCard, *pricingTable, *turns, *cards, *developCard;
   Label *player1, *player2, *player3, *player4;

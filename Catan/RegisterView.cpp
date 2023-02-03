@@ -1,5 +1,7 @@
 #include "RegisterView.hpp"
 
+RegisterView::RegisterView() {}
+
 void RegisterView::makeTextboxes() {
   firstTextbox = TextBox(15, sf::Color::Black, false, {345, 240}, {180, 40},
                          sf::Color::White);
@@ -46,19 +48,87 @@ void RegisterView::makePlayerButtons() {
       Button("4 Jugadores", {200, 60}, 20, sf::Color::Green, sf::Color::Black);
   threePlayersButton =
       Button("3 Jugadores", {200, 60}, 20, sf::Color::Green, sf::Color::Black);
+  blue = Button("", {30, 30}, 20, sf::Color::Green, sf::Color::Black);
+  yellow = Button("", {30, 30}, 20, sf::Color::Green, sf::Color::Black);
+  red = Button("", {30, 30}, 20, sf::Color::Green, sf::Color::Black);
+  green = Button("", {30, 30}, 20, sf::Color::Green, sf::Color::Black);
 }
 
 void RegisterView::makeButtons() {
   makePlayerButtons();
   playButton =
       Button("Jugar", {150, 60}, 20, sf::Color::Blue, sf::Color::Black);
+
+  loadGames = Button("Load", {150, 60}, 20, sf::Color::Blue, sf::Color::Black);
+  newGames = Button("Create", {150, 60}, 20, sf::Color::Blue, sf::Color::Black);
+  clear = Button("Clear", {150, 60}, 20, sf::Color::Green, sf::Color::Black);
+
   loadGames = Button("Load", {150, 60}, 20, sf::Color::Blue, sf::Color::Black);
   newGames = Button("Create", {150, 60}, 20, sf::Color::Blue, sf::Color::Black);
 }
 
-RegisterView::RegisterView() {}
+void RegisterView::drawButtons() {
+  loadRegisterButtons(playButton, sf::Color::Blue);
+  loadRegisterButtons(threePlayersButton, sf::Color::Blue);
+  loadRegisterButtons(fourPlayersButton, sf::Color::Blue);
+  loadRegisterButtons(newGames, sf::Color::Blue);
+  loadRegisterButtons(loadGames, sf::Color::Blue);
+  loadRegisterButtons(clear, sf::Color::Blue);
+}
 
-void RegisterView::getColor() {}
+void RegisterView::loadFourColors() {
+
+  y = 245;
+  x = 580;
+  for (int i = 0; i < 4; i++) {
+
+    blue.setPosition({x, y}, 3);
+    blue.drawButton(view);
+
+    green.setPosition({x += 40, y}, 3);
+    green.drawButton(view);
+
+    yellow.setPosition({x += 40, y}, 3);
+    yellow.drawButton(view);
+
+    red.setPosition({x += 40, y}, 3);
+    red.drawButton(view);
+    x = 580;
+    y += 60;
+    loadRegisterButtons(blue, sf::Color::Blue);
+    loadRegisterButtons(green, sf::Color::Green);
+    loadRegisterButtons(yellow, sf::Color::Yellow);
+    loadRegisterButtons(red, sf::Color::Red);
+  }
+}
+
+void RegisterView::loadThreeColors() {
+
+  y = 245;
+  x = 580;
+  for (int i = 0; i < 3; i++) {
+    blue.setPosition({x, y}, 3);
+    blue.drawButton(view);
+    green.setPosition({x += 40, y}, 3);
+    green.drawButton(view);
+    red.setPosition({x += 40, y}, 3);
+    red.drawButton(view);
+    x = 580;
+    y += 60;
+    loadRegisterButtons(blue, sf::Color::Blue);
+    loadRegisterButtons(green, sf::Color::Green);
+    loadRegisterButtons(red, sf::Color::Red);
+  }
+}
+
+void RegisterView::loadRegisterButtons(Button &button, sf::Color color) {
+  if (button.isMouseOver(view)) {
+    button.setBackgroundColor(sf::Color::White);
+  } else {
+    button.setBackgroundColor(color);
+  }
+  button.drawButton(view);
+}
 
 void RegisterView::loadButtons() {
   makeButtons();
@@ -72,6 +142,8 @@ void RegisterView::loadButtons() {
   loadGames.setFont(font);
   newGames.setPosition({200, 10}, 5);
   newGames.setFont(font);
+  clear.setPosition({1000, 450}, 3);
+  clear.setFont(font);
 }
 
 void RegisterView::loadView() {
@@ -133,8 +205,42 @@ void RegisterView::playButtonPressed() {
   playView.goView();
 }
 
+void RegisterView::clearButtonPressed() {
+  view.clear();
+  isThreePlayers = false;
+  isFourPlayers = false;
+  view.display();
+
+  view.close();
+  goView();
+}
+
 bool RegisterView::isPlayButtonPressed() {
   return (playButton.isMouseOver(view));
+}
+bool RegisterView::isClearButtonPressed() { return (clear.isMouseOver(view)); }
+
+void RegisterView::loadAll() {
+  view.clear();
+  view.draw(sprite);
+  registerButton();
+  drawTextboxes();
+  drawButtons();
+  if (isThreePlayers) {
+    loadThreeColors();
+  }
+  if (isFourPlayers) {
+    loadFourColors();
+  }
+  view.display();
+}
+
+void RegisterView::countPlayers() {
+  if (threePlayersButton.isMouseOver(view))
+    isThreePlayers = true;
+
+  if (fourPlayersButton.isMouseOver(view))
+    isFourPlayers = true;
 }
 
 void RegisterView::goView() {
@@ -145,6 +251,9 @@ void RegisterView::goView() {
     while (view.pollEvent(event)) {
       switch (event.type) {
 
+      case sf::Event::Closed:
+        view.close();
+
       case sf::Event::TextEntered:
         typeOverTextbox(event);
         break;
@@ -154,12 +263,9 @@ void RegisterView::goView() {
         if (isMouseLeftClicked(event)) {
           if (isPlayButtonPressed())
             playButtonPressed();
-
-          if (threePlayersButton.isMouseOver(view))
-            isThreePlayers = true;
-
-          if (fourPlayersButton.isMouseOver(view))
-            isFourPlayers = true;
+          if (isClearButtonPressed())
+            clearButtonPressed();
+          countPlayers();
         }
         break;
 
@@ -167,30 +273,10 @@ void RegisterView::goView() {
         if (isEscapePressed())
           goTitleView();
         break;
-
-      case sf::Event::Closed:
-        view.close();
-        break;
       }
     }
-    view.clear();
-    view.draw(sprite);
-
-    registerButton();
-    drawButtons();
-    drawTextboxes();
-    loadColors();
-
-    view.display();
+    loadAll();
   }
-}
-
-void RegisterView::drawButtons() {
-  loadRegisterButtons(playButton);
-  loadRegisterButtons(threePlayersButton);
-  loadRegisterButtons(fourPlayersButton);
-  loadRegisterButtons(newGames);
-  loadRegisterButtons(loadGames);
 }
 
 void RegisterView::drawTextboxes() {
@@ -258,45 +344,6 @@ void RegisterView::loadTextFields(TextBox &textbox) {
       textbox.setSelected(false);
   }
   textbox.drawTextbox(view);
-}
-
-void RegisterView::loadColors() {
-  float y = 245;
-  for (int i = 0; i < 4; i++) {
-    sf::Texture blue;
-    blue.loadFromFile("Images/Colors/Blue.png");
-    sf::Sprite blueSprite(blue);
-    blueSprite.setPosition(580, y);
-    y += 60;
-    view.draw(blueSprite);
-  }
-  y = 245;
-  for (int i = 0; i < 4; i++) {
-    sf::Texture yellow;
-    yellow.loadFromFile("Images/Colors/Yellow.png");
-    sf::Sprite yellowSprite(yellow);
-    yellowSprite.setPosition(620, y);
-    y += 60;
-    view.draw(yellowSprite);
-  }
-  y = 245;
-  for (int i = 0; i < 4; i++) {
-    sf::Texture red;
-    red.loadFromFile("Images/Colors/Red.png");
-    sf::Sprite redSprite(red);
-    redSprite.setPosition(660, y);
-    y += 60;
-    view.draw(redSprite);
-  }
-  y = 245;
-  for (int i = 0; i < 4; i++) {
-    sf::Texture green;
-    green.loadFromFile("Images/Colors/Green.png");
-    sf::Sprite greenSprite(green);
-    greenSprite.setPosition(700, y);
-    y += 60;
-    view.draw(greenSprite);
-  }
 }
 
 void RegisterView::showCoordinates(sf::Event event) {
