@@ -481,11 +481,8 @@ void PlayView::goView() {
     while (view.pollEvent(eventTest)) {
       showCoordinates(eventTest);
       switch (eventTest.type) {
-      view.waitEvent(eventTest);
-      case sf::Event::Closed:
-          view.close();
-          break;
-      case sf::Event::MouseButtonPressed:
+        //view.waitEvent(eventTest);
+        case sf::Event::MouseButtonPressed:
           if (eventTest.MouseButtonPressed && isMouseLeftClicked(eventTest)) {
               if (isFirstTurn) {
                   traverseLands(getMousePositionX(view), getMousePositionY(view));
@@ -497,6 +494,9 @@ void PlayView::goView() {
                   sf::Mouse::getPosition(view).y);
           }
           break;
+          case sf::Event::Closed:
+            view.close();
+            break;
       }
       break;
     }
@@ -581,6 +581,7 @@ void PlayView::isTurnButtonClicked(int x, int y) {
     if (game.playerIterator != game.players->end()) {
       game.playerIterator++; 
       numTurn++;
+      isDiceSpinned = false;
     }
     if (game.playerIterator == game.players->end()) {
       game.playerIterator = beginPlayerIterator();
