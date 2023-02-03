@@ -32,6 +32,62 @@ void PlayView::createLabels() {
                     sf::Text::Bold, 20, 565.f, 575.f);
 }
 
+void PlayView::createButtons() {
+
+  p = Button("Turn", {0, 0}, 16, sf::Color::Green, sf::Color::Black);
+  turn = Button("Turn", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
+  trade = Button("Trade", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
+  buy = Button("Buy", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
+  option1 =
+      Button("Option1", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
+  save = Button("Guardar", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
+  close = Button("Close", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
+
+  setButtonOrigins();
+}
+void PlayView::setButtonOrigins() {
+
+  p.setFont(font);
+  p.setPosition({0, 0}, 3);
+
+  turn.setFont(font);
+  turn.setPosition({985, 600}, 3);
+
+  trade.setFont(font);
+  trade.setPosition({20, 600}, 3);
+
+  buy.setFont(font);
+  buy.setPosition({150, 600}, 3);
+
+  option1.setFont(font);
+  option1.setPosition({1120, 600}, 3);
+
+  save.setFont(font);
+  save.setPosition({1120, 660}, 3);
+
+  close.setFont(font);
+  close.setPosition({985, 660}, 3);
+}
+
+void PlayView::drawButtons() {
+  createButtons();
+  loadRegisterButtons(p);
+  loadRegisterButtons(turn);
+  loadRegisterButtons(trade);
+  loadRegisterButtons(buy);
+  loadRegisterButtons(option1);
+  loadRegisterButtons(save);
+  loadRegisterButtons(close);
+}
+
+void PlayView::loadRegisterButtons(Button &button) {
+  if (button.isMouseOver(view)) {
+    button.setBackgroundColor(sf::Color::White);
+  } else {
+    button.setBackgroundColor(sf::Color::Blue);
+  }
+}
+
 void PlayView::createBuyButton() {
   buy = Button("Comprar", {120, 35}, 16, sf::Color::Green, sf::Color::White);
   buy.setFont(font);
@@ -91,7 +147,10 @@ void PlayView::createDiceButton() {
                          view);
 }
 
-void PlayView::createButtons() {
+void PlayView::loadGameButtons() {
+  loadPlayersRectangle();
+  loadCardsRectangle();
+
   createBuyButton();
   createTradeButton();
   createTurnButton();
@@ -271,11 +330,6 @@ void PlayView::loadCardsRectangle() {
   cardsRectangle.setPosition(350, 600);
   cardsRectangle.setSize({600, 100});
   view.draw(cardsRectangle);
-}
-
-void PlayView::loadGameButtons() {
-  loadPlayersRectangle();
-  loadCardsRectangle();
 }
 
 void PlayView::traverseLands(double x, double y) {
@@ -539,6 +593,10 @@ void PlayView::isTurnButtonClicked(int x, int y) {
   if (turn.isMouseOver(view)) {
     if (game.playerIterator != game.players->end()) {
       game.playerIterator++;
+
+      if (game.playerIterator == game.players->end())
+        game.playerIterator = game.players->begin();
+
       numTurn++;
       isDiceSpinned = false;
     }

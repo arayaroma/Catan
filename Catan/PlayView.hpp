@@ -65,10 +65,18 @@ private:
   void loadGameButtons();
   void printMaterialCard();
   void printImages(string, double, double);
+
   void createLabels();
-  void createButtons();
+
+  void createButtons(); 
+  void setButtonOrigins(); 
+  void drawButtons(); 
+
+  void loadRegisterButtons(Button &btn);
+
   void drawLabels();
   void printBoard();
+
   void initializeLandsList();
   void setTurn(int);
   void drawTurn(int, int);
