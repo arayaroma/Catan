@@ -14,12 +14,6 @@ void RegisterView::makeTextboxes() {
 
   fourthTextbox = TextBox(15, sf::Color::Black, false, {345, 420}, {180, 40},
                           sf::Color::White);
-
-  newGame = TextBox(15, sf::Color::Black, false, {10, 17.5}, {180, 40},
-                    sf::Color::White);
-
-  loadGame = TextBox(15, sf::Color::Black, false, {900, 17.5}, {180, 40},
-                     sf::Color::White);
 }
 
 void RegisterView::loadTextboxes() {
@@ -35,12 +29,6 @@ void RegisterView::loadTextboxes() {
 
   fourthTextbox.setFont(font);
   fourthTextbox.setPosition({365, 430});
-
-  newGame.setFont(font);
-  newGame.setPosition({20, 20});
-
-  loadGame.setFont(font);
-  loadGame.setPosition({1000, 20});
 }
 
 void RegisterView::makePlayerButtons() {
@@ -59,20 +47,13 @@ void RegisterView::makeButtons() {
   playButton =
       Button("Jugar", {150, 60}, 20, sf::Color::Blue, sf::Color::Black);
 
-  loadGames = Button("Load", {150, 60}, 20, sf::Color::Blue, sf::Color::Black);
-  newGames = Button("Create", {150, 60}, 20, sf::Color::Blue, sf::Color::Black);
   clear = Button("Clear", {150, 60}, 20, sf::Color::Green, sf::Color::Black);
-
-  loadGames = Button("Load", {150, 60}, 20, sf::Color::Blue, sf::Color::Black);
-  newGames = Button("Create", {150, 60}, 20, sf::Color::Blue, sf::Color::Black);
 }
 
 void RegisterView::drawButtons() {
   loadRegisterButtons(playButton, sf::Color::Blue);
   loadRegisterButtons(threePlayersButton, sf::Color::Blue);
   loadRegisterButtons(fourPlayersButton, sf::Color::Blue);
-  loadRegisterButtons(newGames, sf::Color::Blue);
-  loadRegisterButtons(loadGames, sf::Color::Blue);
   loadRegisterButtons(clear, sf::Color::Blue);
 }
 
@@ -138,10 +119,6 @@ void RegisterView::loadButtons() {
   threePlayersButton.setFont(font);
   fourPlayersButton.setPosition({100, 350}, 5);
   fourPlayersButton.setFont(font);
-  loadGames.setPosition({1100, 10}, 5);
-  loadGames.setFont(font);
-  newGames.setPosition({200, 10}, 5);
-  newGames.setFont(font);
   clear.setPosition({1000, 450}, 3);
   clear.setFont(font);
 }
@@ -185,11 +162,6 @@ void RegisterView::typeOverTextbox(sf::Event event) {
     if (fourthTextbox.isMouseOver(view))
       fourthTextbox.typeOn(event);
   }
-  if (newGame.isMouseOver(view))
-    newGame.typeOn(event);
-
-  if (loadGame.isMouseOver(view))
-    loadGame.typeOn(event);
 }
 
 void RegisterView::loadBeforeChangingScene() {
@@ -203,19 +175,18 @@ void RegisterView::loadBeforeChangingScene() {
 
 void RegisterView::playButtonPressed() {
   loadBeforeChangingScene();
-  view.close();
+  closeView();
   PlayView playView = PlayView(game.players);
-
   playView.goView();
 }
 
 void RegisterView::clearButtonPressed() {
-  view.clear();
+  clearView();
   isThreePlayers = false;
   isFourPlayers = false;
-  view.display();
+  displayView();
 
-  view.close();
+  closeView();
   goView();
 }
 
@@ -225,18 +196,18 @@ bool RegisterView::isPlayButtonPressed() {
 bool RegisterView::isClearButtonPressed() { return (clear.isMouseOver(view)); }
 
 void RegisterView::loadAll() {
-  view.clear();
+  clearView();
   view.draw(sprite);
   registerButton();
   drawTextboxes();
   drawButtons();
-  if (isThreePlayers) {
+  if (isThreePlayers)
     loadThreeColors();
-  }
-  if (isFourPlayers) {
+
+  if (isFourPlayers)
     loadFourColors();
-  }
-  view.display();
+
+  displayView();
 }
 
 bool RegisterView::isThreePlayersButtonPressed(sf::Event event) {
@@ -255,9 +226,6 @@ void RegisterView::goView() {
     while (view.pollEvent(event)) {
       switch (event.type) {
 
-      case sf::Event::Closed:
-        view.close();
-
       case sf::Event::TextEntered:
         typeOverTextbox(event);
         break;
@@ -267,6 +235,7 @@ void RegisterView::goView() {
         if (isMouseLeftClicked(event)) {
           if (isPlayButtonPressed())
             playButtonPressed();
+
           if (isClearButtonPressed())
             clearButtonPressed();
 
@@ -283,8 +252,12 @@ void RegisterView::goView() {
         break;
 
       case sf::Event::KeyPressed:
-        if (isEscapePressed())
-          goTitleView();
+        if (isQKeyPressed())
+          goMenuView();
+        break;
+
+      case sf::Event::Closed:
+        closeView();
         break;
       }
     }
@@ -306,18 +279,12 @@ void RegisterView::drawTextboxes() {
     loadTextFields(thirdTextbox);
     loadTextFields(fourthTextbox);
   }
-  loadTextFields(newGame);
-  loadTextFields(loadGame);
 }
 
-void RegisterView::goTitleView() {
-  view.close();
-  TitleView titleView;
-  titleView.goView();
-}
-
-bool RegisterView::isEscapePressed() const {
-  return (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape));
+void RegisterView::goMenuView() {
+  closeView();
+  MenuView menuView;
+  menuView.goView();
 }
 
 void RegisterView::registerButton() {

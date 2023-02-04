@@ -14,8 +14,7 @@ private:
 
 private:
   void loadLabels();
-  bool isMouseLeft(sf::Event) const;
-  bool isEscapePressed() const;
+  void goTitleView();
 
 private:
   Label *back;

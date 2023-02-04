@@ -4,7 +4,7 @@
 #include "PlayView.hpp"
 #include "Player.hpp"
 #include "TextBox.hpp"
-#include "TitleView.hpp"
+#include "MenuView.hpp"
 #include "View.hpp"
 #include <SFML/Graphics.hpp>
 #include <list>
@@ -22,7 +22,6 @@ public:
   RegisterView();
 
 private:
-  bool isEscapePressed() const;
   void registerButton();
   void showCoordinates(sf::Event);
   void loadTextFields(TextBox &);
@@ -51,7 +50,7 @@ private:
   void drawTextboxes();
   void drawButtons();
 
-  void goTitleView();
+  void goMenuView();
   bool isPlayButtonPressed();
   bool isClearButtonPressed();
   void playButtonPressed();
@@ -59,11 +58,10 @@ private:
   void loadBeforeChangingScene();
 
 private:
-  TextBox firstTextbox, secondTextbox, thirdTextbox, fourthTextbox, newGame,
-      loadGame;
+  TextBox firstTextbox, secondTextbox, thirdTextbox, fourthTextbox;
   Label *title, *name, *color, *note;
-  Button threePlayersButton, fourPlayersButton, playButton, loadGames, newGames,
-      blue, yellow, red, green, clear;
+  Button threePlayersButton, fourPlayersButton, playButton, blue, yellow, red,
+      green, clear;
   bool isThreePlayers = false;
   bool isFourPlayers = false;
 

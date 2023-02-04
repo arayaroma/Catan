@@ -27,6 +27,14 @@ public:
     return (event.mouseButton.button == sf::Mouse::Right);
   }
 
+  virtual int getMousePositionX(sf::RenderWindow &view) const {
+    return sf::Mouse::getPosition(view).x;
+  }
+
+  virtual int getMousePositionY(sf::RenderWindow &view) const {
+    return sf::Mouse::getPosition(view).y;
+  }
+
   virtual bool isReturnPressed() const {
     return (sf::Keyboard::isKeyPressed(sf::Keyboard::Return));
   }
@@ -35,13 +43,17 @@ public:
     return (sf::Keyboard::isKeyPressed(sf::Keyboard::End));
   }
 
-  virtual int getMousePositionX(sf::RenderWindow &view) const {
-    return sf::Mouse::getPosition(view).x;
+  virtual bool isEscapePressed() const {
+    return (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape));
   }
 
-  virtual int getMousePositionY(sf::RenderWindow &view) const {
-    return sf::Mouse::getPosition(view).y;
+  virtual bool isQKeyPressed() const {
+    return (sf::Keyboard::isKeyPressed(sf::Keyboard::Q));
   }
+
+  virtual void closeView() { view.close(); }
+  virtual void displayView() { view.display(); }
+  virtual void clearView() { view.clear(); }
 
 protected:
   Game game;
@@ -54,5 +66,4 @@ protected:
   sf::Sprite OCeanSprite;
   sf::Font font;
   sf::Event event;
-
 };
