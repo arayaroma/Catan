@@ -13,7 +13,6 @@
 #include <unordered_map>
 #include <vector>
 
-
 using std::list;
 using std::stack;
 using std::string;
@@ -213,6 +212,8 @@ public:
   vector<int> getLandsNumbersRandomized();
   void printLandsNumbers(vector<int> const &);
 
-  void setNumbersToLands(list<Land*>*);
+  void setNumbersToLands(list<Land *> *);
   void printDiceNumbersInLands();
+
+  void shuffleLandList();
 };

@@ -1,13 +1,11 @@
 #pragma once
 #include "Button.hpp"
+#include "BuyView.hpp"
 #include "Dice.hpp"
 #include "Label.hpp"
 #include "View.hpp"
 #include <SFML/Graphics.hpp>
 #include <string>
-
-#include "Dice.hpp"
-#include "BuyView.hpp"
 
 
 #define pi 3.14159265358979323846
@@ -37,17 +35,13 @@ public:
 
   list<Player *>::iterator playerIterator;
 
-
-  list<Wheat*>::iterator wheatIterator; 
-  list<Mineral*>::iterator mineralIterator;
-  list<Wool*>::iterator woolIterator;
-  list<Wood*>::iterator woodIterator;
-  list<Clay*>::iterator clayIterator;
-
+  list<Wheat *>::iterator wheatIterator;
+  list<Mineral *>::iterator mineralIterator;
+  list<Wool *>::iterator woolIterator;
+  list<Wood *>::iterator woodIterator;
+  list<Clay *>::iterator clayIterator;
 
 private:
- 
-
   bool start;
   bool lastIteration = false;
   bool firstCalltoPrintBoard = true;
@@ -67,6 +61,7 @@ private:
   bool isCityBuyClicked = false;
 
   bool selectTown = false;
+
 public:
   void goView() override;
 
@@ -184,7 +179,7 @@ private:
   bool existsAnOwnerInVertex(list<Vertex *>::iterator);
   bool isVertexesListTraversalInTurn(list<Vertex *>::iterator,
                                      list<Land *>::iterator);
-  bool isActualPlayerName(list<Vertex *>::iterator, list<Player*>::iterator );
+  bool isActualPlayerName(list<Vertex *>::iterator, list<Player *>::iterator);
   void giveCardsToPlayer(list<Land *>::iterator);
   void giveCardsToPlayerFirstTurn(list<Land *>::iterator);
 
@@ -207,11 +202,10 @@ private:
   bool isDessertLand(list<Land *>::iterator) const;
   void createTempNumberEmpty(list<Land *>::iterator);
   void createTempNumber(list<Land *>::iterator);
-  list<Land *> *shuffleLandList();
 
 private:
-  sf::RectangleShape  turnRectangleOne,
-      turnRectangleTwo, turnRectangleThree, turnRectangleFour;
+  sf::RectangleShape turnRectangleOne, turnRectangleTwo, turnRectangleThree,
+      turnRectangleFour;
   void createBuyRectangle();
   void printPlayerBuyFigure();
   void printDevelopCard();
@@ -228,9 +222,9 @@ private:
   void deleteMineraltoPlayer();
   void deleteWheattoPlayer();
 
-  void buyTown(list<Vertex*>::iterator vIterator, double x,
-      double y);
+  void buyTown(list<Vertex *>::iterator vIterator, double x, double y);
   void printBuyDevelopCard();
+
 private:
   sf::Event eventTest;
   sf::RectangleShape playerRectangle, cardsRectangle, tradeRectangle;

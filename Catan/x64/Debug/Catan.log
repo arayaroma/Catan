@@ -1,2 +1,47 @@
-﻿  PlayView.cpp
-  Catan.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Catan.exe
+﻿  AboutView.cpp
+  Alert.cpp
+  Application.cpp
+  Button.cpp
+  BuyView.cpp
+  Card.cpp
+  Computer.cpp
+  ConfirmationAlert.cpp
+  ErrorAlert.cpp
+  FileHandler.cpp
+  Game.cpp
+  Dice.cpp
+  Edge.cpp
+  Figure.cpp
+  Graph.cpp
+  Human.cpp
+  InformationAlert.cpp
+  Knight.cpp
+  main.cpp
+  City.cpp
+  Generating Code...
+  Compiling...
+  Clay.cpp
+  Component.cpp
+  Label.cpp
+  Land.cpp
+  Mineral.cpp
+  NoneAlert.cpp
+  Player.cpp
+  PlayView.cpp
+  Progress.cpp
+  RegisterView.cpp
+  Road.cpp
+  TextBox.cpp
+  TitleView.cpp
+  Town.cpp
+  Vertex.cpp
+  VictoryPoints.cpp
+  View.cpp
+  WarningAlert.cpp
+  Wheat.cpp
+  Wood.cpp
+  Generating Code...
+  Compiling...
+  Wool.cpp
+  Generating Code...
+  Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe
