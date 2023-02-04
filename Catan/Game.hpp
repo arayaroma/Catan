@@ -4,7 +4,7 @@
 #include "Land.hpp"
 #include "Materials.hpp"
 #include "Player.hpp"
-#include "DevelopCards.h"
+#include "DevelopCards.hpp"
 #include "StructureGraph.hpp"
 #include <iostream>
 #include <list>
@@ -12,7 +12,6 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
-
 
 using std::list;
 using std::stack;
@@ -214,6 +213,8 @@ public:
   vector<int> getLandsNumbersRandomized();
   void printLandsNumbers(vector<int> const &);
 
-  void setNumbersToLands(list<Land*>*);
+  void setNumbersToLands(list<Land *> *);
   void printDiceNumbersInLands();
+
+  void shuffleLandList();
 };

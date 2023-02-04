@@ -179,6 +179,14 @@ void Game::randomizeLandsNumbers() {
   }
 }
 
+void Game::shuffleLandList() {
+  int i, j;
+  for (i = 0; i < landsList->size() - 1; i++) {
+    j = i + rand() % (landsList->size() - i);
+    std::swap(landsList[i], landsList[j]);
+  }
+} 
+
 vector<int> Game::getLandsNumbersRandomized() {
   loadLandsNumbers();
   randomizeLandsNumbers();
@@ -250,6 +258,7 @@ void Game::loadLands() {
         new Land("Brick", imagePaths.at("brickPath"), 0, 0, landId));
     landId++;
   }
+  // landsList = shuffleLandList();
 }
 
 void Game::makeSpecialCard() {

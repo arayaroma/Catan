@@ -1,14 +1,11 @@
 #pragma once
 #include "Button.hpp"
+#include "BuyView.hpp"
 #include "Dice.hpp"
 #include "Label.hpp"
 #include "View.hpp"
 #include <SFML/Graphics.hpp>
 #include <string>
-
-#include "Dice.hpp"
-#include "BuyView.hpp"
-
 
 #define pi 3.14159265358979323846
 #define firstAngle (3 * pi) / 2
@@ -35,23 +32,19 @@ public:
   list<City *>::iterator cityIterator;
   list<Town *>::iterator townIterator;
 
-  list<Progress*>::iterator progressIterator;
-  list<VictoryPoints*>::iterator victoryPointsIterator;
-  list<Knight*>::iterator knightIterator;
+  list<Progress *>::iterator progressIterator;
+  list<VictoryPoints *>::iterator victoryPointsIterator;
+  list<Knight *>::iterator knightIterator;
 
   list<Player *>::iterator playerIterator;
 
-
-  list<Wheat*>::iterator wheatIterator; 
-  list<Mineral*>::iterator mineralIterator;
-  list<Wool*>::iterator woolIterator;
-  list<Wood*>::iterator woodIterator;
-  list<Clay*>::iterator clayIterator;
-
+  list<Wheat *>::iterator wheatIterator;
+  list<Mineral *>::iterator mineralIterator;
+  list<Wool *>::iterator woolIterator;
+  list<Wood *>::iterator woodIterator;
+  list<Clay *>::iterator clayIterator;
 
 private:
- 
-
   bool start;
   bool lastIteration = false;
   bool firstCalltoPrintBoard = true;
@@ -72,6 +65,7 @@ private:
 
   bool selectTown = false;
   bool selectCity = false;
+
 public:
   void goView() override;
 
@@ -197,9 +191,9 @@ private:
   bool existsAnOwnerInVertex(list<Vertex *>::iterator);
   bool isVertexesListTraversalInTurn(list<Vertex *>::iterator,
                                      list<Land *>::iterator);
-  bool isActualPlayerName(list<Vertex *>::iterator, list<Player*>::iterator );
+  bool isActualPlayerName(list<Vertex *>::iterator, list<Player *>::iterator);
   void giveCardsToPlayer(list<Land *>::iterator);
-  void giveCardsToPlayerCity(list<Land*>::iterator);
+  void giveCardsToPlayerCity(list<Land *>::iterator);
   void giveCardsToPlayerFirstTurn(list<Land *>::iterator);
 
   bool isPlayerTownListEmpty() const;
@@ -221,11 +215,10 @@ private:
   bool isDessertLand(list<Land *>::iterator) const;
   void createTempNumberEmpty(list<Land *>::iterator);
   void createTempNumber(list<Land *>::iterator);
-  list<Land *> *shuffleLandList();
 
 private:
-  sf::RectangleShape  turnRectangleOne,
-      turnRectangleTwo, turnRectangleThree, turnRectangleFour;
+  sf::RectangleShape turnRectangleOne, turnRectangleTwo, turnRectangleThree,
+      turnRectangleFour;
   void createBuyRectangle();
   void printPlayerBuyFigure();
   void printDevelopCard();
@@ -248,11 +241,10 @@ private:
   void deleteMineralCards();
   void deleteClayCards();
   void deleteWheatCards();
-  void buyTown(list<Vertex*>::iterator vIterator, double x,
-      double y);
-  void buyCity(list<Vertex*>::iterator vIterator, double x,
-      double y);
+  void buyTown(list<Vertex *>::iterator vIterator, double x, double y);
+  void buyCity(list<Vertex *>::iterator vIterator, double x, double y);
   void printBuyDevelopCard();
+
 private:
   sf::Event eventTest;
   sf::RectangleShape playerRectangle, cardsRectangle, tradeRectangle;
@@ -262,8 +254,9 @@ private:
       *woolPlayerCard, *firsThreeXone, *secondThreeXone, *thirdThreeXone,
       *fourThreeXone, *tempNumber;
   Label *townPlayer, *cityPlayer, *roadPlayer;
-  Label *titleTurn, *labelNumTurn, *infoFisrtTurn, *labelNumDice, *scorePlayer,* titleScorePlayer;
-  Label* knight, * progress, * victory;
-  Label* woodGame, * woolGame, * clayGame, *mineralGame, *wheatGame;
+  Label *titleTurn, *labelNumTurn, *infoFisrtTurn, *labelNumDice, *scorePlayer,
+      *titleScorePlayer;
+  Label *knight, *progress, *victory;
+  Label *woodGame, *woolGame, *clayGame, *mineralGame, *wheatGame;
   Button turn, buy, trade, dice, p, option1, save, close;
 };

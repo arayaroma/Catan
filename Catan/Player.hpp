@@ -1,9 +1,9 @@
 #pragma once
-#include "Cards.h"
+#include "Cards.hpp"
 #include "Figures.hpp"
 #include <list>
 #include <string>
-#include "DevelopCards.h"
+#include "DevelopCards.hpp"
 using std::list;
 
 class Player {

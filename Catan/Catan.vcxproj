@@ -196,8 +196,8 @@
     <ClInclude Include="Figure.hpp" />
     <ClInclude Include="Figures.hpp" />
     <ClInclude Include="Graph.hpp" />
-    <ClInclude Include="Cards.h" />
-    <ClInclude Include="DevelopCards.h" />
+    <ClInclude Include="Cards.hpp" />
+    <ClInclude Include="DevelopCards.hpp" />
     <ClInclude Include="Human.hpp" />
     <ClInclude Include="InformationAlert.hpp" />
     <ClInclude Include="NoneAlert.hpp" />
