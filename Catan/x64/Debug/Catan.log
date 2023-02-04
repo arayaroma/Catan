@@ -1,4 +1,14 @@
-﻿  PlayView.cpp
-C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(37,38): warning C4305: 'argument': truncation from 'int' to 'sf::Uint8'
-C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(36,41): warning C4309: 'argument': truncation of constant value
+﻿  AboutView.cpp
+  Alert.cpp
+  Application.cpp
+  BuyView.cpp
+  Computer.cpp
+  ConfirmationAlert.cpp
+  ErrorAlert.cpp
+  FileHandler.cpp
+  Game.cpp
+  Graph.cpp
+  main.cpp
+  View.cpp
+  Generating Code...
   Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe
