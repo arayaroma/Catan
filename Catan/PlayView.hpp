@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "Dice.hpp"
+#include "BuyView.hpp"
 
 #define pi 3.14159265358979323846
 #define firstAngle (3 * pi) / 2
@@ -33,7 +34,11 @@ public:
 
   list<Player *>::iterator playerIterator;
 
+
+
 private:
+ 
+
   bool start;
   bool lastIteration = false;
   bool firstCalltoPrintBoard = true;

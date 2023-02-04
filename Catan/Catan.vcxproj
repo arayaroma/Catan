@@ -137,6 +137,7 @@
     <ClCompile Include="Alert.cpp" />
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="BuyView.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Computer.cpp" />
     <ClCompile Include="ConfirmationAlert.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="Alert.hpp" />
     <ClInclude Include="Application.hpp" />
     <ClInclude Include="Button.hpp" />
+    <ClInclude Include="BuyView.hpp" />
     <ClInclude Include="Card.hpp" />
     <ClInclude Include="City.hpp" />
     <ClInclude Include="Clay.hpp" />

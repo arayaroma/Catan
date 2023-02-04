@@ -48,7 +48,8 @@ void PlayView::createLabelNamePlayers() {
     if (isPlayerListTraversal()) {
         if (isThreePlayers())
             createThreePlayersLabel();
-         
+        if (isFourPlayers())
+            createFourPlayersLabel(); 
     }
 }
         void PlayView::loadthreeXone() {
@@ -589,7 +590,11 @@ void PlayView::goView() {
               }
               isTurnButtonClicked(sf::Mouse::getPosition(view).x,
                   sf::Mouse::getPosition(view).y);
-              
+              if (buy.isMouseOver(view)) {
+
+                  BuyView buyView = BuyView();
+                  buyView.goView();
+            }
           }
           break;
           case sf::Event::Closed:
