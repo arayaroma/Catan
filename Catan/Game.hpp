@@ -11,11 +11,14 @@
 #include <stack>
 #include <string>
 #include <unordered_map>
+#include <vector>
+
 
 using std::list;
 using std::stack;
 using std::string;
 using std::unordered_map;
+using std::vector;
 
 /*
   Points:
@@ -52,6 +55,7 @@ class Game {
 private:
   string matchName;
   int matchId;
+  bool isNumbersLandsSet = false;
 
 public:
   Graph graph;
@@ -169,11 +173,12 @@ public:
   stack<Wool *> *getWoolCards() const;
 
 public:
-  Game();
+  vector<int> landsNumbers;
+  void setLandNumbers(vector<int>);
+  vector<int> getLandNumbers() const;
 
-  void play();
-  void build();
-  void tradeMaterials();
+public:
+  Game();
 
   void createGraphVertex();
   void makeGraph();
@@ -199,9 +204,15 @@ public:
   void makeSpecialCard();
   void makeDevelopCard();
   void makeMaterialCard();
-  void makeConstructionCostsCard();
 
-  void playDevelopCard();
   void printVertexXY() { graph.vertexXY(); }
   void printLand(list<Land *> *);
+
+  void loadLandsNumbers();
+  void randomizeLandsNumbers();
+  vector<int> getLandsNumbersRandomized();
+  void printLandsNumbers(vector<int> const &);
+
+  void setNumbersToLands(list<Land*>*);
+  void printDiceNumbersInLands();
 };

@@ -5,23 +5,27 @@ Land::Land() {
   this->imagePath = "";
   this->posX = NULL;
   this->posY = NULL;
-  this->townsList = new list<Vertex*>();
+  this->townsList = new list<Vertex *>();
 }
 
-Land::Land(string type, string imagePath, double posX, double posY, int landId) {
+Land::Land(string type, string imagePath, double posX, double posY,
+           int landId) {
   this->typeland = type;
   this->imagePath = imagePath;
   this->posX = posX;
   this->posY = posY;
   this->landId = landId;
-  this->townsList = new list<Vertex*>();
+  this->townsList = new list<Vertex *>();
 }
 
-void Land::setPosY(double posY)  { this->posY = posY; }
+void Land::setLandId(int landId) { this->landId = landId; }
+int Land::getLandId() const { return this->landId; }
+
+void Land::setDiceNumber(int diceNumber) { this->diceNumber = diceNumber; }
+int Land::getDiceNumber() const { return this->diceNumber; }
+
+void Land::setPosY(double posY) { this->posY = posY; }
 double Land::getPosY() const { return this->posY; }
 
 void Land::setPosX(double posX) { this->posX = posX; }
 double Land::getPosX() const { return this->posX; }
-
-void Land::setLandId(int landId) { this->landId = landId; }
-int Land::getLandId() const { return this->landId; }

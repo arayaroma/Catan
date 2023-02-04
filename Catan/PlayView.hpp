@@ -1,10 +1,10 @@
 #pragma once
 #include "Button.hpp"
+#include "Dice.hpp"
 #include "Label.hpp"
 #include "View.hpp"
 #include <SFML/Graphics.hpp>
 #include <string>
-#include "Dice.hpp"
 
 #define pi 3.14159265358979323846
 #define firstAngle (3 * pi) / 2
@@ -39,14 +39,15 @@ private:
   bool firstCalltoPrintBoard = true;
   int lastIterationNumber = 680;
   int vertexIterationNumber;
-  int turnNumber=0;
+  int turnNumber = 0;
   string tempImagePath;
   string url = "";
   int numTurn = 1;
-  int numDice; 
+  int numDice;
   Dice diceInstance;
   bool isDiceSpinned = false;
   bool isFirstTurn = true;
+  const string dessertType = "Dessert";
 
 public:
   void goView() override;
@@ -69,9 +70,9 @@ private:
   void createLabels();
   void loadthreeXone();
 
-  void createButtons(); 
-  void setButtonOrigins(); 
-  void drawButtons(); 
+  void createButtons();
+  void setButtonOrigins();
+  void drawButtons();
 
   void loadRegisterButtons(Button &btn);
   void loadOcean();
@@ -123,7 +124,7 @@ private:
   void createLabelFigurePlayer();
   void drawLabelFigurePlayer();
   void printPlayerFigure();
-  void drawRectangleShapes(); 
+  void drawRectangleShapes();
 
   void traverseLands(double, double);
   void searhTown(double, double, list<Land *>::iterator);
@@ -183,13 +184,22 @@ private:
   void createCloseButton();
   void createDiceButton();
 
+  void printLandsDiceNumbers();
+  void createLabelDiceNumber(list<Land *>::iterator);
+  bool isDessertLand(list<Land *>::iterator) const;
+  void createTempNumberEmpty(list<Land *>::iterator);
+  void createTempNumber(list<Land *>::iterator);
+  list<Land *> *shuffleLandList();
+
 private:
   sf::Event eventTest;
-  sf::RectangleShape playerRectangle, cardsRectangle,turnRectangleOne, turnRectangleTwo, turnRectangleThree, turnRectangleFour;
+  sf::RectangleShape playerRectangle, cardsRectangle, turnRectangleOne,
+      turnRectangleTwo, turnRectangleThree, turnRectangleFour;
   Label *materialCard, *pricingTable, *turns, *cards, *developCard;
   Label *player1, *player2, *player3, *player4;
   Label *clayCard, *mineralPlayerCard, *wheatPlayerCard, *woodPlayerCard,
-      *woolPlayerCard, * firsThreeXone, * secondThreeXone, * thirdThreeXone, * fourThreeXone;
+      *woolPlayerCard, *firsThreeXone, *secondThreeXone, *thirdThreeXone,
+      *fourThreeXone, *tempNumber;
   Label *townPlayer, *cityPlayer, *roadPlayer;
   Label *titleTurn, *labelNumTurn, *infoFisrtTurn, *labelNumDice;
   Button turn, buy, trade, dice, p, option1, save, close;
