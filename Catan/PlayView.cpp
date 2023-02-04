@@ -85,13 +85,13 @@ void PlayView::createFourPlayersLabel() {
 }
 
 void PlayView::createLabelFigurePlayer() {
-    townPlayer = new Label(std::to_string((*game.playerIterator)->towns->size()),
+    townPlayer = new Label(std::to_string((*game.playerIterator)->towns->size()-1),
         sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20,
         600.f, 620.f);
-    cityPlayer = new Label(std::to_string((*game.playerIterator)->citys->size()),
+    cityPlayer = new Label(std::to_string((*game.playerIterator)->citys->size()-1),
         sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20,
         640.f, 620.f);
-    roadPlayer = new Label(std::to_string((*game.playerIterator)->roads->size()),
+    roadPlayer = new Label(std::to_string((*game.playerIterator)->roads->size()-1),
         sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20,
         680.f, 620.f);
 }
