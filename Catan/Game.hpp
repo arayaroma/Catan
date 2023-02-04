@@ -54,6 +54,7 @@ using std::vector;
 class Game {
 private:
   string matchName;
+  string endUrl;
   int matchId;
   bool isNumbersLandsSet = false;
 
@@ -125,22 +126,22 @@ public:
   Land getLand() const;
 
 public:
-  stack<Knight *> *knightCards = new stack<Knight *>();
+	list<Knight *> *knightCards = new list<Knight *>();
 
-  void setKnightCards(stack<Knight *> *);
-  stack<Knight *> *getKnightCards() const;
-
-public:
-  stack<Progress *> *progressCards = new stack<Progress *>();
-
-  void setProgressCards(stack<Progress *> *);
-  stack<Progress *> *getProgressCards() const;
+  void setKnightCards(list<Knight *> *);
+  list<Knight *> *getKnightCards() const;
 
 public:
-  stack<VictoryPoints *> *victoryPointCards = new stack<VictoryPoints *>();
+	list<Progress *> *progressCards = new list<Progress *>();
 
-  void setVictoryPointsCards(stack<VictoryPoints *> *);
-  stack<VictoryPoints *> *getVictoryPointsCards() const;
+  void setProgressCards(list<Progress *> *);
+  list<Progress *> *getProgressCards() const;
+
+public:
+	list<VictoryPoints *> *victoryPointCards = new list<VictoryPoints *>();
+
+  void setVictoryPointsCards(list<VictoryPoints *> *);
+  list<VictoryPoints *> *getVictoryPointsCards() const;
 
 public:
   stack<Clay *> *clayCards = new stack<Clay *>;

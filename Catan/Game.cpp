@@ -8,6 +8,7 @@ Game::Game() {
   citiesList = new list<City *>();
   roadsList = new list<Road *>();
   landsList = new list<Land *>();
+  endUrl = ".png";
   loadMaps();
 }
 
@@ -67,25 +68,25 @@ Card *Game::getSpecialCards() const { return this->specialCard; }
 void Game::setLand(Land land) { this->land = land; }
 Land Game::getLand() const { return this->land; }
 
-void Game::setKnightCards(stack<Knight *> *knightCards) {
+void Game::setKnightCards(list<Knight *> *knightCards) {
   this->knightCards = knightCards;
 }
 
-stack<Knight *> *Game::getKnightCards() const { return this->knightCards; }
+list<Knight *> *Game::getKnightCards() const { return this->knightCards; }
 
-void Game::setProgressCards(stack<Progress *> *progressCards) {
+void Game::setProgressCards(list<Progress *> *progressCards) {
   this->progressCards = progressCards;
 }
 
-stack<Progress *> *Game::getProgressCards() const {
+list<Progress *> *Game::getProgressCards() const {
   return this->progressCards;
 }
 
-void Game::setVictoryPointsCards(stack<VictoryPoints *> *victoryPointCards) {
+void Game::setVictoryPointsCards(list<VictoryPoints *> *victoryPointCards) {
   this->victoryPointCards = victoryPointCards;
 }
 
-stack<VictoryPoints *> *Game::getVictoryPointsCards() const {
+list<VictoryPoints *> *Game::getVictoryPointsCards() const {
   return this->victoryPointCards;
 }
 
@@ -139,13 +140,13 @@ void Game::loadSpecialCards() {
 
 void Game::loadProgressPaths() {
   imagePaths.insert(
-      pair<string, string>("knightPath", "Images/knightCards/knightCard"));
+      pair<string, string>("knightPath", "Images/knightCards/mini_knightCard"));
 
   imagePaths.insert(pair<string, string>("progressPath",
-                                         "Images/progressCards/progressCard"));
+                                         "Images/progressCards/mini_progressCard"));
 
   imagePaths.insert(pair<string, string>(
-      "victoryPointsPath", "Images/victoryPointsCards/victoryPointCard"));
+      "victoryPointsPath", "Images/victoryPointsCards/mini_victoryPointCard"));
 }
 
 void Game::loadTilesPaths() {
@@ -269,21 +270,27 @@ void Game::makeMaterialCard() {
 
 void Game::makeDevelopCard() {
   std::string knightPath, progressPath, victoryPointsPath;
-  int i, num = 1, numberOfCards = 4;
-  for (i = 0; i < numberOfCards; i++) {
-    string stringNumber(std::to_string(num));
-
-    if (i < 2) {
-      progressCards->push(new Progress(progressPath));
-      knightCards->push(new Knight(knightPath));
-      victoryPointCards->push(new VictoryPoints(victoryPointsPath));
-    }
-
-    num++;
-    // Poner png
-    knightPath = imagePaths.at("knightPath") + stringNumber;
-    progressPath = imagePaths.at("progressPath") + stringNumber;
-    victoryPointsPath = imagePaths.at("victoryPointsPath") + stringNumber;
+  endUrl = ".png";
+  int i, num = 1, numberOfCards = 5;
+  for(int x = 0; x<3; x++){
+      for (i = 0; i < numberOfCards; i++) {
+          string stringNumber(std::to_string(num));
+          knightPath = imagePaths.at("knightPath") + stringNumber + endUrl;
+          
+          if (i < 3 && x<2) {
+              progressPath = imagePaths.at("progressPath") + stringNumber + endUrl;
+              progressCards->push_back(new Progress(progressPath));
+          }
+          if (x == 0) {
+              victoryPointsPath = imagePaths.at("victoryPointsPath") + stringNumber + endUrl;
+              victoryPointCards->push_back(new VictoryPoints(victoryPointsPath));
+          }
+          knightCards->push_back(new Knight(knightPath));
+          
+          num++;
+          // Poner png
+      }
+      num=1;
   }
 }
 

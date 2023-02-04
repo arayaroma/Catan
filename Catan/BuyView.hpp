@@ -11,7 +11,7 @@ class BuyView : public View
 public:
 
 	list<Knight*>::iterator knightIterator;
-	list<Progress*>::iterator iteratorIterator;
+	list<Progress*>::iterator progressIterator;
 	list<VictoryPoints*>::iterator victoryIterator;
 
 public:

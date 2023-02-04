@@ -8,10 +8,11 @@
 
 class VictoryPoints : public Card {
 private:
-
+    string url;
 
 public:
   VictoryPoints() {}
-  VictoryPoints(std::string url) {}
+  VictoryPoints(std::string url) { this->url = url; }
+  string getImagePath() { return this->url; }
   void toString() {}
 };

@@ -11,6 +11,7 @@ void BuyView::loadView() {
 
 void BuyView::goView() {
 
+    game.makeDevelopCard();
     loadView();
     view.draw(sprite);
     while (view.isOpen()) {
@@ -52,22 +53,38 @@ void BuyView::loadVictoryPointsPaths() {
 }
 
 void BuyView::drawView() {
-
-    printImages("Images/knightCards/mini_knightCard1.png",30,10);
-    printImages("Images/knightCards/mini_knightCard2.png", 160, 10);
-    printImages("Images/knightCards/mini_knightCard3.png", 290, 10);
-    printImages("Images/knightCards/mini_knightCard4.png", 420, 10);
-    printImages("Images/knightCards/mini_knightCard5.png", 550, 10);
-
-    printImages("Images/victoryPointsCards/mini_victoryPointCard1.png", 30, 220);
-    printImages("Images/victoryPointsCards/mini_victoryPointCard2.png", 160, 220);
-    printImages("Images/victoryPointsCards/mini_victoryPointCard3.png", 290, 220);
-    printImages("Images/victoryPointsCards/mini_victoryPointCard4.png", 420, 220);
-    printImages("Images/victoryPointsCards/mini_victoryPointCard5.png", 550, 220);
-
-    printImages("Images/progressCards/mini_progressCard1.png", 160, 430);
-    printImages("Images/progressCards/mini_progressCard2.png", 290, 430);
-    printImages("Images/progressCards/mini_progressCard3.png", 420, 430);
+    knightIterator = game.knightCards->begin();
+    progressIterator = game.progressCards->begin();
+    victoryIterator = game.victoryPointCards->begin();
+    if (knightIterator != game.knightCards->end()) {
+        printImages((*knightIterator)->getImagePath(), 30, 10);
+        knightIterator++;
+        printImages((*knightIterator)->getImagePath(), 160, 10);
+        knightIterator++;
+        printImages((*knightIterator)->getImagePath(), 290, 10);
+        knightIterator++;
+        printImages((*knightIterator)->getImagePath(), 420, 10);
+        knightIterator++;
+        printImages((*knightIterator)->getImagePath(), 550, 10);
+    }
+    if (victoryIterator != game.victoryPointCards->end()) {
+        printImages((*victoryIterator)->getImagePath(), 30, 220);
+        victoryIterator++;
+        printImages((*victoryIterator)->getImagePath(), 160, 220);
+        victoryIterator++;
+        printImages((*victoryIterator)->getImagePath(), 290, 220);
+        victoryIterator++;
+        printImages((*victoryIterator)->getImagePath(), 420, 220);
+        victoryIterator++;
+        printImages((*victoryIterator)->getImagePath(), 550, 220);
+    }
+    if (progressIterator != game.progressCards->end()) {
+        printImages((*progressIterator)->getImagePath(), 160, 430);
+        progressIterator++;
+        printImages((*progressIterator)->getImagePath(), 290, 430);
+        progressIterator++;
+        printImages((*progressIterator)->getImagePath(), 420, 430);
+    }
 
 }
 void BuyView::printImages(string imagePath, double posX, double posY) {

@@ -9,14 +9,15 @@
 
 class Progress : public Card {
 
+private:
+    string url;
 public:
   Progress() {}
 
 
   Progress( std::string url) {
-    this->type = type;
-    this->imagePath = imagePath;
+    this->url = url;
   }
-
+  string getImagePath() { return this->url; }
   void toString() {}
 };

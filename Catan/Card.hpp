@@ -6,6 +6,6 @@ public:
   Card() {}
   Card(string, string);
   string getType() const override { return CARD; }
-  string getImagePath() override { return ""; }
+  string getImagePath() override { return this->imagePath; }
   void toString() override {}
 };

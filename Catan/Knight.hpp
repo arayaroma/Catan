@@ -9,10 +9,11 @@
 class Knight : public Card {
 
 private:
-
+    string url;
 
 public:
   Knight() {}
-  Knight(std::string url) {}
+  Knight(std::string url) { this->url = url; }
+  string getImagePath() { return this->url; }
   void toString() {}
 };
