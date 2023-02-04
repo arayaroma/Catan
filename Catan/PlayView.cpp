@@ -21,12 +21,46 @@ void PlayView::createLabelNumTurn() {
                            sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20,
                            1150.f, 570.f);
 }
-
+void PlayView::printMaterialCard() {
+  printImages("Images/resourcesCards/clayCard.png", 0, 270);
+  printImages("Images/resourcesCards/mineralCard.png", 70, 270);
+  printImages("Images/resourcesCards/wheatCard.png", 140, 270);
+  printImages("Images/resourcesCards/woodCard.png", 210, 270);
+  printImages("Images/resourcesCards/woolCard.png", 280, 270);
+  printImages("Images/extraCards/progressCardBackwards.png", 0, 410);
+  printImages("Images/extraCards/pricingTable.jpeg", 0, 25);
+  drawLabels();
+}
+void PlayView::createLabelMaterialCardGame() {
+  wheatGame = new Label(std::to_string(game.wheatCards->size()),
+                        sf::Color(0, 0, 265, 150), font, sf::Text::Bold, 20,
+                        150.f, 240.f);
+  mineralGame = new Label(std::to_string(game.mineralCards->size()),
+                          sf::Color(0, 0, 255, 150), font, sf::Text::Bold, 20,
+                          80.f, 240.f);
+  clayGame = new Label(std::to_string(game.clayCards->size()),
+                       sf::Color(0, 0, 255, 150), font, sf::Text::Bold, 20,
+                       15.f, 240.f);
+  woolGame = new Label(std::to_string(game.woolCards->size()),
+                       sf::Color(0, 0, 255, 150), font, sf::Text::Bold, 20,
+                       290.f, 240.f);
+  woodGame = new Label(std::to_string(game.woodCards->size()),
+                       sf::Color(0, 0, 255, 150), font, sf::Text::Bold, 20,
+                       220.f, 240.f);
+}
+void PlayView::drawLabelMaterialGame() {
+  createLabelMaterialCardGame();
+  view.draw(wheatGame->getTextInstance());
+  view.draw(mineralGame->getTextInstance());
+  view.draw(clayGame->getTextInstance());
+  view.draw(woolGame->getTextInstance());
+  view.draw(woodGame->getTextInstance());
+}
 void PlayView::createLabels() {
   materialCard = new Label("Cartas de Materiales", sf::Color(0, 0, 255, 128),
-                           font, sf::Text::Bold, 20, 5.f, 230.f);
+                           font, sf::Text::Bold, 20, 5.f, 220.f);
   developCard = new Label("Cartas de Desarrollo", sf::Color(0, 0, 255, 128),
-                          font, sf::Text::Bold, 20, 5.f, 360.f);
+                          font, sf::Text::Bold, 20, 5.f, 380.f);
   pricingTable = new Label("Tabla de precios", sf::Color(0, 0, 255, 128), font,
                            sf::Text::Bold, 20, 5.f, 0.f);
   turns = new Label("Jugadores", sf::Color(0, 0, 255, 128), font,
@@ -34,7 +68,13 @@ void PlayView::createLabels() {
   cards = new Label("Componentes", sf::Color(0, 0, 255, 128), font,
                     sf::Text::Bold, 20, 565.f, 575.f);
 }
-
+void PlayView::createLabelScorePlayer() {
+  titleScorePlayer = new Label("Score:", sf::Color(0, 0, 255, 128), font,
+                               sf::Text::Bold, 20, 1000.f, 30.f);
+  scorePlayer = new Label(std::to_string((*game.playerIterator)->getScore()),
+                          sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20,
+                          1100.f, 30.f);
+}
 void PlayView::createLabelNamePlayers() {
   playerIterator = beginPlayerIterator();
   if (isPlayerListTraversal()) {
@@ -214,7 +254,24 @@ void PlayView::createLabelFigurePlayer() {
       std::to_string((*game.playerIterator)->roads->size() - 1),
       sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 680.f, 620.f);
 }
+void PlayView::printPlayerDevelopCard() {
+  printImages("Images/playerCard/mini_progressCard1.png", 720, 640);
+  printImages("Images/playerCard/mini_knightCard1.png", 760, 640);
+  printImages("Images/playerCard/mini_victoryPointCard1.png", 800, 640);
+}
+void PlayView::createLabelPlayerDevelopCard() {
+  victory = new Label(
+      std::to_string((*game.playerIterator)->victoryPointsCards->size()),
+      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 720.f, 620.f);
 
+  knight = new Label(
+      std::to_string((*game.playerIterator)->knightCards->size()),
+      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 760, 620.f);
+
+  progress = new Label(
+      std::to_string((*game.playerIterator)->progressCards->size()),
+      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 800.f, 620.f);
+}
 /*methods of creating Buttons*/
 
 void PlayView::createTradeButton() {
@@ -294,11 +351,14 @@ void PlayView::drawLabelNumTurn() {
 
 void PlayView::drawLabels() {
   createLabels();
+  createLabelScorePlayer();
   view.draw(materialCard->getTextInstance());
   view.draw(developCard->getTextInstance());
   view.draw(pricingTable->getTextInstance());
   view.draw(turns->getTextInstance());
   view.draw(cards->getTextInstance());
+  view.draw(titleScorePlayer->getTextInstance());
+  view.draw(scorePlayer->getTextInstance());
 }
 void PlayView::drawLabelNamePlayers() {
   createLabelNamePlayers();
@@ -330,7 +390,12 @@ void PlayView::drawLabelFigurePlayer() {
   view.draw(cityPlayer->getTextInstance());
   view.draw(roadPlayer->getTextInstance());
 }
-
+void PlayView::drawLabelDevelopCardPLayer() {
+  createLabelPlayerDevelopCard();
+  view.draw(knight->getTextInstance());
+  view.draw(progress->getTextInstance());
+  view.draw(victory->getTextInstance());
+}
 /*methods of print Card*/
 void PlayView::printPlayerCard() {
   printImages("Images/playerCard/clayCard.png", 360, 640);
@@ -350,16 +415,6 @@ void PlayView::printPlayerFigure() {
     printImages((*cityIterator)->getImagePath(), 630, 650);
 }
 
-void PlayView::printMaterialCard() {
-  printImages("Images/resourcesCards/clayCard.png", 0, 255);
-  printImages("Images/resourcesCards/mineralCard.png", 70, 255);
-  printImages("Images/resourcesCards/wheatCard.png", 140, 255);
-  printImages("Images/resourcesCards/woodCard.png", 210, 255);
-  printImages("Images/resourcesCards/woolCard.png", 280, 255);
-  printImages("Images/extraCards/progressCardBackwards.png", 0, 385);
-  printImages("Images/extraCards/pricingTable.jpeg", 0, 25);
-  drawLabels();
-}
 /* methods for first turn*/
 void PlayView::traverseLands(double x, double y) {
   it = landsList->begin();
@@ -371,24 +426,30 @@ void PlayView::traverseLands(double x, double y) {
 
 void PlayView::printTownPlayer(list<Vertex *>::iterator vIterator, int x,
                                int y) {
-  if ((*game.playerIterator)->towns->size() > 0) {
-    if ((*game.playerIterator)->getTownFirstTurn() < 2) {
-      initializeIteratorTownList();
-      setIsClickedToVertexGraph(vIterator);
-      if (townIterator != (*game.playerIterator)->towns->end())
-        printImages((*townIterator)->getImagePath(),
-                    (*vIterator)->getTown()->getPosX(),
-                    (*vIterator)->getTown()->getPosY());
-      setOwnerToVertexGraph(game.graph.getVertex((*vIterator)->getVertexId()));
-      deleteTowntoPlayer();
-      (*game.playerIterator)->setTownFirstTurn(1);
-      if ((*game.playerIterator)->getTownFirstTurn() == 2) {
-        receiveFirstMaterialCard();
+  if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() == NULL) {
+    if ((*game.playerIterator)->towns->size() > 1) {
+      if ((*game.playerIterator)->getTownFirstTurn() < 2) {
+        initializeIteratorTownList();
+        setIsClickedToVertexGraph(vIterator);
+        if (townIterator != (*game.playerIterator)->towns->end())
+          printImages((*townIterator)->getImagePath(),
+                      (*vIterator)->getTown()->getPosX(),
+                      (*vIterator)->getTown()->getPosY());
+        setOwnerToVertexGraph(
+            game.graph.getVertex((*vIterator)->getVertexId()));
+        deleteTowntoPlayer();
+        (*game.playerIterator)->setScore(1);
+        (*game.playerIterator)->setTownFirstTurn(1);
+        if ((*game.playerIterator)->getTownFirstTurn() == 2) {
+          receiveFirstMaterialCard();
+        }
+        game.graph.getVertex((*vIterator)->getVertexId())->setIsCity(false);
+        game.graph.getVertex((*vIterator)->getVertexId())->setIsTown(true);
+        view.display();
       }
-      view.display();
     }
+    (*game.playerIterator)->setFirstTurnFinished(true);
   }
-  (*game.playerIterator)->setFirstTurnFinished(true);
 }
 
 void PlayView::searhTown(double x, double y, list<Land *>::iterator it) {
@@ -402,22 +463,62 @@ void PlayView::searhTown(double x, double y, list<Land *>::iterator it) {
       if (selectTown) {
         buyTown(vIterator, (int)x, (int)y);
       }
+      if (selectCity) {
+        buyCity(vIterator, (int)x, (int)y);
+      }
     }
     vIterator++;
   }
 }
+void PlayView::buyCity(list<Vertex *>::iterator vIterator, double x, double y) {
+  initializeIteratorCityList();
+  if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() != NULL) {
+    if (!game.graph.getVertex((*vIterator)->getVertexId())->getIsCity()) {
+      if (game.graph.getVertex((*vIterator)->getVertexId())
+              ->getOwner()
+              ->getName() == (*playerIterator)->getName()) {
+        if ((*game.playerIterator)->towns->size() > 1) { /// arreglar este BUG
+          if (cityIterator != (*game.playerIterator)->citys->end())
+            printImages((*cityIterator)->getImagePath(),
+                        (*vIterator)->getTown()->getPosX(),
+                        (*vIterator)->getTown()->getPosY());
+          setOwnerToVertexGraph(
+              game.graph.getVertex((*vIterator)->getVertexId()));
+          deleteCitytoPlayer();
+          addTownToPlayer();
+          setIsClickedToVertexGraph(vIterator);
+          (*game.playerIterator)->setScore(2);
+          view.display();
+          selectCity = false;
+          game.graph.getVertex((*vIterator)->getVertexId())->setIsCity(true);
+          game.graph.getVertex((*vIterator)->getVertexId())->setIsTown(false);
+        }
+      }
+    }
+  }
+}
+void PlayView::addTownToPlayer() {
+  initializeIteratorCityList();
+  (*game.playerIterator)
+      ->towns->push_back(new Town((*cityIterator)->getImagePath()));
+}
 void PlayView::buyTown(list<Vertex *>::iterator vIterator, double x, double y) {
   initializeIteratorTownList();
-  setIsClickedToVertexGraph(vIterator);
-  if ((*game.playerIterator)->towns->size() > 1) { /// arreglar este BUG
-    if (townIterator != (*game.playerIterator)->towns->end())
-      printImages((*townIterator)->getImagePath(),
-                  (*vIterator)->getTown()->getPosX(),
-                  (*vIterator)->getTown()->getPosY());
-    setOwnerToVertexGraph(game.graph.getVertex((*vIterator)->getVertexId()));
-    deleteTowntoPlayer();
-    view.display();
-    selectTown = false;
+  if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() == NULL) {
+    if ((*game.playerIterator)->towns->size() > 1) { /// arreglar este BUG
+      if (townIterator != (*game.playerIterator)->towns->end())
+        printImages((*townIterator)->getImagePath(),
+                    (*vIterator)->getTown()->getPosX(),
+                    (*vIterator)->getTown()->getPosY());
+      setOwnerToVertexGraph(game.graph.getVertex((*vIterator)->getVertexId()));
+      deleteTowntoPlayer();
+      (*game.playerIterator)->setScore(1);
+      setIsClickedToVertexGraph(vIterator);
+      view.display();
+      selectTown = false;
+      game.graph.getVertex((*vIterator)->getVertexId())->setIsCity(false);
+      game.graph.getVertex((*vIterator)->getVertexId())->setIsTown(true);
+    }
   }
 }
 void PlayView::receiveFirstMaterialCard() {
@@ -457,7 +558,6 @@ void PlayView::loadCardsRectangle() {
   cardsRectangle = playerRectangle;
   cardsRectangle.setPosition(350, 600);
   cardsRectangle.setSize({600, 100});
-
   view.draw(cardsRectangle);
 }
 void PlayView::createBuyRectangle() {
@@ -481,6 +581,12 @@ void PlayView::printBuyDevelopCard() {
   printImages("Images/playerCard/mini_knightCard1.png", 230, 535);
   printImages("Images/playerCard/mini_victoryPointCard1.png", 240, 535);
 }
+void PlayView::clickInDevelopCardBuy(int x, int y) {
+  if (x > 220 && x < 240 + 30 && y > 535 && y < 535 + 30) {
+    BuyView buyView = BuyView();
+    buyView.goView();
+  }
+}
 void PlayView::clickInTownBuy(int x, int y) {
   if (x > 165 && x < 165 + 30 && y > 535 && y < 535 + 30) {
     isTownBuyClicked = true;
@@ -500,10 +606,20 @@ void PlayView::clickInCityBuy(int x, int y) {
 void PlayView::payRawMaterialsToBuyTown() {
   deleteClaytoPlayer();
   deleteWoodtoPlayer();
-  // deleteWooltoPlayer();
-  // deleteMineraltoPlayer();
-  // deleteWheattoPlayer();
+  deleteWooltoPlayer();
+  deleteMineraltoPlayer();
+  deleteWheattoPlayer();
   selectTown = true;
+}
+void PlayView::payRawMaterialsToBuyCity() {
+  int iterator = 0;
+  for (iterator; iterator < 3; iterator++) {
+    deleteMineraltoPlayer();
+    if (iterator < 1) {
+      deleteWheattoPlayer();
+    }
+  }
+  selectCity = true;
 }
 
 void PlayView::deleteClaytoPlayer() {
@@ -511,56 +627,48 @@ void PlayView::deleteClaytoPlayer() {
   if (clayIterator != (*game.playerIterator)->clayCard->end())
     (*game.playerIterator)->clayCard->pop_back();
 }
-
 void PlayView::deleteWoodtoPlayer() {
   woodIterator = (*game.playerIterator)->woodCard->begin();
   if (woodIterator != (*game.playerIterator)->woodCard->end())
     (*game.playerIterator)->woodCard->pop_back();
 }
-
 void PlayView::deleteWooltoPlayer() {
   woolIterator = (*game.playerIterator)->woolCard->begin();
   if (woolIterator != (*game.playerIterator)->woolCard->end())
     (*game.playerIterator)->woolCard->pop_back();
 }
-
 void PlayView::deleteMineraltoPlayer() {
   mineralIterator = (*game.playerIterator)->mineralCard->begin();
   if (mineralIterator != (*game.playerIterator)->mineralCard->end())
     (*game.playerIterator)->mineralCard->pop_back();
 }
-
 void PlayView::deleteWheattoPlayer() {
   wheatIterator = (*game.playerIterator)->wheatlCard->begin();
   if (wheatIterator != (*game.playerIterator)->wheatlCard->end())
     (*game.playerIterator)->wheatlCard->pop_back();
 }
 
-void PlayView::payRawMaterialsToBuyCity() {}
-
 void PlayView::buildTown() {
   if ((*game.playerIterator)->clayCard->size() > 1 &&
-      (*game.playerIterator)->woodCard->size() > 1) {
-    //&& (*game.playerIterator)->wheatlCard->size() > 1 &&
-    //(*game.playerIterator)->woolCard->size() > 1)
+      (*game.playerIterator)->woodCard->size() > 1 &&
+      (*game.playerIterator)->wheatlCard->size() > 1 &&
+      (*game.playerIterator)->woolCard->size() > 1)
     payRawMaterialsToBuyTown();
-  }
 }
-
 void PlayView::buildCity() {
-  if ((*game.playerIterator)->wheatlCard->size() > 3 &&
+  if ((*game.playerIterator)->wheatlCard->size() > 2 &&
       ((*game.playerIterator)->mineralCard->size() > 3))
     payRawMaterialsToBuyCity();
 }
-
 void PlayView::isBuyButtonClicked(sf::Event event) {
-  if (isTownBuyClicked)
+  // if (buy.isPressed(event)) {
+  if (isTownBuyClicked) {
     buildTown();
-
-  if (isCityBuyClicked)
+  }
+  if (isCityBuyClicked) {
     buildCity();
+  }
 }
-
 void PlayView::createBuyButton() {
   buy = Button("Comprar", {120, 35}, 16, sf::Color::Green, sf::Color::White);
   buy.setFont(font);
@@ -592,7 +700,10 @@ void PlayView::drawView() {
   printPlayerCard();
   drawLabelCardPlayer();
   drawLabelFigurePlayer();
+  drawLabelDevelopCardPLayer();
+  drawLabelMaterialGame();
   printPlayerFigure();
+  printPlayerDevelopCard();
   createButtons();
   printPlayerBuyFigure();
   printBuyDevelopCard();
@@ -604,7 +715,9 @@ void PlayView::drawView() {
 void PlayView::initializeIteratorTownList() {
   townIterator = (*game.playerIterator)->towns->begin();
 }
-
+void PlayView::initializeIteratorCityList() {
+  cityIterator = (*game.playerIterator)->citys->begin();
+}
 void PlayView::setIsClickedToVertexGraph(list<Vertex *>::iterator it) {
   game.graph.getVertex((*it)->getVertexId())->setClicked(true);
 }
@@ -626,16 +739,26 @@ bool PlayView::isPlayerTownsListTraversal() const {
 }
 
 void PlayView::giveCardsToPlayerFirstTurn(list<Land *>::iterator landIterator) {
-  if ((*landIterator)->getTypeLand() == "Mountain")
+  if ((*landIterator)->getTypeLand() == "Mountain") {
     (*game.playerIterator)->mineralCard->push_back(new Mineral());
-  if ((*landIterator)->getTypeLand() == "Brick")
+    deleteMineralCards();
+  }
+  if ((*landIterator)->getTypeLand() == "Brick") {
     (*game.playerIterator)->clayCard->push_back(new Clay());
-  if ((*landIterator)->getTypeLand() == "Forest")
+    deleteClayCards();
+  }
+  if ((*landIterator)->getTypeLand() == "Forest") {
     (*game.playerIterator)->woodCard->push_back(new Wood());
-  if ((*landIterator)->getTypeLand() == "Grass")
+    deleteWoodCards();
+  }
+  if ((*landIterator)->getTypeLand() == "Grass") {
     (*game.playerIterator)->woolCard->push_back(new Wool());
-  if ((*landIterator)->getTypeLand() == "Field")
+    deleteWoolCards();
+  }
+  if ((*landIterator)->getTypeLand() == "Field") {
     (*game.playerIterator)->wheatlCard->push_back(new Wheat());
+    deleteWheatCards();
+  }
 }
 
 void PlayView::firstTurn() {
@@ -654,7 +777,10 @@ void PlayView::deleteTowntoPlayer() {
   if (townIterator != (*game.playerIterator)->towns->end())
     (*game.playerIterator)->towns->pop_back(); // poner alerta aca
 }
-
+void PlayView::deleteCitytoPlayer() {
+  if (cityIterator != (*game.playerIterator)->citys->end())
+    (*game.playerIterator)->citys->pop_back(); // poner alerta aca
+}
 void PlayView::setOwnerToVertexGraph(Vertex *vertex) {
   game.graph.getVertex(vertex->getVertexId())->setOwner((*game.playerIterator));
 }
@@ -675,12 +801,12 @@ void PlayView::loadView() {
   view.setFramerateLimit(120);
   game.playerIterator = beginPlayerIterator();
   game.loadLands();
+  game.makeMaterialCard();
   landsList = game.getLandsList();
-  //game.shuffleLandList();
-  srand((unsigned)time(nullptr));
   game.assignTownsToLand();
   game.makeGraph();
   start = true;
+  srand((unsigned)time(nullptr));
 }
 
 void PlayView::goView() {
@@ -702,18 +828,12 @@ void PlayView::goView() {
                                 getMousePositionY(view));
             clickInCityBuy(getMousePositionX(view), getMousePositionY(view));
             clickInTownBuy(getMousePositionX(view), getMousePositionY(view));
-            if (buy.isPressed(event)) {
-              isBuyButtonClicked(eventTest);
-              break;
-            }
+            clickInDevelopCardBuy(getMousePositionX(view),
+                                  getMousePositionY(view));
+            isBuyButtonClicked(eventTest);
           }
           isTurnButtonClicked(sf::Mouse::getPosition(view).x,
                               sf::Mouse::getPosition(view).y);
-          if (buy.isMouseOver(view)) {
-
-            BuyView buyView = BuyView();
-            buyView.goView();
-          }
         }
         break;
       case sf::Event::Closed:
@@ -751,22 +871,64 @@ bool PlayView::isActualPlayerName(list<Vertex *>::iterator vertexIterator,
               ->getOwner()
               ->getName() == (*player)->getName());
 }
-
-void PlayView::giveCardsToPlayer(list<Land *>::iterator landIterator) {
-  if ((*landIterator)->getTypeLand() == "Mountain")
+void PlayView::deleteWoodCards() { game.woodCards->pop(); }
+void PlayView::deleteWoolCards() { game.woolCards->pop(); }
+void PlayView::deleteMineralCards() { game.mineralCards->pop(); }
+void PlayView::deleteClayCards() { game.clayCards->pop(); }
+void PlayView::deleteWheatCards() { game.wheatCards->pop(); }
+void PlayView::giveCardsToPlayerCity(list<Land *>::iterator landIterator) {
+  if ((*landIterator)->getTypeLand() == "Mountain") {
     (*playerIterator)->mineralCard->push_back(new Mineral());
-
-  if ((*landIterator)->getTypeLand() == "Brick")
+    (*playerIterator)->mineralCard->push_back(new Mineral());
+    deleteMineralCards();
+    deleteMineralCards();
+  }
+  if ((*landIterator)->getTypeLand() == "Brick") {
     (*playerIterator)->clayCard->push_back(new Clay());
-
-  if ((*landIterator)->getTypeLand() == "Forest")
+    (*playerIterator)->clayCard->push_back(new Clay());
+    deleteClayCards();
+    deleteClayCards();
+  }
+  if ((*landIterator)->getTypeLand() == "Forest") {
     (*playerIterator)->woodCard->push_back(new Wood());
-
-  if ((*landIterator)->getTypeLand() == "Grass")
+    (*playerIterator)->woodCard->push_back(new Wood());
+    deleteWoodCards();
+    deleteWoodCards();
+  }
+  if ((*landIterator)->getTypeLand() == "Grass") {
     (*playerIterator)->woolCard->push_back(new Wool());
-
-  if ((*landIterator)->getTypeLand() == "Field")
+    (*playerIterator)->woolCard->push_back(new Wool());
+    deleteWoolCards();
+    deleteWoolCards();
+  }
+  if ((*landIterator)->getTypeLand() == "Field") {
     (*playerIterator)->wheatlCard->push_back(new Wheat());
+    (*playerIterator)->wheatlCard->push_back(new Wheat());
+    deleteWheatCards();
+    deleteWheatCards();
+  }
+}
+void PlayView::giveCardsToPlayer(list<Land *>::iterator landIterator) {
+  if ((*landIterator)->getTypeLand() == "Mountain") {
+    (*playerIterator)->mineralCard->push_back(new Mineral());
+    deleteMineralCards();
+  }
+  if ((*landIterator)->getTypeLand() == "Brick") {
+    (*playerIterator)->clayCard->push_back(new Clay());
+    deleteClayCards();
+  }
+  if ((*landIterator)->getTypeLand() == "Forest") {
+    (*playerIterator)->woodCard->push_back(new Wood());
+    deleteWoodCards();
+  }
+  if ((*landIterator)->getTypeLand() == "Grass") {
+    (*playerIterator)->woolCard->push_back(new Wool());
+    deleteWoolCards();
+  }
+  if ((*landIterator)->getTypeLand() == "Field") {
+    (*playerIterator)->wheatlCard->push_back(new Wheat());
+    deleteWheatCards();
+  }
 }
 
 void PlayView::receiveCard(list<Land *>::iterator it) {
@@ -776,8 +938,12 @@ void PlayView::receiveCard(list<Land *>::iterator it) {
   while (isPlayerListTraversal()) {
     while (isVertexesListTraversalInTurn(vIterator, it)) {
       if (existsAnOwnerInVertex(vIterator)) {
-        if (isActualPlayerName(vIterator, playerIterator))
-          giveCardsToPlayer(it);
+        if (isActualPlayerName(vIterator, playerIterator)) {
+          if (game.graph.getVertex((*vIterator)->getIsCity()))
+            giveCardsToPlayer(it);
+          if (game.graph.getVertex((*vIterator)->getIsTown()))
+            giveCardsToPlayer(it);
+        }
       }
       vIterator++;
     }
@@ -1125,14 +1291,28 @@ void PlayView::loadHexagonNodes(list<Vertex *>::iterator itX, double posX,
     }
   } else if (!getIsVertexGraphPrinted(itX)) {
     game.graph.getVertex((*itX)->getVertexId())->setPrinted(true);
-    townIterator =
-        game.graph.getVertex((*itX)->getVertexId())
-            ->getOwner()
-            ->towns->begin(); //(*game.playerIterator)->towns->begin();
-    if (townIterator !=
-        game.graph.getVertex((*itX)->getVertexId())->getOwner()->towns->end()) {
-      printImages((*townIterator)->getImagePath(), relativePositionX,
-                  relativePositionY);
+    if (game.graph.getVertex((*itX)->getVertexId())->getIsTown()) {
+      townIterator =
+          game.graph.getVertex((*itX)->getVertexId())
+              ->getOwner()
+              ->towns->begin(); //(*game.playerIterator)->towns->begin();
+      if (townIterator != game.graph.getVertex((*itX)->getVertexId())
+                              ->getOwner()
+                              ->towns->end()) {
+        printImages((*townIterator)->getImagePath(), relativePositionX,
+                    relativePositionY);
+      }
+    }
+    if (game.graph.getVertex((*itX)->getVertexId())->getIsCity()) {
+      cityIterator = game.graph.getVertex((*itX)->getVertexId())
+                         ->getOwner()
+                         ->citys->begin();
+      if (cityIterator != game.graph.getVertex((*itX)->getVertexId())
+                              ->getOwner()
+                              ->citys->end()) {
+        printImages((*cityIterator)->getImagePath(), relativePositionX,
+                    relativePositionY);
+      }
     }
   }
 }

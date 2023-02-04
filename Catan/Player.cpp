@@ -14,6 +14,9 @@ Player::Player() {
   clayCard = new list<Clay*>();
   mineralCard = new list<Mineral*>();
   wheatlCard = new list<Wheat*>();
+  progressCards = new list<Progress*>();
+  knightCards = new list<Knight*>();
+  victoryPointsCards = new list<VictoryPoints*>();
 }
 
 Player::Player(string name, int score, string color) {
@@ -30,6 +33,9 @@ Player::Player(string name, int score, string color) {
   clayCard = new list<Clay*>();
   mineralCard = new list<Mineral*>();
   wheatlCard = new list<Wheat*>();
+  progressCards = new list<Progress*>();
+  knightCards = new list<Knight*>();
+  victoryPointsCards = new list<VictoryPoints*>();
 }
 
 void Player::setName(string name) { this->name = name; }
@@ -38,5 +44,5 @@ string Player::getName() const { return name; }
 void Player::setColor(string color) { this->color = color; }
 string Player::getColor() const { return this->color; }
 
-void Player::setScore(int score) { this->score = score; }
+void Player::setScore(int score) { this->score += score; }
 int Player::getScore() const { return this->score; }

@@ -184,7 +184,7 @@ void Game::shuffleLandList() {
     j = i + rand() % (landsList->size() - i);
     std::swap(landsList[i], landsList[j]);
   }
-}
+} 
 
 vector<int> Game::getLandsNumbersRandomized() {
   loadLandsNumbers();
