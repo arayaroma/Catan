@@ -11,25 +11,12 @@ PlayView::PlayView(list<Player *> *players) { game.players = players; }
 void PlayView::createLabelNumTurn() {
 
   titleTurn = new Label("Turno:  ", sf::Color(0, 0, 255, 128), font,
-                        sf::Text::Bold, 20, 1000.f, 2.f);
-
-  labelNumTurn = new Label(std::to_string(numTurn), sf::Color(0, 0, 255, 128),
-                           font, sf::Text::Bold, 20, 1100.f, 2.f);
-
-  infoFisrtTurn = new Label(
-      "Primera Vuelta, por favor elija 2 poblados y pase de turno",
-      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 250.f, 525.f);
-
-  labelNumDice = new Label(std::to_string(numDice), sf::Color(0, 0, 255, 128),
-                           font, sf::Text::Bold, 20, 1150.f, 570.f);
-
-  titleTurn = new Label("Turno:  ", sf::Color(0, 0, 255, 128), font,
                         sf::Text::Bold, 20, 1080.f, 680.f);
   labelNumTurn = new Label(std::to_string(numTurn), sf::Color(0, 0, 255, 128),
                            font, sf::Text::Bold, 20, 1160.f, 680.f);
   infoFisrtTurn = new Label(
-      "Primera Vuelta, por favor elija 2 poblados y pase de turno",
-      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 250.f, 525.f);
+      "Primera Ronda, por favor elija 2 poblados y pase de turno",
+      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 250.f, 500.f);
   labelNumDice = new Label(std::to_string(diceInstance.getActualNumber()),
                            sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20,
                            1150.f, 570.f);
@@ -724,6 +711,11 @@ void PlayView::goView() {
               }
               isTurnButtonClicked(sf::Mouse::getPosition(view).x,
                   sf::Mouse::getPosition(view).y);
+              if (buy.isMouseOver(view)) {
+
+                  BuyView buyView = BuyView();
+                  buyView.goView();
+            }
           }
           break;
         case sf::Event::Closed:

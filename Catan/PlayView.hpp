@@ -6,6 +6,10 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
+#include "Dice.hpp"
+#include "BuyView.hpp"
+
+
 #define pi 3.14159265358979323846
 #define firstAngle (3 * pi) / 2
 #define secondAngle (5 * pi) / 4
@@ -33,13 +37,17 @@ public:
 
   list<Player *>::iterator playerIterator;
 
+
   list<Wheat*>::iterator wheatIterator; 
   list<Mineral*>::iterator mineralIterator;
   list<Wool*>::iterator woolIterator;
   list<Wood*>::iterator woodIterator;
   list<Clay*>::iterator clayIterator;
 
+
 private:
+ 
+
   bool start;
   bool lastIteration = false;
   bool firstCalltoPrintBoard = true;

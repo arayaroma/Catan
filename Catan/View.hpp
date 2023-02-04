@@ -54,4 +54,5 @@ protected:
   sf::Sprite OCeanSprite;
   sf::Font font;
   sf::Event event;
+
 };
