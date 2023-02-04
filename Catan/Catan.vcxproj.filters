@@ -203,9 +203,6 @@
     <ClInclude Include="Materials.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ProgressCards.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Figures.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -276,6 +273,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BuyView.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DevelopCards.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

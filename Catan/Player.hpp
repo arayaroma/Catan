@@ -3,7 +3,7 @@
 #include "Figures.hpp"
 #include <list>
 #include <string>
-
+#include "DevelopCards.h"
 using std::list;
 
 class Player {
@@ -42,4 +42,8 @@ public:
   list<Clay *> *clayCard;
   list<Mineral *> *mineralCard;
   list<Wheat*>* wheatlCard;
+
+  list<Progress*>* progressCards;
+  list<Knight*>* knightCards;
+  list<VictoryPoints*>* victoryPointsCards;
 };

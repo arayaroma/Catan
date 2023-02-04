@@ -197,6 +197,7 @@
     <ClInclude Include="Figures.hpp" />
     <ClInclude Include="Graph.hpp" />
     <ClInclude Include="Cards.h" />
+    <ClInclude Include="DevelopCards.h" />
     <ClInclude Include="Human.hpp" />
     <ClInclude Include="InformationAlert.hpp" />
     <ClInclude Include="NoneAlert.hpp" />
@@ -210,7 +211,6 @@
     <ClInclude Include="Mineral.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Progress.hpp" />
-    <ClInclude Include="ProgressCards.hpp" />
     <ClInclude Include="Road.hpp" />
     <ClInclude Include="TextBox.hpp" />
     <ClInclude Include="TitleView.hpp" />
