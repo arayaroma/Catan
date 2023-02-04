@@ -166,6 +166,7 @@ private:
 
   void deleteTowntoPlayer();
   void deleteCitytoPlayer();
+  void addTownToPlayer();
   void firstTurn();
   void receiveFirstCard(list<Land *>::iterator);
   void receiveFirstMaterialCard();
@@ -178,7 +179,8 @@ private:
   void createLabelNumTurn();
   void createLabelScorePlayer();
   void drawLabelNumTurn();
-
+  void createLabelMaterialCardGame();
+  void drawLabelMaterialGame();
   void isDiceButtonClicked(int, int);
 
   void receiveCard(list<Land *>::iterator);
@@ -197,6 +199,7 @@ private:
                                      list<Land *>::iterator);
   bool isActualPlayerName(list<Vertex *>::iterator, list<Player*>::iterator );
   void giveCardsToPlayer(list<Land *>::iterator);
+  void giveCardsToPlayerCity(list<Land*>::iterator);
   void giveCardsToPlayerFirstTurn(list<Land *>::iterator);
 
   bool isPlayerTownListEmpty() const;
@@ -240,6 +243,11 @@ private:
   void deleteMineraltoPlayer();
   void deleteWheattoPlayer();
 
+  void deleteWoodCards();
+  void deleteWoolCards();
+  void deleteMineralCards();
+  void deleteClayCards();
+  void deleteWheatCards();
   void buyTown(list<Vertex*>::iterator vIterator, double x,
       double y);
   void buyCity(list<Vertex*>::iterator vIterator, double x,
@@ -256,5 +264,6 @@ private:
   Label *townPlayer, *cityPlayer, *roadPlayer;
   Label *titleTurn, *labelNumTurn, *infoFisrtTurn, *labelNumDice, *scorePlayer,* titleScorePlayer;
   Label* knight, * progress, * victory;
+  Label* woodGame, * woolGame, * clayGame, *mineralGame, *wheatGame;
   Button turn, buy, trade, dice, p, option1, save, close;
 };
