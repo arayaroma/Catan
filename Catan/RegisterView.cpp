@@ -195,15 +195,17 @@ void RegisterView::typeOverTextbox(sf::Event event) {
 void RegisterView::loadBeforeChangingScene() {
   loadPlayerList();
   game.makePlayer();
-  getNames();
+  if (isThreePlayers)
+    getNamesThreePlayers();
+  if (isFourPlayers)
+    getNamesFourPlayers();
 }
 
 void RegisterView::playButtonPressed() {
-  loadPlayerList();
   loadBeforeChangingScene();
   view.close();
   PlayView playView = PlayView(game.players);
- 
+
   playView.goView();
 }
 
@@ -237,12 +239,12 @@ void RegisterView::loadAll() {
   view.display();
 }
 
-void RegisterView::countPlayers() {
-  if (threePlayersButton.isMouseOver(view))
-    isThreePlayers = true;
+bool RegisterView::isThreePlayersButtonPressed(sf::Event event) {
+  return (threePlayersButton.isPressed(event));
+}
 
-  if (fourPlayersButton.isMouseOver(view))
-    isFourPlayers = true;
+bool RegisterView::isFourPlayersButtonPressed(sf::Event event) {
+  return (fourPlayersButton.isPressed(event));
 }
 
 void RegisterView::goView() {
@@ -267,7 +269,16 @@ void RegisterView::goView() {
             playButtonPressed();
           if (isClearButtonPressed())
             clearButtonPressed();
-          countPlayers();
+
+          if (isThreePlayersButtonPressed(event)) {
+            isThreePlayers = true;
+            isFourPlayers = false;
+          }
+
+          if (isFourPlayersButtonPressed(event)) {
+            isFourPlayers = true;
+            isThreePlayers = false;
+          }
         }
         break;
 
@@ -366,7 +377,13 @@ void RegisterView::showCoordinates(sf::Event event) {
   }
 }
 
-void RegisterView::getNames() {
+void RegisterView::getNamesThreePlayers() {
+  log(firstTextbox.getText());
+  log(secondTextbox.getText());
+  log(thirdTextbox.getText());
+}
+
+void RegisterView::getNamesFourPlayers() {
   log(firstTextbox.getText());
   log(secondTextbox.getText());
   log(thirdTextbox.getText());
@@ -391,8 +408,9 @@ void RegisterView::loadPlayerList() {
   try {
     if (isThreePlayers)
       loadThreePlayers();
-    else if (isFourPlayers)
+    if (isFourPlayers) {
       loadFourPlayers();
+    }
   } catch (const std::exception &e) {
     std::cerr << e.what() << '\n';
   }

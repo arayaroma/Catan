@@ -53,6 +53,8 @@ void PlayView::createLabelNamePlayers() {
   if (isPlayerListTraversal()) {
     if (isThreePlayers())
       createThreePlayersLabel();
+    if (isFourPlayers())
+      createFourPlayersLabel();
   }
 }
 
@@ -676,7 +678,6 @@ void PlayView::receiveMaterialCard(int idLand) {
 
 void PlayView::isTurnButtonClicked(int x, int y) {
   if (turn.isMouseOver(view)) {
-
     if (game.playerIterator != game.players->end()) {
       game.playerIterator++;
       numTurn++;
