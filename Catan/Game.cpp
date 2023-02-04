@@ -506,11 +506,11 @@ void Game::makePlayer() {
 
 void Game::loadFiguresToPlayer(Player *player, int numPlayer) {
   int iterator;
-  for (iterator = 0; iterator < 15; iterator++) {
+  for (iterator = 0; iterator < 16; iterator++) {
     loadRoades(player);
-    if (iterator < 4)
-      loadCities(player);
     if (iterator < 5)
+      loadCities(player);
+    if (iterator < 6)
       loadTowns(player);
   }
 }

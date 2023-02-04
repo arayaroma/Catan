@@ -199,7 +199,6 @@ void RegisterView::loadBeforeChangingScene() {
 }
 
 void RegisterView::playButtonPressed() {
-  loadPlayerList();
   loadBeforeChangingScene();
   view.close();
   PlayView playView = PlayView(game.players);

@@ -33,6 +33,12 @@ public:
 
   list<Player *>::iterator playerIterator;
 
+  list<Wheat*>::iterator wheatIterator; 
+  list<Mineral*>::iterator mineralIterator;
+  list<Wool*>::iterator woolIterator;
+  list<Wood*>::iterator woodIterator;
+  list<Clay*>::iterator clayIterator;
+
 private:
   bool start;
   bool lastIteration = false;
@@ -49,6 +55,10 @@ private:
   bool isFirstTurn = true;
   const string dessertType = "Dessert";
 
+  bool isTownBuyClicked = false;
+  bool isCityBuyClicked = false;
+
+  bool selectTown = false;
 public:
   void goView() override;
 
@@ -166,7 +176,7 @@ private:
   bool existsAnOwnerInVertex(list<Vertex *>::iterator);
   bool isVertexesListTraversalInTurn(list<Vertex *>::iterator,
                                      list<Land *>::iterator);
-  bool isActualPlayerName(list<Vertex *>::iterator);
+  bool isActualPlayerName(list<Vertex *>::iterator, list<Player*>::iterator );
   void giveCardsToPlayer(list<Land *>::iterator);
   void giveCardsToPlayerFirstTurn(list<Land *>::iterator);
 
@@ -192,9 +202,30 @@ private:
   list<Land *> *shuffleLandList();
 
 private:
-  sf::Event eventTest;
-  sf::RectangleShape playerRectangle, cardsRectangle, turnRectangleOne,
+  sf::RectangleShape  turnRectangleOne,
       turnRectangleTwo, turnRectangleThree, turnRectangleFour;
+  void createBuyRectangle();
+  void printPlayerBuyFigure();
+  void printDevelopCard();
+  void clickInTownBuy(int x, int y);
+  void clickInCityBuy(int x, int y);
+  void isBuyButtonClicked(sf::Event);
+  void buildTown();
+  void buildCity();
+  void payRawMaterialsToBuyTown();
+  void payRawMaterialsToBuyCity();
+  void deleteClaytoPlayer();
+  void deleteWoodtoPlayer();
+  void deleteWooltoPlayer();
+  void deleteMineraltoPlayer();
+  void deleteWheattoPlayer();
+
+  void buyTown(list<Vertex*>::iterator vIterator, double x,
+      double y);
+  void printBuyDevelopCard();
+private:
+  sf::Event eventTest;
+  sf::RectangleShape playerRectangle, cardsRectangle, tradeRectangle;
   Label *materialCard, *pricingTable, *turns, *cards, *developCard;
   Label *player1, *player2, *player3, *player4;
   Label *clayCard, *mineralPlayerCard, *wheatPlayerCard, *woodPlayerCard,
