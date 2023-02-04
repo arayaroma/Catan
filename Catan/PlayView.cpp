@@ -787,11 +787,11 @@ void PlayView::receiveCard(list<Land *>::iterator it) {
   }
 }
 
-void PlayView::receiveMaterialCard(int idLand) {
+void PlayView::receiveMaterialCard(int numDice) {
   list<Land *>::iterator it;
   it = landsList->begin();
   while (it != landsList->end()) {
-    if ((*it)->getLandId() == idLand) {
+    if ((*it)->getDiceNumber() == numDice) {
       receiveCard(it);
       break;
     }
