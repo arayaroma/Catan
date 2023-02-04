@@ -20,6 +20,7 @@ Player::Player(string name, int score, string color) {
   this->name = name;
   this->score = score;
   this->color = color;
+  this->firstTurnFinished = false;
   towns = new list<Town*>();
   roads = new list<Road*>();
   citys = new list<City*>();

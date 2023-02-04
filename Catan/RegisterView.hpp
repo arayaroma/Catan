@@ -27,15 +27,17 @@ private:
   void showCoordinates(sf::Event);
   void loadTextFields(TextBox &);
   void loadButtons();
-  void loadRegisterButtons(Button &, sf:: Color color);
-  void loadRegisterButtons(Button&);
-  void countPlayers();
+  void loadRegisterButtons(Button &, sf::Color color);
+  void loadRegisterButtons(Button &);
+  bool isThreePlayersButtonPressed(sf::Event);
+  bool isFourPlayersButtonPressed(sf::Event);
 
   void loadAll();
   void loadThreeColors();
   void loadFourColors();
-  void getNames();
-  void drawColors(); 
+  void getNamesThreePlayers();
+  void getNamesFourPlayers();
+  void drawColors();
 
   void loadPlayerList();
   void loadThreePlayers();
@@ -51,19 +53,20 @@ private:
 
   void goTitleView();
   bool isPlayButtonPressed();
-  bool isClearButtonPressed(); 
+  bool isClearButtonPressed();
   void playButtonPressed();
   void clearButtonPressed();
   void loadBeforeChangingScene();
 
 private:
-  TextBox firstTextbox, secondTextbox, thirdTextbox, fourthTextbox,newGame,loadGame;
+  TextBox firstTextbox, secondTextbox, thirdTextbox, fourthTextbox, newGame,
+      loadGame;
   Label *title, *name, *color, *note;
-  Button threePlayersButton, fourPlayersButton, playButton,loadGames, newGames,blue,yellow,red,green,clear;
+  Button threePlayersButton, fourPlayersButton, playButton, loadGames, newGames,
+      blue, yellow, red, green, clear;
   bool isThreePlayers = false;
   bool isFourPlayers = false;
 
   float y = 245;
   float x = 580;
-
 };
