@@ -598,7 +598,7 @@ void PlayView::clickInDevelopCardBuy(int x, int y) {
   }
 }
 void PlayView::clickTradeButton(sf::Event event) {
-    if (trade.isMouseOver(view)) {
+        TradeView tradeView = TradeView();
         tradeView.goView();
         //aca poner que cuando le da click en algun material y le da trade ir al metodo para intercambiar
         traverseLandsToTrade();
@@ -607,7 +607,6 @@ void PlayView::clickTradeButton(sf::Event event) {
         if (isPlayerSpecialPortNeighbor)
             tradeSpecial();
         tradePossible();
-    }
 }
 
 void PlayView::clickInTownBuy(int x, int y) {
@@ -911,9 +910,9 @@ void PlayView::goView() {
             clickInTownBuy(getMousePositionX(view), getMousePositionY(view));
 
             clickInDevelopCardBuy(getMousePositionX(view),getMousePositionY(view));
-
-            clickTradeButton(eventTest);
-
+            if (trade.isPressed(eventTest)) {
+                clickTradeButton(eventTest);
+            }
             isBuyButtonClicked(eventTest);
           }
           isTurnButtonClicked(sf::Mouse::getPosition(view).x,
