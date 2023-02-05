@@ -276,6 +276,7 @@ void PlayView::createLabelPlayerDevelopCard() {
 
 void PlayView::createTradeButton() {
   trade = Button("Trueque", {120, 35}, 16, sf::Color::Green, sf::Color::White);
+  trade = Button("Trueque", {120, 35}, 16, sf::Color::Green, sf::Color::White);
   trade.setFont(font);
   trade.setPosition({20, 600}, 3);
   trade.drawButton(view);
@@ -587,6 +588,13 @@ void PlayView::clickInDevelopCardBuy(int x, int y) {
     buyView.goView();
   }
 }
+void PlayView::clickTradeButton(sf::Event event) {
+ 
+    if (trade.isMouseOver(view)) {
+        TradeView tradeView = TradeView();
+        tradeView.goView();
+    }
+}
 void PlayView::clickInTownBuy(int x, int y) {
   if (x > 165 && x < 165 + 30 && y > 535 && y < 535 + 30) {
     isTownBuyClicked = true;
@@ -859,12 +867,17 @@ void PlayView::goView() {
             traverseLands(getMousePositionX(view), getMousePositionY(view));
           } else {
             traverseLands(getMousePositionX(view), getMousePositionY(view));
-            isDiceButtonClicked(getMousePositionX(view),
-                                getMousePositionY(view));
+
+            isDiceButtonClicked(getMousePositionX(view),getMousePositionY(view));
+
             clickInCityBuy(getMousePositionX(view), getMousePositionY(view));
+
             clickInTownBuy(getMousePositionX(view), getMousePositionY(view));
-            clickInDevelopCardBuy(getMousePositionX(view),
-                                  getMousePositionY(view));
+
+            clickInDevelopCardBuy(getMousePositionX(view),getMousePositionY(view));
+
+            clickTradeButton(eventTest);
+
             isBuyButtonClicked(eventTest);
           }
           isTurnButtonClicked(sf::Mouse::getPosition(view).x,

@@ -167,6 +167,7 @@
     <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="TitleView.cpp" />
     <ClCompile Include="Town.cpp" />
+    <ClCompile Include="TradeView.cpp" />
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="VictoryPoints.cpp" />
     <ClCompile Include="View.cpp" />
@@ -215,6 +216,7 @@
     <ClInclude Include="TextBox.hpp" />
     <ClInclude Include="TitleView.hpp" />
     <ClInclude Include="Town.hpp" />
+    <ClInclude Include="TradeView.h" />
     <ClInclude Include="Vertex.hpp" />
     <ClInclude Include="VictoryPoints.hpp" />
     <ClInclude Include="View.hpp" />

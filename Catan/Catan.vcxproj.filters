@@ -138,6 +138,9 @@
     <ClCompile Include="BuyView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TradeView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.hpp">
@@ -251,9 +254,6 @@
     <ClInclude Include="View.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Cards.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="NoneAlert.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -275,7 +275,13 @@
     <ClInclude Include="BuyView.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DevelopCards.h">
+    <ClInclude Include="Cards.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DevelopCards.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TradeView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
