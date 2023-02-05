@@ -90,7 +90,8 @@ void MenuView::newGame(string fileName) {
 
 void MenuView::newGameButtonPressed(string fileName) {
   if (isNewGameTextboxEmpty())
-    newGameTextboxEmpty();
+    goRegisterView();
+    //newGameTextboxEmpty();
 
   if (!isNewGameTextboxEmpty()) {
     newGame(fileName);
