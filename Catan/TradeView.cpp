@@ -20,7 +20,14 @@ void TradeView::goView() {
                 view.waitEvent(eventTest);
             case sf::Event::MouseButtonPressed:
                 showCoordinates(eventTest);
-
+                if (event.MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+                    clayButtonClicked(eventTest);
+                    wheatButtonClicked(eventTest);
+                    woodButtonClicked(eventTest);
+                    woolButtonClicked(eventTest);
+                    mineralButtonClicked(eventTest);
+                    tradeButtonClicked(eventTest);
+                }
                 break;
             case sf::Event::Closed:
                 view.close();
@@ -89,7 +96,56 @@ void TradeView::createButtons() {
     mineral.setPosition({ 450,130 }, 3);
 
 }
-
+void TradeView::clayButtonClicked(sf::Event event) {
+    if (clay.isPressed(event)) {
+        this->isCLayButtonClicked = true;
+        this->isWheatButtonClicked = false;
+        this->isWoodButtonClicked = false;
+        this->isWoolButtonClicked = false;
+        this->isMineralButtonClicked = false;
+    }
+}
+void TradeView::wheatButtonClicked(sf::Event event) {
+    if (wheat.isPressed(event)) {
+        this->isCLayButtonClicked = false;
+        this->isWheatButtonClicked = true;
+        this->isWoodButtonClicked = false;
+        this->isWoolButtonClicked = false;
+        this->isMineralButtonClicked = false;
+    }
+}
+void TradeView::woodButtonClicked(sf::Event event) {
+    if (wood.isPressed(event)) {
+        this->isCLayButtonClicked = false;
+        this->isWheatButtonClicked = false;
+        this->isWoodButtonClicked = true;
+        this->isWoolButtonClicked = false;
+        this->isMineralButtonClicked = false;
+    }
+}
+void TradeView::woolButtonClicked(sf::Event event) {
+    if (wool.isPressed(event)) {
+        this->isCLayButtonClicked = false;
+        this->isWheatButtonClicked = false;
+        this->isWoodButtonClicked = false;
+        this->isWoolButtonClicked = true;
+        this->isMineralButtonClicked = false;
+    }
+}
+void TradeView::mineralButtonClicked(sf::Event event) {
+    if (mineral.isPressed(event)) {
+        this->isCLayButtonClicked = false;
+        this->isWheatButtonClicked = false;
+        this->isWoodButtonClicked = false;
+        this->isWoolButtonClicked = false;
+        this->isMineralButtonClicked = true;
+    }
+}
+void TradeView::tradeButtonClicked(sf::Event event) {
+    if (trade.isPressed(event)) {
+        this->isTradeClicked = true;
+    }
+}
 void TradeView::drawButton(Button& btn) {
 
     if (btn.isMouseOver(view)) {

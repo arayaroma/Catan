@@ -33,10 +33,21 @@ public:
 	void createButtons();
 	void drawButton(Button& btm);
 
+	void clayButtonClicked(sf::Event event);
+	void wheatButtonClicked(sf::Event event);
+	void woodButtonClicked(sf::Event event);
+	void woolButtonClicked(sf::Event event);
+	void mineralButtonClicked(sf::Event event);
+	void tradeButtonClicked(sf::Event event);
 	sf::Event eventTest;
 	Button buy, p,clay, wheat, wood, wool, mineral , trade;
 
-
+	bool isCLayButtonClicked = false;
+	bool isWheatButtonClicked = false;
+	bool isWoodButtonClicked = false;
+	bool isWoolButtonClicked = false;
+	bool isMineralButtonClicked = false;
+	bool isTradeClicked = false;
 
 };
 

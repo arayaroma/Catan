@@ -22,6 +22,8 @@ using std::string;
 
 class PlayView : public View {
 public:
+  BuyView buyView = BuyView();
+  TradeView tradeView = TradeView();
   list<Vertex *> *vertexesList;
   list<Vertex *>::iterator vertexIterator;
 
@@ -64,6 +66,13 @@ private:
   bool isTownBuyClicked = false;
   bool isCityBuyClicked = false;
 
+  bool isCLayTradeClicked = false;
+  bool isWoodTradeClicked = false;
+  bool isWoolTradeClicked = false;
+  bool isWheatTradeClicked = false;
+  bool isMineralTradeClicked = false;
+  bool isPlayerNormalPortNeighbor = false;
+  bool isPlayerSpecialPortNeighbor = false;
   bool selectTown = false;
   bool selectCity = false;
 
@@ -217,6 +226,12 @@ private:
   void createTempNumberEmpty(list<Land *>::iterator);
   void createTempNumber(list<Land *>::iterator);
 
+  void clickClayTrade(int x, int y);
+  void clickMineralTrade(int x, int y);
+  void clickWoodTrade(int x, int y);
+  void clickWoolTrade(int x, int y);
+  void clickWheatTrade(int x, int y);
+
 private:
   sf::RectangleShape turnRectangleOne, turnRectangleTwo, turnRectangleThree,
       turnRectangleFour;
@@ -252,6 +267,17 @@ private:
   void deleteKnightCard();
   void deleteVictoryCard();
   void deleteProgressCard();
+
+  void traverseLandsToTrade();
+  bool landIsNormalPortNeighbor(list<Land*>::iterator it);
+  bool landIsSpecialPortNeighbor(list<Land*>::iterator it);
+  bool townIsNormalPortNeighbor(list<Vertex*>::iterator it);
+  bool townIsSpecialPortNeighbor(list<Vertex*>::iterator it);
+  void townsInPort(list<Land*>::iterator it);
+  void tradePossible();
+  void tradeNormal();
+  void tradeSpecial();
+  void tradeCard();
 private:
   sf::Event eventTest;
   sf::RectangleShape playerRectangle, cardsRectangle, tradeRectangle;

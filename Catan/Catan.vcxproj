@@ -199,6 +199,7 @@
     <ClInclude Include="Graph.hpp" />
     <ClInclude Include="Cards.hpp" />
     <ClInclude Include="DevelopCards.hpp" />
+    <ClInclude Include="StaticView.h" />
     <ClInclude Include="Human.hpp" />
     <ClInclude Include="InformationAlert.hpp" />
     <ClInclude Include="NoneAlert.hpp" />

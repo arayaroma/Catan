@@ -54,9 +54,10 @@ protected:
   sf::Sprite OCeanSprite;
   sf::Font font;
   sf::Event event;
-
+  /*
   bool isKnightButtonClicked = false;
   bool isProgressButtonClicked = false;
   bool isVictoryButtonClicked = false;
   bool isBuyClicked = false;
+  */
 };
