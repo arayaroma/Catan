@@ -34,6 +34,11 @@ private:
   void loadAll();
   void loadThreeColors();
   void loadFourColors();
+  void loadColorsBlue();
+  void loadColorsRed();
+  void loadColorsYellow();
+  void loadColorsGreen();
+
   void getNames();
   void drawColors(); 
 
@@ -56,12 +61,30 @@ private:
   void clearButtonPressed();
   void loadBeforeChangingScene();
 
+
+  void playerOneColor();
+  void playerTwoColor();
+  void playerThreeColor();
+  void playerFourColor();
+
+  void isAnyColorPressed(sf::Event event);
 private:
   TextBox firstTextbox, secondTextbox, thirdTextbox, fourthTextbox,newGame,loadGame;
   Label *title, *name, *color, *note;
-  Button threePlayersButton, fourPlayersButton, playButton,loadGames, newGames,blue,yellow,red,green,clear;
+  Button threePlayersButton, fourPlayersButton, playButton,loadGames, newGames, clear,
+	  blue0, yellow0, red0, green0,
+	  blue1,yellow1,red1,green1,
+	  blue2, yellow2, red2, green2,
+	  blue3, yellow3, red3, green3;
+
   bool isThreePlayers = false;
   bool isFourPlayers = false;
+
+  string colorPlayerOne = "";
+  string colorPlayerTwo = "";
+  string colorPlayerThree = "";
+  string colorPlayerFour = "";
+
 
   float y = 245;
   float x = 580;

@@ -1,2 +1,7 @@
-﻿  RegisterView.cpp
+﻿  AboutView.cpp
+  Application.cpp
+  RegisterView.cpp
+  TitleView.cpp
+  main.cpp
+  Generando código...
   Catan.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Catan.exe
