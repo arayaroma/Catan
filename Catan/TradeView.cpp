@@ -2,7 +2,7 @@
 
 
 void TradeView::loadView() {
-    view.create(sf::VideoMode(700, 680), "Trade");
+    view.create(sf::VideoMode(540, 350), "Trade");
     image.loadFromFile("Images/Desierto.png");
     sprite.setTexture(image);
     font.loadFromFile("mononoki.ttf");
@@ -11,7 +11,7 @@ void TradeView::loadView() {
 }
 
 void TradeView::goView() {
-
+    game.makeMaterialCard(); 
     loadView();
     view.draw(sprite);
     while (view.isOpen()) {
@@ -32,34 +32,23 @@ void TradeView::goView() {
         view.draw(sprite);
         createButtons();
         drawButton(p);
-        drawButton(buy);
-       // drawView();
+        drawButton(wheat);
+        drawButton(wool);
+        drawButton(wood);
+        drawButton(clay);
+        drawButton(mineral);
+        drawView();
         view.display();
     }
 }
 
 
 void TradeView::drawView() {
-
-
-
-    /*
-    printImages("Images/knightCards/mini_knightCard1.png", 30, 10);
-    printImages("Images/knightCards/mini_knightCard2.png", 160, 10);
-    printImages("Images/knightCards/mini_knightCard3.png", 290, 10);
-    printImages("Images/knightCards/mini_knightCard4.png", 420, 10);
-    printImages("Images/knightCards/mini_knightCard5.png", 550, 10);
-
-    printImages("Images/victoryPointsCards/mini_victoryPointCard1.png", 30, 220);
-    printImages("Images/victoryPointsCards/mini_victoryPointCard2.png", 160, 220);
-    printImages("Images/victoryPointsCards/mini_victoryPointCard3.png", 290, 220);
-    printImages("Images/victoryPointsCards/mini_victoryPointCard4.png", 420, 220);
-    printImages("Images/victoryPointsCards/mini_victoryPointCard5.png", 550, 220);
-
-    printImages("Images/progressCards/mini_progressCard1.png", 160, 430);
-    printImages("Images/progressCards/mini_progressCard2.png", 290, 430);
-    printImages("Images/progressCards/mini_progressCard3.png", 420, 430);
-    */
+    printImages((game.wheatCards->top())->getImagePath(), 15, 10);
+    printImages((game.woodCards->top())->getImagePath(), 125, 10);
+    printImages((game.woolCards->top())->getImagePath(), 235, 10);
+    printImages((game.clayCards->top())->getImagePath(), 345, 10);
+    printImages((game.mineralCards->top())->getImagePath(), 455, 10);
 }
 void TradeView::printImages(string imagePath, double posX, double posY) {
     sf::Texture path;
@@ -74,13 +63,29 @@ void TradeView::createButtons() {
     p.setFont(font);
     p.setPosition({ 10,10 }, 3);
 
-    buy = Button("Comprar", { 100, 35 }, 16, sf::Color::Green, sf::Color::Black);
-    buy.setFont(font);
-    buy.setPosition({ 300,640 }, 3);
+    trade = Button("Trueque", { 90, 35 }, 16, sf::Color::Green, sf::Color::Black);
+    trade.setFont(font);
+    trade.setPosition({ 155,250 }, 3);
 
-    buy = Button("caballero", { 650, 200 }, 16, sf::Color::Green, sf::Color::Black);
-    buy.setFont(font);
-    buy.setPosition({ 30,10 }, 3);
+    wheat = Button("Intercambiar", { 90, 25 }, 12, sf::Color::Green, sf::Color::Black);
+    wheat.setFont(font);
+    wheat.setPosition({ 10,130 }, 3);
+
+    wood = Button("Intercambiar", { 90, 25 }, 12, sf::Color::Green, sf::Color::Black);
+    wood.setFont(font);
+    wood.setPosition({ 120,130 }, 3);
+
+    wool = Button("Intercambiar", { 90, 25 }, 12, sf::Color::Green, sf::Color::Black);
+    wool.setFont(font);
+    wool.setPosition({ 230,130 }, 3);
+
+    clay = Button("Intercambiar", { 90, 25 }, 12, sf::Color::Green, sf::Color::Black);
+    clay.setFont(font);
+    clay.setPosition({ 340,130 }, 3);
+
+    mineral = Button("Intercambiar", { 90, 25 }, 12, sf::Color::Green, sf::Color::Black);
+    mineral.setFont(font);
+    mineral.setPosition({ 450,130 }, 3);
 
 }
 
@@ -90,7 +95,7 @@ void TradeView::drawButton(Button& btn) {
         btn.setBackgroundColor(sf::Color::White);
     }
     else {
-        btn.setBackgroundColor(sf::Color::Blue);
+        btn.setBackgroundColor(sf::Color::Cyan);
     }
     btn.drawButton(view);
 

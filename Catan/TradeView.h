@@ -8,16 +8,14 @@
 #include <iostream>
 #include "Materials.hpp"
 
+
 class TradeView:View
 {
 
 public:
 	//iterador
-	list<Clay*>::iterator knightIterator;
-	list<Wood*>::iterator iteratorIterator;
-    list<Wool*>::iterator victoryIterator;
-	list<Wheat*>::iterator victoryIterator;
-	list<Mineral*>::iterator victoryIterator;
+	Game game; 
+
 
 public:
 	void goView() override;
@@ -27,7 +25,7 @@ private:
 	void drawView() override;
 
 public:
-	Game game;
+	
 	void printImages(string imagePath, double posX, double posY);
 	void loadMaterialPaths();
 
@@ -36,7 +34,7 @@ public:
 	void drawButton(Button& btm);
 
 	sf::Event eventTest;
-	Button buy, p;
+	Button buy, p,clay, wheat, wood, wool, mineral , trade;
 
 
 
