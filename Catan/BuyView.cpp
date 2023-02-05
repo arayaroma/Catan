@@ -20,7 +20,12 @@ void BuyView::goView() {
                 view.waitEvent(eventTest);
             case sf::Event::MouseButtonPressed:
                 showCoordinates(eventTest);
-                
+                if (event.MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+                    VictoryButtonClicked(eventTest);
+                    ProgressButtonClicked(eventTest);
+                    KnightButtonClicked(eventTest);
+                    BuyButtonPressed(eventTest);
+                }
                 break;
             case sf::Event::Closed:
                 view.close();
@@ -33,29 +38,26 @@ void BuyView::goView() {
         createButtons();
         drawButton(p);
         drawButton(buy);
+        drawButton(knight);
+        drawButton(progress);
+        drawButton(victory);
+     
         drawView();
         view.display(); 
     }
 }
 void BuyView::loadProgressPaths() {
-
-
-
+    progressIterator = game.progressCards->begin();
+    if (progressIterator != game.progressCards->end()) {
+        printImages((*progressIterator)->getImagePath(), 160, 430);
+        progressIterator++;
+        printImages((*progressIterator)->getImagePath(), 290, 430);
+        progressIterator++;
+        printImages((*progressIterator)->getImagePath(), 420, 430);
+    }
 }
 void BuyView::loadKnightPaths() {
-
-
-
-}
-void BuyView::loadVictoryPointsPaths() {
-
-
-}
-
-void BuyView::drawView() {
     knightIterator = game.knightCards->begin();
-    progressIterator = game.progressCards->begin();
-    victoryIterator = game.victoryPointCards->begin();
     if (knightIterator != game.knightCards->end()) {
         printImages((*knightIterator)->getImagePath(), 30, 10);
         knightIterator++;
@@ -67,6 +69,9 @@ void BuyView::drawView() {
         knightIterator++;
         printImages((*knightIterator)->getImagePath(), 550, 10);
     }
+}
+void BuyView::loadVictoryPointsPaths() {
+    victoryIterator = game.victoryPointCards->begin();
     if (victoryIterator != game.victoryPointCards->end()) {
         printImages((*victoryIterator)->getImagePath(), 30, 220);
         victoryIterator++;
@@ -78,14 +83,43 @@ void BuyView::drawView() {
         victoryIterator++;
         printImages((*victoryIterator)->getImagePath(), 550, 220);
     }
-    if (progressIterator != game.progressCards->end()) {
-        printImages((*progressIterator)->getImagePath(), 160, 430);
-        progressIterator++;
-        printImages((*progressIterator)->getImagePath(), 290, 430);
-        progressIterator++;
-        printImages((*progressIterator)->getImagePath(), 420, 430);
+}
+void BuyView::KnightButtonClicked(sf::Event event) {
+    if (knight.isPressed(event)) {
+        isKnightButtonClicked = true;  
     }
-
+    else {
+        isProgressButtonClicked = false;
+        isVictoryButtonClicked = false;
+    }
+}
+void BuyView::ProgressButtonClicked(sf::Event event) {
+    if (knight.isPressed(event)) {
+        isProgressButtonClicked = true;
+    }
+    else {
+        isKnightButtonClicked = false;
+        isVictoryButtonClicked = false;
+    }
+}
+void BuyView::VictoryButtonClicked(sf::Event event) {
+    if (victory.isPressed(event)) {
+        isVictoryButtonClicked = true;
+    }
+    else {
+        isProgressButtonClicked = false;
+        isKnightButtonClicked = false;
+    }
+}
+void BuyView::BuyButtonPressed(sf::Event event) {
+    if (buy.isPressed(event)) {
+        this->isBuyClicked = true;
+    }
+}
+void BuyView::drawView() {
+    loadVictoryPointsPaths();
+    loadProgressPaths();
+    loadKnightPaths();
 }
 void BuyView::printImages(string imagePath, double posX, double posY) {
     sf::Texture path;
@@ -104,9 +138,17 @@ void BuyView::createButtons() {
     buy.setFont(font);
     buy.setPosition({ 300,640 },3);
 
-    buy = Button("caballero", { 650, 200 }, 16, sf::Color::Green, sf::Color::Black);
-    buy.setFont(font);
-    buy.setPosition({ 30,10 }, 3);
+    knight = Button("caballero", { 650, 200 }, 16, sf::Color::Green, sf::Color::Black);
+    knight.setFont(font);
+    knight.setPosition({ 30,10 }, 3);
+
+    progress = Button("progreso", { 420, 200  }, 16, sf::Color::Green, sf::Color::Black);
+    progress.setFont(font);
+    progress.setPosition({ 150,400 }, 3);
+
+    victory = Button("puntos de Victoria", { 650, 200 }, 16, sf::Color::Green, sf::Color::Black);
+    victory.setFont(font);
+    victory.setPosition({ 30,220  }, 3);
    
 }
 

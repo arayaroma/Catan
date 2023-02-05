@@ -245,6 +245,11 @@ private:
   void buyCity(list<Vertex *>::iterator vIterator, double x, double y);
   void printBuyDevelopCard();
 
+  void buyDevelopCard();
+  void receiveBoughtDevelopCard();
+  void deleteKnightCard();
+  void deleteVictoryCard();
+  void deleteProgressCard();
 private:
   sf::Event eventTest;
   sf::RectangleShape playerRectangle, cardsRectangle, tradeRectangle;

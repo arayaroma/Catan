@@ -31,8 +31,12 @@ public:
 
 	void createButtons(); 
 	void drawButton(Button& btm);
+	void KnightButtonClicked(sf::Event event);
+	void ProgressButtonClicked(sf::Event event);
+	void VictoryButtonClicked(sf::Event event);
+	void BuyButtonPressed(sf::Event event);
 	sf::Event eventTest;
-	Button buy, p;
+	Button buy, p, victory, progress,knight;
 
 
 

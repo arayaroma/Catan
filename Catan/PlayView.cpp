@@ -647,7 +647,39 @@ void PlayView::deleteWheattoPlayer() {
   if (wheatIterator != (*game.playerIterator)->wheatlCard->end())
     (*game.playerIterator)->wheatlCard->pop_back();
 }
+void PlayView::buyDevelopCard() {
+    if ((*game.playerIterator)->mineralCard->size() > 1 &&
+        (*game.playerIterator)->wheatlCard->size() > 1 &&
+        (*game.playerIterator)->woolCard->size() > 1)
+        void receiveBoughtDevelopCard();
+}
+void PlayView::receiveBoughtDevelopCard() {
+    deleteWooltoPlayer();
+    deleteWheattoPlayer();
+    deleteMineraltoPlayer();
+    if (isKnightButtonClicked) {
+        (*game.playerIterator)->knightCards->push_back((*game.knightCards->begin()));
+        deleteKnightCard();
+    }
 
+    if (isProgressButtonClicked) {
+        (*game.playerIterator)->progressCards->push_back((*game.progressCards->begin()));
+        deleteProgressCard();
+    }
+    if (isVictoryButtonClicked) {
+        (*game.playerIterator)->victoryPointsCards->push_back((*game.victoryPointCards->begin()));
+        deleteVictoryCard();
+    }
+}
+void PlayView::deleteKnightCard() {
+    game.knightCards->pop_back();
+}
+void PlayView::deleteVictoryCard() {
+    game.victoryPointCards->pop_back();
+}
+void PlayView::deleteProgressCard() {
+    game.progressCards->pop_back();
+}
 void PlayView::buildTown() {
   if ((*game.playerIterator)->clayCard->size() > 1 &&
       (*game.playerIterator)->woodCard->size() > 1 &&
@@ -667,6 +699,9 @@ void PlayView::isBuyButtonClicked(sf::Event event) {
   }
   if (isCityBuyClicked) {
     buildCity();
+  }
+  if (isBuyClicked) {
+      buyDevelopCard();
   }
 }
 void PlayView::createBuyButton() {

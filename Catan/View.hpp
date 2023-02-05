@@ -7,13 +7,13 @@
 class View {
 
 public:
-  virtual void goView() = 0;
-  View() { game.players = new list<Player *>(); }
+    virtual void goView() = 0;
+    View() { game.players = new list<Player*>(); }
 
 private:
-  virtual void loadView() = 0;
-  virtual void drawView() = 0;
-
+    virtual void loadView() = 0;
+    virtual void drawView() = 0;
+   
 public:
   virtual bool isMousePressed(sf::Event event) const {
     return (event.type == sf::Event::MouseButtonPressed);
@@ -55,4 +55,8 @@ protected:
   sf::Font font;
   sf::Event event;
 
+  bool isKnightButtonClicked = false;
+  bool isProgressButtonClicked = false;
+  bool isVictoryButtonClicked = false;
+  bool isBuyClicked = false;
 };
