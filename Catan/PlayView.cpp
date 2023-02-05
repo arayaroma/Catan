@@ -7,6 +7,8 @@ PlayView::PlayView() {
 
 PlayView::PlayView(list<Player *> *players) { game.players = players; }
 
+PlayView::PlayView(Game &obj) { game = Game(obj); }
+
 /*methods of creating labels*/
 void PlayView::createLabelNumTurn() {
 

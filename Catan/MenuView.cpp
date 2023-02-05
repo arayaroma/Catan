@@ -29,7 +29,11 @@ void MenuView::goView() {
 
       case sf::Event::MouseButtonPressed:
         if (isNewGameButtonPressed(event))
-          newGameButtonPressed();
+          newGameButtonPressed("");
+        break;
+
+        if (isLoadGameButtonPressed(event))
+          loadGameButtonPressed();
         break;
 
       case sf::Event::KeyPressed:
@@ -69,6 +73,62 @@ bool MenuView::isNewGameButtonPressed(sf::Event event) {
   return (newGameButton.isPressed(event));
 }
 
+bool MenuView::isNewGameTextboxEmpty() {
+  return (newGameTextbox.getText() == "");
+}
+
+void MenuView::newGameTextboxEmpty() {
+  ErrorAlert *alert = new ErrorAlert(
+      "Texto vacio", "No se ingresó ningún nombre de archivo a guardar.");
+  alert->goView();
+}
+
+void MenuView::newGame(string fileName) {
+  FileHandler fileHandler;
+  fileHandler.saveFile(fileName + extensionName, game);
+}
+
+void MenuView::newGameButtonPressed(string fileName) {
+  if (isNewGameTextboxEmpty())
+    newGameTextboxEmpty();
+
+  if (!isNewGameTextboxEmpty()) {
+    newGame(fileName);
+    goRegisterView();
+  }
+}
+
+bool MenuView::isLoadGameButtonPressed(sf::Event event) {
+  return (loadGameButton.isPressed(event));
+}
+
+void MenuView::loadGameButtonPressed() {
+  if (isLoadGameTextboxEmpty())
+    loadGameTextboxEmpty();
+
+  if (!isLoadGameTextboxEmpty()) {
+    loadFile(loadGameTextbox.getText());
+    loadGameView();
+  }
+}
+
+void MenuView::loadFile(string fileName) {
+  FileHandler fileHandler;
+  fileHandler.loadFile(fileName + extensionName, loadGame);
+}
+
+void MenuView::loadGameView() { PlayView playView = PlayView(loadGame); }
+
+void MenuView::loadGameTextboxEmpty() {
+  ErrorAlert *alert = new ErrorAlert(
+      "Texto vacio", "No se ingresó ningún nombre de archivo a cargar.");
+  alert->goView();
+}
+
+bool MenuView::isLoadGameTextboxEmpty() {
+  return (loadGameTextbox.getText() == "");
+}
+
 void MenuView::drawButtons() {
   newGameButton.drawButton(view);
   newGameButton.buttonInOutColors(sf::Color(255, 140, 0, 255),
@@ -104,14 +164,14 @@ void MenuView::drawTextboxes() {
   drawLoadGameTextbox();
 }
 
-void MenuView::newGameButtonPressed() {
-  closeView();
-  RegisterView registerView;
-  registerView.goView();
-}
-
 void MenuView::goTitleView() {
   closeView();
   TitleView titleView;
   titleView.goView();
+}
+
+void MenuView::goRegisterView() {
+  closeView();
+  RegisterView registerView;
+  registerView.goView();
 }

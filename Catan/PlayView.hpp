@@ -75,6 +75,7 @@ private:
 
 public:
   PlayView();
+  PlayView(Game &);
   PlayView(list<Player *> *);
 
 private:
