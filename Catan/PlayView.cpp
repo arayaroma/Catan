@@ -405,6 +405,16 @@ void PlayView::printPlayerCard() {
   printImages("Images/playerCard/woodCard.png", 480, 640);
   printImages("Images/playerCard/woolCard.png", 520, 640);
 }
+void PlayView::clickClayTrade(int x, int y) {
+    if (x > 360 && x < 360 + 40 && y>640 && y < 640 + 40) {
+        isCLayTradeClicked = true;
+        isMineralTradeClicked = false;
+        isWoolTradeClicked = false;
+        isWoodTradeClicked = false;
+        isWheatTradeClicked = false;
+    }
+}
+
 
 void PlayView::printPlayerFigure() {
   cityIterator = (*game.playerIterator)->citys->begin();
@@ -584,17 +594,22 @@ void PlayView::printBuyDevelopCard() {
 }
 void PlayView::clickInDevelopCardBuy(int x, int y) {
   if (x > 220 && x < 240 + 30 && y > 535 && y < 535 + 30) {
-    BuyView buyView = BuyView();
     buyView.goView();
   }
 }
 void PlayView::clickTradeButton(sf::Event event) {
- 
     if (trade.isMouseOver(view)) {
-        TradeView tradeView = TradeView();
         tradeView.goView();
+        //aca poner que cuando le da click en algun material y le da trade ir al metodo para intercambiar
+        traverseLandsToTrade();
+        if (isPlayerNormalPortNeighbor)
+            tradeNormal();
+        if (isPlayerSpecialPortNeighbor)
+            tradeSpecial();
+        tradePossible();
     }
 }
+
 void PlayView::clickInTownBuy(int x, int y) {
   if (x > 165 && x < 165 + 30 && y > 535 && y < 535 + 30) {
     isTownBuyClicked = true;
@@ -655,28 +670,40 @@ void PlayView::deleteWheattoPlayer() {
   if (wheatIterator != (*game.playerIterator)->wheatlCard->end())
     (*game.playerIterator)->wheatlCard->pop_back();
 }
-void PlayView::buyDevelopCard() {
-    if ((*game.playerIterator)->mineralCard->size() > 1 &&
-        (*game.playerIterator)->wheatlCard->size() > 1 &&
-        (*game.playerIterator)->woolCard->size() > 1)
-        void receiveBoughtDevelopCard();
-}
+
 void PlayView::receiveBoughtDevelopCard() {
     deleteWooltoPlayer();
     deleteWheattoPlayer();
     deleteMineraltoPlayer();
-    if (isKnightButtonClicked) {
-        (*game.playerIterator)->knightCards->push_back((*game.knightCards->begin()));
-        deleteKnightCard();
+    if (buyView.isKnightButtonClicked) {
+        if (game.playerIterator != game.players->end()){
+            knightIterator = game.knightCards->begin();
+            if (knightIterator != game.knightCards->end()) {
+                (*game.playerIterator)->knightCards->push_back((*knightIterator));
+                deleteKnightCard();
+            }
+    }
     }
 
-    if (isProgressButtonClicked) {
-        (*game.playerIterator)->progressCards->push_back((*game.progressCards->begin()));
-        deleteProgressCard();
+    if (buyView.isProgressButtonClicked) {
+        if (game.playerIterator != game.players->end()) {
+            progressIterator = game.progressCards->begin();
+            if (progressIterator != game.progressCards->end()) {
+                (*game.playerIterator)->progressCards->push_back((*progressIterator));
+                deleteProgressCard();
+            }
+        }
     }
-    if (isVictoryButtonClicked) {
+    if (buyView.isVictoryButtonClicked) {
         (*game.playerIterator)->victoryPointsCards->push_back((*game.victoryPointCards->begin()));
-        deleteVictoryCard();
+        if (game.playerIterator != game.players->end()) {
+            victoryPointsIterator = game.victoryPointCards->begin();
+            if (victoryPointsIterator != game.victoryPointCards->end()) {
+                (*game.playerIterator)->victoryPointsCards->push_back((*victoryPointsIterator));
+                deleteVictoryCard();
+            }
+        }
+        
     }
 }
 void PlayView::deleteKnightCard() {
@@ -689,15 +716,23 @@ void PlayView::deleteProgressCard() {
     game.progressCards->pop_back();
 }
 void PlayView::buildTown() {
-  if ((*game.playerIterator)->clayCard->size() > 1 &&
-      (*game.playerIterator)->woodCard->size() > 1 &&
-      (*game.playerIterator)->wheatlCard->size() > 1 &&
-      (*game.playerIterator)->woolCard->size() > 1)
-    payRawMaterialsToBuyTown();
+    if ((*game.playerIterator)->clayCard->size() >= 1 &&
+        (*game.playerIterator)->woodCard->size() >= 1 &&
+        (*game.playerIterator)->wheatlCard->size() >= 1 &&
+        (*game.playerIterator)->woolCard->size() >= 1) {
+        payRawMaterialsToBuyTown();
+    }
+}//BUG ACA
+void PlayView::buyDevelopCard() {
+    if ((*game.playerIterator)->mineralCard->size() >= 1 &&
+        (*game.playerIterator)->wheatlCard->size() >= 1 &&
+        (*game.playerIterator)->woolCard->size() >= 1) {
+        void receiveBoughtDevelopCard();
+    }
 }
 void PlayView::buildCity() {
-  if ((*game.playerIterator)->wheatlCard->size() > 2 &&
-      ((*game.playerIterator)->mineralCard->size() > 3))
+  if ((*game.playerIterator)->wheatlCard->size() >= 2 &&
+      ((*game.playerIterator)->mineralCard->size() >= 3))
     payRawMaterialsToBuyCity();
 }
 void PlayView::isBuyButtonClicked(sf::Event event) {
@@ -708,7 +743,7 @@ void PlayView::isBuyButtonClicked(sf::Event event) {
   if (isCityBuyClicked) {
     buildCity();
   }
-  if (isBuyClicked) {
+  if (buyView.isBuyClicked) {
       buyDevelopCard();
   }
 }
@@ -845,6 +880,7 @@ void PlayView::loadView() {
   game.playerIterator = beginPlayerIterator();
   game.loadLands();
   game.makeMaterialCard();
+  game.makeDevelopCard();
   landsList = game.getLandsList();
   game.assignTownsToLand();
   game.makeGraph();
@@ -1396,4 +1432,227 @@ void PlayView::showCoordinates(sf::Event event) {
     log("mouse x: " << event.mouseButton.x);
     log("mouse y: " << event.mouseButton.y);
   }
+}
+
+////////TRADE//////////
+///////TRADE//////////
+///////TRADE//////////
+void PlayView::clickMineralTrade(int x, int y) {
+    if (x > 400 && x < 400 + 40 && y>640 && y < 640 + 40) {
+        isCLayTradeClicked = false;
+        isMineralTradeClicked = true;
+        isWoolTradeClicked = false;
+        isWoodTradeClicked = false;
+        isWheatTradeClicked = false;
+    }
+}
+void PlayView::clickWoodTrade(int x, int y) {
+    if (x > 480 && x < 480 + 40 && y>640 && y < 640 + 40) {
+        isCLayTradeClicked = false;
+        isMineralTradeClicked = false;
+        isWoolTradeClicked = false;
+        isWoodTradeClicked = true;
+        isWheatTradeClicked = false;
+    }
+}
+void PlayView::clickWoolTrade(int x, int y) {
+    if (x > 520 && x < 520 + 40 && y>640 && y < 640 + 40) {
+        isCLayTradeClicked = false;
+        isMineralTradeClicked = false;
+        isWoolTradeClicked = true;
+        isWoodTradeClicked = false;
+        isWheatTradeClicked = false;
+    }
+}
+void PlayView::clickWheatTrade(int x, int y) {
+    if (x > 440 && x < 440 + 40 && y>640 && y < 640 + 40) {
+        isCLayTradeClicked = false;
+        isMineralTradeClicked = false;
+        isWoolTradeClicked = false;
+        isWoodTradeClicked = false;
+        isWheatTradeClicked = true;
+    }
+}
+void PlayView::traverseLandsToTrade() {
+    it = landsList->begin();
+    while (it != landsList->end()) {
+        townsInPort(it);
+        it++;
+    }
+}
+void PlayView::townsInPort(list<Land*>::iterator it) {
+    list<Vertex*>::iterator vIterator;
+    vIterator = (*it)->getTownsList()->begin();
+    while (vIterator != (*it)->getTownsList()->end()) {
+        if (landIsNormalPortNeighbor(it)) {
+            if (townIsNormalPortNeighbor(vIterator)) {
+                if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner()->getName() ==
+                    (*playerIterator)->getName()) {
+                    isPlayerNormalPortNeighbor = true;
+                }
+            }
+
+        }
+        if (landIsSpecialPortNeighbor(it)) {
+            if (townIsSpecialPortNeighbor(vIterator)) {
+                if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner()->getName() ==
+                    (*playerIterator)->getName()) {
+                    isPlayerSpecialPortNeighbor = true;
+                }
+            }
+        }
+        vIterator++;
+    }
+}
+bool PlayView::townIsNormalPortNeighbor(list<Vertex*>::iterator vIterator) {
+    if ((*vIterator)->getVertexId() == 1 || (*vIterator)->getVertexId() == 4 ||
+        (*vIterator)->getVertexId() == 16 || (*vIterator)->getVertexId() == 27 ||
+        (*vIterator)->getVertexId() == 33 || (*vIterator)->getVertexId() == 48 ||
+        (*vIterator)->getVertexId() == 52) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+bool PlayView::townIsSpecialPortNeighbor(list<Vertex*>::iterator vIterator) {
+    if ((*vIterator)->getVertexId() == 2 || (*vIterator)->getVertexId() == 6 ||
+        (*vIterator)->getVertexId() == 17 || (*vIterator)->getVertexId() == 22 ||
+        (*vIterator)->getVertexId() == 34 || (*vIterator)->getVertexId() == 39 ||
+        (*vIterator)->getVertexId() == 43 || (*vIterator)->getVertexId() == 47 ||
+        (*vIterator)->getVertexId() == 48 || (*vIterator)->getVertexId() == 52 ||
+        (*vIterator)->getVertexId() == 50 || (*vIterator)->getVertexId() == 53) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+bool PlayView::landIsNormalPortNeighbor(list<Land*>::iterator it) {
+    if ((*it)->getLandId() == 1 || (*it)->getLandId() == 7 || (*it)->getLandId() == 12
+        || (*it)->getLandId() == 17) {
+        return true;
+    }
+    return false;
+
+}
+bool PlayView::landIsSpecialPortNeighbor(list<Land*>::iterator it) {
+    if ((*it)->getLandId() == 2 || (*it)->getLandId() == 4 || (*it)->getLandId() == 8
+        || (*it)->getLandId() == 13 || (*it)->getLandId() == 19
+        || (*it)->getLandId() == 16 || (*it)->getLandId() == 18) {
+        return true;
+    }
+    return false;
+}
+void PlayView::tradeCard() {
+    if (tradeView.isCLayButtonClicked)
+        (*playerIterator)->clayCard->push_back(new Clay());
+    if (tradeView.isMineralButtonClicked)
+        (*playerIterator)->mineralCard->push_back(new Mineral());
+    if (tradeView.isWheatButtonClicked)
+        (*playerIterator)->wheatlCard->push_back(new Wheat());
+    if (tradeView.isWoodButtonClicked)
+        (*playerIterator)->woodCard->push_back(new Wood());
+    if (tradeView.isWoolButtonClicked)
+        (*playerIterator)->woolCard->push_back(new Wool());
+}
+
+void PlayView::tradePossible() {
+    int iterator = 0;
+    if (isCLayTradeClicked) {
+        for (iterator; iterator < 4; iterator++) {
+            deleteClaytoPlayer();
+        }
+        tradeCard();
+    }
+    if (isWoodTradeClicked) {
+        for (iterator; iterator < 4; iterator++) {
+            deleteWoodtoPlayer();
+        }
+        tradeCard();
+    }
+    if (isWoolTradeClicked) {
+        for (iterator; iterator < 4; iterator++) {
+            deleteWooltoPlayer();
+        }
+        tradeCard();
+    }
+    if (isWheatTradeClicked) {
+        for (iterator; iterator < 4; iterator++) {
+            deleteWheattoPlayer();
+        }
+        tradeCard();
+    }
+    if (isMineralTradeClicked) {
+        for (iterator; iterator < 4; iterator++) {
+            deleteMineraltoPlayer();
+        }
+        tradeCard();
+    }
+}
+void PlayView::tradeNormal() {
+    int iterator = 0;
+    if (isCLayTradeClicked) {
+        for (iterator; iterator < 3; iterator++) {
+            deleteClaytoPlayer();
+        }
+        tradeCard();
+    }
+    if (isWoodTradeClicked) {
+        for (iterator; iterator < 3; iterator++) {
+            deleteWoodtoPlayer();
+        }
+        tradeCard();
+    }
+    if (isWoolTradeClicked) {
+        for (iterator; iterator < 3; iterator++) {
+            deleteWooltoPlayer();
+        }
+        tradeCard();
+    }
+    if (isWheatTradeClicked) {
+        for (iterator; iterator < 3; iterator++) {
+            deleteWheattoPlayer();
+        }
+        tradeCard();
+    }
+    if (isMineralTradeClicked) {
+        for (iterator; iterator < 3; iterator++) {
+            deleteMineraltoPlayer();
+        }
+        tradeCard();
+    }
+}
+void PlayView::tradeSpecial() {
+    int iterator = 0;
+    if (isCLayTradeClicked) {
+        for (iterator; iterator < 2; iterator++) {
+            deleteClaytoPlayer();
+        }
+        tradeCard();
+    }
+    if (isWoodTradeClicked) {
+        for (iterator; iterator < 2; iterator++) {
+            deleteWoodtoPlayer();
+        }
+        tradeCard();
+    }
+    if (isWoolTradeClicked) {
+        for (iterator; iterator < 2; iterator++) {
+            deleteWooltoPlayer();
+        }
+        tradeCard();
+    }
+    if (isWheatTradeClicked) {
+        for (iterator; iterator < 2; iterator++) {
+            deleteWheattoPlayer();
+        }
+        tradeCard();
+    }
+    if (isMineralTradeClicked) {
+        for (iterator; iterator < 2; iterator++) {
+            deleteMineraltoPlayer();
+        }
+        tradeCard();
+    }
 }

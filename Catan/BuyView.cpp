@@ -86,29 +86,23 @@ void BuyView::loadVictoryPointsPaths() {
 }
 void BuyView::KnightButtonClicked(sf::Event event) {
     if (knight.isPressed(event)) {
-        isKnightButtonClicked = true;  
-    }
-    else {
-        isProgressButtonClicked = false;
-        isVictoryButtonClicked = false;
+        this->isKnightButtonClicked = true;
+        this->isProgressButtonClicked = false;
+        this->isVictoryButtonClicked = false;
     }
 }
 void BuyView::ProgressButtonClicked(sf::Event event) {
     if (knight.isPressed(event)) {
-        isProgressButtonClicked = true;
-    }
-    else {
-        isKnightButtonClicked = false;
-        isVictoryButtonClicked = false;
+        this->isKnightButtonClicked = false;
+        this->isProgressButtonClicked = true;
+        this->isVictoryButtonClicked = false;
     }
 }
 void BuyView::VictoryButtonClicked(sf::Event event) {
     if (victory.isPressed(event)) {
-        isVictoryButtonClicked = true;
-    }
-    else {
-        isProgressButtonClicked = false;
-        isKnightButtonClicked = false;
+        this->isKnightButtonClicked = false;
+        this->isProgressButtonClicked = false;
+        this->isVictoryButtonClicked = true;
     }
 }
 void BuyView::BuyButtonPressed(sf::Event event) {

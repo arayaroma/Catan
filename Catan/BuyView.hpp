@@ -38,7 +38,10 @@ public:
 	sf::Event eventTest;
 	Button buy, p, victory, progress,knight;
 
-
+	bool isKnightButtonClicked = false;
+	bool isProgressButtonClicked = false;
+	bool isVictoryButtonClicked = false;
+	bool isBuyClicked = false;
 
 };
 

@@ -284,5 +284,8 @@
     <ClInclude Include="TradeView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="StaticView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
