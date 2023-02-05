@@ -405,15 +405,7 @@ void PlayView::printPlayerCard() {
   printImages("Images/playerCard/woodCard.png", 480, 640);
   printImages("Images/playerCard/woolCard.png", 520, 640);
 }
-void PlayView::clickClayTrade(int x, int y) {
-    if (x > 360 && x < 360 + 40 && y>640 && y < 640 + 40) {
-        isCLayTradeClicked = true;
-        isMineralTradeClicked = false;
-        isWoolTradeClicked = false;
-        isWoodTradeClicked = false;
-        isWheatTradeClicked = false;
-    }
-}
+
 
 
 void PlayView::printPlayerFigure() {
@@ -602,11 +594,17 @@ void PlayView::clickTradeButton(sf::Event event) {
         tradeView.goView();
         //aca poner que cuando le da click en algun material y le da trade ir al metodo para intercambiar
         traverseLandsToTrade();
-        if (isPlayerNormalPortNeighbor)
-            tradeNormal();
-        if (isPlayerSpecialPortNeighbor)
-            tradeSpecial();
-        tradePossible();
+        if (isPlayerNormalPortNeighbor || isPlayerSpecialPortNeighbor ) {
+            if (isPlayerNormalPortNeighbor) {
+                tradeNormal();
+            }
+            if (isPlayerSpecialPortNeighbor) {
+                tradeSpecial();
+            }
+        }
+        else {
+            tradePossible();
+        }
     }
 }
 
@@ -736,16 +734,17 @@ void PlayView::buildCity() {
     payRawMaterialsToBuyCity();
 }
 void PlayView::isBuyButtonClicked(sf::Event event) {
-  // if (buy.isPressed(event)) {
-  if (isTownBuyClicked) {
-    buildTown();
-  }
-  if (isCityBuyClicked) {
-    buildCity();
-  }
-  if (buyView.isBuyClicked) {
-      buyDevelopCard();
-  }
+    if (buy.isMouseOver(view)) {
+        if (isTownBuyClicked) {
+            buildTown();
+        }
+        if (isCityBuyClicked) {
+            buildCity();
+        }
+        if (buyView.isBuyClicked) {
+            buyDevelopCard();
+        }
+    }
 }
 void PlayView::createBuyButton() {
   buy = Button("Comprar", {120, 35}, 16, sf::Color::Green, sf::Color::White);
@@ -909,7 +908,11 @@ void PlayView::goView() {
             clickInCityBuy(getMousePositionX(view), getMousePositionY(view));
 
             clickInTownBuy(getMousePositionX(view), getMousePositionY(view));
-
+            clickClayTrade(getMousePositionX(view), getMousePositionY(view));
+            clickWheatTrade(getMousePositionX(view), getMousePositionY(view));
+            clickWoolTrade(getMousePositionX(view), getMousePositionY(view));
+            clickWoodTrade(getMousePositionX(view), getMousePositionY(view));
+            clickMineralTrade(getMousePositionX(view), getMousePositionY(view));
             clickInDevelopCardBuy(getMousePositionX(view),getMousePositionY(view));
             clickTradeButton(eventTest);
             isBuyButtonClicked(eventTest);
@@ -1471,6 +1474,15 @@ void PlayView::clickWheatTrade(int x, int y) {
         isWheatTradeClicked = true;
     }
 }
+void PlayView::clickClayTrade(int x, int y) {
+    if (x > 360 && x < 360 + 40 && y>640 && y < 640 + 40) {
+        isCLayTradeClicked = true;
+        isMineralTradeClicked = false;
+        isWoolTradeClicked = false;
+        isWoodTradeClicked = false;
+        isWheatTradeClicked = false;
+    }
+}
 void PlayView::traverseLandsToTrade() {
     it = landsList->begin();
     while (it != landsList->end()) {
@@ -1484,18 +1496,22 @@ void PlayView::townsInPort(list<Land*>::iterator it) {
     while (vIterator != (*it)->getTownsList()->end()) {
         if (landIsNormalPortNeighbor(it)) {
             if (townIsNormalPortNeighbor(vIterator)) {
-                if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner()->getName() ==
-                    (*playerIterator)->getName()) {
-                    isPlayerNormalPortNeighbor = true;
+                if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() != NULL) {
+                    if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner()->getName() ==
+                        (*playerIterator)->getName()) {
+                        isPlayerNormalPortNeighbor = true;
+                    }
                 }
             }
 
         }
         if (landIsSpecialPortNeighbor(it)) {
             if (townIsSpecialPortNeighbor(vIterator)) {
-                if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner()->getName() ==
-                    (*playerIterator)->getName()) {
-                    isPlayerSpecialPortNeighbor = true;
+                if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() != NULL) {
+                    if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner()->getName() == //no son mismos nombres
+                        (*playerIterator)->getName()) {
+                        isPlayerSpecialPortNeighbor = true;
+                    }
                 }
             }
         }
@@ -1515,10 +1531,9 @@ bool PlayView::townIsNormalPortNeighbor(list<Vertex*>::iterator vIterator) {
 }
 bool PlayView::townIsSpecialPortNeighbor(list<Vertex*>::iterator vIterator) {
     if ((*vIterator)->getVertexId() == 2 || (*vIterator)->getVertexId() == 6 ||
-        (*vIterator)->getVertexId() == 17 || (*vIterator)->getVertexId() == 22 ||
+        (*vIterator)->getVertexId() == 17 || (*vIterator)->getVertexId() == 12 ||
         (*vIterator)->getVertexId() == 34 || (*vIterator)->getVertexId() == 39 ||
         (*vIterator)->getVertexId() == 43 || (*vIterator)->getVertexId() == 47 ||
-        (*vIterator)->getVertexId() == 48 || (*vIterator)->getVertexId() == 52 ||
         (*vIterator)->getVertexId() == 50 || (*vIterator)->getVertexId() == 53) {
         return true;
     }
@@ -1535,7 +1550,7 @@ bool PlayView::landIsNormalPortNeighbor(list<Land*>::iterator it) {
 
 }
 bool PlayView::landIsSpecialPortNeighbor(list<Land*>::iterator it) {
-    if ((*it)->getLandId() == 2 || (*it)->getLandId() == 4 || (*it)->getLandId() == 8
+    if ((*it)->getLandId() == 2 || (*it)->getLandId() == 4
         || (*it)->getLandId() == 13 || (*it)->getLandId() == 19
         || (*it)->getLandId() == 16 || (*it)->getLandId() == 18) {
         return true;
