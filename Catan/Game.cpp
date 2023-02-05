@@ -1,4 +1,5 @@
 #include "Game.hpp"
+#include <algorithm>
 using std::pair;
 
 Game::Game() {
@@ -118,6 +119,12 @@ void Game::setWoolCards(stack<Wool *> *woolCards) {
 
 stack<Wool *> *Game::getWoolCards() const { return this->woolCards; }
 
+void Game::setLandNumbers(vector<int> landsNumbers) {
+  this->landsNumbers = landsNumbers;
+}
+
+vector<int> Game::getLandNumbers() const { return this->landsNumbers; }
+
 void Game::loadMaps() {
   loadProgressPaths();
   loadTilesPaths();
@@ -159,6 +166,69 @@ void Game::loadTilesPaths() {
       pair<string, string>("dessertPath", "Images/tiles/Dessert.png"));
 }
 
+void Game::loadLandsNumbers() {
+  landsNumbers = {2, 3, 3, 4, 4, 5, 5, 6, 6, 8, 8, 9, 9, 10, 10, 11, 11, 12};
+}
+
+void Game::randomizeLandsNumbers() {
+  int i, j;
+  for (i = 0; i < landsNumbers.size() - 1; i++) {
+    j = i + rand() % (landsNumbers.size() - i);
+    std::swap(landsNumbers[i], landsNumbers[j]);
+  }
+}
+
+void Game::shuffleLandList() {
+  int i, j;
+  for (i = 0; i < landsList->size() - 1; i++) {
+    j = i + rand() % (landsList->size() - i);
+    std::swap(landsList[i], landsList[j]);
+  }
+} 
+
+vector<int> Game::getLandsNumbersRandomized() {
+  loadLandsNumbers();
+  randomizeLandsNumbers();
+  return landsNumbers;
+}
+
+void Game::printLandsNumbers(vector<int> const &landsNumbers) {
+  for (auto &number : landsNumbers)
+    std::cout << number << " ";
+}
+
+void Game::setNumbersToLands(list<Land *> *landsList) {
+  landsNumbers = getLandsNumbersRandomized();
+
+  list<Land *>::iterator landsIterator;
+  landsIterator = landsList->begin();
+
+  vector<int>::iterator landsNumbersIterator;
+  landsNumbersIterator = landsNumbers.begin();
+
+  if (!isNumbersLandsSet) {
+    while (landsIterator != landsList->end()) {
+      while (landsNumbersIterator != landsNumbers.end()) {
+        if ((*landsIterator)->getTypeLand() != "Dessert") {
+          (*landsIterator)->setDiceNumber((*landsNumbersIterator));
+          landsNumbersIterator++;
+        }
+        landsIterator++;
+      }
+    }
+  }
+  isNumbersLandsSet = true;
+}
+
+void Game::printDiceNumbersInLands() {
+  list<Land *>::iterator landsIterator;
+  landsIterator = landsList->begin();
+  while (landIterator != landsList->end()) {
+    std::cout << (*landIterator)->getDiceNumber() << std::endl;
+    landIterator++;
+  }
+}
+
 void Game::loadLands() {
   loadTilesPaths();
   int i;
@@ -166,23 +236,28 @@ void Game::loadLands() {
   for (i = 0; i < 4; i++) {
     if (i < 1) {
       landsList->push_back(
-          new Land("Dessert",imagePaths.at("dessertPath"), 0, 0, landId));
+          new Land("Dessert", imagePaths.at("dessertPath"), 0, 0, landId));
       landId++;
     }
     if (i < 3) {
       landsList->push_back(
           new Land("Mountain", imagePaths.at("mountainPath"), 0, 0, landId));
       landId++;
-      landsList->push_back(new Land("Field",imagePaths.at("fieldPath"), 0, 0, landId));
+      landsList->push_back(
+          new Land("Field", imagePaths.at("fieldPath"), 0, 0, landId));
       landId++;
     }
-    landsList->push_back(new Land("Grass", imagePaths.at("grassPath"), 0, 0, landId));
+    landsList->push_back(
+        new Land("Grass", imagePaths.at("grassPath"), 0, 0, landId));
     landId++;
-    landsList->push_back(new Land("Forest", imagePaths.at("forestPath"), 0, 0, landId));
+    landsList->push_back(
+        new Land("Forest", imagePaths.at("forestPath"), 0, 0, landId));
     landId++;
-    landsList->push_back(new Land("Brick", imagePaths.at("brickPath"), 0, 0, landId));
+    landsList->push_back(
+        new Land("Brick", imagePaths.at("brickPath"), 0, 0, landId));
     landId++;
   }
+  // landsList = shuffleLandList();
 }
 
 void Game::makeSpecialCard() {
@@ -440,11 +515,11 @@ void Game::makePlayer() {
 
 void Game::loadFiguresToPlayer(Player *player, int numPlayer) {
   int iterator;
-  for (iterator = 0; iterator < 15; iterator++) {
+  for (iterator = 0; iterator < 16; iterator++) {
     loadRoades(player);
-    if (iterator < 4)
-      loadCities(player);
     if (iterator < 5)
+      loadCities(player);
+    if (iterator < 6)
       loadTowns(player);
   }
 }

@@ -138,6 +138,9 @@
     <ClCompile Include="BuyView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TradeView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.hpp">
@@ -203,9 +206,6 @@
     <ClInclude Include="Materials.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ProgressCards.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Figures.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -254,9 +254,6 @@
     <ClInclude Include="View.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Cards.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="NoneAlert.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -276,6 +273,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BuyView.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DevelopCards.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TradeView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

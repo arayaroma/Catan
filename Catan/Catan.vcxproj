@@ -167,6 +167,7 @@
     <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="TitleView.cpp" />
     <ClCompile Include="Town.cpp" />
+    <ClCompile Include="TradeView.cpp" />
     <ClCompile Include="Vertex.cpp" />
     <ClCompile Include="VictoryPoints.cpp" />
     <ClCompile Include="View.cpp" />
@@ -196,7 +197,8 @@
     <ClInclude Include="Figure.hpp" />
     <ClInclude Include="Figures.hpp" />
     <ClInclude Include="Graph.hpp" />
-    <ClInclude Include="Cards.h" />
+    <ClInclude Include="Cards.hpp" />
+    <ClInclude Include="DevelopCards.hpp" />
     <ClInclude Include="Human.hpp" />
     <ClInclude Include="InformationAlert.hpp" />
     <ClInclude Include="NoneAlert.hpp" />
@@ -210,11 +212,11 @@
     <ClInclude Include="Mineral.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Progress.hpp" />
-    <ClInclude Include="ProgressCards.hpp" />
     <ClInclude Include="Road.hpp" />
     <ClInclude Include="TextBox.hpp" />
     <ClInclude Include="TitleView.hpp" />
     <ClInclude Include="Town.hpp" />
+    <ClInclude Include="TradeView.h" />
     <ClInclude Include="Vertex.hpp" />
     <ClInclude Include="VictoryPoints.hpp" />
     <ClInclude Include="View.hpp" />

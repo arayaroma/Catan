@@ -9,6 +9,8 @@ Vertex::Vertex() {
   this->town = nullptr;
   this->_isPrinted = false;
   this->_isClicked = false;
+  this->isTown = false;
+  this->isCity = false;
 }
 
 Vertex::Vertex(int vertexId, string ownerTown, Town *town, bool isPrinted) {
@@ -18,4 +20,6 @@ Vertex::Vertex(int vertexId, string ownerTown, Town *town, bool isPrinted) {
   this->next = nullptr;
   this->town = town;
   this->_isPrinted = isPrinted;
+  this->isTown = false;
+  this->isCity = false;
 }

@@ -1,11 +1,12 @@
 #pragma once
 #include "Button.hpp"
+#include "BuyView.hpp"
+#include "Dice.hpp"
 #include "Label.hpp"
 #include "View.hpp"
 #include <SFML/Graphics.hpp>
 #include <string>
-#include "Dice.hpp"
-#include "BuyView.hpp"
+#include "TradeView.h"
 
 #define pi 3.14159265358979323846
 #define firstAngle (3 * pi) / 2
@@ -32,26 +33,39 @@ public:
   list<City *>::iterator cityIterator;
   list<Town *>::iterator townIterator;
 
+  list<Progress *>::iterator progressIterator;
+  list<VictoryPoints *>::iterator victoryPointsIterator;
+  list<Knight *>::iterator knightIterator;
+
   list<Player *>::iterator playerIterator;
 
-
+  list<Wheat *>::iterator wheatIterator;
+  list<Mineral *>::iterator mineralIterator;
+  list<Wool *>::iterator woolIterator;
+  list<Wood *>::iterator woodIterator;
+  list<Clay *>::iterator clayIterator;
 
 private:
- 
-
   bool start;
   bool lastIteration = false;
   bool firstCalltoPrintBoard = true;
   int lastIterationNumber = 680;
   int vertexIterationNumber;
-  int turnNumber=0;
+  int turnNumber = 0;
   string tempImagePath;
   string url = "";
   int numTurn = 1;
-  int numDice; 
+  int numDice;
   Dice diceInstance;
   bool isDiceSpinned = false;
   bool isFirstTurn = true;
+  const string dessertType = "Dessert";
+
+  bool isTownBuyClicked = false;
+  bool isCityBuyClicked = false;
+
+  bool selectTown = false;
+  bool selectCity = false;
 
 public:
   void goView() override;
@@ -74,9 +88,9 @@ private:
   void createLabels();
   void loadthreeXone();
 
-  void createButtons(); 
-  void setButtonOrigins(); 
-  void drawButtons(); 
+  void createButtons();
+  void setButtonOrigins();
+  void drawButtons();
 
   void loadRegisterButtons(Button &btn);
   void loadOcean();
@@ -127,8 +141,11 @@ private:
   void drawLabelCardPlayer();
   void createLabelFigurePlayer();
   void drawLabelFigurePlayer();
+  void drawLabelDevelopCardPLayer();
   void printPlayerFigure();
-  void drawRectangleShapes(); 
+  void printPlayerDevelopCard();
+  void createLabelPlayerDevelopCard();
+  void drawRectangleShapes();
 
   void traverseLands(double, double);
   void searhTown(double, double, list<Land *>::iterator);
@@ -143,17 +160,22 @@ private:
   void setOwnerToVertexGraph(Vertex *);
 
   void deleteTowntoPlayer();
+  void deleteCitytoPlayer();
+  void addTownToPlayer();
   void firstTurn();
   void receiveFirstCard(list<Land *>::iterator);
   void receiveFirstMaterialCard();
 
   void printTownPlayer(list<Vertex *>::iterator, int, int);
   void initializeIteratorTownList();
+  void initializeIteratorCityList();
   void setIsClickedToVertexGraph(list<Vertex *>::iterator);
 
   void createLabelNumTurn();
+  void createLabelScorePlayer();
   void drawLabelNumTurn();
-
+  void createLabelMaterialCardGame();
+  void drawLabelMaterialGame();
   void isDiceButtonClicked(int, int);
 
   void receiveCard(list<Land *>::iterator);
@@ -170,8 +192,9 @@ private:
   bool existsAnOwnerInVertex(list<Vertex *>::iterator);
   bool isVertexesListTraversalInTurn(list<Vertex *>::iterator,
                                      list<Land *>::iterator);
-  bool isActualPlayerName(list<Vertex *>::iterator);
+  bool isActualPlayerName(list<Vertex *>::iterator, list<Player *>::iterator);
   void giveCardsToPlayer(list<Land *>::iterator);
+  void giveCardsToPlayerCity(list<Land *>::iterator);
   void giveCardsToPlayerFirstTurn(list<Land *>::iterator);
 
   bool isPlayerTownListEmpty() const;
@@ -188,14 +211,54 @@ private:
   void createCloseButton();
   void createDiceButton();
 
+  void printLandsDiceNumbers();
+  void createLabelDiceNumber(list<Land *>::iterator);
+  bool isDessertLand(list<Land *>::iterator) const;
+  void createTempNumberEmpty(list<Land *>::iterator);
+  void createTempNumber(list<Land *>::iterator);
+
+private:
+  sf::RectangleShape turnRectangleOne, turnRectangleTwo, turnRectangleThree,
+      turnRectangleFour;
+  void createBuyRectangle();
+  void printPlayerBuyFigure();
+  void printDevelopCard();
+  void clickInTownBuy(int x, int y);
+  void clickInCityBuy(int x, int y);
+  void clickInDevelopCardBuy(int x, int y);
+  void clickTradeButton(sf::Event);
+  void isBuyButtonClicked(sf::Event);
+  void buildTown();
+  void buildCity();
+  void payRawMaterialsToBuyTown();
+  void payRawMaterialsToBuyCity();
+  void deleteClaytoPlayer();
+  void deleteWoodtoPlayer();
+  void deleteWooltoPlayer();
+  void deleteMineraltoPlayer();
+  void deleteWheattoPlayer();
+
+  void deleteWoodCards();
+  void deleteWoolCards();
+  void deleteMineralCards();
+  void deleteClayCards();
+  void deleteWheatCards();
+  void buyTown(list<Vertex *>::iterator vIterator, double x, double y);
+  void buyCity(list<Vertex *>::iterator vIterator, double x, double y);
+  void printBuyDevelopCard();
+
 private:
   sf::Event eventTest;
-  sf::RectangleShape playerRectangle, cardsRectangle,turnRectangleOne, turnRectangleTwo, turnRectangleThree, turnRectangleFour;
+  sf::RectangleShape playerRectangle, cardsRectangle, tradeRectangle;
   Label *materialCard, *pricingTable, *turns, *cards, *developCard;
   Label *player1, *player2, *player3, *player4;
   Label *clayCard, *mineralPlayerCard, *wheatPlayerCard, *woodPlayerCard,
-      *woolPlayerCard, * firsThreeXone, * secondThreeXone, * thirdThreeXone, * fourThreeXone;
+      *woolPlayerCard, *firsThreeXone, *secondThreeXone, *thirdThreeXone,
+      *fourThreeXone, *tempNumber;
   Label *townPlayer, *cityPlayer, *roadPlayer;
-  Label *titleTurn, *labelNumTurn, *infoFisrtTurn, *labelNumDice;
+  Label *titleTurn, *labelNumTurn, *infoFisrtTurn, *labelNumDice, *scorePlayer,
+      *titleScorePlayer;
+  Label *knight, *progress, *victory;
+  Label *woodGame, *woolGame, *clayGame, *mineralGame, *wheatGame;
   Button turn, buy, trade, dice, p, option1, save, close;
 };
