@@ -1,2 +1,4 @@
-﻿  BuyView.cpp
+﻿  PlayView.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(37,38): warning C4305: 'argumento': truncamiento de 'int' a 'sf::Uint8'
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(36,41): warning C4309: 'argumento': truncamiento de valor constante
   Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe
