@@ -6,6 +6,7 @@
 #include "View.hpp"
 #include <SFML/Graphics.hpp>
 #include <string>
+#include "TradeView.h"
 
 #define pi 3.14159265358979323846
 #define firstAngle (3 * pi) / 2
@@ -225,6 +226,7 @@ private:
   void clickInTownBuy(int x, int y);
   void clickInCityBuy(int x, int y);
   void clickInDevelopCardBuy(int x, int y);
+  void clickTradeButton(sf::Event);
   void isBuyButtonClicked(sf::Event);
   void buildTown();
   void buildCity();
