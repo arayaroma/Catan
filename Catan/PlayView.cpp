@@ -860,7 +860,7 @@ void PlayView::goView() {
     while (view.pollEvent(eventTest)) {
       showCoordinates(eventTest);
       switch (eventTest.type) {
-      // view.waitEvent(eventTest);
+      view.waitEvent(eventTest);
       case sf::Event::MouseButtonPressed:
         if (eventTest.MouseButtonPressed && isMouseLeftClicked(eventTest)) {
           if (isFirstTurn) {
