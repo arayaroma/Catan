@@ -27,6 +27,10 @@ void TradeView::goView() {
                     woolButtonClicked(eventTest);
                     mineralButtonClicked(eventTest);
                     tradeButtonClicked(eventTest);
+
+                    if (isTradeClicked) {
+                        view.close();
+                    }
                 }
                 break;
             case sf::Event::Closed:

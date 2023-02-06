@@ -128,9 +128,8 @@ void PlayView::createButtons() {
       Button("Option1", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
   save = Button("Guardar", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
   close = Button("Close", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
-  howTrade= Button("¡Info.Comprar!", { 120, 35 }, 16, sf::Color::Green, sf::Color::Black);
-  howBuy= Button("¡Info.Intercambiar!", { 120, 35 }, 16, sf::Color::Green, sf::Color::Black);
-
+  howTrade = Button("¡Info.Comprar!", { 140, 35 }, 16, sf::Color::Green, sf::Color::Black);
+  howBuy = Button("¡Info.Intercambiar!", { 180, 35 }, 16, sf::Color::Green, sf::Color::Black);
   setButtonOrigins();
 }
 
@@ -139,7 +138,8 @@ void PlayView::setButtonOrigins() {
 
   p.setFont(font);
   p.setPosition({0, 0}, 3);
-
+  p.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
+      view);
   turn.setFont(font);
   turn.setPosition({985, 600}, 3);
 
@@ -160,25 +160,28 @@ void PlayView::setButtonOrigins() {
   close.setPosition({985, 660}, 3);
 
   howTrade.setFont(font);
-  howTrade.setPosition({ 985, 380 }, 3);
+  howTrade.setPosition({ 1075, 465 }, 3);
+  howTrade.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
+      view);
   howBuy.setFont(font);
-  howBuy.setPosition({ 985, 420 }, 3);
-
+  howBuy.setPosition({ 1050, 425 }, 3);
+  howBuy.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
+      view);
 }
 
 void PlayView::createInfoTradeButton() {
-    howTrade = Button("¡Info.Comprar!", { 130, 35 }, 16, sf::Color::Green, sf::Color::Black);
+    howTrade = Button("¡Info.Comprar!", { 140, 35 }, 16, sf::Color::Green, sf::Color::Black);
 
     howTrade.setFont(font);
-    howTrade.setPosition({ 1075, 415 }, 3);
+    howTrade.setPosition({ 1075, 465 }, 3);
     howTrade.drawButton(view);
     howTrade.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
         view);
 }
 void PlayView::createInfoBuyButton() {
-    howBuy = Button("¡Info.Intercambiar!", { 170, 35 }, 16, sf::Color::Green, sf::Color::Black);
+    howBuy = Button("¡Info.Intercambiar!", { 150, 35 }, 16, sf::Color::Green, sf::Color::Black);
     howBuy.setFont(font);
-    howBuy.setPosition({ 1040, 455 }, 3);
+    howBuy.setPosition({ 1050, 425 }, 3);
     howBuy.drawButton(view);
     howBuy.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
         view);
@@ -189,15 +192,16 @@ void PlayView::isInfoBuyClicked(sf::Event event) {
     if (howBuy.isMouseOver(view)) {
         log("aaaa");
         NoneAlert* alert = new NoneAlert(
-            "Texto vacio", "1-Dar click en la imagen de poblado,/n ciudad o cartas de desarrollo que se encuentran en la parte /n inferior izquierda de la pantalla.");
+            "Texto vacio", "1-Dar click en carta que quieres cambiar, dar al boton trueque y seleccionar por cual la quieres cambiar.");
         alert->goView();
     }
 }
 void PlayView::isInfoTradeClicked(sf::Event event) {
     if (howTrade.isMouseOver(view)) {
         NoneAlert* alert = new NoneAlert(
-            "Texto vacio", "1-Dar click en la imagen de poblado,/n ciudad o cartas de desarrollo que se encuentran en la parte /n inferior izquierda de la pantalla.");
+            "Texto vacio", "1-Dar click en la imagen de carta situada a la izquierda de la pantalla y situala en el tablero.\n"); 
         alert->goView();
+       
     }
 }
 
@@ -297,8 +301,11 @@ void PlayView::createLabelFigurePlayer() {
 
 void PlayView::printPlayerDevelopCard() {
   printImages("Images/playerCard/mini_progressCard1.png", 735, 640);
-  printImages("Images/playerCard/mini_knightCard1.png", 775, 640);
-  printImages("Images/playerCard/mini_victoryPointCard1.png", 815, 640);
+  printImages("Images/playerCard/mini_progressCard2.png", 775, 640);
+  printImages("Images/playerCard/mini_progressCard3 .png", 815, 640);
+  printImages("Images/playerCard/mini_knightCard1.png", 860, 640);
+  printImages("Images/playerCard/mini_victoryPointCard1.png", 900, 640);
+
 }
 
 void PlayView::createLabelPlayerDevelopCard() {
@@ -315,15 +322,31 @@ void PlayView::createLabelPlayerDevelopCard() {
       sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 830.f, 620.f);
 }
 /*methods of creating Buttons*/
+void PlayView::createInfoBuy() {
+    howBuy = Button("¡Info.Comprar!", { 120, 35 }, 16, sf::Color::Green, sf::Color::Black);
+    howBuy.setFont(font);
+    howBuy.setPosition({ 1020, 440 }, 3);
+    howBuy.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
+        view);
+}
+void PlayView::crateInfoTrade() {
+    howTrade = Button("¡Info.Intercambiar!", { 120, 35 }, 16, sf::Color::Green, sf::Color::Black);
+    howTrade.setFont(font);
+    howTrade.setPosition({ 1000, 400 }, 3);
+    howTrade.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
+        view);
+
+}
 
 void PlayView::createTradeButton() {
-  trade = Button("Trueque", {120, 35}, 16, sf::Color::Green, sf::Color::White);
+
   trade = Button("Trueque", {120, 35}, 16, sf::Color::Green, sf::Color::White);
   trade.setFont(font);
   trade.setPosition({20, 600}, 3);
   trade.drawButton(view);
   trade.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
                           view);
+
 }
 
 void PlayView::createTurnButton() {
@@ -370,8 +393,7 @@ void PlayView::createDiceButton() {
 void PlayView::loadGameButtons() {
   loadPlayersRectangle();
   loadCardsRectangle();
-  createInfoBuyButton();
-  createInfoTradeButton(); 
+  
   createTradeButton();
   createTurnButton();
   createPButton();
@@ -643,10 +665,10 @@ void PlayView::clickInDevelopCardBuy(int x, int y) {
   }
 }
 void PlayView::clickTradeButton(sf::Event event) {
+   
   if (trade.isMouseOver(view)) {
     tradeView.goView();
-    // aca poner que cuando le da click en algun material y le da trade ir al
-    // metodo para intercambiar
+    log("bbb");
     traverseLandsToTrade();
     if (isPlayerNormalPortNeighbor || isPlayerSpecialPortNeighbor) {
       if (isPlayerNormalPortNeighbor) {
@@ -960,6 +982,8 @@ void PlayView::goView() {
 
             isDiceButtonClicked(getMousePositionX(view),
                                 getMousePositionY(view));
+            clickTradeButton(eventTest);
+            isBuyButtonClicked(eventTest);
 
             clickInCityBuy(getMousePositionX(view), getMousePositionY(view));
 
@@ -971,8 +995,6 @@ void PlayView::goView() {
             clickMineralTrade(getMousePositionX(view), getMousePositionY(view));
             clickInDevelopCardBuy(getMousePositionX(view),
                                   getMousePositionY(view));
-            clickTradeButton(eventTest);
-            isBuyButtonClicked(eventTest);
           }
           isTurnButtonClicked(sf::Mouse::getPosition(view).x,
                               sf::Mouse::getPosition(view).y);
@@ -999,6 +1021,8 @@ void PlayView::isDiceButtonClicked(int x, int y) {
     }
   }
 }
+
+
 
 bool PlayView::existsAnOwnerInVertex(list<Vertex *>::iterator vertexIterator) {
   return (game.graph.getVertex((*vertexIterator)->getVertexId())->getOwner() !=

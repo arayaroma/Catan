@@ -28,7 +28,12 @@ protected:
 protected:
   virtual string separateText(string);
   virtual sf::Text getTitleMessage() const;
-  virtual bool isOkButtonPressed(sf::Event);
+
+public:
+  virtual bool isOkButtonPressed(sf::Event event) {
+      log(okButton.isPressed(event));
+      return (okButton.isPressed(event));
+  }
 
 private:
   int characterLimit;
@@ -42,6 +47,7 @@ private:
     characterLimit++;
   }
 
+
   void makeAnEnterSpace() {
     modifiedText += enterSpace;
     characterLimit = initializeCharacterLimit();
@@ -54,7 +60,7 @@ protected:
   int alertType;
   Label *titleLabel, *messageLabel;
   string titleMessage, bodyMessage;
-  Button okButton;
+  Button okButton,nextButton;
   sf::Texture imageIcon;
   sf::Sprite imageIconSprite;
 };
