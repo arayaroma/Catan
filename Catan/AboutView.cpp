@@ -11,7 +11,7 @@ void AboutView::loadView() {
 void AboutView::drawView() {
   view.draw(sprite);
   view.draw(back->getTextInstance());
-  view.display();
+  displayView();
 }
 
 void AboutView::goView() {
@@ -22,32 +22,25 @@ void AboutView::goView() {
     while (view.pollEvent(event)) {
       switch (event.type) {
       case sf::Event::KeyPressed:
-        if (isEscapePressed()) {
-          view.close();
-          TitleView titleView;
-          titleView.goView();
-        }
+        if (isQKeyPressed())
+          goTitleView();
 
         break;
       case sf::Event::Closed:
-        view.close();
+        closeView();
         break;
       }
     }
   }
 }
 
+void AboutView::goTitleView() {
+  closeView();
+  TitleView titleView;
+  titleView.goView();
+}
+
 void AboutView::loadLabels() {
   back =
       new Label("<---", sf::Color::Black, font, sf::Text::Bold, 18, 20.f, 20.f);
-}
-
-bool AboutView::isMouseLeft(sf::Event event) const {
-  return (event.mouseButton.button == sf::Mouse::Left);
-}
-
-bool AboutView::isEscapePressed() const {
-  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-    return true;
-  return false;
 }

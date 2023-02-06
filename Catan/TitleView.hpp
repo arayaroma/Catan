@@ -1,13 +1,14 @@
 #pragma once
 #include "AboutView.hpp"
-#include "NoneAlert.hpp"
 #include "ConfirmationAlert.hpp"
-#include "WarningAlert.hpp"
-#include "InformationAlert.hpp"
 #include "ErrorAlert.hpp"
+#include "InformationAlert.hpp"
 #include "Label.hpp"
+#include "MenuView.hpp"
+#include "NoneAlert.hpp"
 #include "RegisterView.hpp"
 #include "View.hpp"
+#include "WarningAlert.hpp"
 #include <SFML/Graphics.hpp>
 
 #define aboutView_X0 485
@@ -35,6 +36,8 @@ private:
   bool isMouseLeft(sf::Event) const;
   bool isAboutView(sf::Event) const;
   bool isPlayView(sf::Event) const;
+  void goMenuView();
+  void goAboutView();
 
 private:
   Label *title, *play, *about;

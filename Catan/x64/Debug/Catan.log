@@ -24,12 +24,13 @@
   Component.cpp
   Label.cpp
   Land.cpp
+  MenuView.cpp
   Mineral.cpp
   NoneAlert.cpp
   Player.cpp
   PlayView.cpp
-C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(37,38): warning C4305: 'argument': truncation from 'int' to 'sf::Uint8'
-C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(36,41): warning C4309: 'argument': truncation of constant value
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(44,38): warning C4305: 'argument': truncation from 'int' to 'sf::Uint8'
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(43,41): warning C4309: 'argument': truncation of constant value
   Progress.cpp
   RegisterView.cpp
   Road.cpp
@@ -41,11 +42,10 @@ C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(36,41): warni
   VictoryPoints.cpp
   View.cpp
   WarningAlert.cpp
-  Wheat.cpp
   Generating Code...
   Compiling...
+  Wheat.cpp
   Wood.cpp
   Wool.cpp
   Generating Code...
-  LINK : C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe not found or not built by the last incremental link; performing full link
   Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe

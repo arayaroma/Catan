@@ -157,6 +157,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Land.cpp" />
+    <ClCompile Include="MenuView.cpp" />
     <ClCompile Include="Mineral.cpp" />
     <ClCompile Include="NoneAlert.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -202,6 +203,7 @@
     <ClInclude Include="StaticView.h" />
     <ClInclude Include="Human.hpp" />
     <ClInclude Include="InformationAlert.hpp" />
+    <ClInclude Include="MenuView.hpp" />
     <ClInclude Include="NoneAlert.hpp" />
     <ClInclude Include="PlayView.hpp" />
     <ClInclude Include="RegisterView.hpp" />

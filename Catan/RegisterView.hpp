@@ -1,15 +1,16 @@
 #pragma once
 #include "Button.hpp"
 #include "Label.hpp"
+#include "MenuView.hpp"
 #include "PlayView.hpp"
 #include "Player.hpp"
 #include "TextBox.hpp"
-#include "TitleView.hpp"
 #include "View.hpp"
 #include <SFML/Graphics.hpp>
 #include <list>
 
 using std::list;
+using std::string;
 class RegisterView : public View {
 public:
   void goView() override;
@@ -20,9 +21,9 @@ private:
 
 public:
   RegisterView();
+  RegisterView(string);
 
 private:
-  bool isEscapePressed() const;
   void registerButton();
   void showCoordinates(sf::Event);
   void loadTextFields(TextBox &);
@@ -42,12 +43,10 @@ private:
   void loadColorsGreen();
 
   void getNames();
-  void drawColors(); 
+  void drawColors();
 
   void getNamesThreePlayers();
   void getNamesFourPlayers();
-
-
 
   void loadPlayerList();
   void loadThreePlayers();
@@ -61,13 +60,12 @@ private:
   void drawTextboxes();
   void drawButtons();
 
-  void goTitleView();
+  void goMenuView();
   bool isPlayButtonPressed();
   bool isClearButtonPressed();
   void playButtonPressed();
   void clearButtonPressed();
   void loadBeforeChangingScene();
-
 
   void playerOneColor();
   void playerTwoColor();
@@ -75,15 +73,13 @@ private:
   void playerFourColor();
 
   void isAnyColorPressed(sf::Event event);
+
 private:
-  TextBox firstTextbox, secondTextbox, thirdTextbox, fourthTextbox, newGame,
-      loadGame;
+  TextBox firstTextbox, secondTextbox, thirdTextbox, fourthTextbox;
   Label *title, *name, *color, *note;
-  Button threePlayersButton, fourPlayersButton, playButton,loadGames, newGames, clear,
-	  blue0, yellow0, red0, green0,
-	  blue1,yellow1,red1,green1,
-	  blue2, yellow2, red2, green2,
-	  blue3, yellow3, red3, green3;
+  Button threePlayersButton, fourPlayersButton, playButton, clear, blue0,
+      yellow0, red0, green0, blue1, yellow1, red1, green1, blue2, yellow2, red2,
+      green2, blue3, yellow3, red3, green3;
 
   bool isThreePlayers = false;
   bool isFourPlayers = false;
@@ -92,7 +88,6 @@ private:
   string colorPlayerTwo = "";
   string colorPlayerThree = "";
   string colorPlayerFour = "";
-
 
   float y = 245;
   float x = 580;
