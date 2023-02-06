@@ -752,7 +752,7 @@ void PlayView::buyDevelopCard() {
   if ((*game.playerIterator)->mineralCard->size() >= 1 &&
       (*game.playerIterator)->wheatlCard->size() >= 1 &&
       (*game.playerIterator)->woolCard->size() >= 1) {
-    void receiveBoughtDevelopCard();
+    receiveBoughtDevelopCard();
   }
 }
 
@@ -1446,6 +1446,7 @@ void PlayView::loadHexagonNodes(list<Vertex *>::iterator itX, double posX,
     }
   }
 }
+
 bool PlayView::getIsVertexGraphClicked(list<Vertex *>::iterator it) {
   if (!game.graph.getVertex((*it)->getVertexId())->isClicked())
     return false;
@@ -1492,6 +1493,7 @@ void PlayView::clickMineralTrade(int x, int y) {
     isWheatTradeClicked = false;
   }
 }
+
 void PlayView::clickWoodTrade(int x, int y) {
   if (x > 480 && x < 480 + 40 && y > 640 && y < 640 + 40) {
     isCLayTradeClicked = false;
@@ -1501,6 +1503,7 @@ void PlayView::clickWoodTrade(int x, int y) {
     isWheatTradeClicked = false;
   }
 }
+
 void PlayView::clickWoolTrade(int x, int y) {
   if (x > 520 && x < 520 + 40 && y > 640 && y < 640 + 40) {
     isCLayTradeClicked = false;
@@ -1510,6 +1513,7 @@ void PlayView::clickWoolTrade(int x, int y) {
     isWheatTradeClicked = false;
   }
 }
+
 void PlayView::clickWheatTrade(int x, int y) {
   if (x > 440 && x < 440 + 40 && y > 640 && y < 640 + 40) {
     isCLayTradeClicked = false;
@@ -1519,6 +1523,7 @@ void PlayView::clickWheatTrade(int x, int y) {
     isWheatTradeClicked = true;
   }
 }
+
 void PlayView::clickClayTrade(int x, int y) {
   if (x > 360 && x < 360 + 40 && y > 640 && y < 640 + 40) {
     isCLayTradeClicked = true;
@@ -1528,6 +1533,7 @@ void PlayView::clickClayTrade(int x, int y) {
     isWheatTradeClicked = false;
   }
 }
+
 void PlayView::traverseLandsToTrade() {
   it = landsList->begin();
   while (it != landsList->end()) {
@@ -1535,6 +1541,7 @@ void PlayView::traverseLandsToTrade() {
     it++;
   }
 }
+
 void PlayView::townsInPort(list<Land *>::iterator it) {
   list<Vertex *>::iterator vIterator;
   vIterator = (*it)->getTownsList()->begin();
@@ -1545,8 +1552,9 @@ void PlayView::townsInPort(list<Land *>::iterator it) {
             NULL) {
           if (game.graph.getVertex((*vIterator)->getVertexId())
                   ->getOwner()
-                  ->getName() == (*playerIterator)->getName()) {
+                  ->getName() == (*game.playerIterator)->getName()) {
             isPlayerNormalPortNeighbor = true;
+            isPlayerSpecialPortNeighbor = false;
           }
         }
       }
@@ -1558,8 +1566,9 @@ void PlayView::townsInPort(list<Land *>::iterator it) {
           if (game.graph.getVertex((*vIterator)->getVertexId())
                   ->getOwner()
                   ->getName() == // no son mismos nombres
-              (*playerIterator)->getName()) {
+              (*game.playerIterator)->getName()) {
             isPlayerSpecialPortNeighbor = true;
+            isPlayerNormalPortNeighbor = false;
           }
         }
       }
@@ -1567,6 +1576,7 @@ void PlayView::townsInPort(list<Land *>::iterator it) {
     vIterator++;
   }
 }
+
 bool PlayView::townIsNormalPortNeighbor(list<Vertex *>::iterator vIterator) {
   if ((*vIterator)->getVertexId() == 1 || (*vIterator)->getVertexId() == 4 ||
       (*vIterator)->getVertexId() == 16 || (*vIterator)->getVertexId() == 27 ||
@@ -1577,6 +1587,7 @@ bool PlayView::townIsNormalPortNeighbor(list<Vertex *>::iterator vIterator) {
     return false;
   }
 }
+
 bool PlayView::townIsSpecialPortNeighbor(list<Vertex *>::iterator vIterator) {
   if ((*vIterator)->getVertexId() == 2 || (*vIterator)->getVertexId() == 6 ||
       (*vIterator)->getVertexId() == 17 || (*vIterator)->getVertexId() == 12 ||
@@ -1588,6 +1599,7 @@ bool PlayView::townIsSpecialPortNeighbor(list<Vertex *>::iterator vIterator) {
     return false;
   }
 }
+
 bool PlayView::landIsNormalPortNeighbor(list<Land *>::iterator it) {
   if ((*it)->getLandId() == 1 || (*it)->getLandId() == 7 ||
       (*it)->getLandId() == 12 || (*it)->getLandId() == 17) {
@@ -1595,6 +1607,7 @@ bool PlayView::landIsNormalPortNeighbor(list<Land *>::iterator it) {
   }
   return false;
 }
+
 bool PlayView::landIsSpecialPortNeighbor(list<Land *>::iterator it) {
   if ((*it)->getLandId() == 2 || (*it)->getLandId() == 4 ||
       (*it)->getLandId() == 13 || (*it)->getLandId() == 19 ||
@@ -1603,17 +1616,18 @@ bool PlayView::landIsSpecialPortNeighbor(list<Land *>::iterator it) {
   }
   return false;
 }
+
 void PlayView::tradeCard() {
   if (tradeView.isCLayButtonClicked)
-    (*playerIterator)->clayCard->push_back(new Clay());
+    (*game.playerIterator)->clayCard->push_back(new Clay());
   if (tradeView.isMineralButtonClicked)
-    (*playerIterator)->mineralCard->push_back(new Mineral());
+    (*game.playerIterator)->mineralCard->push_back(new Mineral());
   if (tradeView.isWheatButtonClicked)
-    (*playerIterator)->wheatlCard->push_back(new Wheat());
+    (*game.playerIterator)->wheatlCard->push_back(new Wheat());
   if (tradeView.isWoodButtonClicked)
-    (*playerIterator)->woodCard->push_back(new Wood());
+    (*game.playerIterator)->woodCard->push_back(new Wood());
   if (tradeView.isWoolButtonClicked)
-    (*playerIterator)->woolCard->push_back(new Wool());
+    (*game.playerIterator)->woolCard->push_back(new Wool());
 }
 
 void PlayView::tradePossible() {
@@ -1649,6 +1663,7 @@ void PlayView::tradePossible() {
     tradeCard();
   }
 }
+
 void PlayView::tradeNormal() {
   int iterator = 0;
   if (isCLayTradeClicked) {
@@ -1682,6 +1697,7 @@ void PlayView::tradeNormal() {
     tradeCard();
   }
 }
+
 void PlayView::tradeSpecial() {
   int iterator = 0;
   if (isCLayTradeClicked) {
