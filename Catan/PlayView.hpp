@@ -2,11 +2,12 @@
 #include "Button.hpp"
 #include "BuyView.hpp"
 #include "Dice.hpp"
+#include "FileHandler.hpp"
 #include "Label.hpp"
+#include "TradeView.h"
 #include "View.hpp"
 #include <SFML/Graphics.hpp>
 #include <string>
-#include "TradeView.h"
 
 #define pi 3.14159265358979323846
 #define firstAngle (3 * pi) / 2
@@ -85,7 +86,8 @@ private:
 
 public:
   PlayView();
-  PlayView(list<Player *> *);
+  PlayView(Game &);
+  PlayView(list<Player *> *, string);
 
 private:
   void loadPlayersRectangle();
@@ -269,15 +271,18 @@ private:
   void deleteProgressCard();
 
   void traverseLandsToTrade();
-  bool landIsNormalPortNeighbor(list<Land*>::iterator it);
-  bool landIsSpecialPortNeighbor(list<Land*>::iterator it);
-  bool townIsNormalPortNeighbor(list<Vertex*>::iterator it);
-  bool townIsSpecialPortNeighbor(list<Vertex*>::iterator it);
-  void townsInPort(list<Land*>::iterator it);
+  bool landIsNormalPortNeighbor(list<Land *>::iterator it);
+  bool landIsSpecialPortNeighbor(list<Land *>::iterator it);
+  bool townIsNormalPortNeighbor(list<Vertex *>::iterator it);
+  bool townIsSpecialPortNeighbor(list<Vertex *>::iterator it);
+  void townsInPort(list<Land *>::iterator it);
   void tradePossible();
   void tradeNormal();
   void tradeSpecial();
   void tradeCard();
+
+  void saveMatchActualState();
+
 private:
   sf::Event eventTest;
   sf::RectangleShape playerRectangle, cardsRectangle, tradeRectangle;

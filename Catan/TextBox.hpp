@@ -1,7 +1,9 @@
 #pragma once
+#include "View.hpp"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <sstream>
+
 
 #define DELETE_KEY 8
 #define ENTER_KEY 13

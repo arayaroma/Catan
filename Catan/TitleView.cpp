@@ -13,7 +13,7 @@ void TitleView::drawView() {
   view.draw(title->getTextInstance());
   view.draw(play->getTextInstance());
   view.draw(about->getTextInstance());
-  view.display();
+  displayView();
 }
 
 void TitleView::goView() {
@@ -25,31 +25,33 @@ void TitleView::goView() {
       switch (event.type) {
       case sf::Event::MouseButtonPressed:
         if (isMouseLeft(event)) {
-          if (isPlayView(event)) {
-            view.close();
-            RegisterView registerView;
-            registerView.goView();
-          }
 
-          if (isAboutView(event)) {
-            view.close();
-            AboutView aboutView;
-            aboutView.goView();
-          }
+          if (isPlayView(event))
+            goMenuView();
+
+          if (isAboutView(event))
+            goAboutView();
         }
         break;
 
       case sf::Event::Closed:
-        view.close();
-        break;
-
-      default:
-        // if (goBack(titleWindow))
-        // titleWindow.close();
+        closeView();
         break;
       }
     }
   }
+}
+
+void TitleView::goMenuView() {
+  closeView();
+  MenuView menuView;
+  menuView.goView();
+}
+
+void TitleView::goAboutView() {
+  closeView();
+  AboutView aboutView;
+  aboutView.goView();
 }
 
 void TitleView::loadLabels() {
