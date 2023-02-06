@@ -30,6 +30,7 @@ private:
   void loadButtons();
   void loadRegisterButtons(Button &, sf::Color color);
   void loadRegisterButtons(Button &);
+  void loadColorButtons(Button&, sf::Color color);
   bool isThreePlayersButtonPressed(sf::Event);
   bool isFourPlayersButtonPressed(sf::Event);
 
@@ -42,8 +43,7 @@ private:
   void loadColorsYellow();
   void loadColorsGreen();
 
-  void getNames();
-  void drawColors();
+ 
 
   void getNamesThreePlayers();
   void getNamesFourPlayers();

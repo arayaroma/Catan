@@ -8,6 +8,8 @@
 #include "View.hpp"
 #include <SFML/Graphics.hpp>
 #include <string>
+#include "Alert.hpp"
+#include "NoneAlert.hpp"
 
 #define pi 3.14159265358979323846
 #define firstAngle (3 * pi) / 2
@@ -213,14 +215,19 @@ private:
   bool playerHasPutTwoTowns() const;
   bool isPlayerTownsListTraversal() const;
 
-  void createBuyButton();
+
   void createTradeButton();
+  void createInfoTradeButton();
+  void createInfoBuyButton();
   void createTurnButton();
   void createPButton();
   void createOptionOneButton();
   void createSaveButton();
   void createCloseButton();
   void createDiceButton();
+
+  void isInfoBuyClicked(sf:: Event ); 
+  void isInfoTradeClicked(sf:: Event); 
 
   void printLandsDiceNumbers();
   void createLabelDiceNumber(list<Land *>::iterator);
@@ -285,8 +292,8 @@ private:
 
 private:
   sf::Event eventTest;
-  sf::RectangleShape playerRectangle, cardsRectangle, tradeRectangle;
-  Label *materialCard, *pricingTable, *turns, *cards, *developCard;
+  sf::RectangleShape playerRectangle, cardsRectangle, buyRectangle;
+  Label *materialCard, *pricingTable, *turns, *cards, *developCard, *labelBuy;
   Label *player1, *player2, *player3, *player4;
   Label *clayCard, *mineralPlayerCard, *wheatPlayerCard, *woodPlayerCard,
       *woolPlayerCard, *firsThreeXone, *secondThreeXone, *thirdThreeXone,
@@ -296,5 +303,5 @@ private:
       *titleScorePlayer;
   Label *knight, *progress, *victory;
   Label *woodGame, *woolGame, *clayGame, *mineralGame, *wheatGame;
-  Button turn, buy, trade, dice, p, option1, save, close;
+  Button turn, buy, trade, dice, p, option1, save, close,howTrade,howBuy;
 };

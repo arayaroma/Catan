@@ -1,21 +1,2 @@
-﻿  AboutView.cpp
-  Alert.cpp
-  Application.cpp
-  BuyView.cpp
-  ConfirmationAlert.cpp
-  ErrorAlert.cpp
-  InformationAlert.cpp
-  main.cpp
-  MenuView.cpp
-  NoneAlert.cpp
-  PlayView.cpp
-C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(44,38): warning C4305: 'argumento': truncamiento de 'int' a 'sf::Uint8'
-C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(43,41): warning C4309: 'argumento': truncamiento de valor constante
-  RegisterView.cpp
-  TextBox.cpp
-  TitleView.cpp
-  TradeView.cpp
-  View.cpp
-  WarningAlert.cpp
-  Generando código...
+﻿  PlayView.cpp
   Catan.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Catan.exe

@@ -34,13 +34,10 @@ void RegisterView::loadTextboxes() {
 }
 
 void RegisterView::makePlayerButtons() {
-  fourPlayersButton =
-      Button("4 Jugadores", {200, 60}, 20, sf::Color::Green, sf::Color::Black);
-  threePlayersButton =
-      Button("3 Jugadores", {200, 60}, 20, sf::Color::Green, sf::Color::Black);
-  blue0 = Button("", {30, 30}, 20, sf::Color::Green, sf::Color::Black);
-  yellow0 = Button("", {30, 30}, 20, sf::Color::Green, sf::Color::Black);
-  red0 = Button("", {30, 30}, 20, sf::Color::Green, sf::Color::Black);
+
+  blue0 = Button("", {30, 30}, 20, sf::Color::Blue, sf::Color::Black);
+  yellow0 = Button("", {30, 30}, 20, sf::Color::Yellow, sf::Color::Black);
+  red0 = Button("", {30, 30}, 20, sf::Color::Red, sf::Color::Black);
   green0 = Button("", {30, 30}, 20, sf::Color::Green, sf::Color::Black);
 
   blue1 = blue0;
@@ -59,6 +56,10 @@ void RegisterView::makePlayerButtons() {
 
 void RegisterView::makeButtons() {
   makePlayerButtons();
+  fourPlayersButton =
+      Button("4 Jugadores", { 200, 60 }, 20, sf::Color::Green, sf::Color::Black);
+  threePlayersButton =
+      Button("3 Jugadores", { 200, 60 }, 20, sf::Color::Green, sf::Color::Black);
   playButton =
       Button("Jugar", {150, 60}, 20, sf::Color::Blue, sf::Color::Black);
 
@@ -144,8 +145,8 @@ void RegisterView::playButtonPressed() {
 
 void RegisterView::clearButtonPressed() {
   clearView();
-  isThreePlayers = false;
-  isFourPlayers = false;
+
+  makePlayerButtons(); 
   displayView();
 
   closeView();
@@ -357,9 +358,9 @@ void RegisterView::loadFourColors() {
   blue3.drawButton(view);
   red3.setPosition({620, 425}, 3);
   red3.drawButton(view);
-  loadRegisterButtons(red3, sf::Color::Red);
-  loadRegisterButtons(yellow3, sf::Color::Yellow);
-  loadRegisterButtons(blue3, sf::Color::Blue);
+  loadColorButtons(red3, sf::Color(181, 26, 20));
+  loadColorButtons(yellow3, sf::Color(199, 191, 42));
+  loadColorButtons(blue3, sf::Color(19, 23, 126));
 }
 
 void RegisterView::loadRegisterButtons(Button &button, sf::Color color) {
@@ -371,6 +372,14 @@ void RegisterView::loadRegisterButtons(Button &button, sf::Color color) {
   button.drawButton(view);
 }
 
+
+void RegisterView::loadColorButtons(Button& button, sf::Color color) {
+    if (button.isPressed(event)) {
+        button.setBackgroundColor(color);
+    }
+    button.drawButton(view);
+}
+
 void RegisterView::loadColorsBlue() {
 
   blue0.setPosition({580, 245}, 3);
@@ -380,9 +389,9 @@ void RegisterView::loadColorsBlue() {
   blue2.setPosition({580, 365}, 3);
   blue2.drawButton(view);
 
-  loadRegisterButtons(blue0, sf::Color::Blue);
-  loadRegisterButtons(blue1, sf::Color::Blue);
-  loadRegisterButtons(blue2, sf::Color::Blue);
+  loadColorButtons(blue0, sf::Color (19,23,126));
+  loadColorButtons(blue1, sf::Color(19, 23, 126));
+  loadColorButtons(blue2, sf::Color(19, 23, 126));
 }
 
 void RegisterView::loadColorsRed() {
@@ -393,9 +402,9 @@ void RegisterView::loadColorsRed() {
   red1.drawButton(view);
   red2.setPosition({620, 365}, 3);
   red2.drawButton(view);
-  loadRegisterButtons(red0, sf::Color::Red);
-  loadRegisterButtons(red1, sf::Color::Red);
-  loadRegisterButtons(red2, sf::Color::Red);
+  loadColorButtons(red0, sf::Color(181,26,20));
+  loadColorButtons(red1, sf::Color(181, 26, 20));
+  loadColorButtons(red2, sf::Color(181, 26, 20));
 }
 
 void RegisterView::loadColorsYellow() {
@@ -405,9 +414,9 @@ void RegisterView::loadColorsYellow() {
   yellow1.drawButton(view);
   yellow2.setPosition({660, 365}, 3);
   yellow2.drawButton(view);
-  loadRegisterButtons(yellow0, sf::Color::Yellow);
-  loadRegisterButtons(yellow1, sf::Color::Yellow);
-  loadRegisterButtons(yellow2, sf::Color::Yellow);
+  loadColorButtons(yellow0, sf::Color(199,191,42));
+  loadColorButtons(yellow1, sf::Color(199,191,42));
+  loadColorButtons(yellow2, sf::Color(199,191,42));
 }
 
 void RegisterView::loadColorsGreen() {
@@ -420,14 +429,14 @@ void RegisterView::loadColorsGreen() {
   green2.drawButton(view);
   green3.setPosition({700, 425}, 3);
   green3.drawButton(view);
-  loadRegisterButtons(green0, sf::Color::Green);
-  loadRegisterButtons(green1, sf::Color::Green);
-  loadRegisterButtons(green2, sf::Color::Green);
-  loadRegisterButtons(green3, sf::Color::Green);
+  loadColorButtons(green0, sf::Color(67,199,42));
+  loadColorButtons(green1, sf::Color(67, 199, 42));
+  loadColorButtons(green2, sf::Color(67, 199, 42));
+  loadColorButtons(green3, sf::Color(67, 199, 42));
 }
 
 void RegisterView::playerOneColor() {
-
+   
   if (blue0.isMouseOver(view))
     colorPlayerOne = "BLUE";
   if (green0.isMouseOver(view))
