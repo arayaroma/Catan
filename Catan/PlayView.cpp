@@ -763,17 +763,17 @@ void PlayView::buildCity() {
 }
 
 void PlayView::isBuyButtonClicked(sf::Event event) {
-  if (buy.isMouseOver(view)) {
-    if (isTownBuyClicked) {
-      buildTown();
-    }
-    if (isCityBuyClicked) {
-      buildCity();
-    }
-    if (buyView.isBuyClicked) {
-      buyDevelopCard();
-    }
-  }
+    //if (buy.isMouseOver(view)) {
+        if (isTownBuyClicked) {
+            buildTown();
+        }
+        if (isCityBuyClicked) {
+            buildCity();
+        }
+        if (buyView.isBuyClicked) {
+            buyDevelopCard();
+        }
+   // }
 }
 
 void PlayView::createBuyButton() {
