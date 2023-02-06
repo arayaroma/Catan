@@ -725,7 +725,7 @@ void PlayView::buyDevelopCard() {
     if ((*game.playerIterator)->mineralCard->size() >= 1 &&
         (*game.playerIterator)->wheatlCard->size() >= 1 &&
         (*game.playerIterator)->woolCard->size() >= 1) {
-        void receiveBoughtDevelopCard();
+         receiveBoughtDevelopCard();
     }
 }
 void PlayView::buildCity() {
@@ -1498,8 +1498,9 @@ void PlayView::townsInPort(list<Land*>::iterator it) {
             if (townIsNormalPortNeighbor(vIterator)) {
                 if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() != NULL) {
                     if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner()->getName() ==
-                        (*playerIterator)->getName()) {
+                        (*game.playerIterator)->getName()) {
                         isPlayerNormalPortNeighbor = true;
+                        isPlayerSpecialPortNeighbor = false;
                     }
                 }
             }
@@ -1509,8 +1510,9 @@ void PlayView::townsInPort(list<Land*>::iterator it) {
             if (townIsSpecialPortNeighbor(vIterator)) {
                 if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() != NULL) {
                     if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner()->getName() == //no son mismos nombres
-                        (*playerIterator)->getName()) {
+                        (*game.playerIterator)->getName()) {
                         isPlayerSpecialPortNeighbor = true;
+                        isPlayerNormalPortNeighbor = false;
                     }
                 }
             }
@@ -1559,15 +1561,15 @@ bool PlayView::landIsSpecialPortNeighbor(list<Land*>::iterator it) {
 }
 void PlayView::tradeCard() {
     if (tradeView.isCLayButtonClicked)
-        (*playerIterator)->clayCard->push_back(new Clay());
+        (*game.playerIterator)->clayCard->push_back(new Clay());
     if (tradeView.isMineralButtonClicked)
-        (*playerIterator)->mineralCard->push_back(new Mineral());
+        (*game.playerIterator)->mineralCard->push_back(new Mineral());
     if (tradeView.isWheatButtonClicked)
-        (*playerIterator)->wheatlCard->push_back(new Wheat());
+        (*game.playerIterator)->wheatlCard->push_back(new Wheat());
     if (tradeView.isWoodButtonClicked)
-        (*playerIterator)->woodCard->push_back(new Wood());
+        (*game.playerIterator)->woodCard->push_back(new Wood());
     if (tradeView.isWoolButtonClicked)
-        (*playerIterator)->woolCard->push_back(new Wool());
+        (*game.playerIterator)->woolCard->push_back(new Wool());
 }
 
 void PlayView::tradePossible() {
