@@ -734,7 +734,7 @@ void PlayView::buildCity() {
     payRawMaterialsToBuyCity();
 }
 void PlayView::isBuyButtonClicked(sf::Event event) {
-    if (buy.isMouseOver(view)) {
+    //if (buy.isMouseOver(view)) {
         if (isTownBuyClicked) {
             buildTown();
         }
@@ -744,7 +744,7 @@ void PlayView::isBuyButtonClicked(sf::Event event) {
         if (buyView.isBuyClicked) {
             buyDevelopCard();
         }
-    }
+   // }
 }
 void PlayView::createBuyButton() {
   buy = Button("Comprar", {120, 35}, 16, sf::Color::Green, sf::Color::White);
