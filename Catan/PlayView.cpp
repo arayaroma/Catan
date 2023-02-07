@@ -819,12 +819,33 @@ void PlayView::receiveBoughtDevelopCard() {
           }
       }
 
-      if (buyView.isProgressButtonClicked) {
+      if (buyView.isProgress1ButtonClicked) {
           if (game.playerIterator != game.players->end()) {
               progressIterator = game.progressCards->begin();
               if (progressIterator != game.progressCards->end()) {
                   (*game.playerIterator)->progressCards->push_back((*progressIterator));
-                  deleteProgressCard();
+                  (*game.playerIterator)->progressDiscovery = (*progressIterator);
+                  deleteProgressCard((*progressIterator)->getType());
+              }
+          }
+      }
+      if (buyView.isProgress2ButtonClicked) {
+          if (game.playerIterator != game.players->end()) {
+              progressIterator = game.progressCards->begin();
+              if (progressIterator != game.progressCards->end()) {
+                  (*game.playerIterator)->progressCards->push_back((*progressIterator));
+                  (*game.playerIterator)->progressDiscovery = (*progressIterator);
+                  deleteProgressCard((*progressIterator)->getType());
+              }
+          }
+      }
+      if (buyView.isProgress3ButtonClicked) {
+          if (game.playerIterator != game.players->end()) {
+              progressIterator = game.progressCards->begin();
+              if (progressIterator != game.progressCards->end()) {
+                  (*game.playerIterator)->progressCards->push_back((*progressIterator));
+                  (*game.playerIterator)->progressMonopoly = (*progressIterator);
+                  deleteProgressCard((*progressIterator)->getType());
               }
           }
       }
@@ -849,7 +870,13 @@ void PlayView::receiveBoughtDevelopCard() {
 }
 void PlayView::deleteKnightCard() { game.knightCards->pop_back(); }
 void PlayView::deleteVictoryCard() { game.victoryPointCards->pop_back(); }
-void PlayView::deleteProgressCard() { game.progressCards->pop_back(); }
+void PlayView::deleteProgressCard(int type) { 
+    while (progressIterator != game.progressCards->end()) {
+        if((*progressIterator)->getType() == type)
+        game.progressCards->erase(progressIterator);
+        break;
+    }
+}
 
 void PlayView::buildTown() {
   if ((*game.playerIterator)->clayCard->size() >= 1 &&

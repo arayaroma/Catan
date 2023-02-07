@@ -46,4 +46,7 @@ public:
   list<Progress*>* progressCards;
   list<Knight*>* knightCards;
   list<VictoryPoints*>* victoryPointsCards;
+
+  Card* progressDiscovery;
+  Card* progressMonopoly;
 };

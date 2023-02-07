@@ -282,7 +282,7 @@ private:
   void receiveBoughtDevelopCard();
   void deleteKnightCard();
   void deleteVictoryCard();
-  void deleteProgressCard();
+  void deleteProgressCard(int);
 
   void traverseLandsToTrade();
   bool landIsNormalPortNeighbor(list<Land *>::iterator it);

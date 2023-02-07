@@ -288,7 +288,7 @@ void Game::makeDevelopCard() {
           
           if (i < 3 && x<2) {
               progressPath = imagePaths.at("progressPath") + stringNumber + endUrl;
-              progressCards->push_back(new Progress(progressPath));
+              progressCards->push_back(new Progress(num,progressPath));
           }
           if (x == 0) {
               victoryPointsPath = imagePaths.at("victoryPointsPath") + stringNumber + endUrl;

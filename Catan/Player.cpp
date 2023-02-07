@@ -17,6 +17,8 @@ Player::Player() {
   progressCards = new list<Progress*>();
   knightCards = new list<Knight*>();
   victoryPointsCards = new list<VictoryPoints*>();
+  this->progressDiscovery = nullptr;
+  this->progressMonopoly = nullptr;
 }
 
 Player::Player(string name, int score, string color) {
@@ -36,6 +38,8 @@ Player::Player(string name, int score, string color) {
   progressCards = new list<Progress*>();
   knightCards = new list<Knight*>();
   victoryPointsCards = new list<VictoryPoints*>();
+  this->progressDiscovery = nullptr;
+  this->progressMonopoly = nullptr;
 }
 
 void Player::setName(string name) { this->name = name; }
