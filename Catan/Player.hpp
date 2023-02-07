@@ -14,6 +14,7 @@ protected:
   int turnNumber;
   int townFirstTurn = 0;
   bool firstTurnFinished = false;
+  int progressDiscovery = 2;
 public:
   Player();
   Player(string, int, string);
@@ -25,6 +26,10 @@ public:
   void setName(string);
   string getName() const;
 
+  int getProgressDiscovery() { return this->progressDiscovery; }
+
+  void setProgressDiscovery(int n) { this->progressDiscovery = n; }
+  void restProgressDiscovery(int n) { this->progressDiscovery -= n; }
   void setColor(string);
   string getColor() const;
 
@@ -47,6 +52,6 @@ public:
   list<Knight*>* knightCards;
   list<VictoryPoints*>* victoryPointsCards;
 
-  Card* progressDiscovery;
+
   Card* progressMonopoly;
 };
