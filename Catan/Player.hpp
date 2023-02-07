@@ -53,5 +53,5 @@ public:
   list<VictoryPoints*>* victoryPointsCards;
 
 
-  Card* progressMonopoly;
+  Progress* progressMonopoly;
 };

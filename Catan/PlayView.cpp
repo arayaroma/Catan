@@ -829,8 +829,9 @@ void PlayView::receiveBoughtDevelopCard() {
               progressIterator = game.progressCards->begin();
               if (progressIterator != game.progressCards->end()) {
                   (*game.playerIterator)->progressCards->push_back((*progressIterator));
-                  (*game.playerIterator)->progressMonopoly = new Progress();
+                  (*game.playerIterator)->progressMonopoly = new Progress(true);
                   deleteProgressCard((*progressIterator)->getType());
+                  isMonopolyBuy = true;
               }
           }
       }
@@ -1245,10 +1246,11 @@ void PlayView::isTurnButtonClicked(int x, int y) {
             closeView();
         }
         else {
-            
             game.playerIterator++;
             numTurn++;
             isDiceSpinned = false;
+            if(isMonopolyBuy)
+                (*game.playerIterator)->progressMonopoly->setIsRecentlyBuy(false);
         }   
     }
     if (game.playerIterator == game.players->end()) {
@@ -1257,6 +1259,8 @@ void PlayView::isTurnButtonClicked(int x, int y) {
           firstTurn();
           numTurn = 1;
           isDiceSpinned = false;
+          if (isMonopolyBuy)
+              (*game.playerIterator)->progressMonopoly->setIsRecentlyBuy(false);
     }
   }
 }
@@ -1949,84 +1953,94 @@ void PlayView::tradeSpecial() {
 ///////PLAY DEVELOP CARD//////////
 void PlayView::playDiscoveryCard(sf::Event event) {
     if (progreessDiscovery.isPressed(event)) {
-        if ((*game.playerIterator)->getProgressDiscovery() > 0) {
-            if (isCLayTradeClicked || isWoodTradeClicked || isWoolTradeClicked || 
-                isWheatTradeClicked || isMineralTradeClicked) {
-                if (isCLayTradeClicked) {
-                    (*game.playerIterator)->clayCard->push_back(new Clay());
-                    deleteClayCards();
-                    (*game.playerIterator)->restProgressDiscovery(1);
+            if ((*game.playerIterator)->getProgressDiscovery() > 0) {
+                if (isCLayTradeClicked || isWoodTradeClicked || isWoolTradeClicked ||
+                    isWheatTradeClicked || isMineralTradeClicked) {
+                    if (isCLayTradeClicked) {
+                        (*game.playerIterator)->clayCard->push_back(new Clay());
+                        deleteClayCards();
+                        (*game.playerIterator)->restProgressDiscovery(1);
+                    }
+                    if (isWoodTradeClicked) {
+                        (*game.playerIterator)->woodCard->push_back(new Wood());
+                        deleteWoodCards();
+                        (*game.playerIterator)->restProgressDiscovery(1);
+                    }
+                    if (isWoolTradeClicked) {
+                        (*game.playerIterator)->woolCard->push_back(new Wool());
+                        deleteWoolCards();
+                        (*game.playerIterator)->restProgressDiscovery(1);
+                    }
+                    if (isWheatTradeClicked) {
+                        (*game.playerIterator)->wheatlCard->push_back(new Wheat());
+                        deleteWheatCards();
+                        (*game.playerIterator)->restProgressDiscovery(1);
+                    }
+                    if (isMineralTradeClicked) {
+                        (*game.playerIterator)->mineralCard->push_back(new Mineral());
+                        deleteMineralCards();
+                        (*game.playerIterator)->restProgressDiscovery(1);
+                    }
                 }
-                if (isWoodTradeClicked) {
-                    (*game.playerIterator)->woodCard->push_back(new Wood());
-                    deleteWoodCards();
-                    (*game.playerIterator)->restProgressDiscovery(1);
-                }
-                if (isWoolTradeClicked) {
-                    (*game.playerIterator)->woolCard->push_back(new Wool());
-                    deleteWoolCards();
-                    (*game.playerIterator)->restProgressDiscovery(1);
-                }
-                if (isWheatTradeClicked) {
-                    (*game.playerIterator)->wheatlCard->push_back(new Wheat());
-                    deleteWheatCards();
-                    (*game.playerIterator)->restProgressDiscovery(1);
-                }
-                if (isMineralTradeClicked) {
-                    (*game.playerIterator)->mineralCard->push_back(new Mineral());
-                    deleteMineralCards();
-                    (*game.playerIterator)->restProgressDiscovery(1);
+                else {
+                    ErrorAlert* alert = new ErrorAlert(
+                        "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
+                    alert->goView();
                 }
             }
             else {
                 ErrorAlert* alert = new ErrorAlert(
-                    "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
+                    "¡ERROR!", "NO POSEE LA CARTA DE PROGRESO 'DESCUBRIR'");
                 alert->goView();
+
             }
-        }
-        else {
-            ErrorAlert* alert = new ErrorAlert(
-                "¡ERROR!", "NO POSEE LA CARTA DE PROGRESO 'DESCUBRIR'");
-            alert->goView();
-        }
+        
     }
 }
 
  void PlayView::playMonopolyCard(sf::Event event) {
     if (progreessMonopoly.isPressed(event)) {
-        if ((*game.playerIterator)->progressMonopoly != nullptr) {
-            if (isCLayTradeClicked || isWoodTradeClicked || isWoolTradeClicked || isWheatTradeClicked || isMineralTradeClicked) {
-                if (isCLayTradeClicked) {
-                    getClaysPlayersToMonopoly();
-                    (*game.playerIterator)->progressMonopoly = nullptr;
-                    (*game.playerIterator)->progressCards->pop_back();
-                }
-                if (isWoodTradeClicked) {
-                    getWoodsPlayersToMonopoly();
-                    (*game.playerIterator)->progressMonopoly = nullptr;
-                    (*game.playerIterator)->progressCards->pop_back();
-                }
-                if (isWoolTradeClicked) {
-                    getWoolsPlayersToMonopoly();
-                    (*game.playerIterator)->progressMonopoly = nullptr;
-                    (*game.playerIterator)->progressCards->pop_back();
+        if(!(*game.playerIterator)->progressMonopoly->getIsRecentlyBuy()){
+            if ((*game.playerIterator)->progressMonopoly != nullptr) {
+                if (isCLayTradeClicked || isWoodTradeClicked || isWoolTradeClicked || isWheatTradeClicked || isMineralTradeClicked) {
+                    if (isCLayTradeClicked) {
+                        getClaysPlayersToMonopoly();
+                        (*game.playerIterator)->progressMonopoly = nullptr;
+                        (*game.playerIterator)->progressCards->pop_back();
+                    }
+                    if (isWoodTradeClicked) {
+                        getWoodsPlayersToMonopoly();
+                        (*game.playerIterator)->progressMonopoly = nullptr;
+                        (*game.playerIterator)->progressCards->pop_back();
+                    }
+                    if (isWoolTradeClicked) {
+                        getWoolsPlayersToMonopoly();
+                        (*game.playerIterator)->progressMonopoly = nullptr;
+                        (*game.playerIterator)->progressCards->pop_back();
 
+                    }
+                    if (isWheatTradeClicked) {
+                        getWheatsPlayersToMonopoly();
+                        (*game.playerIterator)->progressMonopoly = nullptr;
+                        (*game.playerIterator)->progressCards->pop_back();
+                    }
+                    if (isMineralTradeClicked) {
+                        getMineralsPlayersToMonopoly();
+                        (*game.playerIterator)->progressMonopoly = nullptr;
+                        (*game.playerIterator)->progressCards->pop_back();
+                    }
                 }
-                if (isWheatTradeClicked) {
-                    getWheatsPlayersToMonopoly();
-                    (*game.playerIterator)->progressMonopoly = nullptr;
-                    (*game.playerIterator)->progressCards->pop_back();
-                }
-                if (isMineralTradeClicked) {
-                    getMineralsPlayersToMonopoly();
-                    (*game.playerIterator)->progressMonopoly = nullptr;
-                    (*game.playerIterator)->progressCards->pop_back();
+                else {
+                    ErrorAlert* alert = new ErrorAlert(
+                        "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
+                    alert->goView();
                 }
             }
             else {
                 ErrorAlert* alert = new ErrorAlert(
-                    "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
+                    "¡ERROR!", "NO PUEDE JUGAR LA CARTA RECIENTEMENTE COMPRADA");
                 alert->goView();
+
             }
         }
     }

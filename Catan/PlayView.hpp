@@ -61,6 +61,7 @@ private:
   int lastIterationNumber = 680;
   int vertexIterationNumber;
   int turnNumber = 0;
+  bool isMonopolyBuy = false;
   string tempImagePath;
   string url = "";
   int numTurn = 1;
