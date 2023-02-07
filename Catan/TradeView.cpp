@@ -148,6 +148,7 @@ void TradeView::mineralButtonClicked(sf::Event event) {
 void TradeView::tradeButtonClicked(sf::Event event) {
     if (trade.isPressed(event)) {
         this->isTradeClicked = true;
+        view.close();
     }
 }
 void TradeView::drawButton(Button& btn) {

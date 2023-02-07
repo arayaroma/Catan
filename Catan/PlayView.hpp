@@ -304,6 +304,6 @@ private:
   Label *titleTurn, *labelNumTurn, *infoFisrtTurn, *labelNumDice, *scorePlayer,
       *titleScorePlayer;
   Label *knight, *progress, *victory;
-  Label *woodGame, *woolGame, *clayGame, *mineralGame, *wheatGame;
+  Label *woodGame, *woolGame, *clayGame, *mineralGame, *wheatGame, *numDevelopCard;
   Button turn, buy, trade, dice, p, option1, save, close,howTrade,howBuy;
 };

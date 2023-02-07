@@ -18,7 +18,7 @@ void PlayView::createLabelNumTurn() {
   titleTurn = new Label("Turno:  ", sf::Color(0, 0, 255, 128), font,
                         sf::Text::Bold, 20, 1030.f, 370.f);
   labelNumTurn = new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
-                           font, sf::Text::Bold, 20, 1160.f, 680.f);
+                           font, sf::Text::Bold, 20, 1120.f, 370.f);
   infoFisrtTurn = new Label( "Primera Ronda, por favor elija 2 poblados y pase de turno",
       sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 250.f, 500.f);
   labelNumDice = new Label(std::to_string(diceInstance.getActualNumber()),
@@ -27,6 +27,10 @@ void PlayView::createLabelNumTurn() {
 
   labelBuy = new Label("Comprar", sf::Color(0, 0, 255, 128), font,
       sf::Text::Bold, 20, 200.f, 585.f);
+
+  numDevelopCard = new Label(std::to_string(game.getKnightCards()->size() + game.getProgressCards()->size()
+                                + game.getVictoryPointsCards()->size()), sf::Color(0, 0, 255, 128), font,
+      sf::Text::Bold, 20, 80.f, 450.f);
 }
 
 void PlayView::printMaterialCard() {
@@ -410,6 +414,7 @@ void PlayView::drawLabelNumTurn() {
   view.draw(titleTurn->getTextInstance());
   view.draw(labelNumTurn->getTextInstance());
   view.draw(labelNumDice->getTextInstance());
+  view.draw(numDevelopCard->getTextInstance());
   if (isFirstTurn) {
     view.draw(infoFisrtTurn->getTextInstance());
   }
@@ -522,7 +527,13 @@ void PlayView::printTownPlayer(list<Vertex *>::iterator vIterator, int x,
               "¡ERROR!", "YA SELECCIONASTES 2 POBLADOS");
           alert->goView();
       }
-      
+      (*game.playerIterator)->setFirstTurnFinished(true);
+  }
+  else {
+      (*game.playerIterator)->setFirstTurnFinished(true);
+      ErrorAlert* alert = new ErrorAlert(
+          "¡ERROR!", "POBLADO SELECCIONADO POR OTRO JUGADOR");
+      alert->goView();
   }
 }
 
@@ -568,6 +579,11 @@ void PlayView::buyCity(list<Vertex *>::iterator vIterator, double x, double y) {
           game.graph.getVertex((*vIterator)->getVertexId())->setIsCity(true);
           game.graph.getVertex((*vIterator)->getVertexId())->setIsTown(false);
         }
+      }
+      else {
+          ErrorAlert* alert = new ErrorAlert(
+              "¡ERROR!", "EL POBLADO ES DE OTRO JUGADOR");
+          alert->goView();
       }
     }
   }
@@ -687,7 +703,6 @@ void PlayView::clickTradeButton(sf::Event event) {
    
   if (trade.isMouseOver(view)) {
     tradeView.goView();
-    log("bbb");
     traverseLandsToTrade();
     if (isPlayerNormalPortNeighbor || isPlayerSpecialPortNeighbor) {
       if (isPlayerNormalPortNeighbor) {
@@ -703,7 +718,7 @@ void PlayView::clickTradeButton(sf::Event event) {
 }
 
 void PlayView::clickInTownBuy(int x, int y) {
-  if (x > 165 && x < 165 + 30 && y > 615 && y < 645 ) {
+  if (x > 165 && x < 165 + 30 && y > 615 && y < 615 + 30 ) {
     isTownBuyClicked = true;
     isCityBuyClicked = false;
   } else {
@@ -712,7 +727,7 @@ void PlayView::clickInTownBuy(int x, int y) {
 }
 
 void PlayView::clickInCityBuy(int x, int y) {
-  if (x > 280 && x < 280 + 30 && y > 615 && y < 645 ) {
+  if (x > 280 && x < 280 + 30 && y > 615 && y < 615 + 30 ) {
     isCityBuyClicked = true;
     isTownBuyClicked = false;
   } else {
@@ -774,50 +789,55 @@ void PlayView::receiveBoughtDevelopCard() {
   deleteWooltoPlayer();
   deleteWheattoPlayer();
   deleteMineraltoPlayer();
-  if (buyView.isKnightButtonClicked) {
-    if (game.playerIterator != game.players->end()) {
-      knightIterator = game.knightCards->begin();
-      if (knightIterator != game.knightCards->end()) {
-        (*game.playerIterator)->knightCards->push_back((*knightIterator));
-        deleteKnightCard();
+  if (buyView.isKnightButtonClicked || buyView.isProgressButtonClicked || buyView.isVictoryButtonClicked) {
+      if (buyView.isKnightButtonClicked) {
+          if (game.playerIterator != game.players->end()) {
+              knightIterator = game.knightCards->begin();
+              if (knightIterator != game.knightCards->end()) {
+                  (*game.playerIterator)->knightCards->push_back((*knightIterator));
+                  deleteKnightCard();
+              }
+          }
       }
-    }
-  }
 
-  if (buyView.isProgressButtonClicked) {
-    if (game.playerIterator != game.players->end()) {
-      progressIterator = game.progressCards->begin();
-      if (progressIterator != game.progressCards->end()) {
-        (*game.playerIterator)->progressCards->push_back((*progressIterator));
-        deleteProgressCard();
+      if (buyView.isProgressButtonClicked) {
+          if (game.playerIterator != game.players->end()) {
+              progressIterator = game.progressCards->begin();
+              if (progressIterator != game.progressCards->end()) {
+                  (*game.playerIterator)->progressCards->push_back((*progressIterator));
+                  deleteProgressCard();
+              }
+          }
       }
-    }
-  }
-  if (buyView.isVictoryButtonClicked) {
-    (*game.playerIterator)
-        ->victoryPointsCards->push_back((*game.victoryPointCards->begin()));
-    if (game.playerIterator != game.players->end()) {
-      victoryPointsIterator = game.victoryPointCards->begin();
-      if (victoryPointsIterator != game.victoryPointCards->end()) {
-        (*game.playerIterator)
-            ->victoryPointsCards->push_back((*victoryPointsIterator));
-        deleteVictoryCard();
+      if (buyView.isVictoryButtonClicked) {
+          (*game.playerIterator)
+              ->victoryPointsCards->push_back((*game.victoryPointCards->begin()));
+          if (game.playerIterator != game.players->end()) {
+              victoryPointsIterator = game.victoryPointCards->begin();
+              if (victoryPointsIterator != game.victoryPointCards->end()) {
+                  (*game.playerIterator)
+                      ->victoryPointsCards->push_back((*victoryPointsIterator));
+                  deleteVictoryCard();
+              }
+          }
       }
-    }
   }
-  ErrorAlert* alert = new ErrorAlert(
-      "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA POR INTERCAMBIAR");
-  alert->goView();
+  else {
+      ErrorAlert* alert = new ErrorAlert(
+          "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA CARTA DE DESARROLLO POR COMPRAR");
+      alert->goView();
+  }
 }
 void PlayView::deleteKnightCard() { game.knightCards->pop_back(); }
 void PlayView::deleteVictoryCard() { game.victoryPointCards->pop_back(); }
 void PlayView::deleteProgressCard() { game.progressCards->pop_back(); }
+
 void PlayView::buildTown() {
   if ((*game.playerIterator)->clayCard->size() >= 1 &&
       (*game.playerIterator)->woodCard->size() >= 1 &&
       (*game.playerIterator)->wheatlCard->size() >= 1 &&
       (*game.playerIterator)->woolCard->size() >= 1) {
-    payRawMaterialsToBuyTown();
+        payRawMaterialsToBuyTown();
   }
   else {
       ErrorAlert* alert = new ErrorAlert(
@@ -829,7 +849,7 @@ void PlayView::buyDevelopCard() {
   if ((*game.playerIterator)->mineralCard->size() >= 1 &&
       (*game.playerIterator)->wheatlCard->size() >= 1 &&
       (*game.playerIterator)->woolCard->size() >= 1) {
-    receiveBoughtDevelopCard();
+        receiveBoughtDevelopCard();
   }
   else {
       ErrorAlert* alert = new ErrorAlert(
@@ -851,7 +871,6 @@ void PlayView::buildCity() {
 }
 
 void PlayView::isBuyButtonClicked(sf::Event event) {
-    //if (buy.isMouseOver(view)) {
         if (isTownBuyClicked) {
             buildTown();
         }
@@ -861,7 +880,6 @@ void PlayView::isBuyButtonClicked(sf::Event event) {
         if (buyView.isBuyClicked) {
             buyDevelopCard();
         }
-   // }
 }
 
 
@@ -1021,10 +1039,7 @@ void PlayView::goView() {
             isDiceButtonClicked(getMousePositionX(view),
                                 getMousePositionY(view));
             clickTradeButton(eventTest);
-            isBuyButtonClicked(eventTest);
-
             clickInCityBuy(getMousePositionX(view), getMousePositionY(view));
-
             clickInTownBuy(getMousePositionX(view), getMousePositionY(view));
             clickClayTrade(getMousePositionX(view), getMousePositionY(view));
             clickWheatTrade(getMousePositionX(view), getMousePositionY(view));
@@ -1033,6 +1048,7 @@ void PlayView::goView() {
             clickMineralTrade(getMousePositionX(view), getMousePositionY(view));
             clickInDevelopCardBuy(getMousePositionX(view),
                                   getMousePositionY(view));
+            isBuyButtonClicked(eventTest);
           }
           isTurnButtonClicked(sf::Mouse::getPosition(view).x,
                               sf::Mouse::getPosition(view).y);
@@ -1724,6 +1740,7 @@ void PlayView::tradeCard() {
 
 void PlayView::tradePossible() {
   int iterator = 0;
+  if (isCLayTradeClicked || isWoodTradeClicked || isWoolTradeClicked || isWheatTradeClicked || isMineralTradeClicked) {
   if (isCLayTradeClicked) {
     for (iterator; iterator < 4; iterator++) {
       deleteClaytoPlayer();
@@ -1754,13 +1771,17 @@ void PlayView::tradePossible() {
     }
     tradeCard();
   }
-  ErrorAlert* alert = new ErrorAlert(
-      "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
-  alert->goView();
+}
+  else {
+      ErrorAlert* alert = new ErrorAlert(
+          "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
+      alert->goView();
+  }
 }
 
 void PlayView::tradeNormal() {
   int iterator = 0;
+  if (isCLayTradeClicked || isWoodTradeClicked || isWoolTradeClicked || isWheatTradeClicked || isMineralTradeClicked) {
   if (isCLayTradeClicked) {
     for (iterator; iterator < 3; iterator++) {
       deleteClaytoPlayer();
@@ -1791,44 +1812,52 @@ void PlayView::tradeNormal() {
     }
     tradeCard();
   }
-  ErrorAlert* alert = new ErrorAlert(
-      "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
-  alert->goView();
+}
+  else {
+      ErrorAlert* alert = new ErrorAlert(
+          "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
+      alert->goView();
+  }
 }
 
 void PlayView::tradeSpecial() {
   int iterator = 0;
-  if (isCLayTradeClicked) {
-    for (iterator; iterator < 2; iterator++) {
-      deleteClaytoPlayer();
-    }
-    tradeCard();
+  if (isCLayTradeClicked || isWoodTradeClicked || isWoolTradeClicked || isWheatTradeClicked || isMineralTradeClicked) {
+      if (isCLayTradeClicked) {
+          for (iterator; iterator < 2; iterator++) {
+              deleteClaytoPlayer();
+          }
+          tradeCard();
+      }
+      if (isWoodTradeClicked) {
+          for (iterator; iterator < 2; iterator++) {
+              deleteWoodtoPlayer();
+          }
+          tradeCard();
+      }
+      if (isWoolTradeClicked) {
+          for (iterator; iterator < 2; iterator++) {
+              deleteWooltoPlayer();
+          }
+          tradeCard();
+      }
+      if (isWheatTradeClicked) {
+          for (iterator; iterator < 2; iterator++) {
+              deleteWheattoPlayer();
+          }
+          tradeCard();
+      }
+      if (isMineralTradeClicked) {
+          for (iterator; iterator < 2; iterator++) {
+              deleteMineraltoPlayer();
+          }
+          tradeCard();
+      }
   }
-  if (isWoodTradeClicked) {
-    for (iterator; iterator < 2; iterator++) {
-      deleteWoodtoPlayer();
-    }
-    tradeCard();
+  else {
+      ErrorAlert* alert = new ErrorAlert(
+          "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
+      alert->goView();
   }
-  if (isWoolTradeClicked) {
-    for (iterator; iterator < 2; iterator++) {
-      deleteWooltoPlayer();
-    }
-    tradeCard();
-  }
-  if (isWheatTradeClicked) {
-    for (iterator; iterator < 2; iterator++) {
-      deleteWheattoPlayer();
-    }
-    tradeCard();
-  }
-  if (isMineralTradeClicked) {
-    for (iterator; iterator < 2; iterator++) {
-      deleteMineraltoPlayer();
-    }
-    tradeCard();
-  }
-  ErrorAlert* alert = new ErrorAlert(
-      "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
-  alert->goView();
+  
 }
