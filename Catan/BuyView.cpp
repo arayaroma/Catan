@@ -22,7 +22,7 @@ void BuyView::goView() {
                 showCoordinates(eventTest);
                 if (event.MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
                     VictoryButtonClicked(eventTest);
-                    ProgressButtonClicked(eventTest);
+                    Progress1ButtonClicked(eventTest);
                     KnightButtonClicked(eventTest);
                     BuyButtonPressed(eventTest);
                 }
@@ -92,21 +92,35 @@ void BuyView::loadVictoryPointsPaths() {
 void BuyView::KnightButtonClicked(sf::Event event) {
     if (knight.isPressed(event)) {
         this->isKnightButtonClicked = true;
-        this->isProgressButtonClicked = false;
+        this->isProgress1ButtonClicked = false;
         this->isVictoryButtonClicked = false;
     }
 }
-void BuyView::ProgressButtonClicked(sf::Event event) {
+void BuyView::Progress2ButtonClicked(sf::Event event) {
+    if (progress2.isPressed(event)) {
+        this->isKnightButtonClicked = false;
+        this->isProgress2ButtonClicked = true;
+        this->isVictoryButtonClicked = false;
+    }
+}
+void BuyView::Progress3ButtonClicked(sf::Event event) {
+    if (progress3.isPressed(event)) {
+        this->isKnightButtonClicked = false;
+        this->isProgress3ButtonClicked = true;
+        this->isVictoryButtonClicked = false;
+    }
+}
+void BuyView::Progress1ButtonClicked(sf::Event event) {
     if (progress1.isPressed(event)) {
         this->isKnightButtonClicked = false;
-        this->isProgressButtonClicked = true;
+        this->isProgress1ButtonClicked = true;
         this->isVictoryButtonClicked = false;
     }
 }
 void BuyView::VictoryButtonClicked(sf::Event event) {
     if (victory.isPressed(event)) {
         this->isKnightButtonClicked = false;
-        this->isProgressButtonClicked = false;
+        this->isProgress1ButtonClicked = false;
         this->isVictoryButtonClicked = true;
     }
 }

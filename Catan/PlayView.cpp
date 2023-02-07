@@ -808,7 +808,7 @@ void PlayView::receiveBoughtDevelopCard() {
   deleteWooltoPlayer();
   deleteWheattoPlayer();
   deleteMineraltoPlayer();
-  if (buyView.isKnightButtonClicked || buyView.isProgressButtonClicked || buyView.isVictoryButtonClicked) {
+  if (buyView.isKnightButtonClicked || buyView.isProgress1ButtonClicked || buyView.isVictoryButtonClicked) {
       if (buyView.isKnightButtonClicked) {
           if (game.playerIterator != game.players->end()) {
               knightIterator = game.knightCards->begin();
@@ -896,11 +896,13 @@ void PlayView::buyDevelopCard() {
       (*game.playerIterator)->wheatlCard->size() >= 1 &&
       (*game.playerIterator)->woolCard->size() >= 1) {
         receiveBoughtDevelopCard();
+        buyView.isBuyClicked=false;
   }
   else {
       ErrorAlert* alert = new ErrorAlert(
           "¡ERROR!", "MATERIAS PRIMAS INSUFICIENTES");
       alert->goView();
+      buyView.isBuyClicked = false;
   }
 }
 
@@ -1102,16 +1104,16 @@ void PlayView::goView() {
           }
           isTurnButtonClicked(sf::Mouse::getPosition(view).x,
                               sf::Mouse::getPosition(view).y);
-
-       
+          
         }
         isInfoBuyClicked(event);
         isInfoTradeClicked(event);
         break;
       case sf::Event::Closed:
         closeView();
-        break;
+        break; 
       }
+      break; 
     }
     drawView();
   }
