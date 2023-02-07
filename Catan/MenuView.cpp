@@ -24,34 +24,31 @@ void MenuView::goView() {
   drawView();
 
   while (view.isOpen()) {
-    while (view.pollEvent(event)) {
-      switch (event.type) {
+      sf::Event eventTest;
+    while (view.pollEvent(eventTest)) {
+      switch (eventTest.type) {
+        case sf::Event::MouseButtonPressed:
+         if (isNewGameButtonPressed(eventTest))
+             newGameButtonPressed(newGameTextbox.getText());
+         if (isLoadGameButtonPressed(eventTest))
+             loadGameButtonPressed();
+         break;
 
-      case sf::Event::MouseButtonPressed:
-        if (isNewGameButtonPressed(event))
-          newGameButtonPressed(newGameTextbox.getText());
+        case sf::Event::TextEntered:
+         if (isOverTextbox(newGameTextbox))
+              newGameTextbox.typeOn(eventTest);
+            if (isOverTextbox(loadGameTextbox))
+              loadGameTextbox.typeOn(eventTest);
+            break;
 
-        if (isLoadGameButtonPressed(event))
-          loadGameButtonPressed();
-        break;
+        case sf::Event::KeyPressed:
+         if (isQKeyPressed())
+             goTitleView();
+         break;
 
-      case sf::Event::TextEntered:
-        if (isOverTextbox(newGameTextbox))
-          newGameTextbox.typeOn(event);
-
-        if (isOverTextbox(loadGameTextbox))
-          loadGameTextbox.typeOn(event);
-
-        break;
-
-      case sf::Event::KeyPressed:
-        if (isQKeyPressed())
-          goTitleView();
-        break;
-
-      case sf::Event::Closed:
-        closeView();
-        break;
+        case sf::Event::Closed:
+         closeView();
+         break;
       }
     }
     drawView();
