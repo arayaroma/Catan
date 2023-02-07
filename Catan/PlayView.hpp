@@ -302,6 +302,15 @@ private:
   void compareThreePlayer();
   void initializePlayersIteratorToCompare();
   bool istheLargestArmy = false;
+
+  void playMonopolyCard(sf::Event);
+  void playDiscoveryCard(sf::Event);
+
+  void getClaysPlayersToMonopoly();
+  void getWoodsPlayersToMonopoly();
+  void getWoolsPlayersToMonopoly();
+  void getMineralsPlayersToMonopoly();
+  void getWheatsPlayersToMonopoly();
 private:
   sf::Event eventTest;
   sf::RectangleShape playerRectangle, cardsRectangle, buyRectangle;
