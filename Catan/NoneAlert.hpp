@@ -12,11 +12,13 @@ private:
 
 public:
   void goView() override;
-
+  void isInfoBuyClicked(sf::Event, Button);
+  void isInfoTradeClicked(sf::Event, Button);
 private:
   void loadView() override;
   void drawView() override;
   void loadImageIcon() override;
+
 
 public:
   NoneAlert();

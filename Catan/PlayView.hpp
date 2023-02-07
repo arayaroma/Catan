@@ -190,6 +190,8 @@ private:
   void createLabelMaterialCardGame();
   void drawLabelMaterialGame();
   void isDiceButtonClicked(int, int);
+  void createInfoBuy(); 
+  void crateInfoTrade(); 
 
   void receiveCard(list<Land *>::iterator);
   void receiveMaterialCard(int);
