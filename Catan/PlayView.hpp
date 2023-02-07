@@ -44,6 +44,10 @@ public:
 
   list<Player *>::iterator playerIterator;
 
+  list<Player*>::iterator playerIterator2;
+  list<Player*>::iterator playerIterator3;
+  list<Player*>::iterator playerIterator4;
+
   list<Wheat *>::iterator wheatIterator;
   list<Mineral *>::iterator mineralIterator;
   list<Wool *>::iterator woolIterator;
@@ -61,6 +65,7 @@ private:
   string url = "";
   int numTurn = 1;
   int numDice;
+  string ownerBiggestArmy;
   Dice diceInstance;
   bool isDiceSpinned = false;
   bool isFirstTurn = true;
@@ -291,7 +296,11 @@ private:
   void tradeCard();
 
   void saveMatchActualState();
-
+  bool theLargestArmy();
+  void compareTwoPlayer();
+  void compareThreePlayer();
+  void initializePlayersIteratorToCompare();
+  bool istheLargestArmy = false;
 private:
   sf::Event eventTest;
   sf::RectangleShape playerRectangle, cardsRectangle, buyRectangle;

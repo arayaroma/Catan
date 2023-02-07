@@ -1206,12 +1206,18 @@ void PlayView::isTurnButtonClicked(int x, int y) {
             closeView();
         }
         else {
+            if (theLargestArmy()) {
+                ownerBiggestArmy = (*game.playerIterator)->getName();
+            }
             game.playerIterator++;
             numTurn++;
             isDiceSpinned = false;
         }   
     }
     if (game.playerIterator == game.players->end()) {
+            if (theLargestArmy()) {
+                ownerBiggestArmy = (*game.playerIterator)->getName();
+             }
           game.playerIterator = beginPlayerIterator();
           firstTurn();
           numTurn = 1;
@@ -1219,7 +1225,40 @@ void PlayView::isTurnButtonClicked(int x, int y) {
     }
   }
 }
-
+void PlayView::initializePlayersIteratorToCompare() {
+    playerIterator2 = beginPlayerIterator();
+    playerIterator3 = beginPlayerIterator();
+    playerIterator4 = beginPlayerIterator();
+    if (game.players->size() == 3) {
+        std::advance(playerIterator2, 1);
+        std::advance(playerIterator3, 2);
+    }
+    if (game.players->size() == 4) {
+        std::advance(playerIterator2, 1);
+        std::advance(playerIterator3, 2);
+        std::advance(playerIterator2, 2);
+    }
+}
+void PlayView::compareTwoPlayer() {
+    if ((*game.playerIterator)->knightCards->size() > (*playerIterator2)->knightCards->size() &&
+        (*game.playerIterator)->knightCards->size() > (*playerIterator3)->knightCards->size())
+        istheLargestArmy = true;
+}
+void PlayView::compareThreePlayer() {
+    if ((*game.playerIterator)->knightCards->size() > (*playerIterator2)->knightCards->size() &&
+        (*game.playerIterator)->knightCards->size() > (*playerIterator3)->knightCards->size() &&
+        (*game.playerIterator)->knightCards->size() > (*playerIterator4)->knightCards->size())
+        istheLargestArmy = true;
+}
+bool PlayView::theLargestArmy() {
+        if ((*playerIterator)->knightCards->size() >= 3) {
+            if (game.players->size() == 3)
+                compareTwoPlayer();
+            if (game.players->size() == 4)
+                compareTwoPlayer();
+        }
+    return istheLargestArmy;
+}
 void PlayView::setTurn(int numberPlayers) {
 
   log(turnNumber);
@@ -1861,3 +1900,8 @@ void PlayView::tradeSpecial() {
   }
   
 }
+
+
+////////PLAY DEVELOP CARD//////////
+///////PLAY DEVELOP CARD//////////
+///////PLAY DEVELOP CARD//////////
