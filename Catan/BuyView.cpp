@@ -23,6 +23,8 @@ void BuyView::goView() {
                 if (event.MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
                     VictoryButtonClicked(eventTest);
                     Progress1ButtonClicked(eventTest);
+                    Progress2ButtonClicked(eventTest);
+                    Progress3ButtonClicked(eventTest);
                     KnightButtonClicked(eventTest);
                     BuyButtonPressed(eventTest);
                 }
@@ -101,6 +103,8 @@ void BuyView::Progress2ButtonClicked(sf::Event event) {
         this->isKnightButtonClicked = false;
         this->isProgress2ButtonClicked = true;
         this->isVictoryButtonClicked = false;
+        this->isProgress3ButtonClicked = false;
+        this->isProgress1ButtonClicked = false;
     }
 }
 void BuyView::Progress3ButtonClicked(sf::Event event) {
@@ -108,6 +112,8 @@ void BuyView::Progress3ButtonClicked(sf::Event event) {
         this->isKnightButtonClicked = false;
         this->isProgress3ButtonClicked = true;
         this->isVictoryButtonClicked = false;
+        this->isProgress2ButtonClicked = false;
+        this->isProgress1ButtonClicked = false;
     }
 }
 void BuyView::Progress1ButtonClicked(sf::Event event) {
@@ -115,6 +121,8 @@ void BuyView::Progress1ButtonClicked(sf::Event event) {
         this->isKnightButtonClicked = false;
         this->isProgress1ButtonClicked = true;
         this->isVictoryButtonClicked = false;
+        this->isProgress2ButtonClicked = false;
+        this->isProgress3ButtonClicked = false;
     }
 }
 void BuyView::VictoryButtonClicked(sf::Event event) {

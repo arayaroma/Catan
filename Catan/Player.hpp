@@ -28,8 +28,8 @@ public:
 
   int getProgressDiscovery() { return this->progressDiscovery; }
 
-  void setProgressDiscovery(int n) { this->progressDiscovery -= n; }
-
+  void setProgressDiscovery(int n) { this->progressDiscovery = n; }
+  void restProgressDiscovery(int n) { this->progressDiscovery -= n; }
   void setColor(string);
   string getColor() const;
 
