@@ -1,10 +1,2 @@
-﻿  AboutView.cpp
-  Application.cpp
-  BuyView.cpp
-  MenuView.cpp
-  PlayView.cpp
-  RegisterView.cpp
-  TitleView.cpp
-  main.cpp
-  Generando código...
+﻿  BuyView.cpp
   Catan.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Catan.exe

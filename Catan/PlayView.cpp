@@ -3,11 +3,13 @@
 PlayView::PlayView() {
   landsList = new list<Land *>();
   vertexesList = new list<Vertex *>();
+  ownerBiggestArmy = "name";
 }
 
 PlayView::PlayView(list<Player *> *players, string fileName) {
   game.players = players;
   actualMatchName = fileName;
+  ownerBiggestArmy = "name";
 }
 
 PlayView::PlayView(Game &obj) { game = Game(obj); }
@@ -36,7 +38,8 @@ void PlayView::createLabelNumTurn() {
   owner = new Label("Dueño: ", sf::Color(0, 0, 255), font,
       sf::Text::Bold, 20, 220.f, 0.f);
 
-  ownerName = new Label("Name", sf::Color(0, 0, 255), font,
+
+  ownerName = new Label(ownerBiggestArmy, sf::Color(0, 0, 255), font,
       sf::Text::Bold, 20, 300.f, 0.f);
 
 }
@@ -79,7 +82,7 @@ void PlayView::drawLabelMaterialGame() {
   view.draw(woodGame->getTextInstance());
   view.draw(labelBuy->getTextInstance()); 
   view.draw(owner->getTextInstance()); 
-  view.draw(ownerName->getTextInstance()); 
+  
 }
 
 void PlayView::createLabels() {
@@ -99,8 +102,9 @@ void PlayView::createLabelScorePlayer() {
   titleScorePlayer = new Label("Puntaje:", sf::Color(0, 0, 255, 128), font,
                                sf::Text::Bold, 20, 1050.f, 340.f);
   scorePlayer = new Label(std::to_string((*game.playerIterator)->getScore()),
-                          sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20,
-                          1155.f, 340.f);
+      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20,
+      1155.f, 340.f);
+
 }
 
 void PlayView::createLabelNamePlayers() {
@@ -425,6 +429,7 @@ void PlayView::drawLabelNumTurn() {
   view.draw(labelNumTurn->getTextInstance());
   view.draw(labelNumDice->getTextInstance());
   view.draw(numDevelopCard->getTextInstance());
+  view.draw(ownerName->getTextInstance());
   if (isFirstTurn) {
     view.draw(infoFisrtTurn->getTextInstance());
   }
@@ -537,10 +542,10 @@ void PlayView::printTownPlayer(list<Vertex *>::iterator vIterator, int x,
               "¡ERROR!", "YA SELECCIONASTES 2 POBLADOS");
           alert->goView();
       }
-      (*game.playerIterator)->setFirstTurnFinished(true);
+      //(*game.playerIterator)->setFirstTurnFinished(true);
   }
   else {
-      (*game.playerIterator)->setFirstTurnFinished(true);
+      //(*game.playerIterator)->setFirstTurnFinished(true);
       ErrorAlert* alert = new ErrorAlert(
           "¡ERROR!", "POBLADO SELECCIONADO POR OTRO JUGADOR");
       alert->goView();
@@ -860,7 +865,7 @@ void PlayView::buildTown() {
   }
 } // BUG ACA
 void PlayView::buyDevelopCard() {
-  if ((*game.playerIterator)->mineralCard->size() >= 1 &&
+  if ((*game.playerIterator)->mineralCard->size() >= 1  &&
       (*game.playerIterator)->wheatlCard->size() >= 1 &&
       (*game.playerIterator)->woolCard->size() >= 1) {
         receiveBoughtDevelopCard();
@@ -987,7 +992,7 @@ void PlayView::giveCardsToPlayerFirstTurn(list<Land *>::iterator landIterator) {
 void PlayView::firstTurn() {
   playerIterator = beginPlayerIterator();
   while (isPlayerListTraversal()) {
-    if ((*playerIterator)->getFirstTurnFinished())
+    if ((*playerIterator)->getTownFirstTurn() ==2)
       isFirstTurn = false;
     else
       isFirstTurn = true;
@@ -1064,6 +1069,9 @@ void PlayView::goView() {
             clickInDevelopCardBuy(getMousePositionX(view),
                                   getMousePositionY(view));
             isBuyButtonClicked(eventTest);
+            if (theLargestArmy()) {
+                ownerBiggestArmy = (*game.playerIterator)->getName();
+            }
           }
           isTurnButtonClicked(sf::Mouse::getPosition(view).x,
                               sf::Mouse::getPosition(view).y);
@@ -1221,18 +1229,14 @@ void PlayView::isTurnButtonClicked(int x, int y) {
             closeView();
         }
         else {
-            if (theLargestArmy()) {
-                ownerBiggestArmy = (*game.playerIterator)->getName();
-            }
+            
             game.playerIterator++;
             numTurn++;
             isDiceSpinned = false;
         }   
     }
     if (game.playerIterator == game.players->end()) {
-            if (theLargestArmy()) {
-                ownerBiggestArmy = (*game.playerIterator)->getName();
-             }
+            
           game.playerIterator = beginPlayerIterator();
           firstTurn();
           numTurn = 1;
@@ -1251,22 +1255,29 @@ void PlayView::initializePlayersIteratorToCompare() {
     if (game.players->size() == 4) {
         std::advance(playerIterator2, 1);
         std::advance(playerIterator3, 2);
-        std::advance(playerIterator2, 2);
+        std::advance(playerIterator2, 3);
     }
 }
 void PlayView::compareTwoPlayer() {
-    if ((*game.playerIterator)->knightCards->size() > (*playerIterator2)->knightCards->size() &&
-        (*game.playerIterator)->knightCards->size() > (*playerIterator3)->knightCards->size())
-        istheLargestArmy = true;
+    if (playerIterator2 != game.players->end() && playerIterator3 != game.players->end()) {
+        if ((*game.playerIterator)->knightCards->size() > (*playerIterator2)->knightCards->size() &&
+            (*game.playerIterator)->knightCards->size() > (*playerIterator3)->knightCards->size()) {
+            istheLargestArmy = true;
+        }
+    }
 }
 void PlayView::compareThreePlayer() {
-    if ((*game.playerIterator)->knightCards->size() > (*playerIterator2)->knightCards->size() &&
-        (*game.playerIterator)->knightCards->size() > (*playerIterator3)->knightCards->size() &&
-        (*game.playerIterator)->knightCards->size() > (*playerIterator4)->knightCards->size())
-        istheLargestArmy = true;
+    if (playerIterator2 != game.players->end() && playerIterator3 != game.players->end() && playerIterator4 != game.players->end()) {
+        if ((*game.playerIterator)->knightCards->size() > (*playerIterator2)->knightCards->size() &&
+            (*game.playerIterator)->knightCards->size() > (*playerIterator3)->knightCards->size() &&
+            (*game.playerIterator)->knightCards->size() > (*playerIterator4)->knightCards->size()) {
+            istheLargestArmy = true;
+        }
+    }
 }
 bool PlayView::theLargestArmy() {
-        if ((*playerIterator)->knightCards->size() >= 3) {
+    initializePlayersIteratorToCompare();
+        if ((*game.playerIterator)->knightCards->size() >= 3) {
             if (game.players->size() == 3)
                 compareTwoPlayer();
             if (game.players->size() == 4)
