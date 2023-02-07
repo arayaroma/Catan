@@ -262,8 +262,8 @@ void Game::loadLands() {
 }
 
 void Game::makeSpecialCard() {
-  specialCard = new Progress(imagePaths.at("biggestPath"));
-  specialCard = new Progress(imagePaths.at("biggestArmyPath"));
+  specialCard = new Progress(1,imagePaths.at("biggestPath"));
+  specialCard = new Progress(1,imagePaths.at("biggestArmyPath"));
 }
 
 void Game::makeMaterialCard() {

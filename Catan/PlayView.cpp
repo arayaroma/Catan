@@ -329,15 +329,15 @@ void PlayView::printPlayerDevelopCard() {
 void PlayView::createLabelPlayerDevelopCard() {
   victory = new Label(
       std::to_string((*game.playerIterator)->victoryPointsCards->size()),
-      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 750.f, 620.f);
+      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 915.f, 620.f);
 
   knight = new Label(
       std::to_string((*game.playerIterator)->knightCards->size()),
-      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 790, 620.f);
+      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 875.f, 620.f);
 
   progress = new Label(
       std::to_string((*game.playerIterator)->progressCards->size()),
-      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 830.f, 620.f);
+      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 790.f, 600.f);
 }
 /*methods of creating Buttons*/
 void PlayView::createInfoBuy() {
