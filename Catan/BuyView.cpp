@@ -92,7 +92,7 @@ void BuyView::KnightButtonClicked(sf::Event event) {
     }
 }
 void BuyView::ProgressButtonClicked(sf::Event event) {
-    if (buy.isPressed(event)) {
+    if (progress.isPressed(event)) {
         this->isKnightButtonClicked = false;
         this->isProgressButtonClicked = true;
         this->isVictoryButtonClicked = false;
