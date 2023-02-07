@@ -225,6 +225,8 @@ private:
 
   void createTradeButton();
   void createInfoTradeButton();
+  void createDiscoveryButton(); 
+  void createMonopolyButton();
   void createInfoBuyButton();
   void createTurnButton();
   void createPButton();
@@ -315,5 +317,5 @@ private:
       *titleScorePlayer;
   Label *knight, *progress, *victory;
   Label *woodGame, *woolGame, *clayGame, *mineralGame, *wheatGame, *numDevelopCard;
-  Button turn, buy, trade, dice, p, option1, save, close,howTrade,howBuy;
+  Button turn, buy, trade, dice, p, option1, save, close,howTrade,howBuy,progreessConstruccion, progreessMonopoly, progreessDiscovery;
 };
