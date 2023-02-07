@@ -10,7 +10,7 @@
 #include <string>
 #include "Alert.hpp"
 #include "NoneAlert.hpp"
-
+#include "ErrorAlert.hpp"
 #define pi 3.14159265358979323846
 #define firstAngle (3 * pi) / 2
 #define secondAngle (5 * pi) / 4

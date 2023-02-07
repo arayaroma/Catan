@@ -16,8 +16,8 @@ PlayView::PlayView(Game &obj) { game = Game(obj); }
 void PlayView::createLabelNumTurn() {
 
   titleTurn = new Label("Turno:  ", sf::Color(0, 0, 255, 128), font,
-                        sf::Text::Bold, 20, 1080.f, 680.f);
-  labelNumTurn = new Label(std::to_string(numTurn), sf::Color(0, 0, 255, 128),
+                        sf::Text::Bold, 20, 1030.f, 370.f);
+  labelNumTurn = new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
                            font, sf::Text::Bold, 20, 1160.f, 680.f);
   infoFisrtTurn = new Label( "Primera Ronda, por favor elija 2 poblados y pase de turno",
       sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 250.f, 500.f);
@@ -82,7 +82,7 @@ void PlayView::createLabels() {
 }
 
 void PlayView::createLabelScorePlayer() {
-  titleScorePlayer = new Label("Score:", sf::Color(0, 0, 255, 128), font,
+  titleScorePlayer = new Label("Puntaje:", sf::Color(0, 0, 255, 128), font,
                                sf::Text::Bold, 20, 1030.f, 340.f);
   scorePlayer = new Label(std::to_string((*game.playerIterator)->getScore()),
                           sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20,
@@ -496,7 +496,6 @@ void PlayView::traverseLands(double x, double y) {
 void PlayView::printTownPlayer(list<Vertex *>::iterator vIterator, int x,
                                int y) {
   if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() == NULL) {
-    if ((*game.playerIterator)->towns->size() > 1) {
       if ((*game.playerIterator)->getTownFirstTurn() < 2) {
         initializeIteratorTownList();
         setIsClickedToVertexGraph(vIterator);
@@ -514,10 +513,16 @@ void PlayView::printTownPlayer(list<Vertex *>::iterator vIterator, int x,
         }
         game.graph.getVertex((*vIterator)->getVertexId())->setIsCity(false);
         game.graph.getVertex((*vIterator)->getVertexId())->setIsTown(true);
+        
         view.display();
       }
-    }
-    (*game.playerIterator)->setFirstTurnFinished(true);
+      else {
+          (*game.playerIterator)->setFirstTurnFinished(true);
+          ErrorAlert* alert = new ErrorAlert(
+              "¡ERROR!", "YA SELECCIONASTES 2 POBLADOS");
+          alert->goView();
+      }
+      
   }
 }
 
@@ -566,6 +571,11 @@ void PlayView::buyCity(list<Vertex *>::iterator vIterator, double x, double y) {
       }
     }
   }
+  else {
+      ErrorAlert* alert = new ErrorAlert(
+          "¡ERROR!", "POBLADO CON DUEÑO");
+      alert->goView();
+  }
 }
 
 void PlayView::addTownToPlayer() {
@@ -577,13 +587,12 @@ void PlayView::addTownToPlayer() {
 void PlayView::buyTown(list<Vertex *>::iterator vIterator, double x, double y) {
   initializeIteratorTownList();
   if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() == NULL) {
-    if ((*game.playerIterator)->towns->size() > 1) { /// arreglar este BUG
+    if ((*game.playerIterator)->towns->size() > 1) {
       if (townIterator != (*game.playerIterator)->towns->end())
         printImages((*townIterator)->getImagePath(),
                     (*vIterator)->getTown()->getPosX(),
                     (*vIterator)->getTown()->getPosY());
       setOwnerToVertexGraph(game.graph.getVertex((*vIterator)->getVertexId()));
-      deleteTowntoPlayer();
       (*game.playerIterator)->setScore(1);
       setIsClickedToVertexGraph(vIterator);
       view.display();
@@ -591,6 +600,16 @@ void PlayView::buyTown(list<Vertex *>::iterator vIterator, double x, double y) {
       game.graph.getVertex((*vIterator)->getVertexId())->setIsCity(false);
       game.graph.getVertex((*vIterator)->getVertexId())->setIsTown(true);
     }
+    else {
+        ErrorAlert* alert = new ErrorAlert(
+            "¡ERROR!", "POBLADOS INSUFICIENTES");
+        alert->goView();
+    }
+  }
+  else {
+          ErrorAlert* alert = new ErrorAlert(
+              "¡ERROR!", "POBLADO CON DUEÑO");
+          alert->goView();
   }
 }
 
@@ -786,6 +805,9 @@ void PlayView::receiveBoughtDevelopCard() {
       }
     }
   }
+  ErrorAlert* alert = new ErrorAlert(
+      "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA POR INTERCAMBIAR");
+  alert->goView();
 }
 void PlayView::deleteKnightCard() { game.knightCards->pop_back(); }
 void PlayView::deleteVictoryCard() { game.victoryPointCards->pop_back(); }
@@ -797,6 +819,11 @@ void PlayView::buildTown() {
       (*game.playerIterator)->woolCard->size() >= 1) {
     payRawMaterialsToBuyTown();
   }
+  else {
+      ErrorAlert* alert = new ErrorAlert(
+          "¡ERROR!", "MATERIAS PRIMAS INSUFICIENTES");
+      alert->goView();
+  }
 } // BUG ACA
 void PlayView::buyDevelopCard() {
   if ((*game.playerIterator)->mineralCard->size() >= 1 &&
@@ -804,12 +831,23 @@ void PlayView::buyDevelopCard() {
       (*game.playerIterator)->woolCard->size() >= 1) {
     receiveBoughtDevelopCard();
   }
+  else {
+      ErrorAlert* alert = new ErrorAlert(
+          "¡ERROR!", "MATERIAS PRIMAS INSUFICIENTES");
+      alert->goView();
+  }
 }
 
 void PlayView::buildCity() {
-  if ((*game.playerIterator)->wheatlCard->size() >= 2 &&
-      ((*game.playerIterator)->mineralCard->size() >= 3))
-    payRawMaterialsToBuyCity();
+    if ((*game.playerIterator)->wheatlCard->size() >= 2 &&
+        ((*game.playerIterator)->mineralCard->size() >= 3)) {
+        payRawMaterialsToBuyCity();
+    }
+    else {
+        ErrorAlert* alert = new ErrorAlert(
+            "¡ERROR!", "MATERIAS PRIMAS INSUFICIENTES");
+        alert->goView();
+    }
 }
 
 void PlayView::isBuyButtonClicked(sf::Event event) {
@@ -1145,17 +1183,23 @@ void PlayView::isTurnButtonClicked(int x, int y) {
   if (turn.isMouseOver(view)) {
     saveMatchActualState();
     if (game.playerIterator != game.players->end()) {
-      game.playerIterator++;
-      numTurn++;
-
-      isDiceSpinned = false;
+        if ((*game.playerIterator)->getScore() >= 10) {
+            NoneAlert* alert = new NoneAlert(
+                "¡FELICIDADES!" + (*game.playerIterator)->getName(), "JUEGO GANADO");
+            alert->goView();
+            closeView();
+        }
+        else {
+            game.playerIterator++;
+            numTurn++;
+            isDiceSpinned = false;
+        }   
     }
     if (game.playerIterator == game.players->end()) {
-      game.playerIterator = beginPlayerIterator();
-      firstTurn();
-      numTurn = 1;
-
-      isDiceSpinned = false;
+          game.playerIterator = beginPlayerIterator();
+          firstTurn();
+          numTurn = 1;
+          isDiceSpinned = false;
     }
   }
 }
@@ -1710,6 +1754,9 @@ void PlayView::tradePossible() {
     }
     tradeCard();
   }
+  ErrorAlert* alert = new ErrorAlert(
+      "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
+  alert->goView();
 }
 
 void PlayView::tradeNormal() {
@@ -1744,6 +1791,9 @@ void PlayView::tradeNormal() {
     }
     tradeCard();
   }
+  ErrorAlert* alert = new ErrorAlert(
+      "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
+  alert->goView();
 }
 
 void PlayView::tradeSpecial() {
@@ -1778,4 +1828,7 @@ void PlayView::tradeSpecial() {
     }
     tradeCard();
   }
+  ErrorAlert* alert = new ErrorAlert(
+      "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
+  alert->goView();
 }
