@@ -295,6 +295,7 @@ private:
   void tradeSpecial();
   void tradeCard();
 
+  void loadBiggestArmyCard();
   void saveMatchActualState();
   bool theLargestArmy();
   void compareTwoPlayer();
@@ -305,7 +306,7 @@ private:
   sf::Event eventTest;
   sf::RectangleShape playerRectangle, cardsRectangle, buyRectangle;
   Label *materialCard, *pricingTable, *turns, *cards, *developCard, *labelBuy;
-  Label *player1, *player2, *player3, *player4;
+  Label *player1, *player2, *player3, *player4, *owner, *ownerName;
   Label *clayCard, *mineralPlayerCard, *wheatPlayerCard, *woodPlayerCard,
       *woolPlayerCard, *firsThreeXone, *secondThreeXone, *thirdThreeXone,
       *fourThreeXone, *tempNumber;
