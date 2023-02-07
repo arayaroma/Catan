@@ -1992,30 +1992,35 @@ void PlayView::playDiscoveryCard(sf::Event event) {
     }
 }
 
-void PlayView::playMonopolyCard(sf::Event event) {
+ void PlayView::playMonopolyCard(sf::Event event) {
     if (progreessMonopoly.isPressed(event)) {
         if ((*game.playerIterator)->progressMonopoly != nullptr) {
             if (isCLayTradeClicked || isWoodTradeClicked || isWoolTradeClicked || isWheatTradeClicked || isMineralTradeClicked) {
                 if (isCLayTradeClicked) {
                     getClaysPlayersToMonopoly();
                     (*game.playerIterator)->progressMonopoly = nullptr;
+                    (*game.playerIterator)->progressCards->pop_back();
                 }
                 if (isWoodTradeClicked) {
                     getWoodsPlayersToMonopoly();
                     (*game.playerIterator)->progressMonopoly = nullptr;
+                    (*game.playerIterator)->progressCards->pop_back();
                 }
                 if (isWoolTradeClicked) {
                     getWoolsPlayersToMonopoly();
                     (*game.playerIterator)->progressMonopoly = nullptr;
+                    (*game.playerIterator)->progressCards->pop_back();
 
                 }
                 if (isWheatTradeClicked) {
                     getWheatsPlayersToMonopoly();
                     (*game.playerIterator)->progressMonopoly = nullptr;
+                    (*game.playerIterator)->progressCards->pop_back();
                 }
                 if (isMineralTradeClicked) {
                     getMineralsPlayersToMonopoly();
                     (*game.playerIterator)->progressMonopoly = nullptr;
+                    (*game.playerIterator)->progressCards->pop_back();
                 }
             }
             else {
@@ -2027,76 +2032,85 @@ void PlayView::playMonopolyCard(sf::Event event) {
     }
 }
 void PlayView::getClaysPlayersToMonopoly() {
+    int iterator = 0;
     playerIterator = game.players->begin();
     while (playerIterator != game.players->end()) {
         if ((*playerIterator)->getName() != (*game.playerIterator)->getName()) {
-            clayIterator = (*playerIterator)->clayCard->begin();
-            while (clayIterator != (*playerIterator)->clayCard->end()) {
+            int sizeList = (*playerIterator)->clayCard->size();
+            while (iterator < sizeList) {
                 (*playerIterator)->clayCard->pop_back();
                 (*game.playerIterator)->clayCard->push_back(new Clay());
-                clayIterator++;
+                iterator++;
             }
             
         }
+        iterator = 0;
         playerIterator++;
     }
 }
 void PlayView::getWoodsPlayersToMonopoly() {
+    int iterator = 0;
     playerIterator = game.players->begin();
     while (playerIterator != game.players->end()) {
         if ((*playerIterator)->getName() != (*game.playerIterator)->getName()) {
-            woodIterator = (*playerIterator)->woodCard->begin();
-            while (woodIterator != (*playerIterator)->woodCard->end()) {
+            int sizeList = (*playerIterator)->woodCard->size();
+            while (iterator < sizeList) {
                 (*playerIterator)->woodCard->pop_back();
                 (*game.playerIterator)->woodCard->push_back(new Wood());
-                woodIterator++;
+                iterator++;
             }
 
         }
+        iterator = 0;
         playerIterator++;
     }
 }
 void PlayView::getWoolsPlayersToMonopoly() {
+    int iterator = 0;
     playerIterator = game.players->begin();
     while (playerIterator != game.players->end()) {
         if ((*playerIterator)->getName() != (*game.playerIterator)->getName()) {
-            woolIterator = (*playerIterator)->woolCard->begin();
-            while (woolIterator != (*playerIterator)->woolCard->end()) {
+            int sizeList = (*playerIterator)->woolCard->size();
+            while (iterator < sizeList) {
                 (*playerIterator)->woolCard->pop_back();
                 (*game.playerIterator)->woolCard->push_back(new Wool());
-                if(woolIterator != (*playerIterator)->woolCard->end())
-                    woolIterator++;
+                iterator++;
             }
         }
+        iterator = 0;
         playerIterator++;
     }
 }
 void PlayView::getMineralsPlayersToMonopoly() {
+    int iterator = 0;
     playerIterator = game.players->begin();
     while (playerIterator != game.players->end()) {
         if ((*playerIterator)->getName() != (*game.playerIterator)->getName()) {
-            mineralIterator = (*playerIterator)->mineralCard->begin();
-            while (mineralIterator != (*playerIterator)->mineralCard->end()) {
+            int sizeList = (*playerIterator)->mineralCard->size();
+            while (iterator < sizeList) {
                 (*playerIterator)->mineralCard->pop_back();
                 (*game.playerIterator)->mineralCard->push_back(new Mineral());
-                mineralIterator++;
+                iterator++;
             }
         }
+        iterator = 0;
         playerIterator++;
     }
 }
 void PlayView::getWheatsPlayersToMonopoly() {
+    int iterator = 0;
     playerIterator = game.players->begin();
     while (playerIterator != game.players->end()) {
         if ((*playerIterator)->getName() != (*game.playerIterator)->getName()) {
-            wheatIterator = (*playerIterator)->wheatlCard->begin();
-            while (wheatIterator != (*playerIterator)->wheatlCard->end()) {
+            int sizeList = (*playerIterator)->wheatlCard->size();
+            while (iterator < sizeList) {
                 (*playerIterator)->wheatlCard->pop_back();
                 (*game.playerIterator)->wheatlCard->push_back(new Wheat());
-                wheatIterator++;
+                iterator++;
             }
 
         }
+        iterator = 0;
         playerIterator++;
     }
 }

@@ -1,1 +1,7 @@
-﻿  Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe
+﻿  PlayView.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(2039,63): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(2056,63): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(2073,63): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(2089,66): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(2105,65): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe
