@@ -1,6 +1,50 @@
-<<<<<<< HEAD
-﻿  PlayView.cpp
-  Catan.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Catan.exe
-=======
-﻿  Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe
->>>>>>> 70afbf489d38b89bac2bdd29a2750c74d27d295f
+﻿  AboutView.cpp
+  Alert.cpp
+  Application.cpp
+  Button.cpp
+  BuyView.cpp
+  Card.cpp
+  Computer.cpp
+  ConfirmationAlert.cpp
+  ErrorAlert.cpp
+  FileHandler.cpp
+  Game.cpp
+  Dice.cpp
+  Edge.cpp
+  Figure.cpp
+  Graph.cpp
+  Human.cpp
+  InformationAlert.cpp
+  Knight.cpp
+  main.cpp
+  City.cpp
+  Generando código...
+  Compilando...
+  Clay.cpp
+  Component.cpp
+  Label.cpp
+  Land.cpp
+  MenuView.cpp
+  Mineral.cpp
+  NoneAlert.cpp
+  Player.cpp
+  PlayView.cpp
+  Progress.cpp
+  RegisterView.cpp
+  Road.cpp
+  TextBox.cpp
+  TitleView.cpp
+  Town.cpp
+  TradeView.cpp
+  Vertex.cpp
+  VictoryPoints.cpp
+  View.cpp
+  WarningAlert.cpp
+  Generando código...
+  Compilando...
+  Wheat.cpp
+  Wood.cpp
+  Wool.cpp
+  Generando código...
+  LINK : no se encontró C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
+  Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe
