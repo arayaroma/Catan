@@ -1,49 +1,10 @@
 ﻿  AboutView.cpp
-  Alert.cpp
   Application.cpp
-  Button.cpp
   BuyView.cpp
-  Card.cpp
-  City.cpp
-  Clay.cpp
-  Component.cpp
-  Computer.cpp
-  ConfirmationAlert.cpp
-  Dice.cpp
-  Edge.cpp
-  ErrorAlert.cpp
-  Figure.cpp
-  FileHandler.cpp
-  Game.cpp
-  Graph.cpp
-  Human.cpp
-  InformationAlert.cpp
-  Generando código...
-  Compilando...
-  Knight.cpp
-  Label.cpp
-  Land.cpp
   MenuView.cpp
-  Mineral.cpp
-  NoneAlert.cpp
   PlayView.cpp
-  Player.cpp
-  Progress.cpp
   RegisterView.cpp
-  Road.cpp
-  TextBox.cpp
   TitleView.cpp
-  Town.cpp
-  TradeView.cpp
-  Vertex.cpp
-  VictoryPoints.cpp
-  View.cpp
-  WarningAlert.cpp
-  Wheat.cpp
-  Generando código...
-  Compilando...
-  Wood.cpp
-  Wool.cpp
   main.cpp
   Generando código...
-  Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe
+  Catan.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Catan.exe

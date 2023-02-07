@@ -35,8 +35,10 @@ public:
 	void ProgressButtonClicked(sf::Event event);
 	void VictoryButtonClicked(sf::Event event);
 	void BuyButtonPressed(sf::Event event);
+
+	void drawAllButtons();
 	sf::Event eventTest;
-	Button buy, p, victory, progress,knight;
+	Button buy, p, victory, progress1,progress2, progress3,knight;
 
 	bool isKnightButtonClicked = false;
 	bool isProgressButtonClicked = false;
