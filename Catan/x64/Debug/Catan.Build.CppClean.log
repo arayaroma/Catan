@@ -48,6 +48,7 @@ c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\vc143.id
 c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\informationalert.obj
 c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\human.obj
 c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\graph.obj
+c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\game.obj
 c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\filehandler.obj
 c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\figure.obj
 c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\erroralert.obj
@@ -77,7 +78,6 @@ c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\road.obj
 c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\registerview.obj
 c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\progress.obj
 c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\player.obj
-c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\playview.obj
 c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\nonealert.obj
 c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\mineral.obj
 c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\menuview.obj
@@ -90,7 +90,7 @@ c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\wood.obj
 c:\users\lic. dilan sancho\desktop\catan\x64\debug\catan.exe
 c:\users\lic. dilan sancho\desktop\catan\catan\x64\debug\catan.ilk
 c:\users\lic. dilan sancho\desktop\catan\x64\debug\catan.pdb
-c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\game.obj
+c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\playview.obj
 c:\users\user\documents\una\verano\proyecto_catan\catan\catan\x64\debug\catan.ilk
 c:\users\user\documents\una\verano\proyecto_catan\catan\x64\debug\catan.pdb
 c:\users\user\documents\una\verano\proyecto_catan\catan\x64\debug\catan.exe
