@@ -38,7 +38,7 @@ void PlayView::createLabelNumTurn() {
                            game.getVictoryPointsCards()->size()),
             sf::Color(0, 0, 0), font, sf::Text::Bold, 20, 80.f, 450.f);
 
-  owner = Label("Dueño: ", sf::Color(0, 0, 255), font, sf::Text::Bold, 20,
+  owner = Label("Dueno: ", sf::Color(0, 0, 255), font, sf::Text::Bold, 20,
                 220.f, 0.f);
 
   ownerName = Label(ownerBiggestArmy, sf::Color(0, 0, 255), font,
@@ -739,8 +739,7 @@ void PlayView::clickInDevelopCardBuy(int x, int y) {
   }
 }
 void PlayView::clickTradeButton(sf::Event event) {
-
-  if (trade.isMouseOver(view)) {
+  if (trade.isPressed(event)) {
     tradeView.goView();
     traverseLandsToTrade();
     if (isPlayerNormalPortNeighbor || isPlayerSpecialPortNeighbor) {
@@ -885,7 +884,7 @@ void PlayView::receiveBoughtDevelopCard() {
     }
   } else {
     ErrorAlert *alert = new ErrorAlert(
-        "�ERROR!",
+        "!ERROR!",
         "NO SE HA SELECCIONADO NINGUNA CARTA DE DESARROLLO POR COMPRAR");
     alert->goView();
   }
@@ -908,7 +907,7 @@ void PlayView::buildTown() {
     payRawMaterialsToBuyTown();
   } else {
     ErrorAlert *alert =
-        new ErrorAlert("�ERROR!", "MATERIAS PRIMAS INSUFICIENTES");
+        new ErrorAlert("!ERROR!", "MATERIAS PRIMAS INSUFICIENTES");
     alert->goView();
   }
 } // BUG ACA
@@ -920,7 +919,7 @@ void PlayView::buyDevelopCard() {
     buyView.isBuyClicked = false;
   } else {
     ErrorAlert *alert =
-        new ErrorAlert("�ERROR!", "MATERIAS PRIMAS INSUFICIENTES");
+        new ErrorAlert("!ERROR!", "MATERIAS PRIMAS INSUFICIENTES");
     alert->goView();
     buyView.isBuyClicked = false;
   }
@@ -932,7 +931,7 @@ void PlayView::buildCity() {
     payRawMaterialsToBuyCity();
   } else {
     ErrorAlert *alert =
-        new ErrorAlert("�ERROR!", "MATERIAS PRIMAS INSUFICIENTES");
+        new ErrorAlert("!ERROR!", "MATERIAS PRIMAS INSUFICIENTES");
     alert->goView();
   }
 }
@@ -1115,21 +1114,21 @@ void PlayView::goView() {
       case sf::Event::MouseButtonPressed:
         if (eventTest.MouseButtonPressed && isMouseLeftClicked(eventTest)) {
           if (isFirstTurn) {
-
-                        firstTraversalLand();
-                    }
-                    else {
-                        hexagonsMethod();
-                        isDiceButtonClicked(event);
-                        resourcesMethod();
-                        progressMethod();
-                        shopMethod();
-                        largestArmy();
-                    }
-                    eventPlayerMethod();
-                    isInfoBuyClicked(event);
-                    isInfoTradeClicked(event);
-                    break;
+                firstTraversalLand();
+          }
+           else {
+               hexagonsMethod();
+               isDiceButtonClicked(event);
+               resourcesMethod();
+               progressMethod();
+               shopMethod();
+               largestArmy();
+               clickTradeButton(eventTest);
+               }    
+             eventPlayerMethod();
+             isInfoBuyClicked(event);
+             isInfoTradeClicked(event);
+             break;
 
         case sf::Event::Closed:
           closeView();
@@ -1183,7 +1182,7 @@ void PlayView::eventPlayerMethod() {
   if (isRightClicked(getMousePositionX(view), getMousePositionY(view))) {
     isTurnButtonClicked(sf::Mouse::getPosition(view).x,
                         sf::Mouse::getPosition(view).y);
-    clickTradeButton(eventTest);
+    
   }
 }
 
@@ -1706,8 +1705,8 @@ void PlayView::setPosXYtoVertex(list<Vertex *>::iterator vertexIterator,
   (*vertexIterator)->town->setPosY(y);
 }
 
-bool PlayView::isDessertLand(list<Land *>::iterator landIterator) const {
-  return ((*landIterator)->getTypeLand() == dessertType);
+bool PlayView::isDessertLand(list<Land *>::iterator landIterator)  {
+    return ((*landIterator)->getTypeLand() == dessertType);
 }
 
 void PlayView::createLabelDiceNumber(list<Land *>::iterator landIterator) {
@@ -1721,9 +1720,10 @@ void PlayView::createLabelDiceNumber(list<Land *>::iterator landIterator) {
 }
 
 void PlayView::createTempNumberEmpty(list<Land *>::iterator landIterator) {
-  tempNumber = Label("", sf::Color::Black, font, sf::Text::Bold, 22,
+    printImages("Images/Ladron(1).png", (*landIterator)->getPosX()+50, (*landIterator)->getPosY()+10);
+  /*tempNumber = Label("", sf::Color::Black, font, sf::Text::Bold, 22,
                      static_cast<float>((*landIterator)->getPosX() + 45),
-                     static_cast<float>((*landIterator)->getPosY() + 35));
+                     static_cast<float>((*landIterator)->getPosY() + 35));*/
 }
 
 void PlayView::createTempNumber(list<Land *>::iterator landIterator) {
@@ -2125,18 +2125,10 @@ void PlayView::playDiscoveryCard(sf::Event event) {
                     (*game.playerIterator)->restProgressDiscovery(1);
                 }
             }
-            else {
-                ErrorAlert* alert = new ErrorAlert(
-                    "�ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
-                alert->goView();
-            }
+           
         }
       
-    } else {
-      ErrorAlert *alert = new ErrorAlert(
-          "�ERROR!", "NO POSEE LA CARTA DE PROGRESO 'DESCUBRIR'");
-      alert->goView();
-    }
+    } 
   
 }
 
@@ -2170,11 +2162,7 @@ void PlayView::playMonopolyCard(sf::Event event) {
           (*game.playerIterator)->progressMonopoly = nullptr;
           (*game.playerIterator)->progressCards->pop_back();
         }
-      } else {
-        ErrorAlert *alert = new ErrorAlert(
-            "�ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
-        alert->goView();
-      }
+      } 
     }
   }
 }

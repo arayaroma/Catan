@@ -259,7 +259,8 @@ private:
 
   void printLandsDiceNumbers();
   void createLabelDiceNumber(list<Land *>::iterator);
-  bool isDessertLand(list<Land *>::iterator) const;
+  bool isDessertLand(list<Land *>::iterator);
+  bool isDesert = false;
   void createTempNumberEmpty(list<Land *>::iterator);
   void createTempNumber(list<Land *>::iterator);
 
