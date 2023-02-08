@@ -7,8 +7,11 @@
 */
 
 class VictoryPoints : public Card {
+public:
+  std::string to_string() const { return type + imagePath + delimiter + url; }
+
 private:
-    string url;
+  string url;
 
 public:
   VictoryPoints() {}

@@ -1,6 +1,8 @@
 #pragma once
 #include "Component.hpp"
 class Card : public Component {
+public:
+  std::string to_string() const { return type + delimiter + imagePath; }
 
 public:
   Card() {}
