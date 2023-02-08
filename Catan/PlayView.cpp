@@ -197,20 +197,17 @@ void PlayView::createLabelNamePlayers() {
 
 void PlayView::loadthreeXone() {
 
-  firsThreeXone =
-      new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 500.f, 20.f);
+  firsThreeXone =new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 500.f, 20.f);
   view.draw(firsThreeXone->getTextInstance());
 
-  secondThreeXone =
-      new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 838.f, 75.f);
+  secondThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 838.f, 75.f);
   view.draw(secondThreeXone->getTextInstance());
 
-  thirdThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20,
-                             910.f, 238.f);
+  thirdThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 910.f, 238.f);
   view.draw(thirdThreeXone->getTextInstance());
 
-  fourThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20,
-                            510.f, 435.f);
+  fourThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 510.f, 435.f);
+
   view.draw(fourThreeXone->getTextInstance());
 }
 
@@ -323,7 +320,7 @@ void PlayView::createSaveButton() {
 }
 
 void PlayView::createCloseButton() {
-   
+   // hello 
 }
 
 void PlayView::createDiceButton() {
