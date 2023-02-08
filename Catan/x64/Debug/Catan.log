@@ -2,32 +2,20 @@
   Alert.cpp
   Application.cpp
   BuyView.cpp
-  Card.cpp
   ConfirmationAlert.cpp
   ErrorAlert.cpp
   FileHandler.cpp
   Game.cpp
-  Edge.cpp
-  Figure.cpp
-  Graph.cpp
-  Human.cpp
   InformationAlert.cpp
-  Knight.cpp
   main.cpp
-  Land.cpp
   MenuView.cpp
   NoneAlert.cpp
-  Player.cpp
-  Generating Code...
-  Compiling...
   PlayView.cpp
   RegisterView.cpp
   TextBox.cpp
   TitleView.cpp
   TradeView.cpp
-  Vertex.cpp
   View.cpp
   WarningAlert.cpp
   Generating Code...
-  LINK : C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe not found or not built by the last incremental link; performing full link
   Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe

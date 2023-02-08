@@ -190,7 +190,7 @@ public:
 
   std::string to_string(const std::stack<Mineral *> &stack) {
     std::string result;
-    std::stack<Clay *> tempStack = stack;
+    std::stack<Mineral *> tempStack = stack;
     while (!tempStack.empty()) {
       result += tempStack.top()->to_string();
       result += "\n";
@@ -201,7 +201,7 @@ public:
 
   std::string to_string(const std::stack<Wheat *> &stack) {
     std::string result;
-    std::stack<Clay *> tempStack = stack;
+    std::stack<Wheat *> tempStack = stack;
     while (!tempStack.empty()) {
       result += tempStack.top()->to_string();
       result += "\n";
@@ -212,7 +212,7 @@ public:
 
   std::string to_string(const std::stack<Wood *> &stack) {
     std::string result;
-    std::stack<Clay *> tempStack = stack;
+    std::stack<Wood *> tempStack = stack;
     while (!tempStack.empty()) {
       result += tempStack.top()->to_string();
       result += "\n";
@@ -223,11 +223,20 @@ public:
 
   std::string to_string(const std::stack<Wool *> &stack) {
     std::string result;
-    std::stack<Clay *> tempStack = stack;
+    std::stack<Wool *> tempStack = stack;
     while (!tempStack.empty()) {
       result += tempStack.top()->to_string();
       result += "\n";
       tempStack.pop();
+    }
+    return result;
+  }
+
+  std::string to_string(const std::vector<int> &vector) {
+    std::string result;
+    for (const auto &number : vector) {
+      result += std::to_string(number);
+      result += " ";
     }
     return result;
   }
@@ -272,7 +281,7 @@ public:
 
   list<Land *> *landsList;
   list<Land *>::iterator landIterator;
-
+  void setLandsList(list<Land *> *);
   list<Land *> *getLandsList() const;
 
   list<Vertex *> *vertexesList;
@@ -319,7 +328,6 @@ public:
   void setWoolCards(stack<Wool *> *);
   stack<Wool *> *getWoolCards() const;
 
-public:
   vector<int> landsNumbers;
   void setLandNumbers(vector<int>);
   vector<int> getLandNumbers() const;
