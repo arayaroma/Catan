@@ -521,13 +521,13 @@ void Game::loadFiguresToPlayer(Player *player, int numPlayer) {
 
 void Game::loadRoades(Player *player) {
   if (player->getColor() == "RED")
-    player->roads->push_back(new Road("Images/Figures/RoadRed.png"));
+    player->roads->push_back(new Road("Images/Figures/StreetRed.png"));
   if (player->getColor() == "BLUE")
-    player->roads->push_back(new Road("Images/Figures/RoadBlue.png"));
+    player->roads->push_back(new Road("Images/Figures/StreetBlue.png"));
   if (player->getColor() == "GREEN")
-    player->roads->push_back(new Road("Images/Figures/RoadGreen.png"));
+    player->roads->push_back(new Road("Images/Figures/StreetGreen.png"));
   if (player->getColor() == "YELLOW")
-    player->roads->push_back(new Road("Images/Figures/RoadYellow.png"));
+    player->roads->push_back(new Road("Images/Figures/StreetYellow.png"));
 }
 
 void Game::loadCities(Player *player) {
