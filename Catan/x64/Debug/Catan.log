@@ -1,31 +1,7 @@
 ﻿  AboutView.cpp
-  Alert.cpp
   Application.cpp
-  Button.cpp
-  BuyView.cpp
-  Card.cpp
-  City.cpp
-  Clay.cpp
-  Component.cpp
-  Computer.cpp
-  ConfirmationAlert.cpp
-  Dice.cpp
-  Edge.cpp
-  ErrorAlert.cpp
-  Figure.cpp
   FileHandler.cpp
-  Game.cpp
-  Graph.cpp
-  Human.cpp
-  InformationAlert.cpp
-  Generating Code...
-  Compiling...
-  Knight.cpp
-  Label.cpp
-  Land.cpp
   MenuView.cpp
-  Mineral.cpp
-  NoneAlert.cpp
   PlayView.cpp
 C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(1179,69): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(1179,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
@@ -40,23 +16,8 @@ C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2179,63): war
 C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2196,63): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2212,66): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2228,65): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Player.cpp
-  Progress.cpp
   RegisterView.cpp
-  Road.cpp
-  TextBox.cpp
   TitleView.cpp
-  Town.cpp
-  TradeView.cpp
-  Vertex.cpp
-  VictoryPoints.cpp
-  View.cpp
-  WarningAlert.cpp
-  Wheat.cpp
-  Generating Code...
-  Compiling...
-  Wood.cpp
-  Wool.cpp
   main.cpp
   Generating Code...
   LINK : C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe not found or not built by the last incremental link; performing full link
