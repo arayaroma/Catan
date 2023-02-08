@@ -44,7 +44,11 @@ private:
   void loadColorsYellow();
   void loadColorsGreen();
 
- 
+  bool textTextBoxCompleted();
+  bool compareColors(); 
+  bool isAnyColorEmpty(); 
+  void verify();
+  bool compareNames(); 
 
   void getNamesThreePlayers();
   void getNamesFourPlayers();
