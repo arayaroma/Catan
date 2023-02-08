@@ -7,13 +7,16 @@
 */
 
 class Knight : public Card {
+public:
+  std::string to_string() const { return type + imagePath + delimiter + url; }
 
 private:
-    string url;
+  string url;
 
 public:
   Knight() {}
   Knight(std::string url) { this->url = url; }
+
   string getImagePath() { return this->url; }
   void toString() {}
 };
