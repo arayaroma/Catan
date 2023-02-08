@@ -35,7 +35,7 @@ void PlayView::createLabelNumTurn() {
                                 + game.getVictoryPointsCards()->size()), sf::Color(0, 0,0), font,
       sf::Text::Bold, 20, 80.f, 450.f);
 
-  owner = new Label("Dueño: ", sf::Color(0, 0, 255), font,
+  owner = new Label("Dueï¿½o: ", sf::Color(0, 0, 255), font,
       sf::Text::Bold, 20, 220.f, 0.f);
 
 
@@ -197,20 +197,17 @@ void PlayView::createLabelNamePlayers() {
 
 void PlayView::loadthreeXone() {
 
-  firsThreeXone =
-      new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 500.f, 20.f);
+  firsThreeXone =new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 500.f, 20.f);
   view.draw(firsThreeXone->getTextInstance());
 
-  secondThreeXone =
-      new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 838.f, 75.f);
+  secondThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 838.f, 75.f);
   view.draw(secondThreeXone->getTextInstance());
 
-  thirdThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20,
-                             910.f, 238.f);
+  thirdThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 910.f, 238.f);
   view.draw(thirdThreeXone->getTextInstance());
 
-  fourThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20,
-                            510.f, 435.f);
+  fourThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 510.f, 435.f);
+
   view.draw(fourThreeXone->getTextInstance());
 }
 
@@ -226,8 +223,8 @@ void PlayView::createButtons() {
   option1 = Button("Option1", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
   save = Button("Guardar", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
   close = Button("Close", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
-  howTrade = Button("¡Info.Comprar!", { 140, 35 }, 16, sf::Color::Green, sf::Color::Black);
-  howBuy = Button("¡Info.Intercambiar!", { 180, 35 }, 16, sf::Color::Green, sf::Color::Black);
+  howTrade = Button("ï¿½Info.Comprar!", { 140, 35 }, 16, sf::Color::Green, sf::Color::Black);
+  howBuy = Button("ï¿½Info.Intercambiar!", { 180, 35 }, 16, sf::Color::Green, sf::Color::Black);
   progreessDiscovery = Button("Jugar", { 35, 20 }, 7, sf::Color::Green, sf::Color::Black);
   progreessMonopoly = Button("Jugar", { 37, 20 }, 7, sf::Color::Green, sf::Color::Black);
   dice = Button("Dado", { 120, 50 }, 15, sf::Color::Green, sf::Color::White);
@@ -323,7 +320,7 @@ void PlayView::createSaveButton() {
 }
 
 void PlayView::createCloseButton() {
-   
+   // hello 
 }
 
 void PlayView::createDiceButton() {
@@ -524,7 +521,7 @@ void PlayView::printTownPlayer(list<Vertex *>::iterator vIterator, int x,
       else {
           (*game.playerIterator)->setFirstTurnFinished(true);
           ErrorAlert* alert = new ErrorAlert(
-              "¡ERROR!", "YA SELECCIONASTES 2 POBLADOS");
+              "ï¿½ERROR!", "YA SELECCIONASTES 2 POBLADOS");
           alert->goView();
       }
       //(*game.playerIterator)->setFirstTurnFinished(true);
@@ -532,7 +529,7 @@ void PlayView::printTownPlayer(list<Vertex *>::iterator vIterator, int x,
   else {
       //(*game.playerIterator)->setFirstTurnFinished(true);
       ErrorAlert* alert = new ErrorAlert(
-          "¡ERROR!", "POBLADO SELECCIONADO POR OTRO JUGADOR");
+          "ï¿½ERROR!", "POBLADO SELECCIONADO POR OTRO JUGADOR");
       alert->goView();
   }
 }
@@ -582,14 +579,14 @@ void PlayView::buyCity(list<Vertex *>::iterator vIterator, double x, double y) {
       }
       else {
           ErrorAlert* alert = new ErrorAlert(
-              "¡ERROR!", "EL POBLADO ES DE OTRO JUGADOR");
+              "ï¿½ERROR!", "EL POBLADO ES DE OTRO JUGADOR");
           alert->goView();
       }
     }
   }
   else {
       ErrorAlert* alert = new ErrorAlert(
-          "¡ERROR!", "POBLADO CON DUEÑO");
+          "ï¿½ERROR!", "POBLADO CON DUEï¿½O");
       alert->goView();
   }
 }
@@ -618,13 +615,13 @@ void PlayView::buyTown(list<Vertex *>::iterator vIterator, double x, double y) {
     }
     else {
         ErrorAlert* alert = new ErrorAlert(
-            "¡ERROR!", "POBLADOS INSUFICIENTES");
+            "ï¿½ERROR!", "POBLADOS INSUFICIENTES");
         alert->goView();
     }
   }
   else {
           ErrorAlert* alert = new ErrorAlert(
-              "¡ERROR!", "POBLADO CON DUEÑO");
+              "ï¿½ERROR!", "POBLADO CON DUEï¿½O");
           alert->goView();
   }
 }
@@ -850,7 +847,7 @@ void PlayView::receiveBoughtDevelopCard() {
   }
   else {
       ErrorAlert* alert = new ErrorAlert(
-          "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA CARTA DE DESARROLLO POR COMPRAR");
+          "ï¿½ERROR!", "NO SE HA SELECCIONADO NINGUNA CARTA DE DESARROLLO POR COMPRAR");
       alert->goView();
   }
 }
@@ -873,7 +870,7 @@ void PlayView::buildTown() {
   }
   else {
       ErrorAlert* alert = new ErrorAlert(
-          "¡ERROR!", "MATERIAS PRIMAS INSUFICIENTES");
+          "ï¿½ERROR!", "MATERIAS PRIMAS INSUFICIENTES");
       alert->goView();
   }
 } // BUG ACA
@@ -886,7 +883,7 @@ void PlayView::buyDevelopCard() {
   }
   else {
       ErrorAlert* alert = new ErrorAlert(
-          "¡ERROR!", "MATERIAS PRIMAS INSUFICIENTES");
+          "ï¿½ERROR!", "MATERIAS PRIMAS INSUFICIENTES");
       alert->goView();
       buyView.isBuyClicked = false;
   }
@@ -899,7 +896,7 @@ void PlayView::buildCity() {
     }
     else {
         ErrorAlert* alert = new ErrorAlert(
-            "¡ERROR!", "MATERIAS PRIMAS INSUFICIENTES");
+            "ï¿½ERROR!", "MATERIAS PRIMAS INSUFICIENTES");
         alert->goView();
     }
 }
@@ -1237,11 +1234,11 @@ void PlayView::saveMatchActualState() {
 
 void PlayView::isTurnButtonClicked(int x, int y) {
   if (turn.isMouseOver(view)) {
-    saveMatchActualState();
+ /*   saveMatchActualState();*/
     if (game.playerIterator != game.players->end()) {
         if ((*game.playerIterator)->getScore() >= 10) {
             NoneAlert* alert = new NoneAlert(
-                "¡FELICIDADES!" + (*game.playerIterator)->getName(), "JUEGO GANADO");
+                "ï¿½FELICIDADES!" + (*game.playerIterator)->getName(), "JUEGO GANADO");
             alert->goView();
             closeView();
         }
@@ -1855,7 +1852,7 @@ void PlayView::tradePossible() {
 }
   else {
       ErrorAlert* alert = new ErrorAlert(
-          "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
+          "ï¿½ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
       alert->goView();
   }
 }
@@ -1896,7 +1893,7 @@ void PlayView::tradeNormal() {
 }
   else {
       ErrorAlert* alert = new ErrorAlert(
-          "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
+          "ï¿½ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
       alert->goView();
   }
 }
@@ -1937,7 +1934,7 @@ void PlayView::tradeSpecial() {
   }
   else {
       ErrorAlert* alert = new ErrorAlert(
-          "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
+          "ï¿½ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
       alert->goView();
   }
   
@@ -1980,13 +1977,13 @@ void PlayView::playDiscoveryCard(sf::Event event) {
                 }
                 else {
                     ErrorAlert* alert = new ErrorAlert(
-                        "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
+                        "ï¿½ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
                     alert->goView();
                 }
             }
             else {
                 ErrorAlert* alert = new ErrorAlert(
-                    "¡ERROR!", "NO POSEE LA CARTA DE PROGRESO 'DESCUBRIR'");
+                    "ï¿½ERROR!", "NO POSEE LA CARTA DE PROGRESO 'DESCUBRIR'");
                 alert->goView();
 
             }
@@ -2027,7 +2024,7 @@ void PlayView::playDiscoveryCard(sf::Event event) {
              }
              else {
                  ErrorAlert* alert = new ErrorAlert(
-                     "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
+                     "ï¿½ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
                  alert->goView();
              }
          }
