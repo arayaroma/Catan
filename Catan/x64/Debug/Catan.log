@@ -1,1 +1,32 @@
-﻿  Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe
+﻿  AboutView.cpp
+  Alert.cpp
+  Application.cpp
+  BuyView.cpp
+  ConfirmationAlert.cpp
+  Edge.cpp
+  ErrorAlert.cpp
+  FileHandler.cpp
+  Game.cpp
+  Graph.cpp
+  InformationAlert.cpp
+  Land.cpp
+  MenuView.cpp
+  NoneAlert.cpp
+  PlayView.cpp
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2090,57): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2107,57): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2124,57): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2141,60): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2158,59): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  RegisterView.cpp
+  TextBox.cpp
+  TitleView.cpp
+  TradeView.cpp
+  Vertex.cpp
+  Generating Code...
+  Compiling...
+  View.cpp
+  WarningAlert.cpp
+  main.cpp
+  Generating Code...
+  Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe
