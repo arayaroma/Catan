@@ -23,8 +23,15 @@
 
 class City : public Figure {
 public:
-    City();
-    City(string url) { this->imagePath = url; }
+  std::string to_string() const {
+    return type + delimiter + imagePath + delimiter + std::to_string(posX) +
+           delimiter + std::to_string(posY) + delimiter +
+           std::to_string(worthPoints);
+  }
+
+public:
+  City();
+  City(string url) { this->imagePath = url; }
   void setPosX(double posX) { this->posX = posX; }
   double getPosX() { return this->posX; }
 
