@@ -13,7 +13,7 @@ public:
     return std::to_string(vertexId) + delimiter + townOwner +
            bool_to_string(_isPrinted) + delimiter + bool_to_string(_isClicked) +
            delimiter + bool_to_string(isTown) + delimiter +
-           bool_to_string(isCity) + delimiter + owner->to_string() + delimiter +
+           bool_to_string(isCity) /*+ delimiter + owner->to_string() */+ delimiter +
            town->to_string();
   }
 

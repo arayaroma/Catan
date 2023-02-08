@@ -64,8 +64,7 @@ public:
            delimiter + to_string(*townsList) + delimiter +
            to_string(*citiesList) + delimiter + to_string(*roadsList) +
            delimiter + to_string(*landsList) + delimiter +
-           to_string(*vertexesList) + delimiter + specialCard->to_string() +
-           delimiter + land.to_string() + delimiter + to_string(*knightCards) +
+           to_string(*vertexesList) + delimiter + to_string(*knightCards) +
            delimiter + to_string(*progressCards) + delimiter +
            to_string(*victoryPointCards) + delimiter + to_string(*clayCards) +
            delimiter + to_string(*mineralCards) + delimiter +
@@ -97,16 +96,19 @@ public:
   void setPlayersList(list<Player *> *);
   list<Player *> *getPlayersList() const;
 
+  // no se carga en goView
   list<Town *> *townsList;
   list<Town *>::iterator townIterator;
   void setTownsList(list<Town *> *);
   list<Town *> *getTownsList() const;
 
+  // no se carga en goView
   list<City *> *citiesList;
   list<City *>::iterator cityIterator;
   void setCitiesList(list<City *> *);
   list<City *> *getCitiesList() const;
 
+  // no se carga
   list<Road *> *roadsList;
   list<Road *>::iterator roadIterator;
   void setRoadsList(list<Road *> *);
@@ -117,17 +119,10 @@ public:
   void setLandsList(list<Land *> *);
   list<Land *> *getLandsList() const;
 
+  // obsoleto
   list<Vertex *> *vertexesList;
   void setVertexesList(list<Vertex *> *);
   list<Vertex *> *getVertexesList() const;
-
-  Card *specialCard;
-  void setSpecialCards(Card *);
-  Card *getSpecialCards() const;
-
-  Land land;
-  void setLand(Land);
-  Land getLand() const;
 
   list<Knight *> *knightCards = new list<Knight *>();
   void setKnightCards(list<Knight *> *);

@@ -59,15 +59,6 @@ void Game::setVertexesList(list<Vertex *> *vertexesList) {
 
 list<Vertex *> *Game::getVertexesList() const { return this->vertexesList; }
 
-void Game::setSpecialCards(Card *specialCard) {
-  this->specialCard = specialCard;
-}
-
-Card *Game::getSpecialCards() const { return this->specialCard; }
-
-void Game::setLand(Land land) { this->land = land; }
-Land Game::getLand() const { return this->land; }
-
 void Game::setKnightCards(list<Knight *> *knightCards) {
   this->knightCards = knightCards;
 }
@@ -78,9 +69,7 @@ void Game::setProgressCards(list<Progress *> *progressCards) {
   this->progressCards = progressCards;
 }
 
-list<Progress *> *Game::getProgressCards() const {
-  return this->progressCards;
-}
+list<Progress *> *Game::getProgressCards() const { return this->progressCards; }
 
 void Game::setVictoryPointsCards(list<VictoryPoints *> *victoryPointCards) {
   this->victoryPointCards = victoryPointCards;
@@ -142,8 +131,8 @@ void Game::loadProgressPaths() {
   imagePaths.insert(
       pair<string, string>("knightPath", "Images/knightCards/mini_knightCard"));
 
-  imagePaths.insert(pair<string, string>("progressPath",
-                                         "Images/progressCards/mini_progressCard"));
+  imagePaths.insert(pair<string, string>(
+      "progressPath", "Images/progressCards/mini_progressCard"));
 
   imagePaths.insert(pair<string, string>(
       "victoryPointsPath", "Images/victoryPointsCards/mini_victoryPointCard"));
@@ -185,7 +174,7 @@ void Game::shuffleLandList() {
     j = i + rand() % (landsList->size() - i);
     std::swap(landsList[i], landsList[j]);
   }
-} 
+}
 
 vector<int> Game::getLandsNumbersRandomized() {
   loadLandsNumbers();
@@ -261,11 +250,6 @@ void Game::loadLands() {
   // landsList = shuffleLandList();
 }
 
-void Game::makeSpecialCard() {
-  specialCard = new Progress(1,imagePaths.at("biggestPath"));
-  specialCard = new Progress(1,imagePaths.at("biggestArmyPath"));
-}
-
 void Game::makeMaterialCard() {
   int i, numberOfCards = 19;
   for (i = 0; i < numberOfCards; i++) {
@@ -281,25 +265,26 @@ void Game::makeDevelopCard() {
   std::string knightPath, progressPath, victoryPointsPath;
   endUrl = ".png";
   int i, num = 1, numberOfCards = 5;
-  for(int x = 0; x<3; x++){
-      for (i = 0; i < numberOfCards; i++) {
-          string stringNumber(std::to_string(num));
-          knightPath = imagePaths.at("knightPath") + stringNumber + endUrl;
-          
-          if (i < 3 && x<2) {
-              progressPath = imagePaths.at("progressPath") + stringNumber + endUrl;
-              progressCards->push_back(new Progress(num,progressPath));
-          }
-          if (x == 0) {
-              victoryPointsPath = imagePaths.at("victoryPointsPath") + stringNumber + endUrl;
-              victoryPointCards->push_back(new VictoryPoints(victoryPointsPath));
-          }
-          knightCards->push_back(new Knight(knightPath));
-          
-          num++;
-          // Poner png
+  for (int x = 0; x < 3; x++) {
+    for (i = 0; i < numberOfCards; i++) {
+      string stringNumber(std::to_string(num));
+      knightPath = imagePaths.at("knightPath") + stringNumber + endUrl;
+
+      if (i < 3 && x < 2) {
+        progressPath = imagePaths.at("progressPath") + stringNumber + endUrl;
+        progressCards->push_back(new Progress(num, progressPath));
       }
-      num=1;
+      if (x == 0) {
+        victoryPointsPath =
+            imagePaths.at("victoryPointsPath") + stringNumber + endUrl;
+        victoryPointCards->push_back(new VictoryPoints(victoryPointsPath));
+      }
+      knightCards->push_back(new Knight(knightPath));
+
+      num++;
+      // Poner png
+    }
+    num = 1;
   }
 }
 

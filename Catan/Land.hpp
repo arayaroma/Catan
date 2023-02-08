@@ -14,7 +14,7 @@ public:
     return type + delimiter + imagePath + delimiter + std::to_string(landId) +
            delimiter + std::to_string(diceNumber) + delimiter +
            std::to_string(posX) + delimiter + std::to_string(posY) + delimiter +
-           typeland + delimiter + to_string(*townsList);
+           typeland /*+ delimiter + to_string(*townsList)*/;
   }
 
   std::string to_string(const std::list<Vertex *> &list) const {

@@ -1,7 +1,7 @@
 #include "Town.hpp"
 
 Town::Town() {
-  this->type = FIGURE;
+  this->type = TOWN;
   this->imagePath = "";
   this->worthPoints = 1;
   this->posX = NULL;
