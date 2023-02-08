@@ -338,6 +338,9 @@ private:
   bool isAdjacentVertex = false;
   bool isParentClicked = false;
   void traverseLandsToAdjacentVertex(list<Vertex*>::iterator vIterator);
+  void printFiguresGame();
+  void deleteTowns();
+  void deleteCities();
 private:
   sf::Event eventTest;
   sf::RectangleShape playerRectangle, cardsRectangle, buyRectangle;
@@ -349,7 +352,7 @@ private:
   Label townPlayer, cityPlayer, roadPlayer;
   Label titleTurn, labelNumTurn, infoFisrtTurn, labelNumDice, scorePlayer,
       titleScorePlayer;
-  Label knight, progress, victory;
+  Label knight, progress, victory,town,city,road;
   Label woodGame, woolGame, clayGame, mineralGame, wheatGame, numDevelopCard;
   Button turn, buy, trade, dice, p, option1, save, close,howTrade,howBuy,progreessConstruccion, progreessMonopoly, progreessDiscovery;
 };

@@ -24,7 +24,7 @@ void PlayView::createLabelNumTurn() {
 
   infoFisrtTurn =
       Label("Primera Ronda, por favor elija 2 poblados y pase de turno",
-            sf::Color(0, 0, 0), font, sf::Text::Bold, 20, 250.f, 500.f);
+            sf::Color(0, 0, 0), font, sf::Text::Bold, 20, 250.f, 510.f);
   labelNumDice =
       Label(std::to_string(diceInstance.getActualNumber()), sf::Color(0, 0, 0),
             font, sf::Text::Bold, 20, 1150.f, 570.f);
@@ -125,8 +125,22 @@ void PlayView::createLabels() {
                 20, 1070.f, 60.f);
   cards = Label("Componentes", sf::Color(0, 0, 255, 128), font, sf::Text::Bold,
                 20, 565.f, 575.f);
+  town = Label(std::to_string(game.getTownsList()->size()), sf::Color(0, 0, 255, 128), font, sf::Text::Bold,
+      20, 150.f, 440.f);
+  city = Label(std::to_string(game.getCitiesList()->size()), sf::Color(0, 0, 255, 128), font, sf::Text::Bold,
+      20, 200.f, 440.f);
+  road= Label(std::to_string(game.getRoadsList()->size()), sf::Color(0, 0, 255, 128), font, sf::Text::Bold,
+      20, 250.f, 440.f);
 }
+void PlayView::printFiguresGame() {
+    cityIterator = (*game.playerIterator)->citys->begin();
+    townIterator = (*game.playerIterator)->towns->begin();
+    if (townIterator != (*game.playerIterator)->towns->end())
+        printImages((*townIterator)->getImagePath(), 140, 480);
 
+    if (cityIterator != (*game.playerIterator)->citys->end())
+        printImages((*cityIterator)->getImagePath(), 190, 480);
+}
 void PlayView::createLabelPlayerDevelopCard() {
   victory =
       Label(std::to_string((*game.playerIterator)->victoryPointsCards->size()),
@@ -415,6 +429,9 @@ void PlayView::drawLabels() {
   view.draw(cards.getTextInstance());
   view.draw(titleScorePlayer.getTextInstance());
   view.draw(scorePlayer.getTextInstance());
+  view.draw(road.getTextInstance());
+  view.draw(city.getTextInstance());
+  view.draw(town.getTextInstance());
 }
 
 void PlayView::drawLabelNamePlayers() {
@@ -596,6 +613,7 @@ void PlayView::buyCity(list<Vertex *>::iterator vIterator, double x, double y) {
               game.graph.getVertex((*vIterator)->getVertexId()));
           deleteCitytoPlayer();
           addTownToPlayer();
+          deleteCities();
           setIsClickedToVertexGraph(vIterator);
           (*game.playerIterator)->setScore(2);
           selectCity = false;
@@ -632,6 +650,7 @@ void PlayView::buyTown(list<Vertex *>::iterator vIterator, double x, double y) {
         (*game.playerIterator)->setScore(1);
         setIsClickedToVertexGraph(vIterator);
         selectTown = false;
+        deleteTowns();
         game.graph.getVertex((*vIterator)->getVertexId())->setIsCity(false);
         game.graph.getVertex((*vIterator)->getVertexId())->setIsTown(true);
         view.display();
@@ -961,6 +980,7 @@ void PlayView::drawView() {
   drawLabelMaterialGame();
   printPlayerFigure();
   printPlayerDevelopCard();
+  printFiguresGame();
   createButtons();
   printPlayerBuyFigure();
   printBuyDevelopCard();
@@ -1033,7 +1053,16 @@ void PlayView::firstTurn() {
     playerIterator++;
   }
 }
-
+void PlayView::deleteTowns() {
+    townIterator = game.getTownsList()->begin();
+    if (townIterator != game.getTownsList()->end())
+        game.getTownsList()->pop_back(); // poner alerta aca
+}
+void PlayView::deleteCities() {
+    cityIterator = game.getCitiesList()->begin();
+    if (cityIterator != game.getCitiesList()->end())
+        game.getTownsList()->pop_back(); // poner alerta aca
+}
 void PlayView::deleteTowntoPlayer() {
   if (townIterator != (*game.playerIterator)->towns->end())
     (*game.playerIterator)->towns->pop_back(); // poner alerta aca
@@ -1065,6 +1094,7 @@ void PlayView::loadView() {
   game.playerIterator = beginPlayerIterator();
   game.loadLands();
   game.makeMaterialCard();
+  game.makeFigures();
   game.makeDevelopCard();
   landsList = game.getLandsList();
   game.assignTownsToLand();
