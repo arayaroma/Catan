@@ -12,6 +12,6 @@ string Alert::separateText(string text) {
 }
 
 sf::Text Alert::getTitleMessage() const {
-  return this->titleLabel->getTextInstance();
+  return this->titleLabel.getTextInstance();
 }
 

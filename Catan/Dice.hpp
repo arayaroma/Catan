@@ -3,7 +3,6 @@
 #include <iostream>
 
 enum Numbers {
-  one,
   two,
   three,
   four,

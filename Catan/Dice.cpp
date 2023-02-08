@@ -1,7 +1,7 @@
 #include "Dice.hpp"
 
 Dice::Dice() {
-  this->min = 1;
+  this->min = 2;
   this->max = 12;
 }
 

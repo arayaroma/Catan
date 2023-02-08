@@ -536,8 +536,8 @@ void PlayView::printTownPlayer(list<Vertex*>::iterator vIterator, int x,
     int y) {
     if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() == NULL) {
         if (!adjacentVertex(vIterator)) {
-            //traverseLandsToAdjacentVertex(vIterator);
-            //if (!isParentClicked) {
+            traverseLandsToAdjacentVertex(vIterator);
+            if (!isParentClicked) {
             if ((*game.playerIterator)->getTownFirstTurn() < 2) {
                 initializeIteratorTownList();
                 setIsClickedToVertexGraph(vIterator);
@@ -563,24 +563,12 @@ void PlayView::printTownPlayer(list<Vertex*>::iterator vIterator, int x,
                 ErrorAlert* alert = new ErrorAlert(
                     "�ERROR!", "YA SELECCIONASTES 2 POBLADOS");
                 alert->goView();
+
             }
-            // }
-            isParentClicked = false;
-            //(*game.playerIterator)->setFirstTurnFinished(true);
         }
-        game.graph.getVertex((*vIterator)->getVertexId())->setIsCity(false);
-        game.graph.getVertex((*vIterator)->getVertexId())->setIsTown(true);
-
-        view.display();
-
-        //(*game.playerIterator)->setFirstTurnFinished(true);
+            isParentClicked = false;
+        }
     }
-    game.graph.getVertex((*vIterator)->getVertexId())->setIsCity(false);
-    game.graph.getVertex((*vIterator)->getVertexId())->setIsTown(true);
-
-    view.display();
-
-    //(*game.playerIterator)->setFirstTurnFinished(true);
  
 }
 
@@ -1032,24 +1020,24 @@ bool PlayView::isPlayerTownsListTraversal() const {
 
 void PlayView::giveCardsToPlayerFirstTurn(list<Land*>::iterator landIterator) {
     if ((*landIterator)->getTypeLand() == "Mountain") {
-        (*game.playerIterator)->mineralCard->push_back(new Mineral());
-        deleteMineralCards();
+        if(deleteMineralCards())
+            (*game.playerIterator)->mineralCard->push_back(new Mineral());    
     }
     if ((*landIterator)->getTypeLand() == "Brick") {
-        (*game.playerIterator)->clayCard->push_back(new Clay());
-        deleteClayCards();
+        if(deleteClayCards())
+            (*game.playerIterator)->clayCard->push_back(new Clay());       
     }
     if ((*landIterator)->getTypeLand() == "Forest") {
-        (*game.playerIterator)->woodCard->push_back(new Wood());
-        deleteWoodCards();
+        if(deleteWoodCards())
+            (*game.playerIterator)->woodCard->push_back(new Wood());       
     }
     if ((*landIterator)->getTypeLand() == "Grass") {
-        (*game.playerIterator)->woolCard->push_back(new Wool());
-        deleteWoolCards();
+        if(deleteWoolCards())
+            (*game.playerIterator)->woolCard->push_back(new Wool());       
     }
     if ((*landIterator)->getTypeLand() == "Field") {
-        (*game.playerIterator)->wheatlCard->push_back(new Wheat());
-        deleteWheatCards();
+        if(deleteWheatCards())
+            (*game.playerIterator)->wheatlCard->push_back(new Wheat());
     }
 }
 
@@ -1122,7 +1110,7 @@ void PlayView::goView() {
                     }
                     else {
                         hexagonsMethod();
-                        isDiceButtonClicked(getMousePositionX(view), getMousePositionY(view));
+                        isDiceButtonClicked(event);
                         resourcesMethod();
                         progressMethod();
                         shopMethod();
@@ -1208,8 +1196,8 @@ void PlayView::checkMaterialClicks() {
 
 }
 
-void PlayView::isDiceButtonClicked(int x, int y) {
-    if (dice.isMouseOver(view)) {
+void PlayView::isDiceButtonClicked(sf::Event event) {
+    if (dice.isPressed(event)) {
         if (!isDiceSpinned) {
             receiveMaterialCard(diceInstance.rollDice());
             isDiceSpinned = true;
@@ -1236,69 +1224,103 @@ bool PlayView::isActualPlayerName(list<Vertex*>::iterator vertexIterator,
         ->getOwner()
         ->getName() == (*player)->getName());
 }
-void PlayView::deleteWoodCards() { game.woodCards->pop(); }
+bool PlayView::deleteWoodCards() { 
+    if (game.woodCards->size() > 1) {
+        game.woodCards->pop();
+        return true;
+    }
+    return false;
+}
+bool PlayView::deleteWoolCards() {
+    if (game.woolCards->size() > 1) {
+        game.woolCards->pop();
+        return true;
+    }
+    return false;
+}
 
-void PlayView::deleteWoolCards() { game.woolCards->pop(); }
+bool PlayView::deleteMineralCards() { 
+    if (game.mineralCards->size() > 1) {
+        game.mineralCards->pop();
+        return true;
+    }
+    return false;
+}
 
-void PlayView::deleteMineralCards() { game.mineralCards->pop(); }
+bool PlayView::deleteClayCards() { 
+    if (game.clayCards->size() > 1) {
+        game.clayCards->pop();
+        return true;
+    }
+    return false;
+}
 
-void PlayView::deleteClayCards() { game.clayCards->pop(); }
-
-void PlayView::deleteWheatCards() { game.wheatCards->pop(); }
+bool PlayView::deleteWheatCards() {
+    if (game.wheatCards->size() > 1) {
+        game.wheatCards->pop();
+        return true;
+    }
+    return false;
+}
 
 void PlayView::giveCardsToPlayerCity(list<Land*>::iterator landIterator) {
     if ((*landIterator)->getTypeLand() == "Mountain") {
-        (*playerIterator)->mineralCard->push_back(new Mineral());
-        (*playerIterator)->mineralCard->push_back(new Mineral());
-        deleteMineralCards();
-        deleteMineralCards();
+        if (deleteMineralCards() &&
+            deleteMineralCards()) {
+            (*playerIterator)->mineralCard->push_back(new Mineral());
+            (*playerIterator)->mineralCard->push_back(new Mineral());
+        }    
     }
     if ((*landIterator)->getTypeLand() == "Brick") {
-        (*playerIterator)->clayCard->push_back(new Clay());
-        (*playerIterator)->clayCard->push_back(new Clay());
-        deleteClayCards();
-        deleteClayCards();
+        if (deleteClayCards() &&
+            deleteClayCards()) {
+            (*playerIterator)->clayCard->push_back(new Clay());
+            (*playerIterator)->clayCard->push_back(new Clay());
+        }
     }
     if ((*landIterator)->getTypeLand() == "Forest") {
-        (*playerIterator)->woodCard->push_back(new Wood());
-        (*playerIterator)->woodCard->push_back(new Wood());
-        deleteWoodCards();
-        deleteWoodCards();
+        if (deleteWoodCards() &&
+            deleteWoodCards()) {
+            (*playerIterator)->woodCard->push_back(new Wood());
+            (*playerIterator)->woodCard->push_back(new Wood());
+        }
     }
     if ((*landIterator)->getTypeLand() == "Grass") {
-        (*playerIterator)->woolCard->push_back(new Wool());
-        (*playerIterator)->woolCard->push_back(new Wool());
-        deleteWoolCards();
-        deleteWoolCards();
+        if (deleteWoolCards() &&
+            deleteWoolCards()) {
+            (*playerIterator)->woolCard->push_back(new Wool());
+            (*playerIterator)->woolCard->push_back(new Wool());
+        }
     }
     if ((*landIterator)->getTypeLand() == "Field") {
-        (*playerIterator)->wheatlCard->push_back(new Wheat());
-        (*playerIterator)->wheatlCard->push_back(new Wheat());
-        deleteWheatCards();
-        deleteWheatCards();
+        if (deleteWheatCards() &&
+            deleteWheatCards()) {
+            (*playerIterator)->wheatlCard->push_back(new Wheat());
+            (*playerIterator)->wheatlCard->push_back(new Wheat());
+        }
     }
 }
 
 void PlayView::giveCardsToPlayer(list<Land*>::iterator landIterator) {
     if ((*landIterator)->getTypeLand() == "Mountain") {
-        (*playerIterator)->mineralCard->push_back(new Mineral());
-        deleteMineralCards();
+        if(deleteMineralCards())
+            (*playerIterator)->mineralCard->push_back(new Mineral());   
     }
     if ((*landIterator)->getTypeLand() == "Brick") {
-        (*playerIterator)->clayCard->push_back(new Clay());
-        deleteClayCards();
+        if(deleteClayCards())
+            (*playerIterator)->clayCard->push_back(new Clay());     
     }
     if ((*landIterator)->getTypeLand() == "Forest") {
-        (*playerIterator)->woodCard->push_back(new Wood());
-        deleteWoodCards();
+        if(deleteWoodCards())
+            (*playerIterator)->woodCard->push_back(new Wood());  
     }
     if ((*landIterator)->getTypeLand() == "Grass") {
-        (*playerIterator)->woolCard->push_back(new Wool());
-        deleteWoolCards();
+        if(deleteWoolCards())
+            (*playerIterator)->woolCard->push_back(new Wool());
     }
     if ((*landIterator)->getTypeLand() == "Field") {
-        (*playerIterator)->wheatlCard->push_back(new Wheat());
-        deleteWheatCards();
+        if(deleteWheatCards())
+            (*playerIterator)->wheatlCard->push_back(new Wheat());
     }
 }
 
@@ -1310,9 +1332,9 @@ void PlayView::receiveCard(list<Land*>::iterator it) {
         while (isVertexesListTraversalInTurn(vIterator, it)) {
             if (existsAnOwnerInVertex(vIterator)) {
                 if (isActualPlayerName(vIterator, playerIterator)) {
-                    if (game.graph.getVertex((*vIterator)->getIsCity()))
+                    if (game.graph.getVertex((*vIterator)->getVertexId())->getIsCity())
                         giveCardsToPlayerCity(it);
-                    if (game.graph.getVertex((*vIterator)->getIsTown()))
+                    if (game.graph.getVertex((*vIterator)->getVertexId())->getIsTown())
                         giveCardsToPlayer(it);
                 }
             }
@@ -2063,28 +2085,28 @@ void PlayView::playDiscoveryCard(sf::Event event) {
             if (isCLayTradeClicked || isWoodTradeClicked || isWoolTradeClicked ||
                 isWheatTradeClicked || isMineralTradeClicked) {
                 if (isCLayTradeClicked) {
-                    (*game.playerIterator)->clayCard->push_back(new Clay());
-                    deleteClayCards();
+                    if(deleteClayCards())
+                        (*game.playerIterator)->clayCard->push_back(new Clay());                 
                     (*game.playerIterator)->restProgressDiscovery(1);
                 }
                 if (isWoodTradeClicked) {
-                    (*game.playerIterator)->woodCard->push_back(new Wood());
-                    deleteWoodCards();
+                    if(deleteWoodCards())
+                        (*game.playerIterator)->woodCard->push_back(new Wood());                   
                     (*game.playerIterator)->restProgressDiscovery(1);
                 }
                 if (isWoolTradeClicked) {
-                    (*game.playerIterator)->woolCard->push_back(new Wool());
-                    deleteWoolCards();
+                    if(deleteWoolCards())
+                        (*game.playerIterator)->woolCard->push_back(new Wool());                  
                     (*game.playerIterator)->restProgressDiscovery(1);
                 }
                 if (isWheatTradeClicked) {
-                    (*game.playerIterator)->wheatlCard->push_back(new Wheat());
-                    deleteWheatCards();
+                    if(deleteWheatCards())
+                        (*game.playerIterator)->wheatlCard->push_back(new Wheat());                    
                     (*game.playerIterator)->restProgressDiscovery(1);
                 }
                 if (isMineralTradeClicked) {
-                    (*game.playerIterator)->mineralCard->push_back(new Mineral());
-                    deleteMineralCards();
+                    if(deleteMineralCards())
+                        (*game.playerIterator)->mineralCard->push_back(new Mineral());                   
                     (*game.playerIterator)->restProgressDiscovery(1);
                 }
             }

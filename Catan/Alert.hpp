@@ -58,7 +58,7 @@ private:
 
 protected:
   int alertType;
-  Label *titleLabel, *messageLabel;
+  Label titleLabel, messageLabel;
   string titleMessage, bodyMessage;
   Button okButton,nextButton;
   sf::Texture imageIcon;

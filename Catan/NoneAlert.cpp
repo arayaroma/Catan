@@ -3,9 +3,9 @@
 NoneAlert::NoneAlert() {}
 
 NoneAlert::NoneAlert(string titleMessage, string bodyMessage) {
-  titleLabel = new Label(titleMessage, sf::Color::Black, font,
+  titleLabel =  Label(titleMessage, sf::Color::Black, font,
                          sf::Text::Regular, 24, 160, 5);
-  messageLabel = new Label(separateText(bodyMessage), sf::Color::Black, font,
+  messageLabel =  Label(separateText(bodyMessage), sf::Color::Black, font,
                            sf::Text::Regular, 16, 20, 50);
   titleMessage = titleMessage;
   bodyMessage = bodyMessage;
@@ -46,8 +46,8 @@ void NoneAlert::drawView() {
   loadImageIcon();
   view.draw(sprite);
   view.draw(imageIconSprite);
-  view.draw(titleLabel->getTextInstance());
-  view.draw(messageLabel->getTextInstance());
+  view.draw(titleLabel.getTextInstance());
+  view.draw(messageLabel.getTextInstance());
   drawButton(okButton);
 }
 

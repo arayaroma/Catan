@@ -205,7 +205,7 @@ private:
   void drawLabelNumTurn();
   void createLabelMaterialCardGame();
   void drawLabelMaterialGame();
-  void isDiceButtonClicked(int, int);
+  void isDiceButtonClicked(sf::Event event);
   void createInfoBuy(); 
   void crateInfoTrade(); 
 
@@ -290,11 +290,11 @@ private:
   void deleteMineraltoPlayer();
   void deleteWheattoPlayer();
 
-  void deleteWoodCards();
-  void deleteWoolCards();
-  void deleteMineralCards();
-  void deleteClayCards();
-  void deleteWheatCards();
+  bool deleteWoodCards();
+  bool deleteWoolCards();
+  bool deleteMineralCards();
+  bool deleteClayCards();
+  bool deleteWheatCards();
   void buyTown(list<Vertex *>::iterator vIterator, double x, double y);
   void buyCity(list<Vertex *>::iterator vIterator, double x, double y);
   void printBuyDevelopCard();

@@ -440,17 +440,16 @@ void Game::assignTownsToLand() {
 
 void Game::assignTowns(Land *temp, int idVertex, int endVertex, int sumId) {
   int conditional = 0;
-  vertexesList = temp->townsList;
   for (idVertex; idVertex < endVertex; idVertex += sumId + 1) {
     if (conditional < 2) {
-      vertexesList->push_back(
+        temp->townsList->push_back(
           new Vertex(idVertex, "", new Town(), false)); // aca se cae
-      vertexesList->push_back(
+        temp->townsList->push_back(
           new Vertex(idVertex + sumId, "", new Town(), false));
       conditional++;
     } else {
-      vertexesList->push_back(new Vertex(idVertex, "", new Town(), false));
-      vertexesList->push_back(
+        temp->townsList->push_back(new Vertex(idVertex, "", new Town(), false));
+        temp->townsList->push_back(
           new Vertex(idVertex + sumId + 1, "", new Town(), false));
     }
   }
