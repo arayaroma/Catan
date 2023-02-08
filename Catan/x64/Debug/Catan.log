@@ -1,7 +1,2 @@
-﻿  PlayView.cpp
-C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(2041,63): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(2058,63): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(2075,63): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(2091,66): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(2107,65): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+﻿  LINK : no se encontró C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Catan.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
   Catan.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Catan.exe
