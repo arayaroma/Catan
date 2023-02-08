@@ -147,7 +147,7 @@ private:
   bool isProgressClick(float, float );
   bool isMaterialPressed = false; 
 
-
+  void destructor(); 
 
   // cambiar nombres
   void printTownsTest();
@@ -341,15 +341,15 @@ private:
 private:
   sf::Event eventTest;
   sf::RectangleShape playerRectangle, cardsRectangle, buyRectangle;
-  Label *materialCard, *pricingTable, *turns, *cards, *developCard, *labelBuy;
-  Label *player1, *player2, *player3, *player4, *owner, *ownerName;
-  Label *clayCard, *mineralPlayerCard, *wheatPlayerCard, *woodPlayerCard,
-      *woolPlayerCard, *firsThreeXone, *secondThreeXone, *thirdThreeXone,
-      *fourThreeXone, *tempNumber;
-  Label *townPlayer, *cityPlayer, *roadPlayer;
-  Label *titleTurn, *labelNumTurn, *infoFisrtTurn, *labelNumDice, *scorePlayer,
-      *titleScorePlayer;
-  Label *knight, *progress, *victory;
-  Label *woodGame, *woolGame, *clayGame, *mineralGame, *wheatGame, *numDevelopCard;
+  Label materialCard, pricingTable, turns, cards, developCard, labelBuy;
+  Label player1, player2, player3, player4, owner, ownerName;
+  Label clayCard, mineralPlayerCard, wheatPlayerCard, woodPlayerCard,
+      woolPlayerCard, firsThreeXone, secondThreeXone, thirdThreeXone,
+      fourThreeXone, tempNumber;
+  Label townPlayer, cityPlayer, roadPlayer;
+  Label titleTurn, labelNumTurn, infoFisrtTurn, labelNumDice, scorePlayer,
+      titleScorePlayer;
+  Label knight, progress, victory;
+  Label woodGame, woolGame, clayGame, mineralGame, wheatGame, numDevelopCard;
   Button turn, buy, trade, dice, p, option1, save, close,howTrade,howBuy,progreessConstruccion, progreessMonopoly, progreessDiscovery;
 };

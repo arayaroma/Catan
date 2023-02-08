@@ -99,6 +99,7 @@ void RegisterView::drawView() {
   loadTextboxes();
 }
 
+
 void RegisterView::typeOverTextbox(sf::Event event) {
   if (isThreePlayers) {
     if (firstTextbox.isMouseOver(view))
@@ -251,23 +252,25 @@ void RegisterView::goMenuView() {
   menuView.goView();
 }
 
+
 void RegisterView::registerButton() {
-  title = new Label("Registro de Usuarios", sf::Color::Black, font,
+  
+  title =  Label("Registro de Usuarios", sf::Color::Black, font,
                     sf::Text::Bold, 30, 480.f, 50.f);
-  name = new Label("Nombre", sf::Color::Black, font, sf::Text::Bold, 20, 405.f,
+  name =  Label("Nombre", sf::Color::Black, font, sf::Text::Bold, 20, 405.f,
                    200.f);
 
-  color = new Label("Color", sf::Color::Black, font, sf::Text::Bold, 20, 600.f,
+  color =  Label("Color", sf::Color::Black, font, sf::Text::Bold, 20, 600.f,
                     200.f);
 
-  note = new Label("Nota: Acerca el cursor al campo de texto del jugador, "
+  note =  Label("Nota: Acerca el cursor al campo de texto del jugador, "
                    "presiona ENTER para escribir y END para salir.",
                    sf::Color::Blue, font, sf::Text::Bold, 20, 10.f, 640.f);
 
-  view.draw(title->getTextInstance());
-  view.draw(name->getTextInstance());
-  view.draw(color->getTextInstance());
-  view.draw(note->getTextInstance());
+  view.draw(title.getTextInstance());
+  view.draw(name.getTextInstance());
+  view.draw(color.getTextInstance());
+  view.draw(note.getTextInstance());
 }
 
 void RegisterView::loadRegisterButtons(Button &button) {

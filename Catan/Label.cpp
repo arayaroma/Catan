@@ -1,7 +1,7 @@
 #include "Label.hpp"
 
 Label::Label() {}
-
+Label:: ~Label() {}
 Label::Label(const sf::String& text, const sf::Color& color,
 	const sf::Font& font, sf::Uint32 style, unsigned int font_size,
 	float pos_x, float pos_y) {

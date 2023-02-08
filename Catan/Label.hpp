@@ -14,6 +14,7 @@ protected:
 
 public:
 	Label();
+	~Label();
 	Label(const sf::String&, const sf::Color&, const sf::Font&, sf::Uint32,
 		unsigned int, float, float);
 	const sf::Text getTextInstance() const;
