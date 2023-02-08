@@ -1109,6 +1109,7 @@ void PlayView::loadView() {
     start = true;
     srand((unsigned)time(nullptr));
 }
+// Hola buenas 
 
 void PlayView::goView() {
     loadView();
