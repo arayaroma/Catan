@@ -1,10 +1,10 @@
 #pragma once
 #include "Card.hpp"
+#include "DevelopCards.hpp"
 #include "Figures.hpp"
 #include "Land.hpp"
 #include "Materials.hpp"
 #include "Player.hpp"
-#include "DevelopCards.hpp"
 #include "StructureGraph.hpp"
 #include <iostream>
 #include <list>
@@ -51,6 +51,14 @@ using std::vector;
 */
 
 class Game {
+
+public:
+  std::string to_string() const {
+    return matchName + delimiter + endUrl + delimiter +
+           std::to_string(matchId) + delimiter +
+           bool_to_string(isNumbersLandsSet) + delimiter;
+  }
+
 private:
   string matchName;
   string endUrl;
@@ -125,19 +133,19 @@ public:
   Land getLand() const;
 
 public:
-	list<Knight *> *knightCards = new list<Knight *>();
+  list<Knight *> *knightCards = new list<Knight *>();
 
   void setKnightCards(list<Knight *> *);
   list<Knight *> *getKnightCards() const;
 
 public:
-	list<Progress *> *progressCards = new list<Progress *>();
+  list<Progress *> *progressCards = new list<Progress *>();
 
   void setProgressCards(list<Progress *> *);
   list<Progress *> *getProgressCards() const;
 
 public:
-	list<VictoryPoints *> *victoryPointCards = new list<VictoryPoints *>();
+  list<VictoryPoints *> *victoryPointCards = new list<VictoryPoints *>();
 
   void setVictoryPointsCards(list<VictoryPoints *> *);
   list<VictoryPoints *> *getVictoryPointsCards() const;
