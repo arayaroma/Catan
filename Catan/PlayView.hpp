@@ -314,6 +314,12 @@ private:
   void getWoolsPlayersToMonopoly();
   void getMineralsPlayersToMonopoly();
   void getWheatsPlayersToMonopoly();
+
+  bool adjacentVertex(list<Vertex*>::iterator vIterator);
+  void parentAdjacentVertex(list<Vertex*>::iterator vIterator, list<Vertex*>::iterator vIteratorAux);
+  bool isAdjacentVertex = false;
+  bool isParentClicked = false;
+  void traverseLandsToAdjacentVertex(list<Vertex*>::iterator vIterator);
 private:
   sf::Event eventTest;
   sf::RectangleShape playerRectangle, cardsRectangle, buyRectangle;
