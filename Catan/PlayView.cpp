@@ -598,7 +598,6 @@ void PlayView::searhTown(double x, double y, list<Land *>::iterator it) {
 void PlayView::buyCity(list<Vertex *>::iterator vIterator, double x, double y) {
   initializeIteratorCityList();
   if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() != NULL) {
-
     if (!game.graph.getVertex((*vIterator)->getVertexId())->getIsCity()) {
       if (game.graph.getVertex((*vIterator)->getVertexId())
               ->getOwner()
@@ -625,12 +624,6 @@ void PlayView::buyCity(list<Vertex *>::iterator vIterator, double x, double y) {
         alert->goView();
       }
     }
-
-    else {
-      ErrorAlert *alert =
-          new ErrorAlert("!ERROR!", "EL POBLADO ES DE OTRO JUGADOR");
-      alert->goView();
-    }
   }
 }
 
@@ -642,8 +635,8 @@ void PlayView::addTownToPlayer() {
 
 void PlayView::buyTown(list<Vertex *>::iterator vIterator, double x, double y) {
   initializeIteratorTownList();
+  if (!adjacentVertex(vIterator)) {
   if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() == NULL) {
-    if (!adjacentVertex(vIterator)) {
       if ((*game.playerIterator)->towns->size() > 1) {
         if (townIterator != (*game.playerIterator)->towns->end())
           printImages((*townIterator)->getImagePath(),
@@ -1102,57 +1095,7 @@ void PlayView::loadView() {
 // Hola buenas 
 
 void PlayView::goView() {
-<<<<<<< HEAD
     loadView();
-=======
-  loadView();
-  drawView();
-  view.draw(sprite);
-  while (view.isOpen()) {
-    while (view.pollEvent(eventTest)) {
-      showCoordinates(eventTest);
-      switch (eventTest.type) {
-        view.waitEvent(eventTest);
-      case sf::Event::MouseButtonPressed:
-        if (eventTest.MouseButtonPressed && isMouseLeftClicked(eventTest)) {
-          if (isFirstTurn) {
-            traverseLands(getMousePositionX(view), getMousePositionY(view));
-          } else {
-            traverseLands(getMousePositionX(view), getMousePositionY(view));
-
-            isDiceButtonClicked(getMousePositionX(view),
-                                getMousePositionY(view));
-            clickTradeButton(eventTest);
-            clickInCityBuy(getMousePositionX(view), getMousePositionY(view));
-            clickInTownBuy(getMousePositionX(view), getMousePositionY(view));
-            clickClayTrade(getMousePositionX(view), getMousePositionY(view));
-            clickWheatTrade(getMousePositionX(view), getMousePositionY(view));
-            clickWoolTrade(getMousePositionX(view), getMousePositionY(view));
-            clickWoodTrade(getMousePositionX(view), getMousePositionY(view));
-            clickMineralTrade(getMousePositionX(view), getMousePositionY(view));
-            clickInDevelopCardBuy(getMousePositionX(view),
-                                  getMousePositionY(view));
-            isBuyButtonClicked(eventTest);
-            playDiscoveryCard(eventTest);
-            playMonopolyCard(eventTest);
-            if (theLargestArmy()) {
-              ownerBiggestArmy = (*game.playerIterator)->getName();
-              (*game.playerIterator)->setScore(2);
-            }
-          }
-          isTurnButtonClicked(sf::Mouse::getPosition(view).x,
-                              sf::Mouse::getPosition(view).y);
-        }
-        isInfoBuyClicked(event);
-        isInfoTradeClicked(event);
-        break;
-      case sf::Event::Closed:
-        closeView();
-        break;
-      }
-      break;
-    }
->>>>>>> 695e9df9639f83c3b300664028f0f01c9f7c0b56
     drawView();
     view.draw(sprite);
     while (view.isOpen()) {
@@ -1203,6 +1146,8 @@ void PlayView::largestArmy() {
 }
 void PlayView::shopMethod() {
     if (getMousePositionX(view) > 145 && getMousePositionX(view) < 330 && getMousePositionY(view) > 570 && getMousePositionY(view) < 685) {
+        clickInCityBuy(getMousePositionX(view), getMousePositionY(view));
+        clickInTownBuy(getMousePositionX(view), getMousePositionY(view));
         clickInDevelopCardBuy(getMousePositionX(view), getMousePositionY(view));
         isBuyButtonClicked(eventTest);
     }
@@ -1243,8 +1188,6 @@ bool PlayView::isProgressClick(float x, float y) { return (x > 730 && x < 945 &&
 bool PlayView::isMaterialClick(float x, float y) {return (x > 350 && x < 570 && y > 600 && y < 690);}
 
 void PlayView::checkMaterialClicks() {
-    clickInCityBuy(getMousePositionX(view), getMousePositionY(view));
-    clickInTownBuy(getMousePositionX(view), getMousePositionY(view));
     clickClayTrade(getMousePositionX(view), getMousePositionY(view));
     clickWheatTrade(getMousePositionX(view), getMousePositionY(view));
     clickWoolTrade(getMousePositionX(view), getMousePositionY(view));
