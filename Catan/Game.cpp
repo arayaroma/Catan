@@ -307,54 +307,56 @@ void Game::createGraphVertex() {
 }
 
 void Game::makeGraph() {
-  vertexId = 1;
-  vertexJump = 4;
+    vertexId = 1;
+    vertexJump = 4;
 
-  // SE CREAN LOS VERTICES
-  for (vertexId = 1; vertexId < 55; vertexId++) {
-    Vertex *vertex = new Vertex(vertexId, "", new Town(), false);
-    graph.insertVertex(vertex);
-  }
+    // SE CREAN LOS VERTICES
+    for (vertexId = 1; vertexId < 55; vertexId++) {
+        Vertex* vertex = new Vertex(vertexId, "", new Town(), false);
+        graph.insertVertex(vertex);
+    }
 
-  // SE CREAN CONEXIONES ENTRE VERTICES CON ARISTAS
-  for (vertexId = 1; vertexId < 4; vertexId++) {
-    graph.insertEdge(vertexId, vertexJump + vertexId);
-    graph.insertEdge(vertexId, vertexId + vertexJump - 1);
-  }
+    // SE CREAN CONEXIONES ENTRE VERTICES CON ARISTAS
+    for (vertexId = 1; vertexId < 4; vertexId++) {
+        graph.insertEdge(vertexId, vertexJump + vertexId);
+        graph.insertEdge(vertexId, vertexId + vertexJump - 1);
+    }
 
-  for (vertexId = 4; vertexId < 8; vertexId++) {
-    graph.insertEdge(vertexId, vertexId + vertexJump);
-  }
+    for (vertexId = 4; vertexId < 8; vertexId++) {
+        graph.insertEdge(vertexId, vertexId + vertexJump);
+    }
 
-  for (vertexId = 8; vertexId < 12; vertexId++) {
-    graph.insertEdge(vertexId, vertexId + vertexJump);
-    graph.insertEdge(vertexId, vertexId + vertexJump + 1);
-  }
-  vertexJump++; ////==5
+    for (vertexId = 8; vertexId < 12; vertexId++) {
+        graph.insertEdge(vertexId, vertexId + vertexJump);
+        graph.insertEdge(vertexId, vertexId + vertexJump + 1);
+    }
+    vertexJump++; ////==5
 
-  for (vertexId = 12; vertexId < 17; vertexId++) {
-    graph.insertEdge(vertexId, vertexId + vertexJump);
-  }
+    for (vertexId = 12; vertexId < 17; vertexId++) {
+        graph.insertEdge(vertexId, vertexId + vertexJump);
+    }
 
-  for (vertexId = 17; vertexId < 22; vertexId++) {
-    graph.insertEdge(vertexId, vertexId + vertexJump);
-    graph.insertEdge(vertexId, vertexId + vertexJump + 1);
-  }
-  vertexJump++; ////==6
+    for (vertexId = 17; vertexId < 22; vertexId++) {
+        graph.insertEdge(vertexId, vertexId + vertexJump);
+        graph.insertEdge(vertexId, vertexId + vertexJump + 1);
+    }
+    vertexJump++; ////==6
 
-  for (vertexId = 22; vertexId < 28; vertexId++) {
-    graph.insertEdge(vertexId, vertexId + vertexJump);
-  }
-  vertexJump--; ////==5
+    for (vertexId = 22; vertexId < 28; vertexId++) {
+        graph.insertEdge(vertexId, vertexId + vertexJump);
+    }
+    vertexJump--; ////==5
 
-  for (vertexId = 28; vertexId < 34; vertexId++) {
-    if (vertexId == 28) {
-      graph.insertEdge(vertexId, vertexId + vertexJump + 1);
-    } else if (vertexId == 33) {
-      graph.insertEdge(vertexId, vertexId + vertexJump);
-    } else {
-      graph.insertEdge(vertexId, vertexId + vertexJump);
-      graph.insertEdge(vertexId, vertexId + vertexJump - 1);
+    for (vertexId = 28; vertexId < 34; vertexId++) {
+      if (vertexId == 28 || vertexId == 33){
+        if (vertexId == 28)
+            graph.insertEdge(vertexId, vertexId + vertexJump + 1);
+        if (vertexId == 33)
+            graph.insertEdge(vertexId, vertexId + vertexJump);
+    }
+    else {
+        graph.insertEdge(vertexId, vertexId + vertexJump);
+        graph.insertEdge(vertexId, vertexId + vertexJump + 1);
     }
   }
 
@@ -363,10 +365,11 @@ void Game::makeGraph() {
   }
 
   for (vertexId = 39; vertexId < 44; vertexId++) {
-    if (vertexId == 39) {
-      graph.insertEdge(vertexId, vertexId + vertexJump);
-    } else if (vertexId == 43) {
-      graph.insertEdge(vertexId, vertexId + vertexJump - 1);
+    if(vertexId == 39 || vertexId == 43){
+        if (vertexId == 39) 
+            graph.insertEdge(vertexId, vertexId + vertexJump);
+        if (vertexId == 43) 
+            graph.insertEdge(vertexId, vertexId + vertexJump - 1);
     } else {
       graph.insertEdge(vertexId, vertexId + vertexJump);
       graph.insertEdge(vertexId, vertexId + vertexJump - 1);
@@ -379,10 +382,11 @@ void Game::makeGraph() {
   vertexJump--; ////==3
 
   for (vertexId = 48; vertexId < 52; vertexId++) {
-    if (vertexId == 48) {
-      graph.insertEdge(vertexId, vertexId + vertexJump);
-    } else if (vertexId == 52) {
-      graph.insertEdge(vertexId, vertexId + vertexJump);
+    if (vertexId == 48 || vertexId == 52){
+        if (vertexId == 48) 
+            graph.insertEdge(vertexId, vertexId + vertexJump);
+        if (vertexId == 52) 
+            graph.insertEdge(vertexId, vertexId + vertexJump);
     } else {
       graph.insertEdge(vertexId, vertexId + vertexJump);
       graph.insertEdge(vertexId, vertexId + vertexJump - 1);

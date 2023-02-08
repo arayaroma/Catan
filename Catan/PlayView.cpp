@@ -517,8 +517,7 @@ void PlayView::parentAdjacentVertex(list<Vertex *>::iterator vIterator2,
   Edge *auxEdge =
       game.graph.getVertex((*vIteratorAux)->getVertexId())->firstEdge;
   while (auxEdge != nullptr) {
-    if (game.graph.getVertex(auxEdge->destinyVertex->getVertexId())
-                ->getVertexId() == (*vIterator2)->getVertexId() &&
+    if (game.graph.getVertex(auxEdge->destinyVertex->getVertexId())->getVertexId() == (*vIterator2)->getVertexId() &&
         (game.graph.getVertex((*vIteratorAux)->getVertexId())->isClicked())) {
       isParentClicked = true;
     }
