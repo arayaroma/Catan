@@ -524,8 +524,7 @@ void PlayView::parentAdjacentVertex(list<Vertex*>::iterator vIterator2, list<Ver
 bool PlayView::adjacentVertex(list<Vertex*>::iterator vIterator) {
     Edge* auxEdge = game.graph.getVertex((*vIterator)->getVertexId())->firstEdge;
     while (auxEdge != nullptr) {
-        if (game.graph.getVertex(auxEdge->destinyVertex->getVertexId())->isClicked() ||
-            game.graph.getVertex(auxEdge->originVertex->getVertexId())->isClicked()) {
+        if (game.graph.getVertex(auxEdge->destinyVertex->getVertexId())->isClicked()) {
             return true;
         }
         else {
@@ -537,39 +536,41 @@ bool PlayView::adjacentVertex(list<Vertex*>::iterator vIterator) {
 }
 void PlayView::printTownPlayer(list<Vertex *>::iterator vIterator, int x,
                                int y) {
-  if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() == NULL) {
-      traverseLandsToAdjacentVertex(vIterator);
-      if (!adjacentVertex(vIterator) && !isParentClicked) {
-          if ((*game.playerIterator)->getTownFirstTurn() < 2) {
-              initializeIteratorTownList();
-              setIsClickedToVertexGraph(vIterator);
-              if (townIterator != (*game.playerIterator)->towns->end())
-                  printImages((*townIterator)->getImagePath(),
-                      (*vIterator)->getTown()->getPosX(),
-                      (*vIterator)->getTown()->getPosY());
-              setOwnerToVertexGraph(
-                  game.graph.getVertex((*vIterator)->getVertexId()));
-              deleteTowntoPlayer();
-              (*game.playerIterator)->setScore(1);
-              (*game.playerIterator)->setTownFirstTurn(1);
-              if ((*game.playerIterator)->getTownFirstTurn() == 2) {
-                  receiveFirstMaterialCard();
-              }
-              game.graph.getVertex((*vIterator)->getVertexId())->setIsCity(false);
-              game.graph.getVertex((*vIterator)->getVertexId())->setIsTown(true);
+    if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() == NULL) {
+        if (!adjacentVertex(vIterator)) {
+            traverseLandsToAdjacentVertex(vIterator);
+            if (!isParentClicked) {
+                if ((*game.playerIterator)->getTownFirstTurn() < 2) {
+                    initializeIteratorTownList();
+                    setIsClickedToVertexGraph(vIterator);
+                    if (townIterator != (*game.playerIterator)->towns->end())
+                        printImages((*townIterator)->getImagePath(),
+                            (*vIterator)->getTown()->getPosX(),
+                            (*vIterator)->getTown()->getPosY());
+                    setOwnerToVertexGraph(
+                        game.graph.getVertex((*vIterator)->getVertexId()));
+                    deleteTowntoPlayer();
+                    (*game.playerIterator)->setScore(1);
+                    (*game.playerIterator)->setTownFirstTurn(1);
+                    if ((*game.playerIterator)->getTownFirstTurn() == 2) {
+                        receiveFirstMaterialCard();
+                    }
+                    game.graph.getVertex((*vIterator)->getVertexId())->setIsCity(false);
+                    game.graph.getVertex((*vIterator)->getVertexId())->setIsTown(true);
 
-              view.display();
-          }
-          else {
-              (*game.playerIterator)->setFirstTurnFinished(true);
-              ErrorAlert* alert = new ErrorAlert(
-                  "¡ERROR!", "YA SELECCIONASTES 2 POBLADOS");
-              alert->goView();
-          }
-      }
-      isParentClicked = false;
-      //(*game.playerIterator)->setFirstTurnFinished(true);
-  }
+                    view.display();
+                }
+                else {
+                    (*game.playerIterator)->setFirstTurnFinished(true);
+                    ErrorAlert* alert = new ErrorAlert(
+                        "¡ERROR!", "YA SELECCIONASTES 2 POBLADOS");
+                    alert->goView();
+                }
+            }
+            isParentClicked = false;
+            //(*game.playerIterator)->setFirstTurnFinished(true);
+        }
+    }
   else {
       //(*game.playerIterator)->setFirstTurnFinished(true);
       ErrorAlert* alert = new ErrorAlert(
@@ -872,7 +873,7 @@ void PlayView::receiveBoughtDevelopCard() {
               progressIterator = game.progressCards->begin();
               if (progressIterator != game.progressCards->end()) {
                   (*game.playerIterator)->progressCards->push_back((*progressIterator));
-                  (*game.playerIterator)->progressMonopoly = new Progress(true);
+                  (*game.playerIterator)->progressMonopoly = new Progress();
                   deleteProgressCard((*progressIterator)->getType());
                   isMonopolyBuy = true;
               }
@@ -1131,6 +1132,7 @@ void PlayView::goView() {
             playMonopolyCard(eventTest);
             if (theLargestArmy()) {
                 ownerBiggestArmy = (*game.playerIterator)->getName();
+                (*game.playerIterator)->setScore(2);
             }
           }
           isTurnButtonClicked(sf::Mouse::getPosition(view).x,
@@ -1284,7 +1286,7 @@ void PlayView::isTurnButtonClicked(int x, int y) {
     if (game.playerIterator != game.players->end()) {
         if ((*game.playerIterator)->getScore() >= 10) {
             NoneAlert* alert = new NoneAlert(
-                "¡FELICIDADES!" + (*game.playerIterator)->getName(), "JUEGO GANADO");
+                "¡FELICIDADES! " + (*game.playerIterator)->getName(), " JUEGO GANADO");
             alert->goView();
             closeView();
         }
@@ -1292,8 +1294,8 @@ void PlayView::isTurnButtonClicked(int x, int y) {
             game.playerIterator++;
             numTurn++;
             isDiceSpinned = false;
-            if(isMonopolyBuy)
-                (*game.playerIterator)->progressMonopoly->setIsRecentlyBuy(false);
+           /* if (isMonopolyBuy)
+                (*game.playerIterator)->progressMonopoly->setIsRecentlyBuy(false);*/
         }   
     }
     if (game.playerIterator == game.players->end()) {
@@ -1302,8 +1304,8 @@ void PlayView::isTurnButtonClicked(int x, int y) {
           firstTurn();
           numTurn = 1;
           isDiceSpinned = false;
-          if (isMonopolyBuy)
-              (*game.playerIterator)->progressMonopoly->setIsRecentlyBuy(false);
+          /*if (isMonopolyBuy)
+              (*game.playerIterator)->progressMonopoly->setIsRecentlyBuy(false);*/
     }
   }
 }
@@ -2043,7 +2045,6 @@ void PlayView::playDiscoveryCard(sf::Event event) {
 
  void PlayView::playMonopolyCard(sf::Event event) {
     if (progreessMonopoly.isPressed(event)) {
-        if(!(*game.playerIterator)->progressMonopoly->getIsRecentlyBuy()){
             if ((*game.playerIterator)->progressMonopoly != nullptr) {
                 if (isCLayTradeClicked || isWoodTradeClicked || isWoolTradeClicked || isWheatTradeClicked || isMineralTradeClicked) {
                     if (isCLayTradeClicked) {
@@ -2078,14 +2079,7 @@ void PlayView::playDiscoveryCard(sf::Event event) {
                         "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
                     alert->goView();
                 }
-            }
-            else {
-                ErrorAlert* alert = new ErrorAlert(
-                    "¡ERROR!", "NO PUEDE JUGAR LA CARTA RECIENTEMENTE COMPRADA");
-                alert->goView();
-
-            }
-        }
+            }                  
     }
 }
 void PlayView::getClaysPlayersToMonopoly() {
