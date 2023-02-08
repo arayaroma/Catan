@@ -177,6 +177,61 @@ public:
     return result;
   }
 
+  std::string to_string(const std::stack<Clay *> &stack) {
+    std::string result;
+    std::stack<Clay *> tempStack = stack;
+    while (!tempStack.empty()) {
+      result += tempStack.top()->to_string();
+      result += "\n";
+      tempStack.pop();
+    }
+    return result;
+  }
+
+  std::string to_string(const std::stack<Mineral *> &stack) {
+    std::string result;
+    std::stack<Clay *> tempStack = stack;
+    while (!tempStack.empty()) {
+      result += tempStack.top()->to_string();
+      result += "\n";
+      tempStack.pop();
+    }
+    return result;
+  }
+
+  std::string to_string(const std::stack<Wheat *> &stack) {
+    std::string result;
+    std::stack<Clay *> tempStack = stack;
+    while (!tempStack.empty()) {
+      result += tempStack.top()->to_string();
+      result += "\n";
+      tempStack.pop();
+    }
+    return result;
+  }
+
+  std::string to_string(const std::stack<Wood *> &stack) {
+    std::string result;
+    std::stack<Clay *> tempStack = stack;
+    while (!tempStack.empty()) {
+      result += tempStack.top()->to_string();
+      result += "\n";
+      tempStack.pop();
+    }
+    return result;
+  }
+
+  std::string to_string(const std::stack<Wool *> &stack) {
+    std::string result;
+    std::stack<Clay *> tempStack = stack;
+    while (!tempStack.empty()) {
+      result += tempStack.top()->to_string();
+      result += "\n";
+      tempStack.pop();
+    }
+    return result;
+  }
+
 private:
   string matchName;
   string endUrl;
@@ -191,110 +246,76 @@ public:
   void setGraph(Graph);
   Graph getGraph() const;
 
-public:
   unordered_map<string, string> imagePaths;
-
   void setImagePaths(unordered_map<string, string>);
   unordered_map<string, string> getImagePaths() const;
 
-public:
   list<Player *> *players;
   list<Player *>::iterator playerIterator;
-
   void setPlayersList(list<Player *> *);
   list<Player *> *getPlayersList() const;
 
-public:
   list<Town *> *townsList;
   list<Town *>::iterator townIterator;
-
   void setTownsList(list<Town *> *);
   list<Town *> *getTownsList() const;
 
-public:
   list<City *> *citiesList;
   list<City *>::iterator cityIterator;
-
   void setCitiesList(list<City *> *);
   list<City *> *getCitiesList() const;
 
-public:
   list<Road *> *roadsList;
   list<Road *>::iterator roadIterator;
-
   void setRoadsList(list<Road *> *);
   list<Road *> *getRoadsList() const;
 
-public:
   list<Land *> *landsList;
   list<Land *>::iterator landIterator;
 
-  void setLandsList(list<Land *> *);
   list<Land *> *getLandsList() const;
 
-public:
   list<Vertex *> *vertexesList;
-
   void setVertexesList(list<Vertex *> *);
   list<Vertex *> *getVertexesList() const;
 
-public:
   Card *specialCard;
-
   void setSpecialCards(Card *);
   Card *getSpecialCards() const;
 
-public:
   Land land;
-
   void setLand(Land);
   Land getLand() const;
 
-public:
   list<Knight *> *knightCards = new list<Knight *>();
-
   void setKnightCards(list<Knight *> *);
   list<Knight *> *getKnightCards() const;
 
-public:
   list<Progress *> *progressCards = new list<Progress *>();
-
   void setProgressCards(list<Progress *> *);
   list<Progress *> *getProgressCards() const;
 
-public:
   list<VictoryPoints *> *victoryPointCards = new list<VictoryPoints *>();
-
   void setVictoryPointsCards(list<VictoryPoints *> *);
   list<VictoryPoints *> *getVictoryPointsCards() const;
 
-public:
   stack<Clay *> *clayCards = new stack<Clay *>;
-
   void setClayCards(stack<Clay *> *);
   stack<Clay *> *getClayCards() const;
 
-public:
   stack<Mineral *> *mineralCards = new stack<Mineral *>;
-
   void setMineralCards(stack<Mineral *> *);
   stack<Mineral *> *getMineralCards() const;
 
-public:
   stack<Wheat *> *wheatCards = new stack<Wheat *>;
-
   void setWheatCards(stack<Wheat *> *);
   stack<Wheat *> *getWheatCards() const;
 
-public:
   stack<Wood *> *woodCards = new stack<Wood *>;
-
   void setWoodCards(stack<Wood *> *);
   stack<Wood *> *getWoodCards() const;
 
-public:
   stack<Wool *> *woolCards = new stack<Wool *>;
-
   void setWoolCards(stack<Wool *> *);
   stack<Wool *> *getWoolCards() const;
 
