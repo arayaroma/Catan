@@ -1,5 +1,6 @@
 #pragma once
 #include "Figure.hpp"
+#define ROAD "Road"
 
 /*
     60X Roads

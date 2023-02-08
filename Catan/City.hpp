@@ -1,5 +1,6 @@
 #pragma once
 #include "Figure.hpp"
+#define CITY "City"
 
 /*
     16X Cities

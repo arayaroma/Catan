@@ -1,5 +1,6 @@
 #pragma once
 #include "Figure.hpp"
+#define TOWN "Town"
 /*
     20x Towns
     It needs to be shopped:
