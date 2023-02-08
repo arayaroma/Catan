@@ -8,6 +8,7 @@
 #include "StructureGraph.hpp"
 #include <iostream>
 #include <list>
+#include <sstream>
 #include <stack>
 #include <string>
 #include <unordered_map>
@@ -56,7 +57,124 @@ public:
   std::string to_string() const {
     return matchName + delimiter + endUrl + delimiter +
            std::to_string(matchId) + delimiter +
-           bool_to_string(isNumbersLandsSet) + delimiter;
+           bool_to_string(isNumbersLandsSet) + delimiter + graph.to_string() +
+           delimiter + std::to_string(vertexId) + delimiter +
+           std::to_string(vertexJump) + delimiter + std::to_string(graphNodes);
+  }
+
+  // unordered_map -> to_string
+  std::string
+  to_string(const std::unordered_map<std::string, std::string> &map) {
+    std::stringstream ss;
+    ss << "{";
+    for (const auto &kv : map) {
+      ss << "\"" << kv.first << "\":\"" << kv.second << "\",";
+    }
+    ss << "}";
+    return ss.str();
+  }
+
+  // unordered_map -> from_string
+  std::unordered_map<std::string, std::string>
+  from_string(const std::string &str) {
+    std::unordered_map<std::string, std::string> map;
+    std::stringstream ss(str);
+
+    // Remove the initial '{' character
+    ss.ignore();
+
+    std::string kv;
+    while (std::getline(ss, kv, ',')) {
+      std::string key, value;
+      std::stringstream kv_stream(kv);
+
+      // Remove the quotes from the key
+      kv_stream.ignore();
+      std::getline(kv_stream, key, '\"');
+
+      // Remove the ':' character
+      kv_stream.ignore();
+
+      // Remove the quotes from the value
+      kv_stream.ignore();
+      std::getline(kv_stream, value, '\"');
+
+      map[key] = value;
+    }
+
+    return map;
+  }
+
+  std::string to_string(const std::list<Player *> &list) const {
+    std::string result;
+    for (const auto &obj : list) {
+      result += obj->to_string() + "\n";
+    }
+    return result;
+  }
+
+  std::string to_string(const std::list<Town *> &list) const {
+    std::string result;
+    for (const auto &obj : list) {
+      result += obj->to_string() + "\n";
+    }
+    return result;
+  }
+
+  std::string to_string(const std::list<City *> &list) const {
+    std::string result;
+    for (const auto &obj : list) {
+      result += obj->to_string() + "\n";
+    }
+    return result;
+  }
+
+  std::string to_string(const std::list<Road *> &list) const {
+    std::string result;
+    for (const auto &obj : list) {
+      result += obj->to_string() + "\n";
+    }
+    return result;
+  }
+
+  std::string to_string(const std::list<Land *> &list) const {
+    std::string result;
+    for (const auto &obj : list) {
+      result += obj->to_string() + "\n";
+    }
+    return result;
+  }
+
+  std::string to_string(const std::list<Vertex *> &list) const {
+    std::string result;
+    for (const auto &obj : list) {
+      result += obj->to_string() + "\n";
+    }
+    return result;
+  }
+
+  std::string to_string(const std::list<Progress *> &list) const {
+    std::string result;
+    for (const auto &obj : list) {
+      result += obj->to_string() + "\n";
+    }
+    return result;
+  }
+
+  std::string to_string(const std::list<Knight *> &list) const {
+    std::string result;
+    for (const auto &obj : list) {
+      result += obj->to_string() + "\n";
+    }
+    return result;
+  }
+
+  std::string to_string(const std::list<VictoryPoints *> &list) const {
+    std::string result;
+    for (const auto &obj : list) {
+      result += obj->to_string() + "\n";
+    }
+    return result;
   }
 
 private:
