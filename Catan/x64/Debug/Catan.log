@@ -7,7 +7,6 @@
   FileHandler.cpp
   Game.cpp
   InformationAlert.cpp
-  main.cpp
   MenuView.cpp
   NoneAlert.cpp
   PlayView.cpp
@@ -17,5 +16,6 @@
   TradeView.cpp
   View.cpp
   WarningAlert.cpp
+  main.cpp
   Generating Code...
   Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe
