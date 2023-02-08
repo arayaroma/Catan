@@ -24,31 +24,31 @@ void MenuView::goView() {
   drawView();
 
   while (view.isOpen()) {
-      sf::Event eventTest;
+    sf::Event eventTest;
     while (view.pollEvent(eventTest)) {
       switch (eventTest.type) {
-        case sf::Event::MouseButtonPressed:
-         if (isNewGameButtonPressed(eventTest))
-             newGameButtonPressed(newGameTextbox.getText());
-         if (isLoadGameButtonPressed(eventTest))
-             loadGameButtonPressed();
-         break;
+      case sf::Event::MouseButtonPressed:
+        if (isNewGameButtonPressed(eventTest))
+          newGameButtonPressed(newGameTextbox.getText());
+        if (isLoadGameButtonPressed(eventTest))
+          loadGameButtonPressed();
+        break;
 
-        case sf::Event::TextEntered:
-         if (isOverTextbox(newGameTextbox))
-              newGameTextbox.typeOn(eventTest);
-            if (isOverTextbox(loadGameTextbox))
-              loadGameTextbox.typeOn(eventTest);
-            break;
+      case sf::Event::TextEntered:
+        if (isOverTextbox(newGameTextbox))
+          newGameTextbox.typeOn(eventTest);
+        if (isOverTextbox(loadGameTextbox))
+          loadGameTextbox.typeOn(eventTest);
+        break;
 
-        case sf::Event::KeyPressed:
-         if (isQKeyPressed())
-             goTitleView();
-         break;
+      case sf::Event::KeyPressed:
+        if (isQKeyPressed())
+          goTitleView();
+        break;
 
-        case sf::Event::Closed:
-         closeView();
-         break;
+      case sf::Event::Closed:
+        closeView();
+        break;
       }
     }
     drawView();
@@ -92,10 +92,7 @@ void MenuView::newGameTextboxEmpty() {
   alert->goView();
 }
 
-void MenuView::newGame(string fileName) {
-  FileHandler fileHandler;
-  fileHandler.saveFile(getFullPathMatchName(fileName), game);
-}
+void MenuView::newGame(string fileName) { FileHandler fileHandler; }
 
 void MenuView::newGameButtonPressed(string fileName) {
   if (isNewGameTextboxEmpty())
@@ -124,10 +121,7 @@ void MenuView::loadGameButtonPressed() {
   }
 }
 
-void MenuView::loadFile(string fileName) {
-  FileHandler fileHandler;
-  fileHandler.loadFile(getFullPathMatchName(fileName), game);
-}
+void MenuView::loadFile(string fileName) { FileHandler fileHandler; }
 
 void MenuView::loadGameView() {
   PlayView playView = PlayView(game);

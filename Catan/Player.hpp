@@ -1,9 +1,10 @@
 #pragma once
 #include "Cards.hpp"
+#include "DevelopCards.hpp"
 #include "Figures.hpp"
 #include <list>
 #include <string>
-#include "DevelopCards.hpp"
+
 using std::list;
 
 class Player {
@@ -15,6 +16,7 @@ protected:
   int townFirstTurn = 0;
   bool firstTurnFinished = false;
   int progressDiscovery = 2;
+
 public:
   Player();
   Player(string, int, string);
@@ -46,12 +48,11 @@ public:
   list<Wood *> *woodCard;
   list<Clay *> *clayCard;
   list<Mineral *> *mineralCard;
-  list<Wheat*>* wheatlCard;
+  list<Wheat *> *wheatlCard;
 
-  list<Progress*>* progressCards;
-  list<Knight*>* knightCards;
-  list<VictoryPoints*>* victoryPointsCards;
+  list<Progress *> *progressCards;
+  list<Knight *> *knightCards;
+  list<VictoryPoints *> *victoryPointsCards;
 
-
-  Progress* progressMonopoly;
+  Progress *progressMonopoly;
 };

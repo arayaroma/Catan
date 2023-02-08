@@ -10,7 +10,6 @@ using std::string;
 
 class FileHandler {
 public:
-  void saveFile(const string &, Game &);
-  void loadFile(const string &, Game &);
   FileHandler();
+  void savePlayersList(std::list<Player*>&);
 };
