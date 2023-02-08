@@ -151,9 +151,12 @@ bool RegisterView:: textTextBoxCompleted(){
     if (isThreePlayers && firstTextbox.getText() != "" && secondTextbox.getText() != "" && thirdTextbox.getText() != "") {
         return true; 
     }
-    else {
-        return false; 
+
+    if (isFourPlayers && firstTextbox.getText() != "" && secondTextbox.getText() != "" && thirdTextbox.getText() != "" && fourthTextbox.getText() != "") {
+        return true;
     }
+   
+   
 }
 
 void RegisterView::clearButtonPressed() {

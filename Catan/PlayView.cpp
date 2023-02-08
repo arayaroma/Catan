@@ -133,6 +133,7 @@ void PlayView::createLabels() {
       20, 250.f, 440.f);
 }
 void PlayView::printFiguresGame() {
+    roadIterator= (*game.playerIterator)->roads->begin();
     cityIterator = (*game.playerIterator)->citys->begin();
     townIterator = (*game.playerIterator)->towns->begin();
     if (townIterator != (*game.playerIterator)->towns->end())
@@ -140,6 +141,9 @@ void PlayView::printFiguresGame() {
 
     if (cityIterator != (*game.playerIterator)->citys->end())
         printImages((*cityIterator)->getImagePath(), 190, 480);
+
+    if (roadIterator != (*game.playerIterator)->roads->end())
+        printImages((*roadIterator)->getImagePath(), 240, 480);
 }
 void PlayView::createLabelPlayerDevelopCard() {
   victory =
@@ -482,6 +486,7 @@ void PlayView::printPlayerCard() {
 }
 
 void PlayView::printPlayerFigure() {
+   roadIterator= (*game.playerIterator)->roads->begin();
   cityIterator = (*game.playerIterator)->citys->begin();
   townIterator = (*game.playerIterator)->towns->begin();
   if (townIterator != (*game.playerIterator)->towns->end())
@@ -489,6 +494,10 @@ void PlayView::printPlayerFigure() {
 
   if (cityIterator != (*game.playerIterator)->citys->end())
     printImages((*cityIterator)->getImagePath(), 630, 650);
+
+  if (roadIterator != (*game.playerIterator)->roads->end())
+      printImages((*roadIterator)->getImagePath(), 680, 650);
+ 
 }
 
 /* methods for first turn*/
@@ -714,6 +723,8 @@ void PlayView::createBuyRectangle() {
 }
 
 void PlayView::printPlayerBuyFigure() {
+
+ 
   cityIterator = (*game.playerIterator)->citys->begin();
   townIterator = (*game.playerIterator)->towns->begin();
   if (townIterator != (*game.playerIterator)->towns->end())
@@ -721,6 +732,8 @@ void PlayView::printPlayerBuyFigure() {
 
   if (cityIterator != (*game.playerIterator)->citys->end())
     printImages((*cityIterator)->getImagePath(), 280, 615);
+
+ 
 }
 
 void PlayView::loadBiggestArmyCard() {
