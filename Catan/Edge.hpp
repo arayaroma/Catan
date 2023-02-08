@@ -1,16 +1,20 @@
 #pragma once
+// #include "Vertex.hpp"
 #include <SFML/Graphics.hpp>
+#include <string>
 
 class Vertex;
 class Edge {
+
 private:
   friend class Graph;
-  
+
 public:
-	Edge *next;
+  Edge *next;
   Vertex *destinyVertex;
-  Vertex* originVertex;
+  Vertex *originVertex;
   sf::RectangleShape edge;
+
 public:
-  Edge(Vertex*,Vertex *);
+  Edge(Vertex *, Vertex *);
 };

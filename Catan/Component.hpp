@@ -8,7 +8,12 @@
 #define DICE "Dice"
 
 using std::string;
+const std::string delimiter = "; ";
+
 class Component {
+public:
+  std::string to_string() const { return type + delimiter + imagePath; }
+
 protected:
   string type;
   string imagePath;

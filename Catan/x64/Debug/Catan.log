@@ -1,8 +1,57 @@
 ﻿  AboutView.cpp
+  Alert.cpp
   Application.cpp
+  BuyView.cpp
+  ConfirmationAlert.cpp
+  ErrorAlert.cpp
+  InformationAlert.cpp
   MenuView.cpp
+  NoneAlert.cpp
+  PlayView.cpp
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(1170,69): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(1170,44): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(1174,67): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(1174,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(1178,67): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(1178,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(1185,66): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(1185,41): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(2151,63): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(2168,63): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(2185,63): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(2201,66): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(2217,65): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
   RegisterView.cpp
   TitleView.cpp
+  TradeView.cpp
+  WarningAlert.cpp
   main.cpp
   Generando código...
+Button.obj : warning LNK4099: no se encontró PDB '' con 'Button.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Card.obj : warning LNK4099: no se encontró PDB '' con 'Card.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Computer.obj : warning LNK4099: no se encontró PDB '' con 'Computer.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+FileHandler.obj : warning LNK4099: no se encontró PDB '' con 'FileHandler.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Game.obj : warning LNK4099: no se encontró PDB '' con 'Game.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Dice.obj : warning LNK4099: no se encontró PDB '' con 'Dice.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Edge.obj : warning LNK4099: no se encontró PDB '' con 'Edge.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Figure.obj : warning LNK4099: no se encontró PDB '' con 'Figure.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Graph.obj : warning LNK4099: no se encontró PDB '' con 'Graph.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Human.obj : warning LNK4099: no se encontró PDB '' con 'Human.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Knight.obj : warning LNK4099: no se encontró PDB '' con 'Knight.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+City.obj : warning LNK4099: no se encontró PDB '' con 'City.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Clay.obj : warning LNK4099: no se encontró PDB '' con 'Clay.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Component.obj : warning LNK4099: no se encontró PDB '' con 'Component.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Land.obj : warning LNK4099: no se encontró PDB '' con 'Land.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Mineral.obj : warning LNK4099: no se encontró PDB '' con 'Mineral.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Player.obj : warning LNK4099: no se encontró PDB '' con 'Player.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Progress.obj : warning LNK4099: no se encontró PDB '' con 'Progress.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Road.obj : warning LNK4099: no se encontró PDB '' con 'Road.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+TextBox.obj : warning LNK4099: no se encontró PDB '' con 'TextBox.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Town.obj : warning LNK4099: no se encontró PDB '' con 'Town.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Vertex.obj : warning LNK4099: no se encontró PDB '' con 'Vertex.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+VictoryPoints.obj : warning LNK4099: no se encontró PDB '' con 'VictoryPoints.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+View.obj : warning LNK4099: no se encontró PDB '' con 'View.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Wheat.obj : warning LNK4099: no se encontró PDB '' con 'Wheat.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Wood.obj : warning LNK4099: no se encontró PDB '' con 'Wood.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+Wool.obj : warning LNK4099: no se encontró PDB '' con 'Wool.obj' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
   Catan.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Catan.exe

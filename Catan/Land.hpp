@@ -9,6 +9,22 @@
 using std::list;
 using std::string;
 class Land : public Component {
+public:
+  std::string to_string() const {
+    return type + delimiter + imagePath + delimiter + std::to_string(landId) +
+           delimiter + std::to_string(diceNumber) + delimiter +
+           std::to_string(posX) + delimiter + std::to_string(posY) + delimiter +
+           typeland + delimiter + to_string(*townsList);
+  }
+
+  std::string to_string(const std::list<Vertex *> &list) const {
+    std::string result;
+    for (const auto &obj : list) {
+      result += obj->to_string() + "\n";
+    }
+    return result;
+  }
+
 private:
   int landId, diceNumber;
   double posX, posY;

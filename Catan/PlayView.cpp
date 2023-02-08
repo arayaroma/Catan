@@ -575,73 +575,64 @@ void PlayView::printTownPlayer(list<Vertex*>::iterator vIterator, int x,
 
         //(*game.playerIterator)->setFirstTurnFinished(true);
     }
-    else {
-        //(*game.playerIterator)->setFirstTurnFinished(true);
-        ErrorAlert* alert = new ErrorAlert(
-            "�ERROR!", "POBLADO SELECCIONADO POR OTRO JUGADOR");
+    game.graph.getVertex((*vIterator)->getVertexId())->setIsCity(false);
+    game.graph.getVertex((*vIterator)->getVertexId())->setIsTown(true);
+
+    view.display();
+
+    //(*game.playerIterator)->setFirstTurnFinished(true);
+ 
+}
+
+void PlayView::searhTown(double x, double y, list<Land *>::iterator it) {
+  list<Vertex *>::iterator vIterator;
+  vIterator = (*it)->getTownsList()->begin();
+  while (vIterator != (*it)->getTownsList()->end()) {
+    if (isTownClicked(vIterator, x, y)) {
+      if (isFirstTurn) {
+        printTownPlayer(vIterator, (int)x, (int)y);
+      }
+      if (selectTown) {
+        buyTown(vIterator, (int)x, (int)y);
+      }
+      if (selectCity) {
+        buyCity(vIterator, (int)x, (int)y);
+      }
+    }
+    vIterator++;
+  }
+}
+
+void PlayView::buyCity(list<Vertex *>::iterator vIterator, double x, double y) {
+  initializeIteratorCityList();
+  if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() != NULL) {
+    if (!game.graph.getVertex((*vIterator)->getVertexId())->getIsCity()) {
+      if (game.graph.getVertex((*vIterator)->getVertexId())
+              ->getOwner()
+              ->getName() == (*playerIterator)->getName()) {
+        if ((*game.playerIterator)->towns->size() > 1) { /// arreglar este BUG
+          if (cityIterator != (*game.playerIterator)->citys->end())
+            printImages((*cityIterator)->getImagePath(),
+                        (*vIterator)->getTown()->getPosX(),
+                        (*vIterator)->getTown()->getPosY());
+          setOwnerToVertexGraph(
+              game.graph.getVertex((*vIterator)->getVertexId()));
+          deleteCitytoPlayer();
+          addTownToPlayer();
+          setIsClickedToVertexGraph(vIterator);
+          (*game.playerIterator)->setScore(2);
+          view.display();
+          selectCity = false;
+          game.graph.getVertex((*vIterator)->getVertexId())->setIsCity(true);
+          game.graph.getVertex((*vIterator)->getVertexId())->setIsTown(false);
+        }
+      } else {
+        ErrorAlert *alert =
+            new ErrorAlert("!ERROR!", "EL POBLADO ES DE OTRO JUGADOR");
         alert->goView();
+      }
     }
-}
-
-void PlayView::searhTown(double x, double y, list<Land*>::iterator it) {
-    list<Vertex*>::iterator vIterator;
-    vIterator = (*it)->getTownsList()->begin();
-    while (vIterator != (*it)->getTownsList()->end()) {
-        if (isTownClicked(vIterator, x, y)) {
-            if (isFirstTurn) {
-                printTownPlayer(vIterator, (int)x, (int)y);
-            }
-            if (selectTown) {
-                buyTown(vIterator, (int)x, (int)y);
-            }
-            if (selectCity) {
-                buyCity(vIterator, (int)x, (int)y);
-            }
-        }
-        vIterator++;
-    }
-}
-
-void PlayView::buyCity(list<Vertex*>::iterator vIterator, double x, double y) {
-    initializeIteratorCityList();
-    if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() != NULL) {
-
-        if (!game.graph.getVertex((*vIterator)->getVertexId())->getIsCity()) {
-            if (game.graph.getVertex((*vIterator)->getVertexId())
-                ->getOwner()
-                ->getName() == (*playerIterator)->getName()) {
-                if ((*game.playerIterator)->towns->size() > 1) { /// arreglar este BUG
-                    if (cityIterator != (*game.playerIterator)->citys->end())
-                        printImages((*cityIterator)->getImagePath(),
-                            (*vIterator)->getTown()->getPosX(),
-                            (*vIterator)->getTown()->getPosY());
-                    setOwnerToVertexGraph(
-                        game.graph.getVertex((*vIterator)->getVertexId()));
-                    deleteCitytoPlayer();
-                    addTownToPlayer();
-                    setIsClickedToVertexGraph(vIterator);
-                    (*game.playerIterator)->setScore(2);
-                    view.display();
-                    selectCity = false;
-                    game.graph.getVertex((*vIterator)->getVertexId())->setIsCity(true);
-                    game.graph.getVertex((*vIterator)->getVertexId())->setIsTown(false);
-                }
-            }
-            else {
-                ErrorAlert* alert = new ErrorAlert(
-                    "�ERROR!", "EL POBLADO ES DE OTRO JUGADOR");
-                alert->goView();
-            }
-        }
-
-        else {
-            ErrorAlert* alert = new ErrorAlert(
-                "�ERROR!", "EL POBLADO ES DE OTRO JUGADOR");
-            alert->goView();
-        }
-    }
-
-
+  }
 }
 
 void PlayView::addTownToPlayer() {
@@ -650,35 +641,34 @@ void PlayView::addTownToPlayer() {
         ->towns->push_back(new Town((*cityIterator)->getImagePath()));
 }
 
-void PlayView::buyTown(list<Vertex*>::iterator vIterator, double x, double y) {
-    initializeIteratorTownList();
-    if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() == NULL) {
-        if (!adjacentVertex(vIterator)) {
-            if ((*game.playerIterator)->towns->size() > 1) {
-                if (townIterator != (*game.playerIterator)->towns->end())
-                    printImages((*townIterator)->getImagePath(),
-                        (*vIterator)->getTown()->getPosX(),
-                        (*vIterator)->getTown()->getPosY());
-                setOwnerToVertexGraph(game.graph.getVertex((*vIterator)->getVertexId()));
-                (*game.playerIterator)->setScore(1);
-                setIsClickedToVertexGraph(vIterator);
-                view.display();
-                selectTown = false;
-                game.graph.getVertex((*vIterator)->getVertexId())->setIsCity(false);
-                game.graph.getVertex((*vIterator)->getVertexId())->setIsTown(true);
-            }
-            else {
-                ErrorAlert* alert = new ErrorAlert(
-                    "�ERROR!", "POBLADOS INSUFICIENTES");
-                alert->goView();
-            }
-        }
-        else {
-            ErrorAlert* alert = new ErrorAlert(
-                "�ERROR!", "POBLADO CON DUE�O");
-            alert->goView();
-        }
-    }
+void PlayView::buyTown(list<Vertex *>::iterator vIterator, double x, double y) {
+  initializeIteratorTownList();
+  if (!adjacentVertex(vIterator)) {
+      if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() == NULL) {
+          if ((*game.playerIterator)->towns->size() > 1) {
+              if (townIterator != (*game.playerIterator)->towns->end())
+                  printImages((*townIterator)->getImagePath(),
+                      (*vIterator)->getTown()->getPosX(),
+                      (*vIterator)->getTown()->getPosY());
+              setOwnerToVertexGraph(
+                  game.graph.getVertex((*vIterator)->getVertexId()));
+              (*game.playerIterator)->setScore(1);
+              setIsClickedToVertexGraph(vIterator);
+              view.display();
+              selectTown = false;
+              game.graph.getVertex((*vIterator)->getVertexId())->setIsCity(false);
+              game.graph.getVertex((*vIterator)->getVertexId())->setIsTown(true);
+          }
+          else {
+              ErrorAlert* alert = new ErrorAlert("!ERROR!", "POBLADOS INSUFICIENTES");
+              alert->goView();
+          }
+      }
+      else {
+          ErrorAlert* alert = new ErrorAlert("!ERROR!", "POBLADO CON DUEÑO");
+          alert->goView();
+      }
+  }
 }
 
 void PlayView::receiveFirstMaterialCard() {
@@ -1119,7 +1109,6 @@ void PlayView::goView() {
     loadView();
     drawView();
     view.draw(sprite);
-
     while (view.isOpen()) {
         while (view.pollEvent(eventTest)) {
             showCoordinates(eventTest);
@@ -1133,6 +1122,7 @@ void PlayView::goView() {
                     }
                     else {
                         hexagonsMethod();
+                        isDiceButtonClicked(getMousePositionX(view), getMousePositionY(view));
                         resourcesMethod();
                         progressMethod();
                         shopMethod();
@@ -1194,7 +1184,6 @@ void PlayView::progressMethod() {
 void PlayView::eventPlayerMethod() {
     if (isRightClicked(getMousePositionX(view), getMousePositionY(view))) {
         isTurnButtonClicked(sf::Mouse::getPosition(view).x, sf::Mouse::getPosition(view).y);
-        isDiceButtonClicked(getMousePositionX(view), getMousePositionY(view));
         clickTradeButton(eventTest);
     }
 }
@@ -1211,7 +1200,6 @@ bool PlayView::isProgressClick(float x, float y) { return (x > 730 && x < 945 &&
 bool PlayView::isMaterialClick(float x, float y) { return (x > 350 && x < 570 && y > 600 && y < 690); }
 
 void PlayView::checkMaterialClicks() {
-
     clickClayTrade(getMousePositionX(view), getMousePositionY(view));
     clickWheatTrade(getMousePositionX(view), getMousePositionY(view));
     clickWoolTrade(getMousePositionX(view), getMousePositionY(view));
@@ -1323,7 +1311,7 @@ void PlayView::receiveCard(list<Land*>::iterator it) {
             if (existsAnOwnerInVertex(vIterator)) {
                 if (isActualPlayerName(vIterator, playerIterator)) {
                     if (game.graph.getVertex((*vIterator)->getIsCity()))
-                        giveCardsToPlayer(it);
+                        giveCardsToPlayerCity(it);
                     if (game.graph.getVertex((*vIterator)->getIsTown()))
                         giveCardsToPlayer(it);
                 }
