@@ -1,55 +1,7 @@
-﻿  AboutView.cpp
-  Alert.cpp
-  Application.cpp
-  Button.cpp
-  BuyView.cpp
-  Card.cpp
-  Computer.cpp
-  ConfirmationAlert.cpp
-  ErrorAlert.cpp
-  FileHandler.cpp
-  Game.cpp
-  Dice.cpp
-  Edge.cpp
-  Figure.cpp
-  Graph.cpp
-  Human.cpp
-  InformationAlert.cpp
-  Knight.cpp
-  main.cpp
-  City.cpp
-  Generating Code...
-  Compiling...
-  Clay.cpp
-  Component.cpp
-  Label.cpp
-  Land.cpp
-  MenuView.cpp
-  Mineral.cpp
-  NoneAlert.cpp
-  Player.cpp
-  PlayView.cpp
-C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2050,63): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2067,63): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2084,63): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2100,66): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2116,65): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Progress.cpp
-  RegisterView.cpp
-  Road.cpp
-  TextBox.cpp
-  TitleView.cpp
-  Town.cpp
-  TradeView.cpp
-  Vertex.cpp
-  VictoryPoints.cpp
-  View.cpp
-  WarningAlert.cpp
-  Generating Code...
-  Compiling...
-  Wheat.cpp
-  Wood.cpp
-  Wool.cpp
-  Generating Code...
-  LINK : C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe not found or not built by the last incremental link; performing full link
+﻿  PlayView.cpp
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2044,63): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2061,63): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2078,63): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2094,66): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2110,65): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe

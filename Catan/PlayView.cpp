@@ -1234,7 +1234,7 @@ void PlayView::saveMatchActualState() {
 
 void PlayView::isTurnButtonClicked(int x, int y) {
   if (turn.isMouseOver(view)) {
-    saveMatchActualState();
+ /*   saveMatchActualState();*/
     if (game.playerIterator != game.players->end()) {
         if ((*game.playerIterator)->getScore() >= 10) {
             NoneAlert* alert = new NoneAlert(
@@ -1997,7 +1997,7 @@ void PlayView::playDiscoveryCard(sf::Event event) {
 
  void PlayView::playMonopolyCard(sf::Event event) {
     if (progreessMonopoly.isPressed(event)) {
-        if(!(*game.playerIterator)->progressMonopoly->getIsRecentlyBuy()){
+      
             if ((*game.playerIterator)->progressMonopoly != nullptr) {
                 if (isCLayTradeClicked || isWoodTradeClicked || isWoolTradeClicked || isWheatTradeClicked || isMineralTradeClicked) {
                     if (isCLayTradeClicked) {
@@ -2033,13 +2033,7 @@ void PlayView::playDiscoveryCard(sf::Event event) {
                     alert->goView();
                 }
             }
-            else {
-                ErrorAlert* alert = new ErrorAlert(
-                    "¡ERROR!", "NO PUEDE JUGAR LA CARTA RECIENTEMENTE COMPRADA");
-                alert->goView();
-
-            }
-        }
+          
     }
 }
 void PlayView::getClaysPlayersToMonopoly() {
