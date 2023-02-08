@@ -39,10 +39,10 @@ void PlayView::createLabelNumTurn() {
             sf::Color(0, 0, 0), font, sf::Text::Bold, 20, 80.f, 450.f);
 
   owner = Label("Propietario: ", sf::Color(0, 0, 255), font, sf::Text::Bold, 20,
-                220.f, 0.f);
+                200.f, 0.f);
 
   ownerName = Label(ownerBiggestArmy, sf::Color(0, 0, 255), font,
-                    sf::Text::Bold, 20, 325.f, 0.f);
+                    sf::Text::Bold, 20, 360.f, 0.f);
 }
 
 void PlayView::createLabelCardPlayer() {
@@ -575,7 +575,7 @@ void PlayView::printTownPlayer(list<Vertex*>::iterator vIterator, int x,
             else {
                 (*game.playerIterator)->setFirstTurnFinished(true);
                 ErrorAlert* alert = new ErrorAlert(
-                    "�ERROR!", "YA SELECCIONASTES 2 POBLADOS");
+                    "!ERROR!", "YA SELECCIONASTES 2 POBLADOS");
                 alert->goView();
 
             }
@@ -792,6 +792,11 @@ void PlayView::payRawMaterialsToBuyTown() {
   deleteWooltoPlayer();
   deleteMineraltoPlayer();
   deleteWheattoPlayer();
+  game.clayCards->push(new Clay);
+  game.woodCards->push(new Wood);
+  game.woolCards->push(new Wool);
+  game.mineralCards->push(new Mineral);
+  game.wheatCards->push(new Wheat);
   selectTown = true;
 }
 
@@ -799,8 +804,10 @@ void PlayView::payRawMaterialsToBuyCity() {
   int iterator = 0;
   for (iterator; iterator < 3; iterator++) {
     deleteMineraltoPlayer();
+    game.mineralCards->push(new Mineral());
     if (iterator < 1) {
       deleteWheattoPlayer();
+      game.wheatCards->push(new Wheat());
     }
   }
   selectCity = true;
@@ -840,6 +847,9 @@ void PlayView::receiveBoughtDevelopCard() {
   deleteWooltoPlayer();
   deleteWheattoPlayer();
   deleteMineraltoPlayer();
+  game.mineralCards->push(new Mineral);
+  game.wheatCards->push(new Wheat);
+  game.woolCards->push(new Wool);
   if (buyView.isKnightButtonClicked || buyView.isProgress1ButtonClicked ||
       buyView.isVictoryButtonClicked || buyView.isProgress2ButtonClicked ||
       buyView.isProgress3ButtonClicked) {
@@ -1165,11 +1175,12 @@ void PlayView::firstTraversalLand() {
 }
 
 void PlayView::largestArmy() {
-
-  if (theLargestArmy()) {
-    ownerBiggestArmy = (*game.playerIterator)->getName();
-    (*game.playerIterator)->setScore(2);
-  }
+    if (!(*game.playerIterator)->getTheLargestArmy()) {
+        if (theLargestArmy()) {
+            ownerBiggestArmy = (*game.playerIterator)->getName();
+            (*game.playerIterator)->setScore(2);
+        }
+    }
 }
 void PlayView::shopMethod() {
   if (getMousePositionX(view) > 145 && getMousePositionX(view) < 330 &&
@@ -1440,6 +1451,9 @@ void PlayView::compareTwoPlayer() {
         (*game.playerIterator)->knightCards->size() >
             (*playerIterator3)->knightCards->size()) {
       istheLargestArmy = true;
+      (*playerIterator2)->setTheLargestArmy(false);
+      (*playerIterator3)->setTheLargestArmy(false);
+      (*game.playerIterator)->setTheLargestArmy(true);
     }
   }
 }
@@ -1454,12 +1468,16 @@ void PlayView::compareThreePlayer() {
         (*game.playerIterator)->knightCards->size() >
             (*playerIterator4)->knightCards->size()) {
       istheLargestArmy = true;
+      (*playerIterator2)->setTheLargestArmy(false);
+      (*playerIterator3)->setTheLargestArmy(false);
+      (*playerIterator4)->setTheLargestArmy(false);
+      (*game.playerIterator)->setTheLargestArmy(true);
     }
   }
 }
 bool PlayView::theLargestArmy() {
   initializePlayersIteratorToCompare();
-  if ((*game.playerIterator)->knightCards->size() >= 3) {
+  if ((*game.playerIterator)->knightCards->size() >= 1) {
     if (game.players->size() == 3)
       compareTwoPlayer();
     if (game.players->size() == 4)
@@ -1993,30 +2011,35 @@ void PlayView::tradePossible() {
     if (isCLayTradeClicked) {
       for (iterator; iterator < 4; iterator++) {
         deleteClaytoPlayer();
+        game.clayCards->push(new Clay);
       }
       tradeCard();
     }
     if (isWoodTradeClicked) {
       for (iterator; iterator < 4; iterator++) {
         deleteWoodtoPlayer();
+        game.woodCards->push(new Wood);
       }
       tradeCard();
     }
     if (isWoolTradeClicked) {
       for (iterator; iterator < 4; iterator++) {
         deleteWooltoPlayer();
+        game.woolCards->push(new Wool);
       }
       tradeCard();
     }
     if (isWheatTradeClicked) {
       for (iterator; iterator < 4; iterator++) {
         deleteWheattoPlayer();
+        game.wheatCards->push(new Wheat);
       }
       tradeCard();
     }
     if (isMineralTradeClicked) {
       for (iterator; iterator < 4; iterator++) {
         deleteMineraltoPlayer();
+        game.mineralCards->push(new Mineral);
       }
       tradeCard();
     }
@@ -2034,30 +2057,35 @@ void PlayView::tradeNormal() {
     if (isCLayTradeClicked) {
       for (iterator; iterator < 3; iterator++) {
         deleteClaytoPlayer();
+        game.clayCards->push(new Clay);
       }
       tradeCard();
     }
     if (isWoodTradeClicked) {
       for (iterator; iterator < 3; iterator++) {
         deleteWoodtoPlayer();
+        game.woodCards->push(new Wood);
       }
       tradeCard();
     }
     if (isWoolTradeClicked) {
       for (iterator; iterator < 3; iterator++) {
         deleteWooltoPlayer();
+        game.woolCards->push(new Wool);
       }
       tradeCard();
     }
     if (isWheatTradeClicked) {
       for (iterator; iterator < 3; iterator++) {
         deleteWheattoPlayer();
+        game.wheatCards->push(new Wheat);
       }
       tradeCard();
     }
     if (isMineralTradeClicked) {
       for (iterator; iterator < 3; iterator++) {
         deleteMineraltoPlayer();
+        game.mineralCards->push(new Mineral);
       }
       tradeCard();
     }
@@ -2075,36 +2103,41 @@ void PlayView::tradeSpecial() {
     if (isCLayTradeClicked) {
       for (iterator; iterator < 2; iterator++) {
         deleteClaytoPlayer();
+        game.clayCards->push(new Clay);
       }
       tradeCard();
     }
     if (isWoodTradeClicked) {
       for (iterator; iterator < 2; iterator++) {
         deleteWoodtoPlayer();
+        game.woodCards->push(new Wood);
       }
       tradeCard();
     }
     if (isWoolTradeClicked) {
       for (iterator; iterator < 2; iterator++) {
         deleteWooltoPlayer();
+        game.woolCards->push(new Wool);
       }
       tradeCard();
     }
     if (isWheatTradeClicked) {
       for (iterator; iterator < 2; iterator++) {
         deleteWheattoPlayer();
+        game.wheatCards->push(new Wheat);
       }
       tradeCard();
     }
     if (isMineralTradeClicked) {
       for (iterator; iterator < 2; iterator++) {
         deleteMineraltoPlayer();
+        game.mineralCards->push(new Mineral);
       }
       tradeCard();
     }
   } else {
     ErrorAlert *alert = new ErrorAlert(
-        "�ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
+        "!ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
     alert->goView();
   }
 }
@@ -2145,7 +2178,7 @@ void PlayView::playDiscoveryCard(sf::Event event) {
             }
            
         }
-      
+        game.progressCards->pop_back();
     } 
   
 }

@@ -88,7 +88,7 @@ protected:
   int townFirstTurn = 0;
   int progressDiscovery = 2;
   bool firstTurnFinished = false;
-
+  bool isTheLargestArmy = false;
 public:
   list<Town *> *towns;
   list<Road *> *roads;
@@ -121,6 +121,9 @@ public:
 
   void setFirstTurnFinished(bool band) { firstTurnFinished = band; }
   bool getFirstTurnFinished() { return this->firstTurnFinished; }
+
+  void setTheLargestArmy(bool band) { this->isTheLargestArmy = band; }
+  bool getTheLargestArmy() { return this->isTheLargestArmy; }
 
   void setTownFirstTurn(int it) { townFirstTurn += it; }
   int getTownFirstTurn() { return this->townFirstTurn; }

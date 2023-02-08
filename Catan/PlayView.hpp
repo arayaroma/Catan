@@ -71,7 +71,8 @@ private:
   bool isDiceSpinned = false;
   bool isFirstTurn = true;
   const string dessertType = "Dessert";
-
+  bool istheLargestArmy = false;
+  string namePlayertheLargestArmy = "";
   bool isTownBuyClicked = false;
   bool isCityBuyClicked = false;
  
@@ -323,8 +324,7 @@ private:
   void compareTwoPlayer();
   void compareThreePlayer();
   void initializePlayersIteratorToCompare();
-  bool istheLargestArmy = false;
-
+ 
   void playMonopolyCard(sf::Event);
   void playDiscoveryCard(sf::Event);
 
