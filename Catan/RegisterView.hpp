@@ -38,6 +38,7 @@ private:
   void loadThreeColors();
   void loadFourColors();
 
+  void desconstructor(); 
   void loadColorsBlue();
   void loadColorsRed();
   void loadColorsYellow();
@@ -76,7 +77,7 @@ private:
 
 private:
   TextBox firstTextbox, secondTextbox, thirdTextbox, fourthTextbox;
-  Label *title, *name, *color, *note;
+  Label title, name, color, note;
   Button threePlayersButton, fourPlayersButton, playButton, clear, blue0,
       yellow0, red0, green0, blue1, yellow1, red1, green1, blue2, yellow2, red2,
       green2, blue3, yellow3, red3, green3;

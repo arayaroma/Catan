@@ -17,139 +17,139 @@ PlayView::PlayView(Game& obj) { game = Game(obj); }
 /*methods of creating labels*/
 void PlayView::createLabelNumTurn() {
 
-    titleTurn = new Label("Turno:  ", sf::Color(0, 0, 255, 128), font,
+    titleTurn =  Label("Turno:  ", sf::Color(0, 0, 255, 128), font,
         sf::Text::Bold, 20, 1050.f, 370.f);
-    labelNumTurn = new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 0),
+    labelNumTurn =  Label((*game.playerIterator)->getName(), sf::Color(0, 0, 0),
         font, sf::Text::Bold, 20, 1145.f, 370.f);
 
-    infoFisrtTurn = new Label("Primera Ronda, por favor elija 2 poblados y pase de turno",
+    infoFisrtTurn =  Label("Primera Ronda, por favor elija 2 poblados y pase de turno",
         sf::Color(0, 0, 0), font, sf::Text::Bold, 20, 250.f, 500.f);
-    labelNumDice = new Label(std::to_string(diceInstance.getActualNumber()),
+    labelNumDice =  Label(std::to_string(diceInstance.getActualNumber()),
         sf::Color(0, 0, 0), font, sf::Text::Bold, 20,
         1150.f, 570.f);
 
-    labelBuy = new Label("Comprar", sf::Color(0, 0, 255), font,
+    labelBuy =  Label("Comprar", sf::Color(0, 0, 255), font,
         sf::Text::Bold, 20, 200.f, 585.f);
 
-    numDevelopCard = new Label(std::to_string(game.getKnightCards()->size() + game.getProgressCards()->size()
+    numDevelopCard =  Label(std::to_string(game.getKnightCards()->size() + game.getProgressCards()->size()
         + game.getVictoryPointsCards()->size()), sf::Color(0, 0, 0), font,
         sf::Text::Bold, 20, 80.f, 450.f);
 
-    owner = new Label("Due�o: ", sf::Color(0, 0, 255), font,
+    owner =  Label("Dueño: ", sf::Color(0, 0, 255), font,
         sf::Text::Bold, 20, 220.f, 0.f);
 
 
-    ownerName = new Label(ownerBiggestArmy, sf::Color(0, 0, 255), font,
+    ownerName =  Label(ownerBiggestArmy, sf::Color(0, 0, 255), font,
         sf::Text::Bold, 20, 300.f, 0.f);
 
 }
 
 void PlayView::createLabelCardPlayer() {
-    clayCard = new Label(std::to_string((*game.playerIterator)->clayCard->size()),
+    clayCard =  Label(std::to_string((*game.playerIterator)->clayCard->size()),
         sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20,
         375.f, 620.f);
-    mineralPlayerCard = new Label(
+    mineralPlayerCard =  Label(
         std::to_string((*game.playerIterator)->mineralCard->size()),
         sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 415.f, 620.f);
-    wheatPlayerCard = new Label(
+    wheatPlayerCard =  Label(
         std::to_string((*game.playerIterator)->wheatlCard->size()),
         sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 455.f, 620.f);
-    woodPlayerCard = new Label(
+    woodPlayerCard =  Label(
         std::to_string((*game.playerIterator)->woodCard->size()),
         sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 495.f, 620.f);
-    woolPlayerCard = new Label(
+    woolPlayerCard =  Label(
         std::to_string((*game.playerIterator)->woolCard->size()),
         sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 535.f, 620.f);
 }
 
 void PlayView::createThreePlayersLabel() {
-    player1 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+    player1 =  Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
         font, sf::Text::Bold, 20, 1100.f, 120.f);
     playerIterator++;
-    player2 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+    player2 =  Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
         font, sf::Text::Bold, 20, 1100.f, 180.f);
     playerIterator++;
-    player3 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+    player3 =  Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
         font, sf::Text::Bold, 20, 1100.f, 240.f);
 }
 
 void PlayView::createFourPlayersLabel() {
-    player1 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+    player1 =  Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
         font, sf::Text::Bold, 20, 1100.f, 120.f);
     playerIterator++;
-    player2 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+    player2 =  Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
         font, sf::Text::Bold, 20, 1100.f, 180.f);
     playerIterator++;
-    player3 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+    player3 =  Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
         font, sf::Text::Bold, 20, 1100.f, 240.f);
     playerIterator++;
-    player4 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+    player4 =  Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
         font, sf::Text::Bold, 20, 1100.f, 300.f);
 }
 
 void PlayView::createLabelFigurePlayer() {
-    townPlayer = new Label(
+    townPlayer =  Label(
         std::to_string((*game.playerIterator)->towns->size() - 1),
         sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 600.f, 620.f);
-    cityPlayer = new Label(
+    cityPlayer =  Label(
         std::to_string((*game.playerIterator)->citys->size() - 1),
         sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 640.f, 620.f);
-    roadPlayer = new Label(
+    roadPlayer =  Label(
         std::to_string((*game.playerIterator)->roads->size() - 1),
         sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 680.f, 620.f);
 }
 
 
 void PlayView::createLabelMaterialCardGame() {
-    clayGame = new Label(std::to_string(game.clayCards->size()),
+    clayGame =  Label(std::to_string(game.clayCards->size()),
         sf::Color(0, 0, 0), font, sf::Text::Bold, 20,
         15.f, 240.f);
-    mineralGame = new Label(std::to_string(game.mineralCards->size()),
+    mineralGame =  Label(std::to_string(game.mineralCards->size()),
         sf::Color(0, 0, 0), font, sf::Text::Bold, 20,
         70.f, 240.f);
-    wheatGame = new Label(std::to_string(game.wheatCards->size()),
+    wheatGame =  Label(std::to_string(game.wheatCards->size()),
         sf::Color(0, 0, 0), font, sf::Text::Bold, 20,
         120.f, 240.f);
-    woodGame = new Label(std::to_string(game.woodCards->size()),
+    woodGame =  Label(std::to_string(game.woodCards->size()),
         sf::Color(0, 0, 0), font, sf::Text::Bold, 20,
         170.f, 240.f);
-    woolGame = new Label(std::to_string(game.woolCards->size()),
+    woolGame =  Label(std::to_string(game.woolCards->size()),
         sf::Color(0, 0, 0), font, sf::Text::Bold, 20,
         225.f, 240.f);
 }
 
 void PlayView::createLabels() {
-    materialCard = new Label("Materiales", sf::Color(0, 0, 255, 128),
+    materialCard =  Label("Materiales", sf::Color(0, 0, 255, 128),
         font, sf::Text::Bold, 20, 25.f, 220.f);
-    developCard = new Label("Cartas de Desarrollo", sf::Color(0, 0, 255, 128),
+    developCard =  Label("Cartas de Desarrollo", sf::Color(0, 0, 255, 128),
         font, sf::Text::Bold, 20, 5.f, 380.f);
-    pricingTable = new Label("Precios", sf::Color(0, 0, 255, 128), font,
+    pricingTable =  Label("Precios", sf::Color(0, 0, 255, 128), font,
         sf::Text::Bold, 20, 25.f, 0.f);
-    turns = new Label("Jugadores", sf::Color(0, 0, 255, 128), font,
+    turns =  Label("Jugadores", sf::Color(0, 0, 255, 128), font,
         sf::Text::Bold, 20, 1070.f, 60.f);
-    cards = new Label("Componentes", sf::Color(0, 0, 255, 128), font,
+    cards =  Label("Componentes", sf::Color(0, 0, 255, 128), font,
         sf::Text::Bold, 20, 565.f, 575.f);
 }
 
 void PlayView::createLabelPlayerDevelopCard() {
-    victory = new Label(
+    victory =  Label(
         std::to_string((*game.playerIterator)->victoryPointsCards->size()),
         sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 915.f, 620.f);
 
-    knight = new Label(
+    knight =  Label(
         std::to_string((*game.playerIterator)->knightCards->size()),
         sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 875.f, 620.f);
 
-    progress = new Label(
+    progress =  Label(
         std::to_string((*game.playerIterator)->progressCards->size()),
         sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 790.f, 595.f);
 }
 
 
 void PlayView::createLabelScorePlayer() {
-    titleScorePlayer = new Label("Puntaje:", sf::Color(0, 0, 255, 128), font,
+    titleScorePlayer =  Label("Puntaje:", sf::Color(0, 0, 255, 128), font,
         sf::Text::Bold, 20, 1050.f, 340.f);
-    scorePlayer = new Label(std::to_string((*game.playerIterator)->getScore()),
+    scorePlayer =  Label(std::to_string((*game.playerIterator)->getScore()),
         sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20,
         1155.f, 340.f);
 
@@ -157,13 +157,13 @@ void PlayView::createLabelScorePlayer() {
 
 void PlayView::drawLabelMaterialGame() {
     createLabelMaterialCardGame();
-    view.draw(wheatGame->getTextInstance());
-    view.draw(mineralGame->getTextInstance());
-    view.draw(clayGame->getTextInstance());
-    view.draw(woolGame->getTextInstance());
-    view.draw(woodGame->getTextInstance());
-    view.draw(labelBuy->getTextInstance());
-    view.draw(owner->getTextInstance());
+    view.draw(wheatGame.getTextInstance());
+    view.draw(mineralGame.getTextInstance());
+    view.draw(clayGame.getTextInstance());
+    view.draw(woolGame.getTextInstance());
+    view.draw(woodGame.getTextInstance());
+    view.draw(labelBuy.getTextInstance());
+    view.draw(owner.getTextInstance());
 
 }
 void PlayView::printPlayerDevelopCard() {
@@ -197,18 +197,18 @@ void PlayView::createLabelNamePlayers() {
 
 void PlayView::loadthreeXone() {
 
-    firsThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 500.f, 20.f);
-    view.draw(firsThreeXone->getTextInstance());
+    firsThreeXone =  Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 500.f, 20.f);
+    view.draw(firsThreeXone.getTextInstance());
 
-    secondThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 838.f, 75.f);
-    view.draw(secondThreeXone->getTextInstance());
+    secondThreeXone =  Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 838.f, 75.f);
+    view.draw(secondThreeXone.getTextInstance());
 
-    thirdThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 910.f, 238.f);
-    view.draw(thirdThreeXone->getTextInstance());
+    thirdThreeXone =  Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 910.f, 238.f);
+    view.draw(thirdThreeXone.getTextInstance());
 
-    fourThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 510.f, 435.f);
+    fourThreeXone =  Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 510.f, 435.f);
 
-    view.draw(fourThreeXone->getTextInstance());
+    view.draw(fourThreeXone.getTextInstance());
 }
 
 void PlayView::createButtons() {
@@ -408,64 +408,64 @@ void PlayView::loadGameButtons() {
 /*methods of draw labels*/
 void PlayView::drawLabelNumTurn() {
     createLabelNumTurn();
-    view.draw(titleTurn->getTextInstance());
-    view.draw(labelNumTurn->getTextInstance());
-    view.draw(labelNumDice->getTextInstance());
-    view.draw(numDevelopCard->getTextInstance());
-    view.draw(ownerName->getTextInstance());
+    view.draw(titleTurn.getTextInstance());
+    view.draw(labelNumTurn.getTextInstance());
+    view.draw(labelNumDice.getTextInstance());
+    view.draw(numDevelopCard.getTextInstance());
+    view.draw(ownerName.getTextInstance());
     if (isFirstTurn) {
-        view.draw(infoFisrtTurn->getTextInstance());
+        view.draw(infoFisrtTurn.getTextInstance());
     }
 }
 
 void PlayView::drawLabels() {
     createLabels();
     createLabelScorePlayer();
-    view.draw(materialCard->getTextInstance());
-    view.draw(developCard->getTextInstance());
-    view.draw(pricingTable->getTextInstance());
-    view.draw(turns->getTextInstance());
-    view.draw(cards->getTextInstance());
-    view.draw(titleScorePlayer->getTextInstance());
-    view.draw(scorePlayer->getTextInstance());
+    view.draw(materialCard.getTextInstance());
+    view.draw(developCard.getTextInstance());
+    view.draw(pricingTable.getTextInstance());
+    view.draw(turns.getTextInstance());
+    view.draw(cards.getTextInstance());
+    view.draw(titleScorePlayer.getTextInstance());
+    view.draw(scorePlayer.getTextInstance());
 }
 
 void PlayView::drawLabelNamePlayers() {
     createLabelNamePlayers();
     if (isThreePlayers()) {
-        view.draw(player1->getTextInstance());
-        view.draw(player2->getTextInstance());
-        view.draw(player3->getTextInstance());
+        view.draw(player1.getTextInstance());
+        view.draw(player2.getTextInstance());
+        view.draw(player3.getTextInstance());
     }
     if (isFourPlayers()) {
-        view.draw(player1->getTextInstance());
-        view.draw(player2->getTextInstance());
-        view.draw(player3->getTextInstance());
-        view.draw(player4->getTextInstance());
+        view.draw(player1.getTextInstance());
+        view.draw(player2.getTextInstance());
+        view.draw(player3.getTextInstance());
+        view.draw(player4.getTextInstance());
     }
 }
 
 void PlayView::drawLabelCardPlayer() {
     createLabelCardPlayer();
-    view.draw(clayCard->getTextInstance());
-    view.draw(mineralPlayerCard->getTextInstance());
-    view.draw(wheatPlayerCard->getTextInstance());
-    view.draw(woodPlayerCard->getTextInstance());
-    view.draw(woolPlayerCard->getTextInstance());
+    view.draw(clayCard.getTextInstance());
+    view.draw(mineralPlayerCard.getTextInstance());
+    view.draw(wheatPlayerCard.getTextInstance());
+    view.draw(woodPlayerCard.getTextInstance());
+    view.draw(woolPlayerCard.getTextInstance());
 }
 
 void PlayView::drawLabelFigurePlayer() {
     createLabelFigurePlayer();
-    view.draw(townPlayer->getTextInstance());
-    view.draw(cityPlayer->getTextInstance());
-    view.draw(roadPlayer->getTextInstance());
+    view.draw(townPlayer.getTextInstance());
+    view.draw(cityPlayer.getTextInstance());
+    view.draw(roadPlayer.getTextInstance());
 }
 
 void PlayView::drawLabelDevelopCardPLayer() {
     createLabelPlayerDevelopCard();
-    view.draw(knight->getTextInstance());
-    view.draw(progress->getTextInstance());
-    view.draw(victory->getTextInstance());
+    view.draw(knight.getTextInstance());
+    view.draw(progress.getTextInstance());
+    view.draw(victory.getTextInstance());
 }
 
 /*methods of print Card*/
@@ -1151,6 +1151,7 @@ void PlayView::goView() {
                 break;
             }
             drawView();
+            
         }
     }
 }
@@ -1686,17 +1687,17 @@ void PlayView::createLabelDiceNumber(list<Land*>::iterator landIterator) {
     if (isDessertLand(landIterator))
         createTempNumberEmpty(landIterator);
 
-    view.draw(tempNumber->getTextInstance());
+    view.draw(tempNumber.getTextInstance());
 }
 
 void PlayView::createTempNumberEmpty(list<Land*>::iterator landIterator) {
-    tempNumber = new Label("", sf::Color::Black, font, sf::Text::Bold, 22,
+    tempNumber =  Label("", sf::Color::Black, font, sf::Text::Bold, 22,
         static_cast<float>((*landIterator)->getPosX() + 45),
         static_cast<float>((*landIterator)->getPosY() + 35));
 }
 
 void PlayView::createTempNumber(list<Land*>::iterator landIterator) {
-    tempNumber = new Label(std::to_string((*landIterator)->getDiceNumber()),
+    tempNumber =  Label(std::to_string((*landIterator)->getDiceNumber()),
         sf::Color::Black, font, sf::Text::Bold, 22,
         static_cast<float>((*landIterator)->getPosX() + 45),
         static_cast<float>((*landIterator)->getPosY() + 35));
