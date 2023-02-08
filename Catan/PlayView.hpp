@@ -74,6 +74,7 @@ private:
 
   bool isTownBuyClicked = false;
   bool isCityBuyClicked = false;
+ 
 
   bool isCLayTradeClicked = false;
   bool isWoodTradeClicked = false;
@@ -139,6 +140,15 @@ private:
   double getFormula(int) const;
   void printTowns(double, double);
 
+  void checkMaterialClicks();
+  bool isHexagonsClicked(float, float);
+  bool isRightClicked(float, float);
+  bool isMaterialClick(float, float); 
+  bool isProgressClick(float, float );
+  bool isMaterialPressed = false; 
+
+
+
   // cambiar nombres
   void printTownsTest();
   void traverseFirstAndLastRowTest(double, double, double);
@@ -201,6 +211,14 @@ private:
 
   void receiveCard(list<Land *>::iterator);
   void receiveMaterialCard(int);
+
+  void hexagonsMethod();
+  void resourcesMethod();
+  void progressMethod();
+  void eventPlayerMethod();
+  void shopMethod(); 
+  void largestArmy(); 
+  void firstTraversalLand(); 
 
   void createThreePlayersLabel();
   void createFourPlayersLabel();

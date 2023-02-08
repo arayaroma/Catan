@@ -948,15 +948,19 @@ void PlayView::buildCity() {
 }
 
 void PlayView::isBuyButtonClicked(sf::Event event) {
-  if (isTownBuyClicked) {
-    buildTown();
-  }
-  if (isCityBuyClicked) {
-    buildCity();
-  }
-  if (buyView.isBuyClicked) {
-    buyDevelopCard();
-  }
+    log("buy");
+        if (isTownBuyClicked) {
+            buildTown();
+            log("t");
+        }
+        if (isCityBuyClicked) {
+            buildCity();
+            log("c");
+        }
+        if (buyView.isBuyClicked) {
+            buyDevelopCard();
+            log("b");
+        }
 }
 
 void PlayView::loadOcean() {
@@ -1052,101 +1056,151 @@ void PlayView::firstTurn() {
     if ((*playerIterator)->getTownFirstTurn() == 2)
       isFirstTurn = false;
     else
-      isFirstTurn = true;
+        isFirstTurn = true;
 
-    playerIterator++;
+        playerIterator++;
   }
 }
 
 void PlayView::deleteTowntoPlayer() {
-  if (townIterator != (*game.playerIterator)->towns->end())
-    (*game.playerIterator)->towns->pop_back(); // poner alerta aca
+    if (townIterator != (*game.playerIterator)->towns->end())
+        (*game.playerIterator)->towns->pop_back(); // poner alerta aca
 }
 
 void PlayView::deleteCitytoPlayer() {
-  if (cityIterator != (*game.playerIterator)->citys->end())
-    (*game.playerIterator)->citys->pop_back(); // poner alerta aca
+    if (cityIterator != (*game.playerIterator)->citys->end())
+        (*game.playerIterator)->citys->pop_back(); // poner alerta aca
 }
 
-void PlayView::setOwnerToVertexGraph(Vertex *vertex) {
-  game.graph.getVertex(vertex->getVertexId())->setOwner((*game.playerIterator));
+void PlayView::setOwnerToVertexGraph(Vertex* vertex) {
+    game.graph.getVertex(vertex->getVertexId())->setOwner((*game.playerIterator));
 }
 
-bool PlayView::isTownClicked(list<Vertex *>::iterator vertexIterator, double x,
-                             double y) {
-  return (x > (*vertexIterator)->getTown()->getPosX() &&
-          x < (*vertexIterator)->getTown()->getPosX() + 30 &&
-          y > (*vertexIterator)->getTown()->getPosY() &&
-          y < (*vertexIterator)->getTown()->getPosY() + 30);
+bool PlayView::isTownClicked(list<Vertex*>::iterator vertexIterator, double x,
+    double y) {
+    return (x > (*vertexIterator)->getTown()->getPosX() &&
+        x < (*vertexIterator)->getTown()->getPosX() + 30 &&
+        y >(*vertexIterator)->getTown()->getPosY() &&
+        y < (*vertexIterator)->getTown()->getPosY() + 30);
 }
 
 void PlayView::loadView() {
-  view.create(sf::VideoMode(1280, 720), "Play");
-  image.loadFromFile("Images/catan_1280x720.jpg");
-  sprite.setTexture(image);
-  font.loadFromFile("mononoki.ttf");
-  view.setFramerateLimit(120);
-  game.playerIterator = beginPlayerIterator();
-  game.loadLands();
-  game.makeMaterialCard();
-  game.makeDevelopCard();
-  landsList = game.getLandsList();
-  game.assignTownsToLand();
-  game.makeGraph();
-  start = true;
-  srand((unsigned)time(nullptr));
+    view.create(sf::VideoMode(1280, 720), "Play");
+    image.loadFromFile("Images/catan_1280x720.jpg");
+    sprite.setTexture(image);
+    font.loadFromFile("mononoki.ttf");
+    view.setFramerateLimit(120);
+    game.playerIterator = beginPlayerIterator();
+    game.loadLands();
+    game.makeMaterialCard();
+    game.makeDevelopCard();
+    landsList = game.getLandsList();
+    game.assignTownsToLand();
+    game.makeGraph();
+    start = true;
+    srand((unsigned)time(nullptr));
 }
 
 void PlayView::goView() {
-  loadView();
-  drawView();
-  view.draw(sprite);
-  while (view.isOpen()) {
-    while (view.pollEvent(eventTest)) {
-      showCoordinates(eventTest);
-      switch (eventTest.type) {
-        view.waitEvent(eventTest);
-      case sf::Event::MouseButtonPressed:
-        if (eventTest.MouseButtonPressed && isMouseLeftClicked(eventTest)) {
-          if (isFirstTurn) {
-            traverseLands(getMousePositionX(view), getMousePositionY(view));
-          } else {
-            traverseLands(getMousePositionX(view), getMousePositionY(view));
-
-            isDiceButtonClicked(getMousePositionX(view),
-                                getMousePositionY(view));
-            clickTradeButton(eventTest);
-            clickInCityBuy(getMousePositionX(view), getMousePositionY(view));
-            clickInTownBuy(getMousePositionX(view), getMousePositionY(view));
-            clickClayTrade(getMousePositionX(view), getMousePositionY(view));
-            clickWheatTrade(getMousePositionX(view), getMousePositionY(view));
-            clickWoolTrade(getMousePositionX(view), getMousePositionY(view));
-            clickWoodTrade(getMousePositionX(view), getMousePositionY(view));
-            clickMineralTrade(getMousePositionX(view), getMousePositionY(view));
-            clickInDevelopCardBuy(getMousePositionX(view),
-                                  getMousePositionY(view));
-            isBuyButtonClicked(eventTest);
-            playDiscoveryCard(eventTest);
-            playMonopolyCard(eventTest);
-            if (theLargestArmy()) {
-                ownerBiggestArmy = (*game.playerIterator)->getName();
-                (*game.playerIterator)->setScore(2);
-            }
-          }
-          isTurnButtonClicked(sf::Mouse::getPosition(view).x,
-                              sf::Mouse::getPosition(view).y);
-        }
-        isInfoBuyClicked(event);
-        isInfoTradeClicked(event);
-        break;
-      case sf::Event::Closed:
-        closeView();
-        break;
-      }
-      break;
-    }
+    loadView();
     drawView();
-  }
+    view.draw(sprite);
+    while (view.isOpen()) {
+        while (view.pollEvent(eventTest)) {
+            showCoordinates(eventTest);
+            switch (eventTest.type) {
+                view.waitEvent(eventTest);
+            case sf::Event::MouseButtonPressed:
+                if (eventTest.MouseButtonPressed && isMouseLeftClicked(eventTest)) {
+                    if (isFirstTurn) {
+                        
+                         firstTraversalLand();
+                    }
+                    else {
+                        hexagonsMethod();
+                        resourcesMethod();
+                        progressMethod();
+                        shopMethod(); 
+                        largestArmy(); 
+                    }
+                    eventPlayerMethod();
+                    isInfoBuyClicked(event);
+                    isInfoTradeClicked(event);
+                    break;
+
+                case sf::Event::Closed:
+                    closeView();
+                break;
+
+                }
+                break;
+            }
+            drawView();
+        }
+    }
+}
+
+void PlayView::firstTraversalLand() {
+    traverseLands(getMousePositionX(view), getMousePositionY(view));
+}
+
+void PlayView::largestArmy() {
+
+    if (theLargestArmy()) {
+        ownerBiggestArmy = (*game.playerIterator)->getName();
+        (*game.playerIterator)->setScore(2);
+    }
+}
+void PlayView::shopMethod() {
+    if (getMousePositionX(view) > 145 && getMousePositionX(view) < 330 && getMousePositionY(view) > 570 && getMousePositionY(view) < 685) {
+        clickInDevelopCardBuy(getMousePositionX(view), getMousePositionY(view));
+        isBuyButtonClicked(eventTest);
+    }
+}
+
+void PlayView::hexagonsMethod() {
+    if (isHexagonsClicked(getMousePositionX(view), getMousePositionY(view))) 
+        traverseLands(getMousePositionX(view), getMousePositionY(view));
+}
+void PlayView::resourcesMethod() {
+    if (isMaterialClick(getMousePositionX(view), getMousePositionY(view))) 
+        checkMaterialClicks();
+}
+void PlayView::progressMethod() {
+    if (isProgressClick(getMousePositionX(view), getMousePositionY(view))) {
+        log("Progreso");
+        playDiscoveryCard(eventTest);
+        playMonopolyCard(eventTest);
+    }
+}
+void PlayView::eventPlayerMethod() {
+    if (isRightClicked(getMousePositionX(view), getMousePositionY(view))) {
+        isTurnButtonClicked(sf::Mouse::getPosition(view).x, sf::Mouse::getPosition(view).y);
+        isDiceButtonClicked(getMousePositionX(view), getMousePositionY(view));
+        clickTradeButton(eventTest);
+    }
+}
+
+
+bool PlayView::isRightClicked(float x, float y){
+    return (x > 975 && x < 1265 && y > 575 && y < 690);
+}
+
+bool PlayView::isHexagonsClicked(float x, float y ) {return (x > 435 && x < 955 && y > 5 && y < 475);}
+
+bool PlayView::isProgressClick(float x, float y) { return (x > 730 && x < 945 && y > 600 && y < 695);}
+
+bool PlayView::isMaterialClick(float x, float y) {return (x > 350 && x < 570 && y > 600 && y < 690);}
+
+void PlayView::checkMaterialClicks() {
+    clickInCityBuy(getMousePositionX(view), getMousePositionY(view));
+    clickInTownBuy(getMousePositionX(view), getMousePositionY(view));
+    clickClayTrade(getMousePositionX(view), getMousePositionY(view));
+    clickWheatTrade(getMousePositionX(view), getMousePositionY(view));
+    clickWoolTrade(getMousePositionX(view), getMousePositionY(view));
+    clickWoodTrade(getMousePositionX(view), getMousePositionY(view));
+    clickMineralTrade(getMousePositionX(view), getMousePositionY(view));
+   
 }
 
 void PlayView::isDiceButtonClicked(int x, int y) {
@@ -1177,9 +1231,13 @@ bool PlayView::isActualPlayerName(list<Vertex *>::iterator vertexIterator,
 }
 
 void PlayView::deleteWoodCards() { game.woodCards->pop(); }
+
 void PlayView::deleteWoolCards() { game.woolCards->pop(); }
+
 void PlayView::deleteMineralCards() { game.mineralCards->pop(); }
+
 void PlayView::deleteClayCards() { game.clayCards->pop(); }
+
 void PlayView::deleteWheatCards() { game.wheatCards->pop(); }
 
 void PlayView::giveCardsToPlayerCity(list<Land *>::iterator landIterator) {
