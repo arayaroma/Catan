@@ -51,7 +51,7 @@ void Graph::insertEdge(int origin, int destiny) {
   Vertex *destinyVertex = getVertex(destiny);
 
   if (originVertex != nullptr && destinyVertex != nullptr) {
-    Edge *newEdge = new Edge(destinyVertex);
+    Edge *newEdge = new Edge(originVertex,destinyVertex);
 
     if (originVertex->firstEdge == nullptr) {
       originVertex->firstEdge = newEdge;

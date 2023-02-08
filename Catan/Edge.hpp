@@ -5,10 +5,12 @@ class Vertex;
 class Edge {
 private:
   friend class Graph;
-  Edge *next;
-  Vertex *destinyVertex;
-  sf::RectangleShape edge;
-
+  
 public:
-  Edge(Vertex *);
+	Edge *next;
+  Vertex *destinyVertex;
+  Vertex* originVertex;
+  sf::RectangleShape edge;
+public:
+  Edge(Vertex*,Vertex *);
 };

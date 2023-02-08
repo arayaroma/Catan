@@ -11,7 +11,6 @@ class Vertex {
 private:
   friend class Graph;
   int vertexId;
-  Edge *firstEdge;
   string townOwner;
   bool _isPrinted;
   bool _isClicked;
@@ -23,7 +22,7 @@ public:
   Player *owner;
   Vertex *next;
   Town *town;
-
+  Edge* firstEdge;
 public:
   Vertex();
   Vertex(int, string, Town *, bool);

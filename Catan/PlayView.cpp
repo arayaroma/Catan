@@ -497,36 +497,77 @@ void PlayView::traverseLands(double x, double y) {
     it++;
   }
 }
-
+void PlayView::traverseLandsToAdjacentVertex(list<Vertex*>::iterator vIterator2) {
+    list<Land*>::iterator itX = landsList->begin();
+    while (itX != landsList->end()) {
+        list<Vertex*>::iterator vIteratorAux;
+        vIteratorAux = (*itX)->getTownsList()->begin();
+        while (vIteratorAux != (*itX)->getTownsList()->end()) {
+            parentAdjacentVertex(vIterator2, vIteratorAux);
+            vIteratorAux++;
+         }
+        itX++;
+        }
+        
+    
+}
+void PlayView::parentAdjacentVertex(list<Vertex*>::iterator vIterator2, list<Vertex*>::iterator vIteratorAux){
+ Edge * auxEdge = game.graph.getVertex((*vIteratorAux)->getVertexId())->firstEdge;
+            while (auxEdge != nullptr) {
+                if (game.graph.getVertex(auxEdge->destinyVertex->getVertexId())->getVertexId() == (*vIterator2)->getVertexId() &&
+                    (game.graph.getVertex((*vIteratorAux)->getVertexId())->isClicked())) {
+                    isParentClicked  = true;   
+                }
+                auxEdge = auxEdge->next;
+            }
+}
+bool PlayView::adjacentVertex(list<Vertex*>::iterator vIterator) {
+    Edge* auxEdge = game.graph.getVertex((*vIterator)->getVertexId())->firstEdge;
+    while (auxEdge != nullptr) {
+        if (game.graph.getVertex(auxEdge->destinyVertex->getVertexId())->isClicked() ||
+            game.graph.getVertex(auxEdge->originVertex->getVertexId())->isClicked()) {
+            return true;
+        }
+        else {
+            isAdjacentVertex = false;
+        }
+        auxEdge = auxEdge->next;
+    }
+    return isAdjacentVertex;
+}
 void PlayView::printTownPlayer(list<Vertex *>::iterator vIterator, int x,
                                int y) {
   if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() == NULL) {
-      if ((*game.playerIterator)->getTownFirstTurn() < 2) {
-        initializeIteratorTownList();
-        setIsClickedToVertexGraph(vIterator);
-        if (townIterator != (*game.playerIterator)->towns->end())
-          printImages((*townIterator)->getImagePath(),
+      traverseLandsToAdjacentVertex(vIterator);
+      if (!adjacentVertex(vIterator) && !isParentClicked) {
+          if ((*game.playerIterator)->getTownFirstTurn() < 2) {
+              initializeIteratorTownList();
+              setIsClickedToVertexGraph(vIterator);
+              if (townIterator != (*game.playerIterator)->towns->end())
+                  printImages((*townIterator)->getImagePath(),
                       (*vIterator)->getTown()->getPosX(),
                       (*vIterator)->getTown()->getPosY());
-        setOwnerToVertexGraph(
-            game.graph.getVertex((*vIterator)->getVertexId()));
-        deleteTowntoPlayer();
-        (*game.playerIterator)->setScore(1);
-        (*game.playerIterator)->setTownFirstTurn(1);
-        if ((*game.playerIterator)->getTownFirstTurn() == 2) {
-          receiveFirstMaterialCard();
-        }
-        game.graph.getVertex((*vIterator)->getVertexId())->setIsCity(false);
-        game.graph.getVertex((*vIterator)->getVertexId())->setIsTown(true);
-        
-        view.display();
+              setOwnerToVertexGraph(
+                  game.graph.getVertex((*vIterator)->getVertexId()));
+              deleteTowntoPlayer();
+              (*game.playerIterator)->setScore(1);
+              (*game.playerIterator)->setTownFirstTurn(1);
+              if ((*game.playerIterator)->getTownFirstTurn() == 2) {
+                  receiveFirstMaterialCard();
+              }
+              game.graph.getVertex((*vIterator)->getVertexId())->setIsCity(false);
+              game.graph.getVertex((*vIterator)->getVertexId())->setIsTown(true);
+
+              view.display();
+          }
+          else {
+              (*game.playerIterator)->setFirstTurnFinished(true);
+              ErrorAlert* alert = new ErrorAlert(
+                  "¡ERROR!", "YA SELECCIONASTES 2 POBLADOS");
+              alert->goView();
+          }
       }
-      else {
-          (*game.playerIterator)->setFirstTurnFinished(true);
-          ErrorAlert* alert = new ErrorAlert(
-              "¡ERROR!", "YA SELECCIONASTES 2 POBLADOS");
-          alert->goView();
-      }
+      isParentClicked = false;
       //(*game.playerIterator)->setFirstTurnFinished(true);
   }
   else {
@@ -559,33 +600,35 @@ void PlayView::searhTown(double x, double y, list<Land *>::iterator it) {
 void PlayView::buyCity(list<Vertex *>::iterator vIterator, double x, double y) {
   initializeIteratorCityList();
   if (game.graph.getVertex((*vIterator)->getVertexId())->getOwner() != NULL) {
-    if (!game.graph.getVertex((*vIterator)->getVertexId())->getIsCity()) {
-      if (game.graph.getVertex((*vIterator)->getVertexId())
-              ->getOwner()
-              ->getName() == (*playerIterator)->getName()) {
-        if ((*game.playerIterator)->towns->size() > 1) { /// arreglar este BUG
-          if (cityIterator != (*game.playerIterator)->citys->end())
-            printImages((*cityIterator)->getImagePath(),
-                        (*vIterator)->getTown()->getPosX(),
-                        (*vIterator)->getTown()->getPosY());
-          setOwnerToVertexGraph(
-              game.graph.getVertex((*vIterator)->getVertexId()));
-          deleteCitytoPlayer();
-          addTownToPlayer();
-          setIsClickedToVertexGraph(vIterator);
-          (*game.playerIterator)->setScore(2);
-          view.display();
-          selectCity = false;
-          game.graph.getVertex((*vIterator)->getVertexId())->setIsCity(true);
-          game.graph.getVertex((*vIterator)->getVertexId())->setIsTown(false);
-        }
+      if (!adjacentVertex(vIterator)) {
+          if (!game.graph.getVertex((*vIterator)->getVertexId())->getIsCity()) {
+              if (game.graph.getVertex((*vIterator)->getVertexId())
+                  ->getOwner()
+                  ->getName() == (*playerIterator)->getName()) {
+                  if ((*game.playerIterator)->towns->size() > 1) { /// arreglar este BUG
+                      if (cityIterator != (*game.playerIterator)->citys->end())
+                          printImages((*cityIterator)->getImagePath(),
+                              (*vIterator)->getTown()->getPosX(),
+                              (*vIterator)->getTown()->getPosY());
+                      setOwnerToVertexGraph(
+                          game.graph.getVertex((*vIterator)->getVertexId()));
+                      deleteCitytoPlayer();
+                      addTownToPlayer();
+                      setIsClickedToVertexGraph(vIterator);
+                      (*game.playerIterator)->setScore(2);
+                      view.display();
+                      selectCity = false;
+                      game.graph.getVertex((*vIterator)->getVertexId())->setIsCity(true);
+                      game.graph.getVertex((*vIterator)->getVertexId())->setIsTown(false);
+                  }
+              }
+              else {
+                  ErrorAlert* alert = new ErrorAlert(
+                      "¡ERROR!", "EL POBLADO ES DE OTRO JUGADOR");
+                  alert->goView();
+              }
+          }
       }
-      else {
-          ErrorAlert* alert = new ErrorAlert(
-              "¡ERROR!", "EL POBLADO ES DE OTRO JUGADOR");
-          alert->goView();
-      }
-    }
   }
   else {
       ErrorAlert* alert = new ErrorAlert(
