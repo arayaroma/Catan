@@ -250,8 +250,10 @@ void RegisterView::verify() {
                 if (compareColors()) {
                     playButtonPressed();
                 }
+                else {
                 ErrorAlert alertSameColor = ErrorAlert(" ", "Debe seleccionar distintos colores");
                 alertSameColor.goView();
+                }
             }
             else {
                 ErrorAlert noneColor = ErrorAlert(" ", "Debe seleccionar algun color por cada jugador");

@@ -241,7 +241,7 @@ private:
   bool playerHasPutTwoTowns() const;
   bool isPlayerTownsListTraversal() const;
 
-
+  bool isClosePressed(); 
   void createTradeButton();
   void createInfoTradeButton();
   void createDiscoveryButton(); 

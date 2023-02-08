@@ -49,7 +49,7 @@ public:
   }
 
   virtual bool isQKeyPressed() const {
-    return (sf::Keyboard::isKeyPressed(sf::Keyboard::Q));
+    return (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape));
   }
 
   virtual bool isEKeyPressed() const {

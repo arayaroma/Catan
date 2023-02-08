@@ -38,11 +38,11 @@ void PlayView::createLabelNumTurn() {
                            game.getVictoryPointsCards()->size()),
             sf::Color(0, 0, 0), font, sf::Text::Bold, 20, 80.f, 450.f);
 
-  owner = Label("Dueño: ", sf::Color(0, 0, 255), font, sf::Text::Bold, 20,
+  owner = Label("Propietario: ", sf::Color(0, 0, 255), font, sf::Text::Bold, 20,
                 220.f, 0.f);
 
   ownerName = Label(ownerBiggestArmy, sf::Color(0, 0, 255), font,
-                    sf::Text::Bold, 20, 300.f, 0.f);
+                    sf::Text::Bold, 20, 325.f, 0.f);
 }
 
 void PlayView::createLabelCardPlayer() {
@@ -160,7 +160,7 @@ void PlayView::createLabelScorePlayer() {
                            sf::Text::Bold, 20, 1050.f, 340.f);
   scorePlayer =
       Label(std::to_string((*game.playerIterator)->getScore()),
-            sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 1155.f, 340.f);
+            sf::Color(0, 0, 0), font, sf::Text::Bold, 20, 1155.f, 340.f);
 }
 
 void PlayView::drawLabelMaterialGame() {
@@ -224,27 +224,27 @@ void PlayView::loadthreeXone() {
 
 void PlayView::createButtons() {
 
-  p = Button("Turn", {0, 0}, 16, sf::Color::Green, sf::Color::Black);
+  p = Button("Turn", {0, 0}, 16, sf::Color::Green, sf::Color::White);
   option1 =
-      Button("Option1", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
-  save = Button("Guardar", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
-  close = Button("Close", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
+      Button("Option1", {120, 35}, 16, sf::Color::Green, sf::Color::White);
+  save = Button("Guardar", {120, 35}, 16, sf::Color::Green, sf::Color::White);
+  close = Button("Close", {120, 35}, 16, sf::Color::Green, sf::Color::White);
   turn = Button("Siguiente\nTurno", {120, 50}, 16, sf::Color::Green,
                 sf::Color::White);
-  trade = Button("Trade", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
+  trade = Button("Trade", {120, 35}, 16, sf::Color::Green, sf::Color::White);
   // buy = Button("Buy", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
   option1 =
-      Button("Option1", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
-  save = Button("Guardar", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
-  close = Button("Close", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
-  howTrade = Button("�Info.Comprar!", {140, 35}, 16, sf::Color::Green,
-                    sf::Color::Black);
-  howBuy = Button("�Info.Intercambiar!", {180, 35}, 16, sf::Color::Green,
-                  sf::Color::Black);
+      Button("Option1", {120, 35}, 16, sf::Color::Green, sf::Color::White);
+  save = Button("Guardar", {120, 35}, 16, sf::Color::Green, sf::Color::White);
+  close = Button("Close", {120, 35}, 16, sf::Color::Green, sf::Color::White);
+  howTrade = Button("Info.Comprar", {140, 35}, 16, sf::Color::Green,
+                    sf::Color::White);
+  howBuy = Button("Info.Intercambiar", {180, 35}, 16, sf::Color::Green,
+                  sf::Color::White);
   progreessDiscovery =
-      Button("Jugar", {35, 20}, 7, sf::Color::Green, sf::Color::Black);
+      Button("Jugar", {35, 20}, 7, sf::Color::Green, sf::Color::White);
   progreessMonopoly =
-      Button("Jugar", {37, 20}, 7, sf::Color::Green, sf::Color::Black);
+      Button("Jugar", {37, 20}, 7, sf::Color::Green, sf::Color::White);
   dice = Button("Dado", {120, 50}, 15, sf::Color::Green, sf::Color::White);
 
   setButtonOrigins();
@@ -1115,22 +1115,24 @@ void PlayView::goView() {
       case sf::Event::MouseButtonPressed:
         if (eventTest.MouseButtonPressed && isMouseLeftClicked(eventTest)) {
           if (isFirstTurn) {
+              firstTraversalLand();
+          }
+           else {
+             hexagonsMethod();
+             isDiceButtonClicked(event);
+             resourcesMethod();
+             progressMethod();
+             shopMethod();
+             largestArmy();
+           }
+             eventPlayerMethod();
+             isInfoBuyClicked(event);
+             isInfoTradeClicked(event);
 
-                        firstTraversalLand();
-                    }
-                    else {
-                        hexagonsMethod();
-                        isDiceButtonClicked(event);
-                        resourcesMethod();
-                        progressMethod();
-                        shopMethod();
-                        largestArmy();
-                    }
-                    eventPlayerMethod();
-                    isInfoBuyClicked(event);
-                    isInfoTradeClicked(event);
-                    break;
-
+             if(isClosePressed()) {
+                 closeView();
+             }
+           break;
         case sf::Event::Closed:
           closeView();
           break;
@@ -1141,6 +1143,9 @@ void PlayView::goView() {
       //log(game.to_string(*vertexesList));
     }
   }
+}
+bool PlayView::isClosePressed(){
+    return (close.isPressed(event)); 
 }
 
 void PlayView::firstTraversalLand() {
