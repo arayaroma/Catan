@@ -4,35 +4,36 @@
   Button.cpp
   BuyView.cpp
   Card.cpp
-  City.cpp
-  Clay.cpp
-  Component.cpp
   Computer.cpp
   ConfirmationAlert.cpp
-  Dice.cpp
-  Edge.cpp
   ErrorAlert.cpp
-  Figure.cpp
   FileHandler.cpp
   Game.cpp
+  Dice.cpp
+  Edge.cpp
+  Figure.cpp
   Graph.cpp
   Human.cpp
   InformationAlert.cpp
-  Generando código...
-  Compilando...
   Knight.cpp
+  main.cpp
+  City.cpp
+  Generating Code...
+  Compiling...
+  Clay.cpp
+  Component.cpp
   Label.cpp
   Land.cpp
   MenuView.cpp
   Mineral.cpp
   NoneAlert.cpp
-  PlayView.cpp
-C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(2053,63): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(2070,63): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(2087,63): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(2103,66): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(2119,65): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
   Player.cpp
+  PlayView.cpp
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2050,63): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2067,63): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2084,63): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2100,66): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2116,65): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Progress.cpp
   RegisterView.cpp
   Road.cpp
@@ -44,12 +45,11 @@ C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(2119,65): warning C4
   VictoryPoints.cpp
   View.cpp
   WarningAlert.cpp
+  Generating Code...
+  Compiling...
   Wheat.cpp
-  Generando código...
-  Compilando...
   Wood.cpp
   Wool.cpp
-  main.cpp
-  Generando código...
-  LINK : no se encontró C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Catan.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
-  Catan.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Catan.exe
+  Generating Code...
+  LINK : C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe not found or not built by the last incremental link; performing full link
+  Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe
