@@ -44,6 +44,10 @@ public:
 
   list<Player *>::iterator playerIterator;
 
+  list<Player*>::iterator playerIterator2;
+  list<Player*>::iterator playerIterator3;
+  list<Player*>::iterator playerIterator4;
+
   list<Wheat *>::iterator wheatIterator;
   list<Mineral *>::iterator mineralIterator;
   list<Wool *>::iterator woolIterator;
@@ -57,10 +61,12 @@ private:
   int lastIterationNumber = 680;
   int vertexIterationNumber;
   int turnNumber = 0;
+  bool isMonopolyBuy = false;
   string tempImagePath;
   string url = "";
   int numTurn = 1;
   int numDice;
+  string ownerBiggestArmy;
   Dice diceInstance;
   bool isDiceSpinned = false;
   bool isFirstTurn = true;
@@ -220,6 +226,8 @@ private:
 
   void createTradeButton();
   void createInfoTradeButton();
+  void createDiscoveryButton(); 
+  void createMonopolyButton();
   void createInfoBuyButton();
   void createTurnButton();
   void createPButton();
@@ -277,7 +285,7 @@ private:
   void receiveBoughtDevelopCard();
   void deleteKnightCard();
   void deleteVictoryCard();
-  void deleteProgressCard();
+  void deleteProgressCard(int);
 
   void traverseLandsToTrade();
   bool landIsNormalPortNeighbor(list<Land *>::iterator it);
@@ -290,13 +298,27 @@ private:
   void tradeSpecial();
   void tradeCard();
 
+  void loadBiggestArmyCard();
   void saveMatchActualState();
+  bool theLargestArmy();
+  void compareTwoPlayer();
+  void compareThreePlayer();
+  void initializePlayersIteratorToCompare();
+  bool istheLargestArmy = false;
 
+  void playMonopolyCard(sf::Event);
+  void playDiscoveryCard(sf::Event);
+
+  void getClaysPlayersToMonopoly();
+  void getWoodsPlayersToMonopoly();
+  void getWoolsPlayersToMonopoly();
+  void getMineralsPlayersToMonopoly();
+  void getWheatsPlayersToMonopoly();
 private:
   sf::Event eventTest;
   sf::RectangleShape playerRectangle, cardsRectangle, buyRectangle;
   Label *materialCard, *pricingTable, *turns, *cards, *developCard, *labelBuy;
-  Label *player1, *player2, *player3, *player4;
+  Label *player1, *player2, *player3, *player4, *owner, *ownerName;
   Label *clayCard, *mineralPlayerCard, *wheatPlayerCard, *woodPlayerCard,
       *woolPlayerCard, *firsThreeXone, *secondThreeXone, *thirdThreeXone,
       *fourThreeXone, *tempNumber;
@@ -305,5 +327,5 @@ private:
       *titleScorePlayer;
   Label *knight, *progress, *victory;
   Label *woodGame, *woolGame, *clayGame, *mineralGame, *wheatGame, *numDevelopCard;
-  Button turn, buy, trade, dice, p, option1, save, close,howTrade,howBuy;
+  Button turn, buy, trade, dice, p, option1, save, close,howTrade,howBuy,progreessConstruccion, progreessMonopoly, progreessDiscovery;
 };

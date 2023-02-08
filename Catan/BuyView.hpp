@@ -32,14 +32,20 @@ public:
 	void createButtons(); 
 	void drawButton(Button& btm);
 	void KnightButtonClicked(sf::Event event);
-	void ProgressButtonClicked(sf::Event event);
+	void Progress1ButtonClicked(sf::Event event);
+	void Progress2ButtonClicked(sf::Event event);
+	void Progress3ButtonClicked(sf::Event event);
 	void VictoryButtonClicked(sf::Event event);
 	void BuyButtonPressed(sf::Event event);
+
+	void drawAllButtons();
 	sf::Event eventTest;
-	Button buy, p, victory, progress,knight;
+	Button buy, p, victory, progress1,progress2, progress3,knight;
 
 	bool isKnightButtonClicked = false;
-	bool isProgressButtonClicked = false;
+	bool isProgress1ButtonClicked = false;
+	bool isProgress2ButtonClicked = false;
+	bool isProgress3ButtonClicked = false;
 	bool isVictoryButtonClicked = false;
 	bool isBuyClicked = false;
 

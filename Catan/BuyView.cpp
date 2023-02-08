@@ -6,7 +6,7 @@ void BuyView::loadView() {
 	sprite.setTexture(image);
 	font.loadFromFile("mononoki.ttf");
 	view.setFramerateLimit(120);
-    
+   
 }
 
 void BuyView::goView() {
@@ -22,7 +22,9 @@ void BuyView::goView() {
                 showCoordinates(eventTest);
                 if (event.MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
                     VictoryButtonClicked(eventTest);
-                    ProgressButtonClicked(eventTest);
+                    Progress1ButtonClicked(eventTest);
+                    Progress2ButtonClicked(eventTest);
+                    Progress3ButtonClicked(eventTest);
                     KnightButtonClicked(eventTest);
                     BuyButtonPressed(eventTest);
                 }
@@ -36,16 +38,21 @@ void BuyView::goView() {
         view.clear();
         view.draw(sprite);
         createButtons();
-        drawButton(p);
-        drawButton(buy);
-        drawButton(knight);
-        drawButton(progress);
-        drawButton(victory);
-     
+        drawAllButtons();
         drawView();
         view.display(); 
     }
 }
+void BuyView::drawAllButtons() {
+    drawButton(p);
+    drawButton(buy);
+    drawButton(knight);
+    drawButton(progress1);
+    drawButton(progress2);
+    drawButton(progress3);
+    drawButton(victory);
+}
+
 void BuyView::loadProgressPaths() {
     progressIterator = game.progressCards->begin();
     if (progressIterator != game.progressCards->end()) {
@@ -87,21 +94,41 @@ void BuyView::loadVictoryPointsPaths() {
 void BuyView::KnightButtonClicked(sf::Event event) {
     if (knight.isPressed(event)) {
         this->isKnightButtonClicked = true;
-        this->isProgressButtonClicked = false;
+        this->isProgress1ButtonClicked = false;
         this->isVictoryButtonClicked = false;
     }
 }
-void BuyView::ProgressButtonClicked(sf::Event event) {
-    if (buy.isPressed(event)) {
+void BuyView::Progress2ButtonClicked(sf::Event event) {
+    if (progress2.isPressed(event)) {
         this->isKnightButtonClicked = false;
-        this->isProgressButtonClicked = true;
+        this->isProgress2ButtonClicked = true;
         this->isVictoryButtonClicked = false;
+        this->isProgress3ButtonClicked = false;
+        this->isProgress1ButtonClicked = false;
+    }
+}
+void BuyView::Progress3ButtonClicked(sf::Event event) {
+    if (progress3.isPressed(event)) {
+        this->isKnightButtonClicked = false;
+        this->isProgress3ButtonClicked = true;
+        this->isVictoryButtonClicked = false;
+        this->isProgress2ButtonClicked = false;
+        this->isProgress1ButtonClicked = false;
+    }
+}
+void BuyView::Progress1ButtonClicked(sf::Event event) {
+    if (progress1.isPressed(event)) {
+        this->isKnightButtonClicked = false;
+        this->isProgress1ButtonClicked = true;
+        this->isVictoryButtonClicked = false;
+        this->isProgress2ButtonClicked = false;
+        this->isProgress3ButtonClicked = false;
     }
 }
 void BuyView::VictoryButtonClicked(sf::Event event) {
     if (victory.isPressed(event)) {
         this->isKnightButtonClicked = false;
-        this->isProgressButtonClicked = false;
+        this->isProgress1ButtonClicked = false;
         this->isVictoryButtonClicked = true;
     }
 }
@@ -137,9 +164,17 @@ void BuyView::createButtons() {
     knight.setFont(font);
     knight.setPosition({ 30,10 }, 3);
 
-    progress = Button("progreso", { 420, 200  }, 16, sf::Color::Green, sf::Color::Black);
-    progress.setFont(font);
-    progress.setPosition({ 150,400 }, 3);
+    progress1 = Button("progreso1", { 130, 200  }, 16, sf::Color::Green, sf::Color::Black);
+    progress1.setFont(font);
+    progress1.setPosition({ 160,430 }, 3);
+
+    progress2 = Button("progreso2", { 130, 200 }, 16, sf::Color::Green, sf::Color::Black);
+    progress2.setFont(font);
+    progress2.setPosition({ 290,430 }, 3);
+
+    progress3 = Button("progreso3", { 130, 200 }, 16, sf::Color::Green, sf::Color::Black);
+    progress3.setFont(font);
+    progress3.setPosition({ 420,430 }, 3);
 
     victory = Button("puntos de Victoria", { 650, 200 }, 16, sf::Color::Green, sf::Color::Black);
     victory.setFont(font);

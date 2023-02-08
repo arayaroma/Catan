@@ -1,1 +1,36 @@
-﻿  Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe
+﻿  AboutView.cpp
+  Alert.cpp
+  Application.cpp
+  BuyView.cpp
+  Computer.cpp
+  ConfirmationAlert.cpp
+  ErrorAlert.cpp
+  FileHandler.cpp
+  Game.cpp
+  Graph.cpp
+  Human.cpp
+  InformationAlert.cpp
+  Land.cpp
+  MenuView.cpp
+  NoneAlert.cpp
+  PlayView.cpp
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2044,63): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2061,63): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2078,63): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2094,66): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2110,65): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Player.cpp
+  Progress.cpp
+  RegisterView.cpp
+  TextBox.cpp
+  Generating Code...
+  Compiling...
+  TitleView.cpp
+  TradeView.cpp
+  Vertex.cpp
+  View.cpp
+  WarningAlert.cpp
+  main.cpp
+  Generating Code...
+  LINK : C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe not found or not built by the last incremental link; performing full link
+  Catan.vcxproj -> C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\x64\Debug\Catan.exe

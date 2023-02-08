@@ -3,11 +3,13 @@
 PlayView::PlayView() {
   landsList = new list<Land *>();
   vertexesList = new list<Vertex *>();
+  ownerBiggestArmy = "name";
 }
 
 PlayView::PlayView(list<Player *> *players, string fileName) {
   game.players = players;
   actualMatchName = fileName;
+  ownerBiggestArmy = "name";
 }
 
 PlayView::PlayView(Game &obj) { game = Game(obj); }
@@ -16,81 +18,171 @@ PlayView::PlayView(Game &obj) { game = Game(obj); }
 void PlayView::createLabelNumTurn() {
 
   titleTurn = new Label("Turno:  ", sf::Color(0, 0, 255, 128), font,
-                        sf::Text::Bold, 20, 1030.f, 370.f);
-  labelNumTurn = new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 255, 128),
-                           font, sf::Text::Bold, 20, 1120.f, 370.f);
+                        sf::Text::Bold, 20, 1050.f, 370.f);
+  labelNumTurn = new Label((*game.playerIterator)->getName(), sf::Color(0, 0, 0),
+                           font, sf::Text::Bold, 20, 1145.f, 370.f);
+
   infoFisrtTurn = new Label( "Primera Ronda, por favor elija 2 poblados y pase de turno",
-      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 250.f, 500.f);
+      sf::Color(0, 0, 0), font, sf::Text::Bold, 20, 250.f, 500.f);
   labelNumDice = new Label(std::to_string(diceInstance.getActualNumber()),
-                           sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20,
+                           sf::Color(0, 0, 0), font, sf::Text::Bold, 20,
                            1150.f, 570.f);
 
-  labelBuy = new Label("Comprar", sf::Color(0, 0, 255, 128), font,
+  labelBuy = new Label("Comprar", sf::Color(0, 0, 255), font,
       sf::Text::Bold, 20, 200.f, 585.f);
 
   numDevelopCard = new Label(std::to_string(game.getKnightCards()->size() + game.getProgressCards()->size()
-                                + game.getVictoryPointsCards()->size()), sf::Color(0, 0, 255, 128), font,
+                                + game.getVictoryPointsCards()->size()), sf::Color(0, 0,0), font,
       sf::Text::Bold, 20, 80.f, 450.f);
+
+  owner = new Label("Dueño: ", sf::Color(0, 0, 255), font,
+      sf::Text::Bold, 20, 220.f, 0.f);
+
+
+  ownerName = new Label(ownerBiggestArmy, sf::Color(0, 0, 255), font,
+      sf::Text::Bold, 20, 300.f, 0.f);
+
 }
 
-void PlayView::printMaterialCard() {
-  printImages("Images/resourcesCards/clayCard.png", 0, 270);
-  printImages("Images/resourcesCards/mineralCard.png", 50, 270);
-  printImages("Images/resourcesCards/wheatCard.png", 100, 270);
-  printImages("Images/resourcesCards/woodCard.png", 150, 270);
-  printImages("Images/resourcesCards/woolCard.png", 200, 270);
-  printImages("Images/extraCards/progressCardBackwards.png", 0, 410);
-  printImages("Images/extraCards/pricingTable.jpeg", 0, 25);
-  drawLabels();
+void PlayView::createLabelCardPlayer() {
+    clayCard = new Label(std::to_string((*game.playerIterator)->clayCard->size()),
+        sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20,
+        375.f, 620.f);
+    mineralPlayerCard = new Label(
+        std::to_string((*game.playerIterator)->mineralCard->size()),
+        sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 415.f, 620.f);
+    wheatPlayerCard = new Label(
+        std::to_string((*game.playerIterator)->wheatlCard->size()),
+        sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 455.f, 620.f);
+    woodPlayerCard = new Label(
+        std::to_string((*game.playerIterator)->woodCard->size()),
+        sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 495.f, 620.f);
+    woolPlayerCard = new Label(
+        std::to_string((*game.playerIterator)->woolCard->size()),
+        sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 535.f, 620.f);
 }
+
+void PlayView::createThreePlayersLabel() {
+    player1 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+        font, sf::Text::Bold, 20, 1100.f, 120.f);
+    playerIterator++;
+    player2 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+        font, sf::Text::Bold, 20, 1100.f, 180.f);
+    playerIterator++;
+    player3 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+        font, sf::Text::Bold, 20, 1100.f, 240.f);
+}
+
+void PlayView::createFourPlayersLabel() {
+    player1 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+        font, sf::Text::Bold, 20, 1100.f, 120.f);
+    playerIterator++;
+    player2 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+        font, sf::Text::Bold, 20, 1100.f, 180.f);
+    playerIterator++;
+    player3 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+        font, sf::Text::Bold, 20, 1100.f, 240.f);
+    playerIterator++;
+    player4 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
+        font, sf::Text::Bold, 20, 1100.f, 300.f);
+}
+
+void PlayView::createLabelFigurePlayer() {
+    townPlayer = new Label(
+        std::to_string((*game.playerIterator)->towns->size() - 1),
+        sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 600.f, 620.f);
+    cityPlayer = new Label(
+        std::to_string((*game.playerIterator)->citys->size() - 1),
+        sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 640.f, 620.f);
+    roadPlayer = new Label(
+        std::to_string((*game.playerIterator)->roads->size() - 1),
+        sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 680.f, 620.f);
+}
+
 
 void PlayView::createLabelMaterialCardGame() {
   clayGame = new Label(std::to_string(game.clayCards->size()),
-                       sf::Color(0, 0, 255, 150), font, sf::Text::Bold, 20,
+                       sf::Color(0, 0, 0), font, sf::Text::Bold, 20,
                        15.f, 240.f);
   mineralGame = new Label(std::to_string(game.mineralCards->size()),
-                       sf::Color(0, 0, 255, 150), font, sf::Text::Bold, 20,
+                       sf::Color(0, 0, 0), font, sf::Text::Bold, 20,
                        70.f, 240.f);
   wheatGame = new Label(std::to_string(game.wheatCards->size()),
-                       sf::Color(0, 0, 255, 150), font, sf::Text::Bold, 20,
+                       sf::Color(0, 0, 0), font, sf::Text::Bold, 20,
                        120.f, 240.f);
   woodGame = new Label(std::to_string(game.woodCards->size()),
-                       sf::Color(0, 0, 255, 150), font, sf::Text::Bold, 20,
+                       sf::Color(0, 0,0), font, sf::Text::Bold, 20,
                        170.f, 240.f);
   woolGame = new Label(std::to_string(game.woolCards->size()),
-                       sf::Color(0, 0, 255, 150), font, sf::Text::Bold, 20,
+                       sf::Color(0, 0, 0), font, sf::Text::Bold, 20,
                        225.f, 240.f);
 }
 
-void PlayView::drawLabelMaterialGame() {
-  createLabelMaterialCardGame();
-  view.draw(wheatGame->getTextInstance());
-  view.draw(mineralGame->getTextInstance());
-  view.draw(clayGame->getTextInstance());
-  view.draw(woolGame->getTextInstance());
-  view.draw(woodGame->getTextInstance());
-  view.draw(labelBuy->getTextInstance()); 
-}
-
 void PlayView::createLabels() {
-  materialCard = new Label("Cartas de Materiales", sf::Color(0, 0, 255, 128),
-                           font, sf::Text::Bold, 20, 5.f, 220.f);
+  materialCard = new Label("Materiales", sf::Color(0, 0, 255, 128),
+                           font, sf::Text::Bold, 20, 25.f, 220.f);
   developCard = new Label("Cartas de Desarrollo", sf::Color(0, 0, 255, 128),
                           font, sf::Text::Bold, 20, 5.f, 380.f);
-  pricingTable = new Label("Tabla de precios", sf::Color(0, 0, 255, 128), font,
-                           sf::Text::Bold, 20, 5.f, 0.f);
+  pricingTable = new Label("Precios", sf::Color(0, 0, 255, 128), font,
+                           sf::Text::Bold, 20, 25.f, 0.f);
   turns = new Label("Jugadores", sf::Color(0, 0, 255, 128), font,
                     sf::Text::Bold, 20, 1070.f, 60.f);
   cards = new Label("Componentes", sf::Color(0, 0, 255, 128), font,
                     sf::Text::Bold, 20, 565.f, 575.f);
 }
 
+void PlayView::createLabelPlayerDevelopCard() {
+    victory = new Label(
+        std::to_string((*game.playerIterator)->victoryPointsCards->size()),
+        sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 915.f, 620.f);
+
+    knight = new Label(
+        std::to_string((*game.playerIterator)->knightCards->size()),
+        sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 875.f, 620.f);
+
+    progress = new Label(
+        std::to_string((*game.playerIterator)->progressCards->size()),
+        sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 790.f, 595.f);
+}
+
+
 void PlayView::createLabelScorePlayer() {
   titleScorePlayer = new Label("Puntaje:", sf::Color(0, 0, 255, 128), font,
-                               sf::Text::Bold, 20, 1030.f, 340.f);
+                               sf::Text::Bold, 20, 1050.f, 340.f);
   scorePlayer = new Label(std::to_string((*game.playerIterator)->getScore()),
-                          sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20,
-                          1130.f, 340.f);
+      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20,
+      1155.f, 340.f);
+
+}
+
+void PlayView::drawLabelMaterialGame() {
+    createLabelMaterialCardGame();
+    view.draw(wheatGame->getTextInstance());
+    view.draw(mineralGame->getTextInstance());
+    view.draw(clayGame->getTextInstance());
+    view.draw(woolGame->getTextInstance());
+    view.draw(woodGame->getTextInstance());
+    view.draw(labelBuy->getTextInstance());
+    view.draw(owner->getTextInstance());
+
+}
+void PlayView::printPlayerDevelopCard() {
+    printImages("Images/playerCard/mini_progressCard1.png", 735, 640);
+    printImages("Images/playerCard/mini_progressCard2.png", 775, 640);
+    printImages("Images/playerCard/mini_progressCard3 .png", 815, 640);
+    printImages("Images/playerCard/mini_knightCard1.png", 860, 640);
+    printImages("Images/playerCard/mini_victoryPointCard1.png", 900, 640);
+}
+
+void PlayView::printMaterialCard() {
+    printImages("Images/resourcesCards/clayCard.png", 0, 270);
+    printImages("Images/resourcesCards/mineralCard.png", 50, 270);
+    printImages("Images/resourcesCards/wheatCard.png", 100, 270);
+    printImages("Images/resourcesCards/woodCard.png", 150, 270);
+    printImages("Images/resourcesCards/woolCard.png", 200, 270);
+    printImages("Images/extraCards/progressCardBackwards.png", 0, 410);
+    printImages("Images/extraCards/pricingTable.jpeg", 0, 25);
+    drawLabels();
 }
 
 void PlayView::createLabelNamePlayers() {
@@ -105,35 +197,38 @@ void PlayView::createLabelNamePlayers() {
 
 void PlayView::loadthreeXone() {
 
-  firsThreeXone =
-      new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 500.f, 20.f);
+  firsThreeXone =new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 500.f, 20.f);
   view.draw(firsThreeXone->getTextInstance());
 
-  secondThreeXone =
-      new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 838.f, 75.f);
+  secondThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 838.f, 75.f);
   view.draw(secondThreeXone->getTextInstance());
 
-  thirdThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20,
-                             910.f, 238.f);
+  thirdThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 910.f, 238.f);
   view.draw(thirdThreeXone->getTextInstance());
 
-  fourThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20,
-                            510.f, 435.f);
+  fourThreeXone = new Label("3:1", sf::Color::Black, font, sf::Text::Bold, 20, 510.f, 435.f);
+
   view.draw(fourThreeXone->getTextInstance());
 }
 
 void PlayView::createButtons() {
 
   p = Button("Turn", {0, 0}, 16, sf::Color::Green, sf::Color::Black);
-  turn = Button("Turn", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
+  option1 = Button("Option1", { 120, 35 }, 16, sf::Color::Green, sf::Color::Black);
+  save = Button("Guardar", { 120, 35 }, 16, sf::Color::Green, sf::Color::Black);
+  close = Button("Close", { 120, 35 }, 16, sf::Color::Green, sf::Color::Black);
+  turn = Button("Siguiente\nTurno", { 120, 50 }, 16, sf::Color::Green,sf::Color::White);
   trade = Button("Trade", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
-  buy = Button("Buy", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
-  option1 =
-      Button("Option1", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
+  //buy = Button("Buy", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
+  option1 = Button("Option1", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
   save = Button("Guardar", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
   close = Button("Close", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
   howTrade = Button("¡Info.Comprar!", { 140, 35 }, 16, sf::Color::Green, sf::Color::Black);
   howBuy = Button("¡Info.Intercambiar!", { 180, 35 }, 16, sf::Color::Green, sf::Color::Black);
+  progreessDiscovery = Button("Jugar", { 35, 20 }, 7, sf::Color::Green, sf::Color::Black);
+  progreessMonopoly = Button("Jugar", { 37, 20 }, 7, sf::Color::Green, sf::Color::Black);
+  dice = Button("Dado", { 120, 50 }, 15, sf::Color::Green, sf::Color::White);
+
   setButtonOrigins();
 }
 
@@ -142,54 +237,96 @@ void PlayView::setButtonOrigins() {
 
   p.setFont(font);
   p.setPosition({0, 0}, 3);
-  p.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
-      view);
-  turn.setFont(font);
-  turn.setPosition({985, 600}, 3);
+  p.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255), view);
+  p.buttonInOutColors(sf::Color(0, 0, 255, 255), sf::Color(0, 0, 225, 255),view);
 
+  turn.setFont(font);
+  turn.setPosition({ 985, 600 }, 3);
+  turn.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255), view);
   trade.setFont(font);
   trade.setPosition({20, 615}, 3);
+  trade.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),view);
 
-  buy.setFont(font);
-  buy.setPosition({150, 600}, 3);
+  //buy.setFont(font);
+  //buy.setPosition({150, 600}, 3);
+  //buy.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255), view);
 
   option1.setFont(font);
   option1.setPosition({1120, 600}, 3);
+  option1.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255), view);
 
   save.setFont(font);
-
   save.setPosition({1120, 660}, 3);
+  save.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255), view);
 
   close.setFont(font);
   close.setPosition({985, 660}, 3);
+  close.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255), view);
 
   howTrade.setFont(font);
   howTrade.setPosition({ 1075, 465 }, 3);
-  howTrade.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
-      view);
+  howTrade.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),view);
+
   howBuy.setFont(font);
   howBuy.setPosition({ 1050, 425 }, 3);
-  howBuy.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
-      view);
+  howBuy.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),view);
+
+  progreessDiscovery.setFont(font);
+  progreessDiscovery.setPosition({ 738, 620 }, 3);
+  progreessDiscovery.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255), view);
+
+  progreessMonopoly.setFont(font);
+  progreessMonopoly.setPosition({ 775, 620 }, 3);
+  progreessMonopoly.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255), view);
+
+  dice.setFont(font);
+  dice.setPosition({ 1120, 600 }, 3);
+  dice.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),view);
+
+}
+
+void PlayView::createTurnButton() {
+    turn.drawButton(view);
+}
+
+void PlayView::createDiscoveryButton() {
+    progreessDiscovery.drawButton(view);
+}
+void PlayView::createMonopolyButton() {
+    progreessMonopoly.drawButton(view);
 }
 
 void PlayView::createInfoTradeButton() {
-    howTrade = Button("¡Info.Comprar!", { 140, 35 }, 16, sf::Color::Green, sf::Color::Black);
-
-    howTrade.setFont(font);
-    howTrade.setPosition({ 1075, 465 }, 3);
     howTrade.drawButton(view);
-    howTrade.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
-        view);
 }
 void PlayView::createInfoBuyButton() {
-    howBuy = Button("¡Info.Intercambiar!", { 150, 35 }, 16, sf::Color::Green, sf::Color::Black);
-    howBuy.setFont(font);
-    howBuy.setPosition({ 1050, 425 }, 3);
     howBuy.drawButton(view);
-    howBuy.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
-        view);
 }
+
+void PlayView::createTradeButton() {
+    trade.drawButton(view);
+}
+
+void PlayView::createPButton() {
+    p.drawButton(view);
+}
+
+void PlayView::createOptionOneButton() {
+   
+}
+
+void PlayView::createSaveButton() {
+
+}
+
+void PlayView::createCloseButton() {
+   // hello 
+}
+
+void PlayView::createDiceButton() {
+    dice.drawButton(view);
+}
+
 
 void PlayView::isInfoBuyClicked(sf::Event event) {
    
@@ -248,156 +385,15 @@ void PlayView::loadRegisterButtons(Button &button) {
   }
 }
 
-void PlayView::createLabelCardPlayer() {
-  clayCard = new Label(std::to_string((*game.playerIterator)->clayCard->size()),
-                       sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20,
-                       375.f, 620.f);
-  mineralPlayerCard = new Label(
-      std::to_string((*game.playerIterator)->mineralCard->size()),
-      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 415.f, 620.f);
-  wheatPlayerCard = new Label(
-      std::to_string((*game.playerIterator)->wheatlCard->size()),
-      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 455.f, 620.f);
-  woodPlayerCard = new Label(
-      std::to_string((*game.playerIterator)->woodCard->size()),
-      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 495.f, 620.f);
-  woolPlayerCard = new Label(
-      std::to_string((*game.playerIterator)->woolCard->size()),
-      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 535.f, 620.f);
-}
 
-void PlayView::createThreePlayersLabel() {
-  player1 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
-                      font, sf::Text::Bold, 20, 1100.f, 120.f);
-  playerIterator++;
-  player2 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
-                      font, sf::Text::Bold, 20, 1100.f, 180.f);
-  playerIterator++;
-  player3 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
-                      font, sf::Text::Bold, 20, 1100.f, 240.f);
-}
 
-void PlayView::createFourPlayersLabel() {
-  player1 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
-                      font, sf::Text::Bold, 20, 1100.f, 120.f);
-  playerIterator++;
-  player2 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
-                      font, sf::Text::Bold, 20, 1100.f, 180.f);
-  playerIterator++;
-  player3 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
-                      font, sf::Text::Bold, 20, 1100.f, 240.f);
-  playerIterator++;
-  player4 = new Label((*playerIterator)->getName(), sf::Color(0, 0, 255, 128),
-                      font, sf::Text::Bold, 20, 1100.f, 300.f);
-}
 
-void PlayView::createLabelFigurePlayer() {
-  townPlayer = new Label(
-      std::to_string((*game.playerIterator)->towns->size() - 1),
-      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 600.f, 620.f);
-  cityPlayer = new Label(
-      std::to_string((*game.playerIterator)->citys->size() - 1),
-      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 640.f, 620.f);
-  roadPlayer = new Label(
-      std::to_string((*game.playerIterator)->roads->size() - 1),
-      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 680.f, 620.f);
-}
-
-void PlayView::printPlayerDevelopCard() {
-  printImages("Images/playerCard/mini_progressCard1.png", 735, 640);
-  printImages("Images/playerCard/mini_progressCard2.png", 775, 640);
-  printImages("Images/playerCard/mini_progressCard3 .png", 815, 640);
-  printImages("Images/playerCard/mini_knightCard1.png", 860, 640);
-  printImages("Images/playerCard/mini_victoryPointCard1.png", 900, 640);
-
-}
-
-void PlayView::createLabelPlayerDevelopCard() {
-  victory = new Label(
-      std::to_string((*game.playerIterator)->victoryPointsCards->size()),
-      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 750.f, 620.f);
-
-  knight = new Label(
-      std::to_string((*game.playerIterator)->knightCards->size()),
-      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 790, 620.f);
-
-  progress = new Label(
-      std::to_string((*game.playerIterator)->progressCards->size()),
-      sf::Color(0, 0, 255, 128), font, sf::Text::Bold, 20, 830.f, 620.f);
-}
-/*methods of creating Buttons*/
-void PlayView::createInfoBuy() {
-    howBuy = Button("¡Info.Comprar!", { 120, 35 }, 16, sf::Color::Green, sf::Color::Black);
-    howBuy.setFont(font);
-    howBuy.setPosition({ 1020, 440 }, 3);
-    howBuy.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
-        view);
-}
-void PlayView::crateInfoTrade() {
-    howTrade = Button("¡Info.Intercambiar!", { 120, 35 }, 16, sf::Color::Green, sf::Color::Black);
-    howTrade.setFont(font);
-    howTrade.setPosition({ 1000, 400 }, 3);
-    howTrade.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
-        view);
-
-}
-
-void PlayView::createTradeButton() {
-
-  trade = Button("Trueque", {120, 35}, 16, sf::Color::Green, sf::Color::White);
-  trade.setFont(font);
-  trade.setPosition({20, 600}, 3);
-  trade.drawButton(view);
-  trade.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
-                          view);
-
-}
-
-void PlayView::createTurnButton() {
-  turn = Button("Siguiente\nTurno", {120, 50}, 16, sf::Color::Green,
-                sf::Color::White);
-  turn.setFont(font);
-  turn.setPosition({985, 600}, 3);
-  turn.drawButton(view);
-  turn.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
-                         view);
-}
-
-void PlayView::createPButton() {
-  p = Button("P", {0, 0}, 16, sf::Color::Green, sf::Color::Black);
-  p.setFont(font);
-  p.setPosition({0, 0}, 3);
-  p.drawButton(view);
-  p.buttonInOutColors(sf::Color(0, 0, 255, 255), sf::Color(0, 0, 225, 255),
-                      view);
-}
-
-void PlayView::createOptionOneButton() {
-  option1 =
-      Button("Option1", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
-}
-
-void PlayView::createSaveButton() {
-  save = Button("Guardar", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
-}
-
-void PlayView::createCloseButton() {
-  close = Button("Close", {120, 35}, 16, sf::Color::Green, sf::Color::Black);
-}
-
-void PlayView::createDiceButton() {
-  dice = Button("Dado", {120, 50}, 15, sf::Color::Green, sf::Color::White);
-  dice.setFont(font);
-  dice.setPosition({1120, 600}, 3);
-  dice.drawButton(view);
-  dice.buttonInOutColors(sf::Color(0, 0, 150, 255), sf::Color(0, 0, 220, 255),
-                         view);
-}
 
 void PlayView::loadGameButtons() {
   loadPlayersRectangle();
   loadCardsRectangle();
-  
+  createDiscoveryButton(); 
+  createMonopolyButton(); 
   createTradeButton();
   createTurnButton();
   createPButton();
@@ -415,6 +411,7 @@ void PlayView::drawLabelNumTurn() {
   view.draw(labelNumTurn->getTextInstance());
   view.draw(labelNumDice->getTextInstance());
   view.draw(numDevelopCard->getTextInstance());
+  view.draw(ownerName->getTextInstance());
   if (isFirstTurn) {
     view.draw(infoFisrtTurn->getTextInstance());
   }
@@ -527,10 +524,10 @@ void PlayView::printTownPlayer(list<Vertex *>::iterator vIterator, int x,
               "¡ERROR!", "YA SELECCIONASTES 2 POBLADOS");
           alert->goView();
       }
-      (*game.playerIterator)->setFirstTurnFinished(true);
+      //(*game.playerIterator)->setFirstTurnFinished(true);
   }
   else {
-      (*game.playerIterator)->setFirstTurnFinished(true);
+      //(*game.playerIterator)->setFirstTurnFinished(true);
       ErrorAlert* alert = new ErrorAlert(
           "¡ERROR!", "POBLADO SELECCIONADO POR OTRO JUGADOR");
       alert->goView();
@@ -688,6 +685,10 @@ void PlayView::printPlayerBuyFigure() {
     printImages((*cityIterator)->getImagePath(), 280, 615);
 }
 
+void PlayView::loadBiggestArmyCard(){
+    printImages("Images/extraCards/mini_biggestArmyCard.png", 210, 25);
+}
+
 void PlayView::printBuyDevelopCard() {
   printImages("Images/playerCard/mini_progressCard1.png", 210, 610);
   printImages("Images/playerCard/mini_knightCard1.png", 220, 610);
@@ -789,7 +790,8 @@ void PlayView::receiveBoughtDevelopCard() {
   deleteWooltoPlayer();
   deleteWheattoPlayer();
   deleteMineraltoPlayer();
-  if (buyView.isKnightButtonClicked || buyView.isProgressButtonClicked || buyView.isVictoryButtonClicked) {
+  if (buyView.isKnightButtonClicked || buyView.isProgress1ButtonClicked || buyView.isVictoryButtonClicked 
+      || buyView.isProgress2ButtonClicked || buyView.isProgress3ButtonClicked) {
       if (buyView.isKnightButtonClicked) {
           if (game.playerIterator != game.players->end()) {
               knightIterator = game.knightCards->begin();
@@ -800,12 +802,33 @@ void PlayView::receiveBoughtDevelopCard() {
           }
       }
 
-      if (buyView.isProgressButtonClicked) {
+      if (buyView.isProgress1ButtonClicked) {
           if (game.playerIterator != game.players->end()) {
               progressIterator = game.progressCards->begin();
               if (progressIterator != game.progressCards->end()) {
                   (*game.playerIterator)->progressCards->push_back((*progressIterator));
-                  deleteProgressCard();
+                  (*game.playerIterator)->setProgressDiscovery(2);
+                  deleteProgressCard((*progressIterator)->getType());
+              }
+          }
+      }
+      if (buyView.isProgress2ButtonClicked) {
+          if (game.playerIterator != game.players->end()) {
+              progressIterator = game.progressCards->begin();
+              if (progressIterator != game.progressCards->end()) {
+                  (*game.playerIterator)->progressCards->push_back((*progressIterator));
+                  deleteProgressCard((*progressIterator)->getType());
+              }
+          }
+      }
+      if (buyView.isProgress3ButtonClicked) {
+          if (game.playerIterator != game.players->end()) {
+              progressIterator = game.progressCards->begin();
+              if (progressIterator != game.progressCards->end()) {
+                  (*game.playerIterator)->progressCards->push_back((*progressIterator));
+                  (*game.playerIterator)->progressMonopoly = new Progress(true);
+                  deleteProgressCard((*progressIterator)->getType());
+                  isMonopolyBuy = true;
               }
           }
       }
@@ -830,7 +853,13 @@ void PlayView::receiveBoughtDevelopCard() {
 }
 void PlayView::deleteKnightCard() { game.knightCards->pop_back(); }
 void PlayView::deleteVictoryCard() { game.victoryPointCards->pop_back(); }
-void PlayView::deleteProgressCard() { game.progressCards->pop_back(); }
+void PlayView::deleteProgressCard(int type) { 
+    while (progressIterator != game.progressCards->end()) {
+        if((*progressIterator)->getType() == type)
+        game.progressCards->erase(progressIterator);
+        break;
+    }
+}
 
 void PlayView::buildTown() {
   if ((*game.playerIterator)->clayCard->size() >= 1 &&
@@ -846,15 +875,17 @@ void PlayView::buildTown() {
   }
 } // BUG ACA
 void PlayView::buyDevelopCard() {
-  if ((*game.playerIterator)->mineralCard->size() >= 1 &&
+  if ((*game.playerIterator)->mineralCard->size() >= 1  &&
       (*game.playerIterator)->wheatlCard->size() >= 1 &&
       (*game.playerIterator)->woolCard->size() >= 1) {
         receiveBoughtDevelopCard();
+        buyView.isBuyClicked=false;
   }
   else {
       ErrorAlert* alert = new ErrorAlert(
           "¡ERROR!", "MATERIAS PRIMAS INSUFICIENTES");
       alert->goView();
+      buyView.isBuyClicked = false;
   }
 }
 
@@ -912,6 +943,7 @@ void PlayView::drawView() {
   createButtons();
   printPlayerBuyFigure();
   printBuyDevelopCard();
+  loadBiggestArmyCard(); 
   game.getLandsNumbersRandomized();
   game.setNumbersToLands(landsList);
   printLandsDiceNumbers();
@@ -972,7 +1004,7 @@ void PlayView::giveCardsToPlayerFirstTurn(list<Land *>::iterator landIterator) {
 void PlayView::firstTurn() {
   playerIterator = beginPlayerIterator();
   while (isPlayerListTraversal()) {
-    if ((*playerIterator)->getFirstTurnFinished())
+    if ((*playerIterator)->getTownFirstTurn() ==2)
       isFirstTurn = false;
     else
       isFirstTurn = true;
@@ -1049,19 +1081,24 @@ void PlayView::goView() {
             clickInDevelopCardBuy(getMousePositionX(view),
                                   getMousePositionY(view));
             isBuyButtonClicked(eventTest);
+            playDiscoveryCard(eventTest);
+            playMonopolyCard(eventTest);
+            if (theLargestArmy()) {
+                ownerBiggestArmy = (*game.playerIterator)->getName();
+            }
           }
           isTurnButtonClicked(sf::Mouse::getPosition(view).x,
                               sf::Mouse::getPosition(view).y);
-
-       
+          
         }
         isInfoBuyClicked(event);
         isInfoTradeClicked(event);
         break;
       case sf::Event::Closed:
         closeView();
-        break;
+        break; 
       }
+      break; 
     }
     drawView();
   }
@@ -1197,7 +1234,7 @@ void PlayView::saveMatchActualState() {
 
 void PlayView::isTurnButtonClicked(int x, int y) {
   if (turn.isMouseOver(view)) {
-    saveMatchActualState();
+ /*   saveMatchActualState();*/
     if (game.playerIterator != game.players->end()) {
         if ((*game.playerIterator)->getScore() >= 10) {
             NoneAlert* alert = new NoneAlert(
@@ -1209,17 +1246,62 @@ void PlayView::isTurnButtonClicked(int x, int y) {
             game.playerIterator++;
             numTurn++;
             isDiceSpinned = false;
+            if(isMonopolyBuy)
+                (*game.playerIterator)->progressMonopoly->setIsRecentlyBuy(false);
         }   
     }
     if (game.playerIterator == game.players->end()) {
+            
           game.playerIterator = beginPlayerIterator();
           firstTurn();
           numTurn = 1;
           isDiceSpinned = false;
+          if (isMonopolyBuy)
+              (*game.playerIterator)->progressMonopoly->setIsRecentlyBuy(false);
     }
   }
 }
-
+void PlayView::initializePlayersIteratorToCompare() {
+    playerIterator2 = beginPlayerIterator();
+    playerIterator3 = beginPlayerIterator();
+    playerIterator4 = beginPlayerIterator();
+    if (game.players->size() == 3) {
+        std::advance(playerIterator2, 1);
+        std::advance(playerIterator3, 2);
+    }
+    if (game.players->size() == 4) {
+        std::advance(playerIterator2, 1);
+        std::advance(playerIterator3, 2);
+        std::advance(playerIterator2, 3);
+    }
+}
+void PlayView::compareTwoPlayer() {
+    if (playerIterator2 != game.players->end() && playerIterator3 != game.players->end()) {
+        if ((*game.playerIterator)->knightCards->size() > (*playerIterator2)->knightCards->size() &&
+            (*game.playerIterator)->knightCards->size() > (*playerIterator3)->knightCards->size()) {
+            istheLargestArmy = true;
+        }
+    }
+}
+void PlayView::compareThreePlayer() {
+    if (playerIterator2 != game.players->end() && playerIterator3 != game.players->end() && playerIterator4 != game.players->end()) {
+        if ((*game.playerIterator)->knightCards->size() > (*playerIterator2)->knightCards->size() &&
+            (*game.playerIterator)->knightCards->size() > (*playerIterator3)->knightCards->size() &&
+            (*game.playerIterator)->knightCards->size() > (*playerIterator4)->knightCards->size()) {
+            istheLargestArmy = true;
+        }
+    }
+}
+bool PlayView::theLargestArmy() {
+    initializePlayersIteratorToCompare();
+        if ((*game.playerIterator)->knightCards->size() >= 3) {
+            if (game.players->size() == 3)
+                compareTwoPlayer();
+            if (game.players->size() == 4)
+                compareTwoPlayer();
+        }
+    return istheLargestArmy;
+}
 void PlayView::setTurn(int numberPlayers) {
 
   log(turnNumber);
@@ -1860,4 +1942,180 @@ void PlayView::tradeSpecial() {
       alert->goView();
   }
   
+}
+
+
+////////PLAY DEVELOP CARD//////////
+///////PLAY DEVELOP CARD//////////
+///////PLAY DEVELOP CARD//////////
+void PlayView::playDiscoveryCard(sf::Event event) {
+    if (progreessDiscovery.isPressed(event)) {
+            if ((*game.playerIterator)->getProgressDiscovery() > 0) {
+                if (isCLayTradeClicked || isWoodTradeClicked || isWoolTradeClicked ||
+                    isWheatTradeClicked || isMineralTradeClicked) {
+                    if (isCLayTradeClicked) {
+                        (*game.playerIterator)->clayCard->push_back(new Clay());
+                        deleteClayCards();
+                        (*game.playerIterator)->restProgressDiscovery(1);
+                    }
+                    if (isWoodTradeClicked) {
+                        (*game.playerIterator)->woodCard->push_back(new Wood());
+                        deleteWoodCards();
+                        (*game.playerIterator)->restProgressDiscovery(1);
+                    }
+                    if (isWoolTradeClicked) {
+                        (*game.playerIterator)->woolCard->push_back(new Wool());
+                        deleteWoolCards();
+                        (*game.playerIterator)->restProgressDiscovery(1);
+                    }
+                    if (isWheatTradeClicked) {
+                        (*game.playerIterator)->wheatlCard->push_back(new Wheat());
+                        deleteWheatCards();
+                        (*game.playerIterator)->restProgressDiscovery(1);
+                    }
+                    if (isMineralTradeClicked) {
+                        (*game.playerIterator)->mineralCard->push_back(new Mineral());
+                        deleteMineralCards();
+                        (*game.playerIterator)->restProgressDiscovery(1);
+                    }
+                }
+                else {
+                    ErrorAlert* alert = new ErrorAlert(
+                        "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
+                    alert->goView();
+                }
+            }
+            else {
+                ErrorAlert* alert = new ErrorAlert(
+                    "¡ERROR!", "NO POSEE LA CARTA DE PROGRESO 'DESCUBRIR'");
+                alert->goView();
+
+            }
+        
+    }
+}
+
+ void PlayView::playMonopolyCard(sf::Event event) {
+    if (progreessMonopoly.isPressed(event)) {
+      
+            if ((*game.playerIterator)->progressMonopoly != nullptr) {
+                if (isCLayTradeClicked || isWoodTradeClicked || isWoolTradeClicked || isWheatTradeClicked || isMineralTradeClicked) {
+                    if (isCLayTradeClicked) {
+                        getClaysPlayersToMonopoly();
+                        (*game.playerIterator)->progressMonopoly = nullptr;
+                        (*game.playerIterator)->progressCards->pop_back();
+                    }
+                    if (isWoodTradeClicked) {
+                        getWoodsPlayersToMonopoly();
+                        (*game.playerIterator)->progressMonopoly = nullptr;
+                        (*game.playerIterator)->progressCards->pop_back();
+                    }
+                    if (isWoolTradeClicked) {
+                        getWoolsPlayersToMonopoly();
+                        (*game.playerIterator)->progressMonopoly = nullptr;
+                        (*game.playerIterator)->progressCards->pop_back();
+
+                    }
+                    if (isWheatTradeClicked) {
+                        getWheatsPlayersToMonopoly();
+                        (*game.playerIterator)->progressMonopoly = nullptr;
+                        (*game.playerIterator)->progressCards->pop_back();
+                    }
+                    if (isMineralTradeClicked) {
+                        getMineralsPlayersToMonopoly();
+                        (*game.playerIterator)->progressMonopoly = nullptr;
+                        (*game.playerIterator)->progressCards->pop_back();
+                    }
+                }
+                else {
+                    ErrorAlert* alert = new ErrorAlert(
+                        "¡ERROR!", "NO SE HA SELECCIONADO NINGUNA MATERIA PRIMA");
+                    alert->goView();
+                }
+            }
+          
+    }
+}
+void PlayView::getClaysPlayersToMonopoly() {
+    int iterator = 0;
+    playerIterator = game.players->begin();
+    while (playerIterator != game.players->end()) {
+        if ((*playerIterator)->getName() != (*game.playerIterator)->getName()) {
+            int sizeList = (*playerIterator)->clayCard->size();
+            while (iterator < sizeList) {
+                (*playerIterator)->clayCard->pop_back();
+                (*game.playerIterator)->clayCard->push_back(new Clay());
+                iterator++;
+            }
+            
+        }
+        iterator = 0;
+        playerIterator++;
+    }
+}
+void PlayView::getWoodsPlayersToMonopoly() {
+    int iterator = 0;
+    playerIterator = game.players->begin();
+    while (playerIterator != game.players->end()) {
+        if ((*playerIterator)->getName() != (*game.playerIterator)->getName()) {
+            int sizeList = (*playerIterator)->woodCard->size();
+            while (iterator < sizeList) {
+                (*playerIterator)->woodCard->pop_back();
+                (*game.playerIterator)->woodCard->push_back(new Wood());
+                iterator++;
+            }
+
+        }
+        iterator = 0;
+        playerIterator++;
+    }
+}
+void PlayView::getWoolsPlayersToMonopoly() {
+    int iterator = 0;
+    playerIterator = game.players->begin();
+    while (playerIterator != game.players->end()) {
+        if ((*playerIterator)->getName() != (*game.playerIterator)->getName()) {
+            int sizeList = (*playerIterator)->woolCard->size();
+            while (iterator < sizeList) {
+                (*playerIterator)->woolCard->pop_back();
+                (*game.playerIterator)->woolCard->push_back(new Wool());
+                iterator++;
+            }
+        }
+        iterator = 0;
+        playerIterator++;
+    }
+}
+void PlayView::getMineralsPlayersToMonopoly() {
+    int iterator = 0;
+    playerIterator = game.players->begin();
+    while (playerIterator != game.players->end()) {
+        if ((*playerIterator)->getName() != (*game.playerIterator)->getName()) {
+            int sizeList = (*playerIterator)->mineralCard->size();
+            while (iterator < sizeList) {
+                (*playerIterator)->mineralCard->pop_back();
+                (*game.playerIterator)->mineralCard->push_back(new Mineral());
+                iterator++;
+            }
+        }
+        iterator = 0;
+        playerIterator++;
+    }
+}
+void PlayView::getWheatsPlayersToMonopoly() {
+    int iterator = 0;
+    playerIterator = game.players->begin();
+    while (playerIterator != game.players->end()) {
+        if ((*playerIterator)->getName() != (*game.playerIterator)->getName()) {
+            int sizeList = (*playerIterator)->wheatlCard->size();
+            while (iterator < sizeList) {
+                (*playerIterator)->wheatlCard->pop_back();
+                (*game.playerIterator)->wheatlCard->push_back(new Wheat());
+                iterator++;
+            }
+
+        }
+        iterator = 0;
+        playerIterator++;
+    }
 }
