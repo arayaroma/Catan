@@ -1,7 +1,4 @@
-﻿  AboutView.cpp
-  Application.cpp
-  MenuView.cpp
-  PlayView.cpp
+﻿  PlayView.cpp
 C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(1171,69): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
 C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(1171,44): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
 C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(1175,67): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
@@ -15,8 +12,4 @@ C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(2168,63): warning C4
 C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(2185,63): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
 C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(2201,66): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
 C:\Users\Lic. Dilan Sancho\Desktop\Catan\Catan\PlayView.cpp(2217,65): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-  RegisterView.cpp
-  TitleView.cpp
-  main.cpp
-  Generando código...
   Catan.vcxproj -> C:\Users\Lic. Dilan Sancho\Desktop\Catan\x64\Debug\Catan.exe

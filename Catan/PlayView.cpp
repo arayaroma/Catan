@@ -1162,8 +1162,8 @@ void PlayView::largestArmy() {
 }
 void PlayView::shopMethod() {
     if (getMousePositionX(view) > 145 && getMousePositionX(view) < 330 && getMousePositionY(view) > 570 && getMousePositionY(view) < 685) {
-        isBuyButtonClicked(eventTest);
         clickInDevelopCardBuy(getMousePositionX(view), getMousePositionY(view));
+        isBuyButtonClicked(eventTest);
     }
 }
 
