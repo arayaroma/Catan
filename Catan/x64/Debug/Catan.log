@@ -1,62 +1,15 @@
-﻿  AboutView.cpp
-  Alert.cpp
-  Application.cpp
-  Button.cpp
-  BuyView.cpp
-  Card.cpp
-  Computer.cpp
-  ConfirmationAlert.cpp
-  ErrorAlert.cpp
-  FileHandler.cpp
-  Game.cpp
-  Dice.cpp
-  Edge.cpp
-  Figure.cpp
-  Graph.cpp
-  Human.cpp
-  InformationAlert.cpp
-  Knight.cpp
-  main.cpp
-  City.cpp
-  Generando código...
-  Compilando...
-  Clay.cpp
-  Component.cpp
-  Label.cpp
-  Land.cpp
-  MenuView.cpp
-  Mineral.cpp
-  NoneAlert.cpp
-  Player.cpp
-  PlayView.cpp
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(1139,67): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(1139,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(1143,65): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(1143,40): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(1147,65): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(1147,40): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(1154,64): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(1154,39): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(2157,57): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(2173,57): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(2189,57): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(2205,60): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(2221,59): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-  Progress.cpp
-  RegisterView.cpp
-  Road.cpp
-  TextBox.cpp
-  TitleView.cpp
-  Town.cpp
-  TradeView.cpp
-  Vertex.cpp
-  VictoryPoints.cpp
-  View.cpp
-  WarningAlert.cpp
-  Generando código...
-  Compilando...
-  Wheat.cpp
-  Wood.cpp
-  Wool.cpp
-  Generando código...
+﻿  PlayView.cpp
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(1169,67): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(1169,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(1173,65): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(1173,40): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(1177,65): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(1177,40): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(1184,64): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(1184,39): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(2187,57): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(2203,57): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(2219,57): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(2235,60): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\Catan\PlayView.cpp(2251,59): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
   Catan.vcxproj -> C:\Users\User\Documents\UNA\VERANO\Proyecto_Catan\Catan\x64\Debug\Catan.exe
