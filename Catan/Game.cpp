@@ -10,6 +10,8 @@ Game::Game() {
   landsList = new list<Land *>();
   endUrl = ".png";
   loadMaps();
+  srand((unsigned)time(NULL));
+
 }
 
 void Game::setGraph(Graph graph) { this->graph = graph; }
@@ -172,10 +174,14 @@ void Game::shuffleLandList() {
   int i, j;
   for (i = 0; i < landsList->size() - 1; i++) {
     j = i + rand() % (landsList->size() - i);
-    std::swap(landsList[i], landsList[j]);
+    //swap(landsList[i], landsList[j]);
   }
 }
-
+void Game::swap(Land* a, Land* b) {
+   // Land temp = a;
+    b = a;
+   // a = temp;
+}
 vector<int> Game::getLandsNumbersRandomized() {
   loadLandsNumbers();
   randomizeLandsNumbers();
@@ -221,35 +227,79 @@ void Game::printDiceNumbersInLands() {
 
 void Game::loadLands() {
   loadTilesPaths();
-  int i;
+  int i=0;
   int landId = 1;
-  for (i = 0; i < 4; i++) {
-    if (i < 1) {
-      landsList->push_back(
-          new Land("Dessert", imagePaths.at("dessertPath"), 0, 0, landId));
-      landId++;
-    }
-    if (i < 3) {
-      landsList->push_back(
-          new Land("Mountain", imagePaths.at("mountainPath"), 0, 0, landId));
-      landId++;
-      landsList->push_back(
-          new Land("Field", imagePaths.at("fieldPath"), 0, 0, landId));
-      landId++;
-    }
-    landsList->push_back(
-        new Land("Grass", imagePaths.at("grassPath"), 0, 0, landId));
-    landId++;
-    landsList->push_back(
-        new Land("Forest", imagePaths.at("forestPath"), 0, 0, landId));
-    landId++;
-    landsList->push_back(
-        new Land("Brick", imagePaths.at("brickPath"), 0, 0, landId));
-    landId++;
+  int conMountain = 0; int countGrass = 0; int countForest = 0; int countBirck = 0;
+  int  countField = 0;
+  int countDessert = 0;
+  int random = 0;
+  while (i < 19) {
+      random = rand() % 6 + 1;
+      if (random == 1 && countDessert < 1) {
+          loadDessert(landId);
+          i++;
+          landId++;
+          countDessert++;
+      }
+      if (conMountain < 3 && random == 2) {
+          loadMountain(landId);
+          landId++;
+          conMountain++;
+          i++;
+      }
+      if (countField < 3 && random == 3) {
+          loadField(landId);
+          landId++;
+          i++;
+          countField++;
+      }
+
+      if (countGrass < 4 && random == 4) {
+          loadGrass(landId);
+          landId++;
+          countGrass++;
+          i++;
+      }
+      if (countForest < 4 && random == 5) {
+          loadForest(landId);
+          landId++;
+          i++;
+          countForest++;
+      }
+      if (countBirck < 4 && random == 6) {
+          loadBrick(landId);
+          landId++;
+          i++;
+          countBirck++;
+      }
   }
+  
   // landsList = shuffleLandList();
 }
-
+void Game::loadDessert(int landId) {
+    landsList->push_back(
+        new Land("Dessert", imagePaths.at("dessertPath"), 0, 0, landId));
+}
+void Game::loadMountain(int landId) {
+    landsList->push_back(
+        new Land("Mountain", imagePaths.at("mountainPath"), 0, 0, landId));
+}
+void Game::loadField(int landId) {
+    landsList->push_back(
+        new Land("Field", imagePaths.at("fieldPath"), 0, 0, landId));
+}
+void Game::loadGrass(int landId) {
+    landsList->push_back(
+        new Land("Grass", imagePaths.at("grassPath"), 0, 0, landId));
+}
+void Game::loadForest(int landId) {
+    landsList->push_back(
+        new Land("Forest", imagePaths.at("forestPath"), 0, 0, landId));
+}
+void Game::loadBrick(int landId) {
+    landsList->push_back(
+        new Land("Brick", imagePaths.at("brickPath"), 0, 0, landId));
+}
 void Game::makeMaterialCard() {
   int i, numberOfCards = 19;
   for (i = 0; i < numberOfCards; i++) {

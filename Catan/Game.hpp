@@ -169,6 +169,13 @@ public:
 
   void loadMaps();
   void loadLands();
+  void loadDessert(int landId);
+  void loadMountain(int landId);
+  void loadField(int landId);
+  void loadGrass(int landId);
+  void loadForest(int landId);
+  void swap(Land* a, Land* b);
+  void loadBrick(int landId);
   void loadTilesPaths();
   void loadSpecialCards();
   void loadProgressPaths();
