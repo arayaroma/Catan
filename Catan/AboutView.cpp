@@ -10,12 +10,13 @@ void AboutView::loadView() {
 
 void AboutView::drawView() {
   view.draw(sprite);
-  view.draw(back->getTextInstance());
+  loadDevelopersPhotos();
   displayView();
 }
 
 void AboutView::goView() {
   loadView();
+  loadDevelopersPhotos();
   drawView();
 
   while (view.isOpen()) {
@@ -31,7 +32,21 @@ void AboutView::goView() {
         break;
       }
     }
+    
+    drawView();
   }
+}
+void AboutView::loadDevelopersPhotos() {
+    printImages("Images/developersPhotos/jesusPhoto.png", 50, 500);
+    printImages("Images/developersPhotos/dilanPhoto.png", 50, 600);
+    printImages("Images/developersPhotos/danielPhoto.png", 50, 400);
+}
+void AboutView::printImages(string imagePath, double posX, double posY) {
+    sf::Texture path;
+    path.loadFromFile(imagePath);
+    sf::Sprite tempSprite(path);
+    tempSprite.setPosition(static_cast<float>(posX), static_cast<float>(posY));
+    view.draw(tempSprite);
 }
 
 void AboutView::goTitleView() {

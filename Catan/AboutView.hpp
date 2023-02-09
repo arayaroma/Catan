@@ -11,11 +11,14 @@ public:
 private:
   void loadView() override;
   void drawView() override;
-
+  void printImages(string, double, double);
 private:
   void loadLabels();
   void goTitleView();
+  void loadDevelopersPhotos();
 
 private:
   Label *back;
+  sf::Texture danielImage, dilanImage, jesusImage;
+  sf::Sprite danielSprite, dilanSprite, jesusSprite;
 };
