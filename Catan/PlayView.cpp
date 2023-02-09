@@ -1756,7 +1756,7 @@ void PlayView::createLabelDiceNumber(list<Land *>::iterator landIterator) {
 }
 
 void PlayView::createTempNumberEmpty(list<Land *>::iterator landIterator) {
-    printImages("Images/Ladron(1).png", (*landIterator)->getPosX()+50, (*landIterator)->getPosY()+10);
+    printImages("Images/mini_Ladron (2).png", (*landIterator)->getPosX()+30, (*landIterator)->getPosY()+25);
   /*tempNumber = Label("", sf::Color::Black, font, sf::Text::Bold, 22,
                      static_cast<float>((*landIterator)->getPosX() + 45),
                      static_cast<float>((*landIterator)->getPosY() + 35));*/
