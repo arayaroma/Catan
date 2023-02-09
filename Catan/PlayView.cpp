@@ -1180,6 +1180,7 @@ void PlayView::largestArmy() {
             ownerBiggestArmy = (*game.playerIterator)->getName();
             (*game.playerIterator)->setScore(2);
         }
+        istheLargestArmy = false;
     }
 }
 void PlayView::shopMethod() {
@@ -1410,7 +1411,7 @@ void PlayView::isTurnButtonClicked(int x, int y) {
     if (game.playerIterator != game.players->end()) {
       if ((*game.playerIterator)->getScore() >= 10) {
         NoneAlert *alert =
-            new NoneAlert("�FELICIDADES! " + (*game.playerIterator)->getName(),
+            new NoneAlert("!FELICIDADES! " + (*game.playerIterator)->getName(),
                           " JUEGO GANADO");
         alert->goView();
         closeView();
@@ -1429,59 +1430,29 @@ void PlayView::isTurnButtonClicked(int x, int y) {
     }
   }
 }
-void PlayView::initializePlayersIteratorToCompare() {
-  playerIterator2 = beginPlayerIterator();
-  playerIterator3 = beginPlayerIterator();
-  playerIterator4 = beginPlayerIterator();
-  if (game.players->size() == 3) {
-    std::advance(playerIterator2, 1);
-    std::advance(playerIterator3, 2);
+void PlayView::compareBiggestArmyPlayer() {
+    playerIterator = game.players->begin();
+    int cont = 0;
+    while(playerIterator != game.players->end()){
+        if ((*playerIterator)->getName() != (*game.playerIterator)->getName()) {
+            if (!(*game.playerIterator)->getTheLargestArmy()) {
+                if ((*game.playerIterator)->knightCards->size() >
+                    (*playerIterator)->knightCards->size()) {
+                    cont++;
+                    (*playerIterator)->setTheLargestArmy(false);
+                }
+            }
+        }
+        playerIterator++;
   }
-  if (game.players->size() == 4) {
-    std::advance(playerIterator2, 1);
-    std::advance(playerIterator3, 2);
-    std::advance(playerIterator2, 3);
-  }
-}
-void PlayView::compareTwoPlayer() {
-  if (playerIterator2 != game.players->end() &&
-      playerIterator3 != game.players->end()) {
-    if ((*game.playerIterator)->knightCards->size() >
-            (*playerIterator2)->knightCards->size() &&
-        (*game.playerIterator)->knightCards->size() >
-            (*playerIterator3)->knightCards->size()) {
-      istheLargestArmy = true;
-      (*playerIterator2)->setTheLargestArmy(false);
-      (*playerIterator3)->setTheLargestArmy(false);
-      (*game.playerIterator)->setTheLargestArmy(true);
+    if (cont ==game.players->size()-1) {
+        (*game.playerIterator)->setTheLargestArmy(true);
+        istheLargestArmy = true;
     }
-  }
-}
-void PlayView::compareThreePlayer() {
-  if (playerIterator2 != game.players->end() &&
-      playerIterator3 != game.players->end() &&
-      playerIterator4 != game.players->end()) {
-    if ((*game.playerIterator)->knightCards->size() >
-            (*playerIterator2)->knightCards->size() &&
-        (*game.playerIterator)->knightCards->size() >
-            (*playerIterator3)->knightCards->size() &&
-        (*game.playerIterator)->knightCards->size() >
-            (*playerIterator4)->knightCards->size()) {
-      istheLargestArmy = true;
-      (*playerIterator2)->setTheLargestArmy(false);
-      (*playerIterator3)->setTheLargestArmy(false);
-      (*playerIterator4)->setTheLargestArmy(false);
-      (*game.playerIterator)->setTheLargestArmy(true);
-    }
-  }
 }
 bool PlayView::theLargestArmy() {
-  initializePlayersIteratorToCompare();
-  if ((*game.playerIterator)->knightCards->size() >= 1) {
-    if (game.players->size() == 3)
-      compareTwoPlayer();
-    if (game.players->size() == 4)
-      compareTwoPlayer();
+  if ((*game.playerIterator)->knightCards->size() >= 3) {
+      compareBiggestArmyPlayer();
   }
   return istheLargestArmy;
 }

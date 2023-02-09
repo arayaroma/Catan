@@ -321,9 +321,7 @@ private:
   void loadBiggestArmyCard();
   void saveMatchActualState();
   bool theLargestArmy();
-  void compareTwoPlayer();
-  void compareThreePlayer();
-  void initializePlayersIteratorToCompare();
+  void compareBiggestArmyPlayer();
  
   void playMonopolyCard(sf::Event);
   void playDiscoveryCard(sf::Event);
