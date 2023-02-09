@@ -11,7 +11,7 @@ public:
 private:
   void loadView() override;
   void drawView() override;
-
+  void printImages(string, double, double);
 private:
   void loadLabels();
   void goTitleView();

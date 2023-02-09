@@ -10,7 +10,7 @@ void AboutView::loadView() {
 
 void AboutView::drawView() {
   view.draw(sprite);
-  view.draw(back->getTextInstance());
+  loadDevelopersPhotos();
   displayView();
 }
 
@@ -32,30 +32,21 @@ void AboutView::goView() {
         break;
       }
     }
-    loadDevelopersPhotos();
+    
     drawView();
   }
 }
-
 void AboutView::loadDevelopersPhotos() {
-  danielImage.loadFromFile("Images/developersPhotos/danielPhoto.png");
-  danielSprite.setTexture(danielImage);
-  danielSprite.setPosition(50, 400);
-  // danielSprite.setScale(0.5f, 0.5f);
-
-  dilanImage.loadFromFile("Images/developersPhotos/dilanPhoto.png");
-  dilanSprite.setTexture(dilanImage);
-  dilanSprite.setPosition(50, 500);
-  // dilanSprite.setScale(0.5f, 0.5f);
-
-  jesusImage.loadFromFile("Images/developersPhotos/jesusPhoto.png");
-  jesusSprite.setTexture(jesusImage);
-  jesusSprite.setPosition(50, 600);
-  // jesusSprite.setScale(0.5f, 0.5f);
-
-  view.draw(danielSprite);
-  view.draw(dilanSprite);
-  view.draw(jesusSprite);
+    printImages("Images/developersPhotos/jesusPhoto.png", 50, 400);
+    printImages("Images/developersPhotos/dilanPhoto.png", 50, 500);
+    printImages("Images/developersPhotos/danielPhoto.png", 50, 600);
+}
+void AboutView::printImages(string imagePath, double posX, double posY) {
+    sf::Texture path;
+    path.loadFromFile(imagePath);
+    sf::Sprite tempSprite(path);
+    tempSprite.setPosition(static_cast<float>(posX), static_cast<float>(posY));
+    view.draw(tempSprite);
 }
 
 void AboutView::goTitleView() {
