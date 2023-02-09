@@ -15,7 +15,10 @@ private:
 private:
   void loadLabels();
   void goTitleView();
+  void loadDevelopersPhotos();
 
 private:
   Label *back;
+  sf::Texture danielImage, dilanImage, jesusImage;
+  sf::Sprite danielSprite, dilanSprite, jesusSprite;
 };

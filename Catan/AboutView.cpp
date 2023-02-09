@@ -16,6 +16,7 @@ void AboutView::drawView() {
 
 void AboutView::goView() {
   loadView();
+  loadDevelopersPhotos();
   drawView();
 
   while (view.isOpen()) {
@@ -31,7 +32,30 @@ void AboutView::goView() {
         break;
       }
     }
+    loadDevelopersPhotos();
+    drawView();
   }
+}
+
+void AboutView::loadDevelopersPhotos() {
+  danielImage.loadFromFile("Images/developersPhotos/danielPhoto.png");
+  danielSprite.setTexture(danielImage);
+  danielSprite.setPosition(50, 400);
+  // danielSprite.setScale(0.5f, 0.5f);
+
+  dilanImage.loadFromFile("Images/developersPhotos/dilanPhoto.png");
+  dilanSprite.setTexture(dilanImage);
+  dilanSprite.setPosition(50, 500);
+  // dilanSprite.setScale(0.5f, 0.5f);
+
+  jesusImage.loadFromFile("Images/developersPhotos/jesusPhoto.png");
+  jesusSprite.setTexture(jesusImage);
+  jesusSprite.setPosition(50, 600);
+  // jesusSprite.setScale(0.5f, 0.5f);
+
+  view.draw(danielSprite);
+  view.draw(dilanSprite);
+  view.draw(jesusSprite);
 }
 
 void AboutView::goTitleView() {
