@@ -37,9 +37,9 @@ void AboutView::goView() {
   }
 }
 void AboutView::loadDevelopersPhotos() {
-    printImages("Images/developersPhotos/jesusPhoto.png", 50, 400);
-    printImages("Images/developersPhotos/dilanPhoto.png", 50, 500);
-    printImages("Images/developersPhotos/danielPhoto.png", 50, 600);
+    printImages("Images/developersPhotos/jesusPhoto.png", 50, 500);
+    printImages("Images/developersPhotos/dilanPhoto.png", 50, 600);
+    printImages("Images/developersPhotos/danielPhoto.png", 50, 400);
 }
 void AboutView::printImages(string imagePath, double posX, double posY) {
     sf::Texture path;
