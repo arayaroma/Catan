@@ -28,6 +28,7 @@ void FileHandler::saveFile(const string fileName, Game &obj) {
     log("Error: " << e.what());
   }
 }
+
 void FileHandler::savePlayersList(std::ofstream &file,
                                   std::list<Player *> &players) {
   std::size_t size = players.size();
@@ -37,6 +38,7 @@ void FileHandler::savePlayersList(std::ofstream &file,
     file.write(reinterpret_cast<char *>(&(*itX)), sizeof((*itX)));
   }
 }
+
 void FileHandler::savetownsList(std::ofstream &file, std::list<Town *> &towns) {
   std::size_t size = towns.size();
   file.write(reinterpret_cast<char *>(&size), sizeof(size));
@@ -45,6 +47,7 @@ void FileHandler::savetownsList(std::ofstream &file, std::list<Town *> &towns) {
     file.write(reinterpret_cast<char *>(&(*itX)), sizeof((*itX)));
   }
 }
+
 void FileHandler::saveCitiesList(std::ofstream &file,
                                  std::list<City *> &cities) {
   std::size_t size = cities.size();
@@ -54,6 +57,7 @@ void FileHandler::saveCitiesList(std::ofstream &file,
     file.write(reinterpret_cast<char *>(&(*itX)), sizeof((*itX)));
   }
 }
+
 void FileHandler::saveRoadsList(std::ofstream &file, std::list<Road *> &roads) {
   std::size_t size = roads.size();
   file.write(reinterpret_cast<char *>(&size), sizeof(size));
@@ -62,6 +66,7 @@ void FileHandler::saveRoadsList(std::ofstream &file, std::list<Road *> &roads) {
     file.write(reinterpret_cast<char *>(&(*itX)), sizeof((*itX)));
   }
 }
+
 void FileHandler::saveLandsList(std::ofstream &file, std::list<Land *> &lands) {
   std::size_t size = lands.size();
   file.write(reinterpret_cast<char *>(&size), sizeof(size));
@@ -70,6 +75,7 @@ void FileHandler::saveLandsList(std::ofstream &file, std::list<Land *> &lands) {
     file.write(reinterpret_cast<char *>(&(*itX)), sizeof((*itX)));
   }
 }
+
 void FileHandler::saveKnightCards(std::ofstream &file,
                                   std::list<Knight *> &knights) {
   std::size_t size = knights.size();
@@ -79,6 +85,7 @@ void FileHandler::saveKnightCards(std::ofstream &file,
     file.write(reinterpret_cast<char *>(&(*itX)), sizeof((*itX)));
   }
 }
+
 void FileHandler::saveProgressCards(std::ofstream &file,
                                     std::list<Progress *> &progress) {
   std::size_t size = progress.size();
@@ -88,6 +95,7 @@ void FileHandler::saveProgressCards(std::ofstream &file,
     file.write(reinterpret_cast<char *>(&(*itX)), sizeof((*itX)));
   }
 }
+
 void FileHandler::saveVictoryPointsCards(
     std::ofstream &file, std::list<VictoryPoints *> &victoryPoints) {
   std::size_t size = victoryPoints.size();
@@ -99,6 +107,7 @@ void FileHandler::saveVictoryPointsCards(
                                 // o iterador
   }
 }
+
 void FileHandler::saveClayCards(std::ofstream &file,
                                 std::stack<Clay *> &clays) {
   std::size_t size = clays.size();
@@ -109,6 +118,7 @@ void FileHandler::saveClayCards(std::ofstream &file,
     clays.pop();
   }
 }
+
 void FileHandler::saveMineralCards(std::ofstream &file,
                                    std::stack<Mineral *> &minerals) {
   std::size_t size = minerals.size();
@@ -119,6 +129,7 @@ void FileHandler::saveMineralCards(std::ofstream &file,
     minerals.pop();
   }
 }
+
 void FileHandler::saveWheatCards(std::ofstream &file,
                                  std::stack<Wheat *> &wheats) {
   std::size_t size = wheats.size();
@@ -129,6 +140,7 @@ void FileHandler::saveWheatCards(std::ofstream &file,
     wheats.pop();
   }
 }
+
 void FileHandler::saveWoodCards(std::ofstream &file,
                                 std::stack<Wood *> &woods) {
   std::size_t size = woods.size();
@@ -139,6 +151,7 @@ void FileHandler::saveWoodCards(std::ofstream &file,
     woods.pop();
   }
 }
+
 void FileHandler::saveWoolCards(std::ofstream &file,
                                 std::stack<Wool *> &wools) {
   std::size_t size = wools.size();
@@ -160,6 +173,7 @@ void FileHandler::loadPlayersList(std::ifstream &file,
     players.push_back((*itX));
   }
 }
+
 void FileHandler::loadtownsList(std::ifstream &file, std::list<Town *> &towns) {
   std::size_t size = towns.size();
   file.read(reinterpret_cast<char *>(&size), sizeof(size));
@@ -169,6 +183,7 @@ void FileHandler::loadtownsList(std::ifstream &file, std::list<Town *> &towns) {
     towns.push_back((*itX));
   }
 }
+
 void FileHandler::loadCitiesList(std::ifstream &file,
                                  std::list<City *> &cities) {
   std::size_t size = cities.size();
@@ -179,6 +194,7 @@ void FileHandler::loadCitiesList(std::ifstream &file,
     cities.push_back((*itX));
   }
 }
+
 void FileHandler::loadRoadsList(std::ifstream &file, std::list<Road *> &roads) {
   std::size_t size = roads.size();
   file.read(reinterpret_cast<char *>(&size), sizeof(size));
@@ -188,6 +204,7 @@ void FileHandler::loadRoadsList(std::ifstream &file, std::list<Road *> &roads) {
     roads.push_back((*itX));
   }
 }
+
 void FileHandler::loadLandsList(std::ifstream &file, std::list<Land *> &lands) {
   std::size_t size = lands.size();
   file.read(reinterpret_cast<char *>(&size), sizeof(size));
@@ -197,6 +214,7 @@ void FileHandler::loadLandsList(std::ifstream &file, std::list<Land *> &lands) {
     lands.push_back((*itX));
   }
 }
+
 void FileHandler::loadKnightCards(std::ifstream &file,
                                   std::list<Knight *> &knights) {
   std::size_t size = knights.size();
@@ -207,6 +225,7 @@ void FileHandler::loadKnightCards(std::ifstream &file,
     knights.push_back((*itX));
   }
 }
+
 void FileHandler::loadProgressCards(std::ifstream &file,
                                     std::list<Progress *> &progress) {
   std::size_t size = progress.size();
@@ -217,6 +236,7 @@ void FileHandler::loadProgressCards(std::ifstream &file,
     progress.push_back((*itX));
   }
 }
+
 void FileHandler::loadVictoryPointsCards(
     std::ifstream &file, std::list<VictoryPoints *> &victoryPoints) {
   std::size_t size = victoryPoints.size();

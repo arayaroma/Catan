@@ -1,0 +1,52 @@
+﻿  AboutView.cpp
+  Application.cpp
+  main.cpp
+  MenuView.cpp
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\MenuView.cpp(127,12): error C2280: 'PlayView::PlayView(const PlayView &)': attempting to reference a deleted function
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.hpp(352,1): message : compiler has generated 'PlayView::PlayView' here
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.hpp(352,1): message : 'PlayView::PlayView(const PlayView &)': function was implicitly deleted because a base class invokes a deleted or inaccessible function 'View::View(const View &)'
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\View.hpp(81,1): message : 'View::View(const View &)': function was implicitly deleted because a data member invokes a deleted or inaccessible function 'sf::RenderWindow::RenderWindow(const sf::RenderWindow &)'
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\SFML\include\SFML\Graphics\RenderWindow.hpp(180,1): message : 'sf::RenderWindow::RenderWindow(const sf::RenderWindow &)': function was implicitly deleted because a base class invokes a deleted or inaccessible function 'sf::Window::Window(const sf::Window &)'
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\SFML\include\SFML\Window\Window.hpp(550,1): message : 'sf::Window::Window(const sf::Window &)': function was implicitly deleted because a base class invokes a deleted or inaccessible function 'sf::NonCopyable::NonCopyable(const sf::NonCopyable &)'
+  PlayView.cpp
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(729,5): error C2065: 'buyView': undeclared identifier
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(734,5): error C2065: 'tradeView': undeclared identifier
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(832,7): error C2065: 'buyView': undeclared identifier
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(832,40): error C2065: 'buyView': undeclared identifier
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(833,7): error C2065: 'buyView': undeclared identifier
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(833,41): error C2065: 'buyView': undeclared identifier
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(834,7): error C2065: 'buyView': undeclared identifier
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(835,9): error C2065: 'buyView': undeclared identifier
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(845,9): error C2065: 'buyView': undeclared identifier
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(855,9): error C2065: 'buyView': undeclared identifier
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(864,9): error C2065: 'buyView': undeclared identifier
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(875,9): error C2065: 'buyView': undeclared identifier
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(924,5): error C2065: 'buyView': undeclared identifier
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(929,5): error C2065: 'buyView': undeclared identifier
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(951,7): error C2065: 'buyView': undeclared identifier
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(1174,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(1174,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(1179,65): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(1179,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(1184,65): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(1184,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(1191,64): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(1191,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(1939,7): error C2065: 'tradeView': undeclared identifier
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(1941,7): error C2065: 'tradeView': undeclared identifier
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(1943,7): error C2065: 'tradeView': undeclared identifier
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(1945,7): error C2065: 'tradeView': undeclared identifier
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(1947,7): error C2065: 'tradeView': undeclared identifier
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2167,57): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2183,57): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2199,57): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2215,60): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.cpp(2231,59): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  RegisterView.cpp
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\RegisterView.cpp(144,16): error C2280: 'PlayView::PlayView(const PlayView &)': attempting to reference a deleted function
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.hpp(352,1): message : compiler has generated 'PlayView::PlayView' here
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\PlayView.hpp(352,1): message : 'PlayView::PlayView(const PlayView &)': function was implicitly deleted because a base class invokes a deleted or inaccessible function 'View::View(const View &)'
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\View.hpp(81,1): message : 'View::View(const View &)': function was implicitly deleted because a data member invokes a deleted or inaccessible function 'sf::RenderWindow::RenderWindow(const sf::RenderWindow &)'
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\SFML\include\SFML\Graphics\RenderWindow.hpp(180,1): message : 'sf::RenderWindow::RenderWindow(const sf::RenderWindow &)': function was implicitly deleted because a base class invokes a deleted or inaccessible function 'sf::Window::Window(const sf::Window &)'
+C:\Users\arayaroma\OneDrive\Desktop\repos\Catan\Catan\SFML\include\SFML\Window\Window.hpp(550,1): message : 'sf::Window::Window(const sf::Window &)': function was implicitly deleted because a base class invokes a deleted or inaccessible function 'sf::NonCopyable::NonCopyable(const sf::NonCopyable &)'
+  TitleView.cpp

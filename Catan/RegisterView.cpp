@@ -57,9 +57,9 @@ void RegisterView::makePlayerButtons() {
 void RegisterView::makeButtons() {
   makePlayerButtons();
   fourPlayersButton =
-      Button("4 Jugadores", { 200, 60 }, 20, sf::Color::Green, sf::Color::Black);
+      Button("4 Jugadores", {200, 60}, 20, sf::Color::Green, sf::Color::Black);
   threePlayersButton =
-      Button("3 Jugadores", { 200, 60 }, 20, sf::Color::Green, sf::Color::Black);
+      Button("3 Jugadores", {200, 60}, 20, sf::Color::Green, sf::Color::Black);
   playButton =
       Button("Jugar", {150, 60}, 20, sf::Color::Blue, sf::Color::Black);
 
@@ -99,7 +99,6 @@ void RegisterView::drawView() {
   loadTextboxes();
 }
 
-
 void RegisterView::typeOverTextbox(sf::Event event) {
   if (isThreePlayers) {
     if (firstTextbox.isMouseOver(view))
@@ -138,33 +137,31 @@ void RegisterView::loadBeforeChangingScene() {
 
 void RegisterView::playButtonPressed() {
 
-      loadBeforeChangingScene();
-      closeView();
-      log(actualMatchName);
-      PlayView playView = PlayView(game.players, actualMatchName);
-      playView.goView();
+  loadBeforeChangingScene();
+  closeView();
+  log(actualMatchName);
+  PlayView playView = PlayView(game.players, actualMatchName);
+  playView.goView();
 }
 
+bool RegisterView::textTextBoxCompleted() {
+  bool temp = false;
+  if (isThreePlayers && firstTextbox.getText() != "" &&
+      secondTextbox.getText() != "" && thirdTextbox.getText() != "") {
+    temp = true;
+  }
 
-
-bool RegisterView:: textTextBoxCompleted(){
-    if (isThreePlayers && firstTextbox.getText() != "" && secondTextbox.getText() != "" && thirdTextbox.getText() != "") {
-        return true; 
-    }
-
-    if (isFourPlayers && firstTextbox.getText() != "" && secondTextbox.getText() != "" && thirdTextbox.getText() != "" && fourthTextbox.getText() != "") {
-        return true;
-    }
-   
-   
+  if (isFourPlayers && firstTextbox.getText() != "" &&
+      secondTextbox.getText() != "" && thirdTextbox.getText() != "" &&
+      fourthTextbox.getText() != "") {
+    temp = true;
+  }
+  return temp;
 }
 
 void RegisterView::clearButtonPressed() {
   clearView();
-
-  makePlayerButtons(); 
-  //displayView();
-
+  makePlayerButtons();
   closeView();
   goView();
 }
@@ -212,9 +209,9 @@ void RegisterView::goView() {
       case sf::Event::MouseButtonPressed:
         showCoordinates(event);
         if (isMouseLeftClicked(event)) {
-            if (isPlayButtonPressed()) {
-                 verify();
-            }
+          if (isPlayButtonPressed()) {
+            verify();
+          }
 
           if (isClearButtonPressed())
             clearButtonPressed();
@@ -247,80 +244,92 @@ void RegisterView::goView() {
 }
 void RegisterView::verify() {
 
-    if (textTextBoxCompleted()) {
-        if (compareNames()) {
-            if (!isAnyColorEmpty()) {
-                if (compareColors()) {
-                    playButtonPressed();
-                }
-                else {
-                ErrorAlert alertSameColor = ErrorAlert(" ", "Debe seleccionar distintos colores");
-                alertSameColor.goView();
-                }
-            }
-            else {
-                ErrorAlert noneColor = ErrorAlert(" ", "Debe seleccionar algun color por cada jugador");
-                noneColor.goView();
-            }
+  if (textTextBoxCompleted()) {
+    if (compareNames()) {
+      if (!isAnyColorEmpty()) {
+        if (compareColors()) {
+          playButtonPressed();
+        } else {
+          ErrorAlert alertSameColor =
+              ErrorAlert(" ", "Debe seleccionar distintos colores");
+          alertSameColor.goView();
         }
-        else {
-            ErrorAlert alertSameNames = ErrorAlert(" ", "Los juagdores deben tener distintos nombres");
-            alertSameNames.goView();
-        }
+      } else {
+        ErrorAlert noneColor =
+            ErrorAlert(" ", "Debe seleccionar algun color por cada jugador");
+        noneColor.goView();
+      }
+    } else {
+      ErrorAlert alertSameNames =
+          ErrorAlert(" ", "Los juagdores deben tener distintos nombres");
+      alertSameNames.goView();
     }
-    else {
-        ErrorAlert alertNames = ErrorAlert(" ", "Debe llenar los espacios con nombres de jugadores");
-        alertNames.goView();
-    }
+  } else {
+    ErrorAlert alertNames =
+        ErrorAlert(" ", "Debe llenar los espacios con nombres de jugadores");
+    alertNames.goView();
+  }
 }
 
 bool RegisterView::compareNames() {
-    if (isThreePlayers) {
-        if (firstTextbox.getText() != secondTextbox.getText() && firstTextbox.getText() != thirdTextbox.getText()) {
-            if (secondTextbox.getText() != thirdTextbox.getText()) {
-                return true;
-            }
-        }
-        return false;
+  if (isThreePlayers) {
+    if (firstTextbox.getText() != secondTextbox.getText() &&
+        firstTextbox.getText() != thirdTextbox.getText()) {
+      if (secondTextbox.getText() != thirdTextbox.getText()) {
+        return true;
+      }
     }
-    if (isFourPlayers) {
-        if (firstTextbox.getText() != secondTextbox.getText() && firstTextbox.getText() != thirdTextbox.getText() ) {
-            if (firstTextbox.getText() != fourthTextbox.getText()) {
-                if (secondTextbox.getText() != thirdTextbox.getText() && secondTextbox.getText() != fourthTextbox.getText()) {
-                    return true;
-                }
-            }
+    return false;
+  }
+  if (isFourPlayers) {
+    if (firstTextbox.getText() != secondTextbox.getText() &&
+        firstTextbox.getText() != thirdTextbox.getText()) {
+      if (firstTextbox.getText() != fourthTextbox.getText()) {
+        if (secondTextbox.getText() != thirdTextbox.getText() &&
+            secondTextbox.getText() != fourthTextbox.getText()) {
+          return true;
         }
-        return false;
+      }
     }
+    return false;
+  }
 }
 
 bool RegisterView::isAnyColorEmpty() {
-    if (isThreePlayers) {
-        return (colorPlayerOne == "" || colorPlayerTwo == "" || colorPlayerThree == "");
-    }
-    if(isFourPlayers){
-        return (colorPlayerOne == "" || colorPlayerTwo == "" || colorPlayerThree == "" || colorPlayerFour == "");
-    }
-
+  bool temp = false;
+  if (isThreePlayers) {
+    if (colorPlayerOne == "" || colorPlayerTwo == "" || colorPlayerThree == "")
+      temp = true;
+  }
+  if (isFourPlayers) {
+    if (colorPlayerOne == "" || colorPlayerTwo == "" ||
+        colorPlayerThree == "" || colorPlayerFour == "")
+      temp = true;
+  }
+  return temp;
 }
+
 bool RegisterView::compareColors() {
-    if (isThreePlayers) {
-        if (colorPlayerOne != colorPlayerTwo && colorPlayerOne != colorPlayerThree) {
-            if (colorPlayerTwo != colorPlayerThree) {
-                return true; 
-            }
-        }
-        return false; 
+  if (isThreePlayers) {
+    if (colorPlayerOne != colorPlayerTwo &&
+        colorPlayerOne != colorPlayerThree) {
+      if (colorPlayerTwo != colorPlayerThree) {
+        return true;
+      }
     }
-    if (isFourPlayers) {
-        if (colorPlayerOne != colorPlayerTwo && colorPlayerOne != colorPlayerThree && colorPlayerOne != colorPlayerFour) {
-            if (colorPlayerTwo != colorPlayerThree && colorPlayerTwo != colorPlayerFour) {
-                return true; 
-            }
-        }
-        return false; 
+    return false;
+  }
+  if (isFourPlayers) {
+    if (colorPlayerOne != colorPlayerTwo &&
+        colorPlayerOne != colorPlayerThree &&
+        colorPlayerOne != colorPlayerFour) {
+      if (colorPlayerTwo != colorPlayerThree &&
+          colorPlayerTwo != colorPlayerFour) {
+        return true;
+      }
     }
+    return false;
+  }
 }
 
 void RegisterView::drawTextboxes() {
@@ -345,20 +354,19 @@ void RegisterView::goMenuView() {
   menuView.goView();
 }
 
-
 void RegisterView::registerButton() {
-  
-  title =  Label("Registro de Usuarios", sf::Color::Black, font,
-                    sf::Text::Bold, 30, 480.f, 50.f);
-  name =  Label("Nombre", sf::Color::Black, font, sf::Text::Bold, 20, 405.f,
-                   200.f);
 
-  color =  Label("Color", sf::Color::Black, font, sf::Text::Bold, 20, 600.f,
-                    200.f);
+  title = Label("Registro de Usuarios", sf::Color::Black, font, sf::Text::Bold,
+                30, 480.f, 50.f);
+  name =
+      Label("Nombre", sf::Color::Black, font, sf::Text::Bold, 20, 405.f, 200.f);
 
-  note =  Label("Nota: Acerca el cursor al campo de texto del jugador, "
-                   "presiona ENTER para escribir y END para salir.",
-                   sf::Color::Blue, font, sf::Text::Bold, 20, 10.f, 640.f);
+  color =
+      Label("Color", sf::Color::Black, font, sf::Text::Bold, 20, 600.f, 200.f);
+
+  note = Label("Nota: Acerca el cursor al campo de texto del jugador, "
+               "presiona ENTER para escribir y END para salir.",
+               sf::Color::Blue, font, sf::Text::Bold, 20, 10.f, 640.f);
 
   view.draw(title.getTextInstance());
   view.draw(name.getTextInstance());
@@ -418,15 +426,13 @@ void RegisterView::getNamesFourPlayers() {
 }
 
 void RegisterView::loadThreePlayers() {
-   
-        game.players->push_back(
-            new Player(firstTextbox.getText(), 0, colorPlayerOne));
-        game.players->push_back(
-            new Player(secondTextbox.getText(), 0, colorPlayerTwo));
-        game.players->push_back(
-            new Player(thirdTextbox.getText(), 0, colorPlayerThree));
-    
-    
+
+  game.players->push_back(
+      new Player(firstTextbox.getText(), 0, colorPlayerOne));
+  game.players->push_back(
+      new Player(secondTextbox.getText(), 0, colorPlayerTwo));
+  game.players->push_back(
+      new Player(thirdTextbox.getText(), 0, colorPlayerThree));
 }
 
 void RegisterView::loadFourPlayers() {
@@ -471,12 +477,11 @@ void RegisterView::loadRegisterButtons(Button &button, sf::Color color) {
   button.drawButton(view);
 }
 
-
-void RegisterView::loadColorButtons(Button& button, sf::Color color) {
-    if (button.isPressed(event)) {
-        button.setBackgroundColor(color);
-    }
-    button.drawButton(view);
+void RegisterView::loadColorButtons(Button &button, sf::Color color) {
+  if (button.isPressed(event)) {
+    button.setBackgroundColor(color);
+  }
+  button.drawButton(view);
 }
 
 void RegisterView::loadColorsBlue() {
@@ -488,7 +493,7 @@ void RegisterView::loadColorsBlue() {
   blue2.setPosition({580, 365}, 3);
   blue2.drawButton(view);
 
-  loadColorButtons(blue0, sf::Color (19,23,126));
+  loadColorButtons(blue0, sf::Color(19, 23, 126));
   loadColorButtons(blue1, sf::Color(19, 23, 126));
   loadColorButtons(blue2, sf::Color(19, 23, 126));
 }
@@ -501,7 +506,7 @@ void RegisterView::loadColorsRed() {
   red1.drawButton(view);
   red2.setPosition({620, 365}, 3);
   red2.drawButton(view);
-  loadColorButtons(red0, sf::Color(181,26,20));
+  loadColorButtons(red0, sf::Color(181, 26, 20));
   loadColorButtons(red1, sf::Color(181, 26, 20));
   loadColorButtons(red2, sf::Color(181, 26, 20));
 }
@@ -513,9 +518,9 @@ void RegisterView::loadColorsYellow() {
   yellow1.drawButton(view);
   yellow2.setPosition({660, 365}, 3);
   yellow2.drawButton(view);
-  loadColorButtons(yellow0, sf::Color(199,191,42));
-  loadColorButtons(yellow1, sf::Color(199,191,42));
-  loadColorButtons(yellow2, sf::Color(199,191,42));
+  loadColorButtons(yellow0, sf::Color(199, 191, 42));
+  loadColorButtons(yellow1, sf::Color(199, 191, 42));
+  loadColorButtons(yellow2, sf::Color(199, 191, 42));
 }
 
 void RegisterView::loadColorsGreen() {
@@ -528,14 +533,14 @@ void RegisterView::loadColorsGreen() {
   green2.drawButton(view);
   green3.setPosition({700, 425}, 3);
   green3.drawButton(view);
-  loadColorButtons(green0, sf::Color(67,199,42));
+  loadColorButtons(green0, sf::Color(67, 199, 42));
   loadColorButtons(green1, sf::Color(67, 199, 42));
   loadColorButtons(green2, sf::Color(67, 199, 42));
   loadColorButtons(green3, sf::Color(67, 199, 42));
 }
 
 void RegisterView::playerOneColor() {
-   
+
   if (blue0.isMouseOver(view))
     colorPlayerOne = "BLUE";
   if (green0.isMouseOver(view))
